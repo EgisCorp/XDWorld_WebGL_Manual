@@ -10,20 +10,17 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Option
-
 | No. | API | Contents |
 | :--- | :--- | :--- |
 | 1 | JSLayerList\(\) | 사용자 레이어 리스트 반환 |
 | 2 | JSLayerList\(boolean\) | 레이어 리스트 반환 |
-
-#### - boolean Type
-
-* TRUE : 사용자 레이어 리스트 설정.
-* FALSE : 서비스 레이어 리스트 설정.
-{% endtab %}
-
-{% tab title="Code" %}
+* Detail
+	* TRUE : 사용자 레이어 리스트 설정.
+	* FALSE : 서비스 레이어 리스트 설정.
+* Return
+	* JSLayerList : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let userlayer = new Module.JSLayerList(true);
 let serverlayer = new Module.JSLayerList(false);
@@ -37,20 +34,14 @@ let serverlayer = new Module.JSLayerList(false);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 생성 레이어 명칭. |
 | \_layertype | number | [레이어 타입.](../etc/type-list.md#layer-type-list) |
-
-### - Return
-
-* 성공 : JSLayer 반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
@@ -68,19 +59,13 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 생성 레이어 명칭. |
-
-### - Return
-
-* 성공 : JSLayer 반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList( false );
 let wmslayer = layerList.createWMSLayer( “WMS” );
@@ -98,20 +83,14 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 생성 레이어 명칭. |
 | \_layertype | number | [WFS 레이어 타입.](../etc/type-list.md#wfs-type-list) |
-
-### - Return
-
-* 성공 : JSLayer 반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList( false );    // WFS는 서비스 레이어
 let wfslayer = layerList.createWFSLayer( “WFS" , 0);
@@ -129,19 +108,13 @@ let wfslayer = layerList.createWFSLayer( “WFS" , 0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 반환 레이어 명칭. |
-
-### - Return
-
-* 성공 : JSLayer 반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList( false );
 // ... 레이어 생성 과정
@@ -160,19 +133,13 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 목표 레이어 명칭. |
-
-### - Return
-
-* 0 : 투명 상태.
-* 1 : 가시화 상태.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* 0 : 투명 상태.
+	* 1 : 가시화 상태.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(false);
 // ... 레이어 생성 과정
@@ -191,20 +158,15 @@ let visible = layerList.getVisible(“HybridLoad”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 목표 레이어 명칭. |
 | \_visible | boolean | 레이어 가시화 설정. |
-
-#### - visible Type
-
-* TRUE : 가시화 설정.
-* FALSE : 투명 설정.
-{% endtab %}
-
-{% tab title="Code" %}
+* Detail
+	* _visible
+		- TRUE : 가시화 설정.
+		- FALSE : 투명 설정.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(false);
 // ... 레이어 생성 과정
@@ -221,16 +183,12 @@ layerList.setVisible(“HybridLoad”, false);  // HybridLoad 레이어 투영�
 > 레이어 리스트 첫 순서에 해당되는 레이어 삭제
 >
 > 사용자, 서비스 레이어 모두 사용 가능
-
 {% tabs %}
 {% tab title="Infomation" %}
-### - Return
-
-* TRUE : 첫 순서 레이어 삭제 성공.
-* FALSE : 첫 순서 레이어 삭제 실패.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* TRUE : 첫 순서 레이어 삭제 성공.
+	* FALSE : 첫 순서 레이어 삭제 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -254,13 +212,10 @@ console.log(check);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Return
-
-* TRUE : 끝 순서 레이어 삭제 성공.
-* FALSE : 끝 순서 레이어 삭제 실패.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* TRUE : 끝 순서 레이어 삭제 성공.
+	* FALSE : 끝 순서 레이어 삭제 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -284,19 +239,13 @@ console.log(check);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | 목표 레이어 명칭. |
-
-### - Return
-
-* TRUE : 목표 레이어 삭제 성공.
-* FALSE : 목표 레이어 삭제 실패.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* TRUE : 목표 레이어 삭제 성공.
+	* FALSE : 목표 레이어 삭제 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -322,19 +271,13 @@ console.log(check);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_index | number | 목표 레이어 인덱스. |
-
-### - Return
-
-* TRUE : 목표 인덱스 레이어 삭제 성공.
-* FALSE : 목표 인덱스 레이어 삭제 실패.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* TRUE : 목표 인덱스 레이어 삭제 성공.
+	* FALSE : 목표 인덱스 레이어 삭제 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -359,12 +302,9 @@ console.log(check);
 
 {% tabs %}
 {% tab title="Infomation" %}
-#### - Return
-
-* 전체 레이어 갯수 
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* 전체 레이어 갯수 
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -384,19 +324,13 @@ console.log(count);    // 2출력
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layer | JSLayer | 인덱스 확인 레이어. |
-
-### - Return
-
-* -1 : 레이어 리스트에 존재 하지 않는 레이어.
-* result&gt;0 : 확인 레이어 인덱스 번호.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* -1 : 레이어 리스트에 존재 하지 않는 레이어.
+	* result&gt;0 : 확인 레이어 인덱스 번호.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -420,13 +354,10 @@ console.log(count);    // 1 출력
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Return
-
-* 성공 : [JSLayer ](jslayer.md)반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -448,13 +379,10 @@ let result = layerList.firstAtLayer();
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Return
-
-* 성공 : [JSLayer ](jslayer.md)반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -476,19 +404,13 @@ let result = layerList.lastAtLayer();
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_index | number | 목표 레이어 인덱스. |
-
-### - Return
-
-* 성공 : [JSLayer ](jslayer.md)반환.
-* 실패 : NULL 반환.
-{% endtab %}
-
-{% tab title="Code" %}
+* Return
+	* [JSLayer ](jslayer.md) : 반환 성공.
+	* null : 반환 실패.
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -512,29 +434,22 @@ result = layerList.indexAtLayer(1);
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layer | JSLayer | 목표 레이어. |
 | \_move | boolean | 인덱스 변경 옵션. |
-
-#### - \_move Type
-
-* TRUE : 한 단계 위로 올림.
-* FALSE : 한 단계 아래로 내림.
-
-### - Return
-
-* TRUE : 순서 변경 성공.
-* FALSE: 순서 변경 실패.
-  * 순서 변경 실패 조건
-    * 레이어 리스트 2개 미만
-    * 끝 순서 해당 레이어를 한단계 내린 경우
-    * 첫 순서 해당 레이어를 한단계 올린 경우
-{% endtab %}
-
-{% tab title="Code" %}
+* Detail
+	* \_move Type
+		- TRUE : 한 단계 위로 올림.
+		- FALSE : 한 단계 아래로 내림.
+* Return
+	* TRUE : 순서 변경 성공.
+	* FALSE: 순서 변경 실패.
+		- 순서 변경 실패 조건
+			- 레이어 리스트 2개 미만
+			- 끝 순서 해당 레이어를 한단계 내린 경우
+			- 첫 순서 해당 레이어를 한단계 올린 경우
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -555,29 +470,22 @@ let check =  layerList.setLayerMove(end, true);    // first 인덱스 1, end 인
 
 {% tabs %}
 {% tab title="Infomation" %}
-### - Parameter
-
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layer | JSLayer | 목표 레이어. |
 | \_extreme | boolean | 인덱스 변경 옵션. |
-
-#### - \_extreme Type
-
-* TRUE : 최상단으로 올림.
-* FALSE : 최하단으로 내림.
-
-### - Return
-
-* TRUE : 순서 변경 성공.
-* FALSE: 순서 변경 실패.
-  * 순서 변경 실패 조건
-    * 레이어 리스트 2개 미만
-    * 끝 순서 해당 레이어를 한단계 내린 경우
-    * 첫 순서 해당 레이어를 한단계 올린 경우
-{% endtab %}
-
-{% tab title="Code" %}
+* Detail
+	* \_extreme Type
+		- TRUE : 최상단으로 올림.
+		- FALSE : 최하단으로 내림.
+* Return
+	* TRUE : 순서 변경 성공.
+	* FALSE: 순서 변경 실패.
+		- 순서 변경 실패 조건
+			- 레이어 리스트 2개 미만
+			- 끝 순서 해당 레이어를 한단계 내린 경우
+			- 첫 순서 해당 레이어를 한단계 올린 경우
+* Code
 ```javascript
 let layerList = new Module.JSLayerList(true);
 // 레이어 생성
@@ -588,12 +496,3 @@ let check =  layerList.setLayerMove(first, true);    // first 인덱스 2, secon
 ```
 {% endtab %}
 {% endtabs %}
-
-## Destory\(\)
-
-> 필요한가?
-
-## SyncLayer\(\)
-
-> 필요한가?
-
