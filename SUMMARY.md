@@ -9,10 +9,11 @@
 
 ## Object
 
-* [JSPolygon](object/JSPolygon.md)
-* [JSLineString](object/JSLineString.md)
-* [JSPoint](object/JSPoint.md)
+* [JSPolygon](object/jspolygon.md)
+* [JSLineString](object/jslinestring.md)
+* [JSPoint](object/jspoint.md)
 
 ## ETC
 
 * [Type List](etc/type-list.md)
+
