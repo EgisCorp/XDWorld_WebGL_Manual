@@ -9,9 +9,9 @@
 
 ## Object
 
-* [JSLayer](object/JSPolygon.md)
-* [JSLayerList](object/JSLineString.md)
-* [JSLayer](object/JSPoint.md)
+* [JSPolygon](object/JSPolygon.md)
+* [JSLineString](object/JSLineString.md)
+* [JSPoint](object/JSPoint.md)
 
 ## ETC
 
