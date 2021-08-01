@@ -32,13 +32,12 @@ let layer = layerList.createLayer( layername );
 | \_object | JSObject | 생성 된 오브젝트 추가 |
 | \_level | number | 0 값으로 사용 |
 * Code
+
 ```javascript
 let layername = "objectlayer"
 let layerList = new Module.JSLayerList( true );
 let layer = layerList.createLayer( layername );
-
 // object 생성 과정
-
 layer.addObject(object, 0);
 ```
 {% endtab %}
