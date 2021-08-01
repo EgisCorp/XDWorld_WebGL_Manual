@@ -62,6 +62,7 @@ layer.addObject(object, 0);
 		- 명칭 반환 실패 조건
 			- \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
 * Code
+
 ```javascript
 
 ```
@@ -88,6 +89,7 @@ layer.addObject(object, 0);
 			- \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
 			- 해당 레이어 객체 수가 0인 경우
 * Code
+
 ```javascript
 
 ```
@@ -115,6 +117,7 @@ layer.addObject(object, 0);
 		- \_objectid 빈공백 일 경우
 		- 해당 레이어 객체 수가 0인 경우
 * Code
+
 ```javascript
 
 ```
@@ -141,6 +144,7 @@ layer.addObject(object, 0);
 		- 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
 		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
+
 ```javascript
 let layername = "objectlayer"
 let layerList = new Module.JSLayerList(true);
@@ -175,6 +179,7 @@ layer.removeAtIndex(0);
 		- 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
 		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
+
 ```javascript
 
 ```
@@ -202,6 +207,7 @@ layer.removeAtIndex(0);
 		- 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
 		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
+
 ```javascript
 
 ```
@@ -224,6 +230,7 @@ layer.removeAtIndex(0);
 		- 서비스 레이어 인 경우\( 서비스 레이어에서 오브젝트는 tile에 종속.\)
 		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
+
 ```javascript
 
 ```
@@ -240,6 +247,7 @@ layer.removeAtIndex(0);
 	* result&gt;0 : 해당 레이어 오브젝트 갯수
 	* -1 : 해당 레이어에 오브젝트가 존재 하지 않는 경우
 * Code
+
 ```javascript
 
 ```
@@ -267,6 +275,7 @@ layer.removeAtIndex(0);
 	  - 옵션 설정 실패 조건
 		- 사용자 레이어 인 경우
 * Code
+
 ```javascript
 
 ```
@@ -283,6 +292,7 @@ layer.removeAtIndex(0);
 {% tab title="Infomation" %}
 * Input, Output 정보 없음
 * Code
+
 ```javascript
 
 ```
@@ -308,6 +318,7 @@ layer.removeAtIndex(0);
 		- TRUE : 이미지 반투명 출력\(영상 이미지 + WMS 이미지\)
 		- FALSE : 이미지 불투명 출력\(WMS 이미지\)
 * Code
+
 ```javascript
 
 ```
@@ -333,6 +344,7 @@ layer.removeAtIndex(0);
 	  - 옵션 설정 실패 조건
 		- 사용자 레이어 인 경우
 * Code
+
 ```javascript
 
 ```
@@ -359,6 +371,7 @@ layer.removeAtIndex(0);
 	  - 옵션 설정 실패 조건
 		- 사용자 레이어 인 경우
 * Code
+
 ```javascript
 
 ```
@@ -384,6 +397,7 @@ layer.removeAtIndex(0);
 	  - 옵션 설정 실패 조건
 		- 사용자 레이어 인 경우
 * Code
+
 ```javascript
 
 ```
@@ -409,6 +423,7 @@ layer.removeAtIndex(0);
 	  - 옵션 설정 실패 조건
 		- 사용자 레이어 인 경우
 * Code
+
 ```javascript
 
 ```
