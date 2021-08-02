@@ -6,7 +6,7 @@ description: 폴리곤 오브젝트 설정 및 반환 API를 제공합니다.
 
 Module createPolygon API로 생성할 수 있습니다.
 
-```text
+```javascript
 var object = Module.createPolygon("newObject");
 ```
 
@@ -71,7 +71,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCircle\([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvector3d.md) position, number radius, number segment\) → boolean
+## setCircle\([JSVector3D](../core/jsvector3d.md) position, number radius, number segment\) → boolean
 
 > 중심 좌표와 반경, 버텍스 수로 원 모양의 평면 좌표를 설정합니다.
 
@@ -79,7 +79,7 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| position | [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvector3d.md) | 원 중심점 |
+| position | [JSVector3D](../core/jsvector3d.md) | 원 중심점 |
 | radius | number | 반경 |
 | segment | number | 버텍스 수 |
 
@@ -96,7 +96,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\([Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) vertex\_list\)
+## setCoordinates\([Collection](../core/collection.md)) vertex\_list\)
 
 > Polygon 평면을 구성하는 좌표 리스트를 설정합니다.
 
@@ -104,7 +104,7 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) | 폴리곤 좌표 리스트 |
+| vertex\_list | [Collection](../core/collection.md)) | 폴리곤 좌표 리스트 |
 
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=camera\_set\_viewrect](http://sandbox.dtwincloud.com/code/main.do?id=camera_set_viewrect)
@@ -172,7 +172,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\([JSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec3array.md) vertex\_list, [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) part\_list\) → boolean
+## setPartCoordinates\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)) part\_list\) → boolean
 
 > 폴리곤 좌표\(vertex, part\)를 지정합니다.
 
@@ -180,8 +180,8 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) | 폴리곤 Part 리스트 |
+| vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
+| part\_list | [Collection](../core/collection.md)) | 폴리곤 Part 리스트 |
 
 * Detail
   * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
@@ -195,7 +195,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinatesUV\([JSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec3array.md) vertex\_list, [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) part\_list, [JSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec2array.md) uv\_list, boolean is\_rtt\) → boolean
+## setPartCoordinatesUV\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)) part\_list, [JSVec2Array](../core/jsvec2array.md) uv\_list, boolean is\_rtt\) → boolean
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -203,9 +203,9 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) | 폴리곤 Part 리스트 |
-| uv\_list | [JSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec2array.md) | 폴리곤 uv 좌표 리스트 |
+| vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
+| part\_list | [Collection](../core/collection.md)) | 폴리곤 Part 리스트 |
+| uv\_list | [JSVec2Array](../core/jsvec2array.md) | 폴리곤 uv 좌표 리스트 |
 | is\_rtt | boolean | 폴리곤 Part 리스트 |
 
 * Detail
@@ -222,7 +222,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setStyle\([JSPolygonStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jspolygonstyle.md) style\)
+## setStyle\([JSPolygonStyle](../object/jspolygonstyle.md) style\)
 
 > 폴리곤 스타일을 설정합니다.
 
@@ -230,7 +230,7 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| style | [JSPolygonStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jspolygonstyle.md) | 오브젝트 스타일 설정 객체 |
+| style | [JSPolygonStyle](../object/jspolygonstyle.md) | 오브젝트 스타일 설정 객체 |
 
 * Detail
   * 설정 가능한 스타일
@@ -259,8 +259,8 @@ var object = Module.createPolygon("newObject");
       * width \(number\) : 비디오 엘리먼트 가로 크기
       * height \(number\) : 비디오 엘리먼트 세로 크기
     * position
-      * min \([JSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvector2d.md)\) : 영역 최소 좌표 
-      * max \([JSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvector2d.md)\) : 영역 최대 좌표 [JSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvector2d.md)
+      * min \([JSVector2D](../core/jsvector2d.md)\) : 영역 최소 좌표 
+      * max \([JSVector2D](../core/jsvector2d.md)\) : 영역 최대 좌표 [JSVector2D](../core/jsvector2d.md)
     * init \(boolean\) : position min, max 좌표를 이용한 폴리곤 형상 초기화 여부
     * complete\(function\) : 텍스쳐 갱신 완료 후 발생하는 CallBack
 * Return
