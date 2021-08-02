@@ -4,11 +4,11 @@
 
 ## Map
 
-* [JSMap](jsmap.md)
+* [JSMap](map/jsmap.md)
 
 ## Camera
 
-* [JSCamera](jscamera.md)
+* [JSCamera](camera/jscamera.md)
 
 ## Layer
 

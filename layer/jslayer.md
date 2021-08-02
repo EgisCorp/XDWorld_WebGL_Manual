@@ -13,11 +13,13 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 | No. | API | Contents |
 | :--- | :--- | :--- |
 | 1 | JSLayer\(\) | 사용자 레이어 반환 |
+
 * Code
-```javascript
-let layerList = new Module.JSLayerList( true );
-let layer = layerList.createLayer( layername );
-```
+
+  ```javascript
+  let layerList = new Module.JSLayerList( true );
+  let layer = layerList.createLayer( layername );
+  ```
 {% endtab %}
 {% endtabs %}
 
@@ -31,14 +33,16 @@ let layer = layerList.createLayer( layername );
 | :--- | :--- | :--- |
 | \_object | JSObject | 생성 된 오브젝트 추가 |
 | \_level | number | 0 값으로 사용 |
+
 * Code
-```javascript
-let layername = "objectlayer"
-let layerList = new Module.JSLayerList( true );
-let layer = layerList.createLayer( layername );
-// object 생성 과정
-layer.addObject(object, 0);
-```
+
+  ```javascript
+  let layername = "objectlayer"
+  let layerList = new Module.JSLayerList( true );
+  let layer = layerList.createLayer( layername );
+  // object 생성 과정
+  layer.addObject(object, 0);
+  ```
 {% endtab %}
 {% endtabs %}
 
@@ -55,11 +59,12 @@ layer.addObject(object, 0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_index | number | 목표 오브젝트 인덱스. |
+
 * Return
-	* 문자열 : 인덱스 해당 오브젝트 명칭 반환 성공
-	* 빈 문자열 : 인덱스 해당 오브젝트 명칭 반환 실패
-		- 명칭 반환 실패 조건
-			- \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
+  * 문자열 : 인덱스 해당 오브젝트 명칭 반환 성공
+  * 빈 문자열 : 인덱스 해당 오브젝트 명칭 반환 실패
+    * 명칭 반환 실패 조건
+      * \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
 * Code
 
 ```javascript
@@ -81,12 +86,13 @@ layer.addObject(object, 0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_index | number | 목표 오브젝트 인덱스. |
+
 * Return
-	* JSObject : 비교 ID와 동일한 오브젝트 반환 성공
-	* null : 비교 ID와 동일한 오브젝트 반환 실패
-		- 명칭 반환 실패 조건
-			- \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
-			- 해당 레이어 객체 수가 0인 경우
+  * JSObject : 비교 ID와 동일한 오브젝트 반환 성공
+  * null : 비교 ID와 동일한 오브젝트 반환 실패
+    * 명칭 반환 실패 조건
+      * \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
+      * 해당 레이어 객체 수가 0인 경우
 * Code
 
 ```javascript
@@ -108,13 +114,14 @@ layer.addObject(object, 0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_objectid | string | 목표 오브젝트 ID. |
+
 * Return
-	* JSObject : 비교 ID와 동일한 오브젝트 반환 성공
-	* NULL : 비교 ID와 동일한 오브젝트 반환 실패
-	  - 명칭 반환 실패 조건
-		- ID와 동일한 오브젝트가 없을 경우
-		- \_objectid 빈공백 일 경우
-		- 해당 레이어 객체 수가 0인 경우
+  * JSObject : 비교 ID와 동일한 오브젝트 반환 성공
+  * NULL : 비교 ID와 동일한 오브젝트 반환 실패
+    * 명칭 반환 실패 조건
+      * ID와 동일한 오브젝트가 없을 경우
+      * \_objectid 빈공백 일 경우
+      * 해당 레이어 객체 수가 0인 경우
 * Code
 
 ```javascript
@@ -134,14 +141,15 @@ layer.addObject(object, 0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_index | number | 삭제 오브젝트 인덱스 |
+
 * Return
-	* TRUE : 오브젝트 삭제 성공
-	* FALSE : 오브젝트 삭제 실패
-	  - 삭제 실패 조건
-		- \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
-		- 해당 레이어 객체 수가 0인 경우
-		- 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
-		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
+  * TRUE : 오브젝트 삭제 성공
+  * FALSE : 오브젝트 삭제 실패
+    * 삭제 실패 조건
+      * \_index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
+      * 해당 레이어 객체 수가 0인 경우
+      * 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
+      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
 
 ```javascript
@@ -168,15 +176,16 @@ layer.removeAtIndex(0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_objectid | string | 목표 오브젝트 ID. |
+
 * Return
-	* TRUE : 오브젝트 삭제 성공
-	* FALSE : 오브젝트 삭제 실패
-	  - 삭제 실패 조건
-		- \_objectid가 동일한 오브젝트가 없을 경우
-		- \_objectid 빈공백 일 경우
-		- 해당 레이어 객체 수가 0인 경우
-		- 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
-		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
+  * TRUE : 오브젝트 삭제 성공
+  * FALSE : 오브젝트 삭제 실패
+    * 삭제 실패 조건
+      * \_objectid가 동일한 오브젝트가 없을 경우
+      * \_objectid 빈공백 일 경우
+      * 해당 레이어 객체 수가 0인 경우
+      * 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
+      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
 
 ```javascript
@@ -198,13 +207,13 @@ layer.removeAtIndex(0);
 | \_object | JSObject | 목표 오브젝트. |
 
 * Return
-	* TRUE : 오브젝트 삭제 성공
-	* FALSE : 오브젝트 삭제 실패
-	  - 삭제 실패 조건
-		- \_object와 동일한 오브젝트가 없을 경우
-		- 해당 레이어 객체 수가 0인 경우
-		- 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
-		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
+  * TRUE : 오브젝트 삭제 성공
+  * FALSE : 오브젝트 삭제 실패
+    * 삭제 실패 조건
+      * \_object와 동일한 오브젝트가 없을 경우
+      * 해당 레이어 객체 수가 0인 경우
+      * 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
+      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
 
 ```javascript
@@ -222,12 +231,12 @@ layer.removeAtIndex(0);
 {% tabs %}
 {% tab title="Infomation" %}
 * Return
-	* TRUE : 오브젝트 삭제 성공
-	* FALSE : 오브젝트 삭제 실패
-	  - 삭제 실패 조건
-		- 해당 레이어 객체 수가 0인 경우
-		- 서비스 레이어 인 경우\( 서비스 레이어에서 오브젝트는 tile에 종속.\)
-		- 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
+  * TRUE : 오브젝트 삭제 성공
+  * FALSE : 오브젝트 삭제 실패
+    * 삭제 실패 조건
+      * 해당 레이어 객체 수가 0인 경우
+      * 서비스 레이어 인 경우\( 서비스 레이어에서 오브젝트는 tile에 종속.\)
+      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
 * Code
 
 ```javascript
@@ -243,8 +252,8 @@ layer.removeAtIndex(0);
 {% tabs %}
 {% tab title="Infomation" %}
 * Return
-	* result&gt;0 : 해당 레이어 오브젝트 갯수
-	* -1 : 해당 레이어에 오브젝트가 존재 하지 않는 경우
+  * result&gt;0 : 해당 레이어 오브젝트 갯수
+  * -1 : 해당 레이어에 오브젝트가 존재 하지 않는 경우
 * Code
 
 ```javascript
@@ -268,11 +277,12 @@ layer.removeAtIndex(0);
 | \_url | string | GeoServer 해당 레이어 URL. |
 | ~~\_port~~ | ~~number~~ | ~~통신 포트 번호.~~ |
 | ~~\_option~~ | ~~string~~ | ~~GeoServer 레이어 옵션.~~ |
+
 * Return
-	* TRUE : WMS 연결 옵션 설정 성공
-	* FALSE : WMS 연결 옵션 설정 실패
-	  - 옵션 설정 실패 조건
-		- 사용자 레이어 인 경우
+  * TRUE : WMS 연결 옵션 설정 성공
+  * FALSE : WMS 연결 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
 * Code
 
 ```javascript
@@ -313,9 +323,9 @@ layer.removeAtIndex(0);
 | \_option | boolean | WMS 투명 설정. |
 
 * Detail
-	*  \_move Type
-		- TRUE : 이미지 반투명 출력\(영상 이미지 + WMS 이미지\)
-		- FALSE : 이미지 불투명 출력\(WMS 이미지\)
+  * \_move Type
+    * TRUE : 이미지 반투명 출력\(영상 이미지 + WMS 이미지\)
+    * FALSE : 이미지 불투명 출력\(WMS 이미지\)
 * Code
 
 ```javascript
@@ -337,11 +347,12 @@ layer.removeAtIndex(0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_layername | string | WMS 요청 레이어 명칭 설정. |
+
 * Return
-	* TRUE : WMS 가시화 옵션 설정 성공
-	* FALSE : WMS 가시화 옵션 설정 실패
-	  - 옵션 설정 실패 조건
-		- 사용자 레이어 인 경우
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
 * Code
 
 ```javascript
@@ -364,11 +375,12 @@ layer.removeAtIndex(0);
 | :--- | :--- | :--- |
 | \_minlevel | number | WMS 요청 가시화 최소 레벨 설정. |
 | \_maxlevel | number | WMS 요청 가시화 최대 레벨 설정. |
+
 * Return
-	* TRUE : WMS 가시화 옵션 설정 성공
-	* FALSE : WMS 가시화 옵션 설정 실패
-	  - 옵션 설정 실패 조건
-		- 사용자 레이어 인 경우
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
 * Code
 
 ```javascript
@@ -390,11 +402,12 @@ layer.removeAtIndex(0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_size | number | WMS 요청 이미지 사이즈\(가로 세로 정사각형 비율\). |
+
 * Return
-	* TRUE : WMS 가시화 옵션 설정 성공
-	* FALSE : WMS 가시화 옵션 설정 실패
-	  - 옵션 설정 실패 조건
-		- 사용자 레이어 인 경우
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
 * Code
 
 ```javascript
@@ -416,11 +429,12 @@ layer.removeAtIndex(0);
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | \_size | number | WMS 요청 이미지 사이즈\(가로 세로 정사각형 비율\). |
+
 * Return
-	* TRUE : WMS 가시화 옵션 설정 성공
-	* FALSE : WMS 가시화 옵션 설정 실패
-	  - 옵션 설정 실패 조건
-		- 사용자 레이어 인 경우
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
 * Code
 
 ```javascript
