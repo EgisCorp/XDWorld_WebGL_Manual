@@ -10,7 +10,7 @@ Module createPoint API로 생성할 수 있습니다.
 var object = Module.createPoint("newObject");
 ```
 
-## setFontStyle\(string font\_name, number font\_size, number font\_weight, [JSColor](jscolor.md\) text\_fill\_color, [JSColor](jscolor.md) text\_outline\_color\)
+## setFontStyle\(string font\_name, number font\_size, number font\_weight, [JSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jscolor.md) text\_fill\_color, [JSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jscolor.md) text\_outline\_color\)
 
 > POI 텍스트 스타일 \(폰트, 크기, 굵기 및 색상 등\)을 설정합니다.
 
@@ -21,8 +21,8 @@ var object = Module.createPoint("newObject");
 | font\_name | string | 폰트 이름 |
 | font\_size | number | 텍스트 크기 |
 | font\_weight | number | 텍스트 굵기 |
-| text\_fill\_color | [JSColor](jscolor.md) | 텍스트 색상 |
-| text\_outline\_color | [JSColor](jscolor.md) | 텍스트 외곽 색상 |
+| text\_fill\_color | [JSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jscolor.md) | 텍스트 색상 |
+| text\_outline\_color | [JSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jscolor.md) | 텍스트 외곽 색상 |
 
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_line\_path\_distance](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
@@ -72,7 +72,7 @@ var object = Module.createPoint("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPositionLine\(number line\_length, [JSColor](jscolor.md) color\) → boolean
+## setPositionLine\(number line\_length, [JSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jscolor.md) color\) → boolean
 
 > 지면과 수직한 라인을 지정한 길이만큼 보이도록 설정합니다.
 
@@ -81,7 +81,7 @@ var object = Module.createPoint("newObject");
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
 | line\_length | number | POI 수직 라인 색상 |
-| color | [JSColor](jscolor.md) | POI 수직 라인 길이 |
+| color | [JSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jscolor.md) | POI 수직 라인 길이 |
 
 * Detail
   * line\_length : 0이 아닌 양수 값으로 입력합니다.

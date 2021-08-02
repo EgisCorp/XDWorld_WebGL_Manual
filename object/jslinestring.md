@@ -51,7 +51,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\([Collection](collection.md) vertex\_list\)
+## setCoordinates\([Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) vertex\_list\)
 
 > 라인 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -59,7 +59,7 @@ var object = Module.createLineString("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | [Collection](collection.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
+| vertex\_list | [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
 
 * Detail
   * vertex\_list : 버텍스 수는 중복된 위치 없이 3점 이상 입력합니다.
@@ -86,7 +86,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\([JSVec3Array](jsvec3array.md) vertex\_list, [Collection](collection.md) part\_list\)
+## setPartCoordinates\([JSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jsvec3array.md) vertex\_list, [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) part\_list\)
 
 > 라인 좌표\(vertex, part\)를 지정합니다.
 
@@ -94,8 +94,8 @@ var object = Module.createLineString("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVec3Array](jsvec3array.md) | 라인 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](collection.md) | 라인 Part 리스트 |
+| vertex\_list | JSVec3Array | 라인 Vertex\(경도, 위도, 고도\) 리스트 |
+| part\_list | [Collection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/collection.md) | 라인 Part 리스트 |
 
 * Detail
   * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
@@ -104,7 +104,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setStyle\([JSPolyLineStyle](jspolylinestyle.md) style\)
+## setStyle\([JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jspolylinestyle.md) style\)
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -112,7 +112,7 @@ var object = Module.createLineString("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| style | [JSPolyLineStyle](jspolylinestyle.md) | 라인 스타일 설정 객체 |
+| style | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/2e5b0edfe9e1aa4285e46f98e95a618cac7594e2/object/jspolylinestyle.md) | 라인 스타일 설정 객체 |
 
 * Detail
   * 설정 가능한 스타일
