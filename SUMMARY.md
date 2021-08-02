@@ -4,7 +4,7 @@
 
 ## Map
 
-* [index](map/jsmap.md)
+* [JSMap](map/jsmap.md)
 
 ## Camera
 
