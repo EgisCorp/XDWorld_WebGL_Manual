@@ -6,7 +6,7 @@ description: 포인트 오브젝트 설정 및 반환 API를 제공합니다.
 
 Module createPoint API로 생성할 수 있습니다.
 
-```text
+```javascript
 var object = Module.createPoint("newObject");
 ```
 
