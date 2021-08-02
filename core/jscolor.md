@@ -6,15 +6,15 @@ description: ARGB 색상을 정의합니다.
 
 new Module.Color\(\) 로 생성합니다.
 
-```text
+```javascript
 var color = new Module.Color(255, 100, 100, 0);
 ```
 
-```text
+```javascript
 var color = new Module.Color(100, 100, 0);
 ```
 
-```text
+```javascript
 var color = new Module.Color();
 ```
 

@@ -6,7 +6,7 @@ description: 3차원 좌표 배열 객체 입니다.
 
 new Module.JSVec3Array\(\) 로 생성합니다.
 
-```text
+```javascript
 var vec_array = new Module.JSVec3Array();
 ```
 

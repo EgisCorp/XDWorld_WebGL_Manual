@@ -6,11 +6,11 @@ description: 2차원 좌표을 정의합니다.
 
 new Module.JSVector2D\(\) 로 생성합니다.
 
-```text
+```javascript
 var position = new Module.JSVector2D(129.128265, 35.171834);
 ```
 
-```text
+```javascript
 var position = new Module.JSVector2D();
 ```
 

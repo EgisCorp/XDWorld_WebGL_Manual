@@ -6,7 +6,7 @@ description: '다양한 형식의 배열 데이터를 정의하고 각 배열 �
 
 new Module.Collection\(\) 로 생성합니다.
 
-```text
+```javascript
 var data_array = new Module.Collection();
 ```
 
