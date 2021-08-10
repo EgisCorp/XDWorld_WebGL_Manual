@@ -4,7 +4,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 
 # JSLayerList
 
-## 생성자 **Constructor -&gt; \( JSLayerList \)**
+## 생성자 \*\*Constructor -&gt; JSLayerList
 
 > 인스턴스 JSLayerList 생성
 
@@ -30,7 +30,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## createLayer\( layername, layertype\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
+## createLayer\( layername, layertype \) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
 
 > 설정한 레이어 타입을 가지는 새 레이어 생성.
 
@@ -53,7 +53,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## createWMSLayer\( layername\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
+## createWMSLayer\( layername \) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
 
 > WMS 레이어 생성
 >
@@ -133,7 +133,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## getVisible\( layername \) -&gt; \( number \)
+## getVisible\( layername \) -&gt; number
 
 > 레이어 가시화 옵션 정보 반환
 >
@@ -190,7 +190,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtFirst\(\)  -&gt; \( boolean \)
+## delLayerAtFirst\(\)  -&gt; boolean
 
 > 레이어 삭제
 >
@@ -218,7 +218,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtLast\(\) -&gt; \( boolean \)
+## delLayerAtLast\(\) -&gt; boolean
 
 > 레이어 삭제
 >
@@ -246,7 +246,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtName\( layername \) -&gt; \( boolean \)
+## delLayerAtName\( layername \) -&gt; boolean
 
 > 레이어 삭제
 >
@@ -280,7 +280,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtIndex\( index \) -&gt; \( boolean \)
+## delLayerAtIndex\( index \) -&gt; boolean
 
 > 레이어 삭제
 >
@@ -315,7 +315,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## count\(\) -&gt; \( number\)
+## count\(\) -&gt; number
 
 > 전체 레이어 갯수 반환
 >
@@ -338,7 +338,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## layerAtIndex\( layer \) -&gt; \( number \)
+## layerAtIndex\( layer \) -&gt; number
 
 > 해당 레이어 인덱스 확인
 >
@@ -368,7 +368,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## firstAtLayer\(\) -&gt; \( JSLayer \)
+## firstAtLayer\(\) -&gt; JSLayer
 
 > 레이어 반환
 >
@@ -394,7 +394,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## lastAtLayer\(\) -&gt; \( JSLayer \)
+## lastAtLayer\(\) -&gt; JSLayer
 
 > 레이어 반환
 >
@@ -420,7 +420,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## indexAtLayer\( index \) -&gt; \( JSLayer \)
+## indexAtLayer\( index \) -&gt; JSLayer
 
 > 레이어 반환
 >
@@ -452,7 +452,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## setLayerMove\( layer, move \) -&gt; \( boolean \)
+## setLayerMove\( layer, move \) -&gt; boolean
 
 > 레이어 순서 변경
 >
@@ -490,7 +490,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## setLayerTopNBottom\( layer, extreme \) -&gt; \( boolean \)
+## setLayerTopNBottom\( layer, extreme \) -&gt; boolean
 
 > 레이어 순서 변경
 >

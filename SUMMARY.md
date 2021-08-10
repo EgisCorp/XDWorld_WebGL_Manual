@@ -21,6 +21,13 @@
 * [JSLineString](object/jslinestring.md)
 * [JSPoint](object/jspoint.md)
 
+## Analysis
+
+* [JSEditTerrain](analysis/jseditterrain.md)
+* [JSFlood](analysis/jsflood.md)
+* [JSSightAnalysis](analysis/jssightanalysis.md)
+* [JSTransparency](analysis/jstransparency.md)
+
 ## Core
 
 * [Collection](core/collection.md)
@@ -32,5 +39,5 @@
 
 ## ETC
 
+* [SOPObject](etc/sopobject.md)
 * [Type List](etc/type-list.md)
-
