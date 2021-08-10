@@ -4,7 +4,7 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 
 # JSFlood
 
-## active\(boolean active\)
+## active\( active \)
 
 > 물판을 설정합니다.
 
@@ -23,7 +23,7 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setColor\([CJSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSColor.md) color\)
+## setColor\( color \)
 
 > 물판 색상을 설정합니다.
 
@@ -31,16 +31,16 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| color | [CJSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSColor.md) | 물판 색상 |
+| color | [JSColor](../core/jscolor.md) | 물판 색상 |
 
 * Detail
-  * color : [CJSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSColor.md)
+  * color : [JSColor](../core/jscolor.md)
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 {% endtabs %}
 
-## setHeight\(number height\)
+## setHeight\( height \)
 
 > 물판 높이를 설정합니다.
 
@@ -57,7 +57,7 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setVisibleAltitude\(number altitude\)
+## setVisibleAltitude\( altitude \)
 
 > 물판 가시거리를 설정합니다.
 
@@ -74,7 +74,7 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setWaterSpeed\(number speed\)
+## setWaterSpeed\( speed \)
 
 > 물판 유속을 설정합니다.
 
@@ -91,7 +91,7 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## visibleWaterPlane\(boolean visible\)
+## visibleWaterPlane\( visible \)
 
 > 물판 on/off를 설정합니다.
 

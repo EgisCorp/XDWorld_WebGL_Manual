@@ -23,7 +23,7 @@ description: Object를 생성하는 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## InsertOverlabRTT\(string layername, boolean cutregion\) → boolean
+## InsertOverlabRTT\( layername, cutregion \) → boolean
 
 > 지도에 이미지 오버랩합니다.
 
@@ -46,7 +46,7 @@ description: Object를 생성하는 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## Add3DPoint\(string layername, string key, number lon, number lat, number alt, object imageData, number width, number height, string text\)
+## Add3DPoint\( layername, key, lon, lat, alt, imageData, width, height, text\)
 
 > 지도에 3D POI를 생성합니다.
 
@@ -59,7 +59,7 @@ description: Object를 생성하는 API를 제공합니다.
 | lon | number | 경도 |
 | lat | number | 위도 |
 | alt | number | 고도 |
-| imageData | object | 이미지 Byte Array |
+| imageData | array | 이미지 Byte Array |
 | width | number | 이미지 가로 크기 |
 | height | number | 이미지 세로 크기 |
 | text | string | POI에 표시할 글자 |

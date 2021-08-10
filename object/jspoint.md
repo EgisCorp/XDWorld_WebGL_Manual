@@ -10,7 +10,7 @@ Module createPoint API로 생성할 수 있습니다.
 var object = Module.createPoint("newObject");
 ```
 
-## setFontStyle\(string font\_name, number font\_size, number font\_weight, [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) text\_outline\_color\)
+## setFontStyle\( font\_name, font\_size, font\_weight, text\_fill\_color, text\_outline\_color\)
 
 > POI 텍스트 스타일 \(폰트, 크기, 굵기 및 색상 등\)을 설정합니다.
 
@@ -21,15 +21,15 @@ var object = Module.createPoint("newObject");
 | font\_name | string | 폰트 이름 |
 | font\_size | number | 텍스트 크기 |
 | font\_weight | number | 텍스트 굵기 |
-| text\_fill\_color | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) | 텍스트 색상 |
-| text\_outline\_color | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) | 텍스트 외곽 색상 |
+| text\_fill\_color | JSPolyLineStyle | 텍스트 색상 |
+| text\_outline\_color | JSPolyLineStyle | 텍스트 외곽 색상 |
 
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_line\_path\_distance](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
 {% endtab %}
 {% endtabs %}
 
-## setImage\(array image\_pixels, number image\_width, number image\_height\) → boolean
+## setImage\( image\_pixels, image\_width, image\_height \) → boolean
 
 > POI 이미지를 설정합니다.
 
@@ -54,7 +54,7 @@ var object = Module.createPoint("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPosition\([JSVector3D](../core/jsvector3d.md) positiont\) → boolean
+## setPosition\( positiont\) → boolean
 
 > POI 위치를 지정합니다.
 
@@ -72,7 +72,7 @@ var object = Module.createPoint("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPositionLine\(number line\_length, [JSColor](../core/jscolor.md) color\) → boolean
+## setPositionLine\( line\_length, color\) → boolean
 
 > 지면과 수직한 라인을 지정한 길이만큼 보이도록 설정합니다.
 
@@ -94,7 +94,7 @@ var object = Module.createPoint("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setRenderToTerrainTexture\(boolean set\) → boolean
+## setRenderToTerrainTexture\( set \) → boolean
 
 > POI를 RTT 기반으로 지형에 그리도록 설정합니다.
 
@@ -112,7 +112,7 @@ var object = Module.createPoint("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setText\(string text\) → boolean
+## setText\( text \) → boolean
 
 > POI 텍스트 문자열을 지정합니다.
 

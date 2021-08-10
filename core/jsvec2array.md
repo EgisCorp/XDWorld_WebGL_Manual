@@ -10,7 +10,7 @@ new Module.JSVec2Array\(\) 로 생성합니다.
 var vec_array = new Module.JSVec2Array();
 ```
 
-## new Module.JSVec2Array\(\) → [JSVec2Array](jsvector2d.md)
+## new Module.JSVec2Array\(\) → JSVec2Array
 
 > 새로운 JSVector2D 배열 객체를 생성합니다.
 
@@ -20,7 +20,7 @@ var vec_array = new Module.JSVec2Array();
 {% endtab %}
 {% endtabs %}
 
-## push\([JSVector2D](jsvector2d.md) new\_element\) → number
+## push\( new\_element \) → number
 
 > 배열에 새로운 데이터를 추가합니다.
 

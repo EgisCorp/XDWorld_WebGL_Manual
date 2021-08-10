@@ -4,7 +4,7 @@ description: 레이어 분석을 위한 API를 제공합니다.
 
 # JSSightAnalysis
 
-## GetObjectPositionsOnPath\([CJSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSVec3Array.md) path, number searchBuffer, number verticalScope, [CJSLayer](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSLayer.md) targetLayer\) → string
+## GetObjectPositionsOnPath\( path, searchBuffer, verticalScope, targetLayer \) → string
 
 > 지정된 경로에서 객체까지의 거리, 위치를 반환합니다.
 
@@ -12,13 +12,13 @@ description: 레이어 분석을 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| path | [CJSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSVec3Array.md) | 경로 |
+| path | [JSVec3Array](../core/jsvec3array.md) | 경로 |
 | searchBuffer | number | 수평 버퍼 크기 |
 | verticalScope | number | 수직 버퍼 크기 |
-| targetLayer | [CJSLayer](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/CJSLayer.md) | 분석할 레이어 |
+| targetLayer | [JSLayer](../layer/jslayer.md) | 분석할 레이어 |
 
 * Detail
-  * path : \([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/JSVector3D.md), [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/9bfe207c03bbc23d2ad632de280820681780e009/analysis/JSVector3D.md), ...\) 분석할 경로 배열
+  * path : \([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...\) 분석할 경로 배열
   * searchBuffer : 수평 버퍼 크기. 값이 클수록 수평으로 넓은 범위의 객체를 분석합니다.
   * verticalScope : 수직 버퍼 크기. 값이 클수록 수직으로 넓은 범위의 객체를 분석합니다.
   * targetLayer : 분석할 객체가 속하는 레이어

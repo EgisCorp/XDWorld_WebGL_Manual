@@ -4,7 +4,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 
 # JSMap
 
-## setDistance\(number distance\)
+## setDistance\( distance \)
 
 > 히트맵 반경 거리를 설정합니다.
 
@@ -21,7 +21,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setEffectDistance\(number maxDistance\)
+## setEffectDistance\( maxDistance \)
 
 > 히트맵 효과가 표현되는 최대 거리를 설정합니다.
 
@@ -38,7 +38,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setWeight\(number weight\)
+## setWeight\( weight \)
 
 > 히트맵 가중치를 설정합니다.
 
@@ -55,7 +55,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## addHeatMaps\([CJSVec3Array ](../core/jsvec3array.md)pointArray\)
+## addHeatMaps\( pointArray \)
 
 > 히트맵 좌표 리스트 배열을 설정합니다.
 
@@ -63,10 +63,10 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| pointArray | [CJSVec3Array](../core/jsvec3array.md) | 히트맵 좌표 리스트 배열 |
+| pointArray | [JSVec3Array](../core/jsvec3array.md) | 히트맵 좌표 리스트 배열 |
 
 * Detail
-  * pointArray : \([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/JSVector3D.md), [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/JSVector3D.md), ...\) 히트맵 좌표 리스트 배열
+  * pointArray : \([JSVector3D](../core/jsvector3d.md),[JSVector3D](../core/jsvector3d.md), ...\) 히트맵 좌표 리스트 배열
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap](http://sandbox.dtwincloud.com/code/main.do?id=effect_heatmap)
 {% endtab %}
@@ -83,7 +83,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setFog\([CJSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSColor.md) color, number start, number end, number density\)
+## setFog\( color, start, end, density \)
 
 > 안개 효과를 설정합니다.
 
@@ -91,13 +91,13 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| color | [CJSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSColor.md) | 안개 색상 |
+| color | [JSColor](../core/jscolor.md) | 안개 색상 |
 | start | number | 안개 효과 적용 시작 거리 |
 | end | number | 안개 효과 적용 종료 거리 |
 | density | number | 안개 농도 |
 
 * Detail
-  * color : [CJSColor](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSColor.md)
+  * color : [JSColor](../core/jscolor.md)
   * start : 안개 효과 적용 최소 가시거리 \(최소값 1\)
   * end : 안개 효과 적용 최대 가시거리
   * density : 안개 효과 농도 가중치 \(0.0 ~ 1.0 사이 값으로 설정\)
@@ -106,7 +106,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setFogEnable\(boolean enable\)
+## setFogEnable\( enable \)
 
 > 안개 효과 적용 여부를 설정합니다.
 
@@ -125,7 +125,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setFogLimitAltitude\(number alt\)
+## setFogLimitAltitude\( alt \)
 
 > 안개 효과 적용 고도를 제한합니다.
 
@@ -142,7 +142,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setSnowfall\(number state\)
+## setSnowfall\( state \)
 
 > 적설 효과 출력 타입을 설정합니다.
 
@@ -162,7 +162,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setSnowfallLevel\(number snowFallLevel\) → number
+## setSnowfallLevel\( snowFallLevel \) → number
 
 > 적설 효과 출력 중 적설량을 설정합니다.
 
@@ -181,7 +181,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setSnowImageURL\(string imageURL\) → boolean
+## setSnowImageURL\( imageURL \) → boolean
 
 > 적설 효과 이미지 경로를 설정합니다.
 
@@ -211,7 +211,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setRainImageURL\(string imageURL\) → boolean
+## setRainImageURL\( imageURL \) → boolean
 
 > 비 효과 이미지 경로를 설정합니다.
 
@@ -230,7 +230,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## startWeather\(number type, number size, number speed\) → boolean
+## startWeather\( type, size, speed \) → boolean
 
 > 날씨 표현 기능을 활성화 합니다.
 
@@ -272,7 +272,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setSimpleMode\(boolean set\) → boolean
+## setSimpleMode\( set \) → boolean
 
 > 건물 심플모드를 설정합니다.
 
@@ -292,7 +292,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setTerrainEffect\(number effect\)
+## setTerrainEffect\( effect \)
 
 > 지형 랜더링 효과를 설정합니다.
 
@@ -333,20 +333,20 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## getInputPoints\(\) → [CJSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec3Array.md)
+## getInputPoints\(\) → [JSVec3Array](../core/jsvec3array.md)
 
 > 입력된 좌표 리스트를 반환합니다.
 
 {% tabs %}
 {% tab title="Parameter" %}
-* Detail
-  * [CJSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec3Array.md) : 입력된 좌표 리스트
+* Return
+  * [JSVec3Array](../core/jsvec3array.md) : 입력된 좌표 리스트
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_terrain\_edit](http://sandbox.dtwincloud.com/code/main.do?id=analysis_terrain_edit)
 {% endtab %}
 {% endtabs %}
 
-## getInputPointList\(\) → [CJSCollection](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSCollection.md)
+## getInputPointList\(\) → JSCollection
 
 > 입력된 좌표 리스트를 반환합니다.
 
@@ -359,7 +359,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## getTerrHeight\(number lon, number lat\) → number
+## getTerrHeight\( lon, lat \) → number
 
 > 해당 위치의 지형 높이값을 반환합니다.
 
@@ -377,7 +377,7 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## GetPointDistance\([CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md) from, [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md) to, boolean unionTerrain\) → number
+## GetPointDistance\( from, to, unionTerrain \) → number
 
 > 두 지점 사이의 거리를 반환합니다.
 
@@ -385,23 +385,25 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| from | [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md)\) | 시작 점 위치 |
-| to | [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md)\) | 끝 점 위치 |
+| from | [JSVector3D](../core/jsvector3d.md) | 시작 점 위치 |
+| to | [JSVector3D](../core/jsvector3d.md) | 끝 점 위치 |
 | unionTerrain | boolean | 지형 고려할지 여부 |
 
 * Detail
-  * [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md) : \(경도, 위도, 고도\)
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\)
   * unionTerrain : 
     * false : 지형을 고려하지 않고 직선 거리를 반환
     * true : 지형을 고려하여 거리를 반환
 * Return
   * 두 지점 사이의 거리 반환
 * Code
-  * let distance = Module.getMap\(\).GetPointDistance\(new Module.JSVector3D\(129.128265, 35.171834, 500.0\), new Module.JSVector3D\(129.118265, 35.161834, 500.0\), false\);
+	```javascript
+   let distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265, 35.171834, 500.0), new Module.JSVector3D(129.118265, 35.161834, 500.0), false);
+   ```
 {% endtab %}
 {% endtabs %}
 
-## getLineBuffer\([CJSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec2Array.md) lineVertex, number bufferDistance\) → [CJSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec2Array.md)
+## getLineBuffer\( lineVertex, bufferDistance \) → [JSVec2Array](../core/jsvec2array.md)
 
 > 거리 설정값에 따라 라인 버퍼 폴리곤 좌표를 반환합니다.
 
@@ -409,20 +411,20 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| lineVertex | [CJSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec2Array.md)\) | 라인 좌표 리스트 |
+| lineVertex | [JSVec2Array](../core/jsvec2array.md) | 라인 좌표 리스트 |
 | bufferDistance | number | 라인으로 부터 거리 |
 
 * Detail
-  * [CJSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec2Array.md) : \(경도, 위도\)
+  * [JSVec2Array](../core/jsvec2array.md) : \(경도, 위도\)
   * bufferDistance : 생성할 버퍼의 크기 \(라인으로 부터 거리\)
 * Return
-  * [CJSVec2Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVec2Array.md) : \(경도, 위도\)
+  * [JSVec2Array](../core/jsvec2array.md) : \(경도, 위도\)
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
 {% endtab %}
 {% endtabs %}
 
-## MapToScreenPointEX\([CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md) mapPosition\) → [CJSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector2D.md)
+## MapToScreenPointEX\( mapPosition \) → [JSVector2D](../core/jsvector2d.md)
 
 > 3차원 지도 좌표로 화면 좌표를 반환합니다.
 
@@ -430,18 +432,18 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| mapPosition | [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md)\) | 3차원 지도 좌표 |
+| mapPosition | [JSVector3D](../core/jsvector3d.md) | 3차원 지도 좌표 |
 
 * Detail
-  * [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md) : \(경도, 위도, 고도\) 3차원 지도 좌표
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\) 3차원 지도 좌표
 * Return
-  * [CJSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector2D.md) : \(x, y\) 화면 좌표
+  * [JSVector2D](../core/jsvector2d.md) : \(x, y\) 화면 좌표
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=coordinate\_map\_to\_screen](http://sandbox.dtwincloud.com/code/main.do?id=coordinate_map_to_screen)
 {% endtab %}
 {% endtabs %}
 
-## ScreenToMapPointEX\([CJSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector2D.md) screenPosition\) → [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md)
+## ScreenToMapPointEX\( screenPosition \) → [JSVector3D](../core/jsvector3d.md)
 
 > 화면 좌표로 3차원 지도 좌표를 반환합니다.
 
@@ -452,9 +454,9 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 | screenPosition | [CJSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector2D.md)\) | 화면 좌표 |
 
 * Detail
-  * [CJSVector2D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector2D.md) : \(x, y\) 화면 좌표
+  * [JSVector2D](../core/jsvector2d.md) : \(x, y\) 화면 좌표
 * Return
-  * [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/map/CJSVector3D.md) : \(경도, 위도, 고도\) 3차원 지도 좌표
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\) 3차원 지도 좌표
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=coordinate\_screen\_to\_map](http://sandbox.dtwincloud.com/code/main.do?id=coordinate_screen_to_map)
 {% endtab %}

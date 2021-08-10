@@ -26,7 +26,7 @@ var data_array = new Module.Collection();
 {% endtab %}
 {% endtabs %}
 
-## add\(boolean/number/object new\_element\) → number
+## add\( new\_element \) → number
 
 > 배열에 새로운 데이터를 추가합니다.
 
@@ -40,11 +40,11 @@ var data_array = new Module.Collection();
 {% endtab %}
 {% endtabs %}
 
-## clear\(object options\)
+## clear\( options \)
 
 > 배열의 모든 데이터를 삭제합니다.
 
-## item\(number index\) → boolean/number/object
+## item\( index \) → boolean/number/object
 
 > 인덱스 번호에 해당하는 데이터를 반환합니다.
 

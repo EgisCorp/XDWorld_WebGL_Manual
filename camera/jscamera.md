@@ -4,7 +4,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 
 # JSCamera
 
-## look\([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) from, [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) to\) → boolean
+## look\( from, to \) → boolean
 
 > from, to 두 점을 이용해 카메라를 이동합니다.
 
@@ -12,19 +12,21 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| from | [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) | 카메라 위치 |
-| to | [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) | 카메라가 바라보는 위치 |
+| from | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 |
+| to | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 위치 |
 
 * Detail
-  * [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) : \(경도, 위도, 고도\)
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\)
 * Return
   * 설정 성공 \(true\) 혹은 실패 \(false\)
 * Code
-  * Module.getViewCamera\(\).look\(new Module.JSVector3D\(129.128265, 35.171834, 500.0\), new Module.JSVector3D\(129.128265, 35.161834, 10.0\)\);
+  ```javascript
+  Module.getViewCamera().look(new Module.JSVector3D(129.128265, 35.171834, 500.0), new Module.JSVector3D(129.128265, 35.161834, 10.0));
+  ```
 {% endtab %}
 {% endtabs %}
 
-## move\([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) VecLocation, number tilt, number direct, number speed\)
+## move\( VecLocation, tilt, direct, speed \)
 
 > 카메라를 원하는 위치로 이동 후 Tilt, direct를 설정합니다.
 
@@ -32,13 +34,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| VecLocation | [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) | 카메라 위치 |
+| VecLocation | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 |
 | tilt | number | 카메라 tilt |
 | direct | number | 카메라 direct |
 | ~~speed~~ | ~~number~~ | ~~카메라 speed~~ |
 
 * Detail
-  * [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) : \(경도, 위도, 고도\)
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\)
   * tilt : 카메라 heading 각도
   * direct : 카메라가 바라보는 방향 각도
     * 0도 : 북쪽
@@ -48,11 +50,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
     * -90도 : 서쪽
   * speed : 카메라 이동 속도
 * Code
-  * Module.getViewCamera\(\).move\(new Module.JSVector3D\(129.128265, 35.171834, 500.0\), 70, 0, 0\);
+  ```javascript
+  Module.getViewCamera\(\).move\(new Module.JSVector3D\(129.128265, 35.171834, 500.0\), 70, 0, 0\);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## moveLonLatBoundarybyJson\(val parameter\) → string
+## moveLonLatBoundarybyJson\( parameter \) → string
 
 > min, max boundary를 이용하여 카메라를 이동합니다.
 
@@ -60,24 +64,19 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| parameter | val | 카메라 min, max boundary |
+| parameter | object | 카메라 min, max boundary |
 
 * Detail
 
+  ```javascript
   let json = {
-
-    boundary: {                                                        // 카메라 이동 위치
-
-  ```text
-    min: new Module.JSVector2D(area_min_lon, area_min_lat),        // 좌하단
-    max: new Module.JSVector2D(area_max_lon, area_max_lat)        // 우상단
-  ```
-
-    },                                                                
-
+    boundary: {                                                        // 카메라 이동 위치  
+		min: new Module.JSVector2D(area_min_lon, area_min_lat),        // 좌하단
+		max: new Module.JSVector2D(area_max_lon, area_max_lat)        // 우상단
+    },
     complete: complete,                                                // 이동완료 후 발생하는 CallBack
-
   };
+  ```
 
 * Return
   * 설정 성공 \(success\) 혹은 실패 \(fail\)
@@ -86,7 +85,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## moveLonLatAlt\(number Longitude, number Latitude, number Altitude, boolean smooth\)
+## moveLonLatAlt\( Longitude, Latitude, Altitude, smooth\)
 
 > 카메라를 지정한 고도, 경위도 위치로 이동합니다.
 
@@ -104,11 +103,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
     * True : 카메라 이동 애니메이션 적용
     * False : 카메라 이동 애니메이션 없이 바로 위치 이동
 * Code
-  * Module.getViewCamera\(\).moveLonLatAlt\(127.0273188, 37.4977981, 500.0, true\);
+  ```javascript
+  * Module.getViewCamera().moveLonLatAlt(127.0273188, 37.4977981, 500.0, true);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## moveOval\([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) VecLocation, number tilt, number direct, number speed\)
+## moveOobject\( VecLocation, tilt, direct, speed\)
 
 > 카메라를 지정한 고도, 경위도 위치로 이동합니다.
 
@@ -116,13 +117,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| VecLocation | [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) | 카메라 위치 |
+| VecLocation | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 |
 | tilt | number | 카메라 tilt |
 | direct | number | 카메라 direct |
 | speed | number | 카메라 speed |
 
 * Detail
-  * [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) : \(경도, 위도, 고도\)
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\)
   * tilt : 카메라 heading 각도
   * direct : 카메라가 바라보는 방향 각도
     * 0도 : 북쪽
@@ -132,11 +133,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
     * -90도 : 서쪽
   * speed : 카메라 이동 속도
 * Code
-  * Module.getViewCamera\(\).moveOval\(new Module.JSVector3D\(129.128265, 35.171834, 500.0\), 70, 0, 1\);
+  ```javascript
+  Module.getViewCamera().moveOobject(new Module.JSVector3D(129.128265, 35.171834, 500.0), 70, 0, 1);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setLocation\([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) VecLocation\) → boolean
+## setLocation\( VecLocation \) → boolean
 
 > 카메라의 위치를 설정합니다.
 
@@ -144,18 +147,20 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| VecLocation | [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) | 카메라 위치 |
+| VecLocation | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 |
 
 * Detail
-  * [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) : \(경도, 위도, 고도\)
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\)
 * Return
   * 설정 성공 \(success\) 혹은 실패 \(fail\)
 * Code
-  * Module.getViewCamera\(\).setLocation\(new Module.JSVector3D\(129.128265, 35.171834, 500.0\)\);
+  ```javascript
+  Module.getViewCamera().setLocation(new Module.JSVector3D(129.128265, 35.171834, 500.0));
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setLimitTilt\(number tilt\)
+## setLimitTilt\( tilt \)
 
 > 카메라의 제한 tilt 각도를 설정합니다.
 
@@ -168,11 +173,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 * Detail
   * tilt : 카메라 heading 각도
 * Code
-  * Module.getViewCamera\(\).setLimitTilt\(80\);
+  ```javascript
+  Module.getViewCamera().setLimitTilt(80);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setTilt\(number tilt\)
+## setTilt\( tilt \)
 
 > 카메라의 tilt 각도를 설정합니다.
 
@@ -185,11 +192,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 * Detail
   * tilt : 카메라 heading 각도
 * Code
-  * Module.getViewCamera\(\).setTilt\(80\);
+  ```javascript
+  Module.getViewCamera().setTilt(80);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setDirect\(number direct\)
+## setDirect\( direct \)
 
 > 카메라의 방향 각도를 설정합니다.
 
@@ -207,11 +216,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
     * -180도 : 남쪽
     * -90도 : 서쪽
 * Code
-  * Module.getViewCamera\(\).setDirect\(0\);
+  ```javascript
+  Module.getViewCamera().setDirect(0);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setAltitude\(number alt\)
+## setAltitude\( alt \)
 
 > 카메라의 고도를 설정합니다.
 
@@ -224,11 +235,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 * Detail
   * alt : 카메라 고도
 * Code
-  * Module.getViewCamera\(\).setAltitude\(1000\);
+  ```javascript
+  Module.getViewCamera().setAltitude(1000);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setFov\(number fov\)
+## setFov\( fov \)
 
 > 카메라의 FOV를 설정합니다.
 
@@ -241,11 +254,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 * Detail
   * fov : 카메라 화각
 * Code
-  * Module.getViewCamera\(\).setFov\(50\);
+  ```javascript
+  * Module.getViewCamera().setFov(50);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setMoveMode\(boolean mode\)
+## setMoveMode\( mode \)
 
 > 카메라의 회전 모드를 설정합니다.
 
@@ -260,11 +275,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
     * true : 1인칭 시점 회전 모드
     * false : 3인칭 시점 회전 모드
 * Code
-  * Module.getViewCamera\(\).setMoveMode\(true\);
+  ```javascript
+  Module.getViewCamera().setMoveMode(true)
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setLimitAltitude\(number alt\)
+## setLimitAltitude\( alt \)
 
 > 카메라의 제한 고도 값을 설정합니다.
 
@@ -277,11 +294,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 * Detail
   * alt : 카메라 고도
 * Code
-  * Module.getViewCamera\(\).setLimitAltitude\(3000\);
+  ```javascript
+  Module.getViewCamera\(\).setLimitAltitude\(3000\);
+  ```
 {% endtab %}
 {% endtabs %}
 
-## setAnimationSpeed\(number speed\)
+## setAnimationSpeed\( speed \)
 
 > 마우스에 의한 카메라 이동 속도 설정
 
@@ -295,11 +314,13 @@ description: 지도 내 카메라 설정 API를 제공합니다.
   * speed : 1.0 ~ 10.0 사이 값으로 설정 가능
   * 값이 클 수록 속도가 빨라집니다.
 * Code
-  * Module.getViewCamera\(\).setAnimationSpeed\(5\);
+  ```javascript
+  Module.getViewCamera().setAnimationSpeed(5);
+  ```javascript
 {% endtab %}
 {% endtabs %}
 
-## setAutoMovePosition\([CJSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/CJSVec3Array.md) positionList\) → boolean
+## setAutoMovePosition\( positionList \) → boolean
 
 > 카메라의 자동이동을 실행할 좌표 리스트를 설정합니다.
 
@@ -307,10 +328,10 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| positionList | [CJSVec3Array](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/CJSVec3Array.md) | 자동이동 경로 좌표 리스트 |
+| positionList | [JSVec3Array](../core/jsvec3array.md) | 자동이동 경로 좌표 리스트 |
 
 * Detail
-  * positionList : \([JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md), [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md), ...\) 자동이동 경로 좌표 리스트
+  * positionList : \([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...\) 자동이동 경로 좌표 리스트
 * Return
   * 설정 성공 \(true\) 혹은 실패 \(false\)
 * Code
@@ -318,7 +339,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setAutoMoveWaitFrame\(number speed\) → boolean
+## setAutoMoveWaitFrame\( speed \) → boolean
 
 > 카메라의 자동이동 위치를 갱신할 프레임 수를 지정합니다.
 
@@ -337,7 +358,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setAutoMoveRoundPositions\([CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/CJSVector3D.md) center, number distanceFromCenter, number cameraAltitude, number roundStartAngle, number roundEndAngle, boolean clockWise\) → boolean
+## setAutoMoveRoundPositions\( center, distanceFromCenter, cameraAltitude, roundStartAngle, roundEndAngle, clockWise\) → boolean
 
 > 카메라의 원형 경로 이동을 설정합니다.
 
@@ -345,7 +366,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| center | [CJSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/CJSVector3D.md) | 카메라가 바라보는 지점 |
+| center | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 지점 |
 | distanceFromCenter | number | 중심점과 카메라의 거리 |
 | cameraAltitude | number | 카메라 고도 |
 | roundStartAngle | number | 시작 방향 |
@@ -353,7 +374,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 | clockWise | boolean | 방향 설정 |
 
 * Detail
-  * [JSVector3D](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/08cec57bca916bc559f881c524ce78ed46533a0d/camera/JSVector3D.md) : \(경도, 위도, 고도\)
+  * [JSVector3D](../core/jsvector3d.md) : \(경도, 위도, 고도\)
   * distanceFromCenter : 카메라가 바라보는 지점에서 카메라 사이 거리
   * cameraAltitude : 카메라 고도
   * roundStartAngle : 카메라 이동 시작 방향
@@ -378,7 +399,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## SetCameraShakeEffect\(boolean set\) → boolean
+## SetCameraShakeEffect\( set \) → boolean
 
 > 카메라 흔들림 효과를 설정합니다.
 
@@ -399,7 +420,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## SetCameraShakeStrength\(number strength\) → boolean
+## SetCameraShakeStrength\( strength \) → boolean
 
 > 카메라 흔들림 효과 강도를 설정합니다.
 
@@ -418,7 +439,7 @@ description: 지도 내 카메라 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setPermitUnderGround\(boolean permit\)
+## setPermitUnderGround\( permit \)
 
 > 카메라가 지형 아래로 내려가는 것을 허용합니다.
 

@@ -10,7 +10,7 @@ Module createLineString API로 생성할 수 있습니다.
 var object = Module.createLineString("newObject");
 ```
 
-## createbyJson\(object options\) → string
+## createbyJson\( options \) → string
 
 > 지정한 옵션으로 라인을 생성합니다.
 
@@ -51,7 +51,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\([Collection](../core/collection.md) vertex\_list\)
+## setCoordinates\( vertex\_list \)
 
 > 라인 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -68,7 +68,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## SetDashType\(number dash\_size\) → boolean
+## SetDashType\( dash\_size \) → boolean
 
 > 라인이 지정한 간격의 점선이 되도록 설정합니다.
 
@@ -86,7 +86,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md) part\_list\)
+## setPartCoordinates\( vertex\_list, part\_list \)
 
 > 라인 좌표\(vertex, part\)를 지정합니다.
 
@@ -94,7 +94,7 @@ var object = Module.createLineString("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | JSVec3Array | 라인 Vertex\(경도, 위도, 고도\) 리스트 |
+| vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 라인 Vertex\(경도, 위도, 고도\) 리스트 |
 | part\_list | [Collection](../core/collection.md) | 라인 Part 리스트 |
 
 * Detail
@@ -104,7 +104,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setStyle\([JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) style\)
+## setStyle\( style \)
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -112,7 +112,7 @@ var object = Module.createLineString("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| style | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) | 라인 스타일 설정 객체 |
+| style | JSPolyLineStyle | 라인 스타일 설정 객체 |
 
 * Detail
   * 설정 가능한 스타일
@@ -123,7 +123,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setUnionMode\(boolean is\_union\)
+## setUnionMode\( is\_union \)
 
 > 라인 지형 결합 \(RTT\) 여부를 설정합니다.
 

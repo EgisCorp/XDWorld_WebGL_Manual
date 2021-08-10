@@ -27,7 +27,7 @@ var color = new Module.Color();
 | g | number | green 색상 값 |
 | b | number | blue 색상 값 |
 
-## new Module.JSColor\(number alpha, number red, number green, number blue\) → [JSColor](jscolor.md)
+## new Module.JSColor\( alpha, red, green, blue\) → JSColor
 
 > ARGB 값을 활용해 새로운 색상 데이터를 생성합니다.
 
@@ -40,11 +40,11 @@ var color = new Module.Color();
 | green | number | 0~255 사이 green 값 |
 | blue | number | 0~255 사이 blue 값 |
 
-* Return : 색상 데이터 [JSColor](jscolor.md)
+* Return : 색상 데이터 JSColor
 {% endtab %}
 {% endtabs %}
 
-## new Module.JSColor\(number red, number green, number blue\) → [JSColor](jscolor.md)
+## new Module.JSColor\( red, green, blue\) → JSColor
 
 > RGB 값을 활용해 새로운 색상 데이터를 생성합니다. Alpha 값은 255로 고정됩니다.
 
@@ -56,17 +56,17 @@ var color = new Module.Color();
 | green | number | 0~255 사이 green 값 |
 | blue | number | 0~255 사이 blue 값 |
 
-* Return : 색상 데이터 [JSColor](jscolor.md)
+* Return : 색상 데이터 JSColor
 {% endtab %}
 {% endtabs %}
 
-## new Module.JSColor\(\) → [JSColor](jscolor.md)
+## new Module.JSColor\(\) → JSColor
 
 > 새로운 색상 데이터를 생성합니다. Alpha, Red, Green, Blue 값은 모두 255로 고정됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return : 색상 데이터 [JSColor](jscolor.md)
+* Return : 색상 데이터 JSColor
 {% endtab %}
 {% endtabs %}
 

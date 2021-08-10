@@ -30,7 +30,7 @@ var vec_array = new Module.JSVec3Array();
 {% endtab %}
 {% endtabs %}
 
-## get\(number index\) → [JSVector3D](jsvector3d.md)
+## get\( index \) → [JSVector3D](jsvector3d.md)
 
 > 인덱스 번호에 해당하는 데이터를 반환합니다.
 
@@ -46,7 +46,7 @@ var vec_array = new Module.JSVec3Array();
 {% endtab %}
 {% endtabs %}
 
-## push\([JSVector3D](jsvector3d.md) new\_element\) → number
+## push\( new\_element \) → number
 
 > 배열에 새로운 데이터를 추가합니다.
 
