@@ -30,7 +30,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## createLayer\(string \_layername, number \_layertype\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
+## createLayer\( layername, layertype\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
 
 > 설정한 레이어 타입을 가지는 새 레이어 생성.
 
@@ -38,8 +38,8 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 생성 레이어 명칭. |
-| \_layertype | number | [레이어 타입.](../etc/type-list.md#layer-type-list) |
+| layername | string | 생성 레이어 명칭. |
+| layertype | number | [레이어 타입.](../etc/type-list.md#layer-type-list) |
 
 * Return
   * [JSLayer ](jslayer.md) : 반환 성공.
@@ -53,7 +53,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## createWMSLayer\(string \_layername\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
+## createWMSLayer\( layername\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
 
 > WMS 레이어 생성
 >
@@ -65,7 +65,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 생성 레이어 명칭. |
+| layername | string | 생성 레이어 명칭. |
 
 * Return
   * [JSLayer ](jslayer.md) : 반환 성공.
@@ -79,7 +79,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## createWFSLayer\(string \_layername, number \_layertype\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
+## createWFSLayer\( layername, layertype \) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
 
 > WFS 레이어 생성
 >
@@ -91,8 +91,8 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 생성 레이어 명칭. |
-| \_layertype | number | [WFS 레이어 타입.](../etc/type-list.md#wfs-type-list) |
+| layername | string | 생성 레이어 명칭. |
+| layertype | number | [WFS 레이어 타입.](../etc/type-list.md#wfs-type-list) |
 
 * Return
   * [JSLayer ](jslayer.md) : 반환 성공.
@@ -106,7 +106,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## nameAtLayer\(string \_layername\) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
+## nameAtLayer\( layername \) -&gt; **\(** [**JSLayer**](jslayer.md) **\)**
 
 > 생성 된 레이어 반환
 >
@@ -118,7 +118,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 반환 레이어 명칭. |
+| layername | string | 반환 레이어 명칭. |
 
 * Return
   * [JSLayer ](jslayer.md) : 반환 성공.
@@ -133,7 +133,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## getVisible\(string \_layername\) -&gt; **\(** number **\)**
+## getVisible\( layername \) -&gt; \( number \)
 
 > 레이어 가시화 옵션 정보 반환
 >
@@ -145,7 +145,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 목표 레이어 명칭. |
+| layername | string | 목표 레이어 명칭. |
 
 * Return
   * 0 : 투명 상태.
@@ -160,7 +160,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## setVisible\(string \_layername, boolean \_visible\)
+## setVisible\( layername, visible \)
 
 > 레이어 가시화 옵션 설정
 >
@@ -172,11 +172,11 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 목표 레이어 명칭. |
-| \_visible | boolean | 레이어 가시화 설정. |
+| layername | string | 목표 레이어 명칭. |
+| visible | boolean | 레이어 가시화 설정. |
 
 * Detail
-  * \_visible
+  * visible
     * TRUE : 가시화 설정.
     * FALSE : 투명 설정.
 * Code
@@ -190,7 +190,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtFirst\(\) -&gt; **\(** boolean **\)**
+## delLayerAtFirst\(\)  -&gt; \( boolean \)
 
 > 레이어 삭제
 >
@@ -246,7 +246,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtName\(string \_layername\) -&gt; \( boolean \)
+## delLayerAtName\( layername \) -&gt; \( boolean \)
 
 > 레이어 삭제
 >
@@ -258,7 +258,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layername | string | 목표 레이어 명칭. |
+| layername | string | 목표 레이어 명칭. |
 
 * Return
   * TRUE : 목표 레이어 삭제 성공.
@@ -280,7 +280,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## delLayerAtIndex\(number \_index\) -&gt; \( boolean \)
+## delLayerAtIndex\( index \) -&gt; \( boolean \)
 
 > 레이어 삭제
 >
@@ -292,7 +292,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_index | number | 목표 레이어 인덱스. |
+| index | number | 목표 레이어 인덱스. |
 
 * Return
   * TRUE : 목표 인덱스 레이어 삭제 성공.
@@ -338,7 +338,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## layerAtIndex\(JSLayer \_layer\) -&gt; \( number \)
+## layerAtIndex\( layer \) -&gt; \( number \)
 
 > 해당 레이어 인덱스 확인
 >
@@ -348,7 +348,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layer | JSLayer | 인덱스 확인 레이어. |
+| layer | JSLayer | 인덱스 확인 레이어. |
 
 * Return
   * -1 : 레이어 리스트에 존재 하지 않는 레이어.
@@ -420,7 +420,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## indexAtLayer\(number \_index\) -&gt; \( JSLayer \)
+## indexAtLayer\( index \) -&gt; \( JSLayer \)
 
 > 레이어 반환
 >
@@ -432,7 +432,7 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_index | number | 목표 레이어 인덱스. |
+| index | number | 목표 레이어 인덱스. |
 
 * Return
   * [JSLayer ](jslayer.md) : 반환 성공.
@@ -452,11 +452,11 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## setLayerMove\(JSLayer \_layer, boolean \_move\) -&gt; \( boolean \)
+## setLayerMove\( layer, move \) -&gt; \( boolean \)
 
 > 레이어 순서 변경
 >
-> 해당 레이어 인덱스 순서를 \_move 조건으로 변경
+> 해당 레이어 인덱스 순서를 move 조건으로 변경
 >
 > 사용자, 서비스 레이어 모두 사용 가능
 
@@ -464,11 +464,11 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layer | JSLayer | 목표 레이어. |
-| \_move | boolean | 인덱스 변경 옵션. |
+| layer | JSLayer | 목표 레이어. |
+| move | boolean | 인덱스 변경 옵션. |
 
 * Detail
-  * \_move Type
+  * move Type
     * TRUE : 한 단계 위로 올림.
     * FALSE : 한 단계 아래로 내림.
 * Return
@@ -490,11 +490,11 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% endtab %}
 {% endtabs %}
 
-## setLayerTopNBottom\(JSLayer \_layer, boolean \_extreme\) -&gt; \( boolean \)
+## setLayerTopNBottom\( layer, extreme \) -&gt; \( boolean \)
 
 > 레이어 순서 변경
 >
-> 해당 레이어 인덱스 순서를 \_extreme 조건으로 최상단, 최하단으로 변경
+> 해당 레이어 인덱스 순서를 extreme 조건으로 최상단, 최하단으로 변경
 >
 > 사용자, 서비스 레이어 모두 사용 가능
 
@@ -502,11 +502,11 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 {% tab title="Infomation" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| \_layer | JSLayer | 목표 레이어. |
-| \_extreme | boolean | 인덱스 변경 옵션. |
+| layer | JSLayer | 목표 레이어. |
+| extreme | boolean | 인덱스 변경 옵션. |
 
 * Detail
-  * \_extreme Type
+  * extreme Type
     * TRUE : 최상단으로 올림.
     * FALSE : 최하단으로 내림.
 * Return
