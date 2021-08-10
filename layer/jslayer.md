@@ -511,10 +511,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 | :--- | :--- | :--- |
 | option | object | WMS 요청 속성 정보. |
 
-* Detail
-  * option
-
-| Name | Type | Contents |
+| option\_tag | Type | Contents |
 | :--- | :--- | :--- |
 | url | string | 요청 지오서버 url. |
 | layer | string | 요청 지오서버 레이어 명칭. |

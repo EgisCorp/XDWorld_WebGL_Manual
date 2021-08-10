@@ -397,9 +397,10 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 * Return
   * 두 지점 사이의 거리 반환
 * Code
-	```javascript
+
+  ```javascript
    let distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265, 35.171834, 500.0), new Module.JSVector3D(129.118265, 35.161834, 500.0), false);
-   ```
+  ```
 {% endtab %}
 {% endtabs %}
 
