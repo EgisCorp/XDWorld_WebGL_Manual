@@ -10,7 +10,7 @@ Module createPoint API로 생성할 수 있습니다.
 var object = Module.createPoint("newObject");
 ```
 
-## setFontStyle\(string font\_name, number font\_size, number font\_weight, [JSPolyLineStyle](../object/jspolylinestyle.md) text\_outline\_color\)
+## setFontStyle\(string font\_name, number font\_size, number font\_weight, [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) text\_outline\_color\)
 
 > POI 텍스트 스타일 \(폰트, 크기, 굵기 및 색상 등\)을 설정합니다.
 
@@ -21,8 +21,8 @@ var object = Module.createPoint("newObject");
 | font\_name | string | 폰트 이름 |
 | font\_size | number | 텍스트 크기 |
 | font\_weight | number | 텍스트 굵기 |
-| text\_fill\_color | [JSPolyLineStyle](../object/jspolylinestyle.md) | 텍스트 색상 |
-| text\_outline\_color | [JSPolyLineStyle](../object/jspolylinestyle.md) | 텍스트 외곽 색상 |
+| text\_fill\_color | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) | 텍스트 색상 |
+| text\_outline\_color | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) | 텍스트 외곽 색상 |
 
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_line\_path\_distance](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)

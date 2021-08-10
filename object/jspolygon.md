@@ -96,7 +96,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\([Collection](../core/collection.md)) vertex\_list\)
+## setCoordinates\([Collection](../core/collection.md)\) vertex\_list\)
 
 > Polygon 평면을 구성하는 좌표 리스트를 설정합니다.
 
@@ -104,7 +104,7 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| vertex\_list | [Collection](../core/collection.md)) | 폴리곤 좌표 리스트 |
+| vertex\_list | [Collection](../core/collection.md)\) | 폴리곤 좌표 리스트 |
 
 * Code
   * [http://sandbox.dtwincloud.com/code/main.do?id=camera\_set\_viewrect](http://sandbox.dtwincloud.com/code/main.do?id=camera_set_viewrect)
@@ -172,7 +172,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)) part\_list\) → boolean
+## setPartCoordinates\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)\) part\_list\) → boolean
 
 > 폴리곤 좌표\(vertex, part\)를 지정합니다.
 
@@ -181,7 +181,7 @@ var object = Module.createPolygon("newObject");
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
 | vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](../core/collection.md)) | 폴리곤 Part 리스트 |
+| part\_list | [Collection](../core/collection.md)\) | 폴리곤 Part 리스트 |
 
 * Detail
   * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
@@ -195,7 +195,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinatesUV\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)) part\_list, [JSVec2Array](../core/jsvec2array.md) uv\_list, boolean is\_rtt\) → boolean
+## setPartCoordinatesUV\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)\) part\_list, [JSVec2Array](../core/jsvec2array.md) uv\_list, boolean is\_rtt\) → boolean
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -204,7 +204,7 @@ var object = Module.createPolygon("newObject");
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
 | vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](../core/collection.md)) | 폴리곤 Part 리스트 |
+| part\_list | [Collection](../core/collection.md)\) | 폴리곤 Part 리스트 |
 | uv\_list | [JSVec2Array](../core/jsvec2array.md) | 폴리곤 uv 좌표 리스트 |
 | is\_rtt | boolean | 폴리곤 Part 리스트 |
 
@@ -222,7 +222,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setStyle\([JSPolygonStyle](../object/jspolygonstyle.md) style\)
+## setStyle\([JSPolygonStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/6fbb43d5ce3fdc1625624161511e3a1f55e1fb91/object/jspolygonstyle.md) style\)
 
 > 폴리곤 스타일을 설정합니다.
 
@@ -230,7 +230,7 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| style | [JSPolygonStyle](../object/jspolygonstyle.md) | 오브젝트 스타일 설정 객체 |
+| style | [JSPolygonStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/6fbb43d5ce3fdc1625624161511e3a1f55e1fb91/object/jspolygonstyle.md) | 오브젝트 스타일 설정 객체 |
 
 * Detail
   * 설정 가능한 스타일

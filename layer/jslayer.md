@@ -4,7 +4,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 
 # JSLayer
 
-## 생성자 \*\*Constructor -&gt; JSLayer
+## 생성자 Constructor -&gt; JSLayer
 
 > 인스턴스 JSLayer 생성
 
@@ -441,7 +441,6 @@ description: 지도 내 레이어 설정 API를 제공합니다.
     * offset &lt; 0 : 원본 고도에서 높이를 높인다.
     * offset == 0 : 원본 고도값.
     * offset &gt; 1 : 원본 고도에서 높이를 내린다.
-	
 * Return
   * TRUE : 높이 설정 성공.
   * FALSE : 높이 설정 실패.
@@ -521,19 +520,17 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 | layer | string | 요청 지오서버 레이어 명칭. |
 | minmumLevel | number | 최소 가시화 레벨\[Default 0\]. |
 | maxmumLevel | number | 최대 가시화 레벨\[Default 15\]. |
-| tileSize | number | 요청 정사각형 이미지 크기\[Default 256\].|
+| tileSize | number | 요청 정사각형 이미지 크기\[Default 256\]. |
 | crs | string | 좌표 타입\[Default EPSG:4326\]. |
-| parameters | Object | 스타일, 옵션 설정 속성정보.|
+| parameters | Object | 스타일, 옵션 설정 속성정보. |
 
 * Return
   * success : WMS 레이어 생성 성공.
   * 문자열 : WMS 레이어 생성 과정 에러 메시지.
-  
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
 {% endtab %}
 {% endtabs %}
-
 
 ## setBBoxOrder\( reverse \)
 
@@ -551,12 +548,10 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 
 * Detail
   * reverse
-    * TRUE : X, Y 순서로 설정 Ex) BBOX=minx,miny,maxx,maxy
-    * FALSE : Y, X 순서로 설정 Ex) BBOX=minY,minX,maxY,maxX
-	
+    * TRUE : X, Y 순서로 설정 Ex\) BBOX=minx,miny,maxx,maxy
+    * FALSE : Y, X 순서로 설정 Ex\) BBOX=minY,minX,maxY,maxX
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
-  
+  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
 {% endtab %}
 {% endtabs %}
 
@@ -579,13 +574,11 @@ description: 지도 내 레이어 설정 API를 제공합니다.
     * offset &lt; 0 : 원본 고도에서 높이를 높인다.
     * offset == 0 : 원본 고도값.
     * offset &gt; 1 : 원본 고도에서 높이를 내린다.
-	
 * Return
   * TRUE : 프록시 설정 성공.
   * FALSE : 프록시 설정 실패.
     * 프록시 설정 실패 조건.
       * 사용자 레이어 인 경우
-	  
 * Code
 
 ```javascript
@@ -593,5 +586,4 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 ```
 {% endtab %}
 {% endtabs %}
-
 

@@ -104,7 +104,7 @@ var object = Module.createLineString("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setStyle\([JSPolyLineStyle](../object/jspolylinestyle.md) style\)
+## setStyle\([JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) style\)
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -112,7 +112,7 @@ var object = Module.createLineString("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| style | [JSPolyLineStyle](../object/jspolylinestyle.md) | 라인 스타일 설정 객체 |
+| style | [JSPolyLineStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/ee982c73a876db14f67a76f2d62cea2a16e56eed/object/jspolylinestyle.md) | 라인 스타일 설정 객체 |
 
 * Detail
   * 설정 가능한 스타일
