@@ -4,7 +4,7 @@ description: Object를 생성하는 API를 제공합니다.
 
 # SOPObject
 
-## setOverlabTexture\(val imageData, number width, number height\) → boolean
+## setOverlabTexture\( imageData, width, height\) → boolean
 
 > 지도에 이미지 오버랩할 이미지를 설정합니다.
 
@@ -12,7 +12,7 @@ description: Object를 생성하는 API를 제공합니다.
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| imageData | val | 이미지 Byte Array |
+| imageData | object | 이미지 Byte Array |
 | width | number | 이미지 가로 크기 |
 | height | number | 이미지 세로 크기 |
 
@@ -46,7 +46,7 @@ description: Object를 생성하는 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## Add3DPoint\(string layername, string key, number lon, number lat, number alt, val imageData, number width, number height, string text\)
+## Add3DPoint\(string layername, string key, number lon, number lat, number alt, object imageData, number width, number height, string text\)
 
 > 지도에 3D POI를 생성합니다.
 
@@ -59,7 +59,7 @@ description: Object를 생성하는 API를 제공합니다.
 | lon | number | 경도 |
 | lat | number | 위도 |
 | alt | number | 고도 |
-| imageData | val | 이미지 Byte Array |
+| imageData | object | 이미지 Byte Array |
 | width | number | 이미지 가로 크기 |
 | height | number | 이미지 세로 크기 |
 | text | string | POI에 표시할 글자 |

@@ -4,7 +4,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 
 # JSLayer
 
-## 생성자 Constructor -&gt; JSLayer
+## 생성자 Constructor → JSLayer
 
 > 인스턴스 JSLayer 생성
 
@@ -48,7 +48,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## indexAtKey\( index \)  -&gt; string
+## indexAtKey\( index \)  → string
 
 > 해당 사용자 레이어에서 오브젝트 ID 반환.
 >
@@ -75,7 +75,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## indexAtObject\( index \) -&gt; **\(** JSObject **\)**
+## indexAtObject\( index \) → **\(** JSObject **\)**
 
 > 해당 사용자 레이어에서 오브젝트 반환.
 >
@@ -103,7 +103,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## keyAtObject\( objectid \) -&gt; **\(** JSObject **\)**
+## keyAtObject\( objectid \) → **\(** JSObject **\)**
 
 > 해당 사용자 레이어에서 오브젝트 반환.
 >
@@ -132,7 +132,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## removeAtIndex\( index \) -&gt; boolean
+## removeAtIndex\( index \) → boolean
 
 > 해당 사용자 레이어에서 오브젝트 삭제.
 >
@@ -169,7 +169,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## removeAtKey\( objectid \) -&gt; boolean
+## removeAtKey\( objectid \) → boolean
 
 > 해당 사용자 레이어에서 오브젝트 삭제.
 >
@@ -200,7 +200,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## removeAtObject\( object \) -&gt; boolean
+## removeAtObject\( object \) → boolean
 
 > 해당 사용자 레이어에서 오브젝트 삭제.
 >
@@ -230,7 +230,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## removeAll\( \) -&gt; boolean
+## removeAll\( \) → boolean
 
 > 해당 사용자 레이어에서 오브젝트 삭제.
 >
@@ -255,7 +255,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## getObjectCount\( \) -&gt; number
+## getObjectCount\( \) → number
 
 > 해당 레이어 오브젝트 리스트 갯수 반환.
 >
@@ -274,7 +274,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## getObjectKeyList\( \) -&gt; string
+## getObjectKeyList\( \) → string
 
 > 해당 레이어에서 오브젝트 ID 반환.
 >
@@ -299,7 +299,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setEditable\( edit \) -&gt; boolean
+## setEditable\( edit \) → boolean
 
 > 해당 레이어에서 편집 레이어 설정.
 >
@@ -372,7 +372,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setUseRecoverHsv\( use \) -&gt; boolean
+## setUseRecoverHsv\( use \) → boolean
 
 > 해당 서비스 레이어 색상 표현 설정.
 >
@@ -398,7 +398,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setRecoverHsvValue\( hue, saturation, value \) -&gt; boolean
+## setRecoverHsvValue\( hue, saturation, value \) → boolean
 
 > 해당 서비스 레이어 HSV 색상 채널 설정.
 >
@@ -422,7 +422,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setTileAltitudeOffset\( offset \) -&gt; boolean
+## setTileAltitudeOffset\( offset \) → boolean
 
 > 해당 서비스 초기 설정 고도값 설정\(기본 0\)
 >
@@ -449,7 +449,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setMinDistance\( distance \) -&gt; boolean
+## setMinDistance\( distance \) → boolean
 
 > 레이어 가시 범위 설정
 >
@@ -474,7 +474,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setMaxDistance\( distance \) -&gt; boolean
+## setMaxDistance\( distance \) → boolean
 
 > 레이어 가시 범위 설정
 >
@@ -499,7 +499,7 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 {% endtab %}
 {% endtabs %}
 
-## setWMSProvider\( option \) -&gt; string
+## setWMSProvider\( option \) → string
 
 > WMS 레이어 생성
 >
