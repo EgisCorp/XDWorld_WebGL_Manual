@@ -373,7 +373,9 @@ description: 지도 설정 및 제어를 위한 API를 제공합니다.
 * Return
   * 지형 높이값
 * Code
-  * let height = Module.getMap\(\).getTerrHeight\(129.128265, 35.171834\);
+  ```javascript
+  let height = Module.getMap().getTerrHeight(129.128265, 35.171834);
+  ```
 {% endtab %}
 {% endtabs %}
 
