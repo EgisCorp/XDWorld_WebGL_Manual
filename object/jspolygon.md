@@ -10,7 +10,7 @@ Module createPolygon API로 생성할 수 있습니다.
 var object = Module.createPolygon("newObject");
 ```
 
-## loadFile\(object options\) → boolean
+## loadFile\( options \) → boolean
 
 > 지정한 url과 옵션 값으로 3DS 파일을 로드합니다.
 
@@ -47,7 +47,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## loadTexture\(string texture\_name, string texture\_url\) → boolean
+## loadTexture\( texture\_name, texture\_url \) → boolean
 
 > 폴리곤에 사용할 텍스쳐 이미지를 등록합니다.
 
@@ -71,7 +71,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCircle\([JSVector3D](../core/jsvector3d.md) position, number radius, number segment\) → boolean
+## setCircle\( position, radius, segment\) → boolean
 
 > 중심 좌표와 반경, 버텍스 수로 원 모양의 평면 좌표를 설정합니다.
 
@@ -96,7 +96,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\([Collection](../core/collection.md)\) vertex\_list\)
+## setCoordinates\( vertex\_list \)
 
 > Polygon 평면을 구성하는 좌표 리스트를 설정합니다.
 
@@ -111,7 +111,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setFaceTexture\(number face\_index, string texture\_name\) → boolean
+## setFaceTexture\( face\_index, texture\_name \) → boolean
 
 > 중심 좌표와 반경, 버텍스 수로 원 모양의 평면 좌표를 설정합니다.
 
@@ -132,7 +132,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setFireEffect\(boolean effect\_set\) → boolean
+## setFireEffect\( effect\_set \) → boolean
 
 > 폴리곤 표면에 불 효과를 설정합니다.
 
@@ -151,7 +151,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setHeight\(number height\) → boolean
+## setHeight\( height \) → boolean
 
 > 좌표가 설정 된 폴리곤의 높이를 지정합니다.
 
@@ -172,7 +172,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)\) part\_list\) → boolean
+## setPartCoordinates\( vertex\_list, part\_list \) → boolean
 
 > 폴리곤 좌표\(vertex, part\)를 지정합니다.
 
@@ -195,7 +195,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinatesUV\([JSVec3Array](../core/jsvec3array.md) vertex\_list, [Collection](../core/collection.md)\) part\_list, [JSVec2Array](../core/jsvec2array.md) uv\_list, boolean is\_rtt\) → boolean
+## setPartCoordinatesUV\( vertex\_list, part\_list, uv\_list, is\_rtt \) → boolean
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
 
@@ -222,7 +222,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## setStyle\([JSPolygonStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/6fbb43d5ce3fdc1625624161511e3a1f55e1fb91/object/jspolygonstyle.md) style\)
+## setStyle\( style \)
 
 > 폴리곤 스타일을 설정합니다.
 
@@ -230,7 +230,7 @@ var object = Module.createPolygon("newObject");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| style | [JSPolygonStyle](https://github.com/EgisCorp/XDWorld_WebGL_Manual/tree/6fbb43d5ce3fdc1625624161511e3a1f55e1fb91/object/jspolygonstyle.md) | 오브젝트 스타일 설정 객체 |
+| style | JSPolygonStyle | 오브젝트 스타일 설정 객체 |
 
 * Detail
   * 설정 가능한 스타일
@@ -242,7 +242,7 @@ var object = Module.createPolygon("newObject");
 {% endtab %}
 {% endtabs %}
 
-## videoTexturebyJSON\(object options\) → string
+## videoTexturebyJSON\( options \) → string
 
 > 비디오를 재생 기반 텍스쳐를 설정합니다.
 
