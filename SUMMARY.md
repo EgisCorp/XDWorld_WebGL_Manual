@@ -20,6 +20,7 @@
 * [JSPolygon](object/jspolygon.md)
 * [JSLineString](object/jslinestring.md)
 * [JSPoint](object/jspoint.md)
+* [JSTypoon](object/jstypoon.md)
 
 ## Analysis
 
