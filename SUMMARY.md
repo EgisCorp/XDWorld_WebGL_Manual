@@ -20,7 +20,7 @@
 * [JSPolygon](object/jspolygon.md)
 * [JSLineString](object/jslinestring.md)
 * [JSPoint](object/jspoint.md)
-* [JSTypoon](object/jstypoon.md)
+* [☺ JSTypoon](object/jstypoon.md)
 
 ## Analysis
 
@@ -42,4 +42,3 @@
 
 * [SOPObject](etc/sopobject.md)
 * [Type List](etc/type-list.md)
-
