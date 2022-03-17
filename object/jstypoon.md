@@ -1,5 +1,5 @@
 ---
-description: 태풍 오브젝트 설정 및 반환 API 제공. 메에엥
+description: 태풍 오브젝트 설정 및 반환 API.
 ---
 
 # JSTypoon
