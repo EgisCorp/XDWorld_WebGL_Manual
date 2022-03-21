@@ -20,7 +20,25 @@
 * [JSPolygon](object/jspolygon.md)
 * [JSLineString](object/jslinestring.md)
 * [JSPoint](object/jspoint.md)
-* [☺ JSTypoon](object/jstypoon.md)
+* [JSTypoon](object/jstypoon.md)
+* [JSEarthquake](object/jsearthquake.md)
+* [JSGhostSymbolMap](object/jsghostsymbolmap.md)
+* [JSGhostSymbol](object/jsghostsymbol.md)
+* [JSReal3D](object/jsreal3d.md)
+* [JSBarGraph](object/jsbargraph.md)
+* [JSBarGraph3D](object/jsbargraph3d.md)
+* [JSPointGraph](object/jspointgraph.md)
+* [JSSurfaceGraph](object/jssurfacegraph.md)
+* [JSSymbol](object/jssymbol.md)
+* [JSBillboard](object/jsbillboard.md)
+* [JSMultiPoint](object/jsmultipoint.md)
+* [JSPipe](object/jspipe.md)
+* [JSColorPolygon](object/jscolorpolygon.md)
+* [JSColorGrid](object/jscolorgrid.md)
+* [JSColorGrid3D](object/jscolorgrid3d.md)
+* [JSFrustum](object/jsfrustum.md)
+* [JSArrow](object/jsarrow.md)
+* [JSAntenna](object/jsantenna.md)
 
 ## Analysis
 
@@ -28,6 +46,7 @@
 * [JSFlood](analysis/jsflood.md)
 * [JSSightAnalysis](analysis/jssightanalysis.md)
 * [JSTransparency](analysis/jstransparency.md)
+* [JSGridAnal](analysis/jsgridanal.md)
 
 ## Core
 
@@ -38,7 +57,15 @@
 * [JSVector2D](core/jsvector2d.md)
 * [JSVector3D](core/jsvector3d.md)
 
+## Option
+
+* [JSControl](core/jscontrol.md)
+* [JSOption](core/jsoption.md)
+* [JSNavigationControl](core/jsnavigationcontrol.md)
+
 ## ETC
 
+* [JSProjection](etc/jsprojection.md)
+* [JSMath](etc/jsmath.md)
 * [SOPObject](etc/sopobject.md)
 * [Type List](etc/type-list.md)
