@@ -20,7 +20,7 @@
 * [JSPolygon](object/jspolygon.md)
 * [JSLineString](object/jslinestring.md)
 * [JSPoint](object/jspoint.md)
-* [JSTypoon](object/jstypoon.md)
+* [☺ JSTypoon](object/jstypoon.md)
 * [JSEarthquake](object/jsearthquake.md)
 * [JSGhostSymbolMap](object/jsghostsymbolmap.md)
 * [JSGhostSymbol](object/jsghostsymbol.md)
@@ -59,9 +59,9 @@
 
 ## Option
 
-* [JSControl](core/jscontrol.md)
-* [JSOption](core/jsoption.md)
-* [JSNavigationControl](core/jsnavigationcontrol.md)
+* [JSControl](option/jscontrol.md)
+* [JSOption](option/jsoption.md)
+* [JSNavigationControl](option/jsnavigationcontrol.md)
 
 ## ETC
 
