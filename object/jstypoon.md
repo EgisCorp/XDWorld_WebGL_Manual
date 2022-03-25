@@ -10,7 +10,7 @@ Module createTypoon API로 생성할 수 있습니다.
 var object = Module.createTypoon("typoon");
 ```
 
-## createbyJson\( options \) → object
+## createbyJson\(object options \) → object
 
 > 태풍 오브젝트를 생성.
 >
@@ -81,7 +81,7 @@ var object = Module.createTypoon("typoon");
 {% endtab %}
 {% endtabs %}
 
-## moveList\( movelist \)
+## moveList\([Collection](../core/collection.md) movelist \)
 
 > 태풍 이동 경위도 설정.
 >
@@ -100,7 +100,7 @@ var object = Module.createTypoon("typoon");
 {% endtab %}
 {% endtabs %}
 
-## setSpeed\( speed \)
+## setSpeed\(number speed \)
 
 > 태풍 이동 속도 설정.
 
@@ -117,7 +117,7 @@ var object = Module.createTypoon("typoon");
 {% endtab %}
 {% endtabs %}
 
-## setUnionTerrain\( union \)
+## setUnionTerrain\(boolean union \)
 
 > 태풍 영향권 범위 가시화 옵션.
 >
@@ -141,7 +141,7 @@ var object = Module.createTypoon("typoon");
 {% endtab %}
 {% endtabs %}
 
-## setVisibleDamageRange\( visible \)
+## setVisibleDamageRange\(boolean visible \)
 
 > 태풍 영향권 범위 가시화 옵션.
 >
