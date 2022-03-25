@@ -37,7 +37,7 @@
 * [JSReal3D](object/jsreal3d.md)
 * [JSSurfaceGraph](object/jssurfacegraph.md)
 * [JSSymbol](object/jssymbol.md)
-* [JSTypoon](object/jstypoon.md)
+* [☺ JSTypoon](object/jstypoon.md)
 * [JSViewFrustum](object/jsviewfrustum.md)
 
 ## Analysis
