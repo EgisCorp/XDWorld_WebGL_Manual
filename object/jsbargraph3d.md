@@ -10,7 +10,7 @@ Module createBarGraph3D API로 생성할 수 있습니다.
 var object = Module.createBarGraph3D("ID");
 ```
 
-## create\(JSVector3D position, JSSize3D size\) → boolean
+## create\([JSVector3D](../core/jsvector3d.md) position, [JSSize3D](../core/jssize3d.md) size\) → boolean
 
 > 그래프를 생성합니다.
 
@@ -18,8 +18,8 @@ var object = Module.createBarGraph3D("ID");
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| position | JSVector3D | 그래프 생성 위치 |
-| size | JSSize3D | 그래프 크기 |
+| position | [JSVector3D](../core/jsvector3d.md) | 그래프 생성 위치 |
+| size | [JSSize3D](../core/jssize3d.md) | 그래프 크기 |
 
 * Return
   * 설정 결과
@@ -29,7 +29,7 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
-## insertColumn\(string columnKey, string columnLabel, JSColor color\) → boolean
+## insertColumn\(string columnKey, string columnLabel, [JSColor](../core/jscolor.md) color\) → boolean
 
 > 그래프 Column 정보를 추가합니다.
 
@@ -39,7 +39,7 @@ var object = Module.createBarGraph3D("ID");
 | :--- | :--- | :--- |
 | columnKey | string | column 키 |
 | columnLabel | string | column 이름 (그래프 하단부 텍스트로 표시됩니다) |
-| color | JSColor | 그래프 바 색상 |
+| color | [JSColor](../core/jscolor.md) | 그래프 바 색상 |
 
 * Return
   * 설정 결과
