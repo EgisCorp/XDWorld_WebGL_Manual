@@ -4,7 +4,13 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 
 # JSFlood
 
-## active\( active \)
+Module getFlood API로 생성할 수 있습니다.
+
+```javascript
+var flood = Module.getFlood();
+```
+
+## active\(boolean active\)
 
 > 물판을 설정합니다.
 
@@ -18,12 +24,13 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
   * active
     * false : 물판 효과를 해제합니다.
     * true : 물판 효과를 적용합니다.
+  
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
 {% endtab %}
 {% endtabs %}
 
-## setColor\( color \)
+## setColor\([CJSColor](CJSColor.md) color\)
 
 > 물판 색상을 설정합니다.
 
@@ -31,16 +38,17 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 {% tab title="Parameter" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| color | [JSColor](../core/jscolor.md) | 물판 색상 |
+| color | [CJSColor](CJSColor.md) | 물판 색상 |
 
 * Detail
-  * color : [JSColor](../core/jscolor.md)
+  * color : [CJSColor](CJSColor.md)
+
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
 {% endtab %}
 {% endtabs %}
 
-## setHeight\( height \)
+## setHeight\(number height\)
 
 > 물판 높이를 설정합니다.
 
@@ -52,12 +60,13 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 
 * Detail
   * height : 물판 높이를 설정합니다.
+
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
 {% endtab %}
 {% endtabs %}
 
-## setVisibleAltitude\( altitude \)
+## setVisibleAltitude\(number altitude\)
 
 > 물판 가시거리를 설정합니다.
 
@@ -69,12 +78,13 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 
 * Detail
   * altitude : 값이 클수록 멀리서도 물판이 보입니다.
+
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
 {% endtab %}
 {% endtabs %}
 
-## setWaterSpeed\( speed \)
+## setWaterSpeed\(number speed\)
 
 > 물판 유속을 설정합니다.
 
@@ -86,12 +96,13 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
 
 * Detail
   * speed : 값이 클수록 유속이 빨라집니다.
+
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
 {% endtab %}
 {% endtabs %}
 
-## visibleWaterPlane\( visible \)
+## visibleWaterPlane\(boolean visible\)
 
 > 물판 on/off를 설정합니다.
 
@@ -105,8 +116,8 @@ description: 물판 설정 및 제어를 위한 API를 제공합니다.
   * visible
     * false : 물판 효과를 off 합니다.
     * true : 물판 효과를 on 합니다.
+  
 * Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=weather\_flood](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
 {% endtab %}
 {% endtabs %}
-

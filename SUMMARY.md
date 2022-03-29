@@ -25,7 +25,6 @@
 * [JSColorGrid](object/jscolorgrid.md)
 * [JSColorGrid3D](object/jscolorgrid3d.md)
 * [JSColorPolygon](object/jscolorpolygon.md)
-* [JSEarthquake](object/jsearthquake.md)
 * [JSGhostSymbol](object/jsghostsymbol.md)
 * [JSGhostSymbolMap](object/jsghostsymbolmap.md)
 * [JSLineString](object/jslinestring.md)
@@ -37,11 +36,12 @@
 * [JSReal3D](object/jsreal3d.md)
 * [JSSurfaceGraph](object/jssurfacegraph.md)
 * [JSSymbol](object/jssymbol.md)
-* [☺ JSTypoon](object/jstypoon.md)
+* [JSTypoon](object/jstypoon.md)
 * [JSViewFrustum](object/jsviewfrustum.md)
 
 ## Analysis
 
+* [JSEarthquake](object/jsearthquake.md)
 * [JSEditTerrain](analysis/jseditterrain.md)
 * [JSFlood](analysis/jsflood.md)
 * [JSGridAnal](analysis/jsgridanal.md)
