@@ -60,7 +60,7 @@ let json = {
     1\) serverSetting, userSetting, url, tileExtent, max, min, projection, resolutions, matrixIds 태그 중 하나라도 없을 경우
 	
 * Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=layer\_wmts
+  * [샌드박스\_WNTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 {% endtab %}
 {% endtabs %}
 
