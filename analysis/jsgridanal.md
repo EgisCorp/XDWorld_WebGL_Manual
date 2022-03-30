@@ -312,8 +312,10 @@ var object = Module.getAnalysis().getGridAnal();
     * fMin : number \- 전 셀 중 최소값
     * fMax : number \- 전 셀 중 최대값
     * data : Array[number] - 셀의 데이터 배열
+	
 * Return
   * 설정 성공 (true) 혹은 실패 (false)
+  
 * Code
   * 
 {% endtab %}
