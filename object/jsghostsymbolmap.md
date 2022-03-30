@@ -115,13 +115,12 @@ var object = Module.getGhostSymbolMap();
 
 * Return
   * 모델의 face 수
-* Code \*
 {% endtab %}
 {% endtabs %}
 
 ## isExistID(string id) → boolean
 
->
+> 지정한 ID를 가진 모델이 존재하는지 여부를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -131,13 +130,12 @@ var object = Module.getGhostSymbolMap();
 
 * Return
   * 지정한 ID 를 가지는 모델의 존재 여부
-* Code \*
 {% endtab %}
 {% endtabs %}
 
 ## getGhostSymbolSize(string id) → [JSSize3D](../core/jssize3d.md)
 
->
+> 모델의 기본 크기를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -147,6 +145,7 @@ var object = Module.getGhostSymbolMap();
 
 * Return
   * 모델 크기
-* Code \*
+* Code
+  * http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit
 {% endtab %}
 {% endtabs %}
