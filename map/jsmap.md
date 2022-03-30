@@ -18,10 +18,10 @@ var map = Module.getMap();
 
 {% tabs %}
 {% tab title="Parameter" %}
-| asdf |   |   |   |
-| ---- | - | - | - |
-|      |   |   |   |
-|      |   |   |   |
+| Parameter | Type | Contents |
+| ---- | ---- | ---- |
+| parameter | object  | 배경지도 설정  |
+
 
 * Detail
 
