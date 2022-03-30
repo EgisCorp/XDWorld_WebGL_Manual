@@ -14,7 +14,7 @@ var map = Module.getMap();
 
 #### changeBaseMap(parameter) → string
 
-> ##### WMTS 서비스 레이어 생성 및 배경지도를 변경합니다.
+> ####### WMTS 서비스 레이어 생성 및 배경지도를 변경합니다.
 
 {% tabs %}
 {% tab title="Parameter" %}
