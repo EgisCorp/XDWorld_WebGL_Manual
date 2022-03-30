@@ -1,5 +1,6 @@
 ---
 description: 지도 설정 및 제어를 위한 API를 제공합니다.
+coverY: 0
 ---
 
 # JSMap
@@ -16,12 +17,21 @@ var map = Module.getMap();
 
 > **WMTS 서비스 레이어 생성 및 배경지도를 변경합니다.**
 
+{% swagger method="get" path="" baseUrl="" summary="" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+
+{% swagger-parameter in="path" %}
+
+{% endswagger-parameter %}
+{% endswagger %}
+
 {% tabs %}
 {% tab title="Parameter" %}
-| Parameter | Type | Contents |
-| ---- | ---- | ---- |
-| parameter | object  | 배경지도 설정  |
-
+| Parameter | Type   | Contents |
+| --------- | ------ | -------- |
+| parameter | object | 배경지도 설정  |
 
 * Detail
 
