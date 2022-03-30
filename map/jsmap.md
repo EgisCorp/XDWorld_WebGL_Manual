@@ -2,7 +2,7 @@
 description: 지도 설정 및 제어를 위한 API를 제공합니다.
 ---
 
-# JSMap
+## JSMap
 
 Module getMap API로 생성할 수 있습니다.
 
@@ -10,7 +10,7 @@ Module getMap API로 생성할 수 있습니다.
 var map = Module.getMap();
 ```
 
-## changeBaseMap(object parameter) → string
+### changeBaseMap(parameter) → string
 
 > WMTS 서비스 레이어 생성 및 배경지도를 변경합니다.
 
@@ -64,7 +64,7 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
-## setDistance(number distance)
+## setDistance(distance)
 
 > 히트맵 반경 거리를 설정합니다.
 
@@ -82,7 +82,7 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
-## setEffectDistance(number maxDistance)
+## setEffectDistance(maxDistance)
 
 > 히트맵 효과가 표현되는 최대 거리를 설정합니다.
 
