@@ -12,10 +12,7 @@ var object = Module.createTypoon("typoon");
 
 ## properties
 
-| name | Type | Contents |
-| :--- | :--- | :--- |
-
-### createbyJson\(object options\) → object
+### createbyJson(object options) → object
 
 > 태풍 오브젝트를 생성.
 >
@@ -23,18 +20,17 @@ var object = Module.createTypoon("typoon");
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| option | JSTypoon.CreateOptions | 초기화 옵션 속성 정보. |
+| Name   | Type                                                         | Description   |
+| ------ | ------------------------------------------------------------ | ------------- |
+| option | [JSTypoon.CreateOptions](jstypoon.md#jstypoon.createoptions) | 초기화 옵션 속성 정보. |
 
 * Return
-  * .result : API 성공 유무 상태 \( 1 : 성공,  0 : 실패\)
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패)
   * .name : 동작 API 명칭
-  * .return : API 반환 정보 \( object : 정상적인 반환값, 문자열 : 실패 에러 코드\)
-  
+  * .return : API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드)
 * Sample
   * function initPage 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -64,7 +60,7 @@ layer.addObject(typoon, 0);
 {% endtab %}
 {% endtabs %}
 
-### moveStart\(\)
+### moveStart()
 
 > 태풍 이동 시작.
 >
@@ -74,12 +70,11 @@ layer.addObject(typoon, 0);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Sample
   * function moveTypoon 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 let typoon = Module.createTypoon("Typoon");
@@ -97,7 +92,7 @@ typoon.moveStart();
 {% endtab %}
 {% endtabs %}
 
-### moveEnd\(\)
+### moveEnd()
 
 > 태풍 강제 이동 종료.
 >
@@ -105,12 +100,11 @@ typoon.moveStart();
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Sample
   * function stopTypoon 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -122,7 +116,7 @@ typoon.moveEnd();
 {% endtab %}
 {% endtabs %}
 
-### moveList\([Collection](../core/collection.md) movelist\)
+### moveList([Collection](../core/collection.md) movelist)
 
 > 태풍 이동 경위도 설정.
 >
@@ -130,15 +124,15 @@ typoon.moveEnd();
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
+| Name     | Type                                | Contents       |
+| -------- | ----------------------------------- | -------------- |
 | movelist | [Collection](../core/collection.md) | 태풍 경위도 좌표 리스트. |
 
 * Sample
   * function moveTypoon 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 let typoon = Module.createTypoon("Typoon");
@@ -155,21 +149,21 @@ typoon.moveList(movePosition);
 {% endtab %}
 {% endtabs %}
 
-### setSpeed\(number speed\)
+### setSpeed(number speed)
 
 > 태풍 이동 속도 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
+| Name  | Type   | Contents  |
+| ----- | ------ | --------- |
 | speed | number | 태풍 이동 속도. |
 
 * Sample
   * function setTypoonSpeed 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -181,7 +175,7 @@ typoon.setSpeed(20.0);
 {% endtab %}
 {% endtabs %}
 
-### setUnionTerrain\(boolean union\)
+### setUnionTerrain(boolean union)
 
 > 태풍 영향권 범위 가시화 옵션.
 >
@@ -189,15 +183,15 @@ typoon.setSpeed(20.0);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| union | boolean | true인 경우 지형결합 가시화\(RTT\)<br> false인 경우 평면 폴리곤 가시화. |
+| Name  | Type    | Contents                                               |
+| ----- | ------- | ------------------------------------------------------ |
+| union | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 평면 폴리곤 가시화.</p> |
 
 * Sample
   * function setDamageRangeDisplay 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -209,7 +203,7 @@ Typoon.setUnionTerrain(true);
 {% endtab %}
 {% endtabs %}
 
-### setVisibleDamageRange\(boolean visible\)
+### setVisibleDamageRange(boolean visible)
 
 > 태풍 영향권 범위 가시화 옵션.
 >
@@ -217,15 +211,15 @@ Typoon.setUnionTerrain(true);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| visible | boolean | true인 경우 태풍 영향권 표시<br> false인 경우 태풍 영향권 미표시. |
+| Name    | Type    | Contents                                           |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true인 경우 태풍 영향권 표시<br>false인 경우 태풍 영향권 미표시.</p> |
 
 * Sample
   * function setDamageRangeDisplay 참조
-  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -241,19 +235,20 @@ Typoon.setVisibleDamageRange(true);
 
 #### JSTypoon.CreateOptions
 
-| Name     | Type                                | Attributes | Default | Description |
-| :---     | :---                                | :---       | :---    | :---        |
-| id       | string                              |            |         | 태풍 ID.      |
-| position | [JSVector3D](../core/jsvector3d.md) |            |         | 태풍 경위도 위치. |
-| size     | number                              | optional   | 500     | 태풍 가시화 크기. |
-| height   | number                              | optional   | 100     | 태풍 가시화 높이. |
-| complete | function 							 | optional   |         | 태풍 이동 완료 시 동작하는 CallBack |
-| damage   | JSTypoon.CreateOptions.Damage 		 | optional   |         | 태풍 영향권 생성 속성 정보. |
+| Name     | Type                                                                       | Attributes | Default | Description              |
+| -------- | -------------------------------------------------------------------------- | ---------- | ------- | ------------------------ |
+| id       | string                                                                     |            |         | 태풍 ID.                   |
+| position | [JSVector3D](../core/jsvector3d.md)                                        |            |         | 태풍 경위도 위치.               |
+| size     | number                                                                     | optional   | 500     | 태풍 가시화 크기.               |
+| height   | number                                                                     | optional   | 100     | 태풍 가시화 높이.               |
+| complete | function                                                                   | optional   |         | 태풍 이동 완료 시 동작하는 CallBack |
+| damage   | [JSTypoon.CreateOptions.Damage](jstypoon.md#jstypoon.createoptions.damage) | optional   |         | 태풍 영향권 생성 속성 정보.         |
 
 #### JSTypoon.CreateOptions.Damage
-| Name     | Type                                | Attributes | Default | Description |
-| :---     | :---                                | :---       | :---    | :---        |
-| size     | number 		                     | optional   | 500     | 영향권 가시화 크기(m단위). |
-| altitude     | number 		                 | optional   | 10      | 영향권 가시화 고도(m단위). |
-| unionterrain     | boolean 		             | optional   | false   | 영향권 가시화 지형결합 유무. |
-| color     | [JSColor](../core/jscolor.md)      | optional   | JSColor\(200, 255, 0, 0\)     | 영향권 가시화 색상. |
+
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| size         | number                        | optional   | 500                     | 영향권 가시화 크기(m단위). |
+| altitude     | number                        | optional   | 10                      | 영향권 가시화 고도(m단위). |
+| unionterrain | boolean                       | optional   | false                   | 영향권 가시화 지형결합 유무. |
+| color        | [JSColor](../core/jscolor.md) | optional   | JSColor(200, 255, 0, 0) | 영향권 가시화 색상.      |
