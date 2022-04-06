@@ -10,10 +10,6 @@ Module createTypoon API로 생성할 수 있습니다.
 var object = Module.createTypoon("typoon");
 ```
 
-## properties
-| Name | Type | Description |
-| :--- | :--- | :--- |
-
 ### createbyJson(object options) → object
 
 > 태풍 오브젝트를 생성.
