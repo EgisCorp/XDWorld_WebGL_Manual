@@ -236,7 +236,7 @@ Typoon.setVisibleDamageRange(true);
 #### JSTypoon.CreateOptions
 
 | Name     | Type                                                                       | Attributes | Default | Description              |
-| -------- | -------------------------------------------------------------------------- | ---------- | ------- | ------------------------ |
+| ------ | -------------------------------------------------------------------------- | -------- | ----- | ---------------------- |
 | id       | string                                                                     |            |         | 태풍 ID.                   |
 | position | [JSVector3D](../core/jsvector3d.md)                                        |            |         | 태풍 경위도 위치.               |
 | size     | number                                                                     | optional   | 500     | 태풍 가시화 크기.               |
