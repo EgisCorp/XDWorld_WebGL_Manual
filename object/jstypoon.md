@@ -21,7 +21,7 @@ var object = Module.createTypoon("typoon");
 {% tabs %}
 {% tab title="Information" %}
 | Name   | Type                                                         | Description   |
-| ------ | ------------------------------------------------------------ | ------------- |
+| ---- | ---------------------------------------------------------- | ------------- |
 | option | [JSTypoon.CreateOptions](jstypoon.md#jstypoon.createoptions) | 초기화 옵션 속성 정보. |
 
 * Return
