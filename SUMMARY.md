@@ -37,6 +37,7 @@
 * [JSSurfaceGraph](object/jssurfacegraph.md)
 * [JSSymbol](object/jssymbol.md)
 * [JSTypoon](object/jstypoon.md)
+* [JSTypoon_Org](object/jstypoon_org.md)
 * [JSViewFrustum](object/jsviewfrustum.md)
 
 ## Analysis
