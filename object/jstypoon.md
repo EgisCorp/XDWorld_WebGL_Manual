@@ -11,6 +11,10 @@ var object = Module.createTypoon("typoon");
 ```
 
 ## properties
+| name | Type | Contents |
+| :--- | :--- | :--- |
+
+## properties
 
 ### createbyJson(object options) → object
 
