@@ -2,7 +2,7 @@
 
 ## Layer Type List
 
-| Index | Name | Contents |
+| Index | Name | Description |
 | :--- | :--- | :--- |
 | 0 | ELT\_POLYHEDRON | 다면체 |
 | 1 | ELT\_PLANE | 평면 |
@@ -24,7 +24,7 @@
 
 ## WFS Type List
 
-| Index | Name | Contents |
+| Index | Name | Description |
 | :--- | :--- | :--- |
 | 0 | POI | POI Type |
 | 1 | Polygon | Polygon Type |
@@ -32,7 +32,7 @@
 
 ## Mouse Type List
 
-| Index | Name | Contents |
+| Index | Name | Description |
 | :--- | :--- | :--- |
 | 0 | MML\_NONE | 기본 |
 | 1 | MML\_MOVE\_GRAB | 지도 이동 |
@@ -102,3 +102,16 @@
 | 202 | MML\_EDIT\_SOLAR\_MODULE |  |
 | 300 | MML\_OBJECT\_EDIT |  |
 
+## Coordinate Type List
+
+| Index | Name | Description |
+| :--- | :--- | :--- |
+
+## Coordinate Style Type List
+
+| Index | Name | Description |
+| :--- | :--- | :--- |
+| 0 | XY | \[\[x, y\], \[x, y\], ...\] |
+| 1 | XYZ | \[\[x, y, z\], \[x, y, z\], ...\] |
+| 2 | XYZARRAY | \[x, y, z, x, y, z,...\] |
+| 3 | JSVector3D | \[JSVector3D, JSVector3D, ...\] |

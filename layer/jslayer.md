@@ -4,6 +4,14 @@ description: 지도 내 레이어 설정 API를 제공합니다.
 
 # JSLayer
 
+Module createTypoon API로 생성할 수 있습니다.
+
+```javascript
+let list = new Module.JSLayerList(false);
+
+```
+
+
 ## 생성자 Constructor → JSLayer
 
 > 인스턴스 JSLayer 생성

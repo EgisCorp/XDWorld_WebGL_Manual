@@ -4,7 +4,7 @@ description: 태풍 오브젝트 설정 및 반환 기능 API.
 
 # JSTypoon
 
-Module createTypoon API로 생성할 수 있습니다.
+> Module.createTypoon API 생성.
 
 ```javascript
 var object = Module.createTypoon("typoon");
@@ -17,7 +17,7 @@ var object = Module.createTypoon("typoon");
 > argument 변수로 태풍 오브젝트 설정.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 | Name   | Type                                                         | Description   |
 | ---- | ---------------------------------------------------------- | ------------- |
 | option | [JSTypoon.CreateOptions](jstypoon.md#jstypoon.createoptions) | 초기화 옵션 속성 정보. |
@@ -59,7 +59,7 @@ let json = {
 > 태풍 이동 이벤트 종료 후 생성 위치로 초기화.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 * Sample
   * function moveTypoon 참조
   * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
@@ -78,7 +78,7 @@ let json = {
 > 태풍 강제 이동 종료 후 생성 위치로 초기화.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 * Sample
   * function stopTypoon 참조
   * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
@@ -97,7 +97,7 @@ let json = {
 > 입력된 경위도 좌표로 순차적으로 이동.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 | Name     | Type                                | Contents       |
 | -------- | ----------------------------------- | -------------- |
 | movelist | [Collection](../core/collection.md) | 태풍 경위도 좌표 리스트. |
@@ -123,7 +123,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 > 태풍 이동 속도 설정.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 | Name  | Type   | Contents  |
 | ----- | ------ | --------- |
 | speed | number | 태풍 이동 속도. |
@@ -146,7 +146,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 > 태풍 영향권 지형 결합 유무 설정.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 | Name  | Type    | Contents                                               |
 | ----- | ------- | ------------------------------------------------------ |
 | union | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 평면 폴리곤 가시화.</p> |
@@ -169,7 +169,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 > 태풍 영향권 가시화 유무 설정.
 
 {% tabs %}
-{% tab title="Information" %}
+{% tab title="Infomation" %}
 | Name    | Type    | Contents                                           |
 | ------- | ------- | -------------------------------------------------- |
 | visible | boolean | <p>true인 경우 태풍 영향권 표시<br>false인 경우 태풍 영향권 미표시.</p> |
@@ -188,6 +188,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 ### Type Definitions
 
 #### JSTypoon.CreateOptions
+
 > 태풍 오브젝트 생성 옵션
 
 | Name     | Type                                                                       | Attributes | Default | Description              |
@@ -200,6 +201,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 | damage   | [JSTypoon.CreateOptions.Damage](jstypoon.md#jstypoon.createoptions.damage) | optional   |         | 태풍 영향권 생성 속성 정보.         |
 
 #### JSTypoon.CreateOptions.Damage
+
 > 태풍 영향권 오브젝트 생성 옵션
 
 | Name         | Type                          | Attributes | Default                 | Description      |
