@@ -33,11 +33,6 @@ var object = Module.createTypoon("typoon");
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
-let layer = layerList.createLayer("LAYER_TYPOON", Module.ELT_TYPOON);
-layer.setMaxDistance(100000.0);	
-
-let typoon = Module.createTypoon("Typoon");
 let json = {
 	id: "Typoon",
 	size: 800,
@@ -51,9 +46,6 @@ let json = {
 		unionterrain: false,
 	},	
 };
-
-typoon.createbyJson(json);
-layer.addObject(typoon, 0);
 ```
 {% endtab %}
 {% endtabs %}
@@ -75,17 +67,6 @@ layer.addObject(typoon, 0);
 
 {% tab title="Template" %}
 ```javascript
-let typoon = Module.createTypoon("Typoon");
-
-var movePosition = new Module.Collection();
-movePosition.add(new Module.JSVector3D(126.77599416643791, 35.02714918251881, 34.293371013365686));
-movePosition.add(new Module.JSVector3D(126.78374897355015, 35.03318059967435, 35.54886215366423));
-movePosition.add(new Module.JSVector3D(126.79212321528658, 35.03203801070689, 25.686076117679477));
-movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 29.999966450035572));
-movePosition.add(new Module.JSVector3D(126.78978362530727, 35.011527249861985, 24.815993944182992));
-
-typoon.moveList(movePosition);
-typoon.moveStart();
 ```
 {% endtab %}
 {% endtabs %}
@@ -105,11 +86,6 @@ typoon.moveStart();
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
-let layer = layerList.nameAtLayer("LAYER_TYPOON");
-let typoon = Typoonlayer.keyAtObject("Typoon");
-
-typoon.moveEnd();
 ```
 {% endtab %}
 {% endtabs %}
@@ -133,16 +109,11 @@ typoon.moveEnd();
 
 {% tab title="Template" %}
 ```javascript
-let typoon = Module.createTypoon("Typoon");
-
 var movePosition = new Module.Collection();
 movePosition.add(new Module.JSVector3D(126.77599416643791, 35.02714918251881, 34.293371013365686));
 movePosition.add(new Module.JSVector3D(126.78374897355015, 35.03318059967435, 35.54886215366423));
 movePosition.add(new Module.JSVector3D(126.79212321528658, 35.03203801070689, 25.686076117679477));
 movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 29.999966450035572));
-movePosition.add(new Module.JSVector3D(126.78978362530727, 35.011527249861985, 24.815993944182992));
-
-typoon.moveList(movePosition);
 ```
 {% endtab %}
 {% endtabs %}
@@ -164,11 +135,6 @@ typoon.moveList(movePosition);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
-let layer = layerList.nameAtLayer("LAYER_TYPOON");
-let typoon = Typoonlayer.keyAtObject("Typoon");
-
-typoon.setSpeed(20.0);
 ```
 {% endtab %}
 {% endtabs %}
@@ -192,11 +158,6 @@ typoon.setSpeed(20.0);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
-let layer = layerList.nameAtLayer("LAYER_TYPOON");
-let typoon = Typoonlayer.keyAtObject("Typoon");
-
-Typoon.setUnionTerrain(true);
 ```
 {% endtab %}
 {% endtabs %}
@@ -220,18 +181,14 @@ Typoon.setUnionTerrain(true);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
-let layer = layerList.nameAtLayer("LAYER_TYPOON");
-let typoon = Typoonlayer.keyAtObject("Typoon");
-
-Typoon.setVisibleDamageRange(true);
 ```
 {% endtab %}
 {% endtabs %}
 
-### Properties
+### Type Definitions
 
 #### JSTypoon.CreateOptions
+> 태풍 오브젝트 생성 옵션
 
 | Name     | Type                                                                       | Attributes | Default | Description              |
 | ------ | -------------------------------------------------------------------------- | -------- | ----- | ---------------------- |
@@ -243,6 +200,7 @@ Typoon.setVisibleDamageRange(true);
 | damage   | [JSTypoon.CreateOptions.Damage](jstypoon.md#jstypoon.createoptions.damage) | optional   |         | 태풍 영향권 생성 속성 정보.         |
 
 #### JSTypoon.CreateOptions.Damage
+> 태풍 영향권 오브젝트 생성 옵션
 
 | Name         | Type                          | Attributes | Default                 | Description      |
 | ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
