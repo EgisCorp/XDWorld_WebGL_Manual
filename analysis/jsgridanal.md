@@ -406,9 +406,9 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
-#### Type Definitions
+### Type Definitions
 
-###### JSGridAnal.GridDataOption
+##### JSGridAnal.GridDataOption
 
 > 그리드 데이터 요청 파라메터
 
@@ -426,7 +426,7 @@ let json = {
 | fmax      | number                                                                                           |            |         | 격자 셀의 최대값                 |
 | data      | number                                                                                           | array      |         | 격자 셀의 데이터 베열              |
 
-###### JSGridAnal.GridDataOption.llcornerParam
+##### JSGridAnal.GridDataOption.llcornerParam
 
 > 격자 그리드의 공간 범위 설정 파라메터
 
