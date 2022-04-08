@@ -119,7 +119,7 @@ var object = Module.createPolygon("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| coordinates | [Collection](../core/collection.md)) | 폴리곤 경위도 좌표 목록. |
+| coordinates | [Collection](../core/collection.md) | 폴리곤 경위도 좌표 목록. |
 
 {% endtab %}
 
@@ -225,7 +225,7 @@ var object = Module.createPolygon("ID");
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 경위도 좌표 목록. |
-| parts | [Collection](../core/collection.md)) | 폴리곤 구성 점정 개수 목록. |
+| parts | [Collection](../core/collection.md) | 폴리곤 구성 점정 개수 목록. |
 
 * Detail
   * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
@@ -257,7 +257,7 @@ var object = Module.createPolygon("ID");
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 경위도 좌표 목록. |
-| parts | [Collection](../core/collection.md)) | 폴리곤 구성 점정 개수 목록. |
+| parts | [Collection](../core/collection.md) | 폴리곤 구성 점정 개수 목록. |
 | uv | [JSVec2Array](../core/jsvec2array.md) | 폴리곤 구성 UV 좌표 목록. |
 | union | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
