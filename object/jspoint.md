@@ -1,132 +1,178 @@
 ---
-description: 포인트 오브젝트 설정 및 반환 API를 제공합니다.
+description: 포인트 객체 생성 및 수정 기능 API.
 ---
 
 # JSPoint
 
-Module createPoint API로 생성할 수 있습니다.
+> Module.createPoint API 생성.
 
 ```javascript
-var object = Module.createPoint("newObject");
+var object = Module.createPoint("ID");
 ```
 
-## setFontStyle\( font\_name, font\_size, font\_weight, text\_fill\_color, text\_outline\_color\)
+### setFontStyle( name, size, weight, fill_color, outline_color)
 
-> POI 텍스트 스타일 \(폰트, 크기, 굵기 및 색상 등\)을 설정합니다.
+> POI 텍스트 스타일 설정.
+> 
+> 폰트, 크기, 굵기, 색상 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| font\_name | string | 폰트 이름 |
-| font\_size | number | 텍스트 크기 |
-| font\_weight | number | 텍스트 굵기 |
-| text\_fill\_color | JSPolyLineStyle | 텍스트 색상 |
-| text\_outline\_color | JSPolyLineStyle | 텍스트 외곽 색상 |
+| name | string | 폰트 이름 |
+| size | number | 텍스트 크기 |
+| weight | number | 텍스트 굵기 |
+| fill_color | JSPolyLineStyle | 텍스트 색상 |
+| outline_color | JSPolyLineStyle | 텍스트 외곽 색상 |
 
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_line\_path\_distance](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+* Sample
+  * function createPoint 참조.
+  * [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setImage\( image\_pixels, image\_width, image\_height \) → boolean
+### setImage(resopnse, width, height) → boolean
 
-> POI 이미지를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| image\_pixels | array | 이미지 픽셀 값 배열 |
-| image\_width | number | 이미지 너비 |
-| image\_height | number | 이미지 높이 |
-
-* Detail
-  * image\_width : 1 이상 값으로 설정
-  * image\_height : 1 이상 값으로 설정
-* Return
-  * 성공 : true
-  * 실패 : false
-    * image\_width, image\_height 값이 0
-    * image\_pixels 가 빈 배열
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_point](http://sandbox.dtwincloud.com/code/main.do?id=object_point)
-{% endtab %}
-{% endtabs %}
-
-## setPosition\( positiont\) → boolean
-
-> POI 위치를 지정합니다.
+> POI 이미지를 설정.
+> 
+> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
+>
+> width, height 이미지 실제 크기 입력( &gt;1 ).
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVector3D](../core/jsvector3d.md) | POI 위치 |
+| resopnse | array | 이미지 픽셀 값 배열. |
+| width | number | 이미지 너비. |
+| height | number | 이미지 높이. |
 
 * Return
-  * 성공 : true
-  * 실패 : false
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_point](http://sandbox.dtwincloud.com/code/main.do?id=object_point)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+    * 객체 생성 실패 조건
+	  * resopnse 값이 null 인 경우.
+	  * width, height &lt;0 인 경우
+	  
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_POI](http://sandbox.dtwincloud.com/code/main.do?id=object_point)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setPositionLine\( line\_length, color\) → boolean
+### setPosition(position) → boolean
 
-> 지면과 수직한 라인을 지정한 길이만큼 보이도록 설정합니다.
+> POI 위치 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| line\_length | number | POI 수직 라인 색상 |
-| color | [JSColor](../core/jscolor.md) | POI 수직 라인 길이 |
+| position | [JSVector3D](../core/jsvector3d.md) | POI 경위도 위치. |
 
-* Detail
-  * line\_length : 0이 아닌 양수 값으로 입력합니다.
 * Return
-  * 성공 : true
-  * 실패 : false
-    * line\_length &lt;= 0.0
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_point\_line](http://sandbox.dtwincloud.com/code/main.do?id=object_point_line)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_POI](http://sandbox.dtwincloud.com/code/main.do?id=object_point)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setRenderToTerrainTexture\( set \) → boolean
+### setPositionLine(length, color) → boolean
+
+> 지면과 수직한 라인을 지정한 길이만큼 보이도록 설정.
+> 
+> length 입력값&gt;0 필수 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| length | number | POI 수직 라인 길이. |
+| color | [JSColor](../core/jscolor.md) | POI 수직 라인 색상. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+    * 객체 생성 실패 조건
+	  * type&lt;0 값이 설졍 된 경우
+
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_POI 라인](http://sandbox.dtwincloud.com/code/main.do?id=object_point_line)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setRenderToTerrainTexture(type) → boolean
 
 > POI를 RTT 기반으로 지형에 그리도록 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| set | boolean | RTT 렌더링 여부 |
+| type | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
 * Return
-  * 성공 : true
-  * 실패 : false
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_point\_rtt](http://sandbox.dtwincloud.com/code/main.do?id=object_point_rtt)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_POI RTT](http://sandbox.dtwincloud.com/code/main.do?id=object_point_rtt)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setText\( text \) → boolean
+### setText(text) → boolean
 
-> POI 텍스트 문자열을 지정합니다.
+> POI 기사화 텍스트 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| string | text | POI 텍스트 |
+| text | string | POI 텍스트 |
 
 * Return
-  * 성공 : true
-  * 실패 : false
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_point](http://sandbox.dtwincloud.com/code/main.do?id=object_point)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_POI](http://sandbox.dtwincloud.com/code/main.do?id=object_point)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 

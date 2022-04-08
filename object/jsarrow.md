@@ -4,37 +4,43 @@ description: 화살표 3차원 모델 오브젝트 생성 및 설정 API.
 
 # JSArrow
 
-Module CreateArrow API로 생성할 수 있습니다.
+> Module.CreateArrow API 생성.
 
 ```javascript
 var object = Module.CreateArrow("ID");
 ```
 
-## createViewFrustum\([JSVector3D](JSVector3D.md) position, number pan, number tilt, number distance, number radius, number arrow_radius, [JSColor](../core/jscolor.md) color\)
+### Create(position, pan, tilt, distance, radius, arrow_radius, color) → boolean
 
 > 화살표 3차원 모델 오브젝트 생성.
+> 
+> pan 입력 값에 따른 회전 정보 0, 360(북쪽), 90(동쪽), 180(남쪽), 270(서쪽).
+> 
+> tilt 입력 값에 따른 회전 정보 0(정면), tilt&lt;0(상단), tilt&gt;0(하단).
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| position | [JSVector3D](JSVector3D.md) | 화살표 시작 경위도 |
-| pan | number | 화살표 Y축 회전 설정 |
-| tilt | number | 화살표 X축 회전 설정 |
-| distance | number | 화살표 전체 길이 설정 |
-| radius | number | 화살대 굵기 지정 |
-| arrow_radius | number | 화살촉 굵기 지정 |
-| color | [JSColor](../core/jscolor.md) | 화살표 색상 지정 |
-
-* Detail
-  * pan : 0(북쪽), 90(동쪽), 180(남쪽), 270(서쪽)으로 방향 전환.
-  * tilt : 0(정면), tilt&lt;0(상단), tilt&gt;0(하단) 방향 전환.  
+| position | [JSVector3D](JSVector3D.md) | 화살표 시작 경위도. |
+| pan | number | 화살표 Y축 회전 설정. |
+| tilt | number | 화살표 X축 회전 설정. |
+| distance | number | 화살표 전체 길이 설정. |
+| radius | number | 화살대 굵기 지정. |
+| arrow_radius | number | 화살촉 굵기 지정. |
+| color | [JSColor](../core/jscolor.md) | 화살표 색상 지정. |
   
 * Return
-  * TRUE : 오브젝트 생성 성공
-  * FALSE : 오브젝트 생성 실패
+  * true : 오브젝트 생성 성공.
+  * false : 오브젝트 생성 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_arrow
+* Sample
+  * function init 참조.
+  * [샌드박스\_화살표(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_arrow)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}

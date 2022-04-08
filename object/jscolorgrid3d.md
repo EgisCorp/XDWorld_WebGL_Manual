@@ -1,261 +1,282 @@
 ---
-description: 3D 그리드 객체를 위한 API를 제공합니다.
+description: 3D 그리드 객체 생성 및 수정 기능 API.
 ---
 
 # JSColorGrid3D
 
-Module createColorGrid3D API로 생성할 수 있습니다.
+> Module.createColorGrid3D API 생성.
 
 ```javascript
 var colorGrid3D = Module.createColorGrid3D("ID");
 ```
 
-## SetGridPosition([JSVector2D](../core/jsvector2d.md) leftTop, [JSVector2D](../core/jsvector2d.md) rightTop, [JSVector2D](../core/jsvector2d.md) rightBottom, [JSVector2D](../core/jsvector2d.md) leftBottom, number altitude, number rowNum, number colNum) → number
+### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, rowNum, colNum) → number
 
-> > 4개의 점, 높이, 가로, 세로 개수를 이용하여 3D 그리드 객체를 생성합니다.
+> 4개의 경위도 좌표, 높이, 가로, 세로, 입력 값의 기준으로 3D 그리드 객체 생성.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type                          | Contents   |
+{% tab title="Information" %}
+| Name   | Type                          | Description   |
 | ----------- | ----------------------------- | ---------- |
-| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표 |
-| rightTop    | [JSVector2D](../core/jsvector2d.md) | 우상단 경위도 좌표 |
-| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표 |
-| leftBottom  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표 |
-| altitude    | number                        | 객체 높이      |
-| rowNum      | number                        | 가로 그리드 개수  |
-| colNum      | number                        | 세로 그리드 개수  |
-
-* Detail
-```
-var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
-var gridCellNum = colorGrid3D.SetGridPosition(
-	new Module.JSVector2D(124.2, 39), 	// 그리드 좌상단
-	new Module.JSVector2D(130.5, 39), 	// 그리드 우상단
-	new Module.JSVector2D(130.5, 34.5), 	// 그리드 우하단
-	new Module.JSVector2D(124.2, 34.5), 	// 그리드 좌하단
-	100000.0, 				// 그리드 바닥면 고도
-	rowNum, 				// 그리드 가로 셀 갯수
-	colNum					// 그리드 세로 셀 갯수
-);
-```
+| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표. |
+| rightTop    | [JSVector2D](../core/jsvector2d.md) | 우상단 경위도 좌표. |
+| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표. |
+| leftBottom  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표. |
+| altitude    | number                        | 객체 높이.      |
+| rowNum      | number                        | 그리드 가로 개수.  |
+| colNum      | number                        | 그리드 세로 개수.  |
 
 * Return
-  * 총 그리드 개수
-  
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
+  * 총 그리드 개수.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
+var gridCellNum = colorGrid3D.SetGridPosition(
+	new Module.JSVector2D(124.2, 39),
+	new Module.JSVector2D(130.5, 39),
+	new Module.JSVector2D(130.5, 34.5),
+	new Module.JSVector2D(124.2, 34.5),
+	1000.0,
+	100,
+	100
+);
+```
 {% endtab %}
 {% endtabs %}
 
-## SetGridCellDefaultColor([JSColor](../core/jscolor.md) color) → boolean
+### SetGridCellDefaultColor(color) → boolean
 
 > 초기 그리드 색상값을 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents |
+{% tab title="Information" %}
+| Name | Type                    | Description |
 | --------- | ----------------------- | -------- |
-| color     | [JSColor](../core/jscolor.md) | 그리드 색상값  |
+| color     | [JSColor](../core/jscolor.md) | 그리드 색상값.  |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+  
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetGridCellDefaultColor(new Module.JSColor(255, 255, 255, 0));
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## SetGridCellColor(number rowIndex, number colIndex, [JSColor](../core/jscolor.md) color) → boolean
+### SetGridCellColor(row, column, color) → boolean
 
-> 가서, 세로 Index에 해당하는 cell의 색상값을 설정합니다.
+> 가로, 세로 Index에 해당하는 Cell의 색상값 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| rowIndex  | number                  | cell 가로 index |
-| colIndex  | number                  | cell 세로 index |
-| color     | [JSColor](../core/jscolor.md) | cell 색상값      |
+| row  | number                  | Cell 가로 Index. |
+| column  | number                  | Cell 세로 Index. |
+| color     | [JSColor](../core/jscolor.md) | Cell 색상값.      |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+    * 객체 옵션 설정 실패 조건.
+	  * 설정된 가로, 세로 Index 범위 초과인 경우.
+  
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetGridCellColor(0, 0, new Module.JSColor(255, 255, 0, 0));
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 입력된 가로, 세로 index가 범위를 벗어난 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## SetGridLineColor([JSColor](../core/jscolor.md) color) → boolean
+### SetGridLineColor(color) → boolean
 
-> 그리드 객체 테두리 색상을 설정합니다.
+> 3D 그리드 객체의 테두리 색상 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents |
+{% tab title="Information" %}
+| Name | Type                    | Description |
 | --------- | ----------------------- | -------- |
-| color     | [JSColor](../core/jscolor.md) | 테두리 색상값  |
+| color     | [JSColor](../core/jscolor.md) | 테두리 색상값.  |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+    * 객체 옵션 설정 실패 조건.
+	  * 3D 그리드 태두리 생성하지 않은 경우.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetGridLineColor(new Module.JSColor(150, 255, 0, 0));
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우 2) 그리드 객체 테두리를 생성하지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## SetGridCellLineColor(number rowIndex, number colIndex, [JSColor](../core/jscolor.md) color) → boolean
+### SetGridCellLineColor(row, column, color) → boolean
 
-> 가서, 세로 Index에 해당하는 cell의 테두리 색상을 설정합니다.
+> 가로, 세로 Index에 해당하는 Cell의 테두리 색상값 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| rowIndex  | number                  | cell 가로 index |
-| colIndex  | number                  | cell 세로 index |
-| color     | [JSColor](../core/jscolor.md) | 테두리 색상값       |
+| row  | number                  | Cell 가로 Index. |
+| column  | number                  | Cell 세로 Index. |
+| color     | [JSColor](../core/jscolor.md) | 테두리 색상값.       |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+    * 객체 옵션 설정 실패 조건.
+	  * 설정된 가로, 세로 Index 범위 초과인 경우.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetGridCellLineColor(0, 0, new Module.JSColor(150, 255, 0, 0));
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우 2) 입력된 가로, 세로 index가 범위를 벗어난 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## SetGridCellHeight(number rowIndex, number colIndex, number height) → boolean
+### SetGridCellHeight(row, column, color) → boolean
 
-> 가서, 세로 Index에 해당하는 cell의 높이값을 설정합니다.
+> 가로, 세로 Index에 해당하는 Cell의 높이값 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents      |
+{% tab title="Information" %}
+| Name | Type   | Description      |
 | --------- | ------ | ------------- |
-| rowIndex  | number | cell 가로 index |
-| colIndex  | number | cell 세로 index |
-| height    | number | cell 높이값      |
+| row  | number | Cell 가로 Index. |
+| column  | number | Cell 세로 Index. |
+| height    | number | Cell 높이값.      |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+    * 객체 옵션 설정 실패 조건.
+	  * 설정된 가로, 세로 Index 범위 초과인 경우.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetGridCellHeight(0, 0, 30);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 입력된 가로, 세로 index가 범위를 벗어난 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## SetDrawLine(boolean drawLine) → boolean
+### SetDrawLine(type) → boolean
 
-> 그리드 객체 테두리 생성 유무를 설정합니다.
+> 3D 그리드 객체의 테두리 생성 설정.
+> 
+> 테두리 생성 초기 설정 false.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type    | Contents                 |
+{% tab title="Information" %}
+| Name | Type    | Description                 |
 | --------- | ------- | ------------------------ |
-| drawLine  | boolean | 테두리 생성 유무 설정(초기값: false) |
+| drawLine  | boolean | <p>true인 경우 테두리 생성.<br>false인 경우 테두리 미생성.</p> |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetDrawLine(true);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## SetNormal(boolean nomal) → boolean
+### SetNormal(nomal) → boolean
 
-> 그리드 객체 음영 효과를 설정합니다.
+> 3D 그리드 객체의 음영 효과 설정.
+> 
+> 음영 효과 초기 설정 false.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type    | Contents            |
+{% tab title="Information" %}
+| Name | Type    | Description            |
 | --------- | ------- | ------------------- |
-| nomal     | boolean | 음영효과 설정(초기값: false) |
+| nomal     | boolean | <p>true인 경우 음영 효과 설정.<br>false인 경우 기본 가시화.</p> |
 
-* Detail
-```
+* Return
+  * TRUE : 객체 옵션 설정 성공.
+  * FALSE : 객체 옵션 설정 실패.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
 colorGrid3D.SetNormal(true);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}
 
-## Create() → boolean
+### Create() → boolean
 
-> 설정한 옵션으로 그리드 객체를 생성합니다.
+> 설정된 옵션을 기준으로 3D 그리드 객체 생성.
 
 {% tabs %}
 {% tab title="Information" %}
 
-* Detail
-```
+* Return
+  * TRUE : 객체 생성 성공.
+  * FALSE : 객체 생성 실패.
+    * 객체 생성 실패 조건.
+      * 입력된 좌표가 없는 경우.
+	  * 설정된 가로, 세로 Index 범위 초과인 경우.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(3D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
-...그리드 객체 옵션 설정...
 colorGrid3D.Create();
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우 2) 설정된 좌표가 없을 경우 3) 설정된 가로, 세로 index가 범위를 벗어난 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_3d
 {% endtab %}
 {% endtabs %}

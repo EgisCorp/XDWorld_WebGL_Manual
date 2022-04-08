@@ -1,13 +1,10 @@
 ---
-description: 지도 설정 및 제어를 위한 API를 제공합니다.
-layout: editorial
+description: 지도 설정 및 제어 기능 API.
 ---
 
 # JSMap
 
-### JSMap
-
-Module getMap API로 생성할 수 있습니다.
+> Module.getMap API 생성.
 
 ```javascript
 var map = Module.getMap();
@@ -15,134 +12,221 @@ var map = Module.getMap();
 
 #### changeBaseMap(parameter) → string
 
-> **WMTS 서비스 레이어 생성 및 배경지도를 변경합니다.**
-
-{% swagger method="get" path="" baseUrl="" summary="" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-
-{% swagger-parameter in="path" %}
-
-{% endswagger-parameter %}
-{% endswagger %}
+> WMTS 서비스 레이어 생성.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents              |
-| --------- | ------ | --------------------- |
-| parameter | object | <p>배경지도 설정<br>dff</p> |
-|           |        |                       |
+{% tab title="Information" %}
+| Name   | Type                                                         | Description   |
+| ---- | ---------------------------------------------------------- | ------------- |
+| parameter | object | WMTS 타일링 정보 설정 |
 
-* Detail
+* Return
+  * "success" : 레이어 생성 성공.
+  * "fail" : 레이어 생성 실패.
+    * 레이어 생성 실패 조건.
+    * serverSetting, userSetting, url, tileExtent, max, min, projection, resolutions, matrixIds 태그 중 하나라도 없을 경우
+	
+* Sample
+  * function korean_map 참조
+  * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer\_wmts)
+{% endtab %}
 
-```
+{% tab title="Template" %}
+```javascript
 let json = { 
-    // 타일구조에 대한 정보. 사용자가 따로 수정할필요 없는 영역
-    serverSetting:{ 
-        url: "", // 배경지도 데이터 URL 
+	serverSetting:{ 
+		url: "http://map.ngii.go.kr/openapi/Gettile.do?apikey=04trYP9_xwLAfALjwZ-B8g&layer=korean_map&style=korean&tilematrixset=EPSG%3A5179&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=L{02z}&TileCol={x}&TileRow={y}",										
         tileExtent: { 
-            // 타일 전체 영역 (좌하단, 우상단) 
-            min: new Module.JSVector2D(x, y), 
-            max: new Module.JSVector2D(x, y) 
+			min: new Module.JSVector2D(-200000.98, -28086425.6),
+			max: new Module.JSVector2D(31886425.6, 4000000.0)
         }, 
-        projection: "", // 배경지도 데이터 좌표계(예. EPSG:5179) 
-        tileSize: size, // 배경지도 데이터 Tile 크기 
-        resolutions : [], // 레벨별 해상도 
-        matrixIds : [], // 타일 레벨 정의 (resolutions과 매칭) 
-        serviceLevel: { 
-            // 타일링 최소 최대 레벨 
-            min: minlevel, 
-            max: maxlevel 
-        } 
-        // vworldTileSet: false, // 브이월드 타일구조일 경우 true 기본값: false 
-        // indexOrder: true, // 타일 인덱싱 기준점 기본값: true 
-        // boxRequest: false, // BOX단위로 요청할 경우 기본값: false 
+        projection: "EPSG:5179",
+        tileSize: 256,
+		resolutions : [2088.96, 1044.48, 522.24, 261.12, 130.56, 65.28, 32.64, 16.32, 8.16, 4.08, 2.04, 1.02, 0.51, 0.255],		
+		matrixIds : [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+		serviceLevel: {
+			min: 3,
+			max: 20
+		}
     }, 
-    // 사용자가 원하는 서비스 품질을 찾기위한 영역 
-    // zeroLevel, quality 설정으로 자신이 원하는 서비스 품질을 선택할 수 있습니다. 
     userSetting: { 
-        zeroLevel: lod, // 이미지 요청 LOD 
-        quality: "" // 이미지 품질 (low, middle, high) 
-         // high품질은 메모리 사용량이 기존 대비 16배 증가하므로 사용시 주의가 필요합니다. 
+        zeroLevel: 2,
+        quality: "middle"
     } 
 };
 ```
-
-* Return
-  * 설정 성공 (success) 혹은 실패 (fail)
-  * 다음의 경우 API는 fail 을 반환합니다.\
-    1\) serverSetting, userSetting, url, tileExtent, max, min, projection, resolutions, matrixIds 태그 중 하나라도 없을 경우
-* Code
-  * [샌드박스\_WNTS](http://sandbox.dtwincloud.com/code/main.do?id=layer\_wmts)
 {% endtab %}
 {% endtabs %}
 
 ### setDistance(distance)
 
-> 히트맵 반경 거리를 설정합니다.
+> 히트맵 반경 거리를 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Information" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
 | distance  | number | 히트맵 반경   |
 
-* Detail
-  * distance : 히트맵의 크기를 설정합니다. (최소값 1)
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_히트맵](http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("HEATMAP_POI", Module.ELT_3DPOINT);
+layer.setMaxDistance(60000000.0);
+	
+var vList = new Module.JSVec3Array();
+var positions = [
+	[129.12628252638348, 35.174613788186335, -127.18464569468051],
+	[129.1278597986113, 35.1730738804656, -127.16845162212849],
+	[129.12691776723804, 35.17243834516552, -127.23446262534708],
+	[129.12837451707335, 35.171954803028704, -127.18164411373436]
+];
+
+positions.forEach(function(item, idx) {
+	vList.push(new Module.JSVector3D(item[0], item[1], 0));
+}); 
+
+Module.getMap().clearHeatMap();
+Module.getMap().setTerrainEffect(9);
+Module.getMap().setDistance(200);
+Module.getMap().setWeight(1)
+Module.getMap().addHeatMaps(vList);
+Module.getMap().setEffectDistance(1500000);
+```
 {% endtab %}
 {% endtabs %}
 
-### setEffectDistance(maxDistance)
+### setEffectDistance(max)
 
-> 히트맵 효과가 표현되는 최대 거리를 설정합니다.
+> 히트맵 효과가 표현되는 최대 거리를 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type   | Contents |
+{% tab title="Information" %}
+| Name   | Type   | Description |
 | ----------- | ------ | -------- |
-| maxDistance | number | 최대 가시 거리 |
+| max | number | 히트맵 최대 가시 거리 |
 
-* Detail
-  * maxDistance : 히트맵 효과를 가시화할 최대 가시거리
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_히트맵](http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("HEATMAP_POI", Module.ELT_3DPOINT);
+layer.setMaxDistance(60000000.0);
+	
+var vList = new Module.JSVec3Array();
+var positions = [
+	[129.12628252638348, 35.174613788186335, -127.18464569468051],
+	[129.1278597986113, 35.1730738804656, -127.16845162212849],
+	[129.12691776723804, 35.17243834516552, -127.23446262534708],
+	[129.12837451707335, 35.171954803028704, -127.18164411373436]
+];
+
+positions.forEach(function(item, idx) {
+	vList.push(new Module.JSVector3D(item[0], item[1], 0));
+}); 
+
+Module.getMap().clearHeatMap();
+Module.getMap().setTerrainEffect(9);
+Module.getMap().setDistance(200);
+Module.getMap().setWeight(1)
+Module.getMap().addHeatMaps(vList);
+Module.getMap().setEffectDistance(1500000);
+```
 {% endtab %}
 {% endtabs %}
 
-### setWeight(number weight)
+### setWeight(weight)
 
-> 히트맵 가중치를 설정합니다.
+> 히트맵 가중치를 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Information" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| weight    | number | 가중치      |
+| weight    | number | 히트맵 가중치      |
 
-* Detail
-  * weight : 히트맵 포인트의 가중치
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_히트맵](http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("HEATMAP_POI", Module.ELT_3DPOINT);
+layer.setMaxDistance(60000000.0);
+	
+var vList = new Module.JSVec3Array();
+var positions = [
+	[129.12628252638348, 35.174613788186335, -127.18464569468051],
+	[129.1278597986113, 35.1730738804656, -127.16845162212849],
+	[129.12691776723804, 35.17243834516552, -127.23446262534708],
+	[129.12837451707335, 35.171954803028704, -127.18164411373436]
+];
+
+positions.forEach(function(item, idx) {
+	vList.push(new Module.JSVector3D(item[0], item[1], 0));
+}); 
+
+Module.getMap().clearHeatMap();
+Module.getMap().setTerrainEffect(9);
+Module.getMap().setDistance(200);
+Module.getMap().setWeight(1)
+Module.getMap().addHeatMaps(vList);
+Module.getMap().setEffectDistance(1500000);
+```
 {% endtab %}
 {% endtabs %}
 
-### addHeatMaps([JSVec3Array](../core/jsvec3aray.md) pointArray)
+### addHeatMaps(array)
 
-> 히트맵 좌표 리스트 배열을 설정합니다.
+> 히트맵 좌표 리스트 배열을 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter  | Type                                 | Contents      |
+{% tab title="Information" %}
+| Name  | Type                                 | Description      |
 | ---------- | ------------------------------------ | ------------- |
-| pointArray | [JSVec3Array](../core/jsvec3aray.md) | 히트맵 좌표 리스트 배열 |
+| array | [JSVec3Array](../core/jsvec3aray.md) | 히트맵 좌표 리스트 배열 |
 
-* Detail
-  * pointArray : ([JSVector3D](JSVector3D.md), [JSVector3D](JSVector3D.md), ...) 히트맵 좌표 리스트 배열
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_히트맵](http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("HEATMAP_POI", Module.ELT_3DPOINT);
+layer.setMaxDistance(60000000.0);
+	
+var vList = new Module.JSVec3Array();
+var positions = [
+	[129.12628252638348, 35.174613788186335, -127.18464569468051],
+	[129.1278597986113, 35.1730738804656, -127.16845162212849],
+	[129.12691776723804, 35.17243834516552, -127.23446262534708],
+	[129.12837451707335, 35.171954803028704, -127.18164411373436]
+];
+
+positions.forEach(function(item, idx) {
+	vList.push(new Module.JSVector3D(item[0], item[1], 0));
+}); 
+
+Module.getMap().clearHeatMap();
+Module.getMap().setTerrainEffect(9);
+Module.getMap().setDistance(200);
+Module.getMap().setWeight(1)
+Module.getMap().addHeatMaps(vList);
+Module.getMap().setEffectDistance(1500000);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -152,394 +236,563 @@ let json = {
 
 {% tabs %}
 {% tab title="Information" %}
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_히트맵](http://sandbox.dtwincloud.com/code/main.do?id=effect\_heatmap)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("HEATMAP_POI", Module.ELT_3DPOINT);
+layer.setMaxDistance(60000000.0);
+	
+var vList = new Module.JSVec3Array();
+var positions = [
+	[129.12628252638348, 35.174613788186335, -127.18464569468051],
+	[129.1278597986113, 35.1730738804656, -127.16845162212849],
+	[129.12691776723804, 35.17243834516552, -127.23446262534708],
+	[129.12837451707335, 35.171954803028704, -127.18164411373436]
+];
+
+positions.forEach(function(item, idx) {
+	vList.push(new Module.JSVector3D(item[0], item[1], 0));
+}); 
+
+Module.getMap().clearHeatMap();
+Module.getMap().setTerrainEffect(9);
+Module.getMap().setDistance(200);
+Module.getMap().setWeight(1)
+Module.getMap().addHeatMaps(vList);
+Module.getMap().setEffectDistance(1500000);
+```
 {% endtab %}
 {% endtabs %}
 
-### setFog([JSColor](../core/jscolor.md) color, number start, number end, number density)
+### setFog(color, start, end, density)
 
-> 안개 효과를 설정합니다.
+> 안개 효과 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                          | Contents       |
+{% tab title="Information" %}
+| Name | Type                          | Description       |
 | --------- | ----------------------------- | -------------- |
 | color     | [JSColor](../core/jscolor.md) | 안개 색상          |
-| start     | number                        | 안개 효과 적용 시작 거리 |
-| end       | number                        | 안개 효과 적용 종료 거리 |
-| density   | number                        | 안개 농도          |
+| start     | number                        | 안개 효과 적용 최소 가시거리(최소값 1) |
+| end       | number                        | 안개 효과 적용 최대 가시거리 |
+| density   | number                        | 안개 농도 가중치 (0.0 \~ 1.0 사이 값으로 설정)   |
 
-* Detail
-  * color : [JSColor](../core/jscolor.md)
-  * start : 안개 효과 적용 최소 가시거리 (최소값 1)
-  * end : 안개 효과 적용 최대 가시거리
-  * density : 안개 효과 농도 가중치 (0.0 \~ 1.0 사이 값으로 설정)
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_안개](http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.setFogLimitAltitude(6000000.0);
+pMap.setFogEnable(true);
+var color = new Module.JSColor(255, 255, 255, 255);
+pMap.setFog(color, 0, 5000, 0.3);
+```
 {% endtab %}
 {% endtabs %}
 
-### setFogEnable(boolean enable)
+### setFogEnable(type)
 
-> 안개 효과 적용 여부를 설정합니다.
+> 안개 효과 적용 여부를 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type    | Contents    |
+{% tab title="Information" %}
+| Name | Type    | Description    |
 | --------- | ------- | ----------- |
-| enable    | boolean | 안개 효과 적용 여부 |
+| type    | boolean | 안개 효과 적용 여부 |
 
-* Detail
-  * enable
-    * false : 안개 효과를 해제합니다.
-    * true : 안개 효과를 적용합니다.
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_안개](http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.setFogLimitAltitude(6000000.0);
+pMap.setFogEnable(true);
+var color = new Module.JSColor(255, 255, 255, 255);
+pMap.setFog(color, 0, 5000, 0.3);
+```
 {% endtab %}
 {% endtabs %}
 
-### setFogLimitAltitude(number alt)
+### setFogLimitAltitude(alt)
 
-> 안개 효과 적용 고도를 제한합니다.
+> 안개 효과 적용 고도 제한.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Information" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| alt       | number | 고도 제한 값  |
+| alt       | number | 제한할 고도 값  |
 
-* Detail
-  * alt : 제한된 고도값 아래에 카메라가 위치할 경우 안개 효과 적용
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog
+* Sample
+  * function loadHeatmapPoint 참조
+  * [샌드박스\_안개](http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.setFogLimitAltitude(6000000.0);
+pMap.setFogEnable(true);
+var color = new Module.JSColor(255, 255, 255, 255);
+pMap.setFog(color, 0, 5000, 0.3);
+```
 {% endtab %}
 {% endtabs %}
 
-### setSnowfall(number state)
+### setSnowfall(state)
 
-> 적설 효과 출력 타입을 설정합니다.
+> 적설 효과 출력 타입을 설정.
+>
+> 0일 경우 적설효과 해제
+>
+> 1일 경우 적설효과 설정 (지형 텍스쳐 가시화)
+>
+> 2일 경우 적설효과 설정 (지형 텍스쳐 가시화 하지 않음)
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents    |
+{% tab title="Information" %}
+| Name | Type   | Description    |
 | --------- | ------ | ----------- |
 | state     | number | 적설 효과 출력 타입 |
 
-* Detail
-  * state
-    * 0 : 적설 효과 해제
-    * 1 : 적설 표시 설정 (지형 텍스쳐 출력)
-    * 2 : 적설 표시 설정 (지형 텍스쳐 미출력)
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow
+* Sample
+  * function setUseSnowEffect 참조
+  * [샌드박스\_눈](http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.startWeather(0, 5, 5);	
+pMap.setSnowfall(1);
+pMap.setSnowfallLevel(2.0);
+```
 {% endtab %}
 {% endtabs %}
 
-### setSnowfallLevel(number snowFallLevel) → number
+### setSnowfallLevel(level) → number
 
-> 적설 효과 출력 중 적설량을 설정합니다.
+> 적설 효과 출력 중 적설량 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter     | Type   | Contents |
+{% tab title="Information" %}
+| Name     | Type   | Description |
 | ------------- | ------ | -------- |
-| snowFallLevel | number | 적설량      |
+| level | number | 적설량 (0 \~ 100 사이값으로 설정)  |
 
-* Detail
-  * snowFallLevel : 적설량 설정 (0 \~ 100 사이값으로 설정)
 * Return
-  * 적설량
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow
+  * 설정된 적설량 값
+
+* Sample
+  * function setUseSnowEffect 참조
+  * [샌드박스\_눈](http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.startWeather(0, 5, 5);	
+pMap.setSnowfall(1);
+pMap.setSnowfallLevel(2.0);
+```
 {% endtab %}
 {% endtabs %}
 
 ### setSnowImageURL(string imageURL) → boolean
 
-> 적설 효과 이미지 경로를 설정합니다.
+> 적설 효과 이미지 경로를 설정.
+>
+>
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents    |
+{% tab title="Information" %}
+| Name | Type   | Description    |
 | --------- | ------ | ----------- |
 | imageURL  | string | 눈 표현 이미지 경로 |
 
-* Detail
-  * imageURL : 눈 표현으로 사용할 이미지 경로
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow
+  * true : 설정 성공.
+  * false : 설정 실패.
+
+* Sample
+  * function changeRainEffectOption 참조
+  * [샌드박스\_눈](http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.setSnowImageURL("./data/snow./png");
+pMap.startWeather(0, 5, 5);	
+pMap.setSnowfall(1);
+pMap.setSnowfallLevel(2.0);
+```
 {% endtab %}
 {% endtabs %}
 
 ### clearSnowfallArea()
 
-> 적설 효과를 초기화 합니다.
+> 적설 효과 초기화.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.clearSnowfallArea();
+```
+{% endtab %}
+{% endtabs %}
+
+### setRainImageURL(url) → boolean
+
+> 비 효과 이미지 경로 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-* Code
-  * Module.getMap().clearSnowfallArea();
-{% endtab %}
-{% endtabs %}
-
-### setRainImageURL(string imageURL) → boolean
-
-> 비 효과 이미지 경로를 설정합니다.
-
-{% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents    |
+| Name | Type   | Description    |
 | --------- | ------ | ----------- |
-| imageURL  | string | 비 표현 이미지 경로 |
+| url  | string | 비 표현 이미지 경로 |
 
-* Detail
-  * imageURL : 비 표현으로 사용할 이미지 경로
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain
+  * true : 설정 성공
+  * false : 설정 실패
+
+* Sample
+  * function changeRainEffectOption 참조
+  * [샌드박스\_비](http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.setRainImageURL("./data/snow./png");
+pMap.startWeather(1, 5, 5);	
+```
 {% endtab %}
 {% endtabs %}
 
-### startWeather(number type, number size, number speed) → boolean
+### startWeather(type, size, speed) → boolean
 
-> 날씨 표현 기능을 활성화 합니다.
+> 날씨 표현 기능 활성화.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Information" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| type      | number | 날씨 표현 타입 |
-| size      | number | 표현 강도    |
-| speed     | number | 표현 속도    |
+| type      | number | 날씨 표현 타입(0: 눈, 1: 비) |
+| size      | number | 표현 강도(0: 약하게, 1: 보통, 2: 강하게)    |
+| speed     | number | 표현 속도(0: 느리게, 1: 보통, 2: 빠르게)    |
 
-* Detail
-  * type
-    * 0 : 눈
-    * 1 : 비
-  * size
-    * 0 : 약하게
-    * 1 : 보통
-    * 2 : 강하게
-  * speed
-    * 0 : 느리게
-    * 1 : 보통
-    * 2 : 빠르게
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain
+  * true : 설정 성공.
+  * false : 설정 실패.
+
+* Sample
+  * function setUseRainEffect 참조
+  * [샌드박스\_비](http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.startWeather(1, 5, 5);	
+```
 {% endtab %}
 {% endtabs %}
 
 ### stopWeather()
 
-> 날씨 표현 기능을 비활성화 합니다.
+> 날씨 표현 기능 비활성화.
 
 {% tabs %}
 {% tab title="Information" %}
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pMap = Module.getMap();
+pMap.stopWeather();
+```
 {% endtab %}
 {% endtabs %}
 
-### setSimpleMode(boolean set) → boolean
+### setSimpleMode(type) → boolean
 
-> 건물 심플모드를 설정합니다.
+> 건물 심플모드 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type    | Contents |
+{% tab title="Information" %}
+| Name | Type    | Description |
 | --------- | ------- | -------- |
-| set       | boolean | 건물 심플모드  |
+| type      | boolean | 건물 심플모드  |
 
-* Detail
-  * set
-    * true : 건물 심플모드를 실행합니다.
-    * false : 건물 심플모드를 해제합니다.
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=layer\_building\_simplemode
+  * true : 설정 성공.
+  * false : 설정 실패.
+
+* Sample
+  * function setUseRainEffect 참조
+  * [샌드박스\_건물심플모드](http://sandbox.dtwincloud.com/code/main.do?id=layer\_building\_simplemode)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getMap().setSimpleMode(true);
+```
 {% endtab %}
 {% endtabs %}
 
-### setTerrainEffect(number effect)
+### setTerrainEffect(type)
 
-> 지형 랜더링 효과를 설정합니다.
+> 지형 랜더링 효과 설정합.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents  |
+{% tab title="Information" %}
+| Name | Type   | Description  |
 | --------- | ------ | --------- |
-| effect    | number | 지형 랜더링 모드 |
+| type    | number | 지형 랜더링 모드(0: 일반, 10: 경사향, 11: 경사도) |
 
-* Detail
-  * effect
-    * 0 : 일반 모드
-    * 10 : 경사향 모드
-    * 11 : 경사도 모드
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=terrain\_rendermode
+* Sample
+  * function setUseRainEffect 참조
+  * [샌드박스\_건물심플모드](http://sandbox.dtwincloud.com/code/main.do?id=terrain\_rendermode)
+  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getMap().setTerrainEffect(10);
+```
 {% endtab %}
 {% endtabs %}
 
 ### clearInputPoint()
 
-> 입력된 좌표 리스트를 초기화 합니다.
+> 입력된 좌표 리스트 초기화.
 
 {% tabs %}
 {% tab title="Information" %}
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_height
+* Sample
+  * function clearInputPoint 참조
+  * [샌드박스\_라인버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getMap().clearInputPoint();
+```
 {% endtab %}
 {% endtabs %}
 
 ### clearSelectObj()
 
-> 오브젝트 선택 상태를 해제합니다.
+> 오브젝트 선택 상태 해제.
 
 {% tabs %}
 {% tab title="Information" %}
-* Code
-  * Module.getMap().clearSelectObj();
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getMap().clearSelectObj();
+```
 {% endtab %}
 {% endtabs %}
 
 ### getInputPoints() → [JSVec3Array](../core/jsvec3aray.md)
 
-> 입력된 좌표 리스트를 반환합니다.
+> 입력된 좌표 리스트 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * [JSVec3Array](../core/jsvec3aray.md) : 입력된 좌표 리스트
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis\_terrain\_edit
+  * [JSVec3Array](../core/jsvec3aray.md) : 입력된 좌표 리스트 반환 성공.
+  * null : 입력된 좌표가 없을 경우.
+  
+* Sample
+  * function createBufferPolygon 참조
+  * [샌드박스\_라인버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var line = Module.getMap().getInputPoints();
+```
 {% endtab %}
 {% endtabs %}
 
 ### getInputPointList() → [Collection](../core/collection.md)
 
-> 입력된 좌표 리스트를 반환합니다.
+> 입력된 좌표 리스트 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * [Collection](../core/collection.md) : 입력된 좌표 리스트
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_pipe
+  * [Collection](../core/collection.md) : 입력된 좌표 리스트 반환 선공.
+  * null : 입력된 좌표가 없을 경우
+  
+* Sample
+  * function createPipe 참조
+  * [샌드박스\_라인버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object\_pipe)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var inputPoints = Module.getMap().getInputPointList();
+```
 {% endtab %}
 {% endtabs %}
 
-### getTerrHeight(number lon, number lat) → number
+### getTerrHeight(lon, lat) → number
 
-> 해당 위치의 지형 높이값을 반환합니다.
+> 해당 위치의 지형 높이값 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Information" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
 | lon       | number | 경도       |
 | lat       | number | 위도       |
 
 * Return
   * 지형 높이값
-* Code
-  * let height = Module.getMap().getTerrHeight(129.128265, 35.171834);
+  * 0 : 해당 지역 dem 로드가 되지 않았을 경우.
+ 
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var height = Module.getMap().getTerrHeight(126.92836647767662, 37.52439503321471);
+```
 {% endtab %}
 {% endtabs %}
 
-### GetPointDistance([JSVector3D](../core/jsvector3d.md) from, [JSVector3D](../core/jsvector3d.md) to, boolean unionTerrain) → number
+### GetPointDistance(from, to, unionTerrain) → number
 
-> 두 지점 사이의 거리를 반환합니다.
+> 두 지점 사이의 거리 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter    | Type                                | Contents   |
+{% tab title="Information" %}
+| Name    | Type                                | Description   |
 | ------------ | ----------------------------------- | ---------- |
-| from         | [JSVector3D](../core/jsvector3d.md) | 시작 점 위치    |
-| to           | [JSVector3D](../core/jsvector3d.md) | 끝 점 위치     |
-| unionTerrain | boolean                             | 지형 고려할지 여부 |
+| from         | [JSVector3D](../core/jsvector3d.md) | 시작 점 위치 (경도, 위도, 고도)    |
+| to           | [JSVector3D](../core/jsvector3d.md) | 끝 점 위치 (경도, 위도, 고도)     |
+| unionTerrain | boolean                             | 지형 고려할지 여부(false: 직선거리, true: 지형을 고려한 거리) |
 
-* Detail
-  * [JSVector3D](../core/jsvector3d.md) : (경도, 위도, 고도)
-  * unionTerrain :
-    * false : 지형을 고려하지 않고 직선 거리를 반환
-    * true : 지형을 고려하여 거리를 반환
 * Return
   * 두 지점 사이의 거리 반환
-* Code
-  * let distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265, 35.171834, 500.0), new Module.JSVector3D(129.118265, 35.161834, 500.0), false);
+  * 0 : 엔진이 정상적으로 load되지 않았을 경우  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265, 35.171834, 500.0), new Module.JSVector3D(129.118265, 35.161834, 500.0), false);
+```
 {% endtab %}
 {% endtabs %}
 
-### getLineBuffer([JSVec2Array](../core/jsvec2aray.md) lineVertex, number bufferDistance) → [JSVec2Array](../core/jsvec2aray.md)
+### getLineBuffer(lineVertex, bufferDistance) → [JSVec2Array](../core/jsvec2aray.md)
 
-> 거리 설정값에 따라 라인 버퍼 폴리곤 좌표를 반환합니다.
+> 거리 설정값에 따라 라인 버퍼 폴리곤 좌표 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter      | Type                                 | Contents   |
+{% tab title="Information" %}
+| Name      | Type                                 | Description   |
 | -------------- | ------------------------------------ | ---------- |
-| lineVertex     | [JSVec2Array](../core/jsvec2aray.md) | 라인 좌표 리스트  |
-| bufferDistance | number                               | 라인으로 부터 거리 |
+| lineVertex     | [JSVec2Array](../core/jsvec2aray.md) | 라인 좌표 리스트 (경도, 위도)  |
+| bufferDistance | number                               | 라인으로 부터 거리 (라인으로 부터 거리) |
 
-* Detail
-  * [JSVec2Array](../core/jsvec2aray.md) : (경도, 위도)
-  * bufferDistance : 생성할 버퍼의 크기 (라인으로 부터 거리)
 * Return
-  * [JSVec2Array](../core/jsvec2aray.md) : (경도, 위도)
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering
+  * [JSVec2Array](../core/jsvec2aray.md) : 라인버퍼 폴리곤 경위도 좌표 목록 반환 성공.
+  * null : 엔진이 정상적으로 load되지 않았을 경우
+  
+* Sample
+  * function createBufferPolygon 참조
+  * [샌드박스\_라인버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var map = Module.getMap();
+var line = map.getInputPoints();
+var line2D = new Module.JSVec2Array();
+for (var i=0; i<line.count(); i++) {
+	line2D.push(new Module.JSVector2D(line.get(i).Longitude, line.get(i).Latitude));
+}
+var polygonLine = map.getLineBuffer(line2D, 100);
+```
 {% endtab %}
 {% endtabs %}
 
-### MapToScreenPointEX([JSVector3D](../core/jsvector3d.md) mapPosition) → [JSVector2D](../core/jsvector2d.md)
+### MapToScreenPointEX(position) → [JSVector2D](../core/jsvector2d.md)
 
-> 3차원 지도 좌표로 화면 좌표를 반환합니다.
+> 3차원 지도 좌표로 화면 좌표 반환.
+>
+>
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type                                | Contents  |
+{% tab title="Information" %}
+| Name   | Type                                | Description  |
 | ----------- | ----------------------------------- | --------- |
-| mapPosition | [JSVector3D](../core/jsvector3d.md) | 3차원 지도 좌표 |
+| position | [JSVector3D](../core/jsvector3d.md) | 3차원 지도 좌표 (경도, 위도, 고도) |
 
-* Detail
-  * [JSVector3D](../core/jsvector3d.md) : (경도, 위도, 고도) 3차원 지도 좌표
 * Return
-  * [JSVector2D](../core/jsvector2d.md) : (x, y) 화면 좌표
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=coordinate\_map\_to\_screen
+  * [JSVector2D](../core/jsvector2d.md) : 화면 스크린 좌표 반환 성공(x, y).
+  * null : 엔진이 정상적으로 load되지 않았을 경우
+  
+* Sample
+  * function displayPopUp 참조
+  * [샌드박스\_지도->화면좌표변환](http://sandbox.dtwincloud.com/code/main.do?id=coordinate\_map\_to\_screen)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pointMapPos = Module.getMap().MapToScreenPointEX(new Module.JSVector3D(129.128265, 35.171834, 100.0));
+```
 {% endtab %}
 {% endtabs %}
 
-### ScreenToMapPointEX([JSVector2D](../core/jsvector2d.md) screenPosition) → [JSVector3D](../core/jsvector3d.md)
+### ScreenToMapPointEX(position) → [JSVector3D](../core/jsvector3d.md)
 
-> 화면 좌표로 3차원 지도 좌표를 반환합니다.
+> 화면 좌표로 3차원 지도 좌표 반환.
+>
+>
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter      | Type                                | Contents |
+{% tab title="Information" %}
+| Name      | Type                                | Description |
 | -------------- | ----------------------------------- | -------- |
-| screenPosition | [JSVector2D](../core/jsvector2d.md) | 화면 좌표    |
+| position | [JSVector2D](../core/jsvector2d.md) | 화면 좌표 (x, y)   |
 
-* Detail
-  * [JSVector2D](../core/jsvector2d.md) : (x, y) 화면 좌표
 * Return
-  * [JSVector3D](../core/jsvector3d.md) : (경도, 위도, 고도) 3차원 지도 좌표
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=coordinate\_screen\_to\_map
+  * [JSVector3D](../core/jsvector3d.md) : 경위도 좌표 반환 성공.
+  * null : 엔진이 정상적으로 load되지 않았을 경우
+  
+* Sample
+  * function init 참조
+  * [샌드박스\_지도->화면좌표변환](http://sandbox.dtwincloud.com/code/main.do?id=coordinate\_screen\_to\_map)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var mapPosition = Module.getMap().ScreenToMapPointEX(10, 10);
+```
 {% endtab %}
 {% endtabs %}
+
+### Type Definitions
+
+##### JSMap.BaseMapOption
+
+> 배경 영상 지도 변경 옵션.
+

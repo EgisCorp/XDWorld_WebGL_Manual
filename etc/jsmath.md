@@ -17,7 +17,7 @@ var math = Module.getMath();
 > argument 변수로 정점 리스트 설정.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name   | Type                                               | Description  |
 | ------ | -------------------------------------------------- | ------------ |
 | option | [JSMath.BezierCurve](jsmath.md#jsmath.beziercurve) | 변환 좌표 속성 정보. |
@@ -43,7 +43,7 @@ var math = Module.getMath();
 > argument 변수로 정점 리스트 설정.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name   | Type                                             | Description  |
 | ------ | ------------------------------------------------ | ------------ |
 | option | [JSMath.BezierLine](jsmath.md#jsmath.BezierLine) | 변환 좌표 속성 정보. |

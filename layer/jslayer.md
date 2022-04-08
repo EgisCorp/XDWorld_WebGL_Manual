@@ -1,175 +1,156 @@
 ---
-description: 지도 내 레이어 설정 API를 제공합니다.
+description: 지도 내 객체를 관리하는 API.
 ---
 
 # JSLayer
 
-Module createTypoon API로 생성할 수 있습니다.
+> Module createTypoon API로 생성할 수 있습니다.
 
 ```javascript
-let list = new Module.JSLayerList(false);
-
+let layerList = new Module.JSLayerList( true );
+let layer = layerList.createLayer( layername );
 ```
 
+### addObject(object, level)
 
-## 생성자 Constructor → JSLayer
-
-> 인스턴스 JSLayer 생성
-
-{% tabs %}
-{% tab title="Infomation" %}
-| No. | API | Contents |
-| :--- | :--- | :--- |
-| 1 | JSLayer\(\) | 사용자 레이어 반환 |
-
-* Code
-
-```javascript
-  let layerList = new Module.JSLayerList( true );
-  let layer = layerList.createLayer( layername );
-```
-{% endtab %}
-{% endtabs %}
-
-## addObject\( object, level \)
-
-> 해당 사용자 레이어 오브젝트 추가.
+> 해당 사용자 레이어 객체 추가.
 >
 > 사용자 레이어만 가능.
+> 
+> level 0으로 고정적으로 사용.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| object | JSObject | 생성 된 오브젝트 추가 |
+| object | JSObject | 생성 된 객체 추가 |
 | ~~level~~ | number | 0 값으로 사용 |
+{% endtab %}
 
-* Code
-
+{% tab title="Template" %}
 ```javascript
-  let layername = "objectlayer"
-  let layerList = new Module.JSLayerList( true );
-  let layer = layerList.createLayer( layername );
-  // object 생성 과정
-  layer.addObject(object, 0);
+let layername = "objectlayer"
+let layerList = new Module.JSLayerList( true );
+let layer = layerList.createLayer( layername );
+layer.addObject(object, 0);
 ```
 {% endtab %}
 {% endtabs %}
 
-## indexAtKey\( index \)  → string
+### indexAtKey(index)  → string
 
-> 해당 사용자 레이어에서 오브젝트 ID 반환.
+> 해당 사용자 레이어에서 객체 ID 반환.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 리스트 index 해당되는 오브젝트 ID 반환.
+> 해당 사용자 레이어 객체는 리스트로 관리하며 리스트 Index 해당되는 객체 ID 반환.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| index | number | 목표 오브젝트 인덱스. |
+| index | number | 목표 객체 Index. |
 
 * Return
-  * 문자열 : 인덱스 해당 오브젝트 ID 반환 성공
-  * 빈 문자열 : 인덱스 해당 오브젝트 ID 반환 실패
-    * ID 반환 실패 조건
-      * index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
-* Code
+  * string : Index 해당 객체 ID 반환 성공.
+  * "" : Index 해당 객체 ID 반환 실패.
+    * 객체 ID 반환 실패 조건.
+	  * Index 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우)
 
+{% endtab %}
+
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## indexAtObject\( index \) → **\(** JSObject **\)**
+### indexAtObject(index) → JSObject
 
-> 해당 사용자 레이어에서 오브젝트 반환.
+> 해당 사용자 레이어에서 객체 반환.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 리스트 index 해당되는 오브젝트 반환.
+> 해당 사용자 레이어 객체는 리스트로 관리하며 리스트 index 해당되는 객체 반환.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| index | number | 목표 오브젝트 인덱스. |
+| index | number | 등록 객체 인덱스. |
 
 * Return
-  * JSObject : 비교 ID와 동일한 오브젝트 반환 성공
-  * null : 비교 ID와 동일한 오브젝트 반환 실패
-    * ID 반환 실패 조건
-      * index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
-      * 해당 레이어 객체 수가 0인 경우
-* Code
+  * JSObject : Index 해당 객체 반환 성공.
+  * null : Index 해당 객체 반환 실패.
+    * 객체 반환 실패 조건.
+	  * Index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
+	  * 해당 레이어 객체 개수가 0인 경우.
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## keyAtObject\( objectid \) → **\(** JSObject **\)**
+### keyAtObject(name) → JSObject
 
-> 해당 사용자 레이어에서 오브젝트 반환.
+> 해당 사용자 레이어에서 객체 반환.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 순차적으로 오브젝트 ID와 objectid 비교 후 조건에 만족하는 오브젝트 반환.
+> 해당 사용자 레이어 객체는 리스트로 관리하며 순차적으로 객체 ID와 objectid 비교 후 조건에 만족하는 객체 반환.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| objectid | string | 목표 오브젝트 ID. |
+| name | string | 등록 객체 명칭. |
 
 * Return
-  * JSObject : 비교 ID와 동일한 오브젝트 반환 성공
-  * NULL : 비교 ID와 동일한 오브젝트 반환 실패
-    * ID 반환 실패 조건
-      * ID와 동일한 오브젝트가 없을 경우
-      * objectid 빈공백 일 경우
-      * 해당 레이어 객체 수가 0인 경우
-* Code
+  * JSObject : 동일 명칭 객체 반환 성공.
+  * null : 동일 명칭 객체 반환 실패.
+    * 객체 반환 실패 조건.
+	  * 동일 명칭 객체가 없는 경우.
+	  * name 문자 데이터가 없는 경우.
+	  * 해당 레이어 객체 개수가 0인 경우.
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## removeAtIndex\( index \) → boolean
+### removeAtIndex(index) → boolean
 
-> 해당 사용자 레이어에서 오브젝트 삭제.
+> 해당 사용자 레이어에서 객체 삭제.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 리스트 index 해당되는 오브젝트 삭제.
+> 해당 사용자 레이어 객체는 리스트로 관리하며 리스트 Index 해당되는 객체 삭제.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| index | number | 삭제 오브젝트 인덱스 |
+| index | number | 등록 객체 인덱스. |
 
 * Return
-  * TRUE : 오브젝트 삭제 성공
-  * FALSE : 오브젝트 삭제 실패
+  * true : 객체 삭제 성공.
+  * false : 객체 삭제 실패.
     * 삭제 실패 조건
-      * index가 오브젝트 리스트 범위를 초과한 경우 \(0보다 작거나 오브젝트 리스트 수 보다 큰 경우\)
-      * 해당 레이어 객체 수가 0인 경우
-      * 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
-      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
-* Code
+      * index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
+      * 해당 레이어 객체 수가 0인 경우.
+      * 서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
+      * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
     let layername = "objectlayer"
     let layerList = new Module.JSLayerList(true);
-    let    layerList.createLayer(layername );
-
-    // object 생성 과정
+    let layerList.createLayer(layername );
 
     layer.addObject(object, 0);
     layer.removeAtIndex(0);
@@ -177,287 +158,303 @@ let list = new Module.JSLayerList(false);
 {% endtab %}
 {% endtabs %}
 
-## removeAtKey\( objectid \) → boolean
+### removeAtKey(name) → boolean
 
-> 해당 사용자 레이어에서 오브젝트 삭제.
+> 해당 사용자 레이어에서 객체 삭제.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 순차적으로 오브젝트 ID와 objectid 비교 후 조건에 만족하는 오브젝트 삭제.
+> 해당 사용자 레이어 객체는 리스트로 관리하며 순차적으로 객체 명칭과 name 비교 후 조건에 만족하는 객체 삭제.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| objectid | string | 목표 오브젝트 ID. |
+| name | string | 등록 객체 명칭. |
 
 * Return
-  * TRUE : 오브젝트 삭제 성공
-  * FALSE : 오브젝트 삭제 실패
+  * true : 객체 삭제 성공.
+  * false : 객체 삭제 실패.
     * 삭제 실패 조건
-      * objectid가 동일한 오브젝트가 없을 경우
-      * objectid 빈공백 일 경우
-      * 해당 레이어 객체 수가 0인 경우
-      * 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\)
-      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\)
-* Code
+      * objectid가 동일한 객체가 없을 경우.
+      * name 문자 데이터가 없는 경우.
+      * 해당 레이어 객체 수가 0인 경우.
+      * 서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
+      * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## removeAtObject\( object \) → boolean
+### removeAtObject(object) → boolean
 
-> 해당 사용자 레이어에서 오브젝트 삭제.
+> 해당 사용자 레이어에서 객체 삭제.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 순차적으로 오브젝트와 object 비교 후 조건에 만족하는 오브젝트 삭제.
+> 해당 사용자 레이어 객체는 리스트로 관리하며 순차적으로 객체와 object 비교 후 조건에 만족하는 객체 삭제.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| object | JSObject | 목표 오브젝트. |
+| object | JSObject | 등록 객체. |
 
 * Return
-  * TRUE : 오브젝트 삭제 성공
-  * FALSE : 오브젝트 삭제 실패
+  * true : 객체 삭제 성공.
+  * false : 객체 삭제 실패.
     * 삭제 실패 조건
-      * object와 동일한 오브젝트가 없을 경우.
+      * object와 동일한 객체가 없을 경우.
       * 해당 레이어 객체 수가 0인 경우.
-      * 서비스 레이어 경우\(서비스 레이어는 tile 기반으로 오브젝트는 tile에 종속 된다.\).
-      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\).
-* Code
+      * 서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
+      * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## removeAll\( \) → boolean
+### removeAll() → boolean
 
-> 해당 사용자 레이어에서 오브젝트 삭제.
+> 해당 사용자 레이어에서 객체 삭제.
 >
-> 해당 레이어 오브젝트 리스트 전체 삭제.
+> 해당 레이어 객체 리스트 전체 삭제.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
+
 * Return
-  * TRUE : 오브젝트 삭제 성공.
-  * FALSE : 오브젝트 삭제 실패.
+  * true : 객체 삭제 성공.
+  * false : 객체 삭제 실패.
     * 삭제 실패 조건
       * 해당 레이어 객체 수가 0인 경우.
-      * 서비스 레이어 인 경우\( 서비스 레이어에서 오브젝트는 tile에 종속.\).
-      * 외부 서버를 통해 로드된 데이터인 경우\(Ex. WMS, WFS\).
-* Code
+      * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+      * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## getObjectCount\( \) → number
+### getObjectCount() → number
 
-> 해당 레이어 오브젝트 리스트 갯수 반환.
+> 해당 레이어 객체 리스트 갯수 반환.
 >
 > 사용자 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
+
 * Return
-  * result&gt;0 : 해당 레이어 오브젝트 갯수.
-  * -1 : 해당 레이어에 오브젝트가 존재 하지 않는 경우.
-* Code
+  * 0 : 해당 레이어 객체 갯수.
+  * -1 : 해당 레이어에 객체가 존재 하지 않는 경우.
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## getObjectKeyList\( \) → string
+### getObjectKeyList() → string
 
-> 해당 레이어에서 오브젝트 ID 반환.
+> 해당 레이어에서 객체 명칭 반환.
 >
-> 해당 사용자 레이어 오브젝트는 리스트로 관리하며 모든 리스트 오브젝트 ID 반환
+> 해당 사용자 레이어 객체는 리스트로 관리하며 모든 리스트 객체 명칭 반환
 >
 > 사용자 레이어에서 사용 가능
 
 {% tabs %}
 {% tab title="Infomation" %}
 * Return
-  * 문자열 : 오브젝트 ID 반환 성공\(구분자 ","\)
-  * 빈 문자열 : 오브젝트 ID 반환 실패  
-  * "" : 오브젝트 ID 반환 실패
-    * ID 반환 실패 조건
+  * string : 객체 명칭 반환 성공(구분자 ",").
+  * "" : 객체 명칭 반환 실패.
+    * ID 반환 실패 조건.
       * 해당 레이어 객체 수가 0인 경우.
-      * 서비스 레이어 인 경우\( 서비스 레이어에서 오브젝트는 tile에 종속.\).
-* Code
-
-```javascript
-
-```
+      * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
 {% endtab %}
-{% endtabs %}
 
-## setEditable\( edit \) → boolean
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}{% endtabs %}
+
+### setEditable(edit) → boolean
 
 > 해당 레이어에서 편집 레이어 설정.
 >
 > 엔진 내부에서 생성되는 객체를 관리하는 레이어.
 >
 > 사용자 레이어만 가능.
+>
+> 편집레이어 변경 시 기존 편집레이어는 일반레이어로 변경.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| edit | boolean | 편집레이어 설정 유무. |
+| edit | boolean | <p>true인 경우 편집레이어로 설정<br>false인 경우 일반레이어로 설정.</p> |
 
-* Detail
-  * edit
-    * TRUE : 편집 레이어 설정\(기존 편집 레이어는 일반레이어로 변경\).
-    * FALSE : 일반 레이어 설정.
 * Return
-  * TRUE : 편집 레이어 설정 성공.
-  * FALSE : 편집 레이어 설정 실패.
+  * true : 편집 레이어 설정 성공.
+  * false : 편집 레이어 설정 실패.
     * 편집 레이어 설정 실패 조건
-      * 서비스 레이어 인 경우\( 서비스 레이어에서 오브젝트는 tile에 종속.\).
-* Code
+      * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=object\_figure](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setLODRatio\( ratio \)
+### setLODRatio(ratio)
 
 > 해당 레이어 가시화 범위 설정
 >
-> 해당 서비스 레이어 LOD 변경으로 오브젝트 가시화 조절.
+> 해당 서비스 레이어 LOD 변경으로 객체 가시화 조절.
 >
 > 서비스 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| ratio | number | LOD 단계 설정\(높을수록 가시화 범위 증가\). |
+| ratio | number | LOD 단계 설정(높을수록 가시화 범위 증가). |
 
-* Code
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_arc](http://sandbox.dtwincloud.com/code/main.do?id=object_line_arc)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setSelectable\( select \)
+### setSelectable(type)
 
 > 해당 레이어 선택 설정.
 >
-> 해당 레이어를 구성하는 오브젝트 선택 이벤트 설정.
+> 해당 레이어를 구성하는 객체 선택 이벤트 설정.
 >
 > 사용자, 서비스 레이어에서 사용 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| select | boolean | 해당 레이어 오브젝트 선택 이벤트 설정 |
+| type | boolean | <p>true인 경우 선택 이벤트 동작.<br>false인 경우 선택 이벤트 금지.</p> |
 
-* Detail
-  * edit
-    * TRUE : 선택 이벤트 동작.
-    * FALSE : 선택 이벤트 미동작.
-* Code
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
-## setUseRecoverHsv\( use \) → boolean
+### setUseRecoverHsv(type) → boolean
 
 > 해당 서비스 레이어 색상 표현 설정.
 >
-> HSV 색상 채널을 적용한 오브젝트 표현 설정.
+> HSV 색상 채널을 적용한 객체 표현 설정.
 >
 > 건물, 드론 LOD 레이어만 적용.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| use | boolean | HSV 채널 설정 유무. |
+| type | boolean | <p>true인 경우 HSV 채널 가시화.<br>false인 경우 기본 가시화.</p> |
 
-* Detail
-  * use
-    * TRUE : HSV 채널 가시화 설정.
-    * FALSE : 일반 가시화 설정.
+
 * Return
-  * TRUE : HSV 채널 가시화 설정 성공.
-  * FALSE : HSV 채널 가시화 설정 실패.
-* Code
+  * true : HSV 채널 가시화 설정 성공.
+  * false : HSV 채널 가시화 설정 실패.
+  
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_color\_tone](http://sandbox.dtwincloud.com/code/main.do?id=layer_color_tone)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setRecoverHsvValue\( hue, saturation, value \) → boolean
+### setRecoverHsvValue(hue, saturation, value) → boolean
 
 > 해당 서비스 레이어 HSV 색상 채널 설정.
 >
-> 색상\(hue\), 채도\(saturation\), 명도\(value\) 입력 값으로 오브젝트 HSV 채널 가시화 설정.
+> 색상(hue), 채도(saturation), 명도(value) 입력 값으로 객체 HSV 채널 가시화 설정.
 >
 > 건물, 드론 LOD 레이어만 적용.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| hue | number | HSV 채널\(명도\). |
-| saturation | number | HSV 채널\(채도\). |
-| value | number | HSV 채널\(명도\). |
+| hue | number | HSV 채널(명도). |
+| saturation | number | HSV 채널(채도). |
+| value | number | HSV 채널(명도). |
 
 * Return
-  * TRUE : HSV 채널 설정 성공.
-  * FALSE : HSV 채널 설정 실패.
-* Code
+  * true : HSV 채널 설정 성공.
+  * false : HSV 채널 설정 실패.
+  
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_color\_tone](http://sandbox.dtwincloud.com/code/main.do?id=layer_color_tone)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setTileAltitudeOffset\( offset \) → boolean
+### setTileAltitudeOffset(offset) → boolean
 
-> 해당 서비스 초기 설정 고도값 설정\(기본 0\)
+> 해당 서비스 초기 설정 고도값 설정(기본 0)
 >
-> 오브젝트가 로딩 시 초기 설정된 고도\(offset\)을 기준으로 높이 설정\(가시화 된 오브젝트 높이 변경 안됨\).
+> 객체가 로딩 시 초기 설정된 고도(offset)을 기준으로 높이 설정(가시화 된 객체 높이 변경 안됨).
 >
 > 포인트 클라우드 레이어만 적용.
+>
+> offset 입력 값에 따른 높이 고도 설정은 tilt&lt;0(상승), 0(원본 고도), tilt&gt;0(하강).
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | offset | number | 포인트 클라우드 고도 설정. |
 
-* Detail
-  * altitude
-    * offset &lt; 0 : 원본 고도에서 높이를 높인다.
-    * offset == 0 : 원본 고도값.
-    * offset &gt; 1 : 원본 고도에서 높이를 내린다.
 * Return
-  * TRUE : 높이 설정 성공.
-  * FALSE : 높이 설정 실패.
-* Code
+  * true : 높이 설정 성공.
+  * false : 높이 설정 실패.
+  
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_pointcloud\_point\_size](http://sandbox.dtwincloud.com/code/main.do?id=layer_pointcloud_point_size)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setMinDistance\( distance \) → boolean
+### setMinDistance(distance) → boolean
 
 > 레이어 가시 범위 설정
 >
@@ -467,22 +464,28 @@ let list = new Module.JSLayerList(false);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| distance | number | 레이어 최소 가시범위 거리\(m단위\). |
+| distance | number | 레이어 최소 가시범위 거리(m단위). |
 
 * Return
-  * TRUE : 최소 가시 범위 설정 성공.
-  * FALSE : 최소 가시 범위 설정 실패.
+  * true : 최소 가시 범위 설정 성공.
+  * false : 최소 가시 범위 설정 실패.
     * 최소 가시 범위 실패 조건.
       * 최소 가시 범위가 최대 가시 범위보다 큰 경우.
       * 서비스 레이어 일 경우 setLODRatio 사용.
-* Code
+	  
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setMaxDistance\( distance \) → boolean
+### setMaxDistance(distance) → boolean
 
 > 레이어 가시 범위 설정
 >
@@ -492,22 +495,28 @@ let list = new Module.JSLayerList(false);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| distance | number | 레이어 최대 가시범위 거리\(m단위\). |
+| distance | number | 레이어 최대 가시범위 거리(m단위). |
 
 * Return
-  * TRUE : 최대 가시 범위 설정 성공.
-  * FALSE : 최대 가시 범위 설정 실패.
+  * true : 최대 가시 범위 설정 성공.
+  * false : 최대 가시 범위 설정 실패.
     * 최대 가시 범위 실패 조건.
       * 최대 가시 범위가 최소 가시 범위보다 작은 경우.
       * 서비스 레이어 일 경우 setLODRatio 사용.
-* Code
+	  
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setWMSProvider\( option \) → string
+### setWMSProvider(option) → string
 
 > WMS 레이어 생성
 >
@@ -515,80 +524,89 @@ let list = new Module.JSLayerList(false);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| option | object | WMS 요청 속성 정보. |
-
-| option\_tag | Type | Contents |
-| :--- | :--- | :--- |
-| url | string | 요청 지오서버 url. |
-| layer | string | 요청 지오서버 레이어 명칭. |
-| minmumLevel | number | 최소 가시화 레벨\[Default 0\]. |
-| maxmumLevel | number | 최대 가시화 레벨\[Default 15\]. |
-| tileSize | number | 요청 정사각형 이미지 크기\[Default 256\]. |
-| crs | string | 좌표 타입\[Default EPSG:4326\]. |
-| parameters | Object | 스타일, 옵션 설정 속성정보. |
+| option | 링크 | WMS 요청 속성 정보. |
 
 * Return
   * success : WMS 레이어 생성 성공.
   * 문자열 : WMS 레이어 생성 과정 에러 메시지.
-* Code
+  
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setBBoxOrder\( reverse \)
+### setBBoxOrder(type)
 
 > WMS 서비스 레이어 옵션 설정.
 >
 > 지오 서버로 요청하는 좌표 정보 가시화 옵션 설정.
 >
 > WMS 레이어에서 사용 가능
+>
+> type 입력 값에 따른 좌표 정보 true(BBOX=minx,miny,maxx,maxy), false(BBOX=minY,minX,maxY,maxX).
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| reverse | boolean | 좌표 옵션 설정. |
+| type | boolean | 좌표 옵션 설정. |
 
-* Detail
-  * reverse
-    * TRUE : X, Y 순서로 설정 Ex\) BBOX=minx,miny,maxx,maxy
-    * FALSE : Y, X 순서로 설정 Ex\) BBOX=minY,minX,maxY,maxX
-* Code
+* Sample
   * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setProxyRequest\( set \)
+### setProxyRequest(type)
 
 > 레이어 프록시 사용 설정.
 >
-> 오브젝트 통신 요청 시 프록시 사용 유무를 설정.
+> 객체 통신 요청 시 프록시 사용 유무를 설정.
 >
 > 서비스 레이어만 가능.
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| set | boolean | 프록시 사용 설정 유무. |
+| type | boolean | <p>true인 경우 프록시 서버 설정.<br>false인 경우 기본 요청 설정.</p> |
 
-* Detail
-  * altitude
-    * offset &lt; 0 : 원본 고도에서 높이를 높인다.
-    * offset == 0 : 원본 고도값.
-    * offset &gt; 1 : 원본 고도에서 높이를 내린다.
 * Return
-  * TRUE : 프록시 설정 성공.
-  * FALSE : 프록시 설정 실패.
+  * true : 프록시 설정 성공.
+  * false : 프록시 설정 실패.
     * 프록시 설정 실패 조건.
       * 사용자 레이어 인 경우
-* Code
+{% endtab %}
 
+{% tab title="Template" %}
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
 
+### Type Definitions
+
+#### JSLayer.WMSOptions
+
+> WMS 레이어 생성 옵션.
+
+| Name | Type | Attributes | Default | Description |
+| :--- | :--- | :--- |
+| url | string |  |  | 요청 지오서버 url. |
+| layer | string |	|  | 요청 지오서버 레이어 명칭. |
+| minmumLevel | number | optional | 0 |	최소 가시화 레벨. |
+| maxmumLevel | number | optional | 15 | 최대 가시화 레벨. |
+| tileSize | number | optional | 256 | 요청 정사각형 이미지 크기\[Default 256\]. |
+| crs | string | optional | EPSG:4326 | 좌표 타입. |
+| parameters | Object | optional |  | 스타일, 옵션 설정 속성정보. |

@@ -15,7 +15,7 @@ var vec_array = new Module.JSVec2Array();
 > 배열에 새로운 데이터를 추가합니다.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | element | [JSVector2D](jsvector2d.md) | 새로 추가하는 데이터. |

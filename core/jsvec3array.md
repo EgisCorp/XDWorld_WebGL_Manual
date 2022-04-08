@@ -15,7 +15,7 @@ var vec_array = new Module.JSVec3Array();
 > 배열의 데이터 수 반환.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 
 * Return
   * 배열의 데이터 수.
@@ -32,7 +32,7 @@ var vec_array = new Module.JSVec3Array();
 > 인덱스 번호에 해당하는 데이터 반환.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | index | number | 반환하는 데이터 인덱스(0부터 순서대로 정렬) |
@@ -52,7 +52,7 @@ var vec_array = new Module.JSVec3Array();
 > 배열에 새로운 데이터를 추가합니다.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | element | [JSVector3D](jsvector3d.md) | 추가 할 데이터. |

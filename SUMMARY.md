@@ -37,7 +37,6 @@
 * [JSSurfaceGraph](object/jssurfacegraph.md)
 * [JSSymbol](object/jssymbol.md)
 * [JSTypoon](object/jstypoon.md)
-* [JSTypoon_Org](object/jstypoon_org.md)
 * [JSViewFrustum](object/jsviewfrustum.md)
 
 ## Analysis
@@ -70,3 +69,4 @@
 * [JSProjection](etc/jsprojection.md)
 * [SOPObject](etc/sopobject.md)
 * [Type List](etc/type-list.md)
+* [Tag List](etc/tag-list.md)

@@ -30,7 +30,7 @@ var math = Module.getOption();
   * 실패
     * "error map load" : 오브젝트가 초기화 되지 않음.
     * "error { callback } Undefined" : event 변수 Undefined 일 경우.
-	* "error { callback } NULL" : event 변수 null 일 경우.
+	* "error { callback } null" : event 변수 null 일 경우.
 	* "error { callback } Type Mismatch" : event Type이 function이 아닌 경우.
 	
 * Code
@@ -58,7 +58,7 @@ var math = Module.getOption();
   * 실패
     * "error map load" : 오브젝트가 초기화 되지 않음.
     * "error { callback } Undefined" : event 변수 Undefined 일 경우.
-	* "error { callback } NULL" : event 변수 null 일 경우.
+	* "error { callback } null" : event 변수 null 일 경우.
 	* "error { callback } Type Mismatch" : event Type이 function이 아닌 경우.
 	
 * Code

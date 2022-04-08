@@ -1,59 +1,61 @@
 ---
-description: 절투체 오브젝트 생성 설정 API.
+description: 절투체 객체 생성 및 수정 기능 API.
 ---
 
 # JSViewFrustum
 
-Module createViewFrustum API로 생성할 수 있습니다.
+> Module.createViewFrustum API 생성.
 
 ```javascript
 var object = Module.createViewFrustum("ID");
 ```
 
-## createViewFrustum\([JSVector3D](JSVector3D.md) position, number pan, number tilt, number fov_x, number fov_y, number distance \)
+### createViewFrustum(position, pan, tilt, fov_x, fov_y, distance )
 
-> 절두체(frustum) 오브젝트 생성.
+> 절두체(frustum) 객체 생성.
 >
-> parameter 변수로 절두체(frustum) 오브젝트 설정.
+> parameter 변수로 객체 설정.
+>
+> pan 입력 값에 따른 회전 정보 0, 360(북쪽), 90(동쪽), 180(남쪽), 270(서쪽).
+> 
+> tilt 입력 값에 따른 회전 정보 0(정면), tilt&lt;0(상단), tilt&gt;0(하단).
 
 {% tabs %}
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| position | [JSVector3D](JSVector3D.md) | 절두체 경위도 시작 위치 |
-| pan | number | 절두체 Y축 회전 설정 |
-| tilt | number | 절두체 X축 회전 설정 |
-| fov_x | number | 절두체 화각 너비 설정 |
-| fov_y | number | 절두체 화각 높이 설정 |
-| distance | number | 절두체 길이 설정 |
+| position | [JSVector3D](JSVector3D.md) | 절두체 경위도 시작 위치. |
+| pan | number | 절두체 Y축 회전 설정. |
+| tilt | number | 절두체 X축 회전 설정. |
+| fov_x | number | 절두체 화각 너비 설정. |
+| fov_y | number | 절두체 화각 높이 설정. |
+| distance | number | 절두체 길이 설정. |
 
-* Detail
-  * pan : 0(북쪽), 90(동쪽), 180(남쪽), 270(서쪽)으로 방향 전환.
-  * tilt : 0(정면), tilt&lt;0(상단), tilt&gt;0(하단) 방향 전환.  
-  
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_frustum
+* Sample
+  * function init 참조.
+  * [샌드박스\_Frustum](http://sandbox.dtwincloud.com/code/main.do?id=object_frustum)
 {% endtab %}
 {% endtabs %}
 
-## setColor \([JSColor](../core/jscolor.md) color\)
+### setColor(color)
 
-> 절두체(frustum) 오브젝트 색상 변경.
+> 절두체(frustum) 객체 색상 변경.
 
 {% tabs %}
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
-| color | [JSColor](../core/jscolor.md) | 절두체 가시화 색상 |
+| color | [JSColor](../core/jscolor.md) | 절두체 가시화 색상. |
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_frustum
+* Sample
+  * function createViewFrustum 참조.
+  * [샌드박스\_Frustum](http://sandbox.dtwincloud.com/code/main.do?id=object_frustum)
 {% endtab %}
 {% endtabs %}
 
-## getColor \(\) → [JSColor](../core/jscolor.md)
+### getColor() → [JSColor](../core/jscolor.md)
 
-> 절두체(frustum) 오브젝트 색상 반환.
+> 절두체(frustum) 객체 색상 반환.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -67,7 +69,7 @@ var object = Module.createViewFrustum("ID");
 {% endtab %}
 {% endtabs %}
 
-## setFovX \(number width\) → boolean
+### setFovX(width) → boolean
 
 > 절두체(frustum) 화각 너비 변경.
 
@@ -77,12 +79,13 @@ var object = Module.createViewFrustum("ID");
 | :--- | :--- | :--- |
 | width | number | 절두체 너비 설정 |
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_frustum
+* Sample
+  * function resutFrustum 참조.
+  * [샌드박스\_Frustum](http://sandbox.dtwincloud.com/code/main.do?id=object_frustum)
 {% endtab %}
 {% endtabs %}
 
-## setFovY \(number height\) → boolean
+### setFovY(height) → boolean
 
 > 절두체(frustum) 화각 높이 변경.
 
@@ -92,12 +95,13 @@ var object = Module.createViewFrustum("ID");
 | :--- | :--- | :--- |
 | height | number | 절두체 높이 설정 |
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_frustum
+* Sample
+  * function resutFrustum 참조.
+  * [샌드박스\_Frustum](http://sandbox.dtwincloud.com/code/main.do?id=object_frustum)
 {% endtab %}
 {% endtabs %}
 
-## getFov \(\) → [JSVector3D](JSVector3D.md)
+### getFov() → [JSVector2D](../core/jsvector2d.md)
 
 > 절두체(frustum) 화각 크기 반환.
 
@@ -105,31 +109,31 @@ var object = Module.createViewFrustum("ID");
 {% tab title="Information" %}
   
 * Return
-  * [JSVector3D](JSVector3D.md) : 절투체 화각 크기 반환 성공.
+  * [JSVector2D](../core/jsvector2d.md) : 절투체 화각 크기 반환 성공.
 	* return.x : 화각 너비.
 	* return.y : 화각 높이.
 {% endtab %}
 {% endtabs %}
 
-## setPan \(number pan \)
+### setPan(pan)
 
 > 절두체(frustum) Y축 회전값 변경.
+> 
+> pan 입력 값에 따른 회전 정보 0, 360(북쪽), 90(동쪽), 180(남쪽), 270(서쪽).
 
 {% tabs %}
 {% tab title="Information" %}
 | Parameter | Type | Contents |
 | :--- | :--- | :--- |
 | pan | number | 절두체 Y축 회전 설정 |
-
-* Detail
-  * pan : 0(북쪽), 90(동쪽), 180(남쪽), 270(서쪽)으로 방향 전환.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_frustum
+* Sample
+  * function resutFrustum 참조.
+  * [샌드박스\_Frustum](http://sandbox.dtwincloud.com/code/main.do?id=object_frustum)
 {% endtab %}
 {% endtabs %}
 
-## getPan \(\) → number
+### getPan() → number
 
 > 절두체(frustum) Y축 회전값 반환.
 
@@ -141,9 +145,11 @@ var object = Module.createViewFrustum("ID");
 {% endtab %}
 {% endtabs %}
 
-## setTilt \(number tilt\)
+### setTilt(tilt)
 
 > 절두체(frustum) X축 회전값 변경.
+> 
+> tilt 입력 값에 따른 회전 정보 0(정면), tilt&lt;0(상단), tilt&gt;0(하단).
 
 {% tabs %}
 {% tab title="Information" %}
@@ -151,15 +157,13 @@ var object = Module.createViewFrustum("ID");
 | :--- | :--- | :--- |
 | tilt | number | 절두체 X축 회전 설정 |
 
-* Detail
-  * tilt : 0(정면), tilt&lt;0(상단), tilt&gt;0(하단) 방향 전환.  
-  
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_frustum
+* Sample
+  * function resutFrustum 참조.
+  * [샌드박스\_Frustum](http://sandbox.dtwincloud.com/code/main.do?id=object_frustum)
 {% endtab %}
 {% endtabs %}
 
-## getTilt \(\) → number
+### getTilt() → number
 
 > 절두체(frustum) X축 회전값 반환.
 

@@ -1,275 +1,383 @@
 ---
-description: 
+description: 2차원 막대 그래프 객체 생성 및 설정 API.
 ---
 
 # JSBarGraph
 
-Module createBarGraph API로 생성할 수 있습니다.
+> Module.createBarGraph API 생성.
 
 ```javascript
 var object = Module.createBarGraph("ID");
 ```
 
-## create\(string legendKey, string label, [JSColor](../core/jscolor.md) color\) → boolean
+### create(position, size, type) → boolean
 
-> 그래프 범례를 추가합니다.
+> 2차원 막대 그래프 객체 생성.
+> 
+> type 입력 값에 따른 가시화 변경 0(가로 그래프 형태), 1(세로 그래프 형태).
 
 {% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
+{% tab title="Infomation" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| legendKey | string | 그래프 범례 키 |
-| label | string | 그래프 범례 명칭 |
-| color | [JSColor](../core/jscolor.md) | 그래프 범례 색상 |
+| position | [JSVector3D](../core/jsvector3d.md) | 그래프 경위도 위치(중하단 기준점). |
+| size | [JSSize2D](../core/jssize2d.md) | 그래프 크기(너비, 높이 설정). |
+| type | number | 그래프 타입 설정 |
 
 * Return
-  * 설정 결과
-  
-* Code
-  * 
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.  
+
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## insertColumn\(string filedName, [Collection](../core/collection.md) data\) → boolean
-
-> 그래프 데이터 셋을 추가합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| filedName | string | 데이터 셋 명칭 (그래프 하단에 텍스트로 출력됩니다.)  |
-| data | [Collection](../core/collection.md) | 데이터 값 리스트 (범례 추가 순서를 따르며, 범례와 1:1 대응됩니다.) |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## insertRow\(string dataSetName, string fontName\) → boolean
-
-> 데이터 셋의 텍스트 폰트를 설정합니다. 
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| dataSetName | string | 데이터 셋 이름 |
-| fontName | string | 폰트 이름 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setData\(float interval\) → boolean
-
-> 그래프 화면과 필드 이름 텍스트 간 간격을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| interval | float | 간격 값 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setUnitText\(string dataSetName, number textSize\) → boolean
-
-> 데이터 셋의 텍스트 크기를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| dataSetName | string | 데이터 셋 이름 |
-| textSize | number | 텍스트 크기 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setValueRange\(string dataSetName, [JSColor](../core/jscolor.md) textColor, [JSColor](../core/jscolor.md) textOutlineColor\) → boolean
-
-> 데이터 셋의 텍스트 색상을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| dataSetName | string | 데이터 셋 이름 |
-| textColor | [JSColor](../core/jscolor.md) | 텍스트 채움 색상 |
-| textOutlineColor | [JSColor](../core/jscolor.md) | 텍스트 외곽 색상 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setAnimationSpeed\(float depth\) → boolean
-
-> 그래프 바닥 평면 너비 값을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| depth | float | 너비 값 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setFloorColor\([JSColor](../core/jscolor.md) color\) → boolean
-
-> 그래프 바닥 평면 색상을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| color | [JSColor](../core/jscolor.md) | 색상 값 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setLegendBoxSize\([JSSize3D	](../core/jssize3d.md) boxSize\) → boolean
-
-> 범례 색상 표시 박스 크기를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| boxSize | [JSSize3D](../core/jssize3d.md) | 박스 크기 |
-
-* Return
-  * 설정 결과
-  
-* Code
-  * 
-{% endtab %}
-{% endtabs %}
-
-## setValueRange\(number min, number max, number interval\) → boolean
+### setValueRange(min, max, interval) → boolean
 
 > 그래프 Y축 범위를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
-| min | number | 그래프 Y축 최소 값 |
-| max | number | 그래프 Y축 최대 값 |
-| interval | number | 그래프 격자 간격 |
+| min | number | 그래프 Y축 최소 값. |
+| max | number | 그래프 Y축 최대 값. |
+| interval | number | 그래프 격자 간격. |
 
 * Return
-  * 설정 결과
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
   
-* Code
-  * 
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setUnitText\(string unitText\) → boolean
+### setAnimationSpeed(speed) → boolean
+
+> 그래프 애니메이션 실행 속도를 설정합니다.
+> 
+> speed 입력값은 0.1 ~ 1.0 사이 값을 가지며 1.0 가까울 수록 빠르게 재생.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| speed | number | 그래프 애니메이션 실행 속도 |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setFloorColor(color) → boolean
+
+> 그래프 바닥 평면 색상을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| color | [JSColor](../core/jscolor.md) | 색상 값. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+    
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setLegendBoxSize(size) → boolean
+
+> 범례 색상 표시 박스 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| size | [JSSize3D](../core/jssize3d.md) | 박스 크기. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+      
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setUnitText(text) → boolean
 
 > 그래프 Y축 단위 텍스트를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
-| unitText | string | 단위 텍스트 |
+| text | string | 단위 텍스트. |
 
 * Return
-  * 설정 결과
-  
-* Code
-  * 
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+        
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setAnimationSpeed\(number speed\) → boolean
+### setGridVisible(type) → boolean
 
-> 그래프 애니메이션 실행 속도를 설정합니다.
+> 그래프 Y축과 격자를 가시화 유무 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
-| speed | number | 그래프 애니메이션 실행 속도 (0.1~1.0 사이 값을 가지며 값이 클 수록 빠르게 애니메이션이 재생됩니다.) |
+| type | boolean | <p>true인 경우 Y축 격자 가시화(RTT)<br>false인 경우 Y축 격자 숨김.</p>|
 
 * Return
-  * 설정 결과
-  
-* Code
-  * 
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## create\([JSVector3D](../core/jsvector3d.md) position, [JSSize3D	](../core/jssize2d.md) size, number barType\) → boolean
+### insertLegend(name, label, color) → boolean
 
-> 지정한 데이터, 위치, 크기로 그래프 객체를 생성합니다.
+> 그래프 범례를 추가합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
-| position | [JSVector3D](../core/jsvector3d.md) | 그래프 위치 (그래프 중앙 하단점 기준) |
-| size | [JSSize3D](../core/jssize2d.md) | 그래프 크기 |
-| barType | number | 그래프 막대 형태 |
+| name | string | 그래프 범례 그룹 명칭. |
+| label | string | 그래프 범례 명칭. |
+| color | [JSColor](../core/jscolor.md) | 그래프 범례 색상. |
 
 * Return
-  * 설정 결과
-  
-* Code
-  * 
+  * true : 객체 추가 성공.
+  * false : 객체 추가 실패.
+         
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var graph = Module.createBarGraph("Graph");
+graph.insertLegend("Legend1", "가스", new Module.JSColor(200, 255, 0, 0));
+graph.insertLegend("Legend2", "전기", new Module.JSColor(200, 255, 255, 0));
+graph.insertLegend("Legend3", "수도", new Module.JSColor(200, 0, 0, 255));
+graph.insertLegend("Legend4", "기타", new Module.JSColor(200, 255, 255, 255));
+```
 {% endtab %}
 {% endtabs %}
 
-## setGridVisible\(boolean visible\) → boolean
+### insertDataSet(name, data) → boolean
 
-> 그래프 Y축과 격자를 보기/숨김 설정합니다.
+> 그래프 데이터 셋을 추가합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Parameter | Type | Description |
 | :--- | :--- | :--- |
-| visible | boolean | 그래프 Y축 및 격자 보기/숨김 |
+| name | string | 데이터 셋 명칭 (그래프 하단 텍스트 출력).  |
+| data | [Collection](../core/collection.md) | 데이터 값 리스트 (범례 추가 순서를 따르며, 범례와 1:1 대응). |
 
 * Return
-  * 설정 결과
+  * true : 객체 추가 성공.
+  * false : 객체 추가 실패.
+           
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var graph = Module.createBarGraph("Graph");
+
+var dataValue = [10.5, 50.1, 97.0, 11.6, 34.9];
+var data = new Module.Collection();
+
+for (var i=0, len=dataValue.length; i<len; i++) {
+	data.add(dataValue[i]);
+}
+		
+graph.insertDataSet("2010년", data);
+```
+{% endtab %}
+{% endtabs %}
+
+### setDataSetNameFont(name, font) → boolean
+
+> 데이터 셋 이름 텍스트 폰트 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| name | string | 데이터 셋 이름. |
+| font | string | 폰트 이름. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDataSetNameTextSize(name, size) → boolean
+
+> 데이터 셋 이름 텍스트 크기 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| name | string | 데이터 셋 이름. |
+| size | number | 텍스트 크기. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDataSetNameTextColor(name, textcolor, textOutlineColor) → boolean
+
+> 데이터 셋 이름 텍스트 색상 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| name | string | 데이터 셋 이름. |
+| textcolor | [JSColor](../core/jscolor.md) | 텍스트 채움 색상. |
+| textOutlineColor | [JSColor](../core/jscolor.md) | 텍스트 외곽 색상. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
   
-* Code
-  * 
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDataSetNameInterval(interval) → boolean
+
+> 그래프 화면과 필드 이름 텍스트 간 간격 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| interval | number | 그래프 화면과 필드 이름 텍스트 간 간격. |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setFloorDepth(depth) → boolean
+
+> 그래프 바닥 평면 세로방향 너비.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| depth | number | 그래프 바닥 평면 세로방향 너비.|
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+  
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}

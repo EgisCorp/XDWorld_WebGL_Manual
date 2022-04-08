@@ -1,512 +1,466 @@
 ---
-description: 2D 그리드 객체를 위한 API를 제공합니다.
+description: 2D 그리드 객체 생성 및 수정 기능 API.
 ---
 
 # JSColorGrid
 
-Module createColorGrid API로 생성할 수 있습니다.
+> Module.createColorGrid API 생성.
 
 ```javascript
 var colorGrid = Module.createColorGrid("ID");
 ```
 
-## SetGridPosition([JSVector2D](../core/jsvector2d.md) leftTop, [JSVector2D](../core/jsvector2d.md) rightTop, [JSVector2D](../core/jsvector2d.md) rightBottom, [JSVector2D](../core/jsvector2d.md) leftBottom, number altitude, number rowNum, number colNum) → number
+### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, rowNum, colNum) → number
 
-> 4개의 좌표, 높이, 가로, 세로 개수를 이용하여 2D 그리드 객체를 생성합니다.
+> 4개의 경위도 좌표를 기준으로 2D 그리드 객체 생성.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type                          | Contents   |
+{% tab title="Information" %}
+| Name   | Type                          | Description   |
 | ----------- | ----------------------------- | ---------- |
-| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표 |
-| rightTop    | [JSVector2D](../core/jsvector2d.md) | 우상단 경위도 좌표 |
-| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표 |
-| leftBottom  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표 |
-| altitude    | number                        | 객체 높이      |
-| rowNum      | number                        | 가로 그리드 개수  |
-| colNum      | number                        | 세로 그리드 개수  |
+| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표. |
+| rightTop    | [JSVector2D](../core/jsvector2d.md) | 우상단 경위도 좌표. |
+| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표. |
+| leftBottom  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표. |
+| altitude    | number                        | 객체 높이.      |
+| rowNum      | number                        | 그리드 가로 개수.  |
+| colNum      | number                        | 그리드 세로 개수.  |
 
-* Detail
-```
+* Return
+  * 총 그리드 개수.
+
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
 var gridCellNum = colorGrid2D.SetGridPosition(
-	new Module.JSVector2D(124.2, 39), 	// 그리드 좌상단
-	new Module.JSVector2D(130.5, 39), 	// 그리드 우상단
-	new Module.JSVector2D(130.5, 34.5), 	// 그리드 우하단
-	new Module.JSVector2D(124.2, 34.5), 	// 그리드 좌하단
-	100000.0, 				// 그리드 바닥면 고도
-	rowNum, 				// 그리드 가로 셀 갯수
-	colNum					// 그리드 세로 셀 갯수
+	new Module.JSVector2D(124.2, 39),
+	new Module.JSVector2D(130.5, 39),
+	new Module.JSVector2D(130.5, 34.5),
+	new Module.JSVector2D(124.2, 34.5),
+	100000.0,
+	100,
+	100
 );
 ```
-
-* Return
-  * 총 그리드 개수
-  
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
 {% endtab %}
 {% endtabs %}
 
-## SetGridPositionByCellOptions([JSVector2D](../core/jsvector2d.md) leftTop, number altitude, number width, number height, number rowNum, number colNum) → number
+### SetGridPositionByCellOptions(leftTop, altitude, width, height, rowNum, colNum) → number
 
-> > 좌상단 좌표, 높이, 가로, 세로 개수, 길이를 이용하여 2D 그리드 객체를 생성합니다.
+> 좌상단 위치로 2D 그리드 객체 생성.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type                          | Contents   |
+{% tab title="Information" %}
+| Name   | Type                          | Description   |
 | ----------- | ----------------------------- | ---------- |
-| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표 |
-| altitude    | number                        | 객체 높이      |
-| width    	  | number                        | 그리드 가로 길이  |
-| height      | number                        | 그리드 세로 길이  |
-| rowNum      | number                        | 가로 그리드 개수  |
-| colNum      | number                        | 세로 그리드 개수  |
+| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표. |
+| altitude    | number                        | 객체 높이.      |
+| width    	  | number                        | 그리드 가로 길이.  |
+| height      | number                        | 그리드 세로 길이.  |
+| rowNum      | number                        | 그리드 가로 개수.  |
+| colNum      | number                        | 그리드 세로 개수.  |
 
-* Detail
+* Return
+  * 총 그리드 개수.
+{% endtab %}
 
-* Code
-```
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
 var gridCellNum = colorGrid2D.SetGridPositionByCellOptions(
-	new Module.JSVector2D(124.2, 39), 	// 그리드 좌상단
-	100000.0, 				// 그리드 바닥면 고도
-	width, 					// 그리드 가로 길이
-	height,					// 그리드 세로 길이
-	rowNum, 				// 그리드 가로 셀 갯수
-	colNum					// 그리드 세로 셀 갯수
+	new Module.JSVector2D(124.2, 39),
+	100000.0,
+	1000,
+	1000,
+	100,
+	100
 );
 ```
-
-* Return
-  * 총 그리드 개수
 {% endtab %}
 {% endtabs %}
 
-## SetGridPositionByCellSize([JSVector2D](../core/jsvector2d.md) leftTop, [JSVector2D](../core/jsvector2d.md) rightBottom, number altitude, number width, number height) → number
+### SetGridPositionByCellSize(leftTop, rightBottom, altitude, width, height) → number
 
-> > 좌상단 좌표, 우하단 좌표, 높이, 가로, 세로 길이를 이용하여 2D 그리드 객체를 생성합니다.
+> 최소, 최대 경위도 좌표를 기준으로 2D 그리드 객체 생성.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type                          | Contents   |
+{% tab title="Information" %}
+| Name   | Type                          | Description   |
 | ----------- | ----------------------------- | ---------- |
-| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표 |
-| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표 |
-| altitude    | number                        | 객체 높이      |
-| width    	  | number                        | 그리드 가로 길이  |
-| height      | number                        | 그리드 세로 길이  |
-
-* Detail
-
-* Code
-```
-var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
-var gridCellNum = colorGrid2D.SetGridPositionByCellSize(
-	new Module.JSVector2D(124.2, 39), 	// 그리드 좌상단
-	new Module.JSVector2D(130.5, 34.5), 	// 그리드 우하단
-	100000.0, 				// 그리드 바닥면 고도
-	width, 					// 그리드 가로 길이
-	height					// 그리드 세로 길이
-);
-```
+| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 경위도 좌표. |
+| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표. |
+| altitude    | number                        | 객체 높이.      |
+| width    	  | number                        | 그리드 가로 길이.  |
+| height      | number                        | 그리드 세로 길이.  |
 
 * Return
-  * 총 그리드 개수
+  * 총 그리드 개수.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+
+var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
+var gridCellNum = colorGrid2D.SetGridPositionByCellSize(
+	new Module.JSVector2D(124.2, 39),
+	new Module.JSVector2D(130.5, 34.5),
+	100000.0,
+	1000,
+	1000,
+);
+```
 {% endtab %}
 {% endtabs %}
 
-## SetGridCellDefaultColor([JSColor](../core/jscolor.md) color) → boolean
+### SetGridCellDefaultColor(color) → boolean
 
 > 초기 그리드 색상값을 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents |
+{% tab title="Information" %}
+| Name | Type                    | Description |
 | --------- | ----------------------- | -------- |
-| color     | [JSColor](../core/jscolor.md) | 그리드 색상값  |
+| color     | [JSColor](../core/jscolor.md) | 그리드 색상값.  |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+  	
+* Sample
+  * function showGrid 참조..
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetGridCellDefaultColor(new Module.JSColor(255, 255, 255, 0));
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetGridCellColor(number rowIndex, number colIndex, [JSColor](../core/jscolor.md) color) → boolean
+### SetGridCellColor(row, column, color) → boolean
 
-> 가로, 세로 Index에 해당하는 cell의 색상값을 설정합니다.
+> 가로, 세로 Index에 해당하는 Cell의 색상값 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| rowIndex  | number                  | cell 가로 index |
-| colIndex  | number                  | cell 세로 index |
-| color     | [JSColor](../core/jscolor.md) | cell 색상값      |
+| row  | number                  | Cell 가로 Index. |
+| column  | number                  | Cell 세로 Index. |
+| color     | [JSColor](../core/jscolor.md) | Cell 색상값.      |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+    * 객체 옵션 설정 실패 조건.
+	  * 설정된 가로, 세로 Index 범위 초과인 경우.
+	  
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetGridCellColor(0, 0, new Module.JSColor(255, 255, 0, 0));
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 입력된 가로, 세로 index가 범위를 벗어난 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetLeftToRightSlopeAngle(number angle) → boolean
+### SetLeftToRightSlopeAngle(number angle) → boolean
 
-> x축 기울기를 설정합니다.
+> x축 기울기 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| angle  | number                  | 각도 |
+| angle  | number                  | 각도. |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetLeftToRightSlopeAngle(30);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetLeftToRightSlopeAngleByAltitude(number leftAltitude, number rightAltitude) → boolean
+### SetLeftToRightSlopeAngleByAltitude(left, right) → boolean
 
-> 왼쪽, 오른쪽 고도값으로 기울기를 설정합니다.
+> 왼쪽, 오른쪽 고도값 기준 기울기 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| leftAltitude  | number                  | 고도 |
-| rightAltitude  | number                  | 고도 |
+| left  | number                  | 고도. |
+| right  | number                  | 고도. |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetLeftToRightSlopeAngleByAltitude(100000, 150000);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetFrontToBackSlopeAngle(number angle) → boolean
+### SetFrontToBackSlopeAngle(angle) → boolean
 
-> y축 기울기를 설정합니다.
+> y축 기울기 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| angle  | number                  | 각도 |
+| angle  | number                  | 각도. |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetFrontToBackSlopeAngle(30);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetFrontToBackSlopeAngleByAltitude(number topAltitude, number bottomAltitude) → boolean
+### SetFrontToBackSlopeAngleByAltitude(top, bottom) → boolean
 
-> 위, 아래 고도값으로 기울기를 설정합니다.
+> 위, 아래 고도값 기준 기울기 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| topAltitude  | number                  | 고도 |
-| bottomAltitude  | number                  | 고도 |
+| top  | number                  | 고도. |
+| bottom  | number                  | 고도. |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetFrontToBackSlopeAngleByAltitude(100000, 150000);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetDirectionAngle(number angle) → boolean
+### SetDirectionAngle(angle) → boolean
 
-> 2D 그리드 객체의 방향을 설정합니다.
+> 2D 그리드 객체 방향 설정.
+>
+> angle 입력 값에 따른 회전 정보 0, 360(북쪽), 90(동쪽), 180(남쪽), 270(서쪽).
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
 | angle  | number                  | 방향 |
+  
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
 
-* Detail
-```
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetDirectionAngle(0);
 ```
-
-* angle
-  * 0, 360: 북쪽
-  * 90: 동쪽
-  * 180: 남쪽
-  
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetTerrainUnion(boolean union) → boolean
+### SetTerrainUnion(union) → boolean
 
-> 2D 그리드 객체를 지형에 결합합니다.
+> 2D 그리드 객체 지형 결합 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| union  | boolean                  | 지형 결합 flag |
+| union  | boolean                  | <p>true인 경우 지형결합.<br>false인 경우 객체 위치 기준.</p> |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetTerrainUnion(true);
 ```
-  
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetTerrainUnionGap(number altitude) → boolean
+### SetTerrainUnionGap(altitude) → boolean
 
-> 지형결합 사용시 지혀으로 부터 높이를 설정합니다.
+> 2D 그리드 객체 지형 결합 후 높이값 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| altitude  | number                  | 지형으로 부터 높이 |
+| altitude  | number                  | 지형으로 부터 높이. |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetTerrainUnion(true);
 colorGrid2D.SetTerrainUnionGap(100);
 ```
-  
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetDrawLine(boolean line) → boolean
+### SetDrawLine(type) → boolean
 
-> 2D 그리드 객체의 테두리 생성 유무를 설정합니다.
+> 2D 그리드 객체의 테두리 생성 설정.
+>
+> 테두리 생성 초기 설정 false.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| line  | boolean                  | 테두리 생성 유무 |
+| type  | boolean                  | <p>true인 경우 테두리 생성.<br>false인 경우 테두리 미생성.</p> |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetDrawLine(true);
 ```
-  
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## SetGridLineColor([JSColor](../core/jscolor.md) color) → boolean
+### SetGridLineColor(color) → boolean
 
-> 2D 그리드 객체의 테두리 색상을 설정합니다.
+> 2D 그리드 객체의 테두리 색상 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type                    | Contents      |
+{% tab title="Information" %}
+| Name | Type                    | Description      |
 | --------- | ----------------------- | ------------- |
-| color  | [JSColor](../core/jscolor.md)                  | 테두리 색상 |
+| color  | [JSColor](../core/jscolor.md)                  | 테두리 색상. |
 
-* Detail
-```
+* Return
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+    * 객체 옵션 설정 실패 조건.
+	  * 2D 그리드 태두리 생성하지 않은 경우.
+  
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.SetGridLineColor(new Module.JSColor(255, 255, 0, 0));
 ```
-  
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridLeftTopPosition() → [JSVector3D](../core/jsvector3d.md)
+### GetGridLeftTopPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> 2D 그리드 객체의 좌상단  경위도 좌표를 반환합니다.
+> 2D 그리드 객체 좌상단 경위도 좌표 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 
-```
+* Return
+  * [JSVector3D](../core/jsvector3d.md) : 좌상단 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
 colorGrid2D.Create();
 
 var position = colorGrid2D.GetGridLeftTopPosition();
-
 var lon = position.Longitude;
 var lat = position.Latitude;
 var alt = position.Altitude;
 ```
-  
-* Return
-  * 설정 성공 ([JSVector3D](../core/jsvector3d.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridRightTopPosition() → [JSVector3D](../core/jsvector3d.md)
+### GetGridRightTopPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> 2D 그리드 객체의 우상단  경위도 좌표를 반환합니다.
+> 2D 그리드 객체 우상단 경위도 좌표 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 
-```
+* Return
+  * [JSVector3D](../core/jsvector3d.md) : 우상단 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
 colorGrid2D.Create();
 
 var position = colorGrid2D.GetGridRightTopPosition();
-
 var lon = position.Longitude;
 var lat = position.Latitude;
 var alt = position.Altitude;
 ```
-  
-* Return
-  * 설정 성공 ([JSVector3D](../core/jsvector3d.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridRightBottomPosition() → [JSVector3D](../core/jsvector3d.md)
+### GetGridLeftBottomPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> 2D 그리드 객체의 우하단  경위도 좌표를 반환합니다.
+> 2D 그리드 객체 좌하단 경위도 좌표 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 
-```
-var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
-colorGrid2D.Create();
-
-var position = colorGrid2D.GetGridRightBottomPosition();
-
-var lon = position.Longitude;
-var lat = position.Latitude;
-var alt = position.Altitude;
-```
-  
 * Return
-  * 설정 성공 ([JSVector3D](../core/jsvector3d.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
+  * [JSVector3D](../core/jsvector3d.md) : 좌하단 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
 {% endtab %}
-{% endtabs %}
 
-## GetGridLeftBottomPosition() → [JSVector3D](../core/jsvector3d.md)
-
-> 2D 그리드 객체의 좌하단  경위도 좌표를 반환합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-```
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 ...그리드 객체 옵션 설정...
 colorGrid2D.Create();
@@ -517,66 +471,84 @@ var lon = position.Longitude;
 var lat = position.Latitude;
 var alt = position.Altitude;
 ```
-  
-* Return
-  * 설정 성공 ([JSVector3D](../core/jsvector3d.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridCellPosition(number rowIndex, number colIndex) → [JSVector3D](../core/jsvector3d.md)
+### GetGridRightBottomPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> 가서, 세로 Index에 해당하는 cell 중심의 경위도 좌표를 반환합니다.
+> 2D 그리드 객체 우하단 경위도 좌표 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter  | Type                            | Contents      |
-| ---------- | ------------------------------- | ------------- |
-| rowIndex  | number                  | cell 가로 index |
-| colIndex  | number                  | cell 세로 index |
+{% tab title="Information" %}
 
-* Detail
-```
+* Return
+  * [JSVector3D](../core/jsvector3d.md) : 우하단 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
 colorGrid2D.Create();
 
-var position = colorGrid2D.GetGridCellPosition(0, 0);
-
+var position = colorGrid2D.GetGridRightBottomPosition();
 var lon = position.Longitude;
 var lat = position.Latitude;
 var alt = position.Altitude;
 ```
-  
-* Return
-  * 설정 성공 ([JSVector3D](../core/jsvector3d.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridCellRect(number rowIndex, number colIndex) → [CJSVec3Array](CJSVec3Array.md)
 
-> 가서, 세로 Index에 해당하는 cell의 경위도 좌표(좌상단, 우상단, 우하단, 좌하단)를 반환합니다.
+
+### GetGridCellPosition(row, column) → [JSVector3D](../core/jsvector3d.md)
+
+> 가로, 세로 Index에 해당하는 Cell의 중심 경위도 좌표 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter  | Type                            | Contents      |
+{% tab title="Information" %}
+| Name  | Type                            | Description      |
 | ---------- | ------------------------------- | ------------- |
-| rowIndex  | number                  | cell 가로 index |
-| colIndex  | number                  | cell 세로 index |
+| row  | number                  | Cell 가로 Index. |
+| column  | number                  | Cell 세로 Index. |
 
-* Detail
-```
+* Return
+  * [JSVector3D](../core/jsvector3d.md) : 중심 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
+colorGrid2D.Create();
+
+var position = colorGrid2D.GetGridCellPosition(0, 0);
+var lon = position.Longitude;
+var lat = position.Latitude;
+var alt = position.Altitude;
+```
+{% endtab %}
+{% endtabs %}
+
+### GetGridCellRect(row, column) → [JSVec3Array](../core/jsvec3aray.md)
+
+> 가로, 세로 Index에 해당하는 Cell의 각 지점(4개) 좌표 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type                            | Description      |
+| ---------- | ------------------------------- | ------------- |
+| row  | number                  | Cell 가로 Index. |
+| column  | number                  | Cell 세로 Index. |
+
+* Return
+  * [JSVector3D](../core/jsvector3d.md) : 각 지점 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.Create();
 
 var position = colorGrid2D.GetGridCellRect(0, 0);
@@ -589,105 +561,87 @@ var leftbottom = position.get(3);
 var lon = leftTop.Longitude;
 var lat = leftTop.Latitude;
 var alt = leftTop.Altitude;
-...
 ```
-  
-* Return
-  * 설정 성공 ([CJSVec3Array](CJSVec3Array.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridCellIndexByPosition([JSVector3D](../core/jsvector3d.md) position) → string
+### GetGridCellIndexByPosition(position) → string
 
-> 해당 위치의 cell index를 반환합니다.
+> 경위도 좌표에 해당되는 Cell Index 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter  | Type                            | Contents      |
+{% tab title="Information" %}
+| Name  | Type                            | Description      |
 | ---------- | ------------------------------- | ------------- |
-| position  | [JSVector3D](../core/jsvector3d.md)                  | 경위도 좌표 |
+| position  | [JSVector3D](../core/jsvector3d.md)                  | 경위도 좌표. |
 
-* Detail
-```
+* Return
+  * string : Cell Index 번호 반환 성공.
+  * null : 좌표 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
 colorGrid2D.Create();
 
-var index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 39.5, 100));
+var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 39.5, 100));
 ```
-  
-* Return
-  * 설정 성공 (string) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## GetGridEdgeLinePosition(string type, number margin) → [CJSVec3Array](CJSVec3Array.md)
+### GetGridEdgeLinePosition(type, margin) → [JSVec3Array](../core/jsvec3aray.md)
 
-> 2D 그리드 객체 전체 테두리의 시작점, 끝점을 반환합니다.
+> 2D 그리드 객체 테두리 시작, 끝 점 경위도 좌표 반환.
+> 
+> type 입력 값에 따른 좌표 반환 정보 0(top), 1(right), 2(bottom), 3(left).
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter  | Type                            | Contents      |
+{% tab title="Information" %}
+| Name  | Type                            | Description      |
 | ---------- | ------------------------------- | ------------- |
-| type  | string                  | 테두리 위치별 타입(top, bottom, right, left) |
+| type  | string                  | 반환 테두리 설정값.|
 | margin  | number                  | 테두리 margin |
 
-* Detail
-```
+* Return
+  * [JSVec3Array](../core/jsvec3aray.md) : 테두리 시작, 끝점 경위도 좌표 반환 성공.
+  * null : 좌표 반환 실패.
+    * 오브젝트 생성 실패 조건
+	  * type&gt;4 값이 설졍 된 경우
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
 colorGrid2D.Create();
 
 var linelist = colorGrid2D.GetGridEdgeLinePosition(0, 0);
 ```
-
-* type
-  * 0: top
-  * 1: right
-  * 2: bottom
-  * 3: left
-  
-* Return
-  * 설정 성공 ([CJSVec3Array](CJSVec3Array.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우
-	2\) 입력된 type이 4 이상일 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
 {% endtab %}
 {% endtabs %}
 
-## Create() → boolean
+### Create() → boolean
 
-> 설정한 옵션으로 그리드 객체를 생성합니다.
+> 설정된 옵션을 기준으로 2D 그리드 객체 생성.
 
 {% tabs %}
 {% tab title="Information" %}
-```
-var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
-...그리드 객체 옵션 설정...
-colorGrid2D.Create();
-```
 
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 을 반환합니다.\
-    1\) 엔진이 정상적으로 로드되지 않았을 경우 
-	2\) 설정된 좌표가 없을 경우 
-	3\) 설정된 가로, 세로 index가 범위를 벗어난 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
+    * 오브젝트 생성 실패 조건.
+	  * 입력된 좌표가 없는 경우.
+	  * 설정된 가로, 세로 Index 범위 초과인 경우.
+* Sample
+  * function showGrid 참조.
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
+colorGrid2D.Create();
+```
 {% endtab %}
 {% endtabs %}

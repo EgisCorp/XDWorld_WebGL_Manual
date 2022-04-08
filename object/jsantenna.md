@@ -15,7 +15,7 @@ var object = Module.CreateAntenna("ID");
 >  전파 범위 3차원 모델 오브젝트 생성.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | position | [JSVector3D](JSVector3D.md) | 전파 시작 경위도 |
@@ -26,15 +26,15 @@ var object = Module.CreateAntenna("ID");
 | segment | number | 전파 모델링 정밀도 설정(segment&gt;3 입력) |
 
 * Return
-  * TRUE : 오브젝트 생성 성공
-  * FALSE : 오브젝트 생성 실패
+  * true : 오브젝트 생성 성공
+  * false : 오브젝트 생성 실패
     * 오브젝트 생성 실패 조건
 	  * effect_radius&lt;0 값이 설졍 된 경우
 	  * effect_angle&lt;-90, effect_angle&gt;90 값이 설정된 경우
       * effect_radius&lt;3 값이 설졍 된 경우
 	  
 * Sample
-  * function create 참조
+  * function create 참조.
   * [샌드박스\_전파 범위](http://sandbox.dtwincloud.com/code/main.do?id=object_antenna)
 {% endtab %}
 {% tab title="Template" %}
@@ -48,19 +48,19 @@ var object = Module.CreateAntenna("ID");
 > 전파 범위 모델 반경 변경.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | radius | number | 전파 모델링 반경 설정(radius&gt;0 입력) |
 
 * Return
-  * TRUE : 반경 설정 성공
-  * FALSE : 반경 설정 실패
+  * true : 반경 설정 성공
+  * false : 반경 설정 실패
     * 오브젝트 생성 실패 조건
 	  * radius&lt;0 값이 설졍 된 경우
 
 * Sample
-  * function SetCoverageDistance 참조
+  * function SetCoverageDistance 참조.
   * [샌드박스\_전파 범위](http://sandbox.dtwincloud.com/code/main.do?id=object_antenna)
 {% endtab %}
 {% tab title="Template" %}

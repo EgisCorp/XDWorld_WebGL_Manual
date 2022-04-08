@@ -15,7 +15,7 @@ var projection = Module.getProjection();
 > 사용 가능한 좌표계 리스트 개수를 반환합니다.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 
 * Return
   * 사용 가능한 좌표계 리스트 개수
@@ -60,9 +60,9 @@ var coordName = coordList.getCoordName(2);
 {% tab title="Information" %}
 | Name | Type | Description |
 | ----------- | ------ | -------- |
-| source | etc에 스타일 적용하자 | 원본 좌표계 번호 |
+| source | [좌표 목록.](type-list.md#coordinate-type-list) | 원본 좌표계 번호 |
 | position | [JSVector2D](../core/jsvector2d.md) | 변환할 좌표 |
-| target | etc에 스타일 적용하자 | 변환할 좌표계 번호 |
+| target | [좌표 목록.](type-list.md#coordinate-type-list) | 변환할 좌표계 번호 |
 
 * Return
   * 변환된 좌표

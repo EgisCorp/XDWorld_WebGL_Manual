@@ -1,81 +1,99 @@
 ---
-description: 
+description: 멀티 POI 생성 및 수정 기능 API.
 ---
 
-# JSEarthquake
+# JSMultiPoint
 
-Module createMultiPoint API로 생성할 수 있습니다.
+> Module.createMultiPoint API 생성.
 
 ```javascript
-var object = Module.createMultiPoint();
+var object = Module.createMultiPoint("ID");
 ```
 
-## setMainPoint\(string _key, [JSVector3D](../core/jsvector3d.md) _position, JSIcon _pointIcon\) → boolean
+### setMainPoint(id, position, icon) → boolean
 
-> 주 포인트에 대한 객체 설정
+> 멀티 포인트 객체 생성.
+> 
+> 중심 좌표로 가시화 메인 POI 생성.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _key | string | 객체의 고유 키 |
-| _position | [JSVector3D](../core/jsvector3d.md) | 객체의 위치 |
-| _pointIcon | JSIcon | 객체의 표출 아이콘 |
-
-* Detail
-  * _position : 객체의 경위도, 고도 위치
+| id | string | 멀티 POI 객체 명칭. |
+| position | [JSVector3D](../core/jsvector3d.md) | 멀티 POI 경위도 위치. |
+| icon | JSIcon | 객체의 표출 아이콘. |
   
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint
+* Sample
+  * function initPage 참조.
+  * [샌드박스\_멀티포인트](http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## insertSubPoint\(string _key, JSIcon _pointIcon\) → boolean
+### insertSubPoint(id, icon) → boolean
 
-> 주 포인트에 연결된 보조 포인트를 추가
+> 멀티 포인트 객체 추가.
+> 
+> 중신 좌표를 기준으로 시계 방향 순으로 자동 배치 되는 POI 추가.
+>
+> 객체의 키구성은 (메인 POI 명칭)#(입력받는 id)로 구성
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _key | string | 객체의 고유 키 |
-| _pointIcon | JSIcon | 객체의 표출 아이콘 |
-
-* Detail
-  * 보조 포인트의 위치는 주 포인트의 시계방향 순으로 자동배치
-  * 객체의 키구성은 (주포인트 키)#(보조포인트 키)로 구성
+| id | string | 멀티 POI 객체 명칭. |
+| icon | JSIcon | 객체의 표출 아이콘. |
   
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 객체 추가 성공.
+  * false : 객체 추가 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint
+* Sample
+  * function createSubPoints 참조.
+  * [샌드박스\_멀티포인트](http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setBar\([JSColor](../core/jscolor.md) _barColor, number _startPointAltitude, number _thickness\) → boolean
+### setBar(color, altitude, width) → boolean
 
-> 지정 높이로부터 주 포인트까지 이어지는 기둥을 생성
+> 메인 POI 위치로 부터 지형을 연결하는 라인 생성.
+> 
+> altitude, width 단위는 미터.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _barColor | [JSColor](../core/jscolor.md) | 기둥의 표현 색상 |
-| _startPointAltitude | number | 기둥의 시작 높이 |
-| _thickness | number | 기둥의 두께 |
+| color | [JSColor](../core/jscolor.md) | 직선 가시화 색상 |
+| altitude | number | 기둥의 시작 높이 |
+| width | number | 기둥의 두께 |
 
-* Detail
-  * _startPointAltitude : 해발고도 기준, 단위는 미터 단위.
-  * _thickness : 단위는 미터 단위.
-  
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 객체 추가 성공.
+  * false : 객체 추가 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint
+* Sample
+  * function createMultiPoint 참조.
+  * [샌드박스\_멀티포인트](http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}

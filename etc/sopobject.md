@@ -15,7 +15,7 @@ var sopObject = Module.getAddObject();
 > 지도에 3D POI를 생성합니다.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | layername | string | 객체를 생성할 레이어 명칭.|

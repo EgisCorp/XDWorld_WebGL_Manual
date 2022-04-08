@@ -1,123 +1,139 @@
 ---
-description: 물판 설정 및 제어를 위한 API를 제공합니다.
+description: 물판 생성 및 설정 기능 API.
 ---
 
 # JSFlood
 
-Module getFlood API로 생성할 수 있습니다.
+> Module.getFlood API 생성.
 
 ```javascript
 var flood = Module.getFlood();
 ```
 
-## active\(boolean active\)
+### active(active)
 
-> 물판을 설정합니다.
+> 물판 동작 설정
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Contents |
 | :--- | :--- | :--- |
-| active | boolean | 물판 설정 |
+| active | boolean | 물판 동작 설정 (true : 물판 동작, false : 물판 해제)| 
 
-* Detail
-  * active
-    * false : 물판 효과를 해제합니다.
-    * true : 물판 효과를 적용합니다.
-  
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
+* Sample
+  * function 참조.
+  * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setColor\([CJSColor](CJSColor.md) color\)
+### setColor(color)
 
-> 물판 색상을 설정합니다.
+> 물판 색상을 설정
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Contents |
 | :--- | :--- | :--- |
-| color | [CJSColor](CJSColor.md) | 물판 색상 |
+| color | [CJSColor](../core/jscolor.md) | 물판 색상 |
 
-* Detail
-  * color : [CJSColor](CJSColor.md)
+* Sample
+  * function 참조.
+  * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+{% endtab %}
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setHeight\(number height\)
+### setHeight(height)
 
-> 물판 높이를 설정합니다.
+> 물판 높이 기준 높이 설정
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Contents |
 | :--- | :--- | :--- |
-| height | number | 물판 높이 |
+| height | number | 물판 기준 높이 (해발고도 기준, 단위 : 미터) |
 
-* Detail
-  * height : 물판 높이를 설정합니다.
+* Sample
+  * function 참조.
+  * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+{% endtab %}
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setVisibleAltitude\(number altitude\)
+### setVisibleAltitude(altitude)
 
-> 물판 가시거리를 설정합니다.
+> 물판 표현 가시거리를 설정
+>
+> 수치가 크면 먼거리에서도 물판이 표현
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Contents |
 | :--- | :--- | :--- |
-| altitude | number | 물판 가시거리 |
+| altitude | number | 물판 가시거리 (단위 : 미터) |
 
-* Detail
-  * altitude : 값이 클수록 멀리서도 물판이 보입니다.
+* Sample
+  * function 참조.
+  * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+{% endtab %}
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setWaterSpeed\(number speed\)
-
-> 물판 유속을 설정합니다.
+### setWaterSpeed(speed)
+> 물판 유속을 설정
+> 
+> 수치가 높을 수록 유속이 빠름
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Contents |
 | :--- | :--- | :--- |
 | speed | number | 물판 유속 |
 
-* Detail
-  * speed : 값이 클수록 유속이 빨라집니다.
+* Sample
+  * function 참조.
+  * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+{% endtab %}
 
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## visibleWaterPlane\(boolean visible\)
-
-> 물판 on/off를 설정합니다.
+### visibleWaterPlane(visible)
+> 물판의 화면 시각화 여부를 설정
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Contents |
 | :--- | :--- | :--- |
-| visible | boolean | 물판 on/off |
-
-* Detail
-  * visible
-    * false : 물판 효과를 off 합니다.
-    * true : 물판 효과를 on 합니다.
+| visible | boolean | 물판 시각화 (true : 표현, false : 숨김) |
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=weather_flood
+* Sample
+  * function 참조.
+  * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}

@@ -1,275 +1,315 @@
 ---
-description: 폴리곤 오브젝트 설정 및 반환 API를 제공합니다.
+description: 폴리곤 객체 생성 및 수정 기능 API.
 ---
 
 # JSPolygon
 
-Module createPolygon API로 생성할 수 있습니다.
+> Module.createPolygon API 생성.
 
 ```javascript
-var object = Module.createPolygon("newObject");
+var object = Module.createPolygon("ID");
 ```
 
-## loadFile\( options \) → boolean
+### loadFile(option) → boolean
 
-> 지정한 url과 옵션 값으로 3DS 파일을 로드합니다.
+> 3ds 파일 로드 후 폴리곤 객체를 생성.
+>
+> argument 변수로 태풍 객체 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| options | object | 모델 파일 로드 옵션 |
+| option | 연결 | 초기화 옵션 속성 정보. |
 
-* Detail
-  * options
-    * url\(필수\) : 모델 파일 url
-    * positionmode \(boolean\)
-      * true : 좌표가 있는 모델 파일 \(projectioncode 속성으로 좌표계 지정 필수\)
-      * false : 좌표가 없는 모델 파일 \(position 속성으로 위치 지정 필수\)
-    * projectioncode \(number\) : positionmode가 true일 때 모델의 좌표계 번호
-      * EPSG\:4326 → 13
-      * EPSG\:5186 → 20
-      * EPSG\:5174 → 23
-    * position \([JSVector3D](../core/jsvector3d.md)\) : positionmode가 false 일 때 모델 위치
-    * align : position 지정 시 중심 정렬 위치
-      * 0 : 중앙 정렬
-      * 1 : 바닥 정렬
-      * 2 : 윗면 정렬
-    * texture \(string\) : texture 이미지 URL
 * Return
-  * 성공 : true
-  * 실패 : false
-    * positionmode=true 일 때 projectioncode가 설정되지 않음
-    * positionmode=false 일 때 position이 지정되지 않음
-    * url 이 지정되지 않음
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_file\_3ds](http://sandbox.dtwincloud.com/code/main.do?id=object_file_3ds)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
+    * 객체 생성 실패 조건
+      * positionmode=true 일 때 projectioncode가 설정되지 않음
+	  * positionmode=false 일 때 position이 지정되지 않음  
+
+* Sample
+  * function load3DS 참조.
+  * [샌드박스\_3DS](http://sandbox.dtwincloud.com/code/main.do?id=object_file_3ds)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## loadTexture\( texture\_name, texture\_url \) → boolean
+### loadTexture(name, url) → boolean
 
-> 폴리곤에 사용할 텍스쳐 이미지를 등록합니다.
+> 폴리곤에 사용할 텍스쳐 이미지 등록.
+> 
+> name은 setFaceTexture API로 텍스쳐를 적용할 때 텍스쳐를 구분하는 용도로 사용.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| texture\_name | string | 텍스쳐 이름\(key\) |
-| textureURL | string | 텍스쳐 이미지 URL |
+| name | string | 텍스쳐 등록 명칭. |
+| url | string | 텍스쳐 이미지 URL. |
 
-* Detail
-  * texture\_name
-    * 텍스쳐는 texture\_name 로 구분되며, setFaceTexture API로 텍스쳐를 적용할 때 텍스쳐를 구분하는 용도로 사용됩니다.
 * Return
   * 성공 : true
   * 실패 : false
     * 이미 동일한 texture\_name의 텍스쳐가 있음
     * texture\_name이나 texture\_url 이 빈 문자열
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_rtt_image_changing)
+
+* Return
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
+    * 객체 생성 실패 조건
+      * 동일한 name의 텍스쳐가 있을 경우.
+	  * name, url이 빈 문자열 경우.
+
+* Sample
+  * function init 참조.
+  * [샌드박스\_폴리곤 RTT](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_rtt_image_changing)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setCircle\( position, radius, segment\) → boolean
+### setCircle(position, radius, segment) → boolean
 
-> 중심 좌표와 반경, 버텍스 수로 원 모양의 평면 좌표를 설정합니다.
+> 중심좌표 기준으로 원 모양 평면 객체를 생성.
+> 
+> radius 입력값&gt;0 필수 설정.
+>
+> segment 입력값&gt;3 필수 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| position | [JSVector3D](../core/jsvector3d.md) | 원 중심점 |
-| radius | number | 반경 |
-| segment | number | 버텍스 수 |
+| position | [JSVector3D](../core/jsvector3d.md) | 원 폴리곤 중심 경위도 좌표. |
+| radius | number | 반경. |
+| segment | number | 버텍스 수. |
 
-* Detail
-  * radius : 0이상의 값으로 입력, 단위는 미터 단위 입니다.
-  * segment : 3이상의 값으로 입력. 값이 커질 수록 원에 가까운 형태가 됩니다.
 * Return
-  * 성공 : true
-  * 실패 : false
-    * radius 값이 0
-    * segment 값이 3 미만
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_circle](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_circle)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
+    * 객체 생성 실패 조건
+      * radius 값이 0
+	  * segment 값이 3 미만
+
+* Sample
+  * function createCirclePolygon 참조.
+  * [샌드박스\_원 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_circle)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\( vertex\_list \)
+### setCoordinates(coordinates)
 
 > Polygon 평면을 구성하는 좌표 리스트를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex\_list | [Collection](../core/collection.md)\) | 폴리곤 좌표 리스트 |
+| coordinates | [Collection](../core/collection.md)) | 폴리곤 경위도 좌표 목록. |
 
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=camera\_set\_viewrect](http://sandbox.dtwincloud.com/code/main.do?id=camera_set_viewrect)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setFaceTexture\( face\_index, texture\_name \) → boolean
+### setFaceTexture(index, name) → boolean
 
 > 중심 좌표와 반경, 버텍스 수로 원 모양의 평면 좌표를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| face\_index | number | 텍스쳐를 사용할 폴리곤 face index |
-| texture\_name | string | loadTexture API로 지정한 텍스쳐 이름 |
+| index | number | 텍스쳐를 사용할 폴리곤 face index |
+| name | string | loadTexture API로 지정한 텍스쳐 이름 |
 
 * Return
-  * 성공 : true
-  * 실패 : false
-    * 지정한 텍스쳐 이름이 없음
-    * 지정한 index의 폴리곤 face가 존재하지 않음
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_rtt_image_changing)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패
+    * 객체 생성 실패 조건
+	  * 지정한 텍스쳐 이름이 없음
+	  * 지정한 index의 폴리곤 face가 존재하지 않음
+	
+* Sample
+  * function init 참조.
+  * [샌드박스\_폴리곤 RTT](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_rtt_image_changing)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setFireEffect\( effect\_set \) → boolean
+### setFireEffect(type) → boolean
 
-> 폴리곤 표면에 불 효과를 설정합니다.
+> 폴리곤 표면에 불 효과 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| effect\_set | boolean | 효과 on\(true\), off\(false\) |
+| type | boolean | <p>true인 경우 불 효과 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
 * Return
-  * 성공 : true
-  * 실패 : false
-    * 폴리곤 좌표가 설정되지 않음
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=effect\_fire](http://sandbox.dtwincloud.com/code/main.do?id=effect_fire)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+    * 객체 설정 실패 조건
+      * 폴리곤 좌표 설정이 안된 경우.
+	  
+* Sample
+  * function createBurnEffectPolygon 참조.
+  * [샌드박스\_불 효과](http://sandbox.dtwincloud.com/code/main.do?id=effect_fire)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setHeight\( height \) → boolean
+### setHeight(height) → boolean
 
-> 좌표가 설정 된 폴리곤의 높이를 지정합니다.
+> 평면 폴리곤을 높이를 가진 3차원 폴리곤으로 생성.
+> 
+> height 입력값&gt;0 필수 설정(미터).
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | height | number | 폴리곤 높이 |
 
-* Detail
-  * height : 0이상의 값으로 입력, 단위는 미터 단위 입니다.
 * Return
-  * 성공 : true
-  * 실패 : false
-    * 폴리곤 좌표가 설정되지 않음
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_height](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+    * 객체 설정 실패 조건
+      * 폴리곤 좌표 설정이 안된 경우.
+	
+* Sample
+  * function createPolygon 참조.
+  * [샌드박스\_폴리곤 높이](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\( vertex\_list, part\_list \) → boolean
+### setPartCoordinates(coordinates, parts) → boolean
 
-> 폴리곤 좌표\(vertex, part\)를 지정합니다.
+> 폴리곤 좌표(vertex, part)를 지정합니다.
+> 
+> 
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](../core/collection.md)\) | 폴리곤 Part 리스트 |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 경위도 좌표 목록. |
+| parts | [Collection](../core/collection.md)) | 폴리곤 구성 점정 개수 목록. |
 
 * Detail
   * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
+
 * Return
-  * 성공 : true
-  * 실패 : false
-    * vertex\_list 좌표가 3개 미만
-    * part\_list 리스트 수가 1개 미만
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_height](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
+    * 객체 생성 실패 조건.
+	  * 입력된 coordinates 구성요소가 없거나 정점 개수가 3개 이하인 경우.
+	  * 입력된 parts 구성요소가 없거나 1개 이하인 경우.
+
+* Sample
+  * function createPolygon 참조.
+  * [샌드박스\_폴리곤 높이](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinatesUV\( vertex\_list, part\_list, uv\_list, is\_rtt \) → boolean
+### setPartCoordinatesUV(coordinates, parts, uv, union) → boolean
 
-> 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
+> 텍스쳐 uv를 포함한 폴리곤 좌표(vertex, part, uv)를 지정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](../core/collection.md)\) | 폴리곤 Part 리스트 |
-| uv\_list | [JSVec2Array](../core/jsvec2array.md) | 폴리곤 uv 좌표 리스트 |
-| is\_rtt | boolean | 폴리곤 Part 리스트 |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 경위도 좌표 목록. |
+| parts | [Collection](../core/collection.md)) | 폴리곤 구성 점정 개수 목록. |
+| uv | [JSVec2Array](../core/jsvec2array.md) | 폴리곤 구성 UV 좌표 목록. |
+| union | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
-* Detail
-  * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
 * Return
-  * 성공 : true
-  * 실패 : false
-    * vertex\_list 좌표가 3개 미만
-    * part\_list 리스트 수가 1개 미만
-    * uv\_list 좌표가 3개 미만
-    * vertex\_list 좌표와 uv\_list 좌표 수가 동일하지 않음
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_rtt_image_changing)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패
+    * 객체 생성 실패 조건
+	  * 입력된 coordinates 구성요소가 없거나 정점 개수가 3개 이하인 경우.
+	  * 입력된 parts 구성요소가 없거나 1개 이하인 경우.
+	  * 입력된 uv 구성요소가 없거나 3개 이하인 경우.
+	  * coordinates, uv 개수가 동일하지 않는 경우.
+	
+* Sample
+  * function init 참조.
+  * [샌드박스\_폴리곤 RTT](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_rtt_image_changing)  
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setStyle\( style \)
+### setStyle(style)
 
-> 폴리곤 스타일을 설정합니다.
+> 폴리곤 스타일 설정.
+>
+> 폴리곤의 색상 투명도, 폴리곤 외각선을 색상, 투명도 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| style | JSPolygonStyle | 오브젝트 스타일 설정 객체 |
+| style | JSPolygonStyle | 객체 스타일 설정 객체 |
 
-* Detail
-  * 설정 가능한 스타일
-    * 폴리곤 채움 색상, 투명도
-    * 폴리곤 외곽 라인 색상, 투명도
-    * 폴리곤 외곽 라인 두께
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_color)
+* Sample
+  * function createBurnEffectPolygon 참조.
+  * [샌드박스\_불 효과](http://sandbox.dtwincloud.com/code/main.do?id=effect_fire)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## videoTexturebyJSON\( options \) → string
+##### Type Definitions
 
-> 비디오를 재생 기반 텍스쳐를 설정합니다.
+####### JSPolygon.loadFile
 
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| options | object | 비디오 텍스쳐 설정 옵션 |
-
-* Detail
-  * options : 비디오 텍스쳐 설정을 위한 속성 객체입니다.
-    * imagedata \(array\) : 비디오 이미지 데이터
-    * size
-      * width \(number\) : 비디오 엘리먼트 가로 크기
-      * height \(number\) : 비디오 엘리먼트 세로 크기
-    * position
-      * min \([JSVector2D](../core/jsvector2d.md)\) : 영역 최소 좌표 
-      * max \([JSVector2D](../core/jsvector2d.md)\) : 영역 최대 좌표 [JSVector2D](../core/jsvector2d.md)
-    * init \(boolean\) : position min, max 좌표를 이용한 폴리곤 형상 초기화 여부
-    * complete\(function\) : 텍스쳐 갱신 완료 후 발생하는 CallBack
-* Return
-  * 설정 결과 문자열
-    * "success" : 정상
-    * "fail" : 실패
-    * 이 외 예외처리에 대한 문자열 메시지 반환
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_video\_texture](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture)
-{% endtab %}
-{% endtabs %}
-
+> 3ds 파일 로드 후 폴리곤 객체 생성 옵션.
+> 
+> 변경 사항이 있어 수정 요망
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |

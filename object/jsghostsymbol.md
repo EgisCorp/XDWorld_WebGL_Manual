@@ -1,263 +1,398 @@
+---
+description: 고스트 심볼 객체 생성 및 수정 기능 API.
+---
+
 # JSGhostSymbol
 
-Module createGhostSymbol API로 생성할 수 있습니다.
+> Module.createGhostSymbol API 생성.
 
 ```javascript
 var object = Module.createGhostSymbol("ID");
 ```
 
-## setGhostSymbol(string model\_id) → boolean
+### setGhostSymbol(id) → boolean
 
-> 고스트 심볼 맵에 등록된 오브젝트의 모델을 지정합니다.
+> 고스트 심볼 맵에 등록된 객체 모델 지정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents |
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| model\_id | string | 모델 키     |
+| id | string | 등록된 객체 명칭. |
 
 * Return
-  * 설정 결과
-* Code&#x20;
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createGhostSymbol 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setPosition([JSVector3D](../core/jsvector3d.md) position) → boolean
+### setPosition(position) → boolean
 
-> 고스트 심볼 오브젝트의 위치를 지정합니다.
+> 고스트 심볼 객체의 위치 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type                                | Contents |
+| Name | Type                                | Description |
 | --------- | ----------------------------------- | -------- |
-| position  | [JSVector3D](../core/jsvector3d.md) | 오브젝트의 위치 |
+| position  | [JSVector3D](../core/jsvector3d.md) | 고스트 심볼 경위도 위치. |
 
 * Return
-  * 설정 결과
-* Code&#x20;
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createGhostSymbol 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setScale([JSSize3D ](../core/jssize3d.md)scale) → boolean
+### setScale(scale) → boolean
 
-> 고스트 심볼 오브젝트의 스케일을 지정합니다.
+> 고스트 심볼 객체의 크기 설정.
+>
+> scale(x,y,z) 입력 값은 0보다 큰값으로 설정.
+>
+> 크기 초기 설정 x,y,z(1,1,1).
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type                            | Contents  |
+| Name | Type                            | Description  |
 | --------- | ------------------------------- | --------- |
-| scale     | [JSSize3D](../core/jssize3d.md) | 오브젝트의 스케일 |
+| scale     | [JSSize3D](../core/jssize3d.md) | 고스트 심볼 크기 설정. |
 
 * Return
-  * 설정 결과
-* Code&#x20;
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function createGhostSymbol 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getPosition() → [JSVector3D](../core/jsvector3d.md)
+### getPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> 오브젝트 위치를 반환합니다.
+> 고스트 심볼 객체의 경위도 위치 반환.
 
 {% tabs %}
 {% tab title="Information" %}
+
 * Return
-  * 오브젝트 위치
-* Code&#x20;
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * [JSVector3D](../core/jsvector3d.md) : 고스트 심볼 중심 위치 반환 성공.
+  * null : 좌표 반환 실패.
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getScale() → [JSSize3D](../core/jssize3d.md)
+### getScale() → [JSSize3D](../core/jssize3d.md)
 
-> 오브젝트 스케일을 반환합니다.
+> 고스트 심볼 객체의 크기 반환.
 
 {% tabs %}
 {% tab title="Information" %}
+
 * Return
-  * 오브젝트 스케일
-* Code&#x20;
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * [JSSize3D](../core/jssize3d.md) : 고스트 심볼 크기(x,y,z) 반환 성공.
+  * null : 크기 반환 실패.
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getGhostSymbolMapKey() → string
+### getGhostSymbolMapKey() → string
 
-> 오브젝트에 지정 된 원본 모델 키 값을 반환합니다.
+> 고스트 심볼의 참조된 객체 명칭 반환.
 
 {% tabs %}
 {% tab title="Information" %}
+
 * Return
-  * 지정된 원본 모델 키
+  * string : 고스트 심볼의 참조된 객체 명칭 반환 성공.
+  * null : 명칭 반환 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setRotation(number x, number y, number z) → boolean
+### setRotation(x, y, z) → boolean
 
-> 오브젝트의 회전 각도를 설정합니다.
+> 고스트 심볼 객체 회전 각도 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents    |
+| Name | Type   | Description    |
 | --------- | ------ | ----------- |
-| x         | number | x축 방향 회전 각도 |
-| y         | number | y축 방향 회전 각도 |
-| z         | number | z축 방향 회전 각도 |
+| x         | number | X축 변경 회전 각도. |
+| y         | number | Y축 변경 회전 각도. |
+| z         | number | Z축 변경 회전 각도. |
 
 * Return
-  * 설정 결과
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function setRotation 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getRotationX() → number
+### getRotationX() → number
 
-> 오브젝트의 X축 방향 회전 각도를 반환합니다.
+> 고스트 심볼 객체 X축 회전 각도 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * X축 방향 회전 각도
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * X축 회전 각도.
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getRotationY() → number
+### getRotationY() → number
 
-> 오브젝트의 Y축 방향 회전 각도를 반환합니다.
+> 고스트 심볼 객체 Y축 회전 각도 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * Y축 방향 회전 각도
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * Y축 회전 각도.
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getRotationZ() → number
+### getRotationZ() → number
 
-> 오브젝트의 Z축 방향 회전 각도를 반환합니다.
+> 고스트 심볼 객체 Z축 회전 각도 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * Z축 방향 회전 각도
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * Z축 회전 각도.
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setBasePoint(number x, number y, number z) → boolean
+### setBasePoint(x, y, z) → boolean
 
-> 오브젝트의 중점 위치를 설정합니다.
+> 고스트 심볼 중심 좌표를 기준으로 입력 값만큼 이동 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents |
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| x         | number | x축 중점    |
-| y         | number | y축 중점    |
-| z         | number | z축 중점    |
+| x         | number | X축 이동 값(미터) |
+| y         | number | Y축 이동 값(미터) |
+| z         | number | Z축 이동 값(미터) |
 
 * Return
-  * 설정 결과
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function setBasePoint 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getBasePointX() → number
+### getBasePointX() → number
 
-> 오브젝트 중점 X축 좌표를 반환합니다.
+> 고스트 심볼 중심 좌표를 기준으로 X축으로 이동 값 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * 오브젝트 중점 X축 좌표
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * X축 이동 값(미터).
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getBasePointY() → number
+### getBasePointY() → number
 
-> 오브젝트 중점 Y축 좌표를 반환합니다.
+> 고스트 심볼 중심 좌표를 기준으로 Y축으로 이동 값 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * 오브젝트 중점 Y축 좌표
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * Y축 이동 값(미터).
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getBasePointZ() → number
+### getBasePointZ() → number
 
-> 오브젝트 중점 Z축 좌표를 반환합니다.
+> 고스트 심볼 중심 좌표를 기준으로 Z축으로 이동 값 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * 오브젝트 중점 Z축 좌표
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * Z축 이동 값(미터).
+  
+* Sample
+  * function displayGhostSymbolProperties 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getOpacity() → number
+### getOpacity() → number
 
-> 오브젝트 투명도를 반환합니다.
+> 객체 투명도를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * 오브젝트 투명도
+  * 객체 투명도
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setOpacity(object opacity) → string
+### setOpacity(object opacity) → string
 
-> 오브젝트 투명도를 설정합니다.
+> 객체 투명도를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents |
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| opacity   | number | 오브젝트 투명도 |
+| opacity   | number | 객체 투명도 |
 
 * Return
   * 설정 결과
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
 {% endtabs %}
 
-## getColor() → [JSColor](../core/jscolor.md)
+### getColor() → [JSColor](../core/jscolor.md)
 
-> 오브젝트 색상을 반환합니다.
+> 객체 색상을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * 오브젝트 색상
+  * 객체 색상
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setColor([JSColor](../core/jscolor.md) color)) → string
+### setColor([JSColor](../core/jscolor.md) color)) → string
 
-> 오브젝트 색상을 설정합니다.
+> 객체 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type                          | Contents |
+| Name | Type                          | Description |
 | --------- | ----------------------------- | -------- |
-| color     | [JSColor](../core/jscolor.md) | 오브젝트 색상  |
+| color     | [JSColor](../core/jscolor.md) | 객체 색상  |
 
 * Return
   * 설정 결과
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}

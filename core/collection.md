@@ -21,7 +21,7 @@ var data_array = new Module.Collection();
 > 배열에 새로운 데이터 추가.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | element | object | 추가 할 데이터(0부터 순서대로 정렬). |
@@ -46,7 +46,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 > 배열의 모든 데이터를 삭제.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 
 * Return
   * 추가 후 총 데이터 수.
@@ -63,7 +63,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 > 인덱스 번호에 해당하는 데이터를 반환.
 
 {% tabs %}
-{% tab title="Infomation" %}
+{% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | index | number | 반환하는 데이터 인덱스. |

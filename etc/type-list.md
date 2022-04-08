@@ -107,11 +107,3 @@
 | Index | Name | Description |
 | :--- | :--- | :--- |
 
-## Coordinate Style Type List
-
-| Index | Name | Description |
-| :--- | :--- | :--- |
-| 0 | XY | \[\[x, y\], \[x, y\], ...\] |
-| 1 | XYZ | \[\[x, y, z\], \[x, y, z\], ...\] |
-| 2 | XYZARRAY | \[x, y, z, x, y, z,...\] |
-| 3 | JSVector3D | \[JSVector3D, JSVector3D, ...\] |

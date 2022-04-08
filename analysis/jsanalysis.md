@@ -1,5 +1,5 @@
 ---
-description: 폴리곤 오브젝트 설정 및 반환 API를 제공합니다.
+description: 지도 내 분석 기능 설정 API.
 ---
 
 # JSAnalysis
@@ -10,47 +10,58 @@ Module getAnalysis API로 생성할 수 있습니다.
 var analysis = Module.getAnalysis();
 ```
 
-## createSlopePlane\(number angle, [JSColor](../core/jscolor.md) color\) → boolean
+### createSlopePlane(angle, color) → boolean
 
 > 시곡면분석 삼각형 평면을 생성합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| angle | number | 평면 각도 |
+| angle | number | 지형으로 부터 각도. |
 | color | [JSColor](../core/jscolor.md) | 평면 색상 |
 
-* Detail
-  * angle : 지형으로 부터 각도
-
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 객체 생성 성공.
+  * false : 객체 생성 실패.
   
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=analysis_building_height_regulation
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## CreateInterpolationPath\(object param\) → Array
+### CreateInterpolationPath(option) → array
 
 > 보간된 라인을 좌표를 반환합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| param | object | 시작점, 입력점, 영역, 정점 갯수, 라인 길이 |
+| option | object | 시작점, 입력점, 영역, 정점 갯수, 라인 길이 |
 
 * Return
-  * 보간된 라인 좌표를 반환
-  
-* Code
+  * array : 보간된 라인 좌표 목록 반환 성공.
+  * NULL : 보간된 라인 좌표 목록 반환 실패.
+
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=object_line_interpolate_curved
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getGridAnal\(\) → [JSGridAnal](../analysis/jsgridanal.md)
+### getGridAnal() → [JSGridAnal](../analysis/jsgridanal.md)
 
 > JSGridAnal 클래스를 반환합니다.
 
@@ -58,123 +69,145 @@ var analysis = Module.getAnalysis();
 {% tab title="Information" %}
 
 * Return
-  * [JSGridAnal](../analysis/jsgridanal.md)
+  * [JSGridAnal](../analysis/jsgridanal.md) : JSGridAnal 객체 반환 성공.
+  * null : JSGridAnal 객체 반환 성공.
   
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=object_line_interpolate_curved
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getJomangRatio\(number height\) → string
+### getJomangRatio(height) → string
 
 > 조망 차폐율을 반환합니다.
+> 
+> height 입력값이 설정한 높이 이하는 지형, 그 이상은 산으로 판단.
 
 {% tabs %}
-{% tab title="Parameter" %}
+{% tab title="Name" %}
 
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | height | number | 지형 기준 높이 |
-
-* Detail
-  * height : 설정한 높이 이하는 지형으로 판단. 그 이상은 산으로 판단.
 
 * Return
   * 건물#차폐율#산#차폐율#지형#차폐율#하늘#차폐율
   * build#43.15#mount#17.47#terrain#35.04#sky#4.34
   
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=camera_jomang_ratio
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getJudong\(number angle\) → string
+### getJudong(angle) → string
 
 > 주동길이를 측정하고 반환합니다.
+> 
+> height 입력값은 좌우 퍼짐각 설정.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | angle | number | 퍼짐각 |
-
-* Detail
-  * angle : 좌우로 퍼짐각 설정
 
 * Return
   * 레이어명#객체키#주동길이#경도#위도,
   * facility_build#263500000000000023630202#157.677215#129.123663#35.176768, ...
   
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=analysis_building_width
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setAllObjectRenderShadow\(boolean mode\)
+### setAllObjectRenderShadow(type)
 
 > 건물 선택 여부와 상관없이 모든 객체의 그림자를 그리도록 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| mode | boolean | 그림자 생성 모드 |
-
-* Detail
-  * mode
-    * false : 선택된 객체만 그림자 생성합니다.
-    * true : 모든 객체의 그림자를 생성합니다.
+| type | boolean | <p>true인 경우 모든 객체 그림자 생성.<br>false인 경우 선택 객체만 그림자 생성.</p> |
 	
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setShadowSimulation\(boolean start\)
+### setShadowSimulation(type)
 
 > 일조 시뮬레이션을 실행, 종료합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| start | boolean | 시뮬레이션 설정 |
-
-* Detail
-  * start
-    * false : 시뮬레이션을 종료합니다.
-    * true : 시뮬레이션을 시작합니다.
+| type | boolean | <p>true인 경우 시뮬레이션 시작.<br>false인 경우 시뮬레이션 종료.</p> |
 	
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setShadowSimulTerm\(number term\)
+### setShadowSimulTerm(term)
 
 > 일조 시뮬레이션 진행 시간 간격을 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| term | number | 진행시간 간격(분 단위) |
+| term | number | 시뮬레이션 진행 시간 간격 설정(분 단위). |
 
-* Detail
-  * term : 시뮬레이션 진행 시간 간격을 설정합니다.
-
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setShadowSimulTime\(number year, number month, number day, number startHour, number startMin, number endHour, number endMin\)
+### setShadowSimulTime(year, month, day, startHour, startMin, endHour, endMin)
 
 > 일조 시뮬레이션 날짜(년도, 월, 일), 시작 시각(시간, 분), 종료 시각(시간, 분)을 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | year | number | 시뮬레이션 년도 |
 | month | number | 시뮬레이션 월 |
@@ -184,27 +217,40 @@ var analysis = Module.getAnalysis();
 | endHour | number | 시뮬레이션 종료 시간 |
 | endMin | number | 시뮬레이션 종료 분 |
 
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setViewshedMode\(boolean apply\)
+### setViewshedMode(apply)
 
 > 가시권 분석을 실행, 종료합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Name" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| apply | boolean | 가시권 분석 설정 |
+| apply | boolean | <p>true인 경우 가시권 분석 시작.<br>false인 경우 가시권 분석 종료.</p> |
 
-* Detail
-  * apply
-    * false : 가시권 분석을 종료합니다.
-    * true : 가시권 분석을 시작합니다.
-  
-* Code
+* Sample
+  * function 참조.
   * http://sandbox.dtwincloud.com/code/main.do?id=analysis_viewshed_3d
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
 {% endtabs %}
+
+### Type Definitions
+
+##### JSAnalysis.InterpolationOption
+
+> 보간 라인 좌표 생성 옵션.

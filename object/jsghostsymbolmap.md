@@ -1,151 +1,222 @@
+---
+description: 고스트 심볼 객체 등록 관리하는 API.
+---
+
 # JSGhostSymbolMap
 
-Module getEarthquake API로 생성할 수 있습니다.
+> Module.getGhostSymbolMap API 생성.
 
 ```javascript
 var object = Module.getGhostSymbolMap();
 ```
 
-## insert(object properties) → string
+### insert(option) → string
 
-> 모델 파일을 사용하여 고스트심볼 모델을 등록합니다.
+> 3DS 파일을 사용하여 고스트 심볼 등록.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter  | Type   | Contents |
+| Name  | Type   | Description |
 | ---------- | ------ | -------- |
-| properties | object | 모델 프로퍼티  |
+| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmap.insertoptions) | 고스트 심볼 등록 속성 정보.  |
 
-* Detail
-  * properties(object) 태그 정보
-    * id : (string) 모델 ID
-    * url : (string) 모델 파일 URL
-    * callback : (function) 모델 등록 완료 콜백 함수
-    * format : (string) 파일 포맷. 현재 3ds 파일을 지원합니다.
 * Return
-  * 모델 등록 결과
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * "success" : 등록 성공.
+  * "request failed" : 3ds 파일 네트워크 요청 실패.  
+  * 이 외 예외처리에 대한 문자열 메시지 반환
+  
+* Sample
+  * function init 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setModelTexture(object properties) → string
+### setModelTexture(option) → string
 
-> 모델 face 텍스쳐를 지정합니다.
+> 등록된 고스트 심볼 객체를 구성하는 face 텍스쳐 지정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter  | Type   | Contents |
+| Name  | Type   | Description |
 | ---------- | ------ | -------- |
-| properties | object | 모델 프로퍼티  |
+| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmap.loadtexture) | 고스트 심볼 이미지 속성 정보.  |
 
-* Detail
-  * properties(object) 태그 정보
-    * id : (string) 모델 ID
-    * face\_index : (number) 모델 face 인덱스
-    * url : (string) 텍스쳐 이미지 URL
-    * callback : (function) 텍스쳐 등록 완료 콜백 함수
 * Return
-  * 모델 텍스쳐 등록 결과
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)
+  * "success" : 등록 성공.
+  * "failed load texture" : 이미지 파일 네트워크 요청 실패.
+  * 이 외 예외처리에 대한 문자열 메시지 반환
+  
+* Sample
+  * function init 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setModelFaceColor(string id, number face\_index, [JSColor](../core/jscolor.md) color) → boolean
+### setModelFaceColor(id, index, color) → boolean
 
-> 모델 face 색상을 지정합니다.
+> 등록된 고스트 심볼 객체 face 색상을 지정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter   | Type                          | Contents    |
+| Name   | Type                          | Description    |
 | ----------- | ----------------------------- | ----------- |
-| id          | string                        | 모델 ID       |
-| face\_index | number                        | 모델 face 인덱스 |
-| color       | [JSColor](../core/jscolor.md) | face 색상     |
+| id          | string                        | 참조 객체 등록 명칭. |
+| index | number                        | 참조 객체 face Index. |
+| color       | [JSColor](../core/jscolor.md) | 변경 색상. |
 
 * Return
-  * 설정 결과
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setModelFaceTextureRepeatU(string id, number face\_index, boolean repeat) → boolean
+### setModelFaceTextureRepeatU(id, index, repeat) → boolean
 
-> 모델 Face 텍스쳐의 가로 방향 반복 여부를 설정합니다.
+> 등록된 고스트 심볼 객체 가로 방향 Wrapping 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter   | Type    | Contents    |
+| Name   | Type    | Description    |
 | ----------- | ------- | ----------- |
-| id          | string  | 모델 ID       |
-| face\_index | number  | 모델 face 인덱스 |
-| color       | boolean | face 색상     |
+| id          | string  | 참조 객체 등록 명칭.       |
+| index       | number  | 참조 객체 face Index. |
+| repeat       | boolean | <p>true인 경우 가로 GL_REPEAT 설정.<br>false인 경우 가로 GL_CLAMP_TO_EDGE 설정.</p>     |
 
 * Return
-  * 설정 결과
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setModelFaceTextureRepeatV(string id, number face\_index, boolean repeat) → boolean
+### setModelFaceTextureRepeatV(id, index, repeat) → boolean
 
-> 모델 Face 텍스쳐의 세로 방향 반복 여부를 설정합니다.
+> 등록된 고스트 심볼 객체 세로 방향 Wrapping 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter   | Type    | Contents    |
+| Name   | Type    | Description    |
 | ----------- | ------- | ----------- |
-| id          | string  | 모델 ID       |
-| face\_index | number  | 모델 face 인덱스 |
-| color       | boolean | face 색상     |
+| id          | string  | 참조 객체 등록 명칭.       |
+| index       | number  | 참조 객체 face Index. |
+| repeat       | boolean | <p>true인 경우 세로 GL_REPEAT 설정.<br>false인 경우 세로 GL_CLAMP_TO_EDGE 설정.</p>     |
 
 * Return
-  * 설정 결과
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getModelFaceCount(string id) → number
+### getModelFaceCount(id) → number
 
-> 모델 Face 수를 반환합니다.   &#x20;
+> 등록된 고스트 심볼 객체 face 개수 반환.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents |
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| id        | string | 모델 ID    |
+| id          | string  | 참조 객체 등록 명칭.       |
 
 * Return
-  * 모델의 face 수
+  * 참조 객체 face 개수.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## isExistID(string id) → boolean
+### isExistID(id) → boolean
 
-> 지정한 ID를 가진 모델이 존재하는지 여부를 반환합니다.
+> 등록된 고스트 심볼 존재 유무 확인.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents |
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| id        | string | 모델 ID    |
+| id          | string  | 참조 객체 등록 명칭.       |
 
 * Return
-  * 지정한 ID 를 가지는 모델의 존재 여부
+  * true : 객체 존재 확인.
+  * false : 객체 존재 확인 불가.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## getGhostSymbolSize(string id) → [JSSize3D](../core/jssize3d.md)
+### getGhostSymbolSize(string id) → [JSSize3D](../core/jssize3d.md)
 
-> 모델의 기본 크기를 반환합니다.
+> 등록된 고스트 심볼 크기 반환.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Contents |
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| id        | string | 모델 ID    |
+| id          | string  | 참조 객체 등록 명칭.       |
 
 * Return
-  * 모델 크기
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit
+  * [JSSize3D](../core/jssize3d.md) : 고스트 심볼 크기(x,y,z) 반환 성공.
+  * null : 크기 반환 실패.
+  
+* Sample
+  * function createGhostSymbol 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
+
+### Type Definitions
+
+##### JSGhostSymbolMap.InsertOptions
+
+> 고스트 심볼 3D 모델 객체 등록 옵션.
+
+| Name     | Type                                                                       | Attributes | Default | Description              |
+| ------ | -------------------------------------------------------------------------- | -------- | ----- | ---------------------- |
+| id       | string                                                                     |            |         | 참조 객체 등록 명칭.     |
+| url      | string                                                                     |            |         | 참조 객체 요청 URL.     |
+| format   | string                                                                     | optional   |         | 요청 파일 포맷(3ds만 지원).|
+| callback | function                                                                   | optional   |         | 등록 완료 시 동작하는 CallBack |
+
+##### JSGhostSymbolMap.LoadTexture
+
+> 등록된 고스트 심볼 객체 face 텍스쳐 등록 옵션.
+
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| id         | number                        |    |                      | 참조 객체 등록 명칭. |
+| url | boolean                              |    |                    | 참조 이미지 요청 URL. |
+| index     | number                        | optional | 0                      | 참조 객체 face Index. |
+| callback | function                            | optional |         | 등록 완료 시 동작하는 CallBack |

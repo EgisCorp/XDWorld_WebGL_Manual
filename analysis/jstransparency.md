@@ -1,122 +1,115 @@
 ---
-description: 터파기 기능 설정 API를 제공합니다.
+description: 터파기 분석 기능 설정 API.
 ---
 
 # JSTransparency
 
-Module getTransparency API로 생성할 수 있습니다.
+> Module.getTransparency API 생성.
 
 ```javascript
 var transparency = Module.getTransparency();
 ```
 
-## create\([JSVec3Array](../core/jsvec3aray.md) vertex\) → number
+## create(coordinates) → number
 
-> 입력 좌표를 받아 터파기 객체를 생성합니다.
+> 입력 좌표를 받아 터파기 객체를 생성
+> 
+> coordinates 입력값은 ([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...) 영역 좌표 목록.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex | [JSVec3Array](../core/jsvec3aray.md) | 터파기 영역 좌표 리스트 |
-
-* Detail
-  * vertex : ([JSVector3D](JSVector3D.md), [JSVector3D](JSVector3D.md), ...) 터파기 영역 좌표 리스트 배열
+| coordinates | [JSVec3Array](../core/jsvec3aray.md) | 터파기 영역 좌표 리스트 |
 
 * Return
   * 설정 성공 (좌표 리스트 크기 반환) 혹은 실패 (-1)
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_create
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 생성](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_create)
 {% endtab %}
 {% endtabs %}
 
-## setAutoMove\([JSVec2Array](../core/jsvec2aray.md) position, number waitframe\) → boolean
+## setAutoMove(coordinates, waitframe) → boolean
 
 > 자동으로 이동하는 원형 터파기의 이동 경로 및 속도를 설정합니다.
+> 
+> coordinates 입력값은 ([JSVector2D](../core/jsvector2d.md), [JSVector2D](../core/jsvector2d.md), ...) 이동경로 좌표 목록.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| position | [JSVec2Array](../core/jsvec2aray.md) | 터파기 이동경로 좌표 리스트 |
+| coordinates | [JSVec2Array](../core/jsvec2aray.md) | 터파기 이동경로 좌표 리스트 |
 | waitframe | number | 터파기 위치 갱신 프레임 수 |
-
-* Detail
-  * position : ([JSVector2D](JSVector2D.md), [JSVector2D](JSVector2D.md), ...) 터파기 이동경로 좌표 리스트 배열
-  * waitframe : 터파기 위치 갱신 프레임 수
   
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 설정 성공.
+  * false : 설정 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 이동](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move)
 {% endtab %}
 {% endtabs %}
 
-## setDepth\(number depth\)
+## setDepth(depth)
 
 > 터파기 깊이를 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| depth | number | 터파기 깊이 (m단위) |
+| depth | number | 지면으로부터 터파기 깊이 (단위 : 미터) |
 
-* Detail
-  * depth : 지면으로부터 터파기 깊이 (m단위) 
-
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_depth
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 깊이 설정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_depth)
 {% endtab %}
 {% endtabs %}
 
-## setRadius\(number radius\)
+## setRadius(radius)
 
 > 원형 터파기 반경을 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| radius | number | 원형 터파기 반경 |
+| radius | number | 원형 터파기 반경 (단우 : 미터) |
 
-* Detail
-  * radius : 원형 터파기 반경
-
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_radius
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 반경 설정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_radius)
 {% endtab %}
 {% endtabs %}
 
-## setTexture\(object imageData, number width, number height, boolean type\) → boolean
+## setTexture(imageData, width, height, type) → boolean
 
 > 터파기 표면 텍스쳐 이미지를 설정합니다.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type | Contents |
+{% tab title="Information" %}
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | imageData | object | 이미지 Byte Array |
 | width | number | 이미지 가로 크기 |
 | height | number | 이미지 세로 크기 |
-| type | boolean | 설정 표면 타입 |
-
-* Detail
-  * type
-    * false : 옆면 텍스쳐로 설정합니다.
-    * true : 바닥면 텍스쳐로 설정합니다.
+| type | boolean | <p>true인 경우 옆면 텍스쳐로 설정.<br>false인 경우 바닥면 텍스쳐로 설정.</p> |
   
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 설정 성공.
+  * false : 설정 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_texture
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_texture)
 {% endtab %}
 {% endtabs %}
 
-## startAutoMove\(\) → boolean
+## startAutoMove() → boolean
 
 > 사전에 지정된 경로를 따라 터파기 자동 이동을 시작합니다.
 
@@ -124,14 +117,16 @@ var transparency = Module.getTransparency();
 {% tab title="Information" %}
 
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 설정 성공.
+  * false : 설정 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 이동](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move)
 {% endtab %}
 {% endtabs %}
 
-## stopAutoMove\(\) → boolean
+## stopAutoMove() → boolean
 
 > 사전에 지정된 경로를 따라 터파기 자동 이동을 종료합니다.
 
@@ -139,9 +134,11 @@ var transparency = Module.getTransparency();
 {% tab title="Information" %}
 
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 설정 성공.
+  * false : 설정 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move
+* Sample
+  * function 참조.
+  * [샌드박스\_터파기 이동](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move)
 {% endtab %}
 {% endtabs %}

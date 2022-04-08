@@ -1,129 +1,144 @@
 ---
-description: 
+description: 평면으로 이루어진 빌보드 오브젝트 설정 및 수정 기능 API.
 ---
 
 # CJSBillboard
 
-Module createBillboard API로 생성할 수 있습니다.
+> Module.createBillboard API 생성.
 
 ```javascript
 var object = Module.createBillboard("ID");
 ```
 
-## set\([JSVector3D](../core/jsvector3d.md) _vPosition, JSIcon _icon, number _width, number _height\) → boolean
+### set(position, icon, width, height) → boolean
 
-> 빌보드 객체에 필수적 요소를 적용한다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Parameter | Type | Contents |
-| :--- | :--- | :--- |
-| _vPosition | [JSVector3D](../core/jsvector3d.md) | 객체의 위치 |
-| _icon | JSIcon | 객체의 이미지 아이콘 |
-| _width | number | 객체의 가로 표현 크기 |
-| _height | number | 객체의 세로 표현 크기 |
-
-* Detail
-  * _vPosition : 경위도 좌표에 바닥면 기준 높이
-  * _width, _height : 미터 단위
-  
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_billboard_create
-{% endtab %}
-{% endtabs %}
-
-## setImage\([JSVector3D](../core/jsvector3d.md) _vPosition, object _resopnse, number _iimagewidth, number _iimagewidth\) → boolean
-
-> 중심 좌표와 반경, 버텍스 수로 원 모양의 평면 좌표를 설정합니다.
+> 빌보드 객체 생성 옵션 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _vPosition | [JSVector3D](../core/jsvector3d.md) | 객체의 위치 |
-| _resopnse | object | 이미지 바이너리 데이터 |
-| _iimagewidth | number | 이미지의 너비 |
-| _iimagewidth | number | 이미지의 높이 |
+| position | [JSVector3D](../core/jsvector3d.md) | 빌보드 경위도 위치(중하단 기준).  |
+| icon | JSIcon | 객체의 이미지 아이콘. |
+| width | number | 객체의 가로 표현 크기(미터). |
+| height | number | 객체의 세로 표현 크기(미터). |
 
-* Detail
-  * _vPosition : 경위도 좌표에 바닥면 기준 높이
-  * _resopnse : Uint8Array 기반의 바이너리 배열 데이터
-  * _iimagewidth, _iimagewidth : 이미지의 픽셀 크기 (정수형)
-  
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 빌보드 옵션 설정 성공.
+  * false : 빌보드 옵션 설정 실패.
   
-* Code
-  * 
+* Sample
+  * function createBillboard 참조..
+  * [샌드박스\_빌보드](http://sandbox.dtwincloud.com/code/main.do?id=object_billboard_create)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setSizeScale\(number _fx, number _fy, number _fz\) → boolean
+### setImage(position, resopnse, width, height) → boolean
 
-> 객체의 표현 배율 제어
+> 빌보드 객체 생성 옵션 설정
+> 
+> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _fx | number | x축 배율 |
-| _fy | number | y축 배율 |
-| _fz | number | z축 배율 |
-
-* Detail
-  * _fx, _fy, _fz : 반드시 0 보다 큰 값이 필요
+| position | [JSVector3D](../core/jsvector3d.md) | 빌보드 경위도 위치(중하단 기준). |
+| resopnse | object | 이미지 바이너리 데이터. |
+| width | number | 이미지의 너비. |
+| height | number | 이미지의 높이. |
   
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  
-* Code
-  * 
+  * true : 빌보드 옵션 설정 성공.
+  * false : 빌보드 옵션 설정 실패.
+
+* Sample
+  * function createBillboard 참조..
+  * [샌드박스\_빌보드 Text](http://sandbox.dtwincloud.com/code/main.do?id=object_billboard_create)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setSizeFix\(boolean _bSet\) → boolean
+### setSizeScale(ratio_x, ratio_y, ratio_z) → boolean
+
+> 객체의 표현 배율 설정.
+> 
+> 각 항목은 0보다 큰 값으로 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| ratio_x | number | x축 배율. |
+| ratio_y | number | y축 배율. |
+| ratio_z | number | z축 배율. |
+  
+* Return
+  * true : 빌보드 옵션 설정 성공.
+  * false : 빌보드 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setSizeFix(type) → boolean
 
 > 객체의 표현 크기를 고정 또는 가변 설정
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _bSet | boolean | 크기 고정 설정 |
-
-* Detail
-  * _bSet : True - 사물의 거리와 관계 없이 고정 픽셀 크기
-  * _bSet : False - 사물과 거리에 관계한 실제 크기로 화면상 가변 픽셀 크기
+| type | boolean | <p>true인 경우 크기 고정 방식.<br>false인 경우 가변적 크기 변경 방식.</p> |
   
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 빌보드 크기 옵션 설정 성공.
+  * false : 빌보드 크기 옵션 설정 실패.
   
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_billboard_fix_size
+* Sample
+  * function setBillboardFixSize 참조..
+  * [샌드박스\_빌보드 크기 옵션](http://sandbox.dtwincloud.com/code/main.do?id=object_billboard_fix_size)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setRotationMode\(boolean _bMode\) → boolean
+### setRotationMode(type) → boolean
 
 > 빌보드 객체의 표현 방향성을 설정
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| _bMode | boolean | 방향 모드 |
+| type | boolean | <p>true인 경우 화면 정면 고정 방식.<br>false인 경우 좌우 고정, 상하 가변 회전 방식.</p> |
 
-* Detail
-  * _bMode : true - 화면 정면 방향으로 표현 방향 고정
-  * _bMode : false - 좌우 표현 방향은 고정, 상하 표현은 가변
-  
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
+  * true : 빌보드 회전 옵션 설정 성공.
+  * false : 빌보드 회전 옵션 설정 실패.
   
-* Code
-  * 
+* Sample
+  * function setBillboardRotationMode 참조..
+  * [샌드박스\_빌보드 회전 옵션](http://sandbox.dtwincloud.com/code/main.do?id=object_billboard_rotation)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}

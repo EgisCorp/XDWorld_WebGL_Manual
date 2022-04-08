@@ -1,140 +1,173 @@
 ---
-description: 라인 오브젝트 설정 및 반환 API를 제공합니다.
+description: 라인 객체 생성 및 수정 기능 API.
 ---
 
 # JSLineString
 
-Module createLineString API로 생성할 수 있습니다.
+> Module.createLineString API 생성.
 
 ```javascript
-var object = Module.createLineString("newObject");
+var object = Module.createLineString("ID");
 ```
 
-## createbyJson\( options \) → string
+### createbyJson(option) → string
 
-> 지정한 옵션으로 라인을 생성합니다.
+> 라인 객체를 생성.
+>
+> argument 변수로 라인 객체 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| options | object | 라인 생성 옵션 |
-
-* Detail
-  * options : 라인을 생성하는 옵션 정보 객체.
-    * style \(string\) : 라인 버텍스 배열 포맷. style 속성에 맞춰 coordinates 배열 포맷을 맞춰 입력합니다.
-      * style="XY" → \[\[x, y\], \[x, y\], ...\]
-      * style="XYZ" → \[\[x, y, z\], \[x, y, z\], ...\]
-      * style="XYZARRAY" → \[x, y, z, x, y, z\], ...\]
-      * style="JSVector3D" → \[JSVector3D, JSVector3D, ...\]
-    * coordinates : 라인 구성 버텍스. 포맷은 style 속성에 맞춰 적용합니다.
-    * union \(boolean\) : 지형 결합 \(RTT\) 설정
-    * depth \(boolean\) : Depth 설정
-    * type \(number\) : 라인 타입
-      * 0 : 일반 실선
-      * 3 : 화살표
-      * 4 : 점선
-      * 5 : 애니메이션 라인
-    * skip \(number\) : 애니메이션 라인 적용시, 스킵할 버텍스 단위를 설정합니다. 값이 커질수록 건너뛰는 버텍스 수가 많아지므로 애니메이션 속도가 빨라집니다.
-    * width \(number\) : 라인 두께
-    * dash \(number\) : 점선 간격
-    * speed \(number\) : 애니메이션 속도
-    * color \(\[JSColor\) : 라인 색상
+| option | [JSLineString.CreateOptions](jslinestring.md#jslinestring.createoptions) | 초기화 옵션 속성 정보 |
+	
 * Return
-  * 성공 : "success"
-  * 실패
-    * "error map load" : 오브젝트가 초기화 되지 않음
-    * "error variable undefined NULL" : options 객체가 없음
-    * 이 외 오류 원인을 포함한 에러 메시지
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_Json](http://sandbox.dtwincloud.com/code/main.do?id=object_line_Json)
+  * "success" : 생성 성공.
+  * "error variable undefined null" : options 객체가 없음
+  * 이 외 오류 원인을 포함한 에러 메시지
+  
+* Sample
+  * function createLine 참조.
+  * [샌드박스\_라인](http://sandbox.dtwincloud.com/code/main.do?id=object_line_Json)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setCoordinates\( vertex\_list \)
+### setCoordinates(coordinates)
 
-> 라인 좌표\(vertex, part, uv\)를 지정합니다.
+> 라인 객체를 생성.
+>
+> coordinates 구성 요소 개수&gt;3 필수 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex\_list | [Collection](../core/collection.md) | 폴리곤 Vertex\(경도, 위도, 고도\) 리스트 |
+| coordinates | [Collection](../core/collection.md) | 라인 구성 경위도 좌표 목록. |
 
-* Detail
-  * vertex\_list : 버텍스 수는 중복된 위치 없이 3점 이상 입력합니다.
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_line\_path\_distance](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+* Sample
+  * function createPathLine 참조.
+  * [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## SetDashType\( dash\_size \) → boolean
+### SetDashType(dash) → boolean
 
-> 라인이 지정한 간격의 점선이 되도록 설정합니다.
+> 줄선 간격 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| dash\_size | number | 점선 간격 |
+| dash | number | 점선 간격 |
 
 * Return
-  * 성공 : true
-  * 실패 : false
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_Json](http://sandbox.dtwincloud.com/code/main.do?id=object_line_Json)
+  * true : 객체 옵션 설정 성공.
+  * false : 객체 옵션 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setPartCoordinates\( vertex\_list, part\_list \)
+### setPartCoordinates(coordinates, parts)
 
-> 라인 좌표\(vertex, part\)를 지정합니다.
+> 라인 객체를 생성.
+>
+> coordinates 구성 요소 개수&gt;3 필수 설정.
+>
+> parts 구성요소가 개수&gt;0 필수 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| vertex\_list | [JSVec3Array](../core/jsvec3array.md) | 라인 Vertex\(경도, 위도, 고도\) 리스트 |
-| part\_list | [Collection](../core/collection.md) | 라인 Part 리스트 |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 라인 구성 경위도 좌표 목록. |
+| parts | [Collection](../core/collection.md) | 라인 구성 점정 개수 목록 |
 
-* Detail
-  * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
+* Sample
+  * function createBufferPolygon 참조.
+  * [샌드박스\_라인 버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setStyle\( style \)
+### setStyle(style)
 
-> 텍스쳐 uv를 포함한 폴리곤 좌표\(vertex, part, uv\)를 지정합니다.
+> JSPolyLineStyle 적용된 옵션으로 라인 스타일 변경.
+> 
+> 색상, 두께, 투명도 설정
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | style | JSPolyLineStyle | 라인 스타일 설정 객체 |
 
-* Detail
-  * 설정 가능한 스타일
-    * 라인 색상, 투명도
-    * 라인 두께
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
+* Sample
+  * function createBufferPolygon 참조.
+  * [샌드박스\_라인 버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
-## setUnionMode\( is\_union \)
+### setUnionMode( is\_union )
 
-> 라인 지형 결합 \(RTT\) 여부를 설정합니다.
+> 라인 가시화 옵션.
+>
+> 라인 지형 결합 유무 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| boolean | is\_union | 라인 지형 결합 \(RTT\) 여부 |
+| boolean | is\_union | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
-* Code
-  * [http://sandbox.dtwincloud.com/code/main.do?id=analysis\_line\_path\_distance](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+* Sample
+  * function createObjectToPathPosition 참조.
+  * [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
 {% endtab %}
 {% endtabs %}
 
+### Type Definitions
+
+##### JSLineString.CreateOptions
+
+> 라인 객체 생성 옵션.
+
+| Name     | Type                           | Attributes | Default | Description              |
+| ------ | -------------------------------- | -------- | ----- | ---------------------- |
+| coordinates | tag-list                    |            |         | 정점 관리 옵션.        |
+| type | number (tag-list)  				| optional   | 0        | 라인 가시화 타입.     |
+| skip  | number							| optional   | 1        | 애니메이션 디테일 옵션.  |
+| width  | number 							| optional   | 1        | 라인 굵기 옵션.     |
+| dash  | number							| optional   | 0        | 점선 간격 옵션.      |
+| speed  | number							| optional   | 0       | 애니메이션 속도 옵션.   |
+| union  | boolean						    | optional   | false   | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p>. |
+| depth  | boolean					        | optional   | true        | .               |
+| color  | [JSColor](../core/jscolor.md) 	| optional   | JSColor(200, 255, 255, 255) | 라인 가시화 색상.      |

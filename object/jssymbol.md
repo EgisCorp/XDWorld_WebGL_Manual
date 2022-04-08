@@ -1,95 +1,109 @@
 ---
-description: 아이콘 객체를 관리하는 클래스입니다.
+description: 아이콘 객체 등록 관리하는 API.
 ---
 
 # JSSymbol
 
-Module getSymbol API로 생성할 수 있습니다.
+> Module.getSymbol API 생성.
 
 ```javascript
 var symbol = Module.getSymbol();
 ```
 
-## getIcon(string iconName) → JSIcon
+### getIcon(name) → JSIcon
 
-> symbol 내 저장된 JSIcon 객체를 반환합니다.
+> JSSymbol 내부에 추가된 JSIcon 객체를 반환.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Name" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| iconName  | string | 아이콘 이름   |
-
-* Detail
-```
-var icon = Module.getSymbol.getIcon("Icon\_name");
-```
+| name  | string | 등록된 객체 명칭.   |
 
 * Return
-  * 설정 성공 ([CJSIcon](CJSIcon.md)) 혹은 실패 (null)
-  * 다음의 경우 API는 null 을 반환합니다.\
-    1\) 해당 이름으로 등록된 아이콘이 없는 경우
+  * JSIcon : JSIcon 객체 반환 성공.
+  * null : 좌표 반환 실패.
+    * 객체 반환 실패 조건
+	  * name과 동일한 명칭을 가진 객체가 없는 경우
 	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_multipoint
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_높이측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_altitude)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var icon = Module.getSymbol.getIcon("Icon\_name");
+```
 {% endtab %}
 {% endtabs %}
 
-## insertIcon(string iconName, object iconImage, number imageWidth, number imageHeight) → boolean
+### insertIcon(name, resopnse, width, height) → boolean
 
-> symbol 내 아이콘 텍스쳐를 등록합니다.
+> JSSymbol 내부에 새로운 JSIcon 등록.
+>
+> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
+>
+> width, height 이미지 실제 크기 입력( &gt;1 ).
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter   | Type   | Contents     |
+{% tab title="Name" %}
+| Name   | Type   | Description     |
 | ----------- | ------ | ------------ |
-| iconName    | string | 아이콘 이름       |
-| iconImage   | object | 이미지 바이너리 데이터 |
-| imageWidth  | number | 이미지 Width    |
-| imageHeight | number | 이미지 Height   |
+| name  | string | 등록할 객체 명칭. |
+| resopnse | object | 이미지 바이너리 데이터. |
+| width | number | 이미지의 너비. |
+| height | number | 이미지의 높이. |
 
-* Detail
-```
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+    * 객체 설정 실패 조건
+	  * name과 동일한 명칭을 가진 객체가 존재하는 경우.
+	  * resopnse 값이 null 인 경우.
+      * width, height &lt;0 인 경우
+	  
+* Sample
+  * function createPOI 참조.
+  * [샌드박스\_높이측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_altitude)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext('2d');
 ...(canvas 내 이미지 렌더링)...
 var data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
 Module.getSymbol.insertIcon("Icon\_name", data, canvas.width, canvas.height);
 ```
-
-* Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 를 반환합니다.\
-    1\) 해당 이름으로 등록된 아이콘이 이미 존재하는 경우\
-    2\) 이미지 바이너리 데이터가 null 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_multipoint
 {% endtab %}
 {% endtabs %}
 
-## deleteIcon(string iconName) → boolean
+### deleteIcon(name) → boolean
 
-> symbol 내 등록된 아이콘을 삭제합니다.
+> JSSymbol 내부에 존재하는 JSIcon 삭제.
 
 {% tabs %}
-{% tab title="Parameter" %}
-| Parameter | Type   | Contents |
+{% tab title="Name" %}
+| Name | Type   | Description |
 | --------- | ------ | -------- |
-| iconName  | string | 아이콘 이름   |
-
-* Detail
-```
-Module.getSymbol.deleteIcon("Icon\_name");
-```
+| name  | string | 삭제할 등록 객체 명칭.  |
 
 * Return
-  * 설정 성공 (true) 혹은 실패 (false)
-  * 다음의 경우 API는 false 를 반환합니다.\
-    1\) 해당 이름으로 등록된 아이콘이 존재하지 않는 경우\
-    2\) 아이콘 텍스쳐를 참조하는 오브젝트가 하나 이상 존재하는 경우 (이 경우, 아이콘 텍스쳐는 삭제하지 않고 API를 종료합니다.)
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=object\_multipoint
+  * true : 객체 삭제 성공.
+  * false : 객체 삭제 실패.
+    * 객체 삭제 실패 조건
+	  * name과 동일한 명칭을 가진 객체가 없는 경우
+	  * 해당 JSIcon을 참조 받는 객체가 하나 이상 존재하는 경우.(참조 객체 텍스쳐 삭제 후 동작)
+	  
+* Sample
+  * function clearAnalysis 참조.
+  * [샌드박스\_높이측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_altitude)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getSymbol.deleteIcon("Icon\_name");
+```
 {% endtab %}
 {% endtabs %}
