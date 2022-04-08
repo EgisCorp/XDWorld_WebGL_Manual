@@ -10,7 +10,7 @@ description: 지도 내 그리드 분석 객체 생성 및 설정 API.
 var object = Module.getAnalysis().getGridAnal();
 ```
 
-## clear()
+### clear()
 
 > 현재 처리되는 모든 그리드 분석 결과를 초기화.
 
@@ -27,7 +27,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## openGridDataURL(url, nTime, nStripSize, nStriptStart, nStripEnd, nDataType)
+### openGridDataURL(url, nTime, nStripSize, nStriptStart, nStripEnd, nDataType)
 
 > 바이너리 격자 분석 결과 데이터를 URL 호출.
 >
@@ -68,7 +68,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## setHRange(fmin, fmax)
+### setHRange(fmin, fmax)
 
 > 표출할 격자 분석 결과 데이터의 최소, 최대값 설정.
 
@@ -89,7 +89,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## createRasterData(szCat, time) → boolean
+### createRasterData(szCat, time) → boolean
 
 > 바이너리 격자 분석 결과 데이터를 지정한 시간 인덱스에 2D Raster 객체로 생성.
 >
@@ -120,7 +120,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## createPlaneData(szCat) → boolean
+### createPlaneData(szCat) → boolean
 
 > 바이너리 격자 분석 결과 데이터를 3D 애니메이션 평면 객체로 생성.
 >
@@ -148,7 +148,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## createArrowData(time) → boolean
+### createArrowData(time) → boolean
 
 > 바이너리 격자 분석 결과 데이터를 지정한 시계열 인덱스에 3D 화살표 객체들로 생성.
 >
@@ -174,7 +174,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## setTimeRange(time)
+### setTimeRange(time)
 
 > 바이너리 격자 분석 결과 데이터의 시계열 총 수를 설정.
 >
@@ -199,7 +199,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## setHRatio(ratio)
+### setHRatio(ratio)
 
 > 3D 애니메이션 평면 객체의 수치별 표현 되는 형상의 높이 배율 조절
 >
@@ -222,7 +222,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## setTime(time)
+### setTime(time)
 
 > 3D 애니메이션 평면 객체의 시계열 인덱스를 재설정
 >
@@ -247,7 +247,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## getTime() → number
+### getTime() → number
 
 > 3D 애니메이션 평면 객체의 현재 진행중인 시계열 인덱스를 반환.
 
@@ -266,7 +266,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## clearLegend()
+### clearLegend()
 
 > 설정된 범례 값을 초기화.
 >
@@ -285,7 +285,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## addLegendColor(alpha, red, green, blue) → number
+### addLegendColor(alpha, red, green, blue) → number
 
 > 범레 리스트에 범례 색상 추가.
 >
@@ -315,7 +315,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## set3DArrowSizeRatio(ratio)
+### set3DArrowSizeRatio(ratio)
 
 > 3D 화살표 객체의 화살표 크기 배율을 변경
 >
@@ -340,7 +340,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-## openGridDataJSON(options) → boolean
+### openGridDataJSON(options) → boolean
 
 > JSON 방식의 격자 결과 데이터 설정
 
@@ -383,7 +383,7 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
-## setLayerName(name)
+### setLayerName(name)
 
 > 격자 분석 결과 데이터를 3D 지도 객체로 생성할 때 적용할 레이어 명칭
 >
@@ -406,9 +406,9 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+#### Type Definitions
 
-#### JSGridAnal.GridDataOption
+###### JSGridAnal.GridDataOption
 
 > 그리드 데이터 요청 파라메터
 
@@ -426,7 +426,7 @@ let json = {
 | fmax      | number                                                                                           |            |         | 격자 셀의 최대값                 |
 | data      | number                                                                                           | array      |         | 격자 셀의 데이터 베열              |
 
-#### JSGridAnal.GridDataOption.llcornerParam
+###### JSGridAnal.GridDataOption.llcornerParam
 
 > 격자 그리드의 공간 범위 설정 파라메터
 
