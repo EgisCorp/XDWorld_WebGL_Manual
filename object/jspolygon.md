@@ -304,12 +304,13 @@ var object = Module.createPolygon("ID");
 {% endtab %}
 {% endtabs %}
 
-##### Type Definitions
+### Type Definitions
 
-####### JSPolygon.loadFile
+#### JSPolygon.loadFile
 
 > 3ds 파일 로드 후 폴리곤 객체 생성 옵션.
 > 
 > 변경 사항이 있어 수정 요망
 | Name         | Type                          | Attributes | Default                 | Description      |
 | ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+|  |  |  |  |  |
