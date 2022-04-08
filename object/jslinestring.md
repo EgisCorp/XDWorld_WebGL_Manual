@@ -156,7 +156,7 @@ var object = Module.createLineString("ID");
 
 ### Type Definitions
 
-##### JSLineString.CreateOptions
+#### JSLineString.CreateOptions
 
 > 라인 객체 생성 옵션.
 
