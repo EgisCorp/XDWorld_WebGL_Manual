@@ -306,7 +306,7 @@ var object = Module.createPolygon("ID");
 
 ### Type Definitions
 
-#### JSPolygon.loadFile
+#### JSPolygon.loadFileOption
 
 > 3ds 파일 로드 후 폴리곤 객체 생성 옵션.
 > 
