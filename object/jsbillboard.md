@@ -68,7 +68,7 @@ var object = Module.createBillboard("ID");
 {% endtab %}
 {% endtabs %}
 
-### setSizeScale(ratio_x, ratio_y, ratio_z) → boolean
+### setSizeScale(x, y, z) → boolean
 
 > 객체의 표현 배율 설정.
 > 
@@ -78,9 +78,9 @@ var object = Module.createBillboard("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| ratio_x | number | x축 배율. |
-| ratio_y | number | y축 배율. |
-| ratio_z | number | z축 배율. |
+| x | number | x축 배율. |
+| y | number | y축 배율. |
+| z | number | z축 배율. |
   
 * Return
   * true : 빌보드 옵션 설정 성공.
@@ -95,7 +95,7 @@ var object = Module.createBillboard("ID");
 
 ### setSizeFix(type) → boolean
 
-> 객체의 표현 크기를 고정 또는 가변 설정
+> 객체의 표현 크기를 고정 또는 가변 설정.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -120,7 +120,7 @@ var object = Module.createBillboard("ID");
 
 ### setRotationMode(type) → boolean
 
-> 빌보드 객체의 표현 방향성을 설정
+> 빌보드 객체의 표현 방향성을 설정.
 
 {% tabs %}
 {% tab title="Information" %}

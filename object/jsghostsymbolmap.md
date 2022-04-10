@@ -62,7 +62,7 @@ var object = Module.getGhostSymbolMap();
 {% endtab %}
 {% endtabs %}
 
-### setModelFaceColor(id, index, color) → boolean
+### setModelFaceColor(name, index, color) → boolean
 
 > 등록된 고스트 심볼 객체 face 색상을 지정합니다.
 
@@ -70,7 +70,7 @@ var object = Module.getGhostSymbolMap();
 {% tab title="Information" %}
 | Name   | Type                          | Description    |
 | ----------- | ----------------------------- | ----------- |
-| id          | string                        | 참조 객체 등록 명칭. |
+| name          | string                        | 참조 객체 등록 명칭. |
 | index | number                        | 참조 객체 face Index. |
 | color       | [JSColor](../core/jscolor.md) | 변경 색상. |
 
@@ -108,7 +108,7 @@ var object = Module.getGhostSymbolMap();
 {% endtab %}
 {% endtabs %}
 
-### setModelFaceTextureRepeatV(id, index, repeat) → boolean
+### setModelFaceTextureRepeatV(name, index, repeat) → boolean
 
 > 등록된 고스트 심볼 객체 세로 방향 Wrapping 설정.
 
@@ -116,7 +116,7 @@ var object = Module.getGhostSymbolMap();
 {% tab title="Information" %}
 | Name   | Type    | Description    |
 | ----------- | ------- | ----------- |
-| id          | string  | 참조 객체 등록 명칭.       |
+| name          | string  | 참조 객체 등록 명칭.       |
 | index       | number  | 참조 객체 face Index. |
 | repeat       | boolean | <p>true인 경우 세로 GL_REPEAT 설정.<br>false인 경우 세로 GL_CLAMP_TO_EDGE 설정.</p>     |
 
@@ -131,7 +131,7 @@ var object = Module.getGhostSymbolMap();
 {% endtab %}
 {% endtabs %}
 
-### getModelFaceCount(id) → number
+### getModelFaceCount(name) → number
 
 > 등록된 고스트 심볼 객체 face 개수 반환.
 
@@ -139,7 +139,7 @@ var object = Module.getGhostSymbolMap();
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| id          | string  | 참조 객체 등록 명칭.       |
+| name          | string  | 참조 객체 등록 명칭.       |
 
 * Return
   * 참조 객체 face 개수.
@@ -151,7 +151,7 @@ var object = Module.getGhostSymbolMap();
 {% endtab %}
 {% endtabs %}
 
-### isExistID(id) → boolean
+### isExistID(name) → boolean
 
 > 등록된 고스트 심볼 존재 유무 확인.
 
@@ -159,7 +159,7 @@ var object = Module.getGhostSymbolMap();
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| id          | string  | 참조 객체 등록 명칭.       |
+| name          | string  | 참조 객체 등록 명칭.       |
 
 * Return
   * true : 객체 존재 확인.
@@ -172,7 +172,7 @@ var object = Module.getGhostSymbolMap();
 {% endtab %}
 {% endtabs %}
 
-### getGhostSymbolSize(string id) → [JSSize3D](../core/jssize3d.md)
+### getGhostSymbolSize(name) → [JSSize3D](../core/jssize3d.md)
 
 > 등록된 고스트 심볼 크기 반환.
 
@@ -180,7 +180,7 @@ var object = Module.getGhostSymbolMap();
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| id          | string  | 참조 객체 등록 명칭.       |
+| name          | string  | 참조 객체 등록 명칭.       |
 
 * Return
   * [JSSize3D](../core/jssize3d.md) : 고스트 심볼 크기(x,y,z) 반환 성공.

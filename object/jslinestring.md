@@ -131,7 +131,7 @@ var object = Module.createLineString("ID");
 {% endtab %}
 {% endtabs %}
 
-### setUnionMode( is\_union )
+### setUnionMode(type)
 
 > 라인 가시화 옵션.
 >
@@ -141,7 +141,7 @@ var object = Module.createLineString("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| boolean | is\_union | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
+| type | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
 * Sample
   * function createObjectToPathPosition 참조.

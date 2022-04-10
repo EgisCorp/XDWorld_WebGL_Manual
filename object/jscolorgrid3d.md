@@ -10,7 +10,7 @@ description: 3D 그리드 객체 생성 및 수정 기능 API.
 var colorGrid3D = Module.createColorGrid3D("ID");
 ```
 
-### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, rowNum, colNum) → number
+### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, row, col) → number
 
 > 4개의 경위도 좌표, 높이, 가로, 세로, 입력 값의 기준으로 3D 그리드 객체 생성.
 
@@ -23,8 +23,8 @@ var colorGrid3D = Module.createColorGrid3D("ID");
 | rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표. |
 | leftBottom  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표. |
 | altitude    | number                        | 객체 높이.      |
-| rowNum      | number                        | 그리드 가로 개수.  |
-| colNum      | number                        | 그리드 세로 개수.  |
+| row      | number                        | 그리드 가로 개수.  |
+| col      | number                        | 그리드 세로 개수.  |
 
 * Return
   * 총 그리드 개수.
@@ -209,7 +209,7 @@ colorGrid3D.SetGridCellHeight(0, 0, 30);
 {% tab title="Information" %}
 | Name | Type    | Description                 |
 | --------- | ------- | ------------------------ |
-| drawLine  | boolean | <p>true인 경우 테두리 생성.<br>false인 경우 테두리 미생성.</p> |
+| type  | boolean | <p>true인 경우 테두리 생성.<br>false인 경우 테두리 미생성.</p> |
 
 * Return
   * TRUE : 객체 옵션 설정 성공.
@@ -225,7 +225,7 @@ colorGrid3D.SetDrawLine(true);
 {% endtab %}
 {% endtabs %}
 
-### SetNormal(nomal) → boolean
+### SetNormal(type) → boolean
 
 > 3D 그리드 객체의 음영 효과 설정.
 > 
@@ -235,7 +235,7 @@ colorGrid3D.SetDrawLine(true);
 {% tab title="Information" %}
 | Name | Type    | Description            |
 | --------- | ------- | ------------------- |
-| nomal     | boolean | <p>true인 경우 음영 효과 설정.<br>false인 경우 기본 가시화.</p> |
+| type     | boolean | <p>true인 경우 음영 효과 설정.<br>false인 경우 기본 가시화.</p> |
 
 * Return
   * TRUE : 객체 옵션 설정 성공.

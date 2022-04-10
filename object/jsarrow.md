@@ -22,7 +22,7 @@ var object = Module.CreateArrow("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| position | [JSVector3D](JSVector3D.md) | 화살표 시작 경위도. |
+| position | [JSVector3D](../core/jsvector3d.md) | 화살표 시작 경위도. |
 | pan | number | 화살표 Y축 회전 설정. |
 | tilt | number | 화살표 X축 회전 설정. |
 | distance | number | 화살표 전체 길이 설정. |

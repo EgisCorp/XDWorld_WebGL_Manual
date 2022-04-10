@@ -276,6 +276,7 @@ graph.insertDataSet("2010년", data);
   * function createGraph 참조.
   * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
@@ -301,6 +302,7 @@ graph.insertDataSet("2010년", data);
   * function createGraph 참조.
   * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
@@ -327,13 +329,14 @@ graph.insertDataSet("2010년", data);
   * function createGraph 참조.
   * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
 {% endtab %}
 {% endtabs %}
 
-### setDataSetNameInterval(interval) → boolean
+### setDataSetNameInterval(value) → boolean
 
 > 그래프 화면과 필드 이름 텍스트 간 간격 설정.
 
@@ -341,7 +344,7 @@ graph.insertDataSet("2010년", data);
 {% tab title="Information" %}
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| interval | number | 그래프 화면과 필드 이름 텍스트 간 간격. |
+| value | number | 그래프 화면과 필드 이름 텍스트 간 간격. |
 
 * Return
   * true : 객체 설정 성공.
@@ -351,13 +354,14 @@ graph.insertDataSet("2010년", data);
   * function createGraph 참조.
   * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
 {% endtab %}
 {% endtabs %}
 
-### setFloorDepth(depth) → boolean
+### setFloorDepth(value) → boolean
 
 > 그래프 바닥 평면 세로방향 너비.
 
@@ -365,7 +369,7 @@ graph.insertDataSet("2010년", data);
 {% tab title="Information" %}
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| depth | number | 그래프 바닥 평면 세로방향 너비.|
+| value | number | 그래프 바닥 평면 세로방향 너비.|
 
 * Return
   * true : 객체 설정 성공.
@@ -373,9 +377,9 @@ graph.insertDataSet("2010년", data);
 
 * Sample
   * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
-  
+  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)  
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```

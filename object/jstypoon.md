@@ -140,7 +140,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 {% endtab %}
 {% endtabs %}
 
-### setUnionTerrain(union)
+### setUnionTerrain(type)
 
 > 태풍 영향권 범위 가시화 옵션.
 >
@@ -150,7 +150,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 {% tab title="Information" %}
 | Name  | Type    | Description                                               |
 | ----- | ------- | ------------------------------------------------------ |
-| union | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 평면 폴리곤 가시화.</p> |
+| type | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 평면 폴리곤 가시화.</p> |
 
 * Sample
   * function setDamageRangeDisplay 참조
@@ -163,7 +163,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 {% endtab %}
 {% endtabs %}
 
-### setVisibleDamageRange(visible)
+### setVisibleDamageRange(type)
 
 > 태풍 영향권 범위 가시화 옵션.
 >
@@ -173,7 +173,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 {% tab title="Information" %}
 | Name    | Type    | Description                                           |
 | ------- | ------- | -------------------------------------------------- |
-| visible | boolean | <p>true인 경우 태풍 영향권 표시<br>false인 경우 태풍 영향권 미표시.</p> |
+| type | boolean | <p>true인 경우 태풍 영향권 표시<br>false인 경우 태풍 영향권 미표시.</p> |
 
 * Sample
   * function setDamageRangeDisplay 참조

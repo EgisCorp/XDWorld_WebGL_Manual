@@ -10,7 +10,7 @@ description: 포인트 객체 생성 및 수정 기능 API.
 var object = Module.createPoint("ID");
 ```
 
-### setFontStyle( name, size, weight, fill_color, outline_color)
+### setFontStyle(name, size, weight, fill_color, outline_color) → boolean
 
 > POI 텍스트 스타일 설정.
 > 
@@ -26,6 +26,10 @@ var object = Module.createPoint("ID");
 | fill_color | JSPolyLineStyle | 텍스트 색상 |
 | outline_color | JSPolyLineStyle | 텍스트 외곽 색상 |
 
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
 * Sample
   * function createPoint 참조.
   * [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)

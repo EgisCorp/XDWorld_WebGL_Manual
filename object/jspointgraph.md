@@ -92,7 +92,7 @@ var object = Module.createPointGraph("ID");
 {% endtab %}
 {% endtabs %}
 
-### setPointLineVisible(visible) → boolean
+### setPointLineVisible(type) → boolean
 
 > 포인트 그래프와 지형을 연결하는 라인 가시화 유무 설정.
 
@@ -100,7 +100,7 @@ var object = Module.createPointGraph("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| visible | boolean | <p>true인 경우 라인 가시화<br>false인 경우 기본 가시화.</p> |
+| type | boolean | <p>true인 경우 라인 가시화<br>false인 경우 기본 가시화.</p> |
 
 * Return
   * true : 객체 설정 성공.

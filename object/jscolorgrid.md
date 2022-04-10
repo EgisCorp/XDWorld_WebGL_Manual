@@ -10,7 +10,7 @@ description: 2D 그리드 객체 생성 및 수정 기능 API.
 var colorGrid = Module.createColorGrid("ID");
 ```
 
-### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, rowNum, colNum) → number
+### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, row, col) → number
 
 > 4개의 경위도 좌표를 기준으로 2D 그리드 객체 생성.
 
@@ -23,8 +23,8 @@ var colorGrid = Module.createColorGrid("ID");
 | rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 경위도 좌표. |
 | leftBottom  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표. |
 | altitude    | number                        | 객체 높이.      |
-| rowNum      | number                        | 그리드 가로 개수.  |
-| colNum      | number                        | 그리드 세로 개수.  |
+| row      | number                        | 그리드 가로 개수.  |
+| col      | number                        | 그리드 세로 개수.  |
 
 * Return
   * 총 그리드 개수.
@@ -51,7 +51,7 @@ var gridCellNum = colorGrid2D.SetGridPosition(
 {% endtab %}
 {% endtabs %}
 
-### SetGridPositionByCellOptions(leftTop, altitude, width, height, rowNum, colNum) → number
+### SetGridPositionByCellOptions(leftTop, altitude, width, height, row, col) → number
 
 > 좌상단 위치로 2D 그리드 객체 생성.
 
@@ -63,8 +63,8 @@ var gridCellNum = colorGrid2D.SetGridPosition(
 | altitude    | number                        | 객체 높이.      |
 | width    	  | number                        | 그리드 가로 길이.  |
 | height      | number                        | 그리드 세로 길이.  |
-| rowNum      | number                        | 그리드 가로 개수.  |
-| colNum      | number                        | 그리드 세로 개수.  |
+| row     	 | number                        | 그리드 가로 개수.  |
+| col     	 | number                        | 그리드 세로 개수.  |
 
 * Return
   * 총 그리드 개수.
@@ -176,7 +176,7 @@ colorGrid2D.SetGridCellColor(0, 0, new Module.JSColor(255, 255, 0, 0));
 {% endtab %}
 {% endtabs %}
 
-### SetLeftToRightSlopeAngle(number angle) → boolean
+### SetLeftToRightSlopeAngle(angle) → boolean
 
 > x축 기울기 설정.
 
@@ -590,7 +590,7 @@ var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 
 {% endtab %}
 {% endtabs %}
 
-### GetGridEdgeLinePosition(type, margin) → [JSVec3Array](../core/jsvec3array.md)
+### GetGridEdgeLinePosition(type, value) → [JSVec3Array](../core/jsvec3array.md)
 
 > 2D 그리드 객체 테두리 시작, 끝 점 경위도 좌표 반환.
 > 
@@ -601,7 +601,7 @@ var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 
 | Name  | Type                            | Description      |
 | ---------- | ------------------------------- | ------------- |
 | type  | string                  | 반환 테두리 설정값.|
-| margin  | number                  | 테두리 margin |
+| value  | number                  | 테두리 margin. |
 
 * Return
   * [JSVec3Array](../core/jsvec3array.md) : 테두리 시작, 끝점 경위도 좌표 반환 성공.

@@ -10,7 +10,7 @@ description: 전파 범위 3차원 모델 오브젝트 생성 및 설정 API.
 var object = Module.CreateAntenna("ID");
 ```
 
-### CreateCoverageCone(position, height, radius, angle, fov_x, segment) → boolean
+### CreateCoverageCone(position, height, radius, angle, x, segment) → boolean
 
 >  전파 범위 3차원 모델 오브젝트 생성.
 
@@ -18,11 +18,11 @@ var object = Module.CreateAntenna("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| position | [JSVector3D](JSVector3D.md) | 전파 시작 경위도 |
+| position | [JSVector3D](../core/jsvector3d.md) | 전파 시작 경위도 |
 | height | number | 전파 시작 경위도에서 전파 모델링 높이 설정 |
 | radius | number | 전파 모델링 반경 설정(radius&gt;0 입력) |
 | angle | number | 전파 모델링 파형 각도 설정(angle&gt;-90, angle&lt;90 입력) |
-| fov_x | number | 전파 모델링 파형 화각 너비 설정 |
+| x | number | 전파 모델링 파형 화각 너비 설정 |
 | segment | number | 전파 모델링 정밀도 설정(segment&gt;3 입력) |
 
 * Return

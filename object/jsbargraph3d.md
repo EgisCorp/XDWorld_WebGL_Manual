@@ -22,8 +22,8 @@ var object = Module.createBarGraph3D("ID");
 | size | [JSSize3D](../core/jssize3d.md) | 그래프 크기. |
 
 * Return
-  * true : 오브젝트 생성 성공
-  * false : 오브젝트 생성 실패
+  * true : 오브젝트 생성 성공.
+  * false : 오브젝트 생성 실패.
   
 * Sample
   * function createGraph 참조.
@@ -36,7 +36,7 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
-### insertColumn(id, label, color) → boolean
+### insertColumn(name, label, color) → boolean
 
 > 그래프 Column 정보 추가.
 
@@ -44,13 +44,13 @@ var object = Module.createBarGraph3D("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | string | column 구분 명칭. |
+| name | string | column 구분 명칭. |
 | label | string | column 명칭 (그래프 하단부 표시). |
 | color | [JSColor](../core/jscolor.md) | 그래프 바 색상. |
 
 * Return
-  * true : Column 추가 성공
-  * false : Column 추가 실패
+  * true : Column 추가 성공.
+  * false : Column 추가 실패.
   
 * Sample
   * function createGraph 참조.
@@ -63,7 +63,7 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
-### insertRow(id, label) → boolean
+### insertRow(name, label) → boolean
 
 > 그래프 Row 정보 추가.
 
@@ -71,12 +71,12 @@ var object = Module.createBarGraph3D("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| rowKey | string | Row 구분 명칭. |
-| rowLabel | string | Row 이름 (그래프 하단부 표시). |
+| name | string | Row 구분 명칭. |
+| label | string | Row 이름 (그래프 하단부 표시). |
 
 * Return
-  * true : Row 추가 성공
-  * false : Row 추가 실패
+  * true : Row 추가 성공.
+  * false : Row 추가 실패.
     
 * Sample
   * function createGraph 참조.
@@ -89,7 +89,7 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
-### setData(columnID, rowID, data) → boolean
+### setData(name, label, data) → boolean
 
 > 지정한 Column, Row에 해당하는 그래프 데이터를 추가합니다.
 
@@ -97,13 +97,13 @@ var object = Module.createBarGraph3D("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| columnID | string | column 구분 명칭. |
-| rowID | string | Row 구분 명칭. |
+| name | string | column 구분 명칭. |
+| label | string | Row 구분 명칭. |
 | data | number | 그래프 데이터. |
 
 * Return
-  * true : 데이터 추가 성공
-  * false : 데이터 추가 실패
+  * true : 데이터 추가 성공.
+  * false : 데이터 추가 실패.
     
 * Sample
   * function createGraph 참조.
@@ -127,8 +127,8 @@ var object = Module.createBarGraph3D("ID");
 | unit | string | 단위 표시 텍스트. |
 
 * Return
-  * true : 단위 텍스트 설정 성공
-  * false : 단위 텍스트 설정 실패
+  * true : 단위 텍스트 설정 성공.
+  * false : 단위 텍스트 설정 실패.
       
 * Sample
   * function createGraph 참조.
@@ -141,7 +141,7 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
-### setValueRange(min, max, interval) → boolean
+### setValueRange(min, max, value) → boolean
 
 > 그래프 높이 축의 최소, 최대 값 설정.
 
@@ -151,11 +151,11 @@ var object = Module.createBarGraph3D("ID");
 | :--- | :--- | :--- |
 | min | number | 높이 축 최소 값. |
 | max | number | 높이 축 최대 값. |
-| interval | number | 눈금 표시 간격. |
+| value | number | 눈금 표시 간격. |
 
 * Return
-  * true : 크기 설정 성공
-  * false : 크기 설정 실패
+  * true : 크기 설정 성공.
+  * false : 크기 설정 실패.
   
 * Sample
   * function createGraph 참조.
@@ -179,8 +179,8 @@ var object = Module.createBarGraph3D("ID");
 | speed | number | 바 상승 애니메이션 속도 (0.1~1.0 사이 값 설정). |
 
 * Return
-  * true : 속도 설정 성공
-  * false : 속도 설정 실패
+  * true : 속도 설정 성공.
+  * false : 속도 설정 실패.
 
 * Sample
   * function createGraph 참조.

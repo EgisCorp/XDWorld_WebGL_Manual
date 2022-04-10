@@ -74,7 +74,7 @@ var object = Module.createPolygon("ID");
 {% endtab %}
 {% endtabs %}
 
-### setCircle(position, radius, segment) → boolean
+### setCircle(position, radius, segment)
 
 > 중심좌표 기준으로 원 모양 평면 객체를 생성.
 >
@@ -91,11 +91,10 @@ var object = Module.createPolygon("ID");
 | segment  | number                              | 버텍스 수.           |
 
 * Return
-  * true : 객체 생성 성공.
-  * false : 객체 생성 실패.
-    * 객체 생성 실패 조건
-      * radius 값이 0
-      * segment 값이 3 미만
+  * 객체 생성 실패 조건
+    * radius 값이 0
+    * segment 값이 3 미만
+	
 * Sample
   * function createCirclePolygon 참조.
   * [샌드박스\_원 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_circle)
@@ -217,8 +216,6 @@ var object = Module.createPolygon("ID");
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 경위도 좌표 목록.   |
 | parts       | [Collection](../core/collection.md)   | 폴리곤 구성 점정 개수 목록. |
 
-* Detail
-  * part\_list : 파트를 이루는 버텍스 갯수의 리스트를 입력합니다.
 * Return
   * true : 객체 생성 성공.
   * false : 객체 생성 실패.
@@ -236,7 +233,7 @@ var object = Module.createPolygon("ID");
 {% endtab %}
 {% endtabs %}
 
-### setPartCoordinatesUV(coordinates, parts, uv, union) → boolean
+### setPartCoordinatesUV(coordinates, parts, uv, type) → boolean
 
 > 텍스쳐 uv를 포함한 폴리곤 좌표(vertex, part, uv)를 지정합니다.
 
@@ -247,7 +244,7 @@ var object = Module.createPolygon("ID");
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | 폴리곤 경위도 좌표 목록.                                     |
 | parts       | [Collection](../core/collection.md)   | 폴리곤 구성 점정 개수 목록.                                   |
 | uv          | [JSVec2Array](../core/jsvec2array.md) | 폴리곤 구성 UV 좌표 목록.                                   |
-| union       | boolean                               | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
+| type       | boolean                               | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
 
 * Return
   * true : 객체 생성 성공.
@@ -257,6 +254,7 @@ var object = Module.createPolygon("ID");
       * 입력된 parts 구성요소가 없거나 1개 이하인 경우.
       * 입력된 uv 구성요소가 없거나 3개 이하인 경우.
       * coordinates, uv 개수가 동일하지 않는 경우.
+	  
 * Sample
   * function init 참조.
   * [샌드박스\_폴리곤 RTT](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing)
@@ -301,4 +299,6 @@ var object = Module.createPolygon("ID");
 
 | Name | Type | Attributes | Default | Description |
 | ---- | ---- | ---------- | ------- | ----------- |
-|      |      |            |         |             |
+| position     | [JSVector3D](../core/jsvector3d.md)  |            |         | 객체 생성 경위도, 고도 위치. |
+| url     | string     |            |         | 가시화 할 3D 모델링 객체 URL 주소. |
+| align     | string     |            |         | 정렬.            |

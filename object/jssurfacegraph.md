@@ -19,7 +19,7 @@ var object = Module.createSurfaceGraph("ID");
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | position | [JSVector3D](../core/jsvector3d.md) | 그물형 격자 그래프 경위도 좌표 위치. |
-| size | [JSSize3D	](../core/jssize3d.md) | 그물형 격자 그래프 크기. |
+| size | [JSSize3D](../core/jssize3d.md) | 그물형 격자 그래프 크기. |
 
 * Return
   * true : 객체 생성 성공.
@@ -62,7 +62,7 @@ var object = Module.createSurfaceGraph("ID");
 {% endtab %}
 {% endtabs %}
 
-### insertAxisPoint(type, value) → boolean
+### insertAxisPoint(axis, value) → boolean
 
 > X, Y축의 눈금 값을 리스트 추가.
 
@@ -70,7 +70,7 @@ var object = Module.createSurfaceGraph("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| type | number | 축 타입(0 : X축, 1 : Y축). |
+| axis | number | 축 타입(0 : X축, 1 : Y축). |
 | value | number | 눈금 값. |
 
 * Return

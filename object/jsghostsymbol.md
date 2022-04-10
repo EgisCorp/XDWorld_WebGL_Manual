@@ -10,7 +10,7 @@ description: 고스트 심볼 객체 생성 및 수정 기능 API.
 var object = Module.createGhostSymbol("ID");
 ```
 
-### setGhostSymbol(id) → boolean
+### setGhostSymbol(name) → boolean
 
 > 고스트 심볼 맵에 등록된 객체 모델 지정.
 
@@ -18,7 +18,7 @@ var object = Module.createGhostSymbol("ID");
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| id | string | 등록된 객체 명칭. |
+| name | string | 등록된 객체 명칭. |
 
 * Return
   * true : 객체 설정 성공.
@@ -341,7 +341,7 @@ var object = Module.createGhostSymbol("ID");
 {% endtab %}
 {% endtabs %}
 
-### setOpacity(object opacity) → string
+### setOpacity(opacity)
 
 > 객체 투명도를 설정합니다.
 
@@ -351,8 +351,6 @@ var object = Module.createGhostSymbol("ID");
 | --------- | ------ | -------- |
 | opacity   | number | 객체 투명도 |
 
-* Return
-  * 설정 결과
 {% endtab %}
 
 {% tab title="Template" %}
@@ -377,7 +375,7 @@ var object = Module.createGhostSymbol("ID");
 {% endtab %}
 {% endtabs %}
 
-### setColor([JSColor](../core/jscolor.md) color)) → string
+### setColor([JSColor](../core/jscolor.md) color))
 
 > 객체 색상을 설정합니다.
 
@@ -387,8 +385,6 @@ var object = Module.createGhostSymbol("ID");
 | --------- | ----------------------------- | -------- |
 | color     | [JSColor](../core/jscolor.md) | 객체 색상  |
 
-* Return
-  * 설정 결과
 {% endtab %}
 
 {% tab title="Template" %}

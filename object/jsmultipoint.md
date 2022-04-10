@@ -10,7 +10,7 @@ description: 멀티 POI 생성 및 수정 기능 API.
 var object = Module.createMultiPoint("ID");
 ```
 
-### setMainPoint(id, position, icon) → boolean
+### setMainPoint(name, position, icon) → boolean
 
 > 멀티 포인트 객체 생성.
 > 
@@ -20,7 +20,7 @@ var object = Module.createMultiPoint("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | string | 멀티 POI 객체 명칭. |
+| name | string | 멀티 POI 객체 명칭. |
 | position | [JSVector3D](../core/jsvector3d.md) | 멀티 POI 경위도 위치. |
 | icon | JSIcon | 객체의 표출 아이콘. |
   
@@ -39,19 +39,19 @@ var object = Module.createMultiPoint("ID");
 {% endtab %}
 {% endtabs %}
 
-### insertSubPoint(id, icon) → boolean
+### insertSubPoint(name, icon) → boolean
 
 > 멀티 포인트 객체 추가.
 > 
 > 중신 좌표를 기준으로 시계 방향 순으로 자동 배치 되는 POI 추가.
 >
-> 객체의 키구성은 (메인 POI 명칭)#(입력받는 id)로 구성
+> 객체의 키구성은 (메인 POI 명칭)#(입력받는 name)로 구성
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | string | 멀티 POI 객체 명칭. |
+| name | string | 멀티 POI 객체 명칭. |
 | icon | JSIcon | 객체의 표출 아이콘. |
   
 * Return
