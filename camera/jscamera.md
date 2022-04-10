@@ -582,7 +582,7 @@ Module.getViewCamera().pauseAutoMove();
 
 ### Type Definitions
 
-##### JSCamera.MoveBoundaryOption
+#### JSCamera.MoveBoundaryOption
 
 > 영역 정보를 기준으로 카메라 이동 옵션.
 
