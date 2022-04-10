@@ -88,7 +88,7 @@ let parameters = {
 
 | Name       | Type                                                  | Attributes | Default | Description |
 | ---------- | ----------------------------------------------------- | ---------- | ------- | ----------- |
-| option | [oordinates Type](type-list.md#coordinate-type-list) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
+| option | [coordinates Type](tag-list.md#coordinate-type-list) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
 
 #### JSMath.BezierLine
 
