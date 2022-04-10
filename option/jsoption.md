@@ -33,6 +33,16 @@ var math = Module.getOption();
   * function init 참조.
   * [샌드박스\_거리측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+function addPoint(e) {
+	console.log(e);
+}
+
+Module.getOption().callBackAddPoint(addPoint);
+```
+{% endtab %}
 {% endtabs %}
 
 ### callBackCompletePoint(event) → string
@@ -58,6 +68,16 @@ var math = Module.getOption();
   * function init 참조.
   * [샌드박스\_거리측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+function endPoint(e) {
+	console.log(e);
+}
+
+Module.getOption().callBackCompletePoint(endPoint);
+```
+{% endtab %}
 {% endtabs %}
 
 ### SetAreaMeasurePolygonDepthBuffer(type) → boolean
@@ -82,6 +102,14 @@ var math = Module.getOption();
   * function init 참조.
   * [샌드박스\_면적측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_area)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getOption().SetAreaMeasurePolygonDepthBuffer(false);
+or
+Module.getOption().SetAreaMeasurePolygonDepthBuffer(true);
+```
+{% endtab %}
 {% endtabs %}
 
 ### SetDistanceMeasureLineDepthBuffer(type) → boolean
@@ -105,6 +133,14 @@ var math = Module.getOption();
 * function init 참조.
   * [샌드박스\_거리측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getOption().SetDistanceMeasureLineDepthBuffer(false);
+or
+Module.getOption().SetDistanceMeasureLineDepthBuffer(ture);
+```
+{% endtab %}
 {% endtabs %}
 
 ### setSlideScreenCount(value) → boolean
@@ -127,6 +163,14 @@ var math = Module.getOption();
   * function setSplitScreen 참조.
   * [샌드박스\_화면 분할](http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getOption().setSlideScreenCount(1);
+or
+Module.getOption().setSlideScreenCount(2);
+```
+{% endtab %}
 {% endtabs %}
 
 ### setTwoSlideScreenDivideRate(value) → boolean
@@ -148,6 +192,12 @@ var math = Module.getOption();
 * Sample
   * function setSplitScreen 참조.
   * [샌드박스\_화면 분할](http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getOption().setTwoSlideScreenDivideRate(0~1);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -173,5 +223,13 @@ var math = Module.getOption();
 * Sample
   * function setSplitScreen 참조.
   * [샌드박스\_화면 분할](http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getOption().setTwoSlideScreenLayerList(
+	"Left_Layer_1,Left_Layer_2",
+	"Right_Layer_1");
+```
 {% endtab %}
 {% endtabs %}
