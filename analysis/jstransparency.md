@@ -20,7 +20,7 @@ var transparency = Module.getTransparency();
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| coordinates | [JSVec3Array](../core/jsvec3aray.md) | 터파기 영역 좌표 리스트. |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 터파기 영역 좌표 리스트. |
 
 * Return
   * 설정 성공 (좌표 리스트 크기 반환) 혹은 실패 (-1)
@@ -41,7 +41,7 @@ var transparency = Module.getTransparency();
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| coordinates | [JSVec2Array](../core/jsvec2aray.md) | 터파기 이동경로 좌표 목록. |
+| coordinates | [JSVec2Array](../core/jsvec2array.md) | 터파기 이동경로 좌표 목록. |
 | frame | number | 터파기 위치 갱신 프레임 수. |
   
 * Return

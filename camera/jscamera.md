@@ -354,7 +354,7 @@ Module.getViewCamera().setAnimationSpeed(5);
 {% endtab %}
 {% endtabs %}
 
-### setAutoMovePosition([JSVec3Array](../core/jsvec3aray.md) positionList) → boolean
+### setAutoMovePosition([JSVec3Array](../core/jsvec3array.md) positionList) → boolean
 
 > 카메라 자동이동 좌표 리스트 설정.
 
@@ -362,7 +362,7 @@ Module.getViewCamera().setAnimationSpeed(5);
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| positionList | [JSVec3Array](../core/jsvec3aray.md) | 자동이동 경로 좌표 리스트. |
+| positionList | [JSVec3Array](../core/jsvec3array.md) | 자동이동 경로 좌표 리스트. |
 
 * Return
   * true : 설정 성공.

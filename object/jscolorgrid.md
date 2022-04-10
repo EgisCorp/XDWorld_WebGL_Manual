@@ -530,7 +530,7 @@ var alt = position.Altitude;
 {% endtab %}
 {% endtabs %}
 
-### GetGridCellRect(row, column) → [JSVec3Array](../core/jsvec3aray.md)
+### GetGridCellRect(row, column) → [JSVec3Array](../core/jsvec3array.md)
 
 > 가로, 세로 Index에 해당하는 Cell의 각 지점(4개) 좌표 반환.
 
@@ -590,7 +590,7 @@ var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 
 {% endtab %}
 {% endtabs %}
 
-### GetGridEdgeLinePosition(type, margin) → [JSVec3Array](../core/jsvec3aray.md)
+### GetGridEdgeLinePosition(type, margin) → [JSVec3Array](../core/jsvec3array.md)
 
 > 2D 그리드 객체 테두리 시작, 끝 점 경위도 좌표 반환.
 > 
@@ -604,7 +604,7 @@ var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 
 | margin  | number                  | 테두리 margin |
 
 * Return
-  * [JSVec3Array](../core/jsvec3aray.md) : 테두리 시작, 끝점 경위도 좌표 반환 성공.
+  * [JSVec3Array](../core/jsvec3array.md) : 테두리 시작, 끝점 경위도 좌표 반환 성공.
   * null : 좌표 반환 실패.
     * 오브젝트 생성 실패 조건
 	  * type&gt;4 값이 설졍 된 경우

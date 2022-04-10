@@ -35,7 +35,7 @@ var editTerrain = Module.getEditTerrain();
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| coordinates | [JSVec3Array](../core/jsvec3aray.md) | 성절토 분석여역 경위도 좌표 목록. |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 성절토 분석여역 경위도 좌표 목록. |
 | height | number | 성절토할 기준 높이 (기준 : 해발고도, 단위 : 미터)|
 | angle | number | 성절토할 사면 각도 (단위 : degree ) |
 

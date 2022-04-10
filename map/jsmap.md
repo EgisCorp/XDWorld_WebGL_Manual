@@ -195,7 +195,7 @@ Module.getMap().setEffectDistance(1500000);
 {% tab title="Information" %}
 | Name  | Type                                 | Description      |
 | ---------- | ------------------------------------ | ------------- |
-| array | [JSVec3Array](../core/jsvec3aray.md) | 히트맵 좌표 리스트 배열 |
+| array | [JSVec3Array](../core/jsvec3array.md) | 히트맵 좌표 리스트 배열 |
 
 * Sample
   * function loadHeatmapPoint 참조
@@ -609,14 +609,14 @@ Module.getMap().clearSelectObj();
 {% endtab %}
 {% endtabs %}
 
-### getInputPoints() → [JSVec3Array](../core/jsvec3aray.md)
+### getInputPoints() → [JSVec3Array](../core/jsvec3array.md)
 
 > 입력된 좌표 리스트 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * [JSVec3Array](../core/jsvec3aray.md) : 입력된 좌표 리스트 반환 성공.
+  * [JSVec3Array](../core/jsvec3array.md) : 입력된 좌표 리스트 반환 성공.
   * null : 입력된 좌표가 없을 경우.
   
 * Sample
@@ -701,7 +701,7 @@ var distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265
 {% endtab %}
 {% endtabs %}
 
-### getLineBuffer(lineVertex, bufferDistance) → [JSVec2Array](../core/jsvec2aray.md)
+### getLineBuffer(lineVertex, bufferDistance) → [JSVec2Array](../core/jsvec2array.md)
 
 > 거리 설정값에 따라 라인 버퍼 폴리곤 좌표 반환.
 
@@ -709,11 +709,11 @@ var distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265
 {% tab title="Information" %}
 | Name      | Type                                 | Description   |
 | -------------- | ------------------------------------ | ---------- |
-| lineVertex     | [JSVec2Array](../core/jsvec2aray.md) | 라인 좌표 리스트 (경도, 위도)  |
+| lineVertex     | [JSVec2Array](../core/jsvec2array.md) | 라인 좌표 리스트 (경도, 위도)  |
 | bufferDistance | number                               | 라인으로 부터 거리 (라인으로 부터 거리) |
 
 * Return
-  * [JSVec2Array](../core/jsvec2aray.md) : 라인버퍼 폴리곤 경위도 좌표 목록 반환 성공.
+  * [JSVec2Array](../core/jsvec2array.md) : 라인버퍼 폴리곤 경위도 좌표 목록 반환 성공.
   * null : 엔진이 정상적으로 load되지 않았을 경우
   
 * Sample

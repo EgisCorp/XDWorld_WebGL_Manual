@@ -24,7 +24,7 @@ var sightAnalysis = Module.getSightAnalysis();
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| coordinates | [JSVec3Array](../core/jsvec3aray.md) | ([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...) 분석할 경로 배열. |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | ([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...) 분석할 경로 배열. |
 | hbuffer | number | 수평 버퍼 크기. |
 | vbuffer | number | 수직 버퍼 크기. |
 | layer | [JSLayer](../layer/jslayer.md) | 분석할 객체가 속하는 레이어. |

@@ -20,7 +20,7 @@ var colorPolygon = Module.createColorPolygon("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | --------- | ---- | -------- |
-| coordinates | [JSVec3Array](../core/jsvec3aray.md)  | 폴리곤 경위도 좌표 목록. |
+| coordinates | [JSVec3Array](../core/jsvec3array.md)  | 폴리곤 경위도 좌표 목록. |
 | parts | [Collection](../core/collection.md)  | 폴리곤 구성 점정 개수 목록. |
 | height | number  | 폴리곤 높이. |
 | startColor | [JSColor](../core/jscolor.md)  | 그라데이션 시작 색상. |

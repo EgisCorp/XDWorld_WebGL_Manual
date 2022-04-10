@@ -54,7 +54,7 @@ var object = Module.createPipe("ID");
 {% tab title="Information" %}
 
 * Return
-  * [JSVec3Array](../core/jsvec3aray.md) : 관로 중심선 경위도 고도 좌표 반환 성공.
+  * [JSVec3Array](../core/jsvec3array.md) : 관로 중심선 경위도 고도 좌표 반환 성공.
   * null : 좌표 반환 실패.
 {% endtab %}
 
