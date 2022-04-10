@@ -56,7 +56,7 @@ let curve_pos = {
 {% tab title="Information" %}
 | Name   | Type                                             | Description  |
 | ------ | ------------------------------------------------ | ------------ |
-| option | [JSMath.BezierLine](jsmath.md#jsmath.BezierLine) | 변환 좌표 속성 정보. |
+| option | [JSMath.BezierLine](jsmath.md#jsmath.bezierline) | 변환 좌표 속성 정보. |
 
 * Return
   * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
@@ -88,7 +88,7 @@ let parameters = {
 
 | Name       | Type                                                  | Attributes | Default | Description |
 | ---------- | ----------------------------------------------------- | ---------- | ------- | ----------- |
-| option | [coordinates Type] (type-list.md#coordinate-type-list) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
+| option | [oordinates Type](type-list.md#coordinate-type-list) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
 
 #### JSMath.BezierLine
 
