@@ -541,7 +541,7 @@ Module.getViewCamera().startAutoMove();
   * false : 설정 실패.
 * Sample
   * function stopCameraAutoMove 참조
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path)
 {% endtab %}
 
 {% tab title="Template" %}
