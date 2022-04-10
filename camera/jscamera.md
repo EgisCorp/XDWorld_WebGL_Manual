@@ -61,7 +61,7 @@ Module.getViewCamera().move(new Module.JSVector3D(129.128265, 35.171834, 500.0),
 {% endtab %}
 {% endtabs %}
 
-### moveLonLatBoundarybyJson(parameter) → string
+### moveLonLatBoundarybyJson(option) → string
 
 > min, max boundary를 이용한 카메라 이동.
 
@@ -69,12 +69,11 @@ Module.getViewCamera().move(new Module.JSVector3D(129.128265, 35.171834, 500.0),
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| parameter | object | 카메라 min, max boundary. |
+| option | [JSCamera.MoveBoundaryOption](jscamera.md#jscamera.moveboundaryoption)   | 카메라 min, max boundary. |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-    * 엔진이 정상적으로 load되지 않았을 경우.
 	* complete 태그가 없을 경우.
 * Sample
   * function moveTestArea 참조.
@@ -98,7 +97,7 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
-### moveLonLatAlt(Longitude, Latitude, Altitude, smooth)
+### moveLonLatAlt(x, y, z, type)
 
 > 카메라를 지정한 고도, 경위도 위치로 이동.
 
@@ -106,10 +105,10 @@ let json = {
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| Longitude | number | 카메라 경도. |
-| Latitude | number | 카메라 위도. |
-| Altitude | number | 카메라 고도. |
-| smooth | boolean | 카메라 이동 애니메이션 적용 여부. |
+| x | number | 카메라 경도. |
+| y | number | 카메라 위도. |
+| z | number | 카메라 고도. |
+| type | boolean | 카메라 이동 애니메이션 적용 여부. |
 
 * Sample
   * function init 참조.
@@ -354,7 +353,7 @@ Module.getViewCamera().setAnimationSpeed(5);
 {% endtab %}
 {% endtabs %}
 
-### setAutoMovePosition([JSVec3Array](../core/jsvec3array.md) positionList) → boolean
+### setAutoMovePosition(coordinates) → boolean
 
 > 카메라 자동이동 좌표 리스트 설정.
 
@@ -362,7 +361,7 @@ Module.getViewCamera().setAnimationSpeed(5);
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| positionList | [JSVec3Array](../core/jsvec3array.md) | 자동이동 경로 좌표 리스트. |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 자동이동 경로 좌표 리스트. |
 
 * Return
   * true : 설정 성공.
@@ -411,7 +410,7 @@ Module.getViewCamera().setAutoMoveWaitFrame(3);
 {% endtab %}
 {% endtabs %}
 
-### setAutoMoveRoundPositions(center, distanceFromCenter, cameraAltitude, roundStartAngle, roundEndAngle, clockWise) → boolean
+### setAutoMoveRoundPositions(center, distance, altitude, startAngle, endAngle, type) → boolean
 
 > 카메라 원형 경로 이동 설정.
 
@@ -420,11 +419,11 @@ Module.getViewCamera().setAutoMoveWaitFrame(3);
 | Name | Type | Description |
 | ---- | ---- | ---- |
 | center | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 지점 (경도, 위도, 고도) |
-| distanceFromCenter | number | 중심점과 카메라의 거리 |
-| cameraAltitude | number | 카메라 고도 |
-| roundStartAngle | number | 시작 방향 |
-| roundEndAngle | number | 종료 방향 |
-| clockWise | boolean | 방향 설정(true: 반시계방향, false: 시계방향) |
+| distance | number | 중심점과 카메라의 거리 |
+| altitude | number | 카메라 고도 |
+| startAngle | number | 시작 방향 |
+| endAngle | number | 종료 방향 |
+| type | boolean | 방향 설정(true: 반시계방향, false: 시계방향) |
 
 * Return
   * true : 설정 성공.
@@ -468,7 +467,7 @@ Module.getViewCamera().SetCameraShakeEffect(true);
 {% endtab %}
 {% endtabs %}
 
-### SetCameraShakeStrength(strength) → boolean
+### SetCameraShakeStrength(value) → boolean
 
 > 카메라 흔들림 효과 강도 설정.
 
@@ -476,7 +475,7 @@ Module.getViewCamera().SetCameraShakeEffect(true);
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| strength | number | 카메라 흔들림 효과 강도 (1 ~ 100) |
+| value | number | 카메라 흔들림 효과 강도 (1 ~ 100) |
 
 * Return
   * true : 설정 성공.
@@ -494,7 +493,7 @@ Module.getViewCamera().SetCameraShakeStrength(50);
 {% endtab %}
 {% endtabs %}
 
-### setPermitUnderGround(permit)
+### setPermitUnderGround(type)
 
 > 카메라 지형 아래 이동 설정.
 
@@ -502,7 +501,7 @@ Module.getViewCamera().SetCameraShakeStrength(50);
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| permit | boolean | 카메라 지형 아래 위치 허용 여부 |
+| type | boolean | 카메라 지형 아래 위치 허용 여부 |
 {% endtab %}
 
 {% tab title="Template" %}
@@ -586,3 +585,8 @@ Module.getViewCamera().pauseAutoMove();
 ##### JSCamera.MoveBoundaryOption
 
 > 영역 정보를 기준으로 카메라 이동 옵션.
+
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| boundary | [Rect2D]() |  |  | 카메라 이동 위치. |
+| complete | function |  |  | 이동 완료 후 발생 이벤트 함수.  |
