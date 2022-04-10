@@ -10,36 +10,39 @@ description: 지도 내 레이어 분석을 위한 API.
 var sightAnalysis = Module.getSightAnalysis();
 ```
 
-### GetObjectPositionsOnPath(path, searchBuffer, verticalScope, targetLayer) → [JSON](jssightanalysis.md#jssightanalysis.objectonpathresult)
+### GetObjectPositionsOnPath(coordinates, hbuffer, vbuffer, layer) → [JSON](jssightanalysis.md#jssightanalysis.objectonpathresult)
 
 > 지정된 경로에서 객체까지의 거리, 위치를 반환.
 >
 > 경로에 검색 범위를 바탕으로 범위 내에 존재하는 객체에 대한 경로의 이정 거리 기준으로 분석.
 >
-> searchBuffer 입력값은 수평 버퍼 크기. 값이 클수록 수평으로 넓은 범위의 객체 분석.
+> hbuffer 입력값은 수평 버퍼 크기. 값이 클수록 수평으로 넓은 범위의 객체 분석.
 >
-> verticalScope 입력값은 수직 버퍼 크기. 값이 클수록 수직으로 넓은 범위의 객체 분석.
+> vbuffer 입력값은 수직 버퍼 크기. 값이 클수록 수직으로 넓은 범위의 객체 분석.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| path | [JSVec3Array](../core/jsvec3aray.md) | ([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...) 분석할 경로 배열. |
-| searchBuffer | number | 수평 버퍼 크기 |
-| verticalScope | number | 수직 버퍼 크기 |
-| targetLayer | [JSLayer](../layer/jslayer.md) | 분석할 객체가 속하는 레이어 |
+| coordinates | [JSVec3Array](../core/jsvec3aray.md) | ([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...) 분석할 경로 배열. |
+| hbuffer | number | 수평 버퍼 크기. |
+| vbuffer | number | 수직 버퍼 크기. |
+| layer | [JSLayer](../layer/jslayer.md) | 분석할 객체가 속하는 레이어. |
 
 * Return
-  * 지정된 경로 진행 중 오브젝트와 수직 방향으로 만나는 지점들의 위치 반환 ([JSON](jssightanalysis.md#jssightanalysis.objectonpathresult))
+  * 지정된 경로 진행 중 오브젝트와 수직 방향으로 만나는 지점들의 위치 반환. ([JSON](jssightanalysis.md#jssightanalysis.objectonpathresult))
   
 * Sample
-  * function 참조.
+  * function analysisPositions 참조.
   * [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let rstjson = "{
+var coordinates = Module.getMap().getInputPoints();
+var returnJSON = Module.getSightAnalysis().GetObjectPositionsOnPath(coordinates, 30.0, 5.0, "분석 레이어");
+
+let returnJSON = "{
 	[
 		{
 			Longitude : 129.2,
@@ -72,7 +75,7 @@ let rstjson = "{
 
 | Name         | Type                          | Attributes | Default                 | Description      |
 | ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| - | [JSSightAnalysis.ObjectOnPathResult.Position](jssightanalysis.md#jssightanalysis.objectonpathresult.position) | array | | 개별 분석 결과 배열
+| return | array([JSSightAnalysis.ObjectOnPathResult.Position](jssightanalysis.md#jssightanalysis.objectonpathresult.position)) |  | | 개별 분석 결과 배열 |
 
 ###### JSSightAnalysis.ObjectOnPathResult.Position
 

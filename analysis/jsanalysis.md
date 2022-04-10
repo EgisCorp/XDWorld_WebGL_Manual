@@ -26,8 +26,8 @@ var analysis = Module.getAnalysis();
   * false : 객체 생성 실패.
   
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_building_height_regulation
+  * function getSlopePlane 참조.
+  * [샌드박스\_시곡면 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_building_height_regulation)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -44,15 +44,15 @@ var analysis = Module.getAnalysis();
 {% tab title="Name" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| option | object | 시작점, 입력점, 영역, 정점 갯수, 라인 길이 |
+| option | [JSAnalysis.InterpolationOption](jsanalysis.md#jsanalysis.interpolationoption) | 시작점, 입력점, 영역, 정점 갯수, 라인 길이 |
 
 * Return
   * array : 보간된 라인 좌표 목록 반환 성공.
   * NULL : 보간된 라인 좌표 목록 반환 실패.
 
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_line_interpolate_curved
+  * function createInterpolatedLine 참조.
+  * [샌드박스\_라인 보간 (곡선)](http://sandbox.dtwincloud.com/code/main.do?id=object_line_interpolate_curved)  
 {% endtab %}
 
 {% tab title="Template" %}
@@ -73,8 +73,8 @@ var analysis = Module.getAnalysis();
   * null : JSGridAnal 객체 반환 성공.
   
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=object_line_interpolate_curved
+  * function setWindRenderMode 참조.
+  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect_wind)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -101,8 +101,8 @@ var analysis = Module.getAnalysis();
   * build#43.15#mount#17.47#terrain#35.04#sky#4.34
   
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=camera_jomang_ratio
+  * function getJomangRatio 참조.
+  * [샌드박스\_조망 비율](http://sandbox.dtwincloud.com/code/main.do?id=camera_jomang_ratio)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -128,8 +128,8 @@ var analysis = Module.getAnalysis();
   * facility_build#263500000000000023630202#157.677215#129.123663#35.176768, ...
   
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_building_width
+  * function getJudong 참조.
+  * [샌드박스\_주동길이 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_building_width)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -149,8 +149,8 @@ var analysis = Module.getAnalysis();
 | type | boolean | <p>true인 경우 모든 객체 그림자 생성.<br>false인 경우 선택 객체만 그림자 생성.</p> |
 	
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+  * function initPage 참조.
+  * [샌드박스\_그림자](http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -170,8 +170,8 @@ var analysis = Module.getAnalysis();
 | type | boolean | <p>true인 경우 시뮬레이션 시작.<br>false인 경우 시뮬레이션 종료.</p> |
 	
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+  * function executeShadowSimulation 참조.
+  * [샌드박스\_그림자](http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -191,8 +191,8 @@ var analysis = Module.getAnalysis();
 | term | number | 시뮬레이션 진행 시간 간격 설정(분 단위). |
 
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+  * function setShadowSimulationTimeTerm 참조.
+  * [샌드박스\_그림자](http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -218,8 +218,8 @@ var analysis = Module.getAnalysis();
 | endMin | number | 시뮬레이션 종료 분 |
 
 * Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play
+  * function setShadowSimulationTimeTerm 참조.
+  * [샌드박스\_그림자](http://sandbox.dtwincloud.com/code/main.do?id=effect_shadow_play)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -238,9 +238,6 @@ var analysis = Module.getAnalysis();
 | :--- | :--- | :--- |
 | apply | boolean | <p>true인 경우 가시권 분석 시작.<br>false인 경우 가시권 분석 종료.</p> |
 
-* Sample
-  * function 참조.
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_viewshed_3d
 {% endtab %}
 
 {% tab title="Template" %}
@@ -254,3 +251,8 @@ var analysis = Module.getAnalysis();
 ##### JSAnalysis.InterpolationOption
 
 > 보간 라인 좌표 생성 옵션.
+
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| 1 | 1 | 1 | 1 | 1 |
+

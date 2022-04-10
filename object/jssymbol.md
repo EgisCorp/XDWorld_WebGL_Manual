@@ -38,11 +38,11 @@ var icon = Module.getSymbol.getIcon("Icon\_name");
 {% endtab %}
 {% endtabs %}
 
-### insertIcon(name, resopnse, width, height) → boolean
+### insertIcon(name, data, width, height) → boolean
 
 > JSSymbol 내부에 새로운 JSIcon 등록.
 >
-> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
+> data 변수는 Uint8Array 기반의 바이너리 배열 데이터.
 >
 > width, height 이미지 실제 크기 입력( &gt;1 ).
 
@@ -51,7 +51,7 @@ var icon = Module.getSymbol.getIcon("Icon\_name");
 | Name   | Type   | Description     |
 | ----------- | ------ | ------------ |
 | name  | string | 등록할 객체 명칭. |
-| resopnse | object | 이미지 바이너리 데이터. |
+| data | object | 이미지 바이너리 데이터. |
 | width | number | 이미지의 너비. |
 | height | number | 이미지의 높이. |
 
@@ -60,7 +60,7 @@ var icon = Module.getSymbol.getIcon("Icon\_name");
   * false : 객체 설정 실패.
     * 객체 설정 실패 조건
 	  * name과 동일한 명칭을 가진 객체가 존재하는 경우.
-	  * resopnse 값이 null 인 경우.
+	  * data 값이 null 인 경우.
       * width, height &lt;0 인 경우
 	  
 * Sample

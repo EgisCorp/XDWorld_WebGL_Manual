@@ -21,7 +21,7 @@ var flood = Module.getFlood();
 | active | boolean | 물판 동작 설정 (true : 물판 동작, false : 물판 해제)| 
 
 * Sample
-  * function 참조.
+  * function init 참조.
   * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 
@@ -42,7 +42,7 @@ var flood = Module.getFlood();
 | color | [CJSColor](../core/jscolor.md) | 물판 색상 |
 
 * Sample
-  * function 참조.
+  * function SetFloodColor 참조.
   * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 
@@ -63,7 +63,7 @@ var flood = Module.getFlood();
 | height | number | 물판 기준 높이 (해발고도 기준, 단위 : 미터) |
 
 * Sample
-  * function 참조.
+  * function setFloodHeight 참조.
   * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 
@@ -86,7 +86,7 @@ var flood = Module.getFlood();
 | altitude | number | 물판 가시거리 (단위 : 미터) |
 
 * Sample
-  * function 참조.
+  * function setFloodVisibleAltitude 참조.
   * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 
@@ -108,7 +108,7 @@ var flood = Module.getFlood();
 | speed | number | 물판 유속 |
 
 * Sample
-  * function 참조.
+  * function SetWaterSpeed 참조.
   * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 
@@ -118,17 +118,17 @@ var flood = Module.getFlood();
 {% endtab %}
 {% endtabs %}
 
-### visibleWaterPlane(visible)
+### visibleWaterPlane(type)
 > 물판의 화면 시각화 여부를 설정
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| visible | boolean | 물판 시각화 (true : 표현, false : 숨김) |
+| type | boolean | 물판 시각화 (true : 표현, false : 숨김) |
   
 * Sample
-  * function 참조.
+  * function visibleWaterPlane 참조.
   * [샌드박스\_홍수](http://sandbox.dtwincloud.com/code/main.do?id=weather_flood)
 {% endtab %}
 

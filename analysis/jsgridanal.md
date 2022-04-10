@@ -17,7 +17,7 @@ var object = Module.getAnalysis().getGridAnal();
 {% tabs %}
 {% tab title="Information" %}
 * Sample
-  * function 참조.
+  * function setWindRenderMode 참조.
   * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
@@ -27,19 +27,19 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-### openGridDataURL(url, nTime, nStripSize, nStriptStart, nStripEnd, nDataType)
+### openGridDataURL(url, time, size, start, end, type)
 
 > 바이너리 격자 분석 결과 데이터를 URL 호출.
 >
-> nTime 입력값 범위 0을 포함한 정수형 인덱스, 0-base 배열 번호.
+> time 입력값 범위 0을 포함한 정수형 인덱스, 0-base 배열 번호.
 >
-> nStripSize 입력값 범위 0보다 큰 정수형 byte 크기.
+> size 입력값 범위 0보다 큰 정수형 byte 크기.
 >
-> nStriptStart 입력값 범위 각 셀의 시작 포인터부터 데이터를 읽기를 진행할 시작점 byte 오프셋.
+> start 입력값 범위 각 셀의 시작 포인터부터 데이터를 읽기를 진행할 시작점 byte 오프셋.
 >
-> nStripEnd 입력값 범위 각셀의 시작 포인터부터 데이터를 읽기를 종료할 지점 byte 오프셋.
+> end 입력값 범위 각셀의 시작 포인터부터 데이터를 읽기를 종료할 지점 byte 오프셋.
 >
-> 읽을 셀의 크기 = (nStripEnd - nStriptStart), 단위 byte.
+> 읽을 셀의 크기 = (end - start), 단위 byte.
 >
 > nDataType 입력값에 따른 정보 0 (정수형 4 byte), 1(실수형 4 byte), 2(실수형 8 byte).
 
@@ -48,27 +48,27 @@ var object = Module.getAnalysis().getGridAnal();
 | Name         | Type   | Description              |
 | ------------ | ------ | ------------------------ |
 | url          | string | http 통신 요청 파일 URL.       |
-| nTime        | number | 분석 결과 데이터의 시계열 인덱스.      |
-| nStripSize   | number | 격자 데이터 셀의 byte 크기 (정수형). |
-| nStriptStart | number | 수집할 데이터 셀의 시작 오프셋 (정수형). |
-| nStripEnd    | number | 수집할 데이터 셀의 종료 오프셋 (정수형). |
-| nDataType    | number | 데이터 형식 (정수형).            |
+| time        | number | 분석 결과 데이터의 시계열 인덱스.      |
+| size   | number | 격자 데이터 셀의 byte 크기 (정수형). |
+| start | number | 수집할 데이터 셀의 시작 오프셋 (정수형). |
+| end    | number | 수집할 데이터 셀의 종료 오프셋 (정수형). |
+| type    | number | 데이터 형식 (정수형).            |
 
 * Return
   * 비동기 이벤트 - Fire\_EventLoadDataFinish 통해서 모든 시계열 데이터가 모두 로드되면 발생
-  * 예) Module.canvas.addEventListener("Fire\_EventLoadDataFinish", OnWindDataLoad);
 * Sample
-  * function 참조.
+  * function setWindRenderMode 참조.
   * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+Module.canvas.addEventListener("Fire\_EventLoadDataFinish", "function type");
 ```
 {% endtab %}
 {% endtabs %}
 
-### setHRange(fmin, fmax)
+### setHRange(min, max)
 
 > 표출할 격자 분석 결과 데이터의 최소, 최대값 설정.
 
@@ -76,11 +76,12 @@ var object = Module.getAnalysis().getGridAnal();
 {% tab title="Information" %}
 | Name | Type   | Description |
 | ---- | ------ | ----------- |
-| fmin | number | 최소값.        |
-| fmax | number | 최대값.        |
+| min | number | 최소값.        |
+| max | number | 최대값.        |
 
 * Sample
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function cbLoad 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -89,11 +90,11 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-### createRasterData(szCat, time) → boolean
+### createRasterData(name, time) → boolean
 
 > 바이너리 격자 분석 결과 데이터를 지정한 시간 인덱스에 2D Raster 객체로 생성.
 >
-> szCat 입력값은 이전 키값과 중복 불가.
+> name 입력값은 이전 키값과 중복 불가.
 >
 > time 입력값은 0 이상의 정수형 시간 인덱스, setTimeRange 값 이상 불가.
 >
@@ -103,15 +104,15 @@ var object = Module.getAnalysis().getGridAnal();
 {% tab title="Information" %}
 | Name  | Type   | Description       |
 | ----- | ------ | ----------------- |
-| szCat | string | 생성 객체의 키값.        |
+| name | string | 생성 객체의 키값.        |
 | time  | number | 시계열 인덱스 번호 (정수형). |
 
 * Return
   * true : 생성 성공.
   * false : 생성 실패.
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function cbLoad 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -120,11 +121,11 @@ var object = Module.getAnalysis().getGridAnal();
 {% endtab %}
 {% endtabs %}
 
-### createPlaneData(szCat) → boolean
+### createPlaneData(name) → boolean
 
 > 바이너리 격자 분석 결과 데이터를 3D 애니메이션 평면 객체로 생성.
 >
-> szCat 입력값은 이전 키값과 중복 불가.
+> name 입력값은 이전 키값과 중복 불가.
 >
 > 생성 시 기본적으로 시계열 인덱스가 0\~최대 시계열수까지 진행으로 애니메이션 수행.
 
@@ -132,14 +133,14 @@ var object = Module.getAnalysis().getGridAnal();
 {% tab title="Information" %}
 | Name  | Type   | Description |
 | ----- | ------ | ----------- |
-| szCat | string | 생성 객체의 키값.  |
+| name | string | 생성 객체의 키값.  |
 
 * Return
   * true : 생성 성공.
   * false : 생성 실패.
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function cbLoad 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -164,7 +165,7 @@ var object = Module.getAnalysis().getGridAnal();
   * true : 생성 성공.
   * false : 생성 실패.
 * Sample
-  * function 참조.
+  * function OnWindDataLoad 참조.
   * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
@@ -189,7 +190,7 @@ var object = Module.getAnalysis().getGridAnal();
 | time | number | 시계열 총수 (정수형). |
 
 * Sample
-  * function 참조.
+  * function setWindRenderMode 참조.
   * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
@@ -212,8 +213,8 @@ var object = Module.getAnalysis().getGridAnal();
 | ratio | number | 높이 배율 값     |
 
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function loadloadtimeDetailspolygon 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -237,8 +238,8 @@ var object = Module.getAnalysis().getGridAnal();
 | time | number | 시계열 인덱스 (정수형) |
 
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function setTime 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -255,9 +256,6 @@ var object = Module.getAnalysis().getGridAnal();
 {% tab title="Information" %}
 * Return
   * 현재 애니메이션 수행 중인 시계열 인덱스 정보 반환 (정수형).
-* Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -275,8 +273,8 @@ var object = Module.getAnalysis().getGridAnal();
 {% tabs %}
 {% tab title="Information" %}
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function loadloadtimeDetailspolygon 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -305,8 +303,8 @@ var object = Module.getAnalysis().getGridAnal();
 * Return
   * 추가된 범례 리스트의 총수 반환
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function loadloadtimeDetailspolygon 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -329,9 +327,6 @@ var object = Module.getAnalysis().getGridAnal();
 | ----- | ------ | ------------ |
 | ratio | number | 화살표 크기 배율 변경 |
 
-* Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -354,8 +349,8 @@ var object = Module.getAnalysis().getGridAnal();
   * true : 설정 성공.
   * false : 설정 실패.
 * Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
+  * function loadDetailsData 참조.
+  * [샌드박스\_시계열 폴리곤](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_visualization)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -395,9 +390,6 @@ let json = {
 | ---- | ------ | ----------- |
 | name | string | 레이어 명칭      |
 
-* Sample
-  * function 참조.
-  * [샌드박스\_바람 표현](http://sandbox.dtwincloud.com/code/main.do?id=effect\_wind)
 {% endtab %}
 
 {% tab title="Template" %}

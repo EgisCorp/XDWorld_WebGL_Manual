@@ -37,11 +37,11 @@ var object = Module.createPoint("ID");
 {% endtab %}
 {% endtabs %}
 
-### setImage(resopnse, width, height) → boolean
+### setImage(data, width, height) → boolean
 
 > POI 이미지를 설정.
 > 
-> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
+> data 변수는 Uint8Array 기반의 바이너리 배열 데이터.
 >
 > width, height 이미지 실제 크기 입력( &gt;1 ).
 
@@ -49,7 +49,7 @@ var object = Module.createPoint("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| resopnse | array | 이미지 픽셀 값 배열. |
+| data | array | 이미지 픽셀 값 배열. |
 | width | number | 이미지 너비. |
 | height | number | 이미지 높이. |
 
@@ -57,7 +57,7 @@ var object = Module.createPoint("ID");
   * true : 객체 설정 성공.
   * false : 객체 설정 실패.
     * 객체 생성 실패 조건
-	  * resopnse 값이 null 인 경우.
+	  * data 값이 null 인 경우.
 	  * width, height &lt;0 인 경우
 	  
 * Sample

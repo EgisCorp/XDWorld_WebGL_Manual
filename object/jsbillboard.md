@@ -38,18 +38,18 @@ var object = Module.createBillboard("ID");
 {% endtab %}
 {% endtabs %}
 
-### setImage(position, resopnse, width, height) → boolean
+### setImage(position, data, width, height) → boolean
 
 > 빌보드 객체 생성 옵션 설정
 > 
-> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
+> data 변수는 Uint8Array 기반의 바이너리 배열 데이터.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | position | [JSVector3D](../core/jsvector3d.md) | 빌보드 경위도 위치(중하단 기준). |
-| resopnse | object | 이미지 바이너리 데이터. |
+| data | object | 이미지 바이너리 데이터. |
 | width | number | 이미지의 너비. |
 | height | number | 이미지의 높이. |
   

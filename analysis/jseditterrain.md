@@ -17,6 +17,7 @@ var editTerrain = Module.getEditTerrain();
 {% tabs %}
 {% tab title="Information" %}
 * Sample
+  * function clearEditTerrain 참조.
   * [샌드박스\_지형 성절토](http://sandbox.dtwincloud.com/code/main.do?id=analysis_terrain_edit)
 {% endtab %}
 
@@ -39,7 +40,7 @@ var editTerrain = Module.getEditTerrain();
 | angle | number | 성절토할 사면 각도 (단위 : degree ) |
 
 * Sample
-  * function 참조.
+  * function createEditTerrain 참조.
   * [샌드박스\_지형 성절토](http://sandbox.dtwincloud.com/code/main.do?id=analysis_terrain_edit)
 {% endtab %}
 
@@ -63,7 +64,7 @@ var editTerrain = Module.getEditTerrain();
 | angle | number | 성절토할 사면 각도 (단위 : degree ) |
 
 * Sample
-  * function 참조.
+  * function createEditTerrain 참조.
   * [샌드박스\_지형 성절토](http://sandbox.dtwincloud.com/code/main.do?id=analysis_terrain_edit)
 {% endtab %}
 
@@ -73,23 +74,23 @@ var editTerrain = Module.getEditTerrain();
 {% endtab %}
 {% endtabs %}
 
-### setEditFaceColor(resopnse, width, height, type) → boolean
+### setEditFaceColor(data, width, height, type) → boolean
 
 > 지형 성절토시 바닥면, 사면 텍스쳐를 설정
 > 
-> resopnse 변수는 Uint8Array 기반의 바이너리 배열 데이터.
+> data 변수는 Uint8Array 기반의 바이너리 배열 데이터.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| resopnse | object | 이미지 바이너리 데이터. |
+| data | object | 이미지 바이너리 데이터. |
 | width | number | 이미지의 너비. |
 | height | number | 이미지의 높이. |
 | type | boolean | 바닥면, 사면 구분 (true : 바닥면, false : 사면) |
 
 * Sample
-  * function 참조.
+  * function createEditTerrain 참조.
   * [샌드박스\_지형 성절토](http://sandbox.dtwincloud.com/code/main.do?id=analysis_terrain_edit)
 {% endtab %}
 
