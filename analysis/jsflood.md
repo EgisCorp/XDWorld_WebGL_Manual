@@ -39,7 +39,7 @@ var flood = Module.getFlood();
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| color | [CJSColor](../core/jscolor.md) | 물판 색상 |
+| color | [JSColor](../core/jscolor.md) | 물판 색상 |
 
 * Sample
   * function SetFloodColor 참조.
