@@ -16,18 +16,17 @@ var camera = Module.getViewCamera();
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| from | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도). |
-| to | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 위치 (경도, 위도, 고도). |
+| Name | Type                                | Description                |
+| ---- | ----------------------------------- | -------------------------- |
+| from | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도).       |
+| to   | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 위치 (경도, 위도, 고도). |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-
 * Sample
   * function init 참조.
-  * [샌드박스\_원형 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_round\_path)	
+  * [샌드박스\_원형 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_round\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -43,17 +42,18 @@ Module.getViewCamera().look(new Module.JSVector3D(129.128265, 35.171834, 500.0),
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name     | Type                                | Description    |
+| -------- | ----------------------------------- | -------------- |
 | position | [JSVector3D](../core/jsvector3d.md) | 카메라 경위도 좌표 위치. |
-| tilt | number | 카메라 tilt. |
-| direct | number | 카메라 direct. |
-| speed | number | 카메라 speed. |
+| tilt     | number                              | 카메라 tilt.      |
+| direct   | number                              | 카메라 direct.    |
+| speed    | number                              | 카메라 speed.     |
 
 * Sample
   * function init 참조.
-  * [샌드박스\_위치이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_position)	
+  * [샌드박스\_위치이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_position)
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 Module.getViewCamera().move(new Module.JSVector3D(129.128265, 35.171834, 500.0), 70, 0, 0);
@@ -67,14 +67,14 @@ Module.getViewCamera().move(new Module.JSVector3D(129.128265, 35.171834, 500.0),
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| option | [JSCamera.MoveBoundaryOption](jscamera.md#jscamera.moveboundaryoption)   | 카메라 min, max boundary. |
+| Name   | Type                                                                   | Description            |
+| ------ | ---------------------------------------------------------------------- | ---------------------- |
+| option | [JSCamera.MoveBoundaryOption](jscamera.md#jscamera.moveboundaryoption) | 카메라 min, max boundary. |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-	* complete 태그가 없을 경우.
+    * complete 태그가 없을 경우.
 * Sample
   * function moveTestArea 참조.
   * [샌드박스\_카메라영역설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set\_viewrect)
@@ -103,11 +103,11 @@ let json = {
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| x | number | 카메라 경도. |
-| y | number | 카메라 위도. |
-| z | number | 카메라 고도. |
+| Name | Type    | Description         |
+| ---- | ------- | ------------------- |
+| x    | number  | 카메라 경도.             |
+| y    | number  | 카메라 위도.             |
+| z    | number  | 카메라 고도.             |
 | type | boolean | 카메라 이동 애니메이션 적용 여부. |
 
 * Sample
@@ -128,16 +128,16 @@ var height = Module.getMap().getTerrHeight(126.92836647767662, 37.52439503321471
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name     | Type                                | Description          |
+| -------- | ----------------------------------- | -------------------- |
 | position | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도). |
-| tilt | number | 카메라 tilt. |
-| direct | number | 카메라 direct. |
-| speed | number | 카메라 speed. |
+| tilt     | number                              | 카메라 tilt.            |
+| direct   | number                              | 카메라 direct.          |
+| speed    | number                              | 카메라 speed.           |
 
 * Sample
   * function initPage 참조.
-  * [샌드박스\_경관보기](http://sandbox.dtwincloud.com/code/main.do?id=camera\_landscape)	
+  * [샌드박스\_경관보기](http://sandbox.dtwincloud.com/code/main.do?id=camera\_landscape)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -153,17 +153,16 @@ Module.getViewCamera().moveOval(new Module.JSVector3D(129.128265, 35.171834, 500
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name     | Type                                | Description          |
+| -------- | ----------------------------------- | -------------------- |
 | position | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도). |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-
 * Sample
   * function setMove 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)	
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -179,13 +178,13 @@ Module.getViewCamera().setLocation(new Module.JSVector3D(129.128265, 35.171834, 
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name | Type   | Description      |
+| ---- | ------ | ---------------- |
 | tilt | number | 제한하고자하는 tilt 각도. |
 
 * Sample
   * function initPage 참조.
-  * [샌드박스\_카메라 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_카메라 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -201,13 +200,13 @@ Module.getViewCamera().setLimitTilt(80);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| tilt | number | 카메라 tilt. |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| tilt | number | 카메라 tilt.   |
 
 * Sample
   * function setTilt 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)	
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -225,13 +224,13 @@ Module.getViewCamera().setTilt(80);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
 | direct | number | 카메라 direct. |
 
 * Sample
   * function setDirect 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)	
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -247,13 +246,13 @@ Module.getViewCamera().setDirect(0);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| alt | number | 카메라 고도. |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| alt  | number | 카메라 고도.     |
 
 * Sample
   * function setAltitude 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)	
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -269,13 +268,13 @@ Module.getViewCamera().setAltitude(1000);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| fov | number | 카메라 fov. |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| fov  | number | 카메라 fov.    |
 
 * Sample
   * function setFOV 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)	
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -293,13 +292,13 @@ Module.getViewCamera().setFov(50);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| type | boolean | 카메라 시점. |
+| Name | Type    | Description |
+| ---- | ------- | ----------- |
+| type | boolean | 카메라 시점.     |
 
 * Sample
   * function setPerson 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)	
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -315,13 +314,13 @@ Module.getViewCamera().setMoveMode(true);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| alt | number | 제한하고자하는 고도(m 단위). |
+| Name | Type   | Description       |
+| ---- | ------ | ----------------- |
+| alt  | number | 제한하고자하는 고도(m 단위). |
 
 * Sample
   * function initPage 참조
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -337,13 +336,13 @@ Module.getViewCamera().setLimitAltitude(3000);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| speed | number | 카메라 이동 속도(1.0 ~ 10.0 사이 값). |
+| Name  | Type   | Description                  |
+| ----- | ------ | ---------------------------- |
+| speed | number | 카메라 이동 속도(1.0 \~ 10.0 사이 값). |
 
 * Sample
   * function setEvent 참조.
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -359,8 +358,8 @@ Module.getViewCamera().setAnimationSpeed(5);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name        | Type                                  | Description     |
+| ----------- | ------------------------------------- | --------------- |
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | 자동이동 경로 좌표 리스트. |
 
 * Return
@@ -369,7 +368,7 @@ Module.getViewCamera().setAnimationSpeed(5);
     * 엔진이 정상적으로 load되지 않았을 경우.
 * Sample
   * function setAutoMovePosition 참조.
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -390,8 +389,8 @@ Module.getViewCamera().setAutoMovePosition(vMovePositionList);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name  | Type   | Description      |
+| ----- | ------ | ---------------- |
 | speed | number | 카메라 위치 갱신 프레임 수. |
 
 * Return
@@ -400,7 +399,7 @@ Module.getViewCamera().setAutoMovePosition(vMovePositionList);
     * 엔진이 정상적으로 load되지 않았을 경우.
 * Sample
   * function setAutoMovePosition 참조.
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -416,22 +415,21 @@ Module.getViewCamera().setAutoMoveWaitFrame(3);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| center | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 지점 (경도, 위도, 고도) |
-| distance | number | 중심점과 카메라의 거리 |
-| altitude | number | 카메라 고도 |
-| startAngle | number | 시작 방향 |
-| endAngle | number | 종료 방향 |
-| type | boolean | 방향 설정(true: 반시계방향, false: 시계방향) |
+| Name       | Type                                | Description                     |
+| ---------- | ----------------------------------- | ------------------------------- |
+| center     | [JSVector3D](../core/jsvector3d.md) | 카메라가 바라보는 지점 (경도, 위도, 고도)       |
+| distance   | number                              | 중심점과 카메라의 거리                    |
+| altitude   | number                              | 카메라 고도                          |
+| startAngle | number                              | 시작 방향                           |
+| endAngle   | number                              | 종료 방향                           |
+| type       | boolean                             | 방향 설정(true: 반시계방향, false: 시계방향) |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-
 * Sample
   * function setAutoMovePosition 참조
-  * [샌드박스\_원형 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_round\_path)	
+  * [샌드박스\_원형 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_round\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -447,8 +445,8 @@ Module.getViewCamera().setAutoMoveRoundPositions(new Module.JSVector3D(129.12732
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name | Type    | Description    |
+| ---- | ------- | -------------- |
 | type | boolean | 카메라 흔들림 효과 설정. |
 
 * Return
@@ -457,7 +455,7 @@ Module.getViewCamera().setAutoMoveRoundPositions(new Module.JSVector3D(129.12732
     * 엔진이 정상적으로 load되지 않았을 경우.
 * Sample
   * function ShakeCamera 참조.
-  * [샌드박스\_카메라흔들림](http://sandbox.dtwincloud.com/code/main.do?id=camera\_quake)	
+  * [샌드박스\_카메라흔들림](http://sandbox.dtwincloud.com/code/main.do?id=camera\_quake)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -473,9 +471,9 @@ Module.getViewCamera().SetCameraShakeEffect(true);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| value | number | 카메라 흔들림 효과 강도 (1 ~ 100) |
+| Name  | Type   | Description              |
+| ----- | ------ | ------------------------ |
+| value | number | 카메라 흔들림 효과 강도 (1 \~ 100) |
 
 * Return
   * true : 설정 성공.
@@ -483,7 +481,7 @@ Module.getViewCamera().SetCameraShakeEffect(true);
     * 엔진이 정상적으로 load되지 않았을 경우.
 * Sample
   * function SetShakeEffectStrength 참조.
-  * [샌드박스\_카메라흔들림](http://sandbox.dtwincloud.com/code/main.do?id=camera\_quake)	
+  * [샌드박스\_카메라흔들림](http://sandbox.dtwincloud.com/code/main.do?id=camera\_quake)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -499,8 +497,8 @@ Module.getViewCamera().SetCameraShakeStrength(50);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---- | ---- |
+| Name | Type    | Description        |
+| ---- | ------- | ------------------ |
 | type | boolean | 카메라 지형 아래 위치 허용 여부 |
 {% endtab %}
 
@@ -517,14 +515,12 @@ Module.getViewCamera().setPermitUnderGround(true);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-
 * Sample
   * function startCameraAutoMove 참조
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -540,14 +536,12 @@ Module.getViewCamera().startAutoMove();
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-
 * Sample
   * function stopCameraAutoMove 참조
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -563,14 +557,12 @@ Module.getViewCamera().stopAutoMove();
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
-
 * Sample
   * function pauseCameraAutoMove 참조.
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)	
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -586,7 +578,7 @@ Module.getViewCamera().pauseAutoMove();
 
 > 영역 정보를 기준으로 카메라 이동 옵션.
 
-| Name         | Type                          | Attributes | Default                 | Description      |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| boundary | [Rect2D]() |  |  | 카메라 이동 위치. |
-| complete | function |  |  | 이동 완료 후 발생 이벤트 함수.  |
+| Name     | Type                                           | Attributes | Default | Description        |
+| -------- | ---------------------------------------------- | ---------- | ------- | ------------------ |
+| boundary | [Rect2D](../etc/tag-list.md#rect2d-style-type) |            |         | 카메라 이동 위치.         |
+| complete | function                                       |            |         | 이동 완료 후 발생 이벤트 함수. |
