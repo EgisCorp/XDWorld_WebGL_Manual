@@ -21,7 +21,7 @@ let serverlayer = new Module.JSLayerList(false);	// 서비스 레이어 반환
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | name | string | 생성 레이어 명칭. |
-| type | number | 레이어 타입. |
+| type | number | [레이어 타입.](../etc/type-list.md#layer-type-list) |
 
 * Return
   * JSLayer : 레이어 반환 성공.
@@ -76,7 +76,7 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 | Name | Type | Contents |
 | :--- | :--- | :--- |
 | name | string | 생성 레이어 명칭. |
-| type | number | WFS 레이어 타입 |
+| type | number | [WFS 레이어 타입.](../etc/type-list.md#wfs-type-list) |
 
 * Return
   * JSLayer : 반환 성공.
@@ -467,10 +467,10 @@ let check =  layerList.setLayerMove(end, true);
 * Return
   * true : 순서 변경 성공.
   * false: 순서 변경 실패.
-    * 순서 변경 실패 조건
-      * 레이어 리스트 2개 미만
-      * 끝 순서 해당 레이어를 한단계 내린 경우
-      * 첫 순서 해당 레이어를 한단계 올린 경우
+    * 순서 변경 실패 조건.
+      * 레이어 리스트 2개 미만.
+      * 끝 순서 해당 레이어를 한단계 내린 경우.
+      * 첫 순서 해당 레이어를 한단계 올린 경우.
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
