@@ -2,17 +2,17 @@
 description: 지도 내 레이어를 관리하는 API를 제공합니다
 ---
 
-# JSLayerList
+# [JSLayer](../layer/jslayer.md)List
 
 > Module.createTypoon API 생성.
 
 ```javascript
-let userlayer = new Module.JSLayerList(true);		// 사용자 레이어 반환
+let userlayer = new Module.[JSLayer](../layer/jslayer.md)List(true);		// 사용자 레이어 반환
 
-let serverlayer = new Module.JSLayerList(false);	// 서비스 레이어 반환
+let serverlayer = new Module.[JSLayer](../layer/jslayer.md)List(false);	// 서비스 레이어 반환
 ```
 
-### createLayer(name, type) → JSLayer
+### createLayer(name, type) → [JSLayer](../layer/jslayer.md)
 
 > 설정한 레이어 타입을 가지는 새 레이어 생성.
 
@@ -24,25 +24,25 @@ let serverlayer = new Module.JSLayerList(false);	// 서비스 레이어 반환
 | type | number | [레이어 타입.](../etc/type-list.md#layer-type-list) |
 
 * Return
-  * JSLayer : 레이어 반환 성공.
+  * [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
   * null : 레이어 반환 실패.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 ```
 {% endtab %}
 {% endtabs %}
 
-### createWMSLayer( name ) → JSLayer
+### createWMSLayer( name ) → [JSLayer](../layer/jslayer.md)
 
-> WMS 레이어 생성
+> WMS 레이어 생성.
 >
-> Web Map Server로 가시화 된 Tile 영역에 해당되는 지형 영상 이미지 요청
+> Web Map Server로 가시화 된 Tile 영역에 해당되는 지형 영상 이미지 요청.
 >
-> WMS 서비스 레이어로 new Module.JSLayerList( false ) 사용
+> WMS 서비스 레이어로 new Module.[JSLayer](../layer/jslayer.md)List( false ) 사용.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -51,25 +51,25 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 | name | string | 생성 레이어 명칭. |
 
 * Return
-  * JSLayer : 레이어 반환 성공.
+  * [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
   * null : 레이어 반환 실패.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList( false );
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List( false );
 let wmslayer = layerList.createWMSLayer( “WMS” );
 ```
 {% endtab %}
 {% endtabs %}
 
-### createWFSLayer(name, type) → JSLayer
+### createWFSLayer(name, type) → [JSLayer](../layer/jslayer.md)
 
-> WFS 레이어 생성
+> WFS 레이어 생성.
 >
-> Web Feature Server로 가시화 된 Tile 영역에 해당되는 오브젝트 요청
+> Web Feature Server로 가시화 된 Tile 영역에 해당되는 오브젝트 요청.
 >
-> WFS 서비스 레이어로 new Module.JSLayerList( false ) 사용
+> WFS 서비스 레이어로 new Module.[JSLayer](../layer/jslayer.md)List( false ) 사용.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -79,25 +79,25 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 | type | number | [WFS 레이어 타입.](../etc/type-list.md#wfs-type-list) |
 
 * Return
-  * JSLayer : 반환 성공.
+  * [JSLayer](../layer/jslayer.md) : 반환 성공.
   * null : 반환 실패.
 {% endtab %}
 
 {% tab title="Template" %}
   ```javascript
-  let layerList = new Module.JSLayerList( false );
+  let layerList = new Module.[JSLayer](../layer/jslayer.md)List( false );
   let wfslayer = layerList.createWFSLayer( “WFS" , 0);
   ```
 {% endtab %}
 {% endtabs %}
 
-### nameAtLayer(name) → JSLayer
+### nameAtLayer(name) → [JSLayer](../layer/jslayer.md)
 
-> 생성 된 레이어 반환
+> 생성 된 레이어 반환.
 >
-> 동일한 명칭을 가진 레이어 반환
+> 동일한 명칭을 가진 레이어 반환.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -106,12 +106,12 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 | name | string | 반환 레이어 명칭. |
 
 * Return
-  * JSLayer : 반환 성공.
+  * [JSLayer](../layer/jslayer.md) : 반환 성공.
   * null : 반환 실패.
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList( false );
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List( false );
 let layer = layerList.nameAtLayer(“HybridLoad”);
 ```
 {% endtab %}
@@ -119,11 +119,11 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 
 ### getVisible(name) → number
 
-> 레이어 가시화 옵션 정보 반환
+> 레이어 가시화 옵션 정보 반환.
 >
-> 레이어 투명/반투명 상태 정보 반환
+> 레이어 투명/반투명 상태 정보 반환.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -137,7 +137,7 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(false);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(false);
 let visible = layerList.getVisible(“HybridLoad”);
 ```
 {% endtab %}
@@ -145,11 +145,11 @@ let visible = layerList.getVisible(“HybridLoad”);
 
 ### setVisible(name, type)
 
-> 레이어 가시화 옵션 설정
+> 레이어 가시화 옵션 설정.
 >
-> 레이어 투명/반투명 상태 설정
+> 레이어 투명/반투명 상태 설정.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -161,20 +161,20 @@ let visible = layerList.getVisible(“HybridLoad”);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(false);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(false);
 layerList.setVisible(“HybridLoad”, true); 
 layerList.setVisible(“HybridLoad”, false); 
 ```
 {% endtab %}
 {% endtabs %}
 
-### delLayerAtFirst()  → boolean
+### delLayerAtFirst() → boolean
 
-> 레이어 삭제
+> 레이어 삭제.
 >
-> 레이어 리스트 첫 순서에 해당되는 레이어 삭제
+> 레이어 리스트 첫 순서에 해당되는 레이어 삭제.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -185,7 +185,7 @@ layerList.setVisible(“HybridLoad”, false);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let check = layerList.delLayerAtFirst();
@@ -196,11 +196,11 @@ console.log(check);
 
 ### delLayerAtLast() → boolean
 
-> 레이어 삭제
+> 레이어 삭제.
 >
-> 레이어 리스트 끝 순서에 해당되는 레이어 삭제
+> 레이어 리스트 끝 순서에 해당되는 레이어 삭제.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -211,7 +211,7 @@ console.log(check);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let check = layerList.delLayerAtLast();
@@ -222,11 +222,11 @@ console.log(check);
 
 ### delLayerAtName(name) → boolean
 
-> 레이어 삭제
+> 레이어 삭제.
 >
-> 해당 명칭 레이어 삭제
+> 해당 명칭 레이어 삭제.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -241,7 +241,7 @@ console.log(check);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 
@@ -255,11 +255,11 @@ console.log(check);
 
 ### delLayerAtIndex(index) → boolean
 
-> 레이어 삭제
+> 레이어 삭제.
 >
-> 해당 인덱스 레이어 삭제
+> 해당 인덱스 레이어 삭제.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -274,7 +274,7 @@ console.log(check);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 
@@ -286,19 +286,19 @@ check = layerList.delLayerAtName(0);
 
 ### count() → number
 
-> 전체 레이어 갯수 반환
+> 전체 레이어 갯수 반환.
 >
-> 사용자, 서비스 레이어 전체 갯수
+> 사용자, 서비스 레이어 전체 갯수.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * 전체 레이어 갯수 
+  * 전체 레이어 갯수 .
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let count = layerList.count();
@@ -309,25 +309,24 @@ console.log(count);
 
 ### layerAtIndex(layer) → number
 
-> 해당 레이어 인덱스 확인
+> 해당 레이어 인덱스 확인.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| layer | JSLayer | 인덱스 확인 레이어. |
+| layer | [JSLayer](../layer/jslayer.md) | 인덱스 확인 레이어. |
 
 * Return
   * -1 : 레이어 리스트에 존재 하지 않는 레이어.
-  * result&gt;0 : 확인 레이어 인덱스 번호.
-  
+  * result&gt;0 : 확인 레이어 인덱스 번호.  
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let count = layerList.layerAtIndex(first);
@@ -338,24 +337,24 @@ console.log(count);
 {% endtab %}
 {% endtabs %}
 
-### firstAtLayer() → JSLayer
+### firstAtLayer() → [JSLayer](../layer/jslayer.md)
 
-> 레이어 반환
+> 레이어 반환.
 >
-> 레이어 리스트 첫 순서에 해당되는 레이어 반환
+> 레이어 리스트 첫 순서에 해당되는 레이어 반환.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * JSLayer : 반환 성공.
-  * null : 반환 실패.
+  * [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
+  * null : 레이어 반환 실패.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let result = layerList.firstAtLayer();
@@ -363,24 +362,24 @@ let result = layerList.firstAtLayer();
 {% endtab %}
 {% endtabs %}
 
-### lastAtLayer() → JSLayer
+### lastAtLayer() → [JSLayer](../layer/jslayer.md)
 
-> 레이어 반환
+> 레이어 반환.
 >
-> 레이어 리스트 끝 순서에 해당되는 레이어 반환
+> 레이어 리스트 끝 순서에 해당되는 레이어 반환.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * JSLayer : 반환 성공.
+  * [JSLayer](../layer/jslayer.md) : 반환 성공.
   * null : 반환 실패.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let result = layerList.lastAtLayer();
@@ -388,13 +387,13 @@ let result = layerList.lastAtLayer();
 {% endtab %}
 {% endtabs %}
 
-### indexAtLayer(index) → JSLayer
+### indexAtLayer(index) → [JSLayer](../layer/jslayer.md)
 
-> 레이어 반환
+> 레이어 반환.
 >
-> 해당 인덱스 레이어 반환
+> 해당 인덱스 레이어 반환.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -403,13 +402,13 @@ let result = layerList.lastAtLayer();
 | index | number | 목표 레이어 인덱스. |
 
 * Return
-  * JSLayer : 반환 성공.
+  * [JSLayer](../layer/jslayer.md) : 반환 성공.
   * null : 반환 실패.
 {% endtab %}
 
 {% tab title="Template" %}
   ```javascript
-  let layerList = new Module.JSLayerList(true);
+  let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
   let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
   let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON); 
   let result = layerList.indexAtLayer(0);
@@ -418,7 +417,7 @@ let result = layerList.lastAtLayer();
 {% endtab %}
 {% endtabs %}
 
-### setLayerMove(layer, move) → boolean
+### setLayerMove(layer, type) → boolean
 
 > 레이어 순서 변경
 >
@@ -430,19 +429,19 @@ let result = layerList.lastAtLayer();
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| layer | JSLayer | 목표 레이어. |
-| move | boolean | <p>true인 경우 인덱스 증가.<br>false인 경우 인덱스 감소.</p> |
+| layer | [JSLayer](../layer/jslayer.md) | 목표 레이어. |
+| type | boolean | <p>true인 경우 인덱스 증가.<br>false인 경우 인덱스 감소.</p> |
 * Return
   * true : 순서 변경 성공.
   * false: 순서 변경 실패.
     * 순서 변경 실패 조건
-      * 레이어 리스트 2개 미만
-      * 끝 순서 해당 레이어를 한단계 내린 경우
-      * 첫 순서 해당 레이어를 한단계 올린 경우
+      * 레이어 리스트 2개 미만.
+      * 끝 순서 해당 레이어를 한단계 내린 경우.
+      * 첫 순서 해당 레이어를 한단계 올린 경우.
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let check =  layerList.setLayerMove(end, true);
@@ -450,20 +449,20 @@ let check =  layerList.setLayerMove(end, true);
 {% endtab %}
 {% endtabs %}
 
-### setLayerTopNBottom(layer, extreme) → boolean
+### setLayerTopNBottom(layer, type) → boolean
 
-> 레이어 순서 변경
+> 레이어 순서 변경.
 >
-> 해당 레이어 인덱스 순서를 extreme 조건으로 최상단, 최하단으로 변경
+> 해당 레이어 인덱스 순서를 type 조건으로 최상단, 최하단으로 변경.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자, 서비스 레이어 모두 사용 가능.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Contents |
 | :--- | :--- | :--- |
-| layer | JSLayer | 목표 레이어. |
-| extreme | boolean | <p>true인 경우 인덱스 최상단으로 변경.<br>false인 경우 인덱스 최하단으로 변경.</p> |
+| layer | [JSLayer](../layer/jslayer.md) | 목표 레이어. |
+| type | boolean | <p>true인 경우 인덱스 최상단으로 변경.<br>false인 경우 인덱스 최하단으로 변경.</p> |
 * Return
   * true : 순서 변경 성공.
   * false: 순서 변경 실패.
@@ -474,7 +473,7 @@ let check =  layerList.setLayerMove(end, true);
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let second = layerList.createLayer(“secondlayer”, Module.ELT_POLYHEDRON); 
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON); 

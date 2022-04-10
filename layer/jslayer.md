@@ -56,7 +56,6 @@ layer.addObject(object, 0);
   * "" : Index 해당 객체 ID 반환 실패.
     * 객체 ID 반환 실패 조건.
 	  * Index 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우)
-
 {% endtab %}
 
 {% tab title="Template" %}
@@ -148,12 +147,12 @@ layer.addObject(object, 0);
 
 {% tab title="Template" %}
 ```javascript
-    let layername = "objectlayer"
-    let layerList = new Module.JSLayerList(true);
-    let layerList.createLayer(layername );
+let layername = "objectlayer"
+let layerList = new Module.JSLayerList(true);
+let layerList.createLayer(layername );
 
-    layer.addObject(object, 0);
-    layer.removeAtIndex(0);
+layer.addObject(object, 0);
+layer.removeAtIndex(0);
 ```
 {% endtab %}
 {% endtabs %}
@@ -309,8 +308,10 @@ layer.addObject(object, 0);
   * false : 편집 레이어 설정 실패.
     * 편집 레이어 설정 실패 조건
       * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+	  
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_figure](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
+  * function initSamplePage 참조.
+  * [샌드박스\_도형 생성](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -334,7 +335,8 @@ layer.addObject(object, 0);
 | ratio | number | LOD 단계 설정(높을수록 가시화 범위 증가). |
 
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_arc](http://sandbox.dtwincloud.com/code/main.do?id=object_line_arc)
+  * function init 참조.
+  * [샌드박스\_포물선 라인](http://sandbox.dtwincloud.com/code/main.do?id=object_line_arc)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -385,7 +387,8 @@ layer.addObject(object, 0);
   * false : HSV 채널 가시화 설정 실패.
   
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_color\_tone](http://sandbox.dtwincloud.com/code/main.do?id=layer_color_tone)
+  * function setHSV 참조.
+  * [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -415,7 +418,8 @@ layer.addObject(object, 0);
   * false : HSV 채널 설정 실패.
   
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_color\_tone](http://sandbox.dtwincloud.com/code/main.do?id=layer_color_tone)
+  * function setHSV 참조.
+  * [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -445,7 +449,8 @@ layer.addObject(object, 0);
   * false : 높이 설정 실패.
   
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_pointcloud\_point\_size](http://sandbox.dtwincloud.com/code/main.do?id=layer_pointcloud_point_size)
+  * function init 참조.
+  * [샌드박스\_포인트 클라우드](http://sandbox.dtwincloud.com/code/main.do?id=layer_pointcloud_point_size)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -476,7 +481,8 @@ layer.addObject(object, 0);
       * 서비스 레이어 일 경우 setLODRatio 사용.
 	  
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+  * function showGrid 참조.
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -507,7 +513,8 @@ layer.addObject(object, 0);
       * 서비스 레이어 일 경우 setLODRatio 사용.
 	  
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+  * function showGrid 참조.
+  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -526,18 +533,36 @@ layer.addObject(object, 0);
 {% tab title="Infomation" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| option | 링크 | WMS 요청 속성 정보. |
+| option | [JSLayer.WMSOptions](jslayer.md#jslayer.wmsoptions) | WMS 요청 속성 정보. |
 
 * Return
   * success : WMS 레이어 생성 성공.
   * 문자열 : WMS 레이어 생성 과정 에러 메시지.
   
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+  * function createLayerWMS 참조.
+  * [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+let slopeoption = {
+	url: strUrl,
+	layer: strLayer,
+	minimumlevel: 0,
+	maximumlevel: 20,
+	tilesize: 256,
+	crs: "EPSG:5174",
+	parameters: {
+		version: "1.1.0",
+		SERVICE=WMS,
+		REQUEST=GetMap,
+		FORMAT=image/png,
+		VERSION=1.1.0,
+		TRANSPARENT=TRUE,
+		enablePickFeatures: true,
+	}
+};	
 ```
 {% endtab %}
 {% endtabs %}
@@ -559,7 +584,8 @@ layer.addObject(object, 0);
 | type | boolean | 좌표 옵션 설정. |
 
 * Sample
-  * [http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+  * function createLayerWMS 참조.
+  * [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -587,6 +613,10 @@ layer.addObject(object, 0);
   * false : 프록시 설정 실패.
     * 프록시 설정 실패 조건.
       * 사용자 레이어 인 경우
+	  
+* Sample
+  * function createLayerWMS 참조.
+  * [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -599,14 +629,34 @@ layer.addObject(object, 0);
 
 #### JSLayer.WMSOptions
 
-> WMS 레이어 생성 옵션.
+> WMS 레이어 기본 생성 옵션.
 
 | Name | Type | Attributes | Default | Description |
-| :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- | :--- |
 | url | string |  |  | 요청 지오서버 url. |
 | layer | string |	|  | 요청 지오서버 레이어 명칭. |
 | minmumLevel | number | optional | 0 |	최소 가시화 레벨. |
 | maxmumLevel | number | optional | 15 | 최대 가시화 레벨. |
 | tileSize | number | optional | 256 | 요청 정사각형 이미지 크기\[Default 256\]. |
 | crs | string | optional | EPSG:4326 | 좌표 타입. |
-| parameters | Object | optional |  | 스타일, 옵션 설정 속성정보. |
+| parameters | [JSLayer.WMSOptions.SubOptions](jslayer.md#jslayer.wmsoptions.suboptions) | optional |  | 스타일, 옵션 설정 속성정보. |
+
+#### JSLayer.WMSOptions.SubOptions
+
+> WMS 레이어 추가 생성 옵션.
+> 
+> 그외 다른 옵션은 parameters 구성 시 태그 추가하며 자동으로 URL 구성.
+>
+> ex) stlye 옵션 등.
+
+| Name | Type | Attributes | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| version | string | optional | 1.1.0 | 지오서버 요청 버전. |
+| service | string | optional | WMS | 지오서버 요청 타입. |
+| request | string | optional | GetMap | 지오서버 요청 지도 타입. |
+| format | string | optional | image/png | 지오서버 요청 이미지 타입. |
+| transparent | string | optional | TRUE | 지오서버 이미지 요청 시 투명 옵션. |
+
+
+
+
