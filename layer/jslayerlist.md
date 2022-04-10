@@ -7,9 +7,9 @@ description: 지도 내 레이어를 관리하는 API를 제공합니다
 > Module.createTypoon API 생성.
 
 ```javascript
-let userlayer = new Module.[JSLayer](../layer/jslayer.md)List(true);		// 사용자 레이어 반환
+let userlayer = new Module.JSLayerList(true);		// 사용자 레이어 반환
 
-let serverlayer = new Module.[JSLayer](../layer/jslayer.md)List(false);	// 서비스 레이어 반환
+let serverlayer = new Module.JSLayerList(false);	// 서비스 레이어 반환
 ```
 
 ### createLayer(name, type) → [JSLayer](../layer/jslayer.md)
