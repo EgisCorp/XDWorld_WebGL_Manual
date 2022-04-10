@@ -10,7 +10,7 @@ description: 지도 설정 및 제어 기능 API.
 var map = Module.getMap();
 ```
 
-#### changeBaseMap(parameter) → string
+### changeBaseMap(option) → string
 
 > WMTS 서비스 레이어 생성.
 
@@ -18,7 +18,7 @@ var map = Module.getMap();
 {% tab title="Information" %}
 | Name   | Type                                                         | Description   |
 | ---- | ---------------------------------------------------------- | ------------- |
-| parameter | object | WMTS 타일링 정보 설정 |
+| option | [JSMap.BaseMapOption](jsmap.md#jsmap.basemapoption) | WMTS 타일링 정보 설정. |
 
 * Return
   * "success" : 레이어 생성 성공.
@@ -66,7 +66,7 @@ let json = {
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| distance  | number | 히트맵 반경   |
+| distance  | number | 히트맵 반경.   |
 
 * Sample
   * function loadHeatmapPoint 참조
@@ -109,7 +109,7 @@ Module.getMap().setEffectDistance(1500000);
 {% tab title="Information" %}
 | Name   | Type   | Description |
 | ----------- | ------ | -------- |
-| max | number | 히트맵 최대 가시 거리 |
+| max | number | 히트맵 최대 가시 거리. |
 
 * Sample
   * function loadHeatmapPoint 참조
@@ -152,7 +152,7 @@ Module.getMap().setEffectDistance(1500000);
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| weight    | number | 히트맵 가중치      |
+| weight    | number | 히트맵 가중치.      |
 
 * Sample
   * function loadHeatmapPoint 참조
@@ -187,7 +187,7 @@ Module.getMap().setEffectDistance(1500000);
 {% endtab %}
 {% endtabs %}
 
-### addHeatMaps(array)
+### addHeatMaps(coordinates)
 
 > 히트맵 좌표 리스트 배열을 설정.
 
@@ -195,7 +195,7 @@ Module.getMap().setEffectDistance(1500000);
 {% tab title="Information" %}
 | Name  | Type                                 | Description      |
 | ---------- | ------------------------------------ | ------------- |
-| array | [JSVec3Array](../core/jsvec3array.md) | 히트맵 좌표 리스트 배열 |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 히트맵 좌표 목록. |
 
 * Sample
   * function loadHeatmapPoint 참조
@@ -277,13 +277,13 @@ Module.getMap().setEffectDistance(1500000);
 {% tab title="Information" %}
 | Name | Type                          | Description       |
 | --------- | ----------------------------- | -------------- |
-| color     | [JSColor](../core/jscolor.md) | 안개 색상          |
-| start     | number                        | 안개 효과 적용 최소 가시거리(최소값 1) |
-| end       | number                        | 안개 효과 적용 최대 가시거리 |
-| density   | number                        | 안개 농도 가중치 (0.0 \~ 1.0 사이 값으로 설정)   |
+| color     | [JSColor](../core/jscolor.md) | 안개 색상.          |
+| start     | number                        | 안개 효과 적용 최소 가시거리(최소값 1). |
+| end       | number                        | 안개 효과 적용 최대 가시거리. |
+| density   | number                        | 안개 농도 가중치 (0.0 \~ 1.0 사이 값으로 설정).   |
 
 * Sample
-  * function loadHeatmapPoint 참조
+  * function loadHeatmapPoint 참조.
   * [샌드박스\_안개](http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog)
 {% endtab %}
 
@@ -306,7 +306,7 @@ pMap.setFog(color, 0, 5000, 0.3);
 {% tab title="Information" %}
 | Name | Type    | Description    |
 | --------- | ------- | ----------- |
-| type    | boolean | 안개 효과 적용 여부 |
+| type    | boolean | 안개 효과 적용 여부. |
 
 * Sample
   * function loadHeatmapPoint 참조
@@ -332,10 +332,10 @@ pMap.setFog(color, 0, 5000, 0.3);
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| alt       | number | 제한할 고도 값  |
+| alt       | number | 제한할 고도 값.  |
 
 * Sample
-  * function loadHeatmapPoint 참조
+  * function loadHeatmapPoint 참조.
   * [샌드박스\_안개](http://sandbox.dtwincloud.com/code/main.do?id=weather\_fog)
 {% endtab %}
 
@@ -354,20 +354,20 @@ pMap.setFog(color, 0, 5000, 0.3);
 
 > 적설 효과 출력 타입을 설정.
 >
-> 0일 경우 적설효과 해제
+> 0일 경우 적설효과 해제.
 >
-> 1일 경우 적설효과 설정 (지형 텍스쳐 가시화)
+> 1일 경우 적설효과 설정 (지형 텍스쳐 가시화).
 >
-> 2일 경우 적설효과 설정 (지형 텍스쳐 가시화 하지 않음)
+> 2일 경우 적설효과 설정 (지형 텍스쳐 가시화 하지 않음).
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type   | Description    |
 | --------- | ------ | ----------- |
-| state     | number | 적설 효과 출력 타입 |
+| state     | number | 적설 효과 출력 타입. |
 
 * Sample
-  * function setUseSnowEffect 참조
+  * function setUseSnowEffect 참조.
   * [샌드박스\_눈](http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow)
 {% endtab %}
 
@@ -389,13 +389,13 @@ pMap.setSnowfallLevel(2.0);
 {% tab title="Information" %}
 | Name     | Type   | Description |
 | ------------- | ------ | -------- |
-| level | number | 적설량 (0 \~ 100 사이값으로 설정)  |
+| level | number | 적설량 (0 \~ 100 사이값으로 설정).  |
 
 * Return
-  * 설정된 적설량 값
+  * 설정된 적설량 값.
 
 * Sample
-  * function setUseSnowEffect 참조
+  * function setUseSnowEffect 참조.
   * [샌드박스\_눈](http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow)
 {% endtab %}
 
@@ -409,24 +409,22 @@ pMap.setSnowfallLevel(2.0);
 {% endtab %}
 {% endtabs %}
 
-### setSnowImageURL(string imageURL) → boolean
+### setSnowImageURL(url) → boolean
 
 > 적설 효과 이미지 경로를 설정.
->
->
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type   | Description    |
 | --------- | ------ | ----------- |
-| imageURL  | string | 눈 표현 이미지 경로 |
+| url  | string | 눈 표현 이미지 경로 |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
 
 * Sample
-  * function changeRainEffectOption 참조
+  * function changeRainEffectOption 참조.
   * [샌드박스\_눈](http://sandbox.dtwincloud.com/code/main.do?id=weather\_snow)
 {% endtab %}
 
@@ -462,14 +460,14 @@ pMap.clearSnowfallArea();
 {% tab title="Information" %}
 | Name | Type   | Description    |
 | --------- | ------ | ----------- |
-| url  | string | 비 표현 이미지 경로 |
+| url  | string | 비 표현 이미지 경로. |
 
 * Return
-  * true : 설정 성공
-  * false : 설정 실패
+  * true : 설정 성공.
+  * false : 설정 실패.
 
 * Sample
-  * function changeRainEffectOption 참조
+  * function changeRainEffectOption 참조.
   * [샌드박스\_비](http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain)
 {% endtab %}
 
@@ -490,16 +488,16 @@ pMap.startWeather(1, 5, 5);
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| type      | number | 날씨 표현 타입(0: 눈, 1: 비) |
-| size      | number | 표현 강도(0: 약하게, 1: 보통, 2: 강하게)    |
-| speed     | number | 표현 속도(0: 느리게, 1: 보통, 2: 빠르게)    |
+| type      | number | 날씨 표현 타입(0: 눈, 1: 비). |
+| size      | number | 표현 강도(0: 약하게, 1: 보통, 2: 강하게).    |
+| speed     | number | 표현 속도(0: 느리게, 1: 보통, 2: 빠르게).    |
 
 * Return
   * true : 설정 성공.
   * false : 설정 실패.
 
 * Sample
-  * function setUseRainEffect 참조
+  * function setUseRainEffect 참조.
   * [샌드박스\_비](http://sandbox.dtwincloud.com/code/main.do?id=weather\_rain)
 {% endtab %}
 
@@ -535,7 +533,7 @@ pMap.stopWeather();
 {% tab title="Information" %}
 | Name | Type    | Description |
 | --------- | ------- | -------- |
-| type      | boolean | 건물 심플모드  |
+| type      | boolean | 건물 심플모드.  |
 
 * Return
   * true : 설정 성공.
@@ -553,7 +551,7 @@ Module.getMap().setSimpleMode(true);
 {% endtab %}
 {% endtabs %}
 
-### setTerrainEffect(type)
+### setTerrainEffect(value)
 
 > 지형 랜더링 효과 설정합.
 
@@ -561,10 +559,10 @@ Module.getMap().setSimpleMode(true);
 {% tab title="Information" %}
 | Name | Type   | Description  |
 | --------- | ------ | --------- |
-| type    | number | 지형 랜더링 모드(0: 일반, 10: 경사향, 11: 경사도) |
+| value    | number | 지형 랜더링 모드(0: 일반, 10: 경사향, 11: 경사도) |
 
 * Sample
-  * function setUseRainEffect 참조
+  * function setUseRainEffect 참조.
   * [샌드박스\_건물심플모드](http://sandbox.dtwincloud.com/code/main.do?id=terrain\_rendermode)
   
 {% endtab %}
@@ -583,7 +581,7 @@ Module.getMap().setTerrainEffect(10);
 {% tabs %}
 {% tab title="Information" %}
 * Sample
-  * function clearInputPoint 참조
+  * function clearInputPoint 참조.
   * [샌드박스\_라인버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering)
 {% endtab %}
 
@@ -620,7 +618,7 @@ Module.getMap().clearSelectObj();
   * null : 입력된 좌표가 없을 경우.
   
 * Sample
-  * function createBufferPolygon 참조
+  * function createBufferPolygon 참조.
   * [샌드박스\_라인버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_buffering)
 {% endtab %}
 
@@ -661,11 +659,11 @@ var inputPoints = Module.getMap().getInputPointList();
 {% tab title="Information" %}
 | Name | Type   | Description |
 | --------- | ------ | -------- |
-| lon       | number | 경도       |
-| lat       | number | 위도       |
+| lon       | number | 경도.       |
+| lat       | number | 위도.      |
 
 * Return
-  * 지형 높이값
+  * 지형 높이값.
   * 0 : 해당 지역 dem 로드가 되지 않았을 경우.
  
 {% endtab %}
@@ -677,7 +675,7 @@ var height = Module.getMap().getTerrHeight(126.92836647767662, 37.52439503321471
 {% endtab %}
 {% endtabs %}
 
-### GetPointDistance(from, to, unionTerrain) → number
+### GetPointDistance(from, to, type) → number
 
 > 두 지점 사이의 거리 반환.
 
@@ -687,11 +685,11 @@ var height = Module.getMap().getTerrHeight(126.92836647767662, 37.52439503321471
 | ------------ | ----------------------------------- | ---------- |
 | from         | [JSVector3D](../core/jsvector3d.md) | 시작 점 위치 (경도, 위도, 고도)    |
 | to           | [JSVector3D](../core/jsvector3d.md) | 끝 점 위치 (경도, 위도, 고도)     |
-| unionTerrain | boolean                             | 지형 고려할지 여부(false: 직선거리, true: 지형을 고려한 거리) |
+| type | boolean                             | 지형 고려할지 여부(false: 직선거리, true: 지형을 고려한 거리) |
 
 * Return
-  * 두 지점 사이의 거리 반환
-  * 0 : 엔진이 정상적으로 load되지 않았을 경우  
+  * 두 지점 사이의 거리 반환.
+  * 0 : 엔진이 정상적으로 load되지 않았을 경우.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -701,7 +699,7 @@ var distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265
 {% endtab %}
 {% endtabs %}
 
-### getLineBuffer(lineVertex, bufferDistance) → [JSVec2Array](../core/jsvec2array.md)
+### getLineBuffer(coordinates, distance) → [JSVec2Array](../core/jsvec2array.md)
 
 > 거리 설정값에 따라 라인 버퍼 폴리곤 좌표 반환.
 
@@ -709,8 +707,8 @@ var distance = Module.getMap().GetPointDistance(new Module.JSVector3D(129.128265
 {% tab title="Information" %}
 | Name      | Type                                 | Description   |
 | -------------- | ------------------------------------ | ---------- |
-| lineVertex     | [JSVec2Array](../core/jsvec2array.md) | 라인 좌표 리스트 (경도, 위도)  |
-| bufferDistance | number                               | 라인으로 부터 거리 (라인으로 부터 거리) |
+| coordinates     | [JSVec2Array](../core/jsvec2array.md) | 라인 좌표 리스트 (경도, 위도)  |
+| distance | number                               | 라인으로 부터 거리 (라인으로 부터 거리) |
 
 * Return
   * [JSVec2Array](../core/jsvec2array.md) : 라인버퍼 폴리곤 경위도 좌표 목록 반환 성공.
@@ -737,8 +735,6 @@ var polygonLine = map.getLineBuffer(line2D, 100);
 ### MapToScreenPointEX(position) → [JSVector2D](../core/jsvector2d.md)
 
 > 3차원 지도 좌표로 화면 좌표 반환.
->
->
 
 {% tabs %}
 {% tab title="Information" %}
@@ -765,8 +761,6 @@ var pointMapPos = Module.getMap().MapToScreenPointEX(new Module.JSVector3D(129.1
 ### ScreenToMapPointEX(position) → [JSVector3D](../core/jsvector3d.md)
 
 > 화면 좌표로 3차원 지도 좌표 반환.
->
->
 
 {% tabs %}
 {% tab title="Information" %}
@@ -792,7 +786,34 @@ var mapPosition = Module.getMap().ScreenToMapPointEX(10, 10);
 
 ### Type Definitions
 
-##### JSMap.BaseMapOption
+#### JSMap.BaseMapOption
 
 > 배경 영상 지도 변경 옵션.
 
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| serverSetting | [JSMap.BaseMapOption.Sever](jsmap.md#jsmap.basemapoption.sever) |  |  | 요청 서버 옵션 설정. |
+| userSetting | [JSMap.BaseMapOption.User](jsmap.md#jsmap.basemapoption.user) |  |  | 지도 가시화 정보 옵션 설정. |
+
+#### JSMap.BaseMapOption.Sever
+
+> 배경 영상 지도 서버 정보 옵션.
+
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| url | string |  |  | 요청 서버 URL 구성요소. |
+| tileExtent | [Rect2D](../etc/tag-list.md#rect2d-style-type) |  |  | 지도 가시화 설정(좌하단, 우상단). |
+| project | string |  |  | 지도 원본 EPSG 코드. |
+| tileSize | number |  |  | 타일에 가시화 이미지 사이즈 설정. |
+| resolutions | array(number) |  |  |  |
+| matrixIds | array(number) |  |  |  |
+| serviceLevel | [Range2D](../etc/tag-list.md#range2d-style-type) |  |  | 최소, 최대 이미지 가시화 레벨 설정. |
+
+#### JSMap.BaseMapOption.User
+
+> 배경 영상 지도 유저 정보 옵션.
+
+| Name         | Type                          | Attributes | Default                 | Description      |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
+| zeroLevel | number |  |  |  |
+| quality | string |  |  |  |

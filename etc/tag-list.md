@@ -16,6 +16,12 @@
 | XYZARRAY | string | \[x, y, z, x, y, z,...\] |
 | JSVector3D | string | \[JSVector3D, JSVector3D, ...\] |
 
+### Range2D Style Type
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| min | number | 좌하단 경위도 좌표. |
+| max | number | 우상단 경위도 좌표. |
+
 ### Rect2D Style Type
 | Name | Type | Description |
 | :--- | :--- | :--- |
