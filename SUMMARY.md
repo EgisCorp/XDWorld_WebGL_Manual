@@ -59,8 +59,6 @@
 
 ## Option
 
-* [JSControl](option/jscontrol.md)
-* [JSNavigationControl](option/jsnavigationcontrol.md)
 * [JSOption](option/jsoption.md)
 
 ## ETC

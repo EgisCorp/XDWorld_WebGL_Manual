@@ -1,187 +1,177 @@
 ---
-description: 지도 환경 옵션 설정을 위한 API
+description: 지도 환경 옵션 설정을 위한 API.
 ---
 
 # JSOption
 
-Module getOption API로 생성할 수 있습니다.
+> Module.getOption API 생성.
 
 ```javascript
 var math = Module.getOption();
 ```
 
-## callBackAddPoint\(function event \) → string
+### callBackAddPoint(event) → string
 
 > 측정 기능 동작 시 마우스 클릭 콜백 등록.
 > 
-> 마우스 클릭 시 현재 위치지점, 이전 점과의 중점, 길이, 총 길이를 받는 function 연동
+> 마우스 클릭 시 현재 위치지점, 이전 점과의 중점, 길이, 총 길이를 받는 function 연동.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| event | function | 측정 시 동작 예정 function |
-
-* Detail
-  * event : 개발자 생성 function.
+| event | function | 측정 시 동작 예정 function. |
 
 * Return
-  * 성공 : "success"
-  * 실패
-    * "error map load" : 오브젝트가 초기화 되지 않음.
-    * "error { callback } Undefined" : event 변수 Undefined 일 경우.
-	* "error { callback } null" : event 변수 null 일 경우.
-	* "error { callback } Type Mismatch" : event Type이 function이 아닌 경우.
+  * "success" : 측정 기능 동작 콜백 함수 등록 성공.
+  * "error map load" : 오브젝트가 초기화 되지 않으므로 실패.
+  * "error { callback } Undefined" : event 변수 Undefined 임으로 실패.
+  * "error { callback } null" : event 변수 null 임으로 실패.
+  * "error { callback } Type Mismatch" : event Type이 function이 아님으로 실패.
 	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance
+* Sample
+  * function init 참조.
+  * [샌드박스\_거리측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance)
 {% endtab %}
 {% endtabs %}
 
-## callBackCompletePoint\(function event \) → string
+### callBackCompletePoint(event) → string
 
 > 측정 동작 시 마우스 측정 종료 콜백 등록.
 > 
-> 마우스 더블클릭 시 측정 오브젝트 키를 받는 function 연동
+> 마우스 더블클릭 시 측정 오브젝트 키를 받는 function 연동.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| event | function | 측정 종료 시 동작 예정 function |
-
-* Detail
-  * event : 개발자 생성 function.
+| event | function | 측정 종료 시 동작 예정 function. |
 
 * Return
-  * 성공 : "success"
-  * 실패
-    * "error map load" : 오브젝트가 초기화 되지 않음.
-    * "error { callback } Undefined" : event 변수 Undefined 일 경우.
-	* "error { callback } null" : event 변수 null 일 경우.
-	* "error { callback } Type Mismatch" : event Type이 function이 아닌 경우.
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance
+  * "success" : 측정 기능 동작 콜백 함수 등록 성공.
+  * "error map load" : 오브젝트가 초기화 되지 않으므로 실패.
+  * "error { callback } Undefined" : event 변수 Undefined 임으로 실패.
+  * "error { callback } null" : event 변수 null 임으로 실패.
+  * "error { callback } Type Mismatch" : event Type이 function이 아님으로 실패.
+
+* Sample
+  * function init 참조.
+  * [샌드박스\_거리측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance)
 {% endtab %}
 {% endtabs %}
 
-## SetAreaMeasurePolygonDepthBuffer\(boolean depth \) → boolean
+### SetAreaMeasurePolygonDepthBuffer(type) → boolean
 
-> 면적 측정 동작 시 생성된 오브젝트 Depth Buffer 설정
+> 면적 측정 동작 시 생성된 오브젝트 Depth Buffer 설정.
+> 
+> DepthBuffer 미 설정 시 오브젝트 겹침 시 z-fighting 현상 발생.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| depth | boolean | 면적 측정 오브젝트 GL\_DEPTH\_TEST 옵션 사용유무 |
+| type | boolean | <p>true인 경우 WebGL Depth 미설정.<br>false인 경우 WebGL Depth 설정.</p> |
 
-* Detail
-  * depth : DepthBuffer 설정 유무
-      * TRUE : GL\_DEPTH\_TEST 미설정 (오브젝트 겸침 발생 가능)
-      * FALSE : GL\_DEPTH\_TEST 설정
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.  
+    * 설정 실패 조건.
+      * 지도 갱신이 안된 경우.
+
+* Sample
+  * function init 참조.
+  * [샌드박스\_면적측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_area)
+{% endtab %}
+{% endtabs %}
+
+### SetDistanceMeasureLineDepthBuffer(type) → boolean
+
+> 거리 측정 동작 시 생성된 오브젝트 Depth Buffer 설정.
+> 
+> DepthBuffer 미 설정 시 오브젝트 겹침 시 z-fighting 현상 발생.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| type | boolean | <p>true인 경우 WebGL Depth 미설정.<br>false인 경우 WebGL Depth 설정.</p> |
 	  
 * Return
-  * 성공 : TRUE
-  * 실패 : FALSE
-	* depth 설정 실패 조건
-	  * 지도 갱신이 안된 경우
+  * true : 설정 성공.
+  * false : 설정 실패.  
+    * 설정 실패 조건.
+      * 지도 갱신이 안된 경우.
 	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_area
+* function init 참조.
+  * [샌드박스\_거리측정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance)
 {% endtab %}
 {% endtabs %}
 
-## SetDistanceMeasureLineDepthBuffer\(boolean depth \) → boolean
-
-> 거리 측정 동작 시 생성된 오브젝트 Depth Buffer 설정
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| depth | boolean | 거리 측정 오브젝트 GL\_DEPTH\_TEST 옵션 사용유무 |
-
-* Detail
-  * depth : DepthBuffer 설정 유무
-      * TRUE : GL\_DEPTH\_TEST 미설정 (오브젝트 겸침 발생 가능)
-      * FALSE : GL\_DEPTH\_TEST 설정
-	  
-* Return
-  * 성공 : TRUE
-  * 실패 : FALSE
-	* depth 설정 실패 조건
-	  * 지도 갱신이 안된 경우
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=analysis_measure_distance
-{% endtab %}
-{% endtabs %}
-
-## setSlideScreenCount\(number screen \) → boolean
+### setSlideScreenCount(value) → boolean
 
 > 화면 분할 설정.
+> 
+> value 입력값은 1(단일화면), 2(분할화면) 필수 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| screen | number | 화면 갯수 설정. |
-
-* Detail
-  * screen : 화면 설정 갯수 범위는 1, 2로 구성.
+| value | number | 화면 갯수 설정. |
 
 * Return
-  * 성공 : TRUE
-  * 실패 : FALSE
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split
+  * true : 설정 성공.
+  * false : 설정 실패.
+
+* Sample
+  * function setSplitScreen 참조.
+  * [샌드박스\_화면 분할](http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split)
 {% endtab %}
 {% endtabs %}
 
-## setTwoSlideScreenDivideRate\(number rate \) → boolean
+### setTwoSlideScreenDivideRate(value) → boolean
 
 > 화면 분활 비율 설정.
+> 
+> value 입력값은 0~1 사이 값으로 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| rate | number | 분할 화면 비율 설정. |
-
-* Detail
-  * rate : 0~1 사이 값으로 화면 비율 설정
+| value | number | 분할 화면 비율 설정. |
 
 * Return
-  * 성공 : TRUE
-  * 실패 : FALSE
-	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split
+  * true : 설정 성공.
+  * false : 설정 실패.
+  
+* Sample
+  * function setSplitScreen 참조.
+  * [샌드박스\_화면 분할](http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split)
 {% endtab %}
 {% endtabs %}
 
-## setTwoSlideScreenLayerList\(string left\_layername, string right\_layername \) → number
+### setTwoSlideScreenLayerList(leftName, rightName) → number
 
 > 화면 분활 비율 설정.
+> 
+> leftName 다중 레이어 설정 시 "1번레이어명칭,2번레이어명칭"으로 설정.
+> 
+> rightName 다중 레이어 설정 시 "1번레이어명칭,2번레이어명칭"으로 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
+| Name | Type | Description |
 | :--- | :--- | :--- |
-| left\_layername | number | 왼쪽 화면에 가시화 레이어 설정. |
-| right\_layername | number | 오른쪽 화면에 가시화 레이어 설정. |
-
-* Detail
-  * left\_layername : 다중 레이어 설정시 "1번레이어명칭,2번레이어명칭"으로 설정
-  * right\_layername : 다중 레이어 설정시 "1번레이어명칭,2번레이어명칭"으로 설정
+| leftName | number | 왼쪽 화면에 가시화 레이어 설정. |
+| rightName | number | 오른쪽 화면에 가시화 레이어 설정. |
 
 * Return
-  * result&gt;0 : 왼쪽, 오른쪽 가시화 레이어 총 갯수 반환
-  * result&gt==0 : 가시화 레이어 없음
+  * result>0 : 왼쪽, 오른쪽 가시화 레이어 총 갯수 반환
+  * result==0 : 가시화 레이어 없음
 	
-* Code
-  * http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split
+* Sample
+  * function setSplitScreen 참조.
+  * [샌드박스\_화면 분할](http://sandbox.dtwincloud.com/code/main.do?id=effect_screen_split)
 {% endtab %}
 {% endtabs %}
