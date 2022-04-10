@@ -27,7 +27,7 @@ var vec_array = new Module.JSVec3Array();
 {% endtab %}
 {% endtabs %}
 
-### get(index) → [JSVector3D](jsvector3d.md)
+### get(index) → [JSVector3D](../core/jsvector3d.md)
 
 > 인덱스 번호에 해당하는 데이터 반환.
 
@@ -55,7 +55,7 @@ var vec_array = new Module.JSVec3Array();
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| element | [JSVector3D](jsvector3d.md) | 추가 할 데이터. |
+| element | [JSVector3D](../core/jsvector3d.md) | 추가 할 데이터. |
 
 * Return
   * 추가 후 총 데이터 수.

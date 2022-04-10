@@ -18,7 +18,7 @@ var vec_array = new Module.JSVec2Array();
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| element | [JSVector2D](jsvector2d.md) | 새로 추가하는 데이터. |
+| element | [JSVector2D](../core/jsvector2d.md) | 새로 추가하는 데이터. |
 
 * Return
   * 새 데이터 추가 후 배열의 총 데이터 수.
