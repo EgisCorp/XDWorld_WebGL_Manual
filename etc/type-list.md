@@ -106,4 +106,5 @@
 
 | Index | Name | Description |
 | :--- | :--- | :--- |
-
+| 13 | Latitude/Logitude (WGS84) | EPSG:4326. |
+| 14 | Korea TM BESSEL(West) | EPSG:5186. |
