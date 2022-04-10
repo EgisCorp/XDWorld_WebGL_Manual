@@ -21,7 +21,7 @@ var object = Module.createBarGraph("ID");
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | position | [JSVector3D](../core/jsvector3d.md) | 그래프 경위도 위치(중하단 기준점). |
-| size | [JSSize2D](../core/jssize2d.md) | 그래프 크기(너비, 높이 설정). |
+| size | JSSize2D | 그래프 크기(너비, 높이 설정). |
 | type | number | 그래프 타입 설정 |
 
 * Return
@@ -126,7 +126,7 @@ var object = Module.createBarGraph("ID");
 {% tab title="Information" %}
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| size | [JSSize3D](../core/jssize3d.md) | 박스 크기. |
+| size | JSSize3D | 박스 크기. |
 
 * Return
   * true : 객체 설정 성공.

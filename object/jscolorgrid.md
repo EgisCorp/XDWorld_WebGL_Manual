@@ -31,7 +31,7 @@ var colorGrid = Module.createColorGrid("ID");
 
 * Sample
   * function showGrid 참조.
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+  * [샌드박스\_그리드(2D)]http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
   
 {% endtab %}
 
@@ -134,7 +134,7 @@ var gridCellNum = colorGrid2D.SetGridPositionByCellSize(
   	
 * Sample
   * function showGrid 참조..
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+  * [샌드박스\_그리드(2D)]http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
 {% endtab %}
 
 {% tab title="Template" %}
@@ -165,7 +165,7 @@ colorGrid2D.SetGridCellDefaultColor(new Module.JSColor(255, 255, 255, 0));
 	  
 * Sample
   * function showGrid 참조.
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+  * [샌드박스\_그리드(2D)]http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
 {% endtab %}
 
 {% tab title="Template" %}
@@ -386,7 +386,7 @@ colorGrid2D.SetDrawLine(true);
   
 * Sample
   * function showGrid 참조.
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+  * [샌드박스\_그리드(2D)]http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
 {% endtab %}
 
 {% tab title="Template" %}
@@ -635,7 +635,7 @@ var linelist = colorGrid2D.GetGridEdgeLinePosition(0, 0);
 	  * 설정된 가로, 세로 Index 범위 초과인 경우.
 * Sample
   * function showGrid 참조.
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
+  * [샌드박스\_그리드(2D)]http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d
 {% endtab %}
 
 {% tab title="Template" %}

@@ -46,7 +46,7 @@ var object = Module.createPipe("ID");
 {% endtab %}
 {% endtabs %}
 
-### getPositions() → [JSVec3Array](JSVec3Array.md)
+### getPositions() → [JSVec3Array](../core/jsvec3array.md)
 
 > 3D 파이프의 중심선 좌표를 반환.
 
@@ -148,7 +148,7 @@ var object = Module.createPipe("ID");
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| farme | number | 갱실할 프레임 수 (정수형). |
+| farme | number | 갱신할 프레임 수 (정수형). |
   
 * Return
   * true : 객체 설정 성공.

@@ -72,7 +72,7 @@ var object = Module.createGhostSymbol("ID");
 {% tab title="Information" %}
 | Name | Type                            | Description  |
 | --------- | ------------------------------- | --------- |
-| scale     | [JSSize3D](../core/jssize3d.md) | 고스트 심볼 크기 설정. |
+| scale     | JSSize3D | 고스트 심볼 크기 설정. |
 
 * Return
   * true : 객체 설정 성공.
@@ -111,7 +111,7 @@ var object = Module.createGhostSymbol("ID");
 {% endtab %}
 {% endtabs %}
 
-### getScale() → [JSSize3D](../core/jssize3d.md)
+### getScale() → JSSize3D
 
 > 고스트 심볼 객체의 크기 반환.
 
@@ -119,7 +119,7 @@ var object = Module.createGhostSymbol("ID");
 {% tab title="Information" %}
 
 * Return
-  * [JSSize3D](../core/jssize3d.md) : 고스트 심볼 크기(x,y,z) 반환 성공.
+  * JSSize3D : 고스트 심볼 크기(x,y,z) 반환 성공.
   * null : 크기 반환 실패.
   
 * Sample
@@ -375,7 +375,7 @@ var object = Module.createGhostSymbol("ID");
 {% endtab %}
 {% endtabs %}
 
-### setColor([JSColor](../core/jscolor.md) color))
+### setColor(color))
 
 > 객체 색상을 설정합니다.
 

@@ -188,7 +188,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 
 ### Type Definitions
 
-##### JSTypoon.CreateOptions
+#### JSTypoon.CreateOptions
 
 > 태풍 객체 생성 옵션.
 
@@ -201,7 +201,7 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 | complete | function                                                                   | optional   |         | 태풍 이동 완료 시 동작하는 CallBack |
 | damage   | [JSTypoon.CreateOptions.Damage](jstypoon.md#jstypoon.createoptions.damage) | optional   |         | 태풍 영향권 생성 속성 정보.         |
 
-##### JSTypoon.CreateOptions.Damage
+#### JSTypoon.CreateOptions.Damage
 
 > 태풍 영향권 객체 생성 옵션.
 

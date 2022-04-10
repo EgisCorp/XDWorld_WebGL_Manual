@@ -19,7 +19,7 @@ var object = Module.createBarGraph3D("ID");
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | position | [JSVector3D](../core/jsvector3d.md) | 그래프 생성 경위도 위치. |
-| size | [JSSize3D](../core/jssize3d.md) | 그래프 크기. |
+| size | JSSize3D | 그래프 크기. |
 
 * Return
   * true : 오브젝트 생성 성공.

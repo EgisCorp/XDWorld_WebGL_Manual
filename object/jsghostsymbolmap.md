@@ -172,7 +172,7 @@ var object = Module.getGhostSymbolMap();
 {% endtab %}
 {% endtabs %}
 
-### getGhostSymbolSize(name) → [JSSize3D](../core/jssize3d.md)
+### getGhostSymbolSize(name) → JSSize3D
 
 > 등록된 고스트 심볼 크기 반환.
 
@@ -183,7 +183,7 @@ var object = Module.getGhostSymbolMap();
 | name          | string  | 참조 객체 등록 명칭.       |
 
 * Return
-  * [JSSize3D](../core/jssize3d.md) : 고스트 심볼 크기(x,y,z) 반환 성공.
+  * JSSize3D : 고스트 심볼 크기(x,y,z) 반환 성공.
   * null : 크기 반환 실패.
   
 * Sample
@@ -199,7 +199,7 @@ var object = Module.getGhostSymbolMap();
 
 ### Type Definitions
 
-##### JSGhostSymbolMap.InsertOptions
+#### JSGhostSymbolMap.InsertOptions
 
 > 고스트 심볼 3D 모델 객체 등록 옵션.
 
@@ -210,7 +210,7 @@ var object = Module.getGhostSymbolMap();
 | format   | string                                                                     | optional   |         | 요청 파일 포맷(3ds만 지원).|
 | callback | function                                                                   | optional   |         | 등록 완료 시 동작하는 CallBack |
 
-##### JSGhostSymbolMap.LoadTexture
+#### JSGhostSymbolMap.LoadTexture
 
 > 등록된 고스트 심볼 객체 face 텍스쳐 등록 옵션.
 

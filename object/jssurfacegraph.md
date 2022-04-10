@@ -19,7 +19,7 @@ var object = Module.createSurfaceGraph("ID");
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | position | [JSVector3D](../core/jsvector3d.md) | 그물형 격자 그래프 경위도 좌표 위치. |
-| size | [JSSize3D](../core/jssize3d.md) | 그물형 격자 그래프 크기. |
+| size | JSSize3D | 그물형 격자 그래프 크기. |
 
 * Return
   * true : 객체 생성 성공.
