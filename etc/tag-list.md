@@ -5,7 +5,7 @@
 | Name                                        | Type   | Description          |
 | ------------------------------------------- | ------ | -------------------- |
 | coordinate                                  | object | 경위도 좌표 목록.           |
-| [stype](tag-list.md#coordinates-style-type) | string | 경위도 좌표 목록을 구성하는 스타일. |
+| [style](tag-list.md#coordinates-style-type) | string | 경위도 좌표 목록을 구성하는 스타일. |
 
 ### coordinates Style Type
 
