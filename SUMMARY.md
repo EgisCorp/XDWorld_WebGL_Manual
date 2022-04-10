@@ -41,7 +41,7 @@
 
 ## Analysis
 
-* [JSAnalysis](analysis/jsanlysis.md)
+* [JSAnalysis](analysis/jsanalysis.md)
 * [JSEditTerrain](analysis/jseditterrain.md)
 * [JSFlood](analysis/jsflood.md)
 * [JSGridAnal](analysis/jsgridanal.md)
