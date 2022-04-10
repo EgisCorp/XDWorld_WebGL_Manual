@@ -416,7 +416,7 @@ let json = {
 | size      | number                                                                                           |            |         | 격자의 셀 가로,세로 크기 (단위 : 미터)  |
 | fMin      | number                                                                                           |            |         | 격자 셀의 최소값                 |
 | fmax      | number                                                                                           |            |         | 격자 셀의 최대값                 |
-| data      | number                                                                                           | array      |         | 격자 셀의 데이터 베열              |
+| data      | array(number)                                                                                    |       |         | 격자 셀의 데이터 베열              |
 
 #### JSGridAnal.GridDataOption.llcornerParam
 
@@ -425,4 +425,4 @@ let json = {
 | Name    | Type   | Attributes | Default | Description                                 |
 | ------- | ------ | ---------- | ------- | ------------------------------------------- |
 | projNum | number |            |         | 좌표계 코드 번호                                   |
-| pos     | number | array      |         | 좌표 범위 배열 \[\[minx, miny], \[maxx, maxy]] 형식 |
+| pos     | array(number) |       |         | 좌표 범위 배열 \[\[minx, miny], \[maxx, maxy]] 형식 |
