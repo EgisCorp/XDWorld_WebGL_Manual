@@ -41,7 +41,7 @@
 
 ## Analysis
 
-* [JSEarthquake](analysis/jsearthquake.md)
+* [JSAnalysis](analysis/jsanlysis.md)
 * [JSEditTerrain](analysis/jseditterrain.md)
 * [JSFlood](analysis/jsflood.md)
 * [JSGridAnal](analysis/jsgridanal.md)
