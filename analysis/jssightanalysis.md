@@ -65,9 +65,9 @@ let returnJSON = "{
 {% endtab %}
 {% endtabs %}
 
-#### Type Definitions
+### Type Definitions
 
-###### JSSightAnalysis.ObjectOnPathResult
+#### JSSightAnalysis.ObjectOnPathResult
 
 > GetObjectPositionsOnPath의 분석 결과의 형식 
 >
@@ -77,7 +77,7 @@ let returnJSON = "{
 | ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
 | return | array([JSSightAnalysis.ObjectOnPathResult.Position](jssightanalysis.md#jssightanalysis.objectonpathresult.position)) |  | | 개별 분석 결과 배열 |
 
-###### JSSightAnalysis.ObjectOnPathResult.Position
+#### JSSightAnalysis.ObjectOnPathResult.Position
 
 > [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysisobjectonpathresult)의 단위 객체 정보
 

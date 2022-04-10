@@ -10,7 +10,7 @@ description: 터파기 분석 기능 설정 API.
 var transparency = Module.getTransparency();
 ```
 
-## create(coordinates) → number
+### create(coordinates) → number
 
 > 입력 좌표를 받아 터파기 객체를 생성.
 > 
@@ -31,7 +31,7 @@ var transparency = Module.getTransparency();
 {% endtab %}
 {% endtabs %}
 
-## setAutoMove(coordinates, frame) → boolean
+### setAutoMove(coordinates, frame) → boolean
 
 > 자동으로 이동하는 원형 터파기의 이동 경로 및 속도를 설정합니다.
 > 
@@ -54,7 +54,7 @@ var transparency = Module.getTransparency();
 {% endtab %}
 {% endtabs %}
 
-## setDepth(depth)
+### setDepth(depth)
 
 > 터파기 깊이를 설정합니다.
 
@@ -70,7 +70,7 @@ var transparency = Module.getTransparency();
 {% endtab %}
 {% endtabs %}
 
-## setRadius(radius)
+### setRadius(radius)
 
 > 원형 터파기 반경을 설정합니다.
 
@@ -86,7 +86,7 @@ var transparency = Module.getTransparency();
 {% endtab %}
 {% endtabs %}
 
-## setTexture(data, width, height, type) → boolean
+### setTexture(data, width, height, type) → boolean
 
 > 터파기 표면 텍스쳐 이미지를 설정합니다.
 > 
@@ -111,7 +111,7 @@ var transparency = Module.getTransparency();
 {% endtab %}
 {% endtabs %}
 
-## startAutoMove() → boolean
+### startAutoMove() → boolean
 
 > 사전에 지정된 경로를 따라 터파기 자동 이동을 시작합니다.
 
@@ -128,7 +128,7 @@ var transparency = Module.getTransparency();
 {% endtab %}
 {% endtabs %}
 
-## stopAutoMove() → boolean
+### stopAutoMove() → boolean
 
 > 사전에 지정된 경로를 따라 터파기 자동 이동을 종료합니다.
 

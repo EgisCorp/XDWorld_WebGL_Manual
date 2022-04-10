@@ -248,7 +248,7 @@ var analysis = Module.getAnalysis();
 
 ### Type Definitions
 
-##### JSAnalysis.InterpolationOption
+#### JSAnalysis.InterpolationOption
 
 > 보간 라인 좌표 생성 옵션.
 
