@@ -32,6 +32,16 @@ var math = Module.getMath();
 
 {% tab title="Template" %}
 ```javascript
+var vertices = [];
+
+vertices.push([lon, lat, alt]);
+vertices.push([lon, lat, alt]);
+vertices.push([lon, lat, alt]);
+
+let curve_pos = {
+	coordinate: vertices,
+	style: "XYZ",
+};
 ```
 {% endtab %}
 {% endtabs %}
@@ -59,6 +69,13 @@ var math = Module.getMath();
 
 {% tab title="Template" %}
 ```javascript
+let parameters = {
+	start : new Module.JSVector3D(127.94080035885989, 36.336424549396064, 306.52637346833944),
+	end : new Module.JSVector3D(127.9419239501012, 36.33615414434727, 300.5711971661076),
+	detail : 100,
+	height : 330,
+	percent : 70,
+};	
 ```
 {% endtab %}
 {% endtabs %}
@@ -71,8 +88,7 @@ var math = Module.getMath();
 
 | Name       | Type                                                  | Attributes | Default | Description |
 | ---------- | ----------------------------------------------------- | ---------- | ------- | ----------- |
-| coordinate | string                                                |            |         | 정점 좌표 목록.   |
-| style      | [좌표 스타일 타입.](type-list.md#coordinate-style-type-list) |            |         | 좌표 스타일 타입.  |
+| option | [coordinates Type] (type-list.md#coordinate-type-list) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
 
 #### JSMath.BezierLine
 
