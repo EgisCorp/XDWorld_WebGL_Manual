@@ -16,14 +16,14 @@ var navigation = Module.getNavigation();
 
 {% tabs %}
 {% tab title="Name" %}
-| Name | Type | Description |
-| --------- | ---- | -------- |
-| left | number  | left Padding 값  |
-| top | number  | top Padding 값  |
+| Name | Type   | Description    |
+| ---- | ------ | -------------- |
+| left | number | left Padding 값 |
+| top  | number | top Padding 값  |
 
 * Sample
   * function setNavigationPadding 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -39,14 +39,12 @@ Module.getNavigation().setPadding(50, 50);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
   * x : left Padding 설정값.
   * y : top Padding 설정값.
-
 * Sample
   * function getNavigationProperties 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -62,13 +60,13 @@ var padding = Module.getNavigation().getPadding();
 
 {% tabs %}
 {% tab title="Name" %}
-| Name | Type | Description |
-| --------- | ---- | -------- |
-| align | number  | 네비게이션 정렬 타입. |
+| Name  | Type   | Description                                                    |
+| ----- | ------ | -------------------------------------------------------------- |
+| align | number | [네비게이션 정렬 타입.](../etc/type-list.md#navigation-align-type-list) |
 
 * Sample
   * function setNavigationAlign 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -84,13 +82,11 @@ Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
-  * 네비게이션 정렬 타입 반환.
-
+  * [네비게이션 정렬 타입](../etc/type-list.md#navigation-align-type-list) 반환.
 * Sample
   * function getNavigationProperties 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -106,13 +102,13 @@ var naviAlign = Module.getNavigation().getNaviPos();
 
 {% tabs %}
 {% tab title="Name" %}
-| Name | Type | Description |
-| --------- | ---- | -------- |
-| display | number  | 네비게이션 가시화 타입. |
+| Name    | Type   | Description                                                       |
+| ------- | ------ | ----------------------------------------------------------------- |
+| display | number | [네비게이션 가시화 타입](../etc/type-list.md#navigation-visible-type-list). |
 
 * Sample
   * function setNavigationVisible 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -128,13 +124,11 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_AUTO);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
-  * 네비게이션 가시화 타입 반환.
-
+  * [네비게이션 가시화 타입](../etc/type-list.md#navigation-visible-type-list) 반환.
 * Sample
   * function getNavigationProperties 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option_control_map)
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
 {% endtab %}
 
 {% tab title="Template" %}
