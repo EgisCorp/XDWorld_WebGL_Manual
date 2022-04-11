@@ -6,7 +6,7 @@
 
 {% embed url="https://github.com/EgisCorp/XDWorld" %}
 
-### 엔진 파일 구성
+### 1) 엔진 파일 구성
 
 깃허브에서는 엔진 파일 / 실행 스크립트 / 기본 HTML 페이지를 함께 배포합니다.
 
@@ -34,11 +34,13 @@
 
 
 
-### 엔진 파일 로드
+### 2) 엔진 파일 로드
 
 자세한 설명에 앞서, 기본 index.html 페이지와 엔진 파일 로드를 위한 init.js 파일의 코드는 다음과 같습니다.
 
-(index.html 파일과 init.js 파일은 다운로드 엔진 폴더에 기본으로 첨부되어 있으므로 그대로 활용하실 수 있습니다.)
+{% hint style="info" %}
+index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성에 기본으로 첨부되어 있으므로 그대로 활용하실 수 있습니다.
+{% endhint %}
 
 {% tabs %}
 {% tab title="index.html" %}
@@ -150,4 +152,6 @@ window.onresize = function() {
 ```
 {% endtab %}
 {% endtabs %}
+
+#### 2-1) index.html
 
