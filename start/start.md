@@ -6,7 +6,7 @@
 
 {% embed url="https://github.com/EgisCorp/XDWorld" %}
 
-### 엔진 파일 구성
+## 엔진 파일 구성
 
 깃허브에서는 엔진 파일 / 실행 스크립트 / 기본 HTML 페이지를 함께 배포합니다.
 
@@ -34,7 +34,7 @@
 
 
 
-### 엔진 파일 로드
+## 엔진 파일 로드
 
 자세한 설명에 앞서, 기본 index.html 페이지와 엔진 파일 로드를 위한 init.js 파일의 코드는 다음과 같습니다.
 
@@ -153,7 +153,7 @@ window.onresize = function() {
 {% endtab %}
 {% endtabs %}
 
-#### index.html
+### index.html
 
 index.html 파일에서는 엔진 로드를 위한 init.js 를 호출합니다.
 
@@ -171,4 +171,35 @@ index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다
 지도 위에 인터페이스를 오버랩 하는 경우 canvas가 인터페이스 아래에 위치할 수 있도록 z-index값이 적절히 조정되어야 합니다.
 {% endhint %}
 
+{% hint style="info" %}
 위 index.html 코드에서는 init.js 를 호출 할 때 지도를 렌더링 할 canvas를 생성하지만, html 페이지에서 미리 canvas를 생성 한 후 생성한 canvas와 엔진 모듈을 연결 할 수도 있습니다.
+
+엔진 모듈과 canvas 연결은 항목을 참조하십시오.
+{% endhint %}
+
+
+
+### init.js
+
+init.js 의 코드는
+
+* 엔진 초기화 함수 선언 부분&#x20;
+* 지도 모듈 객체 선언 부분
+* 엔진 파일 로드 부분
+
+으로 구성되어 있습니다.
+
+#### 엔진 초기화 함수 선언
+
+엔진 파일이 모두 완료 된 시점에 처음으로 호출되는 함수를 선언합니다.
+
+```javascript
+// Some code// 엔진 로드 후 실행할 초기화 함수(Module.postRun)
+function init() {
+
+	// 엔진 초기화 API 호출(필수)
+	Module.Start(window.innerWidth, window.innerHeight);
+}  
+```
+
+#### init.js
