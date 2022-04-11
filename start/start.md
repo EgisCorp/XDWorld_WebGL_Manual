@@ -189,17 +189,69 @@ init.js 의 코드는
 
 으로 구성되어 있습니다.
 
+#### 지도 모듈 객체 선언
+
+엔진 API 호출을 위한 모듈 객체를 선언합니다.
+
+```javascript
+var Module = {
+   TOTAL_MEMORY: 256*1024*1024,
+   postRun: [init],
+   canvas: (function() {
+		
+      // Canvas 엘리먼트 생성
+      var canvas = document.createElement('canvas');
+		
+      // Canvas id, Width, height 설정
+      canvas.id = "canvas";
+      canvas.width="calc(100%)";
+      canvas.height="100%";
+		
+      // Canvas 스타일 설정
+      canvas.style.position = "fixed";
+      canvas.style.top = "0px";
+      canvas.style.left = "0px";
+
+      // contextmenu disabled
+      canvas.addEventListener("contextmenu", function(e){
+         e.preventDefault();
+      });
+	
+      // 생성한 Canvas 엘리먼트를 body에 추가합니다.
+      document.body.appendChild(canvas);
+      return canvas;
+   })()
+};
+```
+
+반드시 객체 이름은 Module 로 선언해주어야 하며 postRun, canvas 속성은 필수로 입력되어야 합니다.
+
+canvas의 경우 동적으로 생성해도 되지만, 외부에 미리 선언한 canvas 엘리먼트를 연결할 수도 있습니다.
+
+```
+// Some codevar Module = {
+	TOTAL_MEMORY: 256*1024*1024,
+	postRun: [init],
+	canvas: (function() {
+		var canvas = document.getElementById('mayMapCanvas');
+		return canvas;
+	})()
+};
+\
+```
+
 #### 엔진 초기화 함수 선언
 
 엔진 파일이 모두 완료 된 시점에 처음으로 호출되는 함수를 선언합니다.
 
 ```javascript
-// Some code// 엔진 로드 후 실행할 초기화 함수(Module.postRun)
+// 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
-
-	// 엔진 초기화 API 호출(필수)
-	Module.Start(window.innerWidth, window.innerHeight);
+   // 엔진 초기화 API 호출(필수)
+   Module.Start(window.innerWidth, window.innerHeight);
 }  
 ```
+
+
 
 #### init.js
