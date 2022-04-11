@@ -229,7 +229,7 @@ var Module = {
 canvas의 경우 동적으로 생성해도 되지만, 외부에 미리 선언한 canvas 엘리먼트를 연결할 수도 있습니다.
 
 ```
-// Some codevar Module = {
+var Module = {
 	TOTAL_MEMORY: 256*1024*1024,
 	postRun: [init],
 	canvas: (function() {
