@@ -2,7 +2,7 @@
 description: 지도 내 레이어를 관리하는 API를 제공합니다
 ---
 
-# [JSLayer](../layer/jslayer.md)List
+# JSLayerList
 
 > Module.createTypoon API 생성.
 
@@ -30,7 +30,7 @@ let serverlayer = new Module.JSLayerList(false);	// 서비스 레이어 반환
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 ```
 {% endtab %}
@@ -42,7 +42,7 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 >
 > Web Map Server로 가시화 된 Tile 영역에 해당되는 지형 영상 이미지 요청.
 >
-> WMS 서비스 레이어로 new Module.[JSLayer](../layer/jslayer.md)List( false ) 사용.
+> WMS 서비스 레이어로 new Module.JSLayerList( false ) 사용.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -57,7 +57,7 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List( false );
+let layerList = new Module.JSLayerList( false );
 let wmslayer = layerList.createWMSLayer( “WMS” );
 ```
 {% endtab %}
@@ -69,7 +69,7 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 >
 > Web Feature Server로 가시화 된 Tile 영역에 해당되는 오브젝트 요청.
 >
-> WFS 서비스 레이어로 new Module.[JSLayer](../layer/jslayer.md)List( false ) 사용.
+> WFS 서비스 레이어로 new Module.JSLayerList( false ) 사용.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -84,10 +84,10 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 {% endtab %}
 
 {% tab title="Template" %}
-  ```javascript
-  let layerList = new Module.[JSLayer](../layer/jslayer.md)List( false );
-  let wfslayer = layerList.createWFSLayer( “WFS" , 0);
-  ```
+```javascript
+let layerList = new Module.JSLayerList( false );
+let wfslayer = layerList.createWFSLayer( “WFS" , 0);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -111,7 +111,7 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List( false );
+let layerList = new Module.JSLayerList( false );
 let layer = layerList.nameAtLayer(“HybridLoad”);
 ```
 {% endtab %}
@@ -137,7 +137,7 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(false);
+let layerList = new Module.JSLayerList(false);
 let visible = layerList.getVisible(“HybridLoad”);
 ```
 {% endtab %}
@@ -161,7 +161,7 @@ let visible = layerList.getVisible(“HybridLoad”);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(false);
+let layerList = new Module.JSLayerList(false);
 layerList.setVisible(“HybridLoad”, true); 
 layerList.setVisible(“HybridLoad”, false); 
 ```
@@ -185,7 +185,7 @@ layerList.setVisible(“HybridLoad”, false);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let check = layerList.delLayerAtFirst();
@@ -211,7 +211,7 @@ console.log(check);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let check = layerList.delLayerAtLast();
@@ -241,7 +241,7 @@ console.log(check);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 
@@ -274,7 +274,7 @@ console.log(check);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 
@@ -298,7 +298,7 @@ check = layerList.delLayerAtName(0);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let count = layerList.count();
@@ -326,7 +326,7 @@ console.log(count);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let count = layerList.layerAtIndex(first);
@@ -354,7 +354,7 @@ console.log(count);
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let result = layerList.firstAtLayer();
@@ -379,7 +379,7 @@ let result = layerList.firstAtLayer();
 
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let result = layerList.lastAtLayer();
@@ -408,7 +408,7 @@ let result = layerList.lastAtLayer();
 
 {% tab title="Template" %}
   ```javascript
-  let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+  let layerList = new Module.JSLayerList(true);
   let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
   let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON); 
   let result = layerList.indexAtLayer(0);
@@ -441,7 +441,7 @@ let result = layerList.lastAtLayer();
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON);
 let check =  layerList.setLayerMove(end, true);
@@ -473,7 +473,7 @@ let check =  layerList.setLayerMove(end, true);
 {% endtab %}
 {% tab title="Template" %}
 ```javascript
-let layerList = new Module.[JSLayer](../layer/jslayer.md)List(true);
+let layerList = new Module.JSLayerList(true);
 let first = layerList.createLayer(“firstlayer”, Module.ELT_POLYHEDRON);
 let second = layerList.createLayer(“secondlayer”, Module.ELT_POLYHEDRON); 
 let end = layerList.createLayer(“endlayer”, Module.ELT_POLYHEDRON); 

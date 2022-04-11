@@ -4,23 +4,28 @@
 
 | Index | Name | Description |
 | :--- | :--- | :--- |
-| 0 | ELT\_POLYHEDRON | 다면체 |
-| 1 | ELT\_PLANE | 평면 |
-| 2 | ELT\_PIPE | 관\(실린더\) |
-| 3 | ELT\_BILLBOARD | 빌보드 |
-| 4 | ELT\_3DLINE | 3차원 선 |
-| 5 | ELT\_3DPOINT | 심볼 텍스트 |
-| 6 | ELT\_3DS\_SYMBOL | 3차원 심볼 |
-| 7 | ELT\_GHOST\_3DSYMBOL | 유령 심볼 |
-| 8 | ELT\_TERRAIN | 지형 |
-| 9 | ELT\_MULTILPE | 다용도 |
-| 10 | ELT\_KML\_GROUND | KML |
-| 11 | ELT\_TERRAIN\_IMAGE | 지형 영상 |
-| 12 | ELT\_PICTOMETRY | 픽토 메트리 |
-| 13 | ELT\_WATER | Water 가시화 |
-| 102 | ELT\_SKY\_LINE | RTT 미적용 3차원 선 |
-| 112 | ELT\_TYPOON | 태풍 가시화 |
-| 113 | ELT\_GRAPH | 차트 가시화 |
+| 0 | ELT_POLYHEDRON | 다면체 |
+| 1 | ELT_PLANE | 평면 |
+| 2 | ELT_PIPE | 관\(실린더\) |
+| 3 | ELT_BILLBOARD | 빌보드 |
+| 4 | ELT_3DLINE | 3차원 선 |
+| 5 | ELT_3DPOINT | 심볼 텍스트 |
+| 6 | ELT_3DS\_SYMBOL | 3차원 심볼 |
+| 7 | ELT_GHOST\_3DSYMBOL | 유령 심볼 |
+| 8 | ELT_TERRAIN | 지형 |
+| 9 | ELT_MULTILPE | 다용도 |
+| 10 | ELT_KML\_GROUND | KML |
+| 11 | ELT_TERRAIN\_IMAGE | 지형 영상 |
+| 12 | ELT_PICTOMETRY | 픽토 메트리 |
+| 13 | ELT_WATER | Water 가시화 |
+| 102 | ELT_SKY\_LINE | RTT 미적용 3차원 선 |
+| 112 | ELT_TYPOON | 태풍 가시화 |
+| 113 | ELT_GRAPH | 차트 가시화 |
+
+```javascript
+var layerList = new Module.JSLayerList(true);
+layerList.createLayer("Layer_Name", Module.ELT_3DPOINT);	// 심볼 텍스트 레이어 생성
+```
 
 ## WFS Type List
 
@@ -29,6 +34,38 @@
 | 0 | POI | POI Type |
 | 1 | Polygon | Polygon Type |
 | 2 | Line | Line Type |
+
+```javascript
+let layerList = new Module.JSLayerList( false );
+layerList.createWFSLayer(“WFS_POI" , 0);
+layerList.createWFSLayer(“WFS_Polygon" , 1);
+layerList.createWFSLayer(“WFS_Line" , 2);
+```
+
+## Navigation Postion Type List
+
+| Index | Name | Description |
+| :--- | :--- | :--- |
+| 0 | JS_NAVIGATION_LT | 좌상단 위치 옵션. |
+| 1 | JS_NAVIGATION_RT | 우상단 위치 옵션. |
+| 2 | JS_NAVIGATION_LB | 좌하단 위치 옵션. |
+| 3 | JS_NAVIGATION_RB | 우하단 위치 옵션. |
+
+```javascript
+Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
+```
+	
+## Navigation Visible Type List
+
+| Index | Name | Description |
+| :--- | :--- | :--- |
+| 0 | JS_VISIBLE_ON | 네비게이션(나침판) 가시화 활성화. |
+| 1 | JS_VISIBLE_OFF | 네비게이션(나침판) 가시화 비 활성화. |
+| 2 | JS_VISIBLE_AUTO | 네비게이션(나침판) 간소화 가시화 활성화. |
+
+```javascript
+Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_ON);
+```
 
 ## Mouse Type List
 
@@ -101,6 +138,10 @@
 | 201 | MML\_SELECT\_EDIT\_MODULE |  |
 | 202 | MML\_EDIT\_SOLAR\_MODULE |  |
 | 300 | MML\_OBJECT\_EDIT |  |
+
+```javascript
+Module.XDSetMouseState(Module._NONE);
+```
 
 ## Coordinate Type List
 

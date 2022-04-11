@@ -28,6 +28,7 @@ var object = Module.createPolygon("ID");
     * 객체 생성 실패 조건
       * positionmode=true 일 때 projectioncode가 설정되지 않음
       * positionmode=false 일 때 position이 지정되지 않음
+	  
 * Sample
   * function load3DS 참조.
   * [샌드박스\_3DS](http://sandbox.dtwincloud.com/code/main.do?id=object\_file\_3ds)
