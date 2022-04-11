@@ -82,8 +82,3 @@
 * [SOPObject](etc/sopobject.md)
 * [Type List](etc/type-list.md)
 * [Tag List](etc/tag-list.md)
-
-***
-
-* [Page 2](page-2.md)
-* [Copy of Page 2](copy-of-page-2.md)
