@@ -42,7 +42,7 @@ layerList.createWFSLayer(“WFS_Polygon" , 1);
 layerList.createWFSLayer(“WFS_Line" , 2);
 ```
 
-## Navigation Postion Type List
+## Navigation Align Type List
 
 | Index | Name | Description |
 | :--- | :--- | :--- |
