@@ -13,92 +13,82 @@ var object = Module.getControl();
 ### setMouseWheelDelta(value)
 
 > 마우스 휠의 델타(동작량)을 설정.
+>
+> value 입력값>0 필수 설정.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| value | number | 반경 설정. |
-
-* Detail
-  * \_dDelta : 0보다 큰 값 필요, 마우스 휠 동작시 가변 거리조정에 대한 배율값으로 동작
+| value | number | 마우스 휠 이벤트 시 가변 거리 조정 배율값 설정. |
 
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+Module.getControl().setMouseWheelDelta(0.8);
 ```
 {% endtab %}
 {% endtabs %}
 
 ### getMouseWheelDelta() → number
 
-> 마우스 휠의 델타(동작량)을 반환
+> 마우스 휠의 델타(동작량)을 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 
 * Return
-  * 마우스 휠의 델타량 값
-  
-* Code
-  * 
+  * 마우스 휠의 델타량 값.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+var wheelDelta = Module.getControl().getMouseWheelDelta();
 ```
 {% endtab %}
 {% endtabs %}
 
 ### setKeyControlEnable(type)
 
-> 키보드 카메라 조작 여부 설정
+> 키보드 카메라 조작 여부 설정.
+>
+> 키보드 입력에 따른 카메라 이벤트 정보.
+>
+> 키보드 화살표 : 전후좌우 이동.
+>
+> insert(좌회전), delete(우회전), home(확대), end(축소), pageup(상단회전), pagedown(하단회전).
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| type | boolean | 키보드 사용 여부 |
-* Detail
-  * \_bEnable : true - 키보드 제어 가능
-    * 위쪽 화살표 : 카메라 전진
-    * 아래쪽 화살표 : 카메라 후진
-    * 왼쪽 화살표 : 카메라 좌측 이동
-    * 오른쪽 화살표 : 카메라 우측 이동
-    * Insert(Ins) : 카메라 좌회전
-    * Delete(Del) : 카메라 우회전
-    * Home : 카메라 확대
-    * End : 카메라 축소
-    * PgUp : 카메라 위로 회전
-    * PgDown : 카메라 아래로 회전
+| type | boolean | <p>true인 경우 키보드 이벤트 활성화.<br>false인 경우 키보드 이벤트 비 활성화.</p> |
 
-* Code
-  * 
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+Module.getControl().setKeyControlEnable(false);
 ```
 {% endtab %}
 {% endtabs %}
 
 ### getKeyControlEnable() → boolean
 
-> 키보드 카메라 조작 여부 반환
+> 키보드 카메라 조작 여부 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 
 * Return
-  * 키보드 카메라 조작 설정 반환
-  
-* Code
-  * 
+  * true : 키보드 이벤트 활성화 상태.
+  * false : 키보드 이벤트 비 활성화 상태.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+var vKeyEnable = Module.getControl().getKeyControlEnable();
 ```
 {% endtab %}
 {% endtabs %}
@@ -106,22 +96,20 @@ var object = Module.getControl();
 ### setMouseWheelMode(type)
 
 > 마우스 휠 동작 방향을 반전 설정
+> 
+> 마우스 흴 동작 방향 기본값은 false.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| type | boolean | 마우스 휠 동작 반전 설정 |
+| type | boolean | <p>true인 경우 기본 마우스 흴 방향.<br>false인 경우 반전 마우스 휠 방향.</p> |
 
-* Detail
-  * type : 기본값 false
-    
-* Code
-  * 
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+Module.getControl().setMouseWheelMode(true);
 ```
 {% endtab %}
 {% endtabs %}
@@ -134,14 +122,14 @@ var object = Module.getControl();
 {% tab title="Information" %}
 
 * Return
-  * 마우스 휠 동작 방향 설정 값
+  * true : 마우스 휠 기본 상태.
+  * false : 마우스 반전 휠 이동 상태.
   
-* Code
-  * 
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+var wheelInvert = Module.getControl().getMouseWheelMode();
 ```
 {% endtab %}
 {% endtabs %}

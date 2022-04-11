@@ -254,8 +254,8 @@ var analysis = Module.getAnalysis();
 
 | Name         | Type                          | Attributes | Default                 | Description      |
 | ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| positions |  |  |  | 보간 라인 시작점 목록. |
-| input |  |  |  | 보간 계산 입력점 목록. |
+| positions | array([JSVector2D](../core/jsvector2d.md)) |  |  | 보간 라인 시작점 목록. |
+| input | array([interpolation](../etc/tag-list.md#interpolation-type)) |  |  | 보간 계산 입력점 목록. |
 | rect | [Rect2D](../etc/tag-list.md#rect2d-style-type) |  |  | 라인 생성 영역. |
 | vertexcount | number |  |  | 라인 버텍수 수. |
 | scale | number |  |  | 라인 생성 간격. |

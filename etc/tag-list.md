@@ -16,6 +16,14 @@
 | XYZARRAY   | string | \[x, y, z, x, y, z,...]        |
 | JSVector3D | string | \[JSVector3D, JSVector3D, ...] |
 
+### Interpolation Type
+
+| Name       | Type   | Description                    |
+| ---------- | ------ | ------------------------------ |
+| position   | [JSVector2D](../core/jsvector2d.md) | 경위도 좌표. |
+| direction  | number | 진행 방향. |
+| strength   | number | 진행 세기. |
+
 ### Range2D Style Type
 
 | Name | Type   | Description |
