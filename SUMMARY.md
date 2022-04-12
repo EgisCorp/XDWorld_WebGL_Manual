@@ -6,9 +6,6 @@
 
 * [About EGIS](introduce/about-egis.md)
 * [XDWorld API](introduce/introduce.md)
-
-## 시작하기
-
 * [시작하기](start/start.md)
 
 ## 튜토리얼
