@@ -225,7 +225,7 @@ var Module = {
    TOTAL_MEMORY: 256*1024*1024,
    postRun: [init],
    canvas: (function() {
-      var canvas = document.getElementById('mayMapCanvas');
+      var canvas = document.getElementById('myMapCanvas');
       return canvas;
    })()
 };
@@ -251,7 +251,7 @@ function init() {
 
 #### 엔진 파일 로드
 
-엔진 파일을 순서대로 로드합니다. 파일 로드 순서 유의하십시오.
+엔진 파일을 순서대로 로드합니다. 파일 로드 순서에 유의하십시오.
 
 ```javascript
 // 엔진 파일 로드
