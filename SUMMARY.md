@@ -7,7 +7,7 @@
 * [About EGIS](introduce/about-egis.md)
 * [XDWorld API](introduce/introduce.md)
 
-## 사직하기
+## 시작하기
 
 * [시작하기](start/start.md)
 
