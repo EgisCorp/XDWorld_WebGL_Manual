@@ -161,7 +161,7 @@ index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다
 {% hint style="info" %}
 위 index.html 코드에서는 init.js 를 호출 할 때 지도를 렌더링 할 canvas를 생성하지만, html 페이지에서 미리 canvas를 생성 한 후 생성한 canvas와 엔진 모듈을 연결 할 수도 있습니다.
 
-엔진 모듈과 canvas 연결은 [지도 모듈 객체 선언](start.md#undefined-2) 항목을 참조해 주십시오.
+엔진 모듈과 canvas 연결은 [지도 모듈 객체 선언](start.md#undefined-4) 항목을 참조해 주십시오.
 {% endhint %}
 
 
