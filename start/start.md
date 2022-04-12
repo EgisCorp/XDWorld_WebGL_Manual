@@ -313,5 +313,5 @@ XDWorld를 사용한 여러 기능들을 살펴보고 싶으시다면? [여기](
 
 XDWorld에 대해 궁금한 점이 있으시다면? [여기](https://github.com/EgisCorp/XDWorld/issues)를 클릭해 주세요.
 
-XDWorld를 사용한 차세대 디지털트윈 클라우드 서비스를 살펴보고 싶으시다면? [여기](https://www.dtwincloud.com)를 클릭해주세요.
+XDWorld를 사용한 차세대 디지털트윈 클라우드 서비스를 살펴보고 싶으시다면? [여기](https://www.dtwincloud.com)를 클릭해 주세요.
 
