@@ -32,7 +32,7 @@
 
 자세한 설명에 앞서, 기본 index.html 페이지와 엔진 파일 로드를 위한 init.js 파일의 코드는 다음과 같습니다.
 
-{% hint style="success" %}
+{% hint style="info" %}
 index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성에 기본으로 첨부되어 있으므로 그대로 활용하실 수 있습니다.
 {% endhint %}
 
@@ -154,7 +154,7 @@ index.html 파일에서는 엔진 로드를 위한 init.js 를 호출합니다.
 
 index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다.
 
-{% hint style="warning" %}
+{% hint style="danger" %}
 지도 위에 인터페이스를 오버랩 하는 경우 canvas가 인터페이스 아래에 위치할 수 있도록 z-index값이 적절히 조정되어야 합니다.
 {% endhint %}
 
