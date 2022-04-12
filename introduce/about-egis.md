@@ -32,4 +32,4 @@ EGIS는 4차 산업혁명에 발맞추어
 
 {% embed url="https://www.youtube.com/watch?v=rbQfBviVTJA" %}
 
-EGIS의 Web API 솔루션 XDWorld에 대해 궁금하시다면? [여기](broken-reference/)로 이동하세요.
+EGIS의 Web API 솔루션 XDWorld에 대해 궁금하시다면? [여기](introduce.md)로 이동하세요.
