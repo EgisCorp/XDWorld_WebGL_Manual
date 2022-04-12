@@ -4,7 +4,7 @@
 
 ## 소개
 
-* [About EGIS](undefined/about-egis.md)
+* [About EGIS](introduce/about-egis.md)
 * [XDWorld API](introduce/introduce.md)
 
 ## 사직하기
