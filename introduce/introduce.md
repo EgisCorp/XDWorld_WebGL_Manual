@@ -17,8 +17,6 @@ description: EGIS의 3D GIS 엔진 XDWorld를 소개합니다!
 * 다양한 도시계획 시뮬레이션 및 분석 기능 제공
 * 공간정보 오픈플랫폼(V World) 데이터 서비스 가능
 
-
-
 ### 기능&#x20;
 
 * 대규모 3차원 공간데이터 로딩 및 사용자 시점에 따른 레벨별 출력 기능
@@ -32,4 +30,5 @@ description: EGIS의 3D GIS 엔진 XDWorld를 소개합니다!
 
 
 
-###
+XDWorld로 여러분을 위한 GIS 시스템 개발을 시작하시려면 [여기](broken-reference)로 이동하세요.
+
