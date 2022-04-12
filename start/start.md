@@ -309,5 +309,7 @@ Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실�
 
 ## 다음 단계로
 
-XDWorld를 사용한 여러 기능들을 살펴보고 싶으시다면? 여기를 클릭해 주세요.
+XDWorld를 사용한 여러 기능들을 살펴보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=start)를 클릭해 주세요.
+
+XDWorld에 대해 궁금한 점이 있으시다면? [여기](https://github.com/EgisCorp/XDWorld/issues)를 클릭해 주세요.
 
