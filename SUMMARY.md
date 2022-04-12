@@ -10,7 +10,7 @@
 
 ## 튜토리얼
 
-* [Tutorial](tutorial/tutorial.md)
+* [카메라 설정](undefined-1/tutirial\_camera.md)
 
 ## Map
 
