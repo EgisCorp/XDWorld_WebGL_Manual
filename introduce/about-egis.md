@@ -1,7 +1,5 @@
 # About EGIS
 
-&#x20;
-
 ![](../.gitbook/assets/20220412\_102652.png)
 
 EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
@@ -11,8 +9,6 @@ EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 정부와 시민이 함께 도시문제를 고민하고 해결할 수 있는
 
 다양한 스마트 시티 서비스 연구, 개발 전문기업입니다.
-
-
 
 ![](<../.gitbook/assets/20220412\_102617 (1).png>)
 
@@ -26,8 +22,6 @@ EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
 공간정보 가시화를 넘어 협업이 가능한 공간정보 가상화 서비스를 제공합니다.
 
-
-
 ![](../.gitbook/assets/20220412\_102801.png)
 
 EGIS는 4차 산업혁명에 발맞추어
@@ -36,6 +30,6 @@ EGIS는 4차 산업혁명에 발맞추어
 
 3차원 분석을 통해 입체적인 의사결정을 위한 솔루션을 제공하고 있습니다.
 
+{% embed url="https://www.youtube.com/watch?v=rbQfBviVTJA" %}
 
-
-EGIS의 Web API 솔루션 XDWorld에 대해 궁금하시다면? [여기](broken-reference)로 이동하세요.
+EGIS의 Web API 솔루션 XDWorld에 대해 궁금하시다면? [여기](broken-reference/)로 이동하세요.
