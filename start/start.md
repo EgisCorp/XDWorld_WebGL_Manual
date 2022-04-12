@@ -297,11 +297,7 @@ function init() {
 )();
 ```
 
-
-
-
-
-### 엔진 실행
+## 엔진 실행
 
 Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실행하면 엔진 렌더링이 시작됩니다
 
