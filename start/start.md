@@ -12,12 +12,6 @@
 
 ![](<../.gitbook/assets/image (1).png>)
 
-엔진 파일은
-
-* XDWorldEM.js
-* XDWorldEM.asm.js
-* XDWorldEM.html.mem
-
 &#x20;엔진 파일은 세 가지 파일로 구성되어 있으며 다운로드 한 파일의 폴더 XDWorld-main/Release/(버전명)/js에서 찾을 수 있습니다.
 
 &#x20;엔진을 구동할 때 세 파일이 순차적으로 로드되어야 하며,&#x20;
@@ -28,7 +22,7 @@
 
 &#x20;파일 순으로 로드합니다.
 
-![다음 단계에서 각 파일의 로드 과정에 대해 소개합니다.](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (2).png>)
 
 다음 단계에서 각 파일의 로드 과정에 대해 소개합니다.
 
@@ -174,7 +168,7 @@ index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다
 {% hint style="info" %}
 위 index.html 코드에서는 init.js 를 호출 할 때 지도를 렌더링 할 canvas를 생성하지만, html 페이지에서 미리 canvas를 생성 한 후 생성한 canvas와 엔진 모듈을 연결 할 수도 있습니다.
 
-엔진 모듈과 canvas 연결은 항목을 참조하십시오.
+엔진 모듈과 canvas 연결은 [이곳을](start.md#undefined-2) 참조하십시오.
 {% endhint %}
 
 
@@ -228,16 +222,15 @@ var Module = {
 
 canvas의 경우 동적으로 생성해도 되지만, 외부에 미리 선언한 canvas 엘리먼트를 연결할 수도 있습니다.
 
-```
+```javascript
 var Module = {
-	TOTAL_MEMORY: 256*1024*1024,
-	postRun: [init],
-	canvas: (function() {
-		var canvas = document.getElementById('mayMapCanvas');
-		return canvas;
-	})()
+   TOTAL_MEMORY: 256*1024*1024,
+   postRun: [init],
+   canvas: (function() {
+      var canvas = document.getElementById('mayMapCanvas');
+      return canvas;
+   })()
 };
-\
 ```
 
 #### 엔진 초기화 함수 선언
