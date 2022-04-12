@@ -136,13 +136,6 @@ var Module = {
       xhr.send(null);
    }
 )();
-
-window.onresize = function() {
-   if (typeof Module == "object") {
-      Module.Resize(window.innerWidth, window.innerHeight);
-      Module.XDRenderData();
-   }
-};
 ```
 {% endtab %}
 {% endtabs %}
@@ -168,7 +161,7 @@ index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다
 {% hint style="info" %}
 위 index.html 코드에서는 init.js 를 호출 할 때 지도를 렌더링 할 canvas를 생성하지만, html 페이지에서 미리 canvas를 생성 한 후 생성한 canvas와 엔진 모듈을 연결 할 수도 있습니다.
 
-엔진 모듈과 canvas 연결은 [이곳을](start.md#undefined-2) 참조하십시오.
+엔진 모듈과 canvas 연결은 [지도 모듈 객체 선언](start.md#undefined-2) 항목을 참조해 주십시오.
 {% endhint %}
 
 
@@ -182,6 +175,8 @@ init.js 의 코드는
 * 엔진 파일 로드 부분
 
 으로 구성되어 있습니다.
+
+
 
 #### 지도 모듈 객체 선언
 
@@ -220,6 +215,9 @@ var Module = {
 
 반드시 객체 이름은 Module 로 선언해주어야 하며 postRun, canvas 속성은 필수로 입력되어야 합니다.
 
+* postRun : 엔진 모듈이 준비 된 시점에서 호출되는 함수를 지정합니다.
+* canvas : 지도를 렌더링 할 캔버스 엘리먼트를 지정합니다.
+
 canvas의 경우 동적으로 생성해도 되지만, 외부에 미리 선언한 canvas 엘리먼트를 연결할 수도 있습니다.
 
 ```javascript
@@ -233,9 +231,13 @@ var Module = {
 };
 ```
 
+
+
 #### 엔진 초기화 함수 선언
 
 엔진 파일이 모두 완료 된 시점에 처음으로 호출되는 함수를 선언합니다.
+
+선언 된 함수는 Module 객체의 postRun 속성으로 지정합니다.
 
 ```javascript
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
@@ -247,4 +249,66 @@ function init() {
 
 
 
-#### init.js
+#### 엔진 파일 로드
+
+엔진 파일을 순서대로 로드합니다. 파일 로드 순서 유의하십시오.
+
+```javascript
+// 엔진 파일 로드
+;(function(){   	
+
+   // 1. XDWorldEM.asm.js 파일 로드
+   var file = "./js/XDWorldEM.asm.js";
+	
+   var xhr = new XMLHttpRequest();
+   xhr.open('GET', file, true);
+   xhr.onload = function() {
+	
+      var script = document.createElement('script');
+      script.innerHTML = xhr.responseText;
+      document.body.appendChild(script);
+		
+      // 2. XDWorldEM.html.mem 파일 로드
+      setTimeout(function() {
+         (function() {
+            var memoryInitializer = "./js/XDWorldEM.html.mem";
+            var xhr = Module['memoryInitializerRequest'] = new XMLHttpRequest();
+            xhr.open('GET', memoryInitializer, true);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload =  function(){
+						
+               // 3. XDWorldEM.js 파일 로드
+               var url = "./js/XDWorldEM.js";
+               var xhr = new XMLHttpRequest();
+               xhr.open('GET',url , true);
+               xhr.onload = function(){
+                  var script = document.createElement('script');
+                  script.innerHTML = xhr.responseText;
+                  document.body.appendChild(script);
+               };
+               xhr.send(null);
+            }
+            xhr.send(null);
+         })();
+         }, 1);
+      };
+      xhr.send(null);
+   }
+)();
+```
+
+
+
+####
+
+
+
+### 엔진 실행
+
+Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실행하면 엔진 렌더링이 시작됩니다
+
+![](<../.gitbook/assets/image (4).png>)
+
+엔진 렌더링이 시작되면 초기 화면으로 지구본 화면이 출력됩니다.
+
+![](<../.gitbook/assets/image (3).png>)
