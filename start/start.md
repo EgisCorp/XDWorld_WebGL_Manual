@@ -32,7 +32,7 @@
 
 자세한 설명에 앞서, 기본 index.html 페이지와 엔진 파일 로드를 위한 init.js 파일의 코드는 다음과 같습니다.
 
-{% hint style="info" %}
+{% hint style="success" %}
 index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성에 기본으로 첨부되어 있으므로 그대로 활용하실 수 있습니다.
 {% endhint %}
 
