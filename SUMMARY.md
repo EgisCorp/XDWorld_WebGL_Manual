@@ -22,6 +22,7 @@
 
 * [JSLayer](layer/jslayer.md)
 * [JSLayerList](layer/jslayerlist.md)
+* [JSImageryProvider](layer/jsImageryProvider.md)
 
 ## Core
 

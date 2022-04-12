@@ -10,54 +10,6 @@ description: 지도 설정 및 제어 기능 API.
 var map = Module.getMap();
 ```
 
-### changeBaseMap(option) → string
-
-> WMTS 서비스 레이어 생성.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name   | Type                                                         | Description   |
-| ---- | ---------------------------------------------------------- | ------------- |
-| option | [JSMap.BaseMapOption](jsmap.md#jsmap.basemapoption) | WMTS 타일링 정보 설정. |
-
-* Return
-  * "success" : 레이어 생성 성공.
-  * "fail" : 레이어 생성 실패.
-    * 레이어 생성 실패 조건.
-    * serverSetting, userSetting, url, tileExtent, max, min, projection, resolutions, matrixIds 태그 중 하나라도 없을 경우
-	
-* Sample
-  * function korean_map 참조
-  * [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer\_wmts)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-let json = { 
-	serverSetting:{ 
-		url: "http://map.ngii.go.kr/openapi/Gettile.do?apikey=04trYP9_xwLAfALjwZ-B8g&layer=korean_map&style=korean&tilematrixset=EPSG%3A5179&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=L{02z}&TileCol={x}&TileRow={y}",										
-        tileExtent: { 
-			min: new Module.JSVector2D(-200000.98, -28086425.6),
-			max: new Module.JSVector2D(31886425.6, 4000000.0)
-        }, 
-        projection: "EPSG:5179",
-        tileSize: 256,
-		resolutions : [2088.96, 1044.48, 522.24, 261.12, 130.56, 65.28, 32.64, 16.32, 8.16, 4.08, 2.04, 1.02, 0.51, 0.255],		
-		matrixIds : [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
-		serviceLevel: {
-			min: 3,
-			max: 20
-		}
-    }, 
-    userSetting: { 
-        zeroLevel: 2,
-        quality: "middle"
-    } 
-};
-```
-{% endtab %}
-{% endtabs %}
-
 ### setDistance(distance)
 
 > 히트맵 반경 거리를 설정.
@@ -783,40 +735,3 @@ var mapPosition = Module.getMap().ScreenToMapPointEX(10, 10);
 ```
 {% endtab %}
 {% endtabs %}
-
-### Type Definitions
-
-#### JSMap.BaseMapOption
-
-> 배경 영상 지도 변경 옵션.
-
-| Name         | Type                          | Attributes | Default                 | Description      |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| serverSetting | [JSMap.BaseMapOption.Sever](jsmap.md#jsmap.basemapoption.sever) |  |  | 요청 서버 옵션 설정. |
-| userSetting | [JSMap.BaseMapOption.User](jsmap.md#jsmap.basemapoption.user) |  |  | 지도 가시화 정보 옵션 설정. |
-
-#### JSMap.BaseMapOption.Sever
-
-> 배경 영상 지도 서버 정보 옵션.
-
-| Name         | Type                          | Attributes | Default                 | Description      |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| url | string |  |  | 요청 서버 URL 구성요소. |
-| tileExtent | [Rect2D](../etc/tag-list.md#rect2d-style-type) |  |  | 지도 타일링 영역 설정(좌하단, 우상단). |
-| project | string |  |  | 지도 원본 EPSG 코드. |
-| resolutions | array(number) |  |  | 타일링 해상도. |
-| matrixIds | array(number) |  |  | 타일링 레벨(해상도와 매칭). |
-| tileSize | number | optional | 256 | 타일에 가시화 이미지 사이즈 설정. |
-| serviceLevel | [Range2D](../etc/tag-list.md#range2d-style-type) | optional | min=0, max=18 | 최소, 최대 이미지 가시화 레벨 설정. |
-| vworldTileSet |  boolean         	|  optional		|  false  		  | 브이월드 타일구조로 타일링일 경우(true). 			|
-| indexOrder 	|  boolean         	|  optional		|  true  		  | 타일 인덱싱 기준점(false: 좌하단, true: 좌상단). 	|
-| boxRequest 	|  boolean         	|  optional		|  false  		  | 인덱싱이 아닌 박스단위 요청일 경우(true). 			|
-
-#### JSMap.BaseMapOption.User
-
-> 배경 영상 지도 유저 정보 옵션.
-
-| Name         | Type                          | Attributes | Default                 | Description      |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| zeroLevel | number | optional | 0 | 이미지 요청 LOD. |
-| quality | string | optional | low | 이미지 품질(low, middle, high). |
