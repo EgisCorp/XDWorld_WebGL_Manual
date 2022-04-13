@@ -37,12 +37,45 @@ var userlayer = new Module.JSLayerList(true);
 userlayer = layerList.createLayer("layerName", Module.ELT_POLYHEDRON);
 ```
 
-### step 2. 레이어 가시설정
+### step 2 - 1. 레이어 가시설정
 
 step 1 에서 생성한 레이어의 가시설정을 합니다.
 * true : 레이어의 모든 객체 랜더링
 * false : 레이어의 모든 객체 랜더링하지 않음
 
 ```javascript
-userlayer. setVisible(false);
+userlayer.setVisible(false);
+```
+
+### step 2 - 2. 레이어 가시 거리설정
+
+step 1 에서 생성한 레이어의 가시 거리를 설정합니다.
+* getMaxDistance : 최대 가시거리 반환
+* setMaxDistance : 최대 가시거리 설정
+
+* getMinDistance : 최소 가시거리 반환
+* setMinDistance : 최소 가시거리 설정
+
+```javascript
+userlayer.setMaxDistance(10);
+userlayer.setMaxDistance(2000);
+```
+
+### step 2 - 3. 레이어 선택 가능여부 설정
+
+step 1 에서 생성한 레이어의 선택 가능여부를 설정합니다.
+* setSelectable : 레이어 선택 가능여부 설정
+* getSelectable : 레이어 선택 가능여부 반환
+
+```javascript
+userlayer.setSelectable(true);
+```
+
+### step 2 - 4. 레이어에 객체 추가
+
+step 1 에서 생성한 레이어에 객체를 추가합니다.
+
+```javascript
+var object = 객체 생성;
+userlayer.addObject(object, 0);	// (객체, 삽입할 레벨)
 ```
