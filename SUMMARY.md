@@ -16,10 +16,10 @@
 * [라인 생성하기](tutorial/tutirial\_line.md)
 * [모델 추가하기](tutorial/tutirial\_ghostsymbol.md)
 * [레이어 설정](tutorial/tutirial\_layer.md)
-* [배경 지도 설정](tutorial/tutorial\_basemap_.md)
+* [배경 지도 설정](undefined-1/undefined.md)
 * [거리 측정](tutorial/tutirial\_distance.md)
 * [면적 측정](tutorial/tutirial\_area.md)
-* [높이 측정](tutorial/tutirial\_altitude.md)
+* [높이 측정](undefined-1/undefined-1.md)
 * [반경 측정](tutorial/tutirial\_radius.md)
 
 ## Map
