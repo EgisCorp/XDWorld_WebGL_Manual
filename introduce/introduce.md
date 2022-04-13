@@ -2,11 +2,11 @@
 description: EGIS의 3D GIS 엔진 XDWorld를 소개합니다!
 ---
 
-# 소개
+# XDWorld API
 
 &#x20;EGIS의 XDWorld는 WEBGL 기반 GIS 서비스를 지원하는 API를 제공하고 있습니다.
 
-![](<../.gitbook/assets/image (4).png>)
+![](<../.gitbook/assets/image (4) (1).png>)
 
 ### 특징
 
