@@ -11,16 +11,16 @@
 ## 튜토리얼
 
 * [카메라 설정](tutorial/tutorial\_camera.md)
-* [POI 생성하기](tutorial/tutirial\_poi.md)
-* [폴리곤 생성하기](tutorial/tutirial\_polygon.md)
-* [라인 생성하기](tutorial/tutirial\_line.md)
-* [모델 추가하기](tutorial/tutirial\_ghostsymbol.md)
-* [레이어 설정](tutorial/tutirial\_layer.md)
+* [POI 생성하기](tutorial/tutorial\_poi.md)
+* [폴리곤 생성하기](tutorial/tutorial\_polygon.md)
+* [라인 생성하기](tutorial/tutorial\_line.md)
+* [모델 추가하기](tutorial/tutorial\_ghostsymbol.md)
+* [레이어 설정](tutorial/tutorial\_layer.md)
 * [배경 지도 설정](tutorial/tutorial\_basemap.md)
-* [거리 측정](tutorial/tutirial\_distance.md)
-* [면적 측정](tutorial/tutirial\_area.md)
+* [거리 측정](tutorial/tutorial\_distance.md)
+* [면적 측정](tutorial/tutorial\_area.md)
 * [높이 측정](tutorial/tutorial\_altitude.md)
-* [반경 측정](tutorial/tutirial\_radius.md)
+* [반경 측정](tutorial/tutorial\_radius.md)
 
 ## Map
 
