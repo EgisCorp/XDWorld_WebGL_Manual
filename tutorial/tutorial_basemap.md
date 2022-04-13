@@ -1,21 +1,18 @@
----
-description: 배경 지도 설정 튜토리얼
----
+# 배경 지도 설정하기
 
-# 배경 지도 설정
+네이버, 다음, Google, BingMap, OpenStreetMap, ArcMap, MapBox, SKYMap 지도를 배경지도로 설정할 수 있습니다.
 
-> 네이버, 다음, Google, BingMap, OpenStreetMap, ArcMap, MapBox, SKYMap 지도를 배경지도로 설정.
-
-```javascript
-var naver = Module.NaverMap();		( nomal, satellite 지원 )
-var daum = Module.DaumMap();		( nomal, satellite 지원 )
-var google = Module.GoogleMap();	( nomal, terrain, vectorhybrid, satellitehybrid, satellite 지원 )
-var bing = Module.BingMap();		( nomal, satellitehybrid, satellite 지원 )
-var osm = Module.OpenStreetMap();	( nomal, terrain 지원 )
-var arc = Module.ArcMap();			( nomal, terrain, vectorhybrid, satellite 지원 )
-var mapbox = Module.MapBox();		( satellite 지원 )
-var skymap = Module.SKYMap();		( 2012 ~ 2018, 2020 지원 )
-```
+## 지원하는 배경지도 목록
+| Name | Layername |
+| :--- | :--- |
+| NaverMap |	 nomal, satellite 지원 |
+| DaumMap |		 nomal, satellite 지원 |
+| GoogleMap |	 nomal, terrain, vectorhybrid, satellitehybrid, satellite 지원 |
+| BingMap |		 nomal, satellitehybrid, satellite 지원 |
+| OpenStreetMap |	 nomal, terrain 지원 |
+| ArcMap |			 nomal, terrain, vectorhybrid, satellite 지원 |
+| MapBox |		 satellite 지원 |
+| SKYMap |		 2012 ~ 2018, 2020 지원 |
 
 ## Layername
 

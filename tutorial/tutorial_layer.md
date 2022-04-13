@@ -1,43 +1,56 @@
-# 레이어 설정
+# 레이어 설정하기
 
-레이어 가시설정.
+레이어는 객체를 담는 스케치북 입니다. 객체를 생성하고 랜더링하기 위해서는 레이어가 필요합니다. 객체를 생성하고 레이어에 삽입하지 않으면 해당 객체는 랜더링되지 않습니다. 또한 필요한 레이어만 랜더링하기 위해서 가시설정을 할 수 있습니다.
 
 ![](../.gitbook/assets/layer.png)
 
-## Layername
+## Layer Type List
 
-> 배경 영상 지도 레이어명.
+| Index | Name | Description |
+| :--- | :--- | :--- |
+| 0 | ELT_POLYHEDRON | 다면체 |
+| 1 | ELT_PLANE | 평면 |
+| 2 | ELT_PIPE | 관\(실린더\) |
+| 3 | ELT_BILLBOARD | 빌보드 |
+| 4 | ELT_3DLINE | 3차원 선 |
+| 5 | ELT_3DPOINT | 심볼 텍스트 |
+| 6 | ELT_3DS\_SYMBOL | 3차원 심볼 |
+| 7 | ELT_GHOST\_3DSYMBOL | 유령 심볼 |
+| 8 | ELT_TERRAIN | 지형 |
+| 9 | ELT_MULTILPE | 다용도 |
+| 10 | ELT_KML\_GROUND | KML |
+| 11 | ELT_TERRAIN\_IMAGE | 지형 영상 |
+| 12 | ELT_PICTOMETRY | 픽토 메트리 |
+| 13 | ELT_WATER | Water 가시화 |
+| 102 | ELT_SKY\_LINE | RTT 미적용 3차원 선 |
+| 112 | ELT_TYPOON | 태풍 가시화 |
+| 113 | ELT_GRAPH | 차트 가시화 |
 
-| Name            | Type   | Attributes | Default | Description                           |
-| --------------- | ------ | ---------- | ------- | ------------------------------------- |
-| nomal      	  | string |            |         | 일반 지도.                |
-| terrain         | string |            |         | 지형 등고선 지도.                 |
-| vectorhybrid    | string |            |         | 벡터 하이브리드 지도.               |
-| satellitehybrid | string |            |         | 영상 하이브리드 지도.                 |
-| satellite 	  | string |            |         | 영상 지도.           |
+### step 1. 레이어 생성
+
+객체를 생성하고 랜더링하기 위해서는 레이어가 필요하기 때문에 레이어를 생성합니다.
 
 ```javascript
-var naver = Module.NaverMap();
-naver.layername = "satellite";
+var userlayer = new Module.JSLayerList(true);
+userlayer = layerList.createLayer(레이어 이름, 레이어 타입);
+```
 
-var daum = Module.DaumMap();
-naver.layername = "satellite";
+### step 2. 레이어 가시설정
 
-var google = Module.GoogleMap();
-naver.layername = "satellitehybrid";
+step 1 에서 생성한 레이어의 가시설정을 합니다.
+* true : 레이어의 모든 객체 랜더링
+* false : 레이어의 모든 객체 랜더링하지 않음
 
-var bing = Module.BingMap();
-naver.layername = "satellitehybrid";
+```javascript
+userlayer. setVisible(false);
+```
 
-var osm = Module.OpenStreetMap();
-naver.layername = "nomal";
 
-var arc = Module.ArcMap();
-naver.layername = "vectorhybrid";
+### etc. 레이어 검색
 
-var mapbox = Module.MapBox();
-naver.layername = "satellite";
+레이어 생성 후 레이어 이름은 알고있지만 어느 변수에 저장했는지 모를경우 검색을 통해서 레이어를 반환받을 수 있습니다.
 
-var skymap = Module.SKYMap();
-naver.layername = "2020";
+```javascript
+var userlayer = new Module.JSLayerList(true);
+userlayer = layerList.nameAtLayer(레이어 이름);
 ```
