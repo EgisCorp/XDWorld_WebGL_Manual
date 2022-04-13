@@ -17,10 +17,9 @@
 
 Part 구성에 따라 여러가지 형태로 구성됩니다.
 
-테이블구조
-* 단일 파트 폴리곤 (+이미지)
-* 여러 파트 폴리곤 (+이미지)
-* 홀(Hole)이 있는 폴리곤 (+이미지)
+|                한 파트의 폴리곤                |                여러 파트의 폴리곤                |              홀(Hole)이 있는 폴리곤             |
+| :-------------------------------------: | :--------------------------------------: | :--------------------------------------: |
+| ![](<../.gitbook/assets/image (9).png>) | ![](<../.gitbook/assets/image (22).png>) | ![](<../.gitbook/assets/image (12).png>) |
 
 아래는 폴리곤 오브젝트를 생성하는 전체 코드입니다.
 
@@ -63,8 +62,6 @@ function createPolygon(_layer, id, _vertices, _fillColor, _outlineColor) {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
-
-
 ### step 1. 폴리곤 오브젝트 생성
 
 Module을 통해 [JSPolygon](../object/jspolygon.md) 타입의 폴리곤 오브젝트를 생성합니다.
@@ -95,7 +92,6 @@ polygon.setPartCoordinates(vertex, part);
 (이미지)
 
 * 좌표가 시계 방향(CW)을 이룸 : 외부로 판별되며 폴리곤의 외곽을 구성합니다.
-
 * 좌표가 반시계 방향(CCW)을 이룸 : 내부로 판별되며 폴리곤의 홀(Hole)을 구성합니다.
 
 하나의 폐곡선은 하나의 파트로 지정하며, 위 코드의 폴리곤은 점 수가 4개인 한 파트 구성됩니다.
@@ -132,7 +128,6 @@ part.add(4);
 {% hint style="info" %}
 각 파트의 순서는 자유롭게 설정해 주어도 되나, 적어도 파트 중 하나는 폴리곤의 외곽을 형성할 수 있도록 시계 방향(CW)으로 구성되어 있어야 합니다.
 {% endhint %}
-
 
 ### step 3. 폴리곤 속성 지정 (선택)
 
@@ -171,6 +166,6 @@ layer.addObject(polygon, 0);
 
 위 과정을 거쳐 여러 폴리곤을 한 레이어에 추가하면 아래와 같이 출력할 수 있습니다.
 
-폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_color)를 클릭해 주세요
+폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color)를 클릭해 주세요
 
-높이를 지정한 폴리곤에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)를 클릭해 주세요
+높이를 지정한 폴리곤에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_height)를 클릭해 주세요

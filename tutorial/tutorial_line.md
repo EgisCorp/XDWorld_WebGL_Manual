@@ -102,9 +102,9 @@ false로 설정 된 경우 일반 라인으로 그려지며 true로 설정 된 �
 RTT(Render To Texture) 방식을 선택한다면 라인은 지형 텍스쳐 위에 그려지게 되므로 라인이 지형의 굴곡을 따라 표시되나, 이미지 기반으로 렌더링 하므로 라인 경계에 계단 현상이 두드러질 수 있습니다.
 {% endhint %}
 
-|               union = false              |               union = true               |
-| :--------------------------------------: | :--------------------------------------: |
-| ![](<../.gitbook/assets/image (31).png>) | ![](<../.gitbook/assets/image (12).png>) |
+|               union = false              |                 union = true                 |
+| :--------------------------------------: | :------------------------------------------: |
+| ![](<../.gitbook/assets/image (31).png>) | ![](<../.gitbook/assets/image (12) (1).png>) |
 
 #### depth
 
@@ -114,7 +114,7 @@ RTT(Render To Texture) 방식을 선택한다면 라인은 지형 텍스쳐 위�
 
 false로 설정하는 경우 가려짐과 상관 없이 레이어 순서에 따라 오브젝트가 그려집니다.
 
-![](<../.gitbook/assets/image (9).png>)
+![](<../.gitbook/assets/image (9) (1).png>)
 
 #### color
 
