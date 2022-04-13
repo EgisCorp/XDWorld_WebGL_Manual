@@ -7,15 +7,15 @@ description: 배경지도 객체를 관리하는 API.
 > Module.[JSImageryProvider.Type](jsImageryProvider.md#jsimageryprovider.type)() API 생성.
 
 ```javascript
-var naver = Module.NaverMap();
-var daum = Module.DaumMap();
-var google = Module.GoogleMap();
-var bing = Module.BingMap();
-var osm = Module.OpenStreetMap();
-var arc = Module.ArcMap();
-var mapbox = Module.MapBox();
-var skymap = Module.SKYMap();
-var wmts = Module.WMTS();
+var naver = Module.NaverMap();		( nomal, satellite 지원 )
+var daum = Module.DaumMap();		( nomal, satellite 지원 )
+var google = Module.GoogleMap();	( nomal, terrain, vectorhybrid, satellitehybrid, satellite 지원 )
+var bing = Module.BingMap();		( nomal, satellitehybrid, satellite 지원 )
+var osm = Module.OpenStreetMap();	( nomal, terrain 지원 )
+var arc = Module.ArcMap();			( nomal, terrain, vectorhybrid, satellite 지원 )
+var mapbox = Module.MapBox();		( satellite 지원 )
+var skymap = Module.SKYMap();		( 2012 ~ 2018, 2020 지원 )
+var wmts = Module.WMTS();		
 ```
 
 ## properties
@@ -25,7 +25,7 @@ var wmts = Module.WMTS();
 | provider        | [JSImageryProvider.Provider](JSImageryProvider.md#JSImageryProvider.provider) | 배경 영상 지도 타일링 정보설정.       |
 | zeroLevel       | string                                                                        | 배경 영상 지도 이미지 LOD.        |
 | quality         | string                                                                        | 배경 영상 지도 이미지 품질.         |
-| layername       | string                                                                        | 배경 영상 지도 레이어명.           |
+| [JSImageryProvider.Layername](JSImageryProvider.md#JSImageryProvider.Layername)       | string                                                                        | 배경 영상 지도 레이어명.           |
 | zerolevelOffset | string                                                                        | 배경 영상 지도 이미지 LOD offset. |
 
 ### clear()
@@ -42,7 +42,15 @@ var wmts = Module.WMTS();
 
 {% tab title="Template" %}
 ```javascript
+Module.NaverMap().clear();
+Module.DaumMap().clear();
 Module.GoogleMap().clear();
+Module.BingMap().clear();
+Module.OpenStreetMap().clear();
+Module.ArcMap().clear();
+Module.MapBox().clear();
+Module.SKYMap().clear();
+Module.WMTS().clear();
 ```
 {% endtab %}
 {% endtabs %}
@@ -64,6 +72,18 @@ Module.GoogleMap().clear();
 | MapBox()        | object |            |         | MapBox Map 배경 영상 지도 설정.               |
 | SKYMap()        | object |            |         | SKY Map 배경 영상 지도 설정.                  |
 | WMTS()          | object |            |         | WMTS(웹 맵 타일 서비스) 표준 프로토콜 배경 영상 지도 설정. |
+
+#### JSImageryProvider.Layername
+
+> 배경 영상 지도 레이어명.
+
+| Name            | Type   | Attributes | Default | Description                           |
+| --------------- | ------ | ---------- | ------- | ------------------------------------- |
+| nomal      	  | string |            |         | 일반 지도.                |
+| terrain         | string |            |         | 지형 등고선 지도.                 |
+| vectorhybrid    | string |            |         | 벡터 하이브리드 지도.               |
+| satellitehybrid | string |            |         | 영상 하이브리드 지도.                 |
+| satellite 	  | string |            |         | 영상 지도.           |
 
 #### JSImageryProvider.Provider
 
