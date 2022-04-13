@@ -78,16 +78,16 @@ var polygon = Module.createPolygon("MY_POLYGON");
 폴리곤의 형태를 지정하기 위해 좌표와 파트 정보를 추가합니다.
 
 ```javascript
-    var vertex = new Module.JSVec3Array();
-    vertex.push(new Module.JSVector3D(126.928800, 37.526449, 15.0));
-    vertex.push(new Module.JSVector3D(126.927471, 37.525806, 15.0));
-    vertex.push(new Module.JSVector3D(126.928596, 37.524600, 15.0));
-    vertex.push(new Module.JSVector3D(126.929996, 37.525416, 15.0));
+var vertex = new Module.JSVec3Array();
+vertex.push(new Module.JSVector3D(126.928800, 37.526449, 15.0));
+vertex.push(new Module.JSVector3D(126.927471, 37.525806, 15.0));
+vertex.push(new Module.JSVector3D(126.928596, 37.524600, 15.0));
+vertex.push(new Module.JSVector3D(126.929996, 37.525416, 15.0));
 
-    var part = new Module.Collection();
-    part.add(4);
+var part = new Module.Collection();
+part.add(4);
 
-    polygon.setPartCoordinates(vertex, part);
+polygon.setPartCoordinates(vertex, part);
 ```
 
 폴리곤은 기본적으로 폐곡선 형태로 이루어지며, 좌표의 방향에 따라 외부와 내부가 구분됩니다.
@@ -103,28 +103,28 @@ var polygon = Module.createPolygon("MY_POLYGON");
 만약 파트 수가 두 개(두 개의 홀과 하나의 외곽)인 폴리곤인 경우는 아래와 같이 구성됩니다.
 
 ```javascript
-    var vertex = new Module.JSVec3Array();
-    var part = new Module.Collection();
+var vertex = new Module.JSVec3Array();
+var part = new Module.Collection();
     
-    // Outside Circle
-    vertex.push(128.6749865838419, 35.21747871165077);
-    vertex.push(128.6766521087808, 35.216556208884654);
-    vertex.push(128.67549083083478, 35.215182532505146);
-    vertex.push(128.6737961604245, 35.21600773598272);
-    part.add(4);
+// Outside Circle
+vertex.push(128.674986, 35.217478);
+vertex.push(128.676652, 35.216556);
+vertex.push(128.675490, 35.215182);
+vertex.push(128.673796, 35.216007);
+part.add(4);
 
-    // Inside Circle (Hole)
-    vertex.push(128.67637014208512, 35.216512657516205);
-    vertex.push(128.67503898255234, 35.21721356932182);
-    vertex.push(128.67595374673675, 35.21604963055377);
-    part.add(3);
+// Inside Circle (Hole)
+vertex.push(128.676370, 35.216512);
+vertex.push(128.675038, 35.217213);
+vertex.push(128.675953, 35.216049);
+part.add(3);
 
-    // Inside Circle (Hole)
-    vertex.push(128.674922737982, 35.21704140144862);
-    vertex.push(128.67421703877486, 35.21608823069637);
-    vertex.push(128.67541218591535, 35.21542334638133);
-    vertex.push(128.67585609528544, 35.215953400014094);
-    part.add(4);
+// Inside Circle (Hole)
+vertex.push(128.674922, 35.217041);
+vertex.push(128.674217, 35.216088);
+vertex.push(128.675412, 35.215423);
+vertex.push(128.675856, 35.215953);
+part.add(4);
 ```
 
 지정한 좌표와 파트를 setPartCoordinates API로 설정합니다.
@@ -143,18 +143,18 @@ var polygon = Module.createPolygon("MY_POLYGON");
 폴리곤의 외곽 라인과 내부 채움 색상을 선택적으로 지정할 수 있습니다.
 
 ```javascript
-    var polygonStyle = new Module.JSPolygonStyle();
+var polygonStyle = new Module.JSPolygonStyle();
 
-    // 폴리곤 채움 색상
-    polygonStyle.setFill(true);
-    polygonStyle.setFillColor(new Module.JSColor(255, 0, 0));
+// 폴리곤 채움 색상
+polygonStyle.setFill(true);
+polygonStyle.setFillColor(new Module.JSColor(255, 0, 0));
 
-    // 폴리곤 외곽 색상
-    polygonStyle.setOutLine(true);
-    polygonStyle.setOutLineWidth(2.0);
-    polygonStyle.setOutLineColor(new Module.JSColor(0, 0, 255));
+// 폴리곤 외곽 색상
+polygonStyle.setOutLine(true);
+polygonStyle.setOutLineWidth(2.0);
+polygonStyle.setOutLineColor(new Module.JSColor(0, 0, 255));
 
-    polygon.setStyle(polygonStyle);
+polygon.setStyle(polygonStyle);
 ```
 
 ### step 4. 레이어에 폴리곤 저장
@@ -162,9 +162,9 @@ var polygon = Module.createPolygon("MY_POLYGON");
 레이어를 생성한 후 폴리곤 오브젝트를 추가합니다.
 
 ```javascript
-    var layerList = new Module.JSLayerList(true);
-	var layer = layerList.createLayer("POLYGON_LAYER", Module.ELT_POLYHEDRON);
-	layer.addObject(polygon, 0);
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("POLYGON_LAYER", Module.ELT_POLYHEDRON);
+layer.addObject(polygon, 0);
 ```
 
 ## POI 생성 결과
