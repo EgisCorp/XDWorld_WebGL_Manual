@@ -8,6 +8,8 @@
 
 반경측정 Icon 및 반경을 가시화할 레이어를 생성합니다.
 
+레이어 타입에 대한 설명은 [여기](../etc/type-list.md)를 참조해 주십시오.
+
 ```
 var layerList = new Module.JSLayerList(true);
 

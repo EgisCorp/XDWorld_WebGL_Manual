@@ -30,9 +30,11 @@
 
 객체를 생성하고 랜더링하기 위해서는 레이어가 필요하기 때문에 레이어를 생성합니다.
 
+레이어 타입에 대한 설명은 [여기](../etc/type-list.md)를 참조해 주십시오.
+
 ```javascript
 var userlayer = new Module.JSLayerList(true);
-userlayer = layerList.createLayer(레이어 이름, 레이어 타입);
+userlayer = layerList.createLayer("layerName", Module.ELT_POLYHEDRON);
 ```
 
 ### step 2. 레이어 가시설정
@@ -43,14 +45,4 @@ step 1 에서 생성한 레이어의 가시설정을 합니다.
 
 ```javascript
 userlayer. setVisible(false);
-```
-
-
-### etc. 레이어 검색
-
-레이어 생성 후 레이어 이름은 알고있지만 어느 변수에 저장했는지 모를경우 검색을 통해서 레이어를 반환받을 수 있습니다.
-
-```javascript
-var userlayer = new Module.JSLayerList(true);
-userlayer = layerList.nameAtLayer(레이어 이름);
 ```
