@@ -56,8 +56,8 @@ function createPolygon(_layer, id, _vertices, _fillColor, _outlineColor) {
 
     // 5. 레이어에 폴리곤 저장
     var layerList = new Module.JSLayerList(true);
-	var layer = layerList.createLayer("POLYGON_LAYER", Module.ELT_POLYHEDRON);
-	layer.addObject(polygon, 0);
+    var layer = layerList.createLayer("POLYGON_LAYER", Module.ELT_POLYHEDRON);
+    layer.addObject(polygon, 0);
 }
 ```
 
