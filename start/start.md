@@ -10,23 +10,21 @@
 
 깃허브에서는 엔진 파일 / 실행 스크립트 / 기본 HTML 페이지를 함께 배포합니다.
 
-![](<../.gitbook/assets/image (1) (1) (1).png>)
+![](<../.gitbook/assets/image (1) (1) (1) (1).png>)
 
-&#x20;엔진 파일은 세 가지 파일로 구성되어 있으며 다운로드 한 파일의 폴더 XDWorld-main/Release/(버전명)/js에서 찾을 수 있습니다.
+엔진 파일은 세 가지 파일로 구성되어 있으며 다운로드 한 파일의 폴더 XDWorld-main/Release/(버전명)/js에서 찾을 수 있습니다.
 
-&#x20;엔진을 구동할 때 세 파일이 순차적으로 로드되어야 하며,&#x20;
+엔진을 구동할 때 세 파일이 순차적으로 로드되어야 하며,
 
 1. XDWorldEM.asm.js
 2. XDWorld.html.mem
 3. XDWorldEM.js
 
-&#x20;파일 순으로 로드합니다.
+파일 순으로 로드합니다.
 
-![](<../.gitbook/assets/image (2) (1).png>)
+![](<../.gitbook/assets/image (2) (1) (1).png>)
 
 다음 단계에서 각 파일의 로드 과정에 대해 소개합니다.
-
-
 
 ## 엔진 파일 로드
 
@@ -164,19 +162,15 @@ index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다
 엔진 모듈과 canvas 연결은 [지도 모듈 객체 선언](start.md#undefined-4) 항목을 참조해 주십시오.
 {% endhint %}
 
-
-
 ### init.js
 
 init.js 의 코드는
 
-* 엔진 초기화 함수 선언 부분&#x20;
+* 엔진 초기화 함수 선언 부분
 * 지도 모듈 객체 선언 부분
 * 엔진 파일 로드 부분
 
 으로 구성되어 있습니다.
-
-
 
 #### 지도 모듈 객체 선언
 
@@ -231,8 +225,6 @@ var Module = {
 };
 ```
 
-
-
 #### 엔진 초기화 함수 선언
 
 엔진 파일이 모두 완료 된 시점에 처음으로 호출되는 함수를 선언합니다.
@@ -246,8 +238,6 @@ function init() {
    Module.Start(window.innerWidth, window.innerHeight);
 }  
 ```
-
-
 
 #### 엔진 파일 로드
 
@@ -301,11 +291,11 @@ function init() {
 
 Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실행하면 엔진 렌더링이 시작됩니다
 
-![](<../.gitbook/assets/image (4) (1) (1).png>)
+![](<../.gitbook/assets/image (4) (1) (1) (1).png>)
 
 엔진 렌더링이 시작되면 초기 화면으로 지구본 화면이 출력됩니다.
 
-![](<../.gitbook/assets/image (3) (1).png>)
+![](<../.gitbook/assets/image (3) (1) (1).png>)
 
 ## 다음 단계로
 
@@ -314,4 +304,3 @@ XDWorld를 사용한 여러 기능들을 살펴보고 싶으시다면? [여기](
 XDWorld에 대해 궁금한 점이 있으시다면? [여기](https://github.com/EgisCorp/XDWorld/issues)를 클릭해 주세요.
 
 XDWorld를 사용한 차세대 디지털트윈 클라우드 서비스를 살펴보고 싶으시다면? [여기](https://www.dtwincloud.com)를 클릭해 주세요.
-
