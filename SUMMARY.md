@@ -11,7 +11,7 @@
 ## 튜토리얼
 
 * [카메라 설정](tutorial/tutorial\_camera.md)
-* [마커 생성하기](tutorial/tutirial\_poi.md)
+* [POI 생성하기](tutorial/tutirial\_poi.md)
 * [폴리곤 생성하기](tutorial/tutirial\_polygon.md)
 * [라인 생성하기](tutorial/tutirial\_line.md)
 * [모델 추가하기](tutorial/tutirial\_ghostsymbol.md)
