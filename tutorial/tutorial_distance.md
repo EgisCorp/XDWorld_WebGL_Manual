@@ -338,7 +338,7 @@ Module.getOption().callBackCompletePoint(endPoint); // 측정 종료(더블클�
 
 
 
-마우스 모드를 ELT\_3DPOINT 로 지정하였을 경우 측정하고자 하는 지점을 클릭했을 때 아래 설정한 콜백 함수가 호출됩니다.
+마우스 모드를 MML\_ANALYS\_DISTANCE\_STRAIGHT 로 지정하였을 경우 측정하고자 하는 지점을 클릭했을 때 아래 설정한 콜백 함수가 호출됩니다.
 
 마우스 모드 설정 부분은 [step 3. 마우스모드 변경](tutorial\_distance.md#step-3.) 항목을 참조하세요.
 
