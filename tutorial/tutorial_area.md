@@ -4,7 +4,7 @@
 
 측정 결과 값을 이벤트로 반환 받아 POI, Polygon으로 가시화 합니다.
 
-![](../.gitbook/assets/area.png)
+![](../.gitbook/assets/area00.png)
 
 #### 기능 인터페이스
 
@@ -523,6 +523,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 지정한 영역의 면적 정보를 표시하는 면적 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/area.png>)
+![](<../.gitbook/assets/area00.png>)
 
 면적 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_area)를 클릭해 주세요
