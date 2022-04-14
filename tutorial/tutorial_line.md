@@ -90,7 +90,7 @@ line.createbyJson({
 
 |                       실선 (type : 0)                      |               점선 (type : 3)              |              화살표 (type : 4)             |
 | :------------------------------------------------------: | :--------------------------------------: | :-------------------------------------: |
-| ![](<../.gitbook/assets/image (10) (1) (1) (1) (1).png>) | ![](<../.gitbook/assets/image (5).png>) | ![](<../.gitbook/assets/image (18).png>) |
+| ![](<../.gitbook/assets/image (10) (1) (1) (1) (1).png>) | ![](<../.gitbook/assets/image (18).png>) | ![](<../.gitbook/assets/image (5).png>) |
 
 #### union
 
