@@ -12,14 +12,14 @@ description: 지도 내에서 해발고도, 상대고도를 측정하여 출력�
 
 높이는 기준점에 따라 해발고도, 상대고도 값이 주로 쓰입니다.
 
-![](<../.gitbook/assets/image (20).png>)
+![](<../.gitbook/assets/altitude0.png>)
 
 * 해발고도 : 해수면을 기준으로 측정한 높이
 * 지면고도 : 지면을 기준으로 측정한 높이
 
 본 샘플 코드에서는 지면을 클릭한 경우 해발고도 값을, 건물이나 기타 시설물을 클릭한 해발고도 값과 지고도 값을 함께 표시하도록 구성하였습니다.
 
-![](<../.gitbook/assets/image (14).png>)
+![](<../.gitbook/assets/altitude1.png>)
 
 <details>
 
@@ -334,7 +334,7 @@ Module.XDSetMouseState(Module.MML_ANALYS_ALTITUDE);
 
 함수를 실행하면 아래와 같이 이미지가 canvas에 생성될 것입니다.
 
-![](<../.gitbook/assets/image (23).png>)
+![](<../.gitbook/assets/altitude2.png>)
 
 ```javascript
 function drawIcon(_canvas, _color, _value, _subValue) {
@@ -545,6 +545,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 클릭한 지점에 높이 정보를 표시하는 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/altitude3.png>)
 
 높이 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_altitude)를 클릭해 주세요

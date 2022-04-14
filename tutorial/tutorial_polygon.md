@@ -19,7 +19,7 @@ Part 구성에 따라 여러가지 형태로 구성됩니다.
 
 |                     한 파트의 폴리곤                    |                  여러 파트의 폴리곤                  |             홀(Hole)이 있는 폴리곤             |
 | :----------------------------------------------: | :------------------------------------------: | :-------------------------------------: |
-| ![](<../.gitbook/assets/image (27) (1) (1).png>) | ![](<../.gitbook/assets/image (17) (1).png>) | ![](<../.gitbook/assets/image (6).png>) |
+| ![](<../.gitbook/assets/polygon0.png>) | ![](<../.gitbook/assets/polygon1.png>) | ![](<../.gitbook/assets/polygon2.png>) |
 
 아래는 폴리곤 오브젝트를 생성하는 전체 코드입니다.
 
@@ -93,7 +93,7 @@ polygon.setPartCoordinates(vertex, part);
 
 폴리곤은 기본적으로 폐곡선 형태로 이루어지며, 좌표의 방향에 따라 외부와 내부가 구분됩니다.
 
-![](<../.gitbook/assets/image (8).png>)
+![](<../.gitbook/assets/polygon3.png>)
 
 * 좌표가 시계 방향(CW)을 이룸 : 외부로 판별되며 폴리곤의 외곽을 구성합니다.
 * 좌표가 반시계 방향(CCW)을 이룸 : 내부로 판별되며 폴리곤의 홀(Hole)을 구성합니다.
@@ -174,7 +174,7 @@ layer.addObject(polygon, 0);
 
 위 과정을 거쳐 여러 폴리곤을 한 레이어에 추가하면 아래와 같이 출력할 수 있습니다.
 
-![](<../.gitbook/assets/image (25).png>)
+![](<../.gitbook/assets/polygon4.png>)
 
 폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color)를 클릭해 주세요
 

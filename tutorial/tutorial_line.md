@@ -90,7 +90,7 @@ line.createbyJson({
 
 |                       실선 (type : 0)                      |               점선 (type : 3)              |              화살표 (type : 4)             |
 | :------------------------------------------------------: | :--------------------------------------: | :-------------------------------------: |
-| ![](<../.gitbook/assets/image (10) (1) (1) (1) (1).png>) | ![](<../.gitbook/assets/image (18).png>) | ![](<../.gitbook/assets/image (5).png>) |
+| ![](<../.gitbook/assets/line0.png>) | ![](<../.gitbook/assets/line1.png>) | ![](<../.gitbook/assets/line2.png>) |
 
 #### union
 
@@ -104,17 +104,17 @@ RTT(Render To Texture) 방식을 선택한다면 라인은 지형 텍스쳐 위�
 
 |               union = false              |                 union = true                 |
 | :--------------------------------------: | :------------------------------------------: |
-| ![](<../.gitbook/assets/image (31).png>) | ![](<../.gitbook/assets/image (12) (1).png>) |
+| ![](<../.gitbook/assets/line3.png>) | ![](<../.gitbook/assets/line4.png>) |
 
 #### depth
 
 라인 오브젝트가 거리(Depth)에 따른 순서로 렌더링 될 지 여부를 설정합니다. true로 설정하는 경우 일반적인 거리 개념과 같이 멀리 있는 라인은 가까운 오브젝트에 가려집니다.
 
-![](<../.gitbook/assets/image (16).png>)
+![](<../.gitbook/assets/line5.png>)
 
 false로 설정하는 경우 가려짐과 상관 없이 레이어 순서에 따라 오브젝트가 그려집니다.
 
-![](<../.gitbook/assets/image (28) (1) (1).png>)
+![](<../.gitbook/assets/line6.png>)
 
 #### color
 
@@ -140,7 +140,7 @@ layer.addObject(line, 0);
 
 위 과정을 거쳐 여러 타입의 라인을 한 레이어에 추가하면 아래와 같이 출력됩니다.
 
-![](<../.gitbook/assets/image (13).png>)
+![](<../.gitbook/assets/line7.png>)
 
 
 

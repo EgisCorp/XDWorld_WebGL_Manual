@@ -378,7 +378,7 @@ function drawIcon(_canvas, _color, _value) {
 
 위 함수를 실행시키면 아래와 같은 아이콘 이미지가 생성됩니다.
 
-![](<../.gitbook/assets/image (7).png>)
+![](<../.gitbook/assets/area0.png>)
 
 * drawBalloon 함수(step [4-3. 면적 말풍선 Icon 생성](tutorial\_area.md#step-4-2.-icon))와 setText([step 4-3. 면적 측정 결과 값 Icon 생성](tutorial\_area.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
 
@@ -523,6 +523,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 지정한 영역의 면적 정보를 표시하는 면적 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/image (9).png>)
+![](<../.gitbook/assets/area.png>)
 
 면적 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_area)를 클릭해 주세요

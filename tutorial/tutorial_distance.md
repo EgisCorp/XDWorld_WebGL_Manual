@@ -14,7 +14,7 @@
 
 거리측정 종료 후 다시 다른 지점을 클릭하면 새로운 셋의 측정 결과가 표시됩니다.
 
-![결과 값은 중간 거리 값과 누적 거리 값을 함께 표시합니다.](<../.gitbook/assets/image (2).png>)
+![결과 값은 중간 거리 값과 누적 거리 값을 함께 표시합니다.](<../.gitbook/assets/distance0.png>)
 
 <details>
 
@@ -437,13 +437,13 @@ function drawIcon(_canvas, _color, _value, _balloonType) {
 
 #### 중간 거리 표시 Icon 이미지
 
-![](<../.gitbook/assets/image (27).png>)
+![](<../.gitbook/assets/distance1.png>)
 
 * drawRoundRect 함수([step 4-3. 거리 사각형 Icon 생성](tutorial\_distance.md#step-4-3.-icon))와 setText([step 4-4. 거리 측정 결과 값 Icon 생성](tutorial\_distance.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
 
 #### 누적 거리 표시 Icon 이미지
 
-![](<../.gitbook/assets/image (4).png>)
+![](<../.gitbook/assets/distance2.png>)
 
 * drawBalloon 함수([step 4-2. 거리 말풍선 Icon 생성](tutorial\_distance.md#step-4-2.-icon))와 setText([step 4-4. 거리 측정 결과 값 Icon 생성](tutorial\_distance.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
 
@@ -635,7 +635,7 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 클릭한 지점의 거리 정보를 표시하는 거리 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/image (26).png>)
+![](<../.gitbook/assets/distance.png>)
 
 거리 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_distance)를 클릭해 주세요
 
