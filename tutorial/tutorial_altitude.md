@@ -19,7 +19,7 @@ description: 지도 내에서 해발고도, 상대고도를 측정하여 출력�
 
 본 샘플 코드에서는 지면을 클릭한 경우 해발고도 값을, 건물이나 기타 시설물을 클릭한 해발고도 값과 지고도 값을 함께 표시하도록 구성하였습니다.
 
-![](<../.gitbook/assets/altitude01.png>)
+![](../.gitbook/assets/altitude0.png)
 
 <details>
 
@@ -233,8 +233,6 @@ function clearAnalysis() {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
-![](../.gitbook/assets/altitude0.png)
-
 ## Global 변수
 
 기능을 구현하기 전 전역으로 사용하는 변수를 선언한 부분입니다.
@@ -334,7 +332,7 @@ Module.XDSetMouseState(Module.MML_ANALYS_ALTITUDE);
 
 함수를 실행하면 아래와 같이 이미지가 canvas에 생성될 것입니다.
 
-![](<../.gitbook/assets/altitude2.png>)
+![](<../.gitbook/assets/altitude000.png>)
 
 ```javascript
 function drawIcon(_canvas, _color, _value, _subValue) {
@@ -545,6 +543,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 클릭한 지점에 높이 정보를 표시하는 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/altitude3.png>)
+![](<../.gitbook/assets/altitude0000.png>)
 
 높이 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_altitude)를 클릭해 주세요
