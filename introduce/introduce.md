@@ -28,4 +28,4 @@ EGIS의 XDWorld는 WEBGL 기반 GIS 서비스를 지원하는 API를 제공하�
 * KML, KMZ, GML 등 표준 포맷 지원
 * 지구본 단위 V World 서비스에 다양한 MashUP 기능 제공
 
-XDWorld로 여러분을 위한 GIS 시스템 개발을 시작하시려면 [여기](broken-reference/)로 이동하세요.
+XDWorld로 여러분을 위한 GIS 시스템 개발을 시작하시려면 [여기](../start/start.md)로 이동하세요.
