@@ -55,6 +55,8 @@ function createPOI() {
 }
 ```
 
+
+
 ### step 1. POI를 저장할 레이어 생성
 
 POI 오브젝트는 가시화를 위해 특정 레이어에 저장되어야 합니다.
@@ -70,6 +72,8 @@ var layer = layerList.createLayer("POI_LAYER", Module.ELT_3DPOINT);
 ```
 
 생성한 레이어는 이후 JSPoint 생성이 완료되면 다시 사용됩니다.
+
+
 
 ### step 2. POI에 사용할 이미지 로드 및 생성
 
@@ -126,9 +130,11 @@ POI 오브젝트는 동일한 이미지를 사용하는 경우가 많습니다.
 이 경우 같은 이미지 데이터를 여러번 만드는 것 보다 단 한번만 만든 후 여러 POI에 적용하는 것이 효율적입니다.
 {% endhint %}
 
+
+
 ### step 3. POI 오브젝트 JSPoint 생성
 
-Module을 통해 JSPoint(링크) 타입의 POI 오브젝트를 생성합니다.
+Module을 통해 [JSPoint](../object/jspoint.md) 타입의 POI 오브젝트를 생성합니다.
 
 ```javascript
 var poi = Module.createPoint("MY_POI");
@@ -137,6 +143,8 @@ var poi = Module.createPoint("MY_POI");
 생성 시 파라미터로 오브젝트의 키 값을 지정합니다.
 
 오브젝트 키 값은 오브젝트를 구분하는 값으로 같은 레이어 내 동일한 오브젝트 키는 입력할 수 없습니다.
+
+
 
 ### step 4. POI 속성 설정
 
@@ -151,6 +159,8 @@ poi.setText("TEXT");
 POI가 지정한 위치에 가시화 되기 위해서는 위치 값이 필수로 입력되어야 합니다.
 
 또한 이미지를 사용하는 경우 전 단계에서 생성한 이미지 데이터를 등록해주며, 출력할 텍스트 문자열이 있는 경우 함께 지정합니다.
+
+
 
 ### step 5. 레이어에 POI 저장 후 가시화
 
