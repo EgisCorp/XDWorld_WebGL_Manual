@@ -19,7 +19,7 @@ Part 구성에 따라 여러가지 형태로 구성됩니다.
 
 |                     한 파트의 폴리곤                    |                  여러 파트의 폴리곤                  |             홀(Hole)이 있는 폴리곤             |
 | :----------------------------------------------: | :------------------------------------------: | :-------------------------------------: |
-| ![](<../.gitbook/assets/polygon0.png>) | ![](<../.gitbook/assets/polygon1.png>) | ![](<../.gitbook/assets/polygon2.png>) |
+| ![](<../.gitbook/assets/polygon.png>) | ![](<../.gitbook/assets/polygon0.png>) | ![](<../.gitbook/assets/polygon1.png>) |
 
 아래는 폴리곤 오브젝트를 생성하는 전체 코드입니다.
 
