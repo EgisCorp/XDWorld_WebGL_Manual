@@ -15,7 +15,7 @@
 아래는 라인 오브젝트를 생성하는 전체 코드입니다.
 
 ```javascript
-function createLine() {
+function createLine(_id, _coordinate, _type) {
 
     // 1. 라인 오브젝트 생성
     var line = Module.createLineString("MY_LINE");
