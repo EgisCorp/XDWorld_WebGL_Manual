@@ -239,7 +239,13 @@ function clearAnalysis() {
 
 기능을 구현하기 전 전역으로 사용하는 변수를 선언한 부분입니다.
 
-### step 1. 레이어 생성
+```javascript
+var GLOBAL = {
+    Symbol : null,    // 아이콘 관리 심볼 객체
+    Layer : null,     // POI 저장 레이어
+    nIndex : 0        // POI, Icon 생성 인덱스
+};
+```
 
 #### Symbol
 
@@ -265,9 +271,9 @@ JSSymbol을 사용하지 않고 간단히 이미지 데이터만을 등록하여
 
 ## 기능 구현
 
-## step 1. 레이어 생성
+### step 1. 레이어 생성
 
-높이 측정 Icon 및 높이 값을 가시화할 레이어를 생성합니다.
+높이 측정 Icon 및 높이 값을 가시화 할 레이어를 생성합니다.
 
 레이어 타입에 대한 설명은 [여기](../etc/type-list.md)를 참조해 주십시오.
 
