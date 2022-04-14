@@ -14,7 +14,7 @@ description: 3DS 모델 파일을 사용하여 모델링 오브젝트 JSGhostSym
 
 따라서 [JSGhostSymbol](../object/jsghostsymbol.md) 오브젝트를 생성하기 전에 [JSGhostSymbolMap](../object/jsghostsymbolmap.md) 에 모델 데이터가 먼저 입력 되어야 합니다.
 
-![](<../.gitbook/assets/image (7) (2).png>)
+![](<../.gitbook/assets/ghostsymbol.png>)
 
 모델 정보가 지정된 [JSGhostSymbol](../object/jsghostsymbol.md) 오브젝트는 위치, 회전, 스케일 값을 자유롭게 지정할 수 있습니다.
 
