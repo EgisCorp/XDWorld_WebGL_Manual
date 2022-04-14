@@ -32,7 +32,7 @@ Module.getOption().callBackAddPoint(addPoint);		// 마우스 입력시 발생하
 Module.getOption().callBackCompletePoint(endPoint);	// 측정 종료(더블클릭) 시 발생하는 콜백 성공 시 success 반환 실패 시 실패 오류 반환
 ```
 
-## step 2 - 2. CallBack 함수 생성
+## step 2 - 2. 거리측정 CallBack 함수 생성
 
 마우스 왼쪽 클릭 시 실행되는 CallBack함수입니다. 엔진 내부에서 계산된 거리을 반환받아 가시화합니다.
 
@@ -59,7 +59,7 @@ function addPoint(e) {
 }
 ```
 
-## step 2 - 3. CallBack 함수 생성
+## step 2 - 3. 거리측정 종료 CallBack 함수 생성
 
 마우스 더블 클릭 시 실행되는 CallBack함수입니다. 거리측정을 종료합니다.
 
@@ -85,7 +85,7 @@ Module.XDSetMouseState(Module.MML_ANALYS_DISTANCE_STRAIGHT);
 반환 받은 거리값을 랜더링하기 위해 Icon을 생성합니다.
 
 ```
-function drawIcon(_canvas, _color, _value) {
+function drawIcon(_canvas, _color, _value, _balloonType) {
 
 	// 컨텍스트 반환 및 배경 초기화
 	var ctx = _canvas.getContext('2d'),
@@ -95,8 +95,13 @@ function drawIcon(_canvas, _color, _value) {
 	ctx.clearRect(0, 0, width, height);
 
 	// 배경 Draw Path 설정 후 텍스트 그리기
-	drawBalloon(ctx, height * 0.5, width, height, 5, height * 0.25, _color);
-	setText(ctx, width * 0.5, height * 0.2, _value);
+	if (_balloonType) {
+		drawBalloon(ctx, height * 0.5, width, height, 5, height * 0.25, _color);
+		setText(ctx, width * 0.5, height * 0.2, _value);
+	} else {
+		drawRoundRect(ctx, 0, height * 0.3, width, height * 0.25, 5, _color);
+		setText(ctx, width * 0.5, height * 0.5, _value);
+	}
 
 	return ctx.getImageData(0, 0, _canvas.width, _canvas.height).data;
 }
@@ -161,7 +166,7 @@ function drawRoundRect(ctx,
 }
 ```
 
-## step 4 - 3. 거리 측정결과값 Icon 생성
+## step 4 - 4. 거리 측정결과값 Icon 생성
 
 반환 받은 거리값을 말풍선 Icon에 생성합니다.
 
@@ -187,7 +192,7 @@ function setText(_ctx, _posX, _posY, _value) {
 }
 ```
 
-## step 4 - 4. 거리 측정결과값 m/km 텍스트로 변환
+## step 4 - 5. 거리 측정결과값 m/km 텍스트로 변환
 
 반환 받은 거리값을 m/km 텍스트로 변환합니다.
 
@@ -213,12 +218,13 @@ function setKilloUnit(_text, _meterToKilloRate, _decimalSize) {
 생성한 Icon으로 객체를 만들고 레이어에 추가합니다.
 
 ```
-function createPOI(_position, _color, _value) {
+function createPOI(_position, _color, _value, _balloonType) {
 
 	// 매개 변수
 	// _position : POI 생성 위치
 	// _color : drawIcon 구성 색상
 	// _value : drawIcon 표시 되는 텍스트
+	// _balloonType : drawIcon 표시 되는 모서리 옵션(true : 각진 모서리, false : 둥근 모서리)
 
 	// POI 아이콘 이미지를 그릴 Canvas 생성
 	var drawCanvas = document.createElement('canvas');
@@ -228,7 +234,7 @@ function createPOI(_position, _color, _value) {
 	drawCanvas.height = 100;
 
 	// 아이콘 이미지 데이터 반환
-	let imageData = drawIcon(drawCanvas, _color, _value);
+	let imageData = drawIcon(drawCanvas, _color, _value, _balloonType);
 
 	let Symbol = Module.getSymbol();
 
@@ -244,3 +250,20 @@ function createPOI(_position, _color, _value) {
 }
 ```
 
+## step 6. 거리측정 초기화
+
+거리측정 결과 및 객체를 초기화합니다.
+
+```
+function clearAnalysis() {
+
+	// 실행 중인 분석 내용 초기화
+	Module.XDClearDistanceMeasurement();
+	GLOBAL.m_mercount = 0;
+	
+	// 레이어 삭제
+	let layerList = new Module.JSLayerList(true);
+	let layer = layerList.nameAtLayer("MEASURE_POI");
+	layer.removeAll();
+}
+```

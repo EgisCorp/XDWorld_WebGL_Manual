@@ -206,3 +206,35 @@ function createPOI(_position, _color, _value, _subValue) {
 }
 ```
 
+## step 6. 높이측정 초기화
+
+높이측정 결과 및 객체를 초기화합니다.
+
+```
+function clearAnalysis() {
+
+	var layer = GLOBAL.Layer,
+		symbol = GLOBAL.Symbol;
+	if (layer == null) {
+		return;
+	}
+
+	// 등록된 아이콘 리스트 삭제
+	var i, len,
+		icon, poi;
+	for (i=0, len=layer.getObjectCount(); i<len; i++) {
+
+		poi = layer.keyAtObject("POI"+i);
+		icon = poi.getIcon();
+
+		// 아이콘을 참조 중인 POI 삭제
+		layer.removeAtKey("POI"+i);
+
+		// 아이콘을 심볼에서 삭제
+		symbol.deleteIcon(icon.getId());
+	}
+
+	// POI, Icon 키 지정 인덱스 초기화
+	GLOBAL.nIndex = 0;
+}
+```

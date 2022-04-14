@@ -193,3 +193,43 @@ function createPOI(_position, _color, _value) {
 }
 ```
 
+## step 6. 반경측정 초기화
+
+반경측정 결과 및 객체를 초기화합니다.
+
+```
+function clearAnalysis() {
+
+	// 실행 중인 분석 내용 초기화
+	Module.XDClearCircleMeasurement();
+
+	if (GLOBAL.WallLayer == null) {
+		return;
+	}
+
+	// icon 삭제
+	if (GLOBAL.POILayer == null) {
+		return;
+	}
+
+	// 등록된 아이콘 리스트 삭제
+	var icon, poi;
+
+	poi = GLOBAL.POILayer.keyAtObject("POI");
+	
+	if (poi == null) {
+		return;
+	}
+	
+	icon = poi.getIcon();
+
+	// 아이콘을 참조 중인 POI 삭제
+	GLOBAL.POILayer.removeAtKey("POI");
+
+	// 아이콘을 심볼에서 삭제
+	GLOBAL.Symbol.deleteIcon(icon.getId());
+
+	// POI 오브젝트 삭제
+	GLOBAL.WallLayer.removeAll();
+}
+```
