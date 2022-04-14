@@ -166,7 +166,7 @@ layer.addObject(poi, 0);
 
 아래 이미지는 텍스트를 사용한 POI, 이미지를 사용한 POI, 텍스트와 이미지를 모두 사용한 POI를 렌더링 한 이미지 입니다.
 
-![](<../.gitbook/assets/image (4) (1) (1).png>)
+![](<../.gitbook/assets/image (4) (1) (1) (1).png>)
 
 이제 POI 오브젝트를 활용하여 표시하고 싶은 위치를 자유롭게 표현할 수 있습니다.
 

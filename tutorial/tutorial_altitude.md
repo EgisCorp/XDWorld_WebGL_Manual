@@ -255,7 +255,7 @@ XDWorld에서는 텍스쳐를 저장, 관리하는 [JSSymbol](../object/jssymbol
 
 고도 측정 결과 텍스쳐를 생성한 후 이 곳에 저장하고 만들어진 POI 오브젝트와 연결할 것입니다.
 
-![](<../.gitbook/assets/image (28).png>)
+![](<../.gitbook/assets/image (28) (1).png>)
 
 JSSymbol을 사용하지 않고 간단히 이미지 데이터만을 등록하여 사용하는 방법도 있습니다.
 
@@ -308,7 +308,7 @@ Fire\_EventAddAltitudePoint 이벤트는 마우스 모드가 [MML\_ANALYS\_ALTIT
 
 마우스 모드를 변경한 후 지도를 클릭하면 이벤트를 통해 높이 정보가 이벤트 파라미터로 반환 됩니다.
 
-![](<../.gitbook/assets/image (4).png>)
+![](<../.gitbook/assets/image (4) (1).png>)
 
 * dLon : 높이를 측정한 위치의 경도 값&#x20;
 * dLat : 높이를 측정한 위치의 위도 값&#x20;

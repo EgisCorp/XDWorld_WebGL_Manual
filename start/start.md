@@ -291,7 +291,7 @@ function init() {
 
 Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실행하면 엔진 렌더링이 시작됩니다
 
-![](<../.gitbook/assets/image (4) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (4) (1) (1) (1) (1) (1).png>)
 
 엔진 렌더링이 시작되면 초기 화면으로 지구본 화면이 출력됩니다.
 
