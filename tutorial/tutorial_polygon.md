@@ -162,7 +162,7 @@ var layer = layerList.createLayer("POLYGON_LAYER", Module.ELT_POLYHEDRON);
 layer.addObject(polygon, 0);
 ```
 
-## 폴리 생성 결과
+## POI 생성 결과
 
 위 과정을 거쳐 여러 폴리곤을 한 레이어에 추가하면 아래와 같이 출력할 수 있습니다.
 
