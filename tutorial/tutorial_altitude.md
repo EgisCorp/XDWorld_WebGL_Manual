@@ -251,15 +251,7 @@ var GLOBAL = {
 
 이미지 텍스쳐를 저장하는 텍스쳐 맵 오브젝트를 이 곳에 저장합니다.
 
-XDWorld에서는 텍스쳐를 저장, 관리하는 [JSSymbol](../object/jssymbol.md) 클래스가 있습니다.
-
-고도 측정 결과 텍스쳐를 생성한 후 이 곳에 저장하고 만들어진 POI 오브젝트와 연결할 것입니다.
-
-![](<../.gitbook/assets/image (28) (1).png>)
-
-JSSymbol을 사용하지 않고 간단히 이미지 데이터만을 등록하여 사용하는 방법도 있습니다.
-
-이 과정은 [POI 생성하기](tutorial\_poi.md) 튜토리얼을 참조하세요.
+[JSSymbol](../object/jssymbol.md)에 대한 간략한 설명은 거리 측정 튜토리얼의 [step 5. 거리 객체 생성](tutorial\_distance.md#step-5.) 항목의 JSSymbol 설명을 참조하세요.
 
 #### Layer
 
