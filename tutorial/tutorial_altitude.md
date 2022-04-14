@@ -12,14 +12,14 @@ description: 지도 내에서 해발고도, 상대고도를 측정하여 출력�
 
 높이는 기준점에 따라 해발고도, 상대고도 값이 주로 쓰입니다.
 
-![](<../.gitbook/assets/altitude0.png>)
+![](<../.gitbook/assets/altitude00.png>)
 
 * 해발고도 : 해수면을 기준으로 측정한 높이
 * 지면고도 : 지면을 기준으로 측정한 높이
 
 본 샘플 코드에서는 지면을 클릭한 경우 해발고도 값을, 건물이나 기타 시설물을 클릭한 해발고도 값과 지고도 값을 함께 표시하도록 구성하였습니다.
 
-![](<../.gitbook/assets/altitude1.png>)
+![](<../.gitbook/assets/altitude01.png>)
 
 <details>
 
@@ -233,7 +233,7 @@ function clearAnalysis() {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
-![](../.gitbook/assets/altitude.png)
+![](../.gitbook/assets/altitude0.png)
 
 ## Global 변수
 
@@ -300,7 +300,7 @@ Fire\_EventAddAltitudePoint 이벤트는 마우스 모드가 [MML\_ANALYS\_ALTIT
 
 마우스 모드를 변경한 후 지도를 클릭하면 이벤트를 통해 높이 정보가 이벤트 파라미터로 반환 됩니다.
 
-![](<../.gitbook/assets/image (4) (1).png>)
+![](<../.gitbook/assets/altitude3.png>)
 
 * dLon : 높이를 측정한 위치의 경도 값&#x20;
 * dLat : 높이를 측정한 위치의 위도 값&#x20;
