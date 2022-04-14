@@ -156,7 +156,7 @@ poi.setImage(ctx.getImageData(0, 0, this.width, this.height).data, this.width, t
 poi.setText("TEXT");
 ```
 
-POI가 지정한 위치에 가시화 되기 위해서는 위치 값이 필수로 입력되어야 합니다.
+POI가 지정한 위치에 가시화 되기 위해서는 위치(경위도, 고도) 값이 필수로 입력되어야 합니다.
 
 또한 이미지를 사용하는 경우 전 단계에서 생성한 이미지 데이터를 등록해주며, 출력할 텍스트 문자열이 있는 경우 함께 지정합니다.
 
