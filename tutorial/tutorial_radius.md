@@ -1,25 +1,30 @@
-# 반경 측정하기
+# 반경 측정
 
-마우스 모드를 반경측정 모드로 변경한 후 클릭지점 반경을 측정합니다. 첫번째 클릭지점은 중점이되고 두번째 클릭지점까지 거리를 구하여 반지름을 형성합니다. 측정결과값을 이벤트로 반환받아 POI로 가시화합니다.
+마우스 모드를 반경 측정 모드로 변경한 후 클릭 지점 반경을 측정합니다.&#x20;
+
+첫번째 클릭 지점은 중점이 되고 두번째 클릭 지점까지 거리를 구하여 반지름을 형성합니다.&#x20;
+
+측정결과 값을 이벤트로 반환 받아 POI로 가시화 합니다.
 
 ![](../.gitbook/assets/radius.png)
 
 ## Global 변수
-```
+
+```javascript
 var GLOBAL = {
-	Symbol : null,		// 아이콘 관리 심볼 객체 
-	POILayer : null,	// POI 저장 레이어
-	WallLayer : null;	// 반경벽 저장 레이어
+    Symbol : null,		// 아이콘 관리 심볼 객체 
+    POILayer : null,	// POI 저장 레이어
+    WallLayer : null;	// 반경벽 저장 레이어
 };
 ```
 
 ## step 1. 레이어 생성
 
-반경측정 Icon 및 반경값을 가시화할 레이어를 생성합니다.
+반경 측정 Icon 및 반경 값을 가시화 할 레이어를 생성합니다.
 
 레이어 타입에 대한 설명은 [여기](../etc/type-list.md)를 참조해 주십시오.
 
-```
+```javascript
 var layerList = new Module.JSLayerList(true);
 
 GLOBAL.POILayer = layerList.createLayer("MEASURE_POI", Module.ELT_3DPOINT);
@@ -34,25 +39,24 @@ GLOBAL.WallLayer.setEditable(true);
 
 ## step 2. 이벤트 등록
 
-엔진 내부에서 계산된 반경을 반환받기 위해 이벤트를 등록합니다.
+엔진 내부에서 계산된 반경을 반환 받기 위해 이벤트를 등록합니다.
 
-```
+```javascript
 function initEvent(canvas) {
 
-	// 반경 이벤트 설정
-	canvas.addEventListener("Fire_EventAddRadius", function(e){		
-		if(e.dTotalDistance > 0) {
-		
-			// 반경 POI 오브젝트 생성
-			createPOI( new Module.JSVector3D(e.dMidLon, e.dMidLat, e.dMidAlt), "rgba(255, 204, 198, 0.8)", e.dTotalDistance );
-		}
-	});
+    // 반경 이벤트 설정
+    canvas.addEventListener("Fire_EventAddRadius", function(e){		
+        if(e.dTotalDistance > 0) {
+            // 반경 POI 오브젝트 생성
+            createPOI( new Module.JSVector3D(e.dMidLon, e.dMidLat, e.dMidAlt), "rgba(255, 204, 198, 0.8)", e.dTotalDistance );
+        }
+    j});
 }
 ```
 
 ## step 3. 마우스모드 변경
 
-반경측정을 위해서 마우스 모드를 변경합니다.
+반경 측정을 위해서 마우스 모드를 변경합니다.
 
 마우스 모드에 대한 설명은 [여기](../etc/type-list.md)를 참조해 주십시오.
 
@@ -62,24 +66,23 @@ Module.XDSetMouseState(Module.MML_ANALYS_AREA_CIRCLE);
 
 ## step 4 - 1. 반경 Icon 생성
 
-반환 받은 반경값을 랜더링하기 위해 Icon을 생성합니다.
+반환 받은 반경 값을 랜더링 하기 위해 Icon을 생성합니다.
 
-```
+```javascript
 function drawIcon(_canvas, _color, _value) {
 
-	// 컨텍스트 반환 및 배경 초기화
-	var ctx = _canvas.getContext('2d'),
-		width = _canvas.width,
-		height = _canvas.height
-		;
-	ctx.clearRect(0, 0, width, height);
+    // 컨텍스트 반환 및 배경 초기화
+    var ctx = _canvas.getContext('2d'),
+        width = _canvas.width,
+        height = _canvas.height
+        ;
+    ctx.clearRect(0, 0, width, height);
 
-	// 배경 Draw Path 설정 후 텍스트 그리기
-	drawBalloon(ctx, height*0.5, width, height, 5, height*0.25, _color);
-	setText(ctx, width*0.5, height*0.2, _value);
+    // 배경 Draw Path 설정 후 텍스트 그리기
+    drawBalloon(ctx, height*0.5, width, height, 5, height*0.25, _color);
+    setText(ctx, width*0.5, height*0.2, _value);
 	
-
-	return ctx.getImageData(0, 0, _canvas.width, _canvas.height).data;
+    return ctx.getImageData(0, 0, _canvas.width, _canvas.height).data;
 }
 ```
 
@@ -87,76 +90,73 @@ function drawIcon(_canvas, _color, _value) {
 
 반환 받은 반경값을 가시화할 말풍선 Icon을 생성합니다.
 
-```
-function drawBalloon(ctx,
-					 marginBottom, width, height,
-					 barWidth, barHeight,
-					 color) {
+```javascript
+function drawBalloon(ctx,  marginBottom, width, height, barWidth, barHeight, color) {
 
-	var wCenter = width * 0.5,
-		hCenter = height * 0.5;
+    var wCenter = width * 0.5,
+        hCenter = height * 0.5;
 
-	// 말풍선 형태의 Draw Path 설정
-	ctx.beginPath();
-	ctx.moveTo(0, 				 0);
-	ctx.lineTo(0, 				 height-barHeight-marginBottom);
-	ctx.lineTo(wCenter-barWidth, height-barHeight-marginBottom);
-	ctx.lineTo(wCenter, 		 height-marginBottom);
-	ctx.lineTo(wCenter+barWidth, height-barHeight-marginBottom);
-	ctx.lineTo(width,			 height-barHeight-marginBottom);
-	ctx.lineTo(width,			 0);
-	ctx.closePath();
+    // 말풍선 형태의 Draw Path 설정
+    ctx.beginPath();
+    ctx.moveTo(0, 				 0);
+    ctx.lineTo(0, 				 height-barHeight-marginBottom);
+    ctx.lineTo(wCenter-barWidth, height-barHeight-marginBottom);
+    ctx.lineTo(wCenter, 		 height-marginBottom);
+    ctx.lineTo(wCenter+barWidth, height-barHeight-marginBottom);
+    ctx.lineTo(width,			 height-barHeight-marginBottom);
+    ctx.lineTo(width,			 0);
+    ctx.closePath();
 
-	// 말풍선 그리기
-	ctx.fillStyle = color;
+    // 말풍선 그리기
+    ctx.fillStyle = color;
     ctx.fill();
 }
 ```
 
 ## step 4 - 3. 반경 측정결과값 Icon 생성
 
-반환 받은 반경값을 말풍선 Icon에 생성합니다.
+반환 받은 반경 값을 말풍선 Icon에 생성합니다.
 
-```
+```javascript
 function setText(_ctx, _posX, _posY, _value) {
 
-	var strText = "";
+    var strText = "";
 
-	// 텍스트 문자열 설정
-	if (typeof _value == 'number') {
-		strText = setKilloUnit(_value, 0.001, 0);
-	} else {
-		strText = _value;
-	}
+    // 텍스트 문자열 설정
+    if (typeof _value == 'number') {
+        strText = setKilloUnit(_value, 0.001, 0);
+    } else {
+        strText = _value;
+    }
 
-	// 텍스트 스타일 설정
-	_ctx.font = "bold 16px sans-serif";
+    // 텍스트 스타일 설정
+    _ctx.font = "bold 16px sans-serif";
     _ctx.textAlign = "center";
-	_ctx.fillStyle = "rgb(0, 0, 0)";
+    _ctx.fillStyle = "rgb(0, 0, 0)";
 
-	// 텍스트 그리기
+    // 텍스트 그리기
     _ctx.fillText(strText, _posX, _posY);
 }
 ```
 
-## step 4 - 4. 반경 측정결과값 m/km 텍스트로 변환
+## step 4 - 4. 반경 측정 결과 값 m/km 텍스트로 변환
 
-반환 받은 반경값을 m/km 텍스트로 변환합니다.
+반환 받은 반경 값을 m/km 텍스트로 변환합니다.
 
-```
+```javascript
 function setKilloUnit(_text, _meterToKilloRate, _decimalSize){
 
-	if (_decimalSize < 0){
-		_decimalSize = 0;
-	}
-	if (typeof _text == "number") {
-		if (_text < 1.0/(_meterToKilloRate*Math.pow(10,_decimalSize))) {
-			_text = _text.toFixed(1).toString()+'m';
-		} else {
-			_text = (_text*_meterToKilloRate).toFixed(2).toString()+'㎞';
-		}
-	}
-	return _text;
+    if (_decimalSize < 0){
+        _decimalSize = 0;
+    }
+    if (typeof _text == "number") {
+        if (_text < 1.0/(_meterToKilloRate*Math.pow(10,_decimalSize))) {
+            _text = _text.toFixed(1).toString()+'m';
+        } else {
+            _text = (_text*_meterToKilloRate).toFixed(2).toString()+'㎞';
+        }
+    }
+    return _text;
 }
 ```
 
@@ -164,72 +164,72 @@ function setKilloUnit(_text, _meterToKilloRate, _decimalSize){
 
 생성한 Icon으로 객체를 만들고 레이어에 추가합니다.
 
-```
+```javascript
 function createPOI(_position, _color, _value) {
 
-	// POI 아이콘 이미지를 그릴 Canvas 생성
-	var drawCanvas = document.createElement('canvas');
+    // POI 아이콘 이미지를 그릴 Canvas 생성
+    var drawCanvas = document.createElement('canvas');
     drawCanvas.width = 100;
     drawCanvas.height = 100;
 
-	// 아이콘 이미지 데이터 반환
-	var imageData = drawIcon(drawCanvas, _color, _value);
+    // 아이콘 이미지 데이터 반환
+    var imageData = drawIcon(drawCanvas, _color, _value);
 
-	// 심볼에 아이콘 이미지 등록
-	if (GLOBAL.Symbol.insertIcon("Icon", imageData, drawCanvas.width, drawCanvas.height)) {
+    // 심볼에 아이콘 이미지 등록
+    if (GLOBAL.Symbol.insertIcon("Icon", imageData, drawCanvas.width, drawCanvas.height)) {
 
-		// 등록한 아이콘 객체 반환
-		var icon = GLOBAL.Symbol.getIcon("Icon");
+        // 등록한 아이콘 객체 반환
+        var icon = GLOBAL.Symbol.getIcon("Icon");
 
-		// JSPoint 객체 생성
-		var poi = Module.createPoint("POI");
+        // JSPoint 객체 생성
+        var poi = Module.createPoint("POI");
 
-		poi.setPosition(_position);		// 위치 설정
-		poi.setIcon(icon);				// 아이콘 설정
-
-		// 레이어에 오브젝트 추가
-		GLOBAL.POILayer.addObject(poi, 0);
-	}
+        poi.setPosition(_position);    // 위치 설정
+        poi.setIcon(icon);    // 아이콘 설정
+        
+        // 레이어에 오브젝트 추가
+        GLOBAL.POILayer.addObject(poi, 0);
+    }
 }
 ```
 
-## step 6. 반경측정 초기화
+## step 6. 반경 측정 초기화
 
-반경측정 결과 및 객체를 초기화합니다.
+반경 측정 결과 및 객체를 초기화합니다.
 
-```
+```javascript
 function clearAnalysis() {
 
-	// 실행 중인 분석 내용 초기화
-	Module.XDClearCircleMeasurement();
+    // 실행 중인 분석 내용 초기화
+    Module.XDClearCircleMeasurement();
 
-	if (GLOBAL.WallLayer == null) {
-		return;
-	}
+    if (GLOBAL.WallLayer == null) {
+        return;
+    }
 
-	// icon 삭제
-	if (GLOBAL.POILayer == null) {
-		return;
-	}
+    // icon 삭제
+    if (GLOBAL.POILayer == null) {
+        return;
+    }
 
-	// 등록된 아이콘 리스트 삭제
-	var icon, poi;
+    // 등록된 아이콘 리스트 삭제
+    var icon, poi;
 
-	poi = GLOBAL.POILayer.keyAtObject("POI");
+    poi = GLOBAL.POILayer.keyAtObject("POI");
 	
-	if (poi == null) {
-		return;
-	}
+    if (poi == null) {
+        return;
+    }
 	
-	icon = poi.getIcon();
+    icon = poi.getIcon();
 
-	// 아이콘을 참조 중인 POI 삭제
-	GLOBAL.POILayer.removeAtKey("POI");
+    // 아이콘을 참조 중인 POI 삭제
+    GLOBAL.POILayer.removeAtKey("POI");
 
-	// 아이콘을 심볼에서 삭제
-	GLOBAL.Symbol.deleteIcon(icon.getId());
+    // 아이콘을 심볼에서 삭제
+    GLOBAL.Symbol.deleteIcon(icon.getId());
 
-	// POI 오브젝트 삭제
-	GLOBAL.WallLayer.removeAll();
+    // POI 오브젝트 삭제
+    GLOBAL.WallLayer.removeAll();
 }
 ```
