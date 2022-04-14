@@ -297,10 +297,10 @@ Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실�
 
 ![](<../.gitbook/assets/image (3) (1) (1) (1).png>)
 
-## 다음 단계로
+##
 
-XDWorld를 사용한 여러 기능들을 살펴보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=start)를 클릭해 주세요.
+XDWorld를 사용한 다양한 <mark style="color:red;">샘플코드</mark>를 살펴보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=start)를 클릭해 주세요.
 
-XDWorld에 대해 궁금한 점이 있으시다면? [여기](https://github.com/EgisCorp/XDWorld/issues)를 클릭해 주세요.
+XDWorld에 대해 <mark style="color:red;">질문 사항</mark>이 있다면? [여기](https://github.com/EgisCorp/XDWorld/issues)를 클릭해 주세요.
 
-XDWorld를 사용한 차세대 디지털트윈 클라우드 서비스를 살펴보고 싶으시다면? [여기](https://www.dtwincloud.com)를 클릭해 주세요.
+XDWorld를 사용한 차세대 <mark style="color:red;">디지털트윈 클라우드</mark> 서비스를 살펴보고 싶으시다면? [여기](https://www.dtwincloud.com)를 클릭해 주세요.
