@@ -24,7 +24,7 @@ Part 구성에 따라 여러가지 형태로 구성됩니다.
 아래는 폴리곤 오브젝트를 생성하는 전체 코드입니다.
 
 ```javascript
-function createPolygon(_layer, id, _vertices, _fillColor, _outlineColor) {
+function createPolygon() {
 
     // 1. 폴리곤 객체 생성
     var polygon = Module.createPolygon("MY_POLYGON");
@@ -89,7 +89,7 @@ polygon.setPartCoordinates(vertex, part);
 
 폴리곤은 기본적으로 폐곡선 형태로 이루어지며, 좌표의 방향에 따라 외부와 내부가 구분됩니다.
 
-(이미지)
+![](<../.gitbook/assets/image (10).png>)
 
 * 좌표가 시계 방향(CW)을 이룸 : 외부로 판별되며 폴리곤의 외곽을 구성합니다.
 * 좌표가 반시계 방향(CCW)을 이룸 : 내부로 판별되며 폴리곤의 홀(Hole)을 구성합니다.
@@ -165,6 +165,8 @@ layer.addObject(polygon, 0);
 ## POI 생성 결과
 
 위 과정을 거쳐 여러 폴리곤을 한 레이어에 추가하면 아래와 같이 출력할 수 있습니다.
+
+![](<../.gitbook/assets/image (25).png>)
 
 폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color)를 클릭해 주세요
 
