@@ -101,7 +101,7 @@ format 속성의 경우 url 끝에 확장자 정보(.3ds)가 포함되어 있다
 
 함수 호출 시 파라미터로 모델 정보를 확인해 볼 수 있습니다.
 
-![](<../.gitbook/assets/image (9) (2) (1).png>)
+![](<../.gitbook/assets/ghostsymbol0.png>)
 
 파라미터 속성 중 faceCount, faceTexture 정보는 다음 단계 모델 [텍스쳐 설정](tutorial\_ghostsymbol.md#step-2.) 에서 활용됩니다.
 
@@ -159,13 +159,13 @@ copyModel.setGhostSymbol("MY_MODEL");
 
 |            scale = 1.0            |                    scale = 1.5                   |
 | :-------------------------------: | :----------------------------------------------: |
-| ![](../.gitbook/assets/image.png) | ![](<../.gitbook/assets/image (26) (1) (1).png>) |
+| ![](../.gitbook/assets/ghostsymbol1.png) | ![](<../.gitbook/assets/ghostsymbol2.png>) |
 
 * 모델 하단 원점
 
 |                   scale = 1.0                   |                scale = 1.5               |
 | :---------------------------------------------: | :--------------------------------------: |
-| ![](<../.gitbook/assets/image (4) (1) (1).png>) | ![](<../.gitbook/assets/image (30).png>) |
+| ![](<../.gitbook/assets/ghostsymbol3.png>) | ![](<../.gitbook/assets/ghostsymbol4.png>) |
 
 위 코드에서는 오브젝트가 하단부를중심으로 지면에 서 있을 수 있도록 모델의 높이의 절반만큼 원점 위치를 낮춥니다.
 
@@ -218,7 +218,7 @@ layer.addObject(line, 0);
 
 위 과정을 거친 3DS 파일 기반 고스트 심볼 오브젝트의 생성 결과입니다.
 
-![](<../.gitbook/assets/image (3) (1).png>)
+![](<../.gitbook/assets/ghostsymbol5.png>)
 
 
 
