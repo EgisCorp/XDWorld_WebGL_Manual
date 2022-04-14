@@ -8,17 +8,41 @@
 
 ![](../.gitbook/assets/radius.png)
 
-## Global 변수
+## 기능 구현
+
+### Global 변수
+
+기능을 구현하기 전 전역으로 사용하는 변수를 선언한 부분입니다.
 
 ```javascript
 var GLOBAL = {
-    Symbol : null,		// 아이콘 관리 심볼 객체 
+    Symbol : null,	// 아이콘 관리 심볼 객체 
     POILayer : null,	// POI 저장 레이어
     WallLayer : null;	// 반경벽 저장 레이어
 };
 ```
 
-## step 1. 레이어 생성
+#### Symbol
+
+이미지 텍스쳐를 저장하는 텍스쳐 맵 오브젝트를 이 곳에 저장합니다.
+
+[JSSymbol](../object/jssymbol.md)에 대한 간략한 설명은 거리 측정 튜토리얼의 [step 5. 거리 객체 생성](tutorial\_distance.md#step-5.) 항목의 JSSymbol 설명을 참조하세요.
+
+#### POILayer
+
+생성한 [JSPoint](../object/jspoint.md) 오브젝트를 저장할 레이어를 이 변수에 저장합니다.
+
+레이어를 저장하는 과정은 [step 1.레이어 생성](tutorial\_radius.md#step-1.) 단계를 참조하세요.
+
+#### WallLayer
+
+반경을 구분하는 벽면 폴리곤을 저장하는 레이어 입니다.
+
+레이어를 저장하는 과정은 [step 1.레이어 생성](tutorial\_radius.md#step-1.) 단계를 참조하세요.
+
+
+
+### step 1. 레이어 생성
 
 반경 측정 Icon 및 반경 값을 가시화 할 레이어를 생성합니다.
 
@@ -37,7 +61,9 @@ GLOBAL.WallLayer.setSelectable(false);
 GLOBAL.WallLayer.setEditable(true);
 ```
 
-## step 2. 이벤트 등록
+
+
+### step 2. 이벤트 등록
 
 엔진 내부에서 계산된 반경을 반환 받기 위해 이벤트를 등록합니다.
 
@@ -54,7 +80,11 @@ function initEvent(canvas) {
 }
 ```
 
-## step 3. 마우스모드 변경
+Fire\_EventAddRadius 이벤트는 마우스 모드가 [MML\_ANALYS\_AREA\_CIRCLE](../etc/type-list.md#mouse-type-list)일 경우 발생합니다.
+
+
+
+### step 3. 마우스모드 변경
 
 반경 측정을 위해서 마우스 모드를 변경합니다.
 
@@ -64,7 +94,9 @@ function initEvent(canvas) {
 Module.XDSetMouseState(Module.MML_ANALYS_AREA_CIRCLE);
 ```
 
-## step 4 - 1. 반경 Icon 생성
+
+
+### step 4 - 1. 반경 Icon 생성
 
 반환 받은 반경 값을 랜더링 하기 위해 Icon을 생성합니다.
 
@@ -86,9 +118,15 @@ function drawIcon(_canvas, _color, _value) {
 }
 ```
 
-## step 4 - 2. 반경 말풍선 Icon 생성
+맨 처음 이미지를 그릴 canvas를 생성하고, 글자를 작성할 배경을 칠한 후([step 4-2. 반경 말풍선 Icon 생성](tutorial\_radius.md#step-4-2.-icon))
 
-반환 받은 반경값을 가시화할 말풍선 Icon을 생성합니다.
+반환 된 고도 값을 토대로 텍스트를 입력합니다. ([step 4-3. 반경 측정 결과 값 Icon 생성](tutorial\_radius.md#step-4-3.-icon))
+
+
+
+### step 4 - 2. 반경 말풍선 Icon 생성
+
+반환 받은 반경 값을 가시화 할 말풍선을 캔버스에 그립니다.
 
 ```javascript
 function drawBalloon(ctx,  marginBottom, width, height, barWidth, barHeight, color) {
@@ -98,13 +136,13 @@ function drawBalloon(ctx,  marginBottom, width, height, barWidth, barHeight, col
 
     // 말풍선 형태의 Draw Path 설정
     ctx.beginPath();
-    ctx.moveTo(0, 				 0);
-    ctx.lineTo(0, 				 height-barHeight-marginBottom);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, height-barHeight-marginBottom);
     ctx.lineTo(wCenter-barWidth, height-barHeight-marginBottom);
-    ctx.lineTo(wCenter, 		 height-marginBottom);
+    ctx.lineTo(wCenter, height-marginBottom);
     ctx.lineTo(wCenter+barWidth, height-barHeight-marginBottom);
-    ctx.lineTo(width,			 height-barHeight-marginBottom);
-    ctx.lineTo(width,			 0);
+    ctx.lineTo(width, height-barHeight-marginBottom);
+    ctx.lineTo(width, 0);
     ctx.closePath();
 
     // 말풍선 그리기
@@ -113,9 +151,11 @@ function drawBalloon(ctx,  marginBottom, width, height, barWidth, barHeight, col
 }
 ```
 
-## step 4 - 3. 반경 측정결과값 Icon 생성
 
-반환 받은 반경 값을 말풍선 Icon에 생성합니다.
+
+### step 4 - 3. 반경 측정 결과 값 Icon 생성
+
+반환 받은 반경 값을 말풍선 위에 텍스트로 그립니다.
 
 ```javascript
 function setText(_ctx, _posX, _posY, _value) {
@@ -139,7 +179,9 @@ function setText(_ctx, _posX, _posY, _value) {
 }
 ```
 
-## step 4 - 4. 반경 측정 결과 값 m/km 텍스트로 변환
+
+
+### step 4 - 4. 반경 측정 결과 값 m/km 텍스트로 변환
 
 반환 받은 반경 값을 m/km 텍스트로 변환합니다.
 
@@ -160,7 +202,9 @@ function setKilloUnit(_text, _meterToKilloRate, _decimalSize){
 }
 ```
 
-## step 5. 반경 객체 생성
+
+
+### step 5. 반경 객체 생성
 
 생성한 Icon으로 객체를 만들고 레이어에 추가합니다.
 
@@ -193,7 +237,9 @@ function createPOI(_position, _color, _value) {
 }
 ```
 
-## step 6. 반경 측정 초기화
+
+
+### step 6. 반경 측정 초기화
 
 반경 측정 결과 및 객체를 초기화합니다.
 
@@ -233,3 +279,9 @@ function clearAnalysis() {
     GLOBAL.WallLayer.removeAll();
 }
 ```
+
+## 결과 화면
+
+![](<../.gitbook/assets/image (29).png>)
+
+반경 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_radius)를 클릭해 주세요

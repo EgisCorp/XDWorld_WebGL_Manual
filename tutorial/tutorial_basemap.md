@@ -1,4 +1,4 @@
-# 배경 지도 설정하기
+# 배경 지도 설정
 
 Google, BingMap, OpenStreetMap, ArcMap, MapBox, 네이버, 다음, SKYMap 지도를 배경지도로 설정할 수 있습니다.
 
@@ -6,13 +6,13 @@ Google, BingMap, OpenStreetMap, ArcMap, MapBox, 네이버, 다음, SKYMap 지도
 
 nomal, terrain, vectorhybrid, satellitehybrid, satellite 레이어를 지원합니다.
 
-```
+```javascript
 var google = Module.GoogleMap();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 google.layername = "satellitehybrid";
 
@@ -27,13 +27,13 @@ google.zerolevelOffset = 1;
 
 nomal, satellitehybrid, satellite 레이어를 지원합니다.
 
-```
+```javascript
 var bing = Module.BingMap();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 bing.layername = "satellitehybrid";
 
@@ -48,13 +48,13 @@ bing.zerolevelOffset = 1;
 
 nomal, terrain 레이어를 지원합니다.
 
-```
+```javascript
 var osm = Module.OpenStreetMap();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 osm.layername = "terrain";
 
@@ -69,13 +69,13 @@ osm.zerolevelOffset = 1;
 
 nomal, terrain, vectorhybrid, satellite 레이어를 지원합니다.
 
-```
+```javascript
 var arc = Module.ArcMap();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 arc.layername = "vectorhybrid";
 
@@ -90,20 +90,20 @@ arc.zerolevelOffset = 1;
 
 satellite 레이어를 지원합니다.
 
-```
+```javascript
 var mapbox = Module.MapBox();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 mapbox.layername = "satellite";
 
 // 이미지 품질 변경
 mapbox.quality = "middle";
 
-// 이미지 LOD 변경
+// 이미j지 LOD 변경
 mapbox.zerolevelOffset = 1;
 ```
 
@@ -117,7 +117,7 @@ var naver = Module.NaverMap();
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 naver.layername = "satellite";
 
@@ -132,13 +132,13 @@ naver.zerolevelOffset = 1;
 
 nomal, satellite 레이어를 지원합니다.
 
-```
+```javascript
 var daum = Module.DaumMap();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 daum.layername = "satellite";
 
@@ -151,15 +151,15 @@ daum.zerolevelOffset = 1;
 
 ## 8. SKYMap 설정하기
 
-2012 ~ 2018, 2020 레이어를 지원합니다.
+2012 \~ 2018, 2020 레이어를 지원합니다.
 
-```
+```javascript
 var skymap = Module.SKYMap();
 ```
 
 ### 옵션 설정하기
 
-```
+```javascript
 // 레이어 변경
 skymap.layername = "2020";
 
@@ -174,10 +174,10 @@ skymap.zerolevelOffset = 1;
 
 > 배경 영상 지도 레이어명.
 
-| Name            | Type   |  Description                           |
-| --------------- | ------ |  ------------------------------------- |
-| nomal      	  | string |     일반 지도.                |
-| terrain         | string |     지형 등고선 지도.          |
-| vectorhybrid    | string |     벡터 하이브리드 지도.       |
-| satellitehybrid | string |     영상 하이브리드 지도.       |
-| satellite 	  | string |     영상 지도.         	     |
+| Name            | Type   | Description  |
+| --------------- | ------ | ------------ |
+| nomal           | string | 일반 지도.       |
+| terrain         | string | 지형 등고선 지도.   |
+| vectorhybrid    | string | 벡터 하이브리드 지도. |
+| satellitehybrid | string | 영상 하이브리드 지도. |
+| satellite       | string | 영상 지도.       |
