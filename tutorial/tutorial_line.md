@@ -88,9 +88,9 @@ line.createbyJson({
 
 라인의 형태를 설정합니다. 실선, 점선, 화살표 등 여러 라인 타입을 설정할 수 있습니다.
 
-|                       실선 (type : 0)                      |               점선 (type : 4)              |              화살표 (type : 3)             |
+|                       실선 (type : 0)                      |               점선 (type : 3)              |              화살표 (type : 4)             |
 | :------------------------------------------------------: | :--------------------------------------: | :-------------------------------------: |
-| ![](<../.gitbook/assets/image (10) (1) (1) (1) (1).png>) | ![](<../.gitbook/assets/image (18).png>) | ![](<../.gitbook/assets/image (5).png>) |
+| ![](<../.gitbook/assets/image (10) (1) (1) (1) (1).png>) | ![](<../.gitbook/assets/image (5).png>) | ![](<../.gitbook/assets/image (18).png>) |
 
 #### union
 
