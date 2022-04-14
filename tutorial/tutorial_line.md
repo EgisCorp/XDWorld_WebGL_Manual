@@ -15,7 +15,7 @@
 아래는 라인 오브젝트를 생성하는 전체 코드입니다.
 
 ```javascript
-function createLine( _id, _coordinate, _type) {
+function createLine(_id, _coordinate, _type) {
 
     // 1. 라인 오브젝트 생성
     var line = Module.createLineString("MY_LINE");
@@ -38,7 +38,7 @@ function createLine( _id, _coordinate, _type) {
 
     // 3. 레이어 생성 후 라인 저장
     let layerList = new Module.JSLayerList(true);
-    let layer = layerList.createLayer("Line_LAYER", Module.ELT_3DLINE);
+    let layer = layerList.createLayer("LINE_LAYER", Module.ELT_3DLINE);
     layer.addObject(line, 0);
 }
 ```
@@ -52,7 +52,7 @@ function createLine( _id, _coordinate, _type) {
 Module을 통해 [JSLineString](../object/jslinestring.md) 타입의 라인 오브젝트를 생성합니다.
 
 ```javascript
-var polygon = Module.createPolygon("MY_POLYGON");
+var polygon = Module.createPolygon("MY_LINE");
 ```
 
 오브젝트 키 값은 오브젝트를 구분하는 값으로 같은 레이어 내 중복되지 않도록 입력합니다.
