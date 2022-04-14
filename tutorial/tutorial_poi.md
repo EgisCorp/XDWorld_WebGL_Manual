@@ -4,7 +4,7 @@ POI(Point of Interest)는 지도에 특정 지점을 표시하는데 주로 사�
 
 XDWorld의 POI는 상단에 이미지, 하단에 텍스트를 출력하는 형식으로 이루어져 있습니다.
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (1).png>)
 
 ## POI 생성하기
 
@@ -166,7 +166,7 @@ layer.addObject(poi, 0);
 
 아래 이미지는 텍스트를 사용한 POI, 이미지를 사용한 POI, 텍스트와 이미지를 모두 사용한 POI를 렌더링 한 이미지 입니다.
 
-![](<../.gitbook/assets/image (4) (1).png>)
+![](<../.gitbook/assets/image (4) (1) (1).png>)
 
 이제 POI 오브젝트를 활용하여 표시하고 싶은 위치를 자유롭게 표현할 수 있습니다.
 
