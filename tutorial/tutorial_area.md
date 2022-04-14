@@ -2,6 +2,8 @@
 
 마우스 모드를 면적측정 모드로 변경한 후 선택한 영역의 면적를 측정합니다. 측정결과값을 이벤트로 반환받아 POI, Polygon으로 가시화합니다.
 
+![](../.gitbook/assets/area.png)
+
 ## Global 변수
 ```
 var GLOBAL = {

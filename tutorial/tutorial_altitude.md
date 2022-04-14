@@ -2,6 +2,8 @@
 
 마우스 모드를 높이측정 모드로 변경한 후 클릭지점 높이를 측정합니다. 측정결과값을 이벤트로 반환받아 POI로 가시화합니다.
 
+![](../.gitbook/assets/altitude.png)
+
 ## Global 변수
 ```
 var GLOBAL = {
