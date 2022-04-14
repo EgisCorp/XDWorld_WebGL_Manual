@@ -2,11 +2,11 @@
 
 * [목차](README.md)
 
-## 소개
+## 소개 <a href="#introduce" id="introduce"></a>
 
 * [About EGIS](introduce/about-egis.md)
 * [XDWorld API](introduce/introduce.md)
-* [시작하기](start/start.md)
+* [시작하기](introduce/start.md)
 
 ## 튜토리얼 <a href="#tutorial" id="tutorial"></a>
 
