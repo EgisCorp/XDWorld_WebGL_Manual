@@ -425,7 +425,7 @@ function drawIcon(_canvas, _color, _value, _balloonType) {
 
 #### 누적 거리 표시 Icon 이미지
 
-![](<../.gitbook/assets/polygon (1).png>)
+![](<../.gitbook/assets/distance2.png>)
 
 * drawBalloon 함수([step 4-2. 거리 말풍선 Icon 생성](tutorial\_distance.md#step-4-2.-icon))와 setText([step 4-4. 거리 측정 결과 값 Icon 생성](tutorial\_distance.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
 
@@ -542,7 +542,7 @@ XDWorld에서는 텍스쳐를 저장, 관리하는 [JSSymbol](../object/jssymbol
 
 Step 4 단계에서 만들어진 이미지들은 [JSSymbol](tutorial\_distance.md#jssymbol)에 저장되고 이후 새로 만들어진 POI 오브젝트와 연결될 것입니다.
 
-![](../.gitbook/assets/image%20\(24\).png)
+![](../.gitbook/assets/distance3.png)
 
 ```javascript
 function createPOI(_position, _color, _value, _balloonType) {
