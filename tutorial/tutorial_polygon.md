@@ -17,9 +17,9 @@
 
 Part 구성에 따라 여러가지 형태로 구성됩니다.
 
-|                     한 파트의 폴리곤                    |                  여러 파트의 폴리곤                  |             홀(Hole)이 있는 폴리곤             |
-| :----------------------------------------------: | :------------------------------------------: | :-------------------------------------: |
-| ![](<../.gitbook/assets/polygon.png>) | ![](<../.gitbook/assets/polygon0.png>) | ![](<../.gitbook/assets/polygon1.png>) |
+|                 한 파트의 폴리곤                 |                 여러 파트의 폴리곤                 |               홀(Hole)이 있는 폴리곤              |
+| :---------------------------------------: | :----------------------------------------: | :----------------------------------------: |
+| ![](<../.gitbook/assets/polygon (1).png>) | ![](<../.gitbook/assets/polygon0 (1).png>) | ![](<../.gitbook/assets/polygon1 (1).png>) |
 
 아래는 폴리곤 오브젝트를 생성하는 전체 코드입니다.
 
@@ -62,8 +62,6 @@ function createPolygon() {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
-
-
 ### step 1. 폴리곤 오브젝트 생성
 
 Module을 통해 [JSPolygon](../object/jspolygon.md) 타입의 폴리곤 오브젝트를 생성합니다.
@@ -71,8 +69,6 @@ Module을 통해 [JSPolygon](../object/jspolygon.md) 타입의 폴리곤 오브�
 ```javascript
 var polygon = Module.createPolygon("MY_POLYGON");
 ```
-
-
 
 ### step 2. 폴리곤 형태 지정
 
@@ -93,7 +89,7 @@ polygon.setPartCoordinates(vertex, part);
 
 폴리곤은 기본적으로 폐곡선 형태로 이루어지며, 좌표의 방향에 따라 외부와 내부가 구분됩니다.
 
-![](<../.gitbook/assets/polygon3.png>)
+![](<../.gitbook/assets/polygon3 (1).png>)
 
 * 좌표가 시계 방향(CW)을 이룸 : 외부로 판별되며 폴리곤의 외곽을 구성합니다.
 * 좌표가 반시계 방향(CCW)을 이룸 : 내부로 판별되며 폴리곤의 홀(Hole)을 구성합니다.
@@ -133,8 +129,6 @@ part.add(4);
 각 파트의 순서는 자유롭게 설정해 주어도 되나, 적어도 파트 중 하나는 폴리곤의 외곽을 형성할 수 있도록 시계 방향(CW)으로 구성되어 있어야 합니다.
 {% endhint %}
 
-
-
 ### step 3. 폴리곤 속성 지정 (선택)
 
 폴리곤 좌표 외 폴리곤의 색상을 지정할 수 있습니다.
@@ -158,8 +152,6 @@ polygonStyle.setOutLineColor(new Module.JSColor(0, 0, 255));
 polygon.setStyle(polygonStyle);
 ```
 
-
-
 ### step 4. 레이어에 폴리곤 저장
 
 레이어를 생성한 후 폴리곤 오브젝트를 추가합니다.
@@ -174,7 +166,7 @@ layer.addObject(polygon, 0);
 
 위 과정을 거쳐 여러 폴리곤을 한 레이어에 추가하면 아래와 같이 출력할 수 있습니다.
 
-![](<../.gitbook/assets/polygon4.png>)
+![](../.gitbook/assets/polygon4.png)
 
 폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color)를 클릭해 주세요
 

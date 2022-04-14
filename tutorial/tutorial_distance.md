@@ -4,8 +4,6 @@
 
 측정 결과 값을 이벤트로 반환 받아 POI, Line으로 가시화 합니다.
 
-
-
 ![](../.gitbook/assets/distance.png)
 
 #### 기능 인터페이스
@@ -14,7 +12,7 @@
 
 거리측정 종료 후 다시 다른 지점을 클릭하면 새로운 셋의 측정 결과가 표시됩니다.
 
-![결과 값은 중간 거리 값과 누적 거리 값을 함께 표시합니다.](<../.gitbook/assets/distance0.png>)
+![결과 값은 중간 거리 값과 누적 거리 값을 함께 표시합니다.](../.gitbook/assets/distance0.png)
 
 <details>
 
@@ -297,8 +295,6 @@ var GLOBAL = {
 
 측정 종료 후 데이터를 관리할 수 있도록 오브젝트 POI 수 및 측정 오브젝트 수를 관리합니다.
 
-
-
 ### step 1. 레이어 생성
 
 거리 측정 Icon 및 거리 값을 가시화 할 레이어를 생성합니다.
@@ -314,8 +310,6 @@ layer.setMaxDistance(20000.0);
 layer.setSelectable(false);
 ```
 
-
-
 ### step 2 - 1. CallBack 함수 설정
 
 엔진 내부에서 계산된 거리를 반환 받기 위해 CallBack 함수를 등록합니다.
@@ -323,8 +317,6 @@ layer.setSelectable(false);
 콜백 함수는 [JSOption](../option/jsoption.md)을 통해 등록합니다.
 
 (자세한 API 설명은 [callBackAddPoint](../option/jsoption.md#callbackaddpoint-event-string), [callBackCompletePoint](../option/jsoption.md#callbackcompletepoint-event-string) 설명 부분을 참조하세요.)
-
-
 
 콜백 함수는 두 가지 함수를 등록합니다.
 
@@ -336,13 +328,9 @@ Module.getOption().callBackAddPoint(addPoint);	    // 마우스 입력시 발생
 Module.getOption().callBackCompletePoint(endPoint); // 측정 종료(더블클릭) 시 발생하는 콜백 성공 시 success 반환 실패 시 실패 오류 반환
 ```
 
-
-
 마우스 모드를 MML\_ANALYS\_DISTANCE\_STRAIGHT 로 지정하였을 경우 측정하고자 하는 지점을 클릭했을 때 아래 설정한 콜백 함수가 호출됩니다.
 
 마우스 모드 설정 부분은 [step 3. 마우스모드 변경](tutorial\_distance.md#step-3.) 항목을 참조하세요.
-
-
 
 ### step 2 - 2. 거리측정 CallBack 함수 생성
 
@@ -374,8 +362,6 @@ function addPoint(e) {
 }
 ```
 
-
-
 ### step 2 - 3. 거리측정 종료 CallBack 함수 생성
 
 마우스 더블 클릭 시 실행되는 CallBack함수입니다. 거리 측정을 종료합니다.
@@ -387,8 +373,6 @@ function endPoint(e) {
 }
 ```
 
-
-
 ### step 3. 마우스모드 변경
 
 거리측정을 위해서 마우스 모드를 변경합니다.
@@ -398,8 +382,6 @@ function endPoint(e) {
 ```javascript
 Module.XDSetMouseState(Module.MML_ANALYS_DISTANCE_STRAIGHT);
 ```
-
-
 
 ### step 4 - 1. 거리 Icon 생성
 
@@ -437,17 +419,15 @@ function drawIcon(_canvas, _color, _value, _balloonType) {
 
 #### 중간 거리 표시 Icon 이미지
 
-![](<../.gitbook/assets/distance1.png>)
+![](../.gitbook/assets/distance1.png)
 
 * drawRoundRect 함수([step 4-3. 거리 사각형 Icon 생성](tutorial\_distance.md#step-4-3.-icon))와 setText([step 4-4. 거리 측정 결과 값 Icon 생성](tutorial\_distance.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
 
 #### 누적 거리 표시 Icon 이미지
 
-![](<../.gitbook/assets/distance2.png>)
+![](<../.gitbook/assets/polygon (1).png>)
 
 * drawBalloon 함수([step 4-2. 거리 말풍선 Icon 생성](tutorial\_distance.md#step-4-2.-icon))와 setText([step 4-4. 거리 측정 결과 값 Icon 생성](tutorial\_distance.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
-
-
 
 ### step 4 - 2. 거리 말풍선 Icon 생성
 
@@ -476,8 +456,6 @@ function drawBalloon(ctx, marginBottom, width, height, barWidth, barHeight, colo
 }
 ```
 
-
-
 ### step 4 - 3. 거리 사각형 Icon 생성
 
 반환 받은 중간 거리 값을 표시 할 수 있도록 둥근 사각 말풍선 이미지를 그립니다.
@@ -503,8 +481,6 @@ function drawRoundRect(ctx, x, y, width, height, radius, color) {
     return ctx;
 }
 ```
-
-
 
 ### step 4 - 4. 거리 측정 결과 값 Icon 생성
 
@@ -532,8 +508,6 @@ function setText(_ctx, _posX, _posY, _value) {
 }
 ```
 
-
-
 ### step 4 - 5. 거리 측정 결과 값 m/km 텍스트로 변환
 
 필요에 따라 반환 받은 거리 값을 m/km 텍스트로 변환합니다.
@@ -556,8 +530,6 @@ function setKilloUnit(_text, _meterToKilloRate, _decimalSize) {
 }
 ```
 
-
-
 ### step 5. 거리 객체 생성
 
 생성한 Icon을 활용하여 POI 오브젝트를 만들고 레이어에 추가합니다.
@@ -570,7 +542,7 @@ XDWorld에서는 텍스쳐를 저장, 관리하는 [JSSymbol](../object/jssymbol
 
 Step 4 단계에서 만들어진 이미지들은 [JSSymbol](tutorial\_distance.md#jssymbol)에 저장되고 이후 새로 만들어진 POI 오브젝트와 연결될 것입니다.
 
-![](<../.gitbook/assets/image (24).png>)
+![](../.gitbook/assets/image%20\(24\).png)
 
 ```javascript
 function createPOI(_position, _color, _value, _balloonType) {
@@ -611,8 +583,6 @@ JSSymbol을 사용하지 않고 간단히 이미지 데이터만을 등록하여
 이 과정은 [POI 생성하기](tutorial\_poi.md) 튜토리얼을 참조하세요.
 {% endhint %}
 
-
-
 ### step 6. 거리측정 초기화
 
 거리 측정 결과 및 객체를 초기화합니다.
@@ -635,7 +605,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 클릭한 지점의 거리 정보를 표시하는 거리 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/distance.png>)
+![](../.gitbook/assets/distance.png)
 
 거리 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_distance)를 클릭해 주세요
-
