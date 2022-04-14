@@ -509,6 +509,6 @@ function clearAnalysis() {
 
 ## 결과 화면
 
-![](<../.gitbook/assets/image (29).png>)
+![](<../.gitbook/assets/radius.png>)
 
 반경 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_radius)를 클릭해 주세요
