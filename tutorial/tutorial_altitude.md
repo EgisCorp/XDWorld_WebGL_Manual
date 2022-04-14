@@ -285,6 +285,8 @@ GLOBAL.Layer.setMaxDistance(20000.0);
 GLOBAL.Layer.setSelectable(false);
 ```
 
+
+
 ### step 2. 이벤트 등록
 
 엔진 내부에서 계산된 높이을 반환받기 위해 이벤트를 등록합니다.
@@ -512,7 +514,9 @@ function createPOI(_position, _color, _value, _subValue) {
 }
 ```
 
-## step 6. 높이 측정 초기화
+
+
+### step 6. 높이 측정 초기화
 
 높이 측정 결과 및 객체를 초기화합니다.
 
