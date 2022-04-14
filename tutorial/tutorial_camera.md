@@ -7,7 +7,7 @@
 * 카메라 Fov: 화각
 * 카메라 Altitude: 고도
 
-![](../.gitbook/assets/camera.png)
+![](<../.gitbook/assets/camera.png>)
 
 ## 상하(Tilt) 회전
 
