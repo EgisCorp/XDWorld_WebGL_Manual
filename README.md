@@ -1,6 +1,6 @@
 # About EGIS
 
-![](<../.gitbook/assets/aboutegis (4).png>)
+![](<.gitbook/assets/aboutegis (4).png>)
 
 EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
@@ -10,7 +10,7 @@ EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
 다양한 스마트 시티 서비스 연구, 개발 전문기업입니다.
 
-![](../.gitbook/assets/aboutegis0.png)
+![](.gitbook/assets/aboutegis0.png)
 
 가상세계를 현실과 동일하게 구축 및 모니터링하며
 
@@ -22,7 +22,7 @@ EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
 공간정보 가시화를 넘어 협업이 가능한 공간정보 가상화 서비스를 제공합니다.
 
-![](../.gitbook/assets/aboutegis1.png)
+![](.gitbook/assets/aboutegis1.png)
 
 EGIS는 4차 산업혁명에 발맞추어
 

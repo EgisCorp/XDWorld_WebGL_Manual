@@ -1,28 +1,26 @@
-# Table of contents
+# 목차
 
-## 소개 <a href="#introduce" id="introduce"></a>
+* [목차](./)
 
-* [About EGIS](README.md)
+## 소개
+
+* [About EGIS](./)
 * [XDWorld API](introduce/introduce.md)
 * [시작하기](introduce/start.md)
 
-***
+## 튜토리얼
 
-* [목차](readme.md)
-
-## 튜토리얼 <a href="#tutorial" id="tutorial"></a>
-
-* [카메라 설정](tutorial/tutorial\_camera.md)
+* [카메라 설정](broken-reference/)
 * [POI 생성하기](tutorial/tutorial\_poi.md)
 * [폴리곤 생성하기](tutorial/tutorial\_polygon.md)
 * [라인 생성하기](tutorial/tutorial\_line.md)
 * [모델 추가하기](tutorial/tutorial\_ghostsymbol.md)
-* [레이어 설정](tutorial/tutorial\_layer.md)
-* [배경 지도 설정](tutorial/tutorial\_basemap.md)
+* [레이어 설정](broken-reference/)
+* [배경 지도 설정](broken-reference/)
 * [거리 측정](tutorial/tutorial\_distance.md)
 * [면적 측정](tutorial/tutorial\_area.md)
 * [높이 측정](tutorial/tutorial\_altitude.md)
-* [반경 측정](tutorial/tutorial\_radius.md)
+* [반경 측정](broken-reference/)
 
 ## Map
 
