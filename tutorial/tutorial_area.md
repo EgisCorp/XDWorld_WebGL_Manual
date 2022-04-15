@@ -2,7 +2,7 @@
 
 마우스 모드를 면적 측정 모드로 변경한 후 선택한 영역의 면적를 측정합니다.
 
-측정 결과 값을 이벤트로 반환 받아 POI, Polygon으로 가시화 합니다.
+측정 결과 값을 이벤트로 반환 받아 [JSPoint](../object/jspoint.md), [JSPolygon](../object/jspolygon.md)으로 가시화 합니다.
 
 ![](../.gitbook/assets/area00.png)
 
@@ -263,8 +263,6 @@ var GLOBAL = {
 
 측정 종료 후 데이터를 관리할 수 있도록 측정 오브젝트 수를 관리합니다.
 
-
-
 ### step 1. 레이어 생성
 
 면적측정 Icon 및 면적 값을 가시화할 레이어를 생성합니다.
@@ -295,8 +293,6 @@ Module.getOption().callBackAddPoint(addPoint);		// 마우스 입력시 발생하
 Module.getOption().callBackCompletePoint(endPoint);	// 측정 종료(더블클릭) 시 발생하는 콜백 성공 시 success 반환 실패 시 실패 오류 반환
 ```
 
-
-
 콜백 함수는 두 가지 함수를 등록합니다.
 
 * 측정 지점을 선택했을 때 호출되는 콜백 함수([step 2-2. 면적측정 CallBack 함수 생성](tutorial\_area.md#step-2-2.-callback))
@@ -306,7 +302,7 @@ Module.getOption().callBackCompletePoint(endPoint);	// 측정 종료(더블클�
 
 ### step 2 - 2. 면적측정 CallBack 함수 생성
 
-마우스 왼쪽 클릭 시 실행되는 CallBack함수입니다.&#x20;
+마우스 왼쪽 클릭 시 실행되는 CallBack함수입니다.
 
 엔진 내부에서 계산된 면적을 반환 받아 가시화 합니다.
 
@@ -378,13 +374,13 @@ function drawIcon(_canvas, _color, _value) {
 
 위 함수를 실행시키면 아래와 같은 아이콘 이미지가 생성됩니다.
 
-![](<../.gitbook/assets/area0.png>)
+![](../.gitbook/assets/area0.png)
 
-* drawBalloon 함수(step [4-3. 면적 말풍선 Icon 생성](tutorial\_area.md#step-4-2.-icon))와 setText([step 4-3. 면적 측정 결과 값 Icon 생성](tutorial\_area.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
+* drawBalloon 함수([step 4-2. 면적 말풍선 그리기](tutorial\_area.md#step-4-2.-icon))와 setText([step 4-3. 면적 측정 단위(제곱미터) 텍스트 변환](tutorial\_area.md#step-4-3.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
 
 
 
-### step 4 - 2. 면적 말풍선 Icon 생성
+### step 4 - 2. 면적 말풍선 그리기
 
 누적 면적을 텍스트에 표시하기 위해 배경 말풍선을 그립니다.
 
@@ -413,7 +409,7 @@ function drawBalloon(ctx, marginBottom, width, height, barWidth, barHeight, colo
 
 
 
-### step 4 - 3. 면적 측정 결과 값 Icon 생성
+### step 4 - 3. 면적 측정 단위(제곱미터) 텍스트 변환
 
 반환 받은 면적 값을 말풍선에 텍스트로 그립니다.
 
@@ -437,9 +433,9 @@ function setText(_ctx, _posX, _posY, _value) {
 
 
 
-### step 4 - 5. 면적 측정 결과 값 제곱미터 텍스트 변환
+### step 4 - 4. 텍스트 콤마 삽입
 
-반환 받은 면적 값을 제곱미터 텍스트로 변환합니다.
+숫자로 구성된 텍스트 사이 단위 구분자 문자(콤마)를 추가합니다.
 
 ```javascript
 function setTextComma(str) {
@@ -523,6 +519,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 지정한 영역의 면적 정보를 표시하는 면적 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/area00.png>)
+![](../.gitbook/assets/area00.png)
 
 면적 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_area)를 클릭해 주세요
