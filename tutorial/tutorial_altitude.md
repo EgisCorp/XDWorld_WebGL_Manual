@@ -4,20 +4,18 @@ description: 지도 내에서 해발고도, 상대고도를 측정하여 출력�
 
 # 높이 측정
 
-
-
 본 페이지에서는 지도의 마우스 모드를 높이 측정 모드로 변경한 후 클릭한 지점의 측정 결과를 POI로 가시화 하는 과정에 대하여 알아봅니다.
 
 #### 해발고도와 상대고도
 
 높이는 기준점에 따라 해발고도, 상대고도 값이 주로 쓰입니다.
 
-![](<../.gitbook/assets/altitude00.png>)
+![](../.gitbook/assets/altitude00.png)
 
 * 해발고도 : 해수면을 기준으로 측정한 높이
 * 지면고도 : 지면을 기준으로 측정한 높이
 
-본 샘플 코드에서는 지면을 클릭한 경우 해발고도 값을, 건물이나 기타 시설물을 클릭한 해발고도 값과 지고도 값을 함께 표시하도록 구성하였습니다.
+본 샘플 코드에서는 지면을 클릭한 경우 해발고도 값을, 건물이나 기타 시설물을 클릭한 해발고도 값과 지면고도 값을 함께 표시하도록 구성하였습니다.
 
 ![](../.gitbook/assets/altitude0.png)
 
@@ -257,8 +255,6 @@ var GLOBAL = {
 
 레이어를 저장하는 과정은 [step 1.레이어 생성](tutorial\_altitude.md#step-1.) 단계를 참조하세요.
 
-
-
 ## 기능 구현
 
 ### step 1. 레이어 생성
@@ -298,12 +294,12 @@ Fire\_EventAddAltitudePoint 이벤트는 마우스 모드가 [MML\_ANALYS\_ALTIT
 
 마우스 모드를 변경한 후 지도를 클릭하면 이벤트를 통해 높이 정보가 이벤트 파라미터로 반환 됩니다.
 
-![](<../.gitbook/assets/altitude3.png>)
+![](../.gitbook/assets/altitude3.png)
 
-* dLon : 높이를 측정한 위치의 경도 값&#x20;
-* dLat : 높이를 측정한 위치의 위도 값&#x20;
-* dAlt : 높이를 측정한 위치의 고도 값&#x20;
-* dGroundAltitude : 해발 고도 값. 지면을 클릭한 경우 dAlt 값과 동일한 값이 출력 될 것입니다.&#x20;
+* dLon : 높이를 측정한 위치의 경도 값
+* dLat : 높이를 측정한 위치의 위도 값
+* dAlt : 높이를 측정한 위치의 고도 값
+* dGroundAltitude : 해발 고도 값. 지면을 클릭한 경우 dAlt 값과 동일한 값이 출력 될 것입니다.
 * dObjectAltitude : 지면고도 값
 
 위 이벤트 정보를 토대로 createPOI 함수에서 고도 정보를 출력하는 POI 오브젝트를 생성합니다.
@@ -332,7 +328,7 @@ Module.XDSetMouseState(Module.MML_ANALYS_ALTITUDE);
 
 함수를 실행하면 아래와 같이 이미지가 canvas에 생성될 것입니다.
 
-![](<../.gitbook/assets/altitude000.png>)
+![](../.gitbook/assets/altitude000.png)
 
 ```javascript
 function drawIcon(_canvas, _color, _value, _subValue) {
@@ -543,6 +539,6 @@ function clearAnalysis() {
 
 위 과정을 모두 거치면 클릭한 지점에 높이 정보를 표시하는 측정 기능이 완성됩니다.
 
-![](<../.gitbook/assets/altitude0000.png>)
+![](../.gitbook/assets/altitude0000.png)
 
 높이 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_altitude)를 클릭해 주세요
