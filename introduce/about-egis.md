@@ -1,6 +1,6 @@
 # About EGIS
 
-![](<../.gitbook/assets/aboutegis.png>)
+![](<../.gitbook/assets/aboutegis (4).png>)
 
 EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
@@ -31,5 +31,3 @@ EGIS는 4차 산업혁명에 발맞추어
 3차원 분석을 통해 입체적인 의사결정을 위한 솔루션을 제공하고 있습니다.
 
 {% embed url="https://www.youtube.com/watch?v=rbQfBviVTJA" %}
-
-EGIS의 Web API 솔루션 XDWorld에 대해 궁금하시다면? [여기](introduce.md)로 이동하세요.
