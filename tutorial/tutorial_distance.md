@@ -295,6 +295,8 @@ var GLOBAL = {
 
 측정 종료 후 데이터를 관리할 수 있도록 오브젝트 POI 수 및 측정 오브젝트 수를 관리합니다.
 
+
+
 ### step 1. 레이어 생성
 
 거리 측정 Icon 및 거리 값을 가시화 할 레이어를 생성합니다.
@@ -309,6 +311,8 @@ let layer = layerList.createLayer("MEASURE_POI", Module.ELT_3DPOINT);
 layer.setMaxDistance(20000.0);
 layer.setSelectable(false);
 ```
+
+
 
 ### step 2 - 1. CallBack 함수 설정
 
@@ -332,6 +336,8 @@ Module.getOption().callBackCompletePoint(endPoint); // 측정 종료(더블클�
 
 마우스 모드 설정 부분은 [step 3. 마우스모드 변경](tutorial\_distance.md#step-3.) 항목을 참조하세요.
 
+
+
 ### step 2 - 2. 거리측정 CallBack 함수 생성
 
 마우스 왼쪽 클릭 시 실행되는 CallBack함수입니다.
@@ -344,7 +350,7 @@ function addPoint(e) {
     // e 구성요소
     // dMidLon, dMidLat, dMidAlt : 이전 입력 된 지점과 현재 지점을 중점(경위 고도)
     // dLon, dLat, dAlt : 현재 입력 된 지점(경위 고도)
-    // dDistance		: 현재 점과 이전 점과의 길이
+    // dDistance	: 현재 점과 이전 점과의 길이
     // dTotalDistance	: 모든 점과의 길이
 	
     let partDistance = e.dDistance,
@@ -362,6 +368,8 @@ function addPoint(e) {
 }
 ```
 
+
+
 ### step 2 - 3. 거리측정 종료 CallBack 함수 생성
 
 마우스 더블 클릭 시 실행되는 CallBack함수입니다. 거리 측정을 종료합니다.
@@ -373,6 +381,8 @@ function endPoint(e) {
 }
 ```
 
+
+
 ### step 3. 마우스모드 변경
 
 거리측정을 위해서 마우스 모드를 변경합니다.
@@ -382,6 +392,8 @@ function endPoint(e) {
 ```javascript
 Module.XDSetMouseState(Module.MML_ANALYS_DISTANCE_STRAIGHT);
 ```
+
+
 
 ### step 4 - 1. 거리 Icon 생성
 
@@ -425,9 +437,11 @@ function drawIcon(_canvas, _color, _value, _balloonType) {
 
 #### 누적 거리 표시 Icon 이미지
 
-![](<../.gitbook/assets/distance2.png>)
+![](../.gitbook/assets/distance2.png)
 
 * drawBalloon 함수([step 4-2. 거리 말풍선 Icon 생성](tutorial\_distance.md#step-4-2.-icon))와 setText([step 4-4. 거리 측정 결과 값 Icon 생성](tutorial\_distance.md#step-4-4.-icon)) 함수를 조합하여 둥근 형태의 텍스트 박스 이미지를 생성합니다.
+
+
 
 ### step 4 - 2. 거리 말풍선 Icon 생성
 
@@ -456,6 +470,8 @@ function drawBalloon(ctx, marginBottom, width, height, barWidth, barHeight, colo
 }
 ```
 
+
+
 ### step 4 - 3. 거리 사각형 Icon 생성
 
 반환 받은 중간 거리 값을 표시 할 수 있도록 둥근 사각 말풍선 이미지를 그립니다.
@@ -481,6 +497,8 @@ function drawRoundRect(ctx, x, y, width, height, radius, color) {
     return ctx;
 }
 ```
+
+
 
 ### step 4 - 4. 거리 측정 결과 값 Icon 생성
 
@@ -508,7 +526,9 @@ function setText(_ctx, _posX, _posY, _value) {
 }
 ```
 
-### step 4 - 5. 거리 측정 결과 값 m/km 텍스트로 변환
+
+
+### step 4 - 5. 거리 측정 단위(m/km) 텍스트 변환
 
 필요에 따라 반환 받은 거리 값을 m/km 텍스트로 변환합니다.
 
@@ -529,6 +549,8 @@ function setKilloUnit(_text, _meterToKilloRate, _decimalSize) {
     return _text;
 }
 ```
+
+
 
 ### step 5. 거리 객체 생성
 
@@ -582,6 +604,8 @@ JSSymbol을 사용하지 않고 간단히 이미지 데이터만을 등록하여
 
 이 과정은 [POI 생성하기](tutorial\_poi.md) 튜토리얼을 참조하세요.
 {% endhint %}
+
+
 
 ### step 6. 거리측정 초기화
 
