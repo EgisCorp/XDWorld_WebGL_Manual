@@ -6,19 +6,15 @@ description: 3DS 모델 파일을 사용하여 모델링 오브젝트 JSGhostSym
 
 지도 내에 모델 파일을 로드하고 오브젝트를 생성하여 필요한 위치에 배치하는 방법에 대하여 알아봅니다.
 
-
-
 각 모델 데이터는 [JSGhostSymbolMap](../object/jsghostsymbolmap.md) 에 저장하여 관리합니다.
 
 저장된 모델 데이터는 [JSGhostSymbol](../object/jsghostsymbol.md) 오브젝트에서 형상 정보로 활용됩니다.
 
 따라서 [JSGhostSymbol](../object/jsghostsymbol.md) 오브젝트를 생성하기 전에 [JSGhostSymbolMap](../object/jsghostsymbolmap.md) 에 모델 데이터가 먼저 입력 되어야 합니다.
 
-![](<../.gitbook/assets/ghostsymbol.png>)
+![](../.gitbook/assets/ghostsymbol.png)
 
 모델 정보가 지정된 [JSGhostSymbol](../object/jsghostsymbol.md) 오브젝트는 위치, 회전, 스케일 값을 자유롭게 지정할 수 있습니다.
-
-
 
 [JSGhostSymbol](../object/jsghostsymbol.md) 데이터는 아래 단계를 거쳐 가시화 됩니다.
 
@@ -26,8 +22,6 @@ description: 3DS 모델 파일을 사용하여 모델링 오브젝트 JSGhostSym
 2. 모델 텍스쳐 설정 (선택)
 3. 고스트 심볼 오브젝트 생성 및 설정
 4. 레이어 생성 후 오브젝트 저장
-
-
 
 아래는 [JSGhostSymbol](../object/jsghostsymbol.md) 오브젝트를 생성하는 전체 코드입니다.
 
@@ -101,7 +95,7 @@ format 속성의 경우 url 끝에 확장자 정보(.3ds)가 포함되어 있다
 
 함수 호출 시 파라미터로 모델 정보를 확인해 볼 수 있습니다.
 
-![](<../.gitbook/assets/ghostsymbol0.png>)
+![](../.gitbook/assets/ghostsymbol0.png)
 
 파라미터 속성 중 faceCount, faceTexture 정보는 다음 단계 모델 [텍스쳐 설정](tutorial\_ghostsymbol.md#step-2.) 에서 활용됩니다.
 
@@ -157,15 +151,15 @@ copyModel.setGhostSymbol("MY_MODEL");
 
 * 모델 중앙 원점
 
-|            scale = 1.0            |                    scale = 1.5                   |
-| :-------------------------------: | :----------------------------------------------: |
-| ![](../.gitbook/assets/ghostsymbol1.png) | ![](<../.gitbook/assets/ghostsymbol2.png>) |
+|                scale = 1.0               |                scale = 1.5               |
+| :--------------------------------------: | :--------------------------------------: |
+| ![](../.gitbook/assets/ghostsymbol1.png) | ![](../.gitbook/assets/ghostsymbol2.png) |
 
 * 모델 하단 원점
 
-|                   scale = 1.0                   |                scale = 1.5               |
-| :---------------------------------------------: | :--------------------------------------: |
-| ![](<../.gitbook/assets/ghostsymbol3.png>) | ![](<../.gitbook/assets/ghostsymbol4.png>) |
+|                scale = 1.0               |                scale = 1.5               |
+| :--------------------------------------: | :--------------------------------------: |
+| ![](../.gitbook/assets/ghostsymbol3.png) | ![](../.gitbook/assets/ghostsymbol4.png) |
 
 위 코드에서는 오브젝트가 하단부를중심으로 지면에 서 있을 수 있도록 모델의 높이의 절반만큼 원점 위치를 낮춥니다.
 
@@ -204,9 +198,9 @@ copyModel.setPosition(new Module.JSVector3D(129.126135, 35.170643, 5.807222));
 
 ### step 4. 레이어 생성 후 오브젝트 저장
 
-생성 후 설정이 끝난 오브젝트를 레이어에 저장합니다.&#x20;
+생성 후 설정이 끝난 오브젝트를 레이어에 저장합니다.
 
-레이어 타입은 Module.ELT\_GHOST\_3DSYMBOL 타입으로 설정합니다.
+레이어 타입은 ELT\_GHOST\_3DSYMBOL 타입으로 설정합니다.
 
 ```javascript
 var layerList = new Module.JSLayerList(true);
@@ -218,8 +212,6 @@ layer.addObject(line, 0);
 
 위 과정을 거친 3DS 파일 기반 고스트 심볼 오브젝트의 생성 결과입니다.
 
-![](<../.gitbook/assets/ghostsymbol5.png>)
-
-
+![](../.gitbook/assets/ghostsymbol5.png)
 
 고스트 심볼 오브젝트 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_ghost\_symbol\_edit)를 클릭해 주세요
