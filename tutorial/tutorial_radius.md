@@ -1,8 +1,8 @@
 # 반경 측정
 
-마우스 모드를 반경 측정 모드로 변경한 후 클릭 지점 반경을 측정합니다.&#x20;
+마우스 모드를 반경 측정 모드로 변경한 후 클릭 지점 반경을 측정합니다.
 
-첫번째 클릭 지점은 중점이 되고 두번째 클릭 지점까지 거리를 구하여 반지름을 형성합니다.&#x20;
+첫번째 클릭 지점은 중점이 되고 두번째 클릭 지점까지 거리를 구하여 반지름을 형성합니다.
 
 측정결과 값을 이벤트로 반환 받아 POI로 가시화 합니다.
 
@@ -269,6 +269,8 @@ function clearIcon() {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
+
+
 ### step 1. 레이어 생성
 
 반경 측정 Icon 및 반경 값을 가시화 할 레이어를 생성합니다.
@@ -307,7 +309,7 @@ function initEvent(canvas) {
 }
 ```
 
-Fire\_EventAddRadius 이벤트는 마우스 모드가 [MML\_ANALYS\_AREA\_CIRCLE](../etc/type-list.md#mouse-type-list)일 경우 발생합니다.
+Fire\_EventAddRadius 이벤트는 마우스 모드가 MML\_ANALYS\_AREA\_CIRCLE일 경우 발생합니다.
 
 
 
@@ -408,7 +410,7 @@ function setText(_ctx, _posX, _posY, _value) {
 
 
 
-### step 4 - 4. 반경 측정 결과 값 m/km 텍스트로 변환
+### step 4 - 4. 반경 측정 단위(m/km) 텍스트 변환
 
 반환 받은 반경 값을 m/km 텍스트로 변환합니다.
 
@@ -509,6 +511,6 @@ function clearAnalysis() {
 
 ## 결과 화면
 
-![](<../.gitbook/assets/radius.png>)
+![](../.gitbook/assets/radius.png)
 
 반경 측정 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=analysis\_measure\_radius)를 클릭해 주세요
