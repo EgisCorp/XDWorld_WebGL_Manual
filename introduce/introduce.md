@@ -6,7 +6,7 @@ description: EGIS의 3D GIS 엔진 XDWorld를 소개합니다!
 
 EGIS의 XDWorld는 WEBGL 기반 GIS 서비스를 지원하는 API를 제공하고 있습니다.
 
-![](<../.gitbook/assets/introduce.png>)
+![](../.gitbook/assets/introduce.png)
 
 ### 특징
 
@@ -24,6 +24,5 @@ EGIS의 XDWorld는 WEBGL 기반 GIS 서비스를 지원하는 API를 제공하�
 * 좌표계 설정변환, 레이어제어 등 편리한 공간 객체 관리 기능
 * 행성규모의 대용량 지형 및 위성, 항공영상 지형 Mapping 지원
 * 가시권, 일조권, 스카이라인 사선분석 등 다양한 분석 기능 제공
-* 3DS, ASE, OBJ 등 다양한 3차원 모델링 파일 불러오기 기능
-* KML, KMZ, GML 등 표준 포맷 지원
+* 3DS등 다양한 3차원 모델링 파일 불러오기 기능
 * 지구본 단위 V World 서비스에 다양한 MashUP 기능 제공
