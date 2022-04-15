@@ -1,12 +1,12 @@
 # Table of contents
 
-* [목차](README.md)
+* [About EGIS](README.md)
 
 ## 소개 <a href="#introduce" id="introduce"></a>
 
-* [About EGIS](introduce/about-egis.md)
 * [XDWorld API](introduce/introduce.md)
 * [시작하기](introduce/start.md)
+* [목차](introduce/readme.md)
 
 ## 튜토리얼 <a href="#tutorial" id="tutorial"></a>
 

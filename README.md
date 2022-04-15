@@ -1,93 +1,33 @@
-# 목차
+# About EGIS
 
-* [목차](./)
+![](<../.gitbook/assets/aboutegis (4).png>)
 
-## 소개
+EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
-* [About EGIS](introduce/about-egis.md)
-* [XDWorld API](introduce/introduce.md)
-* [시작하기](introduce/start.md)
+도시정보가 연계된 디지털 트윈 환경을 구축하여
 
-## 튜토리얼
+정부와 시민이 함께 도시문제를 고민하고 해결할 수 있는
 
-* [카메라 설정](broken-reference/)
-* [POI 생성하기](tutorial/tutorial\_poi.md)
-* [폴리곤 생성하기](tutorial/tutorial\_polygon.md)
-* [라인 생성하기](tutorial/tutorial\_line.md)
-* [모델 추가하기](tutorial/tutorial\_ghostsymbol.md)
-* [레이어 설정](broken-reference/)
-* [배경 지도 설정](broken-reference/)
-* [거리 측정](tutorial/tutorial\_distance.md)
-* [면적 측정](tutorial/tutorial\_area.md)
-* [높이 측정](tutorial/tutorial\_altitude.md)
-* [반경 측정](broken-reference/)
+다양한 스마트 시티 서비스 연구, 개발 전문기업입니다.
 
-## Map
+![](../.gitbook/assets/aboutegis0.png)
 
-* [JSMap](map/jsmap.md)
+가상세계를 현실과 동일하게 구축 및 모니터링하며
 
-## Layer
+미세먼지, 열섬, 도시개발, 화재, 풍수해 등 예상되는 도시문제를 시뮬레이션하고
 
-* [JSLayer](layer/jslayer.md)
-* [JSLayerList](layer/jslayerlist.md)
-* [JSImageryProvider](layer/jsImageryProvider.md)
+대안 마련을 통해 최적의 정책 의사 결정지원을 위한 스마트시티 서비스를 제공하며
 
-## Core
+또한 지구본에서 실내공간까지 규모의 제약없는 공간정보의 수집 및 가공, 분석으로
 
-* [Collection](core/collection.md)
-* [JSColor](core/jscolor.md)
-* [JSVector2D](core/jsvector2d.md)
-* [JSVector3D](core/jsvector3d.md)
-* [JSVec2Array](core/jsvec2array.md)
-* [JSVec3Array](core/jsvec3array.md)
+공간정보 가시화를 넘어 협업이 가능한 공간정보 가상화 서비스를 제공합니다.
 
-## Object
+![](../.gitbook/assets/aboutegis1.png)
 
-* [JSAntenna](object/jsantenna.md)
-* [JSArrow](object/jsarrow.md)
-* [JSBarGraph](object/jsbargraph.md)
-* [JSBarGraph3D](object/jsbargraph3d.md)
-* [JSBillboard](object/jsbillboard.md)
-* [JSColorGrid](object/jscolorgrid.md)
-* [JSColorGrid3D](object/jscolorgrid3d.md)
-* [JSColorPolygon](object/jscolorpolygon.md)
-* [JSGhostSymbol](object/jsghostsymbol.md)
-* [JSGhostSymbolMap](object/jsghostsymbolmap.md)
-* [JSLineString](object/jslinestring.md)
-* [JSMultiPoint](object/jsmultipoint.md)
-* [JSPipe](object/jspipe.md)
-* [JSPoint](object/jspoint.md)
-* [JSPointGraph](object/jspointgraph.md)
-* [JSPolygon](object/jspolygon.md)
-* [JSReal3D](object/jsreal3d.md)
-* [JSSurfaceGraph](object/jssurfacegraph.md)
-* [JSSymbol](object/jssymbol.md)
-* [JSTypoon](object/jstypoon.md)
-* [JSViewFrustum](object/jsviewfrustum.md)
+EGIS는 4차 산업혁명에 발맞추어
 
-## Analysis
+도시계획, 도시미기후, 재난재해, 스마트시티, 자연환경 등의 분야에
 
-* [JSAnalysis](analysis/jsanalysis.md)
-* [JSEditTerrain](analysis/jseditterrain.md)
-* [JSFlood](analysis/jsflood.md)
-* [JSGridAnal](analysis/jsgridanal.md)
-* [JSSightAnalysis](analysis/jssightanalysis.md)
-* [JSTransparency](analysis/jstransparency.md)
+3차원 분석을 통해 입체적인 의사결정을 위한 솔루션을 제공하고 있습니다.
 
-## Camera
-
-* [JSCamera](camera/jscamera.md)
-
-## Option
-
-* [JSControl](option/jscontrol.md)
-* [JSNavigationControl](option/jsnavigationcontrol.md)
-* [JSOption](option/jsoption.md)
-
-## ETC
-
-* [JSMath](etc/jsmath.md)
-* [JSProjection](etc/jsprojection.md)
-* [SOPObject](etc/sopobject.md)
-* [Type List](etc/type-list.md)
-* [Tag List](etc/tag-list.md)
+{% embed url="https://www.youtube.com/watch?v=rbQfBviVTJA" %}
