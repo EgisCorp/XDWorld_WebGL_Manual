@@ -20,13 +20,13 @@ var wmts = Module.WMTS();
 
 ## properties
 
-| Name            | Type                                                                          | Description              |
-| --------------- | ----------------------------------------------------------------------------- | ------------------------ |
-| provider        | [JSImageryProvider.Provider](JSImageryProvider.md#JSImageryProvider.provider) | 배경 영상 지도 타일링 정보설정.       |
-| zeroLevel       | string                                                                        | 배경 영상 지도 이미지 LOD.        |
-| quality         | string                                                                        | 배경 영상 지도 이미지 품질.         |
-| [JSImageryProvider.Layername](JSImageryProvider.md#JSImageryProvider.Layername)       | string                                                                        | 배경 영상 지도 레이어명.           |
-| zerolevelOffset | string                                                                        | 배경 영상 지도 이미지 LOD offset. |
+| Name                                                                            | Type                                                                          | Description              |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------ |
+| provider                                                                        | [JSImageryProvider.Provider](jsImageryProvider.md#jsimageryprovider.provider) | 배경 영상 지도 타일링 정보설정.       |
+| zeroLevel                                                                       | string                                                                        | 배경 영상 지도 이미지 LOD.        |
+| quality                                                                         | string                                                                        | 배경 영상 지도 이미지 품질.         |
+| [JSImageryProvider.Layername](jsImageryProvider.md#jsimageryprovider.layername) | string                                                                        | 배경 영상 지도 레이어명.           |
+| zerolevelOffset                                                                 | string                                                                        | 배경 영상 지도 이미지 LOD offset. |
 
 ### clear()
 
@@ -77,13 +77,13 @@ Module.WMTS().clear();
 
 > 배경 영상 지도 레이어명.
 
-| Name            | Type   | Attributes | Default | Description                           |
-| --------------- | ------ | ---------- | ------- | ------------------------------------- |
-| nomal      	  | string |            |         | 일반 지도.                |
-| terrain         | string |            |         | 지형 등고선 지도.                 |
-| vectorhybrid    | string |            |         | 벡터 하이브리드 지도.               |
-| satellitehybrid | string |            |         | 영상 하이브리드 지도.                 |
-| satellite 	  | string |            |         | 영상 지도.           |
+| Name            | Type   | Attributes | Default | Description  |
+| --------------- | ------ | ---------- | ------- | ------------ |
+| nomal           | string |            |         | 일반 지도.       |
+| terrain         | string |            |         | 지형 등고선 지도.   |
+| vectorhybrid    | string |            |         | 벡터 하이브리드 지도. |
+| satellitehybrid | string |            |         | 영상 하이브리드 지도. |
+| satellite       | string |            |         | 영상 지도.       |
 
 #### JSImageryProvider.Provider
 
