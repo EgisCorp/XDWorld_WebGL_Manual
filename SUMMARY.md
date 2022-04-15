@@ -2,9 +2,9 @@
 
 ## 소개 <a href="#introduce" id="introduce"></a>
 
-* [About EGIS](README.md)
-* [XDWorld API](introduce/introduce.md)
+* [XDWorld API](README.md)
 * [시작하기](introduce/start.md)
+* [About EGIS](<README (1).md>)
 
 ***
 

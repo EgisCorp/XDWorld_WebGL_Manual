@@ -4,8 +4,8 @@
 
 ## 소개
 
-* [About EGIS](./)
-* [XDWorld API](introduce/introduce.md)
+* [About EGIS](<README (1).md>)
+* [XDWorld API](./)
 * [시작하기](introduce/start.md)
 
 ## 튜토리얼
