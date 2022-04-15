@@ -1,4 +1,4 @@
-# 카메라 설정하기
+# 카메라 설정
 
 카메라 좌우회전, 상하회전, 화각, 높이, 이동, 시점변경을 설정할 수 있습니다.
 
@@ -7,7 +7,7 @@
 * 카메라 Fov: 화각
 * 카메라 Altitude: 고도
 
-![](<../.gitbook/assets/camera.png>)
+![](../.gitbook/assets/camera.png)
 
 ## 상하(Tilt) 회전
 
@@ -20,16 +20,16 @@
 ```javascript
 Module.getViewCamera().setTilt(90);	// 지형과 수직 (지형을 바라본다)
 Module.getViewCamera().setTilt(0);	// 지형과 수평
-Module.getViewCamera().setTilt(-90);// 지형과 수직 (지형을 등진다)
+Module.getViewCamera().setTilt(-90);    // 지형과 수직 (지형을 등진다)
 ```
 
 ## 좌우(Direct) 회전
 
-> 카메라 좌,우로 회전 (-180 ~ 180).
+> 카메라 좌,우로 회전 (-180 \~ 180).
 >
 > * 0 : 북쪽.
-> * -90 : 동쪽.
-> * -180, 180 : 남쪽.
+> * \-90 : 동쪽.
+> * \-180, 180 : 남쪽.
 > * 90 : 서쪽.
 
 ```javascript
