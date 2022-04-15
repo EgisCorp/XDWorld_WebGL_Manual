@@ -95,6 +95,8 @@ format 속성의 경우 url 끝에 확장자 정보(.3ds)가 포함되어 있다
 
 함수 호출 시 파라미터로 모델 정보를 확인해 볼 수 있습니다.
 
+![](../.gitbook/assets/image.png)
+
 파라미터 속성 중 faceCount, faceTexture 정보는 다음 단계 모델 [텍스쳐 설정](tutorial\_ghostsymbol.md#step-2.) 에서 활용됩니다.
 
 
