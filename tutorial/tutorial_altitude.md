@@ -4,11 +4,11 @@ description: 지도 내에서 해발고도, 상대고도를 측정하여 출력�
 
 # 높이 측정
 
-본 페이지에서는 지도의 마우스 모드를 높이 측정 모드로 변경한 후 클릭한 지점의 측정 결과를 POI로 가시화 하는 과정에 대하여 알아봅니다.
+본 페이지에서는 지도의 마우스 모드를 높이 측정 모드로 변경한 후 클릭한 지점의 측정 결과를 [JSPoint](../object/jspoint.md)로 가시화 하는 과정에 대하여 알아봅니다.
 
-#### 해발고도와 상대고도
+#### 해발고도와 지면고도
 
-높이는 기준점에 따라 해발고도, 상대고도 값이 주로 쓰입니다.
+높이는 기준점에 따라 해발고도, 지면고도 값이 주로 쓰입니다.
 
 ![](../.gitbook/assets/altitude00.png)
 
@@ -263,7 +263,7 @@ var GLOBAL = {
 
 레이어 타입에 대한 설명은 [여기](../etc/type-list.md)를 참조해 주십시오.
 
-```
+```javascript
 var layerList = new Module.JSLayerList(true);
 
 GLOBAL.Layer = layerList.createLayer("MEASURE_POI", Module.ELT_3DPOINT);
@@ -275,26 +275,27 @@ GLOBAL.Layer.setSelectable(false);
 
 ### step 2. 이벤트 등록
 
-엔진 내부에서 계산된 높이을 반환받기 위해 이벤트를 등록합니다.
+엔진 내부에서 계산된 높이를 반환 받기 위해 이벤트를 등록합니다.
 
-```
+```javascript
 function initEvent(canvas) {
-	canvas.addEventListener("Fire_EventAddAltitudePoint", function(e){
-
-		createPOI( new Module.JSVector3D(e.dLon, e.dLat, e.dAlt),
-				   "rgba(10, 10, 0, 0.5)",
-				   e.dGroundAltitude, e.dObjectAltitude );
-	});
+    canvas.addEventListener("Fire_EventAddAltitudePoint", function(e){
+        createPOI(
+            new Module.JSVector3D(e.dLon, e.dLat, e.dAlt),
+            "rgba(10, 10, 0, 0.5)",
+            e.dGroundAltitude, e.dObjectAltitude
+        );
+    });
 }
 ```
 
-Fire\_EventAddAltitudePoint 이벤트는 마우스 모드가 [MML\_ANALYS\_ALTITUDE](../etc/type-list.md#mouse-type-list) 일 경우 발생합니다.
+Fire\_EventAddAltitudePoint 이벤트는 마우스 모드가 MML\_ANALYS\_ALTITUDE 일 경우 발생합니다.
 
 마우스 모드를 설정하는 과정은 다음 단계 [step 3. 마우스모드](tutorial\_altitude.md#step-3.) 변경 항목을 참조하세요.
 
 마우스 모드를 변경한 후 지도를 클릭하면 이벤트를 통해 높이 정보가 이벤트 파라미터로 반환 됩니다.
 
-![](../.gitbook/assets/altitude3.png)
+![](../.gitbook/assets/ghostsymbol0.png)
 
 * dLon : 높이를 측정한 위치의 경도 값
 * dLat : 높이를 측정한 위치의 위도 값
@@ -302,11 +303,11 @@ Fire\_EventAddAltitudePoint 이벤트는 마우스 모드가 [MML\_ANALYS\_ALTIT
 * dGroundAltitude : 해발 고도 값. 지면을 클릭한 경우 dAlt 값과 동일한 값이 출력 될 것입니다.
 * dObjectAltitude : 지면고도 값
 
-위 이벤트 정보를 토대로 createPOI 함수에서 고도 정보를 출력하는 POI 오브젝트를 생성합니다.
+위 이벤트 정보를 토대로 createPOI 함수에서 고도 정보를 출력하는 [JSPoint](../object/jspoint.md) 오브젝트를 생성합니다.
 
-다음 과정은 POI 오브젝트를 생성하기 전 다양한 캔버스 그리기 함수에 대한 설명입니다.
+다음 과정은 [JSPoint](../object/jspoint.md) 오브젝트를 생성하기 전 다양한 캔버스 그리기 함수에 대한 설명입니다.
 
-POI 오브젝트 생성 단계를 바로 확인하시려면 [여기](tutorial\_altitude.md#step-5.)로 이동하십시오.
+[JSPoint](../object/jspoint.md) 오브젝트 생성 단계를 바로 확인하시려면 [여기](tutorial\_altitude.md#step-5.)로 이동하십시오.
 
 
 
@@ -437,7 +438,7 @@ function setText(_ctx, _posX, _posY, _strText) {
 
 ###
 
-### step 4 - 5. 높이 측정 결과 값 m/km 텍스트로 변환
+### step 4 - 5. 높이 측정 단위(m/km) 텍스트 변환
 
 필요에 따라 반환 받은 높이 값을 m/km 텍스트로 변환합니다.
 
