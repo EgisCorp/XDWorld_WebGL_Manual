@@ -88,7 +88,6 @@
 
 ## ETC
 
-* [EVENT (edit)](etc/event-edit.md)
 * [JSMath](etc/jsmath.md)
 * [JSProjection](etc/jsprojection.md)
 * [SOPObject](etc/sopobject.md)
