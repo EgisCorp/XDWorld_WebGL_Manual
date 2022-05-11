@@ -1,0 +1,182 @@
+
+
+## setConnectionWMS\( string \_url, number \_port, string \_option \) -&gt; **\(** boolean **\)**
+
+> WMS 연결 옵션을 설정합니다.
+>
+> WMS 연결 URL 구성 요소.
+>
+> WMS는 서비스 레이어
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Contents |
+| :--- | :--- | :--- |
+| \_url | string | GeoServer 해당 레이어 URL. |
+| ~~\_port~~ | ~~number~~ | ~~통신 포트 번호.~~ |
+| ~~\_option~~ | ~~string~~ | ~~GeoServer 레이어 옵션.~~ |
+
+* Return
+  * TRUE : WMS 연결 옵션 설정 성공
+  * FALSE : WMS 연결 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+## clearWMSCache\( \)
+
+> WMS 레이어 삭제
+>
+> 가시화 된 WMS 이미지 정보를 삭제 합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+* Input, Output 정보 없음
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+## setWMSTransparent\( boolean \_option \)
+
+> WMS 가시화 옵션을 설정
+>
+> WMS 연결 URL 구성 요소.
+>
+> WMS 투명 처리 옵션 설정
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Contents |
+| :--- | :--- | :--- |
+| \_option | boolean | WMS 투명 설정. |
+
+* Detail
+  * \_move Type
+    * TRUE : 이미지 반투명 출력\(영상 이미지 + WMS 이미지\)
+    * FALSE : 이미지 불투명 출력\(WMS 이미지\)
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+## setLayersWMS\( string \_layername \) -&gt; **\(** boolean **\)**
+
+> WMS 가시화 옵션을 설정
+>
+> WMS 연결 URL 구성 요소.
+>
+> GoeServer 요청 레이어 명칭 설정
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Contents |
+| :--- | :--- | :--- |
+| \_layername | string | WMS 요청 레이어 명칭 설정. |
+
+* Return
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+## setLevelWMS\( number \_minlevel, number \_maxlevel \) -&gt; **\(** boolean **\)**
+
+> WMS 가시화 옵션을 설정
+>
+> WMS 연결 URL 구성 요소.
+>
+> GoeServer 요청 레벨 범위 설정
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Contents |
+| :--- | :--- | :--- |
+| \_minlevel | number | WMS 요청 가시화 최소 레벨 설정. |
+| \_maxlevel | number | WMS 요청 가시화 최대 레벨 설정. |
+
+* Return
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+## setTileSizeWMS\( number \_size \) -&gt; **\(** boolean **\)**
+
+> WMS 가시화 옵션을 설정
+>
+> WMS 연결 URL 구성 요소.
+>
+> GoeServer 요청 이미지 사이즈 설정
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Contents |
+| :--- | :--- | :--- |
+| \_size | number | WMS 요청 이미지 사이즈\(가로 세로 정사각형 비율\). |
+
+* Return
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+## setStylesWMS\( number \_size \) -&gt; **\(** boolean **\)**
+
+> WMS 가시화 옵션을 설정
+>
+> WMS 연결 URL 구성 요소.
+>
+> GoeServer 요청 스타일 설정
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Contents |
+| :--- | :--- | :--- |
+| \_size | number | WMS 요청 이미지 사이즈\(가로 세로 정사각형 비율\). |
+
+* Return
+  * TRUE : WMS 가시화 옵션 설정 성공
+  * FALSE : WMS 가시화 옵션 설정 실패
+    * 옵션 설정 실패 조건
+      * 사용자 레이어 인 경우
+* Code
+
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
