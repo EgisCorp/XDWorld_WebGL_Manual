@@ -4,6 +4,7 @@ description: Fire_이벤트 정리
 
 # EVENT
 
+## 기본 Event 
 > HTML Canvas 이벤트 등록으로 엔진과 연동되는 이벤트
 
 ```javascript
@@ -23,6 +24,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | 3     | Fire\_JSEventResize       | 캔버스 리사이즈 시 이벤트    |
 | 4     | Fire\_EventAddRadius      | 수직 평면 반경 생성 시 이벤트 |
 
+## Gost Symbol Event 
 > 고스트 심볼 이벤트 등록으로 엔진과 연동되는 이벤트
 
 ```javascript
