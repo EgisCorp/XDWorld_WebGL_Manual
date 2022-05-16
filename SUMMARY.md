@@ -73,6 +73,7 @@
 * [ETC](etc/etc.md)
   * [JSMath](etc/jsmath.md)
   * [JSProjection](etc/jsprojection.md)
+  * [EVENT](etc/event.md)
   * [SOPObject](etc/sopobject.md)
   * [Type List](etc/type-list.md)
   * [Tag List](etc/tag-list.md)

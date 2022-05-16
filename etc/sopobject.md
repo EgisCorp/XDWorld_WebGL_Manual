@@ -2,7 +2,7 @@
 description: Object를 생성하는 API를 제공합니다.
 ---
 
-# SOPObject
+# SOPObject(추후 삭제 예정 API)
 
 > Module.getAddObject API 생성.
 
