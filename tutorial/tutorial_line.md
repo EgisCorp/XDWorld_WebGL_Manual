@@ -45,8 +45,6 @@ function createLine() {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
-
-
 ### step 1. 라인 오브젝트 생성
 
 Module을 통해 [JSLineString](../object/jslinestring.md) 타입의 라인 오브젝트를 생성합니다.
@@ -56,8 +54,6 @@ var polygon = Module.createPolygon("MY_LINE");
 ```
 
 오브젝트 키 값은 오브젝트를 구분하는 값으로 같은 레이어 내 중복되지 않도록 입력합니다.
-
-
 
 ### step 2. 라인 형태 및 속성 지정
 
@@ -88,9 +84,9 @@ line.createbyJson({
 
 라인의 형태를 설정합니다. 실선, 점선, 화살표 등 여러 라인 타입을 설정할 수 있습니다.
 
-|            실선 (type : 0)           |            점선 (type : 3)           |           화살표 (type : 4)           |
-| :--------------------------------: | :--------------------------------: | :--------------------------------: |
-| ![](../.gitbook/assets/lines0.png) | ![](../.gitbook/assets/lines1.png) | ![](../.gitbook/assets/lines2.png) |
+|                 실선 (type : 0)                |            점선 (type : 3)           |           화살표 (type : 4)           |
+| :------------------------------------------: | :--------------------------------: | :--------------------------------: |
+| ![](<../.gitbook/assets/lines0 (1) (1).png>) | ![](../.gitbook/assets/lines1.png) | ![](../.gitbook/assets/lines2.png) |
 
 #### union
 
@@ -114,7 +110,7 @@ RTT(Render To Texture) 방식을 선택한다면 라인은 지형 텍스쳐 위�
 
 false로 설정하는 경우 가려짐과 상관 없이 레이어 순서에 따라 오브젝트가 그려집니다.
 
-![](<../.gitbook/assets/lines6 (1).png>)
+![](../.gitbook/assets/lines6.png)
 
 #### color
 
@@ -123,8 +119,6 @@ false로 설정하는 경우 가려짐과 상관 없이 레이어 순서에 따�
 #### width
 
 라인의 두께를 설정합니다.
-
-
 
 ### step 3. 레이어 생성 후 라인 저장
 
