@@ -170,9 +170,9 @@ skymap.quality = "middle";
 skymap.zerolevelOffset = 1;
 ```
 
-## Layername
+## 9. 레이어 타입 명칭
 
-> 배경 영상 지도 레이어명.
+> .layername Tag 설정 명칭 목록.
 
 | Name            | Type   | Description  |
 | --------------- | ------ | ------------ |

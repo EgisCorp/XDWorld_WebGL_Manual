@@ -69,8 +69,6 @@ function createGhostSymbol() {
 
 이어서 코드의 세부 단계에 대해 알아봅니다.
 
-
-
 ### step 1. 고스트 심볼 맵에 모델 데이터 로드
 
 Module의 getGhostSymbolMap호출하여 [JSGhostSymbolMap](../object/jsghostsymbolmap.md) API 객체를 반환 받은 후 [insert](../object/jsghostsymbolmap.md#insert-option-string) API로 모델 데이터를 등록합니다.
@@ -99,8 +97,6 @@ format 속성의 경우 url 끝에 확장자 정보(.3ds)가 포함되어 있다
 
 파라미터 속성 중 faceCount, faceTexture 정보는 다음 단계 모델 [텍스쳐 설정](tutorial\_ghostsymbol.md#step-2.) 에서 활용됩니다.
 
-
-
 ### step 2. 모델 텍스쳐 설정 (선택)
 
 모델은 형상 정보 뿐만 아니라 텍스쳐 이미지도 함께 제공되는 경우가 많습니다.
@@ -120,8 +116,6 @@ ghostSymbolMap.setModelTexture({
 ```
 
 insert API와 동일하게 비동기로 파일이 요청되고 텍스쳐 지정 완료 시 지정한 콜백 함수가 호출됩니다.
-
-
 
 ### step 3. 고스트 심볼 오브젝트 생성 및 설정
 
@@ -194,8 +188,6 @@ copyModel.setScale(new Module.JSSize3D(1.5, 1.5, 1.5));
 copyModel.setPosition(new Module.JSVector3D(129.126135, 35.170643, 5.807222));
 ```
 
-
-
 ### step 4. 레이어 생성 후 오브젝트 저장
 
 생성 후 설정이 끝난 오브젝트를 레이어에 저장합니다.
@@ -208,7 +200,7 @@ layer = layerList.createLayer("GHOST_SYMBOL_LAYER", Module.ELT_GHOST_3DSYMBOL);
 layer.addObject(line, 0);
 ```
 
-## 라인 생성 결과
+## 모델 생성 결과
 
 위 과정을 거친 3DS 파일 기반 고스트 심볼 오브젝트의 생성 결과입니다.
 
