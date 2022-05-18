@@ -61,7 +61,7 @@ function createGhostSymbol() {
             // 4. 레이어 생성 후 오브젝트 저장
             var layerList = new Module.JSLayerList(true);
             layer = layerList.createLayer("GHOST_SYMBOL_LAYER", Module.ELT_GHOST_3DSYMBOL);
-            layer.addObject(line, 0);
+            layer.addObject(copyModel, 0);
         }
     });
 }
