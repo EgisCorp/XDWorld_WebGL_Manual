@@ -127,7 +127,7 @@ let result = Module.getMath().calculationSlopeAnalysis(slop);
 
 #### JSMath.BezierLine
 
-> 경위도 좌표 목록 정보를 포물선 변환 옵션.
+> 경위도 좌표 목록 정보를 포물선 곡선 변환 옵션.
 
 | Name    | Type                                | Attributes | Default | Description                              |
 | ------- | ----------------------------------- | ---------- | ------- | ---------------------------------------- |
