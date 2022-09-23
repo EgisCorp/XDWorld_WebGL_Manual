@@ -10,7 +10,7 @@ description: 지형 설정 및 제어 기능 API.
 var map = Module.getTerrain();
 ```
 
-### makeTerrainElevationCellData(option) → string
+### makeTerrainElevationCellData(option) → option
 
 > 입력 정점 좌표를 기준으로 Grid Cell 데이터 생성 및 반환.
 >
