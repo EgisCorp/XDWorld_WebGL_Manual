@@ -80,6 +80,41 @@ let parameters = {
 {% endtab %}
 {% endtabs %}
 
+### calculationSlopeAnalysis(options) → object
+
+> 3*3(0 배열 좌상단 9 배열 우하단) 배열값을 통한 경사 분석 결과 반환.
+> 
+> argument 변수로 정점 리스트 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type                                             | Description  |
+| ------ | ------------------------------------------------ | ------------ |
+| option | [JSMath.SlopeOption](jsmath.md#jsmath.slopeoption) | 경사분석 속성 정보. |
+
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let slop = {
+	type: "TERRAIN_DIRECTION_ANGLE",
+	array: [
+		101, 92, 85,
+		101, 92, 85,
+		101, 91, 84,
+	],
+	vertical: 10,
+	horizontal: 10
+}
+let result = Module.getMath().calculationSlopeAnalysis(slop);
+```
+{% endtab %}
+{% endtabs %}
+
 ### Type Definitions
 
 #### JSMath.BezierCurve
@@ -92,7 +127,7 @@ let parameters = {
 
 #### JSMath.BezierLine
 
-> 태풍 영향권 오브젝트 생성 옵션
+> 경위도 좌표 목록 정보를 포물선 변환 옵션.
 
 | Name    | Type                                | Attributes | Default | Description                              |
 | ------- | ----------------------------------- | ---------- | ------- | ---------------------------------------- |
@@ -101,3 +136,14 @@ let parameters = {
 | detail  | number                              | optional   | 50      | 곡선 생성 보간 점 수.                            |
 | height  | number                              | optional   | 100     | 곡선 최대 높이.                                |
 | percent | number                              | optional   | 50      | 시작 위치 0%, 끝 위치 100% 기준으로 곡선 최대 높이 지점 설정. |
+
+#### JSMath.SlopeOption
+
+> 경사 분석 설정 옵션.
+
+| Name    | Type                                | Attributes | Default | Description                              |
+| ------- | ----------------------------------- | ---------- | ------- | ---------------------------------------- |
+| type     | string |            |       | 경사분석 옵션(TERRAIN_ANGLE, TERRAIN_DIRECTION, TERRAIN_DIRECTION_ANGLE).   |
+| array  | array                              |    |       | 경사분석을 위한 [3*3] 해발고도 배열.|
+| vertical | number                              | optional   | 5      | 경사도 분석에 필요한 Cell 세로 길이(단위 : m). |
+| horizontal  | number                              | optional   | 5    | 경사도 분석에 필요한 Cell 세로 길이(단위 : m).|
