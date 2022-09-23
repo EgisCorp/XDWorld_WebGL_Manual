@@ -1,6 +1,6 @@
 # About EGIS
 
-![](<.gitbook/assets/aboutegis (1) (1) (1).png>)
+![](<.gitbook/assets/aboutegis (1) (1) (2).png>)
 
 EGIS는 복잡한 도시문제를 선제적으로 대응하기 위해
 
