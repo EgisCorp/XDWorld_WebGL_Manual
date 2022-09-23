@@ -25,7 +25,7 @@ var map = Module.getTerrain();
 * Return
   * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
   * .name : 동작 API 명칭.
-  * .return : API 반환 정보 ( [JSTerrain.GridData](jsterrain.md#jsterrain.gridData) : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
+  * .return : API 반환 정보 ( [JSTerrain.GridData](jsterrain.md#jsterrain.griddata) : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
 
 {% endtab %}
 
@@ -67,25 +67,25 @@ let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 
 > Grid 반환 정보.
 
-| Name | Type | Attributes | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| min | [JSVector2D](../core/jsvector2d.md) |  |  | Grid 좌하단 경위도 좌표. |
-| max | [JSVector2D](../core/jsvector2d.md) |	|  | Grid 우상단 경위도 좌표. |
-| center | [JSVector2D](../core/jsvector2d.md) |  |  | Grid 중심 경위도 좌표. |
-| vertical | number |  |  | Grid를 구성하는 Cell 세로 길이(단위 : m). |
-| verticalCount | number |  |  | Grid를 구성하는 Cell 세로 개수. |
-| horizontal | number |  |  | Grid를 구성하는 Cell 가로 길이(단위 : m). |
-| horizontalCount | number |  |  | Grid를 구성하는 Cell 가로 개수. |
-| cells | [JSTerrain.CellData](jsterrain.md#jsterrain.celldata) |  |  | Grid를 구성하는 Cell 정보 배열. |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| min | [JSVector2D](../core/jsvector2d.md) | Grid 좌하단 경위도 좌표. |
+| max | [JSVector2D](../core/jsvector2d.md) | Grid 우상단 경위도 좌표. |
+| center | [JSVector2D](../core/jsvector2d.md) | Grid 중심 경위도 좌표. |
+| vertical | number | Grid를 구성하는 Cell 세로 길이(단위 : m). |
+| verticalCount | number | Grid를 구성하는 Cell 세로 개수. |
+| horizontal | number | Grid를 구성하는 Cell 가로 길이(단위 : m). |
+| horizontalCount | number | Grid를 구성하는 Cell 가로 개수. |
+| cells | [JSTerrain.CellData](jsterrain.md#jsterrain.celldata) | Grid를 구성하는 Cell 정보 배열. |
 
 #### JSTerrain.CellData
 
 > Grid를 구성하는 Cell 데이터 정보.
 
-| Name | Type | Attributes | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| type | boolean |  |  | 분석 영역 포함 유무. |
-| elevation | number |  |  | Cell 중심 경위도 좌표의 해발고도. |
-| min | [JSVector2D](../core/jsvector2d.md) |  |  | Cell 좌하단 경위도 좌표. |
-| max | [JSVector2D](../core/jsvector2d.md) |	|  | Cell 우상단 경위도 좌표. |
-| center | [JSVector2D](../core/jsvector2d.md) |  |  | Cell 중심 경위도 좌표. |
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| type | boolean | 분석 영역 포함 유무. |
+| elevation | number | Cell 중심 경위도 좌표의 해발고도. |
+| min | [JSVector2D](../core/jsvector2d.md) | Cell 좌하단 경위도 좌표. |
+| max | [JSVector2D](../core/jsvector2d.md) | Cell 우상단 경위도 좌표. |
+| center | [JSVector2D](../core/jsvector2d.md) | Cell 중심 경위도 좌표. |

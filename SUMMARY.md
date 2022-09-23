@@ -23,7 +23,7 @@
   * [반경 측정](tutorial/tutorial\_radius.md)
 * [Map](map/map.md)
   * [JSMap](map/jsmap.md)
-  * [JSMap](map/jsterrain.md)
+  * [JSTerrain](map/jsterrain.md)
 * [Layer](layer/layer.md)
   * [JSLayer](layer/jslayer.md)
   * [JSLayerList](layer/jslayerlist.md)
