@@ -58,7 +58,7 @@ let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 > Grid 기본 설정 옵션.
 
 | Name | Type | Attributes | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| :--- | :--- | :- | :- | :--- |
 | option | [coordinates Type](tag-list.md#coordinate-type-list) |  |  | 분석 영역 경위도 좌표 목록, 좌표 목록 타입 설정. |
 | vertical | number | optional | 5 | Grid를 구성하는 Cell 세로 길이(단위 : m). |
 | horizontal | number | optional | 5 | Grid를 구성하는 Cell 가로 길이(단위 : m). |
@@ -68,7 +68,7 @@ let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 > Grid 반환 정보.
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
+| :--- | :-- | :--- |
 | min | [JSVector2D](../core/jsvector2d.md) | Grid 좌하단 경위도 좌표. |
 | max | [JSVector2D](../core/jsvector2d.md) | Grid 우상단 경위도 좌표. |
 | center | [JSVector2D](../core/jsvector2d.md) | Grid 중심 경위도 좌표. |
@@ -83,7 +83,7 @@ let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 > Grid를 구성하는 Cell 데이터 정보.
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
+| :--- | :-- | :--- |
 | type | boolean | 분석 영역 포함 유무. |
 | elevation | number | Cell 중심 경위도 좌표의 해발고도. |
 | min | [JSVector2D](../core/jsvector2d.md) | Cell 좌하단 경위도 좌표. |
