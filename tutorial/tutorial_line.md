@@ -86,7 +86,7 @@ line.createbyJson({
 
 |                     실선 (type : 0)                    |            점선 (type : 3)           |           화살표 (type : 4)           |
 | :--------------------------------------------------: | :--------------------------------: | :--------------------------------: |
-| ![](<../.gitbook/assets/lines0 (1) (1) (1) (1).png>) | ![](../.gitbook/assets/lines1.png) | ![](../.gitbook/assets/lines2.png) |
+| ![](<../.gitbook/assets/lines0 (1) (1) (1) (2).png>) | ![](../.gitbook/assets/lines1.png) | ![](../.gitbook/assets/lines2.png) |
 
 #### union
 
@@ -110,7 +110,7 @@ RTT(Render To Texture) 방식을 선택한다면 라인은 지형 텍스쳐 위�
 
 false로 설정하는 경우 가려짐과 상관 없이 레이어 순서에 따라 오브젝트가 그려집니다.
 
-![](../.gitbook/assets/lines6.png)
+![](<../.gitbook/assets/lines6 (1).png>)
 
 #### color
 
