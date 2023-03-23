@@ -76,7 +76,7 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| option | [JSLayerList.CreateObjectLayerOptions](jslayerlist.md#jslayerlist.createobjectlayeroptions) | 레이어 생성 속성 정보 |
+| option | [CreateObjectLayerOptions](jslayerlist.md#createobjectlayeroptions) | 레이어 생성 속성 정보 |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
@@ -170,7 +170,7 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| option | [JSLayerList.CreateServerLayerOptions](jslayerlist.md#jslayerlist.createserverlayeroptions) | 레이어 생성 속성 정보 |
+| option | [CreateServerLayerOptions](jslayerlist.md#createserverlayeroptions) | 레이어 생성 속성 정보 |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
@@ -594,7 +594,7 @@ layerList.setVisible(“HybridLoad”, false);
 
 ### Type Definitions
 
-#### JSLayerList.CreateObjectLayerOptions
+#### CreateObjectLayerOptions
 
 > 오브젝트 레이어 생성 옵션.
 
@@ -607,7 +607,7 @@ layerList.setVisible(“HybridLoad”, false);
 | minDistance | number                                              | optional   | 0.0     | 레이어 최소 가시범위 거리를 설정.      |
 | maxDistance | number                                              | optional   | 3000.0  | 레이어 최대 가시범위 거리를 설정.      |
 
-#### JSLayerList.CreateServerLayerOptions
+#### CreateServerLayerOptions
 
 > 서비스 레이어 생성 옵션.
 
