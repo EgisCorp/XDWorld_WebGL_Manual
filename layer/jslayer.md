@@ -4,14 +4,26 @@ description: 지도 내 객체를 관리하는 API.
 
 # JSLayer
 
-> Module createTypoon API로 생성할 수 있습니다.
+> Module createLayer API로 생성할 수 있습니다.
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
-let layer = layerList.createLayer(layername);
+let layer = layerList.createLayer("레이어 명칭");
 ```
 
-### addObject(object, level)
+## properties
+
+| Name                    | Type    | Description                                      |
+| :---------------------- | :------ | :----------------------------------------------- |
+| altitude_offset         | number  | 포인트클라우드, 드론LOD 데이터 실시간 높이 설정. |
+| lod_object_alpha        | number  | 서비스 레이어 속성 색상 알파값 설정.             |
+| lod_object_detail_ratio | number  | 서비스 레이어 객체 가시화 거리 비율 설정.        |
+| serverURL               | string  | 요청 서버 url 반환.                              |
+| simple_real3d           | boolean | 건물 객체 심플모드 설정.                         |
+| text_character_set      | string  | 레이어 텍스트 문자셋 값 설정.                    |
+| tile_load_ratio         | number  | 서비스 레이어 가시화 거리 비율 설정.             |
+
+### addObject(objec t, level)
 
 > 해당 사용자 레이어 객체 추가.
 >
