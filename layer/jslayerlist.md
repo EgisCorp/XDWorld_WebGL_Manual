@@ -192,6 +192,9 @@ let layer = Module.getObjectLayerList().createObjectLayer({
 });
 ```
 
+{% endtab %}
+{% endtabs %}
+
 ### delLayerAtFirst() → boolean
 
 > 레이어 삭제.
