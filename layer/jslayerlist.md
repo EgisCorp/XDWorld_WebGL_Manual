@@ -12,6 +12,8 @@ let userlayer = new Module.JSLayerList(true); // 사용자 레이어 반환
 let serverlayer = new Module.JSLayerList(false); // 서비스 레이어 반환
 ```
 
+## Function
+
 ### count() → number
 
 > 전체 레이어 갯수 반환.
@@ -597,8 +599,6 @@ layerList.setVisible(“HybridLoad”, false);
 
 {% endtab %}
 {% endtabs %}
-
-## getter / setter
 
 ## Type Definitions
 

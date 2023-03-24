@@ -15,7 +15,7 @@ let layerList = new Module.JSLayerList(true);
 let layer = layerList.createLayer("레이어 명칭");
 ```
 
-## properties
+## Properties
 
 | Name                    | Type    | Description                                      |
 | ----------------------- | ------- | ------------------------------------------------ |
@@ -26,6 +26,8 @@ let layer = layerList.createLayer("레이어 명칭");
 | simple_real3d           | boolean | 건물 객체 심플모드 설정.                         |
 | text_character_set      | string  | 레이어 텍스트 문자셋 값 설정.                    |
 | tile_load_ratio         | number  | 서비스 레이어 가시화 거리 비율 설정.             |
+
+## Function
 
 ### addObject(object, level)
 
@@ -536,7 +538,7 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-## getter / setter
+## Getter / Setter
 
 ### getAlpha(), setAlpha(alpha) → number
 
