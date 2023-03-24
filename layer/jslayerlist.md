@@ -600,7 +600,7 @@ layerList.setVisible(“HybridLoad”, false);
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+## Type Definitions
 
 #### CreateObjectLayerOptions
 
