@@ -180,8 +180,7 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 {% tab title="Template" %}
 
 ```javascript
-let layer = Module.getObjectLayerList().createObjectLayer({
-    Module.getTileLayerList().createXDServerLayer({
+let layer = Module.getTileLayerList().createXDServerLayer({
     name: "레이어 명칭",
     url: "요청 서버 주소",
     type: "레이어 타입",

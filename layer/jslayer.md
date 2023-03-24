@@ -5,6 +5,10 @@ description: 지도 내 객체를 관리하는 API.
 # JSLayer
 
 > Module createLayer API로 생성할 수 있습니다.
+>
+> Module createObjectLayer API로 사용자 레이어를 생성할 수 있습니다.
+>
+> Module createXDServerLayer API로 서비스 레이어를 생성할 수 있습니다.
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -23,7 +27,7 @@ let layer = layerList.createLayer("레이어 명칭");
 | text_character_set      | string  | 레이어 텍스트 문자셋 값 설정.                    |
 | tile_load_ratio         | number  | 서비스 레이어 가시화 거리 비율 설정.             |
 
-### addObject(objec t, level)
+### addObject(object, level)
 
 > 해당 사용자 레이어 객체 추가.
 >
@@ -324,41 +328,6 @@ layer.removeAtIndex(0);
 
 {% endtab %}{% endtabs %}
 
-### setEditable(edit) → boolean
-
-> 해당 레이어에서 편집 레이어 설정.
->
-> 엔진 내부에서 생성되는 객체를 관리하는 레이어.
->
-> 사용자 레이어만 가능.
->
-> 편집레이어 변경 시 기존 편집레이어는 일반레이어로 변경.
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| edit | boolean | <p>true인 경우 편집레이어로 설정<br>false인 경우 일반레이어로 설정.</p> |
-
--   Return
-    -   true : 편집 레이어 설정 성공.
-    -   false : 편집 레이어 설정 실패.
-        -   편집 레이어 설정 실패 조건
-            -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
--   Sample
-    -   function initSamplePage 참조.
-    -   [샌드박스\_도형 생성](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
 ### setLODRatio(ratio)
 
 > 해당 레이어 가시화 범위 설정
@@ -377,31 +346,6 @@ layer.removeAtIndex(0);
     -   function init 참조.
     -   [샌드박스\_포물선 라인](http://sandbox.dtwincloud.com/code/main.do?id=object_line_arc)
         {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setSelectable(type)
-
-> 해당 레이어 선택 설정.
->
-> 해당 레이어를 구성하는 객체 선택 이벤트 설정.
->
-> 사용자, 서비스 레이어에서 사용 가능.
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| type | boolean | <p>true인 경우 선택 이벤트 동작.<br>false인 경우 선택 이벤트 금지.</p> |
-
-{% endtab %}
 
 {% tab title="Template" %}
 
@@ -509,74 +453,6 @@ layer.removeAtIndex(0);
 {% endtab %}
 {% endtabs %}
 
-### setMinDistance(distance) → boolean
-
-> 레이어 가시 범위 설정.
->
-> 레이어 최소 가시범위 거리를 설정.
->
-> 사용자 레이어만 가능.
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| distance | number | 레이어 최소 가시범위 거리(m단위). |
-
--   Return
-    -   true : 최소 가시 범위 설정 성공.
-    -   false : 최소 가시 범위 설정 실패.
-        -   최소 가시 범위 실패 조건.
-            -   최소 가시 범위가 최대 가시 범위보다 큰 경우.
-            -   서비스 레이어 일 경우 setLODRatio 사용.
--   Sample
-    -   function showGrid 참조.
-    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setMaxDistance(distance) → boolean
-
-> 레이어 가시 범위 설정
->
-> 레이어 최대 가시범위 거리를 설정.
->
-> 사용자 레이어만 가능.
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| distance | number | 레이어 최대 가시범위 거리(m단위). |
-
--   Return
-    -   true : 최대 가시 범위 설정 성공.
-    -   false : 최대 가시 범위 설정 실패.
-        -   최대 가시 범위 실패 조건.
-            -   최대 가시 범위가 최소 가시 범위보다 작은 경우.
-            -   서비스 레이어 일 경우 setLODRatio 사용.
--   Sample
-    -   function showGrid 참조.
-    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
 ### setWMSProvider(option) → string
 
 > WMS 레이어 생성
@@ -622,36 +498,6 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### setBBoxOrder(type)
-
-> WMS 서비스 레이어 옵션 설정.
->
-> 지오 서버로 요청하는 좌표 정보 가시화 옵션 설정.
->
-> WMS 레이어에서 사용 가능
->
-> type 입력 값에 따른 좌표 정보 true(BBOX=minx,miny,maxx,maxy), false(BBOX=minY,minX,maxY,maxX).
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| type | boolean | 좌표 옵션 설정. |
-
--   Sample
-    -   function createLayerWMS 참조.
-    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
 ### setProxyRequest(type)
 
 > 레이어 프록시 사용 설정.
@@ -676,6 +522,378 @@ let slopeoption = {
     -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
         {% endtab %}
 
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+## getter / setter
+
+### getViewLimit(), setViewLimit() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxLevel(), setMaxLevel() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTimeSpeed(), setTimeSpeed() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTimeSeriesCount(), setTimeSeriesCount() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectHorizontal(), setObjectHorizontal() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectVertical(), setObjectVertical() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectHeight(), setObjectHeight() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getUnion(), setUnion() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getName(), setName() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getAlpha(), setAlpha() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxDistance(), setMaxDistance(distance) → number
+
+> 레이어 가시 범위 설정
+>
+> 레이어 최대 가시범위 거리를 설정.
+>
+> 사용자 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| distance | number | 레이어 최대 가시범위 거리(m단위). |
+
+-   최대 가시 범위 실패 조건.
+    -   최대 가시 범위가 최소 가시 범위보다 작은 경우.
+    -   서비스 레이어 일 경우.
+-   Sample - function showGrid 참조. - [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+    {% endtab %}
+    {% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMinDistance(), setMinDistance(distance) → number
+
+> 레이어 가시 범위 설정.
+>
+> 레이어 최소 가시범위 거리를 설정.
+>
+> 사용자 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| distance | number | 레이어 최소 가시범위 거리(m단위). |
+
+-   최소 가시 범위 실패 조건.
+    -   최소 가시 범위가 최대 가시 범위보다 큰 경우.
+    -   서비스 레이어 일 경우.
+-   Sample - function showGrid 참조. - [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+    {% endtab %}
+    {% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getEditable(), setEditable(edit) → boolean
+
+> 해당 레이어에서 편집 레이어 설정.
+>
+> 엔진 내부에서 생성되는 객체를 관리하는 레이어.
+>
+> 사용자 레이어만 가능.
+>
+> 편집레이어 변경 시 기존 편집레이어는 일반레이어로 변경.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| edit | boolean | <p>true인 경우 편집레이어로 설정<br>false인 경우 일반레이어로 설정.</p> |
+
+-   편집 레이어 설정 실패 조건
+    -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+-   Sample - function initSamplePage 참조. - [샌드박스\_도형 생성](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
+    {% endtab %}
+    {% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSelectable(), setSelectable(type) → boolean
+
+> 해당 레이어 선택 설정.
+>
+> 해당 레이어를 구성하는 객체 선택 이벤트 설정.
+>
+> 사용자, 서비스 레이어에서 사용 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| type | boolean | <p>true인 경우 선택 이벤트 동작.<br>false인 경우 선택 이벤트 금지.</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getVisible(), setVisible() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getWMSRequestParam(), setWMSRequestParam() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getBBoxOrder(), setBBoxOrder() →
+
+> WMS 서비스 레이어 옵션 설정.
+>
+> 지오 서버로 요청하는 좌표 정보 가시화 옵션 설정.
+>
+> WMS 레이어에서 사용 가능
+>
+> type 입력 값에 따른 좌표 정보 true(BBOX=minx,miny,maxx,maxy), false(BBOX=minY,minX,maxY,maxX).
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| type | boolean | 좌표 옵션 설정. |
+
+-   Sample - function createLayerWMS 참조. - [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+    {% endtab %}
+    {% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getWMSVersion(), setWMSVersion() →
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| | | |
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
