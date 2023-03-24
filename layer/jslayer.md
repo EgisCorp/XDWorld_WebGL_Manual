@@ -872,7 +872,7 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### getBBoxOrder(), setBBoxOrder() →
+### getBBoxOrder(), setBBoxOrder(type) → boolean
 
 > WMS 서비스 레이어 옵션 설정.
 >
@@ -920,9 +920,9 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+## Type Definitions
 
-#### JSLayer.WMSOptions
+### JSLayer.WMSOptions
 
 > WMS 레이어 기본 생성 옵션.
 
@@ -936,7 +936,7 @@ let slopeoption = {
 | crs         | string                                                                    | optional   | EPSG:4326 | 좌표 타입.                               |
 | parameters  | [JSLayer.WMSOptions.SubOptions](jslayer.md#jslayer.wmsoptions.suboptions) | optional   |           | 스타일, 옵션 설정 속성정보.              |
 
-#### JSLayer.WMSOptions.SubOptions
+### JSLayer.WMSOptions.SubOptions
 
 > WMS 레이어 추가 생성 옵션.
 >
