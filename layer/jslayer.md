@@ -17,15 +17,15 @@ let layer = layerList.createLayer("레이어 명칭");
 
 ## properties
 
-| Name                       | Type    | Description                   |
-| -------------------------- | ------- | ----------------------------- |
-| altitude\_offset           | number  | 포인트클라우드, 드론LOD 데이터 실시간 높이 설정. |
-| lod\_object\_alpha         | number  | 서비스 레이어 속성 색상 알파값 설정.         |
-| lod\_object\_detail\_ratio | number  | 서비스 레이어 객체 가시화 거리 비율 설정.      |
-| serverURL                  | string  | 요청 서버 url 반환.                 |
-| simple\_real3d             | boolean | 건물 객체 심플모드 설정.                |
-| text\_character\_set       | string  | 레이어 텍스트 문자셋 값 설정.             |
-| tile\_load\_ratio          | number  | 서비스 레이어 가시화 거리 비율 설정.         |
+| Name                    | Type    | Description                                      |
+| ----------------------- | ------- | ------------------------------------------------ |
+| altitude_offset         | number  | 포인트클라우드, 드론LOD 데이터 실시간 높이 설정. |
+| lod_object_alpha        | number  | 서비스 레이어 속성 색상 알파값 설정.             |
+| lod_object_detail_ratio | number  | 서비스 레이어 객체 가시화 거리 비율 설정.        |
+| serverURL               | string  | 요청 서버 url 반환.                              |
+| simple_real3d           | boolean | 건물 객체 심플모드 설정.                         |
+| text_character_set      | string  | 레이어 텍스트 문자셋 값 설정.                    |
+| tile_load_ratio         | number  | 서비스 레이어 가시화 거리 비율 설정.             |
 
 ### addObject(object, level)
 
@@ -37,19 +37,21 @@ let layer = layerList.createLayer("레이어 명칭");
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name      | Type     | Description |
+| Name | Type | Description |
 | --------- | -------- | ----------- |
-| object    | JSObject | 생성 된 객체 추가  |
-| ~~level~~ | number   | 0 값으로 사용    |
+| object | JSObject | 생성 된 객체 추가 |
+| ~~level~~ | number | 0 값으로 사용 |
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 let layername = "objectlayer";
 let layerList = new Module.JSLayerList(true);
 let layer = layerList.createLayer(layername);
 layer.addObject(object, 0);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -63,20 +65,23 @@ layer.addObject(object, 0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description  |
+| Name | Type | Description |
 | ----- | ------ | ------------ |
 | index | number | 목표 객체 Index. |
 
-* Return
-  * string : Index 해당 객체 ID 반환 성공.
-  * "" : Index 해당 객체 ID 반환 실패.
-* 객체 ID 반환 실패 조건.
-  * Index 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우)
-{% endtab %}
+-   Return
+    -   string : Index 해당 객체 ID 반환 성공.
+    -   "" : Index 해당 객체 ID 반환 실패.
+-   객체 ID 반환 실패 조건.
+    -   Index 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -90,21 +95,24 @@ layer.addObject(object, 0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description |
+| Name | Type | Description |
 | ----- | ------ | ----------- |
-| index | number | 등록 객체 인덱스.  |
+| index | number | 등록 객체 인덱스. |
 
-* Return
-  * JSObject : Index 해당 객체 반환 성공.
-  * null : Index 해당 객체 반환 실패.
-* 객체 반환 실패 조건.
-  * Index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
-  * 해당 레이어 객체 개수가 0인 경우.
-{% endtab %}
+-   Return
+    -   JSObject : Index 해당 객체 반환 성공.
+    -   null : Index 해당 객체 반환 실패.
+-   객체 반환 실패 조건.
+    -   Index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
+    -   해당 레이어 객체 개수가 0인 경우.
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -118,22 +126,25 @@ layer.addObject(object, 0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type   | Description |
+| Name | Type | Description |
 | ---- | ------ | ----------- |
-| name | string | 등록 객체 명칭.   |
+| name | string | 등록 객체 명칭. |
 
-* Return
-  * JSObject : 동일 명칭 객체 반환 성공.
-  * null : 동일 명칭 객체 반환 실패.
-* 객체 반환 실패 조건.
-  * 동일 명칭 객체가 없는 경우.
-  * name 문자 데이터가 없는 경우.
-  * 해당 레이어 객체 개수가 0인 경우.
-{% endtab %}
+-   Return
+    -   JSObject : 동일 명칭 객체 반환 성공.
+    -   null : 동일 명칭 객체 반환 실패.
+-   객체 반환 실패 조건.
+    -   동일 명칭 객체가 없는 경우.
+    -   name 문자 데이터가 없는 경우.
+    -   해당 레이어 객체 개수가 0인 경우.
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -147,21 +158,22 @@ layer.addObject(object, 0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description |
+| Name | Type | Description |
 | ----- | ------ | ----------- |
-| index | number | 등록 객체 인덱스.  |
+| index | number | 등록 객체 인덱스. |
 
-* Return
-  * true : 객체 삭제 성공.
-  * false : 객체 삭제 실패.
-* 삭제 실패 조건
-  * index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
-  * 해당 레이어 객체 수가 0인 경우.
-  * 서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
-  * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-{% endtab %}
+-   Return
+    -   true : 객체 삭제 성공.
+    -   false : 객체 삭제 실패.
+-   삭제 실패 조건
+    -   index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
+    -   해당 레이어 객체 수가 0인 경우.
+    -   서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
+    -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 let layername = "objectlayer"
 let layerList = new Module.JSLayerList(true);
@@ -170,6 +182,7 @@ let layerList.createLayer(layername );
 layer.addObject(object, 0);
 layer.removeAtIndex(0);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -183,24 +196,27 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type   | Description |
+| Name | Type | Description |
 | ---- | ------ | ----------- |
-| name | string | 등록 객체 명칭.   |
+| name | string | 등록 객체 명칭. |
 
-* Return
-  * true : 객체 삭제 성공.
-  * false : 객체 삭제 실패.
-* 삭제 실패 조건
-  * objectid가 동일한 객체가 없을 경우.
-  * name 문자 데이터가 없는 경우.
-  * 해당 레이어 객체 수가 0인 경우.
-  * 서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
-  * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-{% endtab %}
+-   Return
+    -   true : 객체 삭제 성공.
+    -   false : 객체 삭제 실패.
+-   삭제 실패 조건
+    -   objectid가 동일한 객체가 없을 경우.
+    -   name 문자 데이터가 없는 경우.
+    -   해당 레이어 객체 수가 0인 경우.
+    -   서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
+    -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -214,23 +230,26 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name   | Type     | Description |
+| Name | Type | Description |
 | ------ | -------- | ----------- |
-| object | JSObject | 등록 객체.      |
+| object | JSObject | 등록 객체. |
 
-* Return
-  * true : 객체 삭제 성공.
-  * false : 객체 삭제 실패.
-* 삭제 실패 조건
-  * object와 동일한 객체가 없을 경우.
-  * 해당 레이어 객체 수가 0인 경우.
-  * 서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
-  * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-{% endtab %}
+-   Return
+    -   true : 객체 삭제 성공.
+    -   false : 객체 삭제 실패.
+-   삭제 실패 조건
+    -   object와 동일한 객체가 없을 경우.
+    -   해당 레이어 객체 수가 0인 경우.
+    -   서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
+    -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -244,18 +263,22 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-* Return
-  * true : 객체 삭제 성공.
-  * false : 객체 삭제 실패.
-* 삭제 실패 조건
-  * 해당 레이어 객체 수가 0인 경우.
-  * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
-  * 외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-{% endtab %}
+
+-   Return
+    -   true : 객체 삭제 성공.
+    -   false : 객체 삭제 실패.
+-   삭제 실패 조건
+    -   해당 레이어 객체 수가 0인 경우.
+    -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+    -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -267,14 +290,18 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-* Return
-  * \-1 : 해당 레이어에 객체가 존재 하지 않는 경우.
-  * result>0 : 해당 레이어 객체 갯수.
-{% endtab %}
+
+-   Return
+    -   \-1 : 해당 레이어에 객체가 존재 하지 않는 경우.
+    -   result>0 : 해당 레이어 객체 갯수.
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -288,17 +315,21 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-* Return
-  * string : 객체 명칭 반환 성공(구분자 ",").
-  * "" : 객체 명칭 반환 실패.
-* ID 반환 실패 조건.
-  * 해당 레이어 객체 수가 0인 경우.
-  * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
-{% endtab %}
+
+-   Return
+    -   string : 객체 명칭 반환 성공(구분자 ",").
+    -   "" : 객체 명칭 반환 실패.
+-   ID 반환 실패 조건.
+    -   해당 레이어 객체 수가 0인 경우.
+    -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -312,18 +343,21 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description                |
+| Name | Type | Description |
 | ----- | ------ | -------------------------- |
 | ratio | number | LOD 단계 설정(높을수록 가시화 범위 증가). |
 
-* Sample
-  * function init 참조.
-  * [샌드박스\_포물선 라인](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_arc)
-{% endtab %}
+-   Sample
+    -   function init 참조.
+    -   [샌드박스\_포물선 라인](http://sandbox.dtwincloud.com/code/main.do?id=object_line_arc)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -337,21 +371,24 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type    | Description                                      |
+| Name | Type | Description |
 | ---- | ------- | ------------------------------------------------ |
 | type | boolean | <p>true인 경우 HSV 채널 가시화.<br>false인 경우 기본 가시화.</p> |
 
-* Return
-  * true : HSV 채널 가시화 설정 성공.
-  * false : HSV 채널 가시화 설정 실패.
-* Sample
-  * function setHSV 참조.
-  * [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain\_color\_tone)
-{% endtab %}
+-   Return
+    -   true : HSV 채널 가시화 설정 성공.
+    -   false : HSV 채널 가시화 설정 실패.
+-   Sample
+    -   function setHSV 참조.
+    -   [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -365,23 +402,26 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name       | Type   | Description |
+| Name | Type | Description |
 | ---------- | ------ | ----------- |
-| hue        | number | HSV 채널(명도). |
+| hue | number | HSV 채널(명도). |
 | saturation | number | HSV 채널(채도). |
-| value      | number | HSV 채널(명도). |
+| value | number | HSV 채널(명도). |
 
-* Return
-  * true : HSV 채널 설정 성공.
-  * false : HSV 채널 설정 실패.
-* Sample
-  * function setHSV 참조.
-  * [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain\_color\_tone)
-{% endtab %}
+-   Return
+    -   true : HSV 채널 설정 성공.
+    -   false : HSV 채널 설정 실패.
+-   Sample
+    -   function setHSV 참조.
+    -   [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -397,21 +437,24 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name   | Type   | Description     |
+| Name | Type | Description |
 | ------ | ------ | --------------- |
 | offset | number | 포인트 클라우드 고도 설정. |
 
-* Return
-  * true : 높이 설정 성공.
-  * false : 높이 설정 실패.
-* Sample
-  * function init 참조.
-  * [샌드박스\_포인트 클라우드](http://sandbox.dtwincloud.com/code/main.do?id=layer\_pointcloud\_point\_size)
-{% endtab %}
+-   Return
+    -   true : 높이 설정 성공.
+    -   false : 높이 설정 실패.
+-   Sample
+    -   function init 참조.
+    -   [샌드박스\_포인트 클라우드](http://sandbox.dtwincloud.com/code/main.do?id=layer_pointcloud_point_size)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -423,19 +466,20 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name   | Type                                | Description   |
+| Name | Type | Description |
 | ------ | ----------------------------------- | ------------- |
 | option | [WMSOptions](jslayer.md#wmsoptions) | WMS 요청 속성 정보. |
 
-* Return
-  * success : WMS 레이어 생성 성공.
-  * 문자열 : WMS 레이어 생성 과정 에러 메시지.
-* Sample
-  * function createLayerWMS 참조.
-  * [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms)
-{% endtab %}
+-   Return
+    -   success : WMS 레이어 생성 성공.
+    -   문자열 : WMS 레이어 생성 과정 에러 메시지.
+-   Sample
+    -   function createLayerWMS 참조.
+    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 let slopeoption = {
 	url: strUrl,
@@ -455,6 +499,7 @@ let slopeoption = {
 	}
 };
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -468,23 +513,26 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type    | Description                                       |
+| Name | Type | Description |
 | ---- | ------- | ------------------------------------------------- |
 | type | boolean | <p>true인 경우 프록시 서버 설정.<br>false인 경우 기본 요청 설정.</p> |
 
-* Return
-  * true : 프록시 설정 성공.
-  * false : 프록시 설정 실패.
-* 프록시 설정 실패 조건.
-  * 사용자 레이어 인 경우
-* Sample
-  * function createLayerWMS 참조.
-  * [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms)
-{% endtab %}
+-   Return
+    -   true : 프록시 설정 성공.
+    -   false : 프록시 설정 실패.
+-   프록시 설정 실패 조건.
+    -   사용자 레이어 인 경우
+-   Sample
+    -   function createLayerWMS 참조.
+    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -498,18 +546,21 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description          |
+| Name | Type | Description |
 | ----- | ------ | -------------------- |
 | alpha | number | 서비스 레이어 속성 색상 알파값 설정 |
 
-* 투명도 설정 실패 조건
-  * 유저 레이어 인 경우.
-  * 건물 이외 서비스 레이어 인 경우.
-{% endtab %}
+-   투명도 설정 실패 조건
+    -   유저 레이어 인 경우.
+    -   건물 이외 서비스 레이어 인 경우.
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -525,18 +576,21 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type    | Description |
+| Name | Type | Description |
 | ---- | ------- | ----------- |
-| type | boolean | 좌표 옵션 설정.   |
+| type | boolean | 좌표 옵션 설정. |
 
-* Sample
-  * function createLayerWMS 참조.
-  * [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer\_wms)
-{% endtab %}
+-   Sample
+    -   function createLayerWMS 참조.
+    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -552,20 +606,23 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type    | Description                                       |
+| Name | Type | Description |
 | ---- | ------- | ------------------------------------------------- |
 | edit | boolean | <p>true인 경우 편집레이어로 설정<br>false인 경우 일반레이어로 설정.</p> |
 
-* 편집 레이어 설정 실패 조건
-  * 서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
-* Sample
-  * function initSamplePage 참조.
-  * [샌드박스\_도형 생성](http://sandbox.dtwincloud.com/code/main.do?id=object\_figure)
-{% endtab %}
+-   편집 레이어 설정 실패 조건
+    -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+-   Sample
+    -   function initSamplePage 참조.
+    -   [샌드박스\_도형 생성](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -579,21 +636,24 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name     | Type   | Description          |
+| Name | Type | Description |
 | -------- | ------ | -------------------- |
 | distance | number | 레이어 최소 가시범위 거리(m단위). |
 
-* 최소 가시 범위 실패 조건.
-  * 최소 가시 범위가 최대 가시 범위보다 큰 경우.
-  * 서비스 레이어 일 경우.
-* Sample
-  * function showGrid 참조.
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d)
-{% endtab %}
+-   최소 가시 범위 실패 조건.
+    -   최소 가시 범위가 최대 가시 범위보다 큰 경우.
+    -   서비스 레이어 일 경우.
+-   Sample
+    -   function showGrid 참조.
+    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -607,21 +667,24 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name     | Type   | Description          |
+| Name | Type | Description |
 | -------- | ------ | -------------------- |
 | distance | number | 레이어 최대 가시범위 거리(m단위). |
 
-* 최대 가시 범위 실패 조건.
-  * 최대 가시 범위가 최소 가시 범위보다 작은 경우.
-  * 서비스 레이어 일 경우.
-* Sample
-  * function showGrid 참조.
-  * [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object\_grid\_2d)
-{% endtab %}
+-   최대 가시 범위 실패 조건.
+    -   최대 가시 범위가 최소 가시 범위보다 작은 경우.
+    -   서비스 레이어 일 경우.
+-   Sample
+    -   function showGrid 참조.
+    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -635,17 +698,20 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description    |
+| Name | Type | Description |
 | ----- | ------ | -------------- |
 | level | nomber | 레이어 최대 가시 레벨값. |
 
-* 최대 가시 레벨 실패 조건.
-  * 유저 레이어 일 경우.
-{% endtab %}
+-   최대 가시 레벨 실패 조건.
+    -   유저 레이어 일 경우.
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -655,14 +721,17 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type   | Description |
+| Name | Type | Description |
 | ---- | ------ | ----------- |
-| name | string | 변경 레이어 명칭.  |
+| name | string | 변경 레이어 명칭. |
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -676,21 +745,24 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name       | Type   | Description     |
+| Name | Type | Description |
 | ---------- | ------ | --------------- |
 | horizontal | number | 박스 객체 가로 크기 설정. |
 
-* 박스 객체 가로 크기 설정 실패 조건.
-  * 0 보다 작은 값이 입력 된 경우.
-  * createTimeSeriesObject() API로 객체 생성이 안된 경우.
-* Sample
-  * function JsonLoad 참조.
-  * [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect\_time\_bar)
-{% endtab %}
+-   박스 객체 가로 크기 설정 실패 조건.
+    -   0 보다 작은 값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -704,21 +776,24 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name     | Type   | Description     |
+| Name | Type | Description |
 | -------- | ------ | --------------- |
 | vertical | number | 박스 객체 세로 크기 설정. |
 
-* 박스 객체 세로 크기 설정 실패 조건.
-  * 0 보다 작은 값이 입력 된 경우.
-  * createTimeSeriesObject() API로 객체 생성이 안된 경우.
-* Sample
-  * function JsonLoad 참조.
-  * [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect\_time\_bar)
-{% endtab %}
+-   박스 객체 세로 크기 설정 실패 조건.
+    -   0 보다 작은 값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -732,14 +807,17 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type    | Description                                        |
+| Name | Type | Description |
 | ---- | ------- | -------------------------------------------------- |
 | type | boolean | <p>true인 경우 선택 이벤트 동작.<br>false인 경우 선택 이벤트 금지.</p> |
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -749,22 +827,25 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type   | Description    |
+| Name | Type | Description |
 | ---- | ------ | -------------- |
 | step | number | 애니메이션 Step 설정. |
 
-* 애니메이션 Step 설정 실패 조건.
-  * 입력된 최소 Step 보다 작은값이 입력 된 경우.
-  * 입력된 최대 Step 보다 큰값이 입력 된 경우.
-  * createTimeSeriesObject() API로 객체 생성이 안된 경우.
-* Sample
-  * function JsonLoad 참조.
-  * [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect\_time\_bar)
-{% endtab %}
+-   애니메이션 Step 설정 실패 조건.
+    -   입력된 최소 Step 보다 작은값이 입력 된 경우.
+    -   입력된 최대 Step 보다 큰값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -774,16 +855,19 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name  | Type   | Description     |
+| Name | Type | Description |
 | ----- | ------ | --------------- |
 | speed | number | 애니메이션 변환 속도 설정. |
 
-* 애니메이션 Step 설정 실패 조건. - 입력된 최소 Step 보다 작은값이 입력 된 경우. - 입력된 최대 Step 보다 큰값이 입력 된 경우. - createTimeSeriesObject() API로 객체 생성이 안된 경우.
-{% endtab %}
+-   애니메이션 Step 설정 실패 조건. - 입력된 최소 Step 보다 작은값이 입력 된 경우. - 입력된 최대 Step 보다 큰값이 입력 된 경우. - createTimeSeriesObject() API로 객체 생성이 안된 경우.
+    {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -799,14 +883,17 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type   | Description              |
+| Name | Type | Description |
 | ---- | ------ | ------------------------ |
 | tilt | number | 카메라 각도에 따른 객체 가시화 유무 설정. |
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -820,18 +907,21 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-| Name | Type    | Description                                |
+| Name | Type | Description |
 | ---- | ------- | ------------------------------------------ |
 | type | boolean | <p>true인 경우 레이어 가시화.<br>false인 레이어 숨김.</p> |
 
-* Sample
-  * function JsonLoad 참조.
-  * [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect\_time\_bar)
-{% endtab %}
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -839,12 +929,16 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-* 대체 API : setWMSProvider
-{% endtab %}
+
+-   대체 API : setWMSProvider
+    {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -852,12 +946,16 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-* 대체 API : setWMSProvider
-{% endtab %}
+
+-   대체 API : setWMSProvider
+    {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -865,12 +963,16 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-* 사용 안함
-{% endtab %}
+
+-   사용 안함
+    {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -880,14 +982,14 @@ let slopeoption = {
 
 > WMS 레이어 기본 생성 옵션.
 
-| Name        | Type                                                      | Attributes | Default   | Description                   |
-| ----------- | --------------------------------------------------------- | ---------- | --------- | ----------------------------- |
-| url         | string                                                    |            |           | 요청 지오서버 url.                  |
+| Name        | Type                                                      | Attributes | Default   | Description                              |
+| ----------- | --------------------------------------------------------- | ---------- | --------- | ---------------------------------------- |
+| url         | string                                                    |            |           | 요청 지오서버 url.                       |
 | layer       | string                                                    |            |           | 요청 지오서버 레이어 명칭.               |
-| minmumLevel | number                                                    | optional   | 0         | 최소 가시화 레벨.                    |
-| maxmumLevel | number                                                    | optional   | 15        | 최대 가시화 레벨.                    |
+| minmumLevel | number                                                    | optional   | 0         | 최소 가시화 레벨.                        |
+| maxmumLevel | number                                                    | optional   | 15        | 최대 가시화 레벨.                        |
 | tileSize    | number                                                    | optional   | 256       | 요청 정사각형 이미지 크기\[Default 256]. |
-| crs         | string                                                    | optional   | EPSG:4326 | 좌표 타입.                        |
+| crs         | string                                                    | optional   | EPSG:4326 | 좌표 타입.                               |
 | parameters  | [WMSOptions.SubOptions](jslayer.md#wmsoptions.suboptions) | optional   |           | 스타일, 옵션 설정 속성정보.              |
 
 #### WMSOptions.SubOptions
@@ -898,10 +1000,10 @@ let slopeoption = {
 >
 > ex) stlye 옵션 등.
 
-| Name        | Type   | Attributes | Default   | Description          |
-| ----------- | ------ | ---------- | --------- | -------------------- |
-| version     | string | optional   | 1.1.0     | 지오서버 요청 버전.          |
-| service     | string | optional   | WMS       | 지오서버 요청 타입.          |
-| request     | string | optional   | GetMap    | 지오서버 요청 지도 타입.       |
-| format      | string | optional   | image/png | 지오서버 요청 이미지 타입.      |
+| Name        | Type   | Attributes | Default   | Description                        |
+| ----------- | ------ | ---------- | --------- | ---------------------------------- |
+| version     | string | optional   | 1.1.0     | 지오서버 요청 버전.                |
+| service     | string | optional   | WMS       | 지오서버 요청 타입.                |
+| request     | string | optional   | GetMap    | 지오서버 요청 지도 타입.           |
+| format      | string | optional   | image/png | 지오서버 요청 이미지 타입.         |
 | transparent | string | optional   | TRUE      | 지오서버 이미지 요청 시 투명 옵션. |

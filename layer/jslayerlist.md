@@ -542,8 +542,6 @@ let check =  layerList.setLayerMove(first, true);
 {% endtab %}
 {% endtabs %}
 
-## getter / setter
-
 ### getVisible(name) → number
 
 > 레이어 가시화 옵션 정보 반환.
@@ -599,6 +597,8 @@ layerList.setVisible(“HybridLoad”, false);
 
 {% endtab %}
 {% endtabs %}
+
+## getter / setter
 
 ## Type Definitions
 
