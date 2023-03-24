@@ -468,7 +468,7 @@ layer.removeAtIndex(0);
 {% tab title="Infomation" %}
 | Name | Type | Description |
 | ------ | --------------------------------------------------- | ------------- |
-| option | [JSLayer.WMSOptions](jslayer.md#jslayer.wmsoptions) | WMS 요청 속성 정보. |
+| option | [WMSOptions](jslayer.md#wmsoptions) | WMS 요청 속성 정보. |
 
 -   Return
     -   success : WMS 레이어 생성 성공.
@@ -922,21 +922,21 @@ let slopeoption = {
 
 ## Type Definitions
 
-### JSLayer.WMSOptions
+#### WMSOptions
 
 > WMS 레이어 기본 생성 옵션.
 
-| Name        | Type                                                                      | Attributes | Default   | Description                              |
-| ----------- | ------------------------------------------------------------------------- | ---------- | --------- | ---------------------------------------- |
-| url         | string                                                                    |            |           | 요청 지오서버 url.                       |
-| layer       | string                                                                    |            |           | 요청 지오서버 레이어 명칭.               |
-| minmumLevel | number                                                                    | optional   | 0         | 최소 가시화 레벨.                        |
-| maxmumLevel | number                                                                    | optional   | 15        | 최대 가시화 레벨.                        |
-| tileSize    | number                                                                    | optional   | 256       | 요청 정사각형 이미지 크기\[Default 256]. |
-| crs         | string                                                                    | optional   | EPSG:4326 | 좌표 타입.                               |
-| parameters  | [JSLayer.WMSOptions.SubOptions](jslayer.md#jslayer.wmsoptions.suboptions) | optional   |           | 스타일, 옵션 설정 속성정보.              |
+| Name        | Type                                                      | Attributes | Default   | Description                              |
+| ----------- | --------------------------------------------------------- | ---------- | --------- | ---------------------------------------- |
+| url         | string                                                    |            |           | 요청 지오서버 url.                       |
+| layer       | string                                                    |            |           | 요청 지오서버 레이어 명칭.               |
+| minmumLevel | number                                                    | optional   | 0         | 최소 가시화 레벨.                        |
+| maxmumLevel | number                                                    | optional   | 15        | 최대 가시화 레벨.                        |
+| tileSize    | number                                                    | optional   | 256       | 요청 정사각형 이미지 크기\[Default 256]. |
+| crs         | string                                                    | optional   | EPSG:4326 | 좌표 타입.                               |
+| parameters  | [WMSOptions.SubOptions](jslayer.md#wmsoptions.suboptions) | optional   |           | 스타일, 옵션 설정 속성정보.              |
 
-### JSLayer.WMSOptions.SubOptions
+#### WMSOptions.SubOptions
 
 > WMS 레이어 추가 생성 옵션.
 >
