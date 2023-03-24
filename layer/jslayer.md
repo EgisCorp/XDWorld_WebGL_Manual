@@ -538,206 +538,21 @@ let slopeoption = {
 
 ## getter / setter
 
-### getViewLimit(), setViewLimit() →
+### getAlpha(), setAlpha(alpha) → number
 
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getMaxLevel(), setMaxLevel() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getTimeSpeed(), setTimeSpeed() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getTimeSeriesCount(), setTimeSeriesCount() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getObjectHorizontal(), setObjectHorizontal() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getObjectVertical(), setObjectVertical() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getObjectHeight(), setObjectHeight() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getUnion(), setUnion() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getName(), setName() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getAlpha(), setAlpha() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getMaxDistance(), setMaxDistance(distance) → number
-
-> 레이어 가시 범위 설정
+> 서비스 건물 레이어에 존재하는 객체 투명도 설정.
 >
-> 레이어 최대 가시범위 거리를 설정.
->
-> 사용자 레이어만 가능.
+> 서비스 건물 레이어 심플 모드 객체 투명도 설정.
 
 {% tabs %}
 {% tab title="Infomation" %}
 | Name | Type | Description |
-| -------- | ------ | -------------------- |
-| distance | number | 레이어 최대 가시범위 거리(m단위). |
+| ---- | ---- | ----------- |
+| alpha| number | 서비스 레이어 속성 색상 알파값 설정 |
 
--   최대 가시 범위 실패 조건.
-    -   최대 가시 범위가 최소 가시 범위보다 작은 경우.
-    -   서비스 레이어 일 경우.
--   Sample
-    -   function showGrid 참조.
-    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+-   투명도 설정 실패 조건
+    -   유저 레이어 인 경우.
+    -   건물 이외 서비스 레이어 인 경우.
         {% endtab %}
 
 {% tab title="Template" %}
@@ -749,26 +564,25 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### getMinDistance(), setMinDistance(distance) → number
+### getBBoxOrder(), setBBoxOrder(type) → boolean
 
-> 레이어 가시 범위 설정.
+> WMS 서비스 레이어 옵션 설정.
 >
-> 레이어 최소 가시범위 거리를 설정.
+> 지오 서버로 요청하는 좌표 정보 가시화 옵션 설정.
 >
-> 사용자 레이어만 가능.
+> WMS 레이어에서 사용 가능
+>
+> type 입력 값에 따른 좌표 정보 true(BBOX=minx,miny,maxx,maxy), false(BBOX=minY,minX,maxY,maxX).
 
 {% tabs %}
 {% tab title="Infomation" %}
 | Name | Type | Description |
-| -------- | ------ | -------------------- |
-| distance | number | 레이어 최소 가시범위 거리(m단위). |
+| ---- | ------- | ----------- |
+| type | boolean | 좌표 옵션 설정. |
 
--   최소 가시 범위 실패 조건.
-    -   최소 가시 범위가 최대 가시 범위보다 큰 경우.
-    -   서비스 레이어 일 경우.
 -   Sample
-    -   function showGrid 참조.
-    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+    -   function createLayerWMS 참조.
+    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
         {% endtab %}
 
 {% tab title="Template" %}
@@ -812,6 +626,177 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
+### getMinDistance(), setMinDistance(distance) → number
+
+> 레이어 가시 범위 설정.
+>
+> 레이어 최소 가시범위 거리를 설정.
+>
+> 사용자 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| -------- | ------ | -------------------- |
+| distance | number | 레이어 최소 가시범위 거리(m단위). |
+
+-   최소 가시 범위 실패 조건.
+    -   최소 가시 범위가 최대 가시 범위보다 큰 경우.
+    -   서비스 레이어 일 경우.
+-   Sample
+    -   function showGrid 참조.
+    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxDistance(), setMaxDistance(distance) → number
+
+> 레이어 가시 범위 설정
+>
+> 레이어 최대 가시범위 거리를 설정.
+>
+> 사용자 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| -------- | ------ | -------------------- |
+| distance | number | 레이어 최대 가시범위 거리(m단위). |
+
+-   최대 가시 범위 실패 조건.
+    -   최대 가시 범위가 최소 가시 범위보다 작은 경우.
+    -   서비스 레이어 일 경우.
+-   Sample
+    -   function showGrid 참조.
+    -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxLevel(), setMaxLevel(level) → number
+
+> 레이어 가시 레벨 설정.
+>
+> 레이어 최대 가시 레벨 설정.
+>
+> 서비스 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| level | nomber | 레이어 최대 가시 레벨값. |
+
+-   최대 가시 레벨 실패 조건.
+    -   유저 레이어 일 경우.
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getName(), setName(name) → string
+
+> 레이어 명칭 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | string | 변경 레이어 명칭. |
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectHorizontal(), setObjectHorizontal(horizontal) → number
+
+> 레이어 박스 객체 크기 설정.
+>
+> 시계월 애니메이션 크기 실시간 설정.
+>
+> 박스 객체 가로 크기 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| horizontal | number | 박스 객체 가로 크기 설정. |
+
+-   박스 객체 가로 크기 설정 실패 조건.
+    -   0 보다 작은 값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectVertical(), setObjectVertical(vertical) → number
+
+> 레이어 박스 객체 크기 설정.
+>
+> 시계월 애니메이션 크기 실시간 설정.
+>
+> 박스 객체 세로 크기 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| vertical | number | 박스 객체 세로 크기 설정. |
+
+-   박스 객체 세로 크기 설정 실패 조건.
+    -   0 보다 작은 값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getSelectable(), setSelectable(type) → boolean
 
 > 해당 레이어 선택 설정.
@@ -836,61 +821,23 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### getVisible(), setVisible() →
+### getTimeSeriesCount(), setTimeSeriesCount(step) → number
+
+> 레이어 박스 객체 애니메이션 step 설정.
 
 {% tabs %}
 {% tab title="Infomation" %}
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| | | |
-{% endtab %}
+| step | number | 애니메이션 Step 설정. |
 
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getWMSRequestParam(), setWMSRequestParam() →
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| | | |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getBBoxOrder(), setBBoxOrder(type) → boolean
-
-> WMS 서비스 레이어 옵션 설정.
->
-> 지오 서버로 요청하는 좌표 정보 가시화 옵션 설정.
->
-> WMS 레이어에서 사용 가능
->
-> type 입력 값에 따른 좌표 정보 true(BBOX=minx,miny,maxx,maxy), false(BBOX=minY,minX,maxY,maxX).
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| ---- | ------- | ----------- |
-| type | boolean | 좌표 옵션 설정. |
-
+-   애니메이션 Step 설정 실패 조건.
+    -   입력된 최소 Step 보다 작은값이 입력 된 경우.
+    -   입력된 최대 Step 보다 큰값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
 -   Sample
-    -   function createLayerWMS 참조.
-    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
         {% endtab %}
 
 {% tab title="Template" %}
@@ -902,13 +849,44 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### getWMSVersion(), setWMSVersion() →
+### getTimeSpeed(), setTimeSpeed(speed) → number
+
+> 레이어 박스 객체 애니메이션 step 변환 시 객체 높이 변환 속도 설정.
 
 {% tabs %}
 {% tab title="Infomation" %}
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| | | |
+| speed | number | 애니메이션 변환 속도 설정. |
+
+-   애니메이션 Step 설정 실패 조건. - 입력된 최소 Step 보다 작은값이 입력 된 경우. - 입력된 최대 Step 보다 큰값이 입력 된 경우. - createTimeSeriesObject() API로 객체 생성이 안된 경우.
+    {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getViewLimit(), setViewLimit(tilt) → number
+
+> 레이어 가시화 Tilt 제한 설정.
+>
+> 카메라 tilt 값이 입력 값보다 작으면 투명 상태 설정.
+>
+> CSV, 빌보드, POI, 건물 객체 제한 설정.
+>
+> 서비스 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tilt | number | 카메라 각도에 따른 객체 가시화 유무 설정. |
+
 {% endtab %}
 
 {% tab title="Template" %}
@@ -916,6 +894,91 @@ let slopeoption = {
 ```javascript
 
 ```
+
+{% endtab %}
+{% endtabs %}
+
+### getVisible(), setVisible(type) → boolean
+
+> 레이어 가시화 옵션 정보 반환.
+>
+> 레이어 투명/반투명 상태 정보 반환.
+>
+> 사용자, 서비스 레이어 모두 사용 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | boolean | <p>true인 경우 레이어 가시화.<br>false인 레이어 숨김.</p> |
+
+-   Sample
+    -   function JsonLoad 참조.
+    -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### ~~~ getWMSRequestParam(), setWMSRequestParam(parameter) → string ~~~
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   대체 API : setWMSProvider
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### ~~~ getWMSVersion(), setWMSVersion(version) → string~~~
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   대체 API : setWMSProvider
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### ~~~ getUnion(), setUnion(union) → boolean ~~~
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   사용 안함
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
 
 {% endtab %}
 {% endtabs %}
