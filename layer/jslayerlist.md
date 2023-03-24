@@ -486,12 +486,12 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 -   Return
     -   true : 순서 변경 성공.
     -   false: 순서 변경 실패.
-        _ 순서 변경 실패 조건
-        _ 레이어 리스트 2개 미만.
-        _ 끝 순서 해당 레이어를 한단계 내린 경우.
-        _ 첫 순서 해당 레이어를 한단계 올린 경우.
-        {% endtab %}
-        {% tab title="Template" %}
+        -   순서 변경 실패 조건
+            -   레이어 리스트 2개 미만.
+            -   끝 순서 해당 레이어를 한단계 내린 경우.
+            -   첫 순서 해당 레이어를 한단계 올린 경우.
+                {% endtab %}
+                {% tab title="Template" %}
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -521,12 +521,12 @@ let check =  layerList.setLayerMove(end, true);
 -   Return
     -   true : 순서 변경 성공.
     -   false: 순서 변경 실패.
-        _ 순서 변경 실패 조건.
-        _ 레이어 리스트 2개 미만.
-        _ 끝 순서 해당 레이어를 한단계 내린 경우.
-        _ 첫 순서 해당 레이어를 한단계 올린 경우.
-        {% endtab %}
-        {% tab title="Template" %}
+        -   순서 변경 실패 조건.
+            -   레이어 리스트 2개 미만.
+            -   끝 순서 해당 레이어를 한단계 내린 경우.
+            -   첫 순서 해당 레이어를 한단계 올린 경우.
+                {% endtab %}
+                {% tab title="Template" %}
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -538,6 +538,8 @@ let check =  layerList.setLayerMove(first, true);
 
 {% endtab %}
 {% endtabs %}
+
+## getter / setter
 
 ### getVisible(name) → number
 
