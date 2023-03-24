@@ -926,7 +926,7 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### ~~~ getWMSRequestParam(), setWMSRequestParam(parameter) → string ~~~
+### ~~ getWMSRequestParam(), setWMSRequestParam(parameter) → string ~~
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -944,7 +944,7 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### ~~~ getWMSVersion(), setWMSVersion(version) → string~~~
+### ~~ getWMSVersion(), setWMSVersion(version) → string ~~
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -962,7 +962,7 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### ~~~ getUnion(), setUnion(union) → boolean ~~~
+### ~~ getUnion(), setUnion(union) → boolean ~~
 
 {% tabs %}
 {% tab title="Infomation" %}
