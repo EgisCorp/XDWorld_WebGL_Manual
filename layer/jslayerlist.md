@@ -602,7 +602,7 @@ layerList.setVisible(“HybridLoad”, false);
 
 ## Type Definitions
 
-### CreateObjectLayerOptions
+#### CreateObjectLayerOptions
 
 > 오브젝트 레이어 생성 옵션.
 
@@ -615,7 +615,7 @@ layerList.setVisible(“HybridLoad”, false);
 | minDistance | number                                              | optional   | 0.0     | 레이어 최소 가시범위 거리를 설정.      |
 | maxDistance | number                                              | optional   | 3000.0  | 레이어 최대 가시범위 거리를 설정.      |
 
-### CreateServerLayerOptions
+#### CreateServerLayerOptions
 
 > 서비스 레이어 생성 옵션.
 
