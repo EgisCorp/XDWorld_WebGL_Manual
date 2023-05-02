@@ -40,24 +40,24 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 <!doctype html>
 <html>
 <head>
-	<title>[EGIS] Init
-	<style>
-		#map {
-			position: absolute;
-			width: calc(100%);
-			height: calc(100%);
-			left: 0px;
-			top: 0px;
-		}
-	</style>
+   <title>[EGIS] Init
+      <style>
+         #map {
+            position: absolute;
+            width: calc(100%);
+            height: calc(100%);
+            left: 0px;
+            top: 0px;
+         }
+      </style>
 </head>
 <body>
-	<div id="map"></div>
-	<script>
-		var initScript = document.createElement('script');
-		initScript.src = "./js/init.js";
-		document.body.appendChild(initScript);
-	</script>
+   <div id="map"></div>
+      <script>
+         var initScript = document.createElement('script');
+         initScript.src = "./js/init.js";
+         document.body.appendChild(initScript);
+      </script>
 </body>
 </html>
 ```
