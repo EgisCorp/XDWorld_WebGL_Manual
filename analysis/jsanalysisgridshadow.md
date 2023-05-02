@@ -24,11 +24,15 @@ var gridShadow = Module.getAnalysisGridShadow();
 -   Return
     -   true : 수인한도 분석 초기화 성공.
     -   false : 수인한도 분석 초기화 실패.
-        -   격자가 없을 경우.
-        -   레이어가 없을 경우.
--   Sample - function setEarthquakeMesh 참조. - [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
-    {% endtab %}
-    {% tab title="Template" %}
+-   초기화 실패 조건
+    -   격자가 없을 경우.
+    -   레이어가 없을 경우.
+-   Sample
+    -   function setEarthquakeMesh 참조.
+    -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
+
+{% tab title="Template" %}
 
 ```javascript
 var gridShadow = Module.getAnalysisGridShadow();
@@ -56,7 +60,10 @@ gridShadow.clear();
 
     -   true : 수인한도 분석 격자 생성 성공.
     -   false : 수인한도 분석 격자 생성 실패.
-        -   입력된 점이 3개 이하일 경우.
+
+-   격자 생성 실패 조건
+
+    -   입력된 점이 3개 이하일 경우.
 
 -   Sample
     -   function setEarthquakeMesh 참조.
@@ -113,8 +120,8 @@ const json = JSON.parse(result);
 
     -   true : 수인한도 분석 격자 옵션 초기화 성공.
     -   false : 수인한도 분석 격자 옵션 초기화 실패.
-        -   격자가 없을 경우.
-        -   레이어가 없을 경우.
+
+-   옵션 초기화 실패 조건 - 격자가 없을 경우. - 레이어가 없을 경우.
 
 -   Sample
     -   function setEarthquakeMesh 참조.
@@ -145,10 +152,13 @@ gridShadow.reset();
 | isAnalysis | boolean | 분석 여부 |
 
 -   Return
+
     -   true : 배척격자 설정 성공.
     -   false : 배척격자 설정 실패.
-        -   격자가 없을 경우.
-        -   레이어가 없을 경우.
+
+-   배척격자 설정 실패 조건
+    -   격자가 없을 경우.
+    -   레이어가 없을 경우.
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
@@ -181,8 +191,11 @@ gridShadow.setAnalysis("id", false);
 
     -   true : 수인한도 분석 격자 색상 설정 성공.
     -   false : 수인한도 분석 격자 색상 설정 실패.
-        -   레이어가 없을 경우.
-        -   격자가 없을 경우.
+
+-   수인한도 분석 격자 색상 설정 실패 조건
+
+    -   레이어가 없을 경우.
+    -   격자가 없을 경우.
 
 -   Sample
     -   function setEarthquakeMesh 참조.
@@ -217,9 +230,12 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
 
     -   true : 수인한도 분석 성공.
     -   false : 수인한도 분석 실패.
-        -   레이어가 없을 경우.
+
+-   수인한도 분석 실행 실패 조건
+
+    -   레이어가 없을 경우.
     -   격자가 없을 경우.
-        -   선택된 객체가 없을 경우.
+    -   선택된 객체가 없을 경우.
 
 -   Sample
     -   function setEarthquakeMesh 참조.
