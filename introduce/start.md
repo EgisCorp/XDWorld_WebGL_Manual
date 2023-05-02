@@ -138,6 +138,8 @@ index.html 파일에서는 엔진 로드를 위한 init.js 를 호출합니다.
 <div id="map"></div>
 ```
 
+"map" element는 canvas, HTMLObject를 담는 container가 동적으로 추가 됩니다.
+
 index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다.
 
 {% hint style="danger" %}
@@ -174,32 +176,14 @@ var Module = {
 반드시 객체 이름은 Module 로 선언해주어야 하며 postRun 속성은 필수로 입력되어야 합니다.
 
 * postRun : 엔진 모듈이 준비 된 시점에서 호출되는 함수를 지정합니다.
-* canvas : 지도를 렌더링 할 캔버스 엘리먼트를 지정합니다.
-
-3d 가시화를 담당하는 canvas는 index.html 구성요소 "map"  element 내부에 동적으로 생성된다.
-
-```javascript
-<head>
-   <style>
-      #map {
-         position: absolute;
-         width: calc(100%);
-         height: calc(100%);
-         left: 0px;
-         top: 0px;
-      }
-   </style>
-</head>
-<body>
-	<div id="map"></div>
-</body>
-```
 
 #### 엔진 초기화 함수 선언
 
 엔진 파일이 모두 완료 된 시점에 처음으로 호출되는 함수를 선언합니다.
 
 선언 된 함수는 Module 객체의 postRun 속성으로 지정합니다.
+
+initialize를 구성하는 "container" property로 지정된 element 내부에 canvas를 동적으로 생성합니다.
 
 ```javascript
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
