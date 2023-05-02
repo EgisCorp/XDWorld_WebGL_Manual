@@ -41,15 +41,15 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 <html>
 <head>
    <title>[EGIS] Init
-      <style>
-         #map {
-            position: absolute;
-            width: calc(100%);
-            height: calc(100%);
-            left: 0px;
-            top: 0px;
-         }
-      </style>
+   <style>
+      #map {
+         position: absolute;
+         width: calc(100%);
+         height: calc(100%);
+         left: 0px;
+         top: 0px;
+      }
+   </style>
 </head>
 <body>
    <div id="map"></div>
