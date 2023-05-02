@@ -41,8 +41,18 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 <html>
 <head>
 	<title>[EGIS] Init
+	<style>
+		#map {
+			position: absolute;
+			width: calc(100%);
+			height: calc(100%);
+			left: 0px;
+			top: 0px;
+		}
+	</style>
 </head>
 <body>
+	<div id="map"></div>
 	<script>
 		var initScript = document.createElement('script');
 		initScript.src = "./js/init.js";
@@ -59,43 +69,20 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 ```javascript
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
-
    // 엔진 초기화 API 호출(필수)
-   Module.Start(window.innerWidth, window.innerHeight);
+   Module.initialize({
+      container: document.getElementById("map"),
+      defaultKey : "발급 API KEY"
+   });
 }
 
 var Module = {
    TOTAL_MEMORY: 256*1024*1024,
    postRun: [init],
-   canvas: (function() {
-		
-      // Canvas 엘리먼트 생성
-      var canvas = document.createElement('canvas');
-		
-      // Canvas id, Width, height 설정
-      canvas.id = "canvas";
-      canvas.width="calc(100%)";
-      canvas.height="100%";
-		
-      // Canvas 스타일 설정
-      canvas.style.position = "fixed";
-      canvas.style.top = "0px";
-      canvas.style.left = "0px";
-
-      // contextmenu disabled
-      canvas.addEventListener("contextmenu", function(e){
-         e.preventDefault();
-      });
-	
-      // 생성한 Canvas 엘리먼트를 body에 추가합니다.
-      document.body.appendChild(canvas);
-      return canvas;
-   })()
 };
 
 // 엔진 파일 로드
-;(function(){   	
-
+;(function(){
    // 1. XDWorldEM.asm.js 파일 로드
    var file = "./js/XDWorldEM.asm.js";
 	
@@ -148,6 +135,7 @@ index.html 파일에서는 엔진 로드를 위한 init.js 를 호출합니다.
    initScript.src = "./js/init.js";
    document.body.appendChild(initScript);
 </script>
+<div id="map"></div>
 ```
 
 index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다.
@@ -180,49 +168,31 @@ init.js 의 코드는
 var Module = {
    TOTAL_MEMORY: 256*1024*1024,
    postRun: [init],
-   canvas: (function() {
-		
-      // Canvas 엘리먼트 생성
-      var canvas = document.createElement('canvas');
-		
-      // Canvas id, Width, height 설정
-      canvas.id = "canvas";
-      canvas.width="calc(100%)";
-      canvas.height="100%";
-		
-      // Canvas 스타일 설정
-      canvas.style.position = "fixed";
-      canvas.style.top = "0px";
-      canvas.style.left = "0px";
-
-      // contextmenu disabled
-      canvas.addEventListener("contextmenu", function(e){
-         e.preventDefault();
-      });
-	
-      // 생성한 Canvas 엘리먼트를 body에 추가합니다.
-      document.body.appendChild(canvas);
-      return canvas;
-   })()
 };
 ```
 
-반드시 객체 이름은 Module 로 선언해주어야 하며 postRun, canvas 속성은 필수로 입력되어야 합니다.
+반드시 객체 이름은 Module 로 선언해주어야 하며 postRun 속성은 필수로 입력되어야 합니다.
 
 * postRun : 엔진 모듈이 준비 된 시점에서 호출되는 함수를 지정합니다.
 * canvas : 지도를 렌더링 할 캔버스 엘리먼트를 지정합니다.
 
-canvas의 경우 동적으로 생성해도 되지만, 외부에 미리 선언한 canvas 엘리먼트를 연결할 수도 있습니다.
+3d 가시화를 담당하는 canvas는 index.html 구성요소 "map"  element 내부에 동적으로 생성된다.
 
 ```javascript
-var Module = {
-   TOTAL_MEMORY: 256*1024*1024,
-   postRun: [init],
-   canvas: (function() {
-      var canvas = document.getElementById('canvas');
-      return canvas;
-   })()
-};
+<head>
+   <style>
+      #map {
+         position: absolute;
+         width: calc(100%);
+         height: calc(100%);
+         left: 0px;
+         top: 0px;
+      }
+   </style>
+</head>
+<body>
+	<div id="map"></div>
+</body>
 ```
 
 #### 엔진 초기화 함수 선언
@@ -235,7 +205,10 @@ var Module = {
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
    // 엔진 초기화 API 호출(필수)
-   Module.Start(window.innerWidth, window.innerHeight);
+   Module.initialize({
+      container: document.getElementById("map"),
+      defaultKey : "발급 API KEY"
+   });
 }  
 ```
 
