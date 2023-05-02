@@ -51,7 +51,6 @@ gridShadow.clear();
 | layerName | string | 가시화 할 격자 객체를 담는 레이어 명칭 |
 | gap | number | 격자의 크기(가로 x 세로) |
 | isClip | boolean | 지정된 영역에 격자 크기를 균등 분할 생성 여부 설정 |
-{% endtab %}
 
 -   Return
 
@@ -59,9 +58,12 @@ gridShadow.clear();
     -   false : 수인한도 분석 격자 생성 실패.
         -   입력된 점이 3개 이하일 경우.
 
--   Sample - function setEarthquakeMesh 참조. - [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
-    {% endtab %}
-    {% tab title="Template" %}
+-   Sample
+    -   function setEarthquakeMesh 참조.
+    -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
+
+{% tab title="Template" %}
 
 ```javascript
 var gridShadow = Module.getAnalysisGridShadow();
@@ -73,19 +75,19 @@ gridShadow.create("gridlayer", 10, true);
 
 ### getResult() → string
 
-> 수인한도 분석 결과 반환.
+> 수인한도 분석 결과를 반환합니다.
 >
-> 수인한도 분석 결과(각 격자별 일조량) 반환.
+> 격자 별 일조량 분석 결과를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-{% endtab %}
 
 -   Return
     -   각 격자별 일조량, 연속 일조량 json 반환.
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -100,13 +102,12 @@ const json = JSON.parse(result);
 
 ### reset() → boolean
 
-> 수인한도 분석 격자 옵션 초기화.
+> 수인한도 분석 격자 옵션을 초기화 합니다.
 >
-> 배척격자, 격자색상 등 옵션 초기화.
+> 배척격자, 격자색상과 같은 옵션을 초기화 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-{% endtab %}
 
 -   Return
 
@@ -118,6 +119,7 @@ const json = JSON.parse(result);
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -129,19 +131,18 @@ gridShadow.reset();
 {% endtab %}
 {% endtabs %}
 
-### setAnalysis(id, isanalysis) → boolean
+### setAnalysis(id, isAnalysis) → boolean
 
-> 배척격자 설정.
+> 배척격자를 설정합니다..
 >
-> 해당 id의 격자를 수인한도 분석에서 제외.
+> 입력된 id의 격자를 수인한도 분석에서 제외합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | ---- | ------ | ------------ |
 | id | string | 격자 id |
-| isanalysis | boolean | 분석 여부 |
-{% endtab %}
+| isAnalysis | boolean | 분석 여부 |
 
 -   Return
     -   true : 배척격자 설정 성공.
@@ -151,6 +152,7 @@ gridShadow.reset();
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -164,9 +166,9 @@ gridShadow.setAnalysis("id", false);
 
 ### setColor(id, color) → boolean
 
-> 수인한도 분석 격자 색상 설정.
+> 수인한도 분석 격자 색상을 변경합니다.
 >
-> 해당 id의 격자 색상 설정.
+> 해당 id 객체 격자 색상을 변경합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -174,7 +176,6 @@ gridShadow.setAnalysis("id", false);
 | ---- | ------ | ------------ |
 | id | string | 격자 id |
 | color | [JSColor](../core/jscolor.md) | 격자 색상 설정 |
-{% endtab %}
 
 -   Return
 
@@ -186,6 +187,7 @@ gridShadow.setAnalysis("id", false);
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -199,9 +201,9 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
 
 ### startAnalysis(startTime, endTime, interval) → boolean
 
-> 수인한도 분석 시작.
+> 수인한도 분석을 실행합니다.
 >
-> 시작시간, 종료시간, 시간간격을 바탕으로 수인한도 분석 시작.
+> 시작시간, 종료시간, 시간간격을 바탕으로 수인한도 분석을 실행합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -210,7 +212,6 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
 | startTime | [JSDateTime](../core/jsdatetime.md) | 분석 시작 시간 |
 | endTime | [JSDateTime](../core/jsdatetime.md) | 분석 종료 시간 |
 | interval | number | 분석 시간 간격(단위 : 분) |
-{% endtab %}
 
 -   Return
 
@@ -223,6 +224,7 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [샌드박스\_수인한도분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_grid_shadow)
+        {% endtab %}
 
 {% tab title="Template" %}
 

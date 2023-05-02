@@ -31,7 +31,6 @@ var startTime = new Module.JSDateTime(2023, 4, 27, 8, 0, 0); // 년, 월, 일, �
 
 {% tabs %}
 {% tab title="Infomation" %}
-{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
