@@ -268,7 +268,7 @@ Module.getOption().selectColor = Module.COLOR_YELLOW;
 point.image_scale = 0.5;
 ```
 
-![image](https://user-images.githubusercontent.com/82925313/211443706-287b39b8-915a-44f5-8473-dcea5b67d38a.png)
+![](../../.gitbook/release_note/1.4/poi_resize.png)
 
 ### [Hotfix]Version_1.42.1 (2023년 01월 06일)
 
@@ -298,7 +298,3 @@ point.image_scale = 0.5;
 > -   엔진 로드 시 출력되는 콘솔 메시지 간략화
 > -   고스트 심볼 Face 반사 효과 지정 API 추가
 > -   Hex Code 문자여로 색상값 지정 기능 추가
-
-```
-
-```

@@ -27,7 +27,7 @@ object.lightColor = new Module.JSColor(255, 128, 128, 128);
 -   class : JSLayer
 -   parameter : 교차점을 계산하고자 하는 수직 평면 경로(입력 타입 JSVec2Array)
 -   return : 위치(경도, 위도, 고도)와 교차점이 발생한 파이프의 오브젝트 키 리스트를 배열로 반환
-    ![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/36fa05e3-e9a3-4907-b1c3-0c4ca26a25e1)
+    ![](../../.gitbook/release_note/1.5/jspipe_vertex.png)
 
 ```javascript
 var path = new Module.JSVec2Array();
@@ -129,18 +129,6 @@ line.createbyJson({
 
 # - 업데이트 내역 -
 
-### Version_1.50.0 (2023년 0월 일)
-
-> -
-
-### Version_1.50.0 (2023년 0월 일)
-
-> -
-
-### Version_1.50.0 (2023년 0월 일)
-
-> -
-
 ### [Hotfix]Version_1.51.1 (2023년 6월 12일)
 
 > -   컬러 폴리곤 생성 기능 추가
@@ -148,15 +136,15 @@ line.createbyJson({
 >         -   정점(vertex) : 폴리곤을 구성하는 점의 위치 리스트
 >         -   인덱스 : 각 정점을 삼각형으로 매핑하는 정수 리스트
 
-![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/15f83298-2bd8-456a-9058-372809185519)
+![](../../.gitbook/release_note/1.5/colorpolygon_vertex1.png)
 
 > -   각 정점은 1:1로 매칭되는 색상 리스트를 정의할 수도 있습니다.
 
-![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/9ff23a9d-7689-4f10-860e-7d0a00e3b93d)
+![](../../.gitbook/release_note/1.5/colorpolygon_color.png)
 
 > -   버텍스만으로 폴리곤의 삼각형을 구성하는 경우 인덱스를 생략할 수도 있습니다. 단, 이 경우 중복된 점이 리스트에 추가되므로 인덱싱 방법보다 비효율적일 수 있습니다.
 
-![image](https://github.com/avamk2/XDWorld_WebGL/assets/82925313/0e6c3f1c-0de5-47c9-b4b4-570841913807)
+![](../../.gitbook/release_note/1.5/colorpolygon_vertex2.png)
 
 > -   라인 생성 시 각 지점 별 색상 설정 기능 추가
 >     -   JSLineString으로 라인을 생성하였을 경우, 각 정점에 색상을 개별 지정 가능하도록 기능이 추가되었습니다.
@@ -211,7 +199,3 @@ line.createbyJson({
 >     -   Ghost Symbol 가시화에 적용되는 Light Color 변경합니다.
 >     -   변경된 색상이 0에 근접할수록 검은색으로 표현되며 반대로 255에 근접할수록 흰색으로 표현됩니다.
 >     -   알파 값은 적용되지 않습니다.
-
-```
-
-```
