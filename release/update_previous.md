@@ -1,6 +1,6 @@
 # - API 변경 내용 -
 
-### 삭제 예정 API(2023년 01월 01일 까지 지원)
+## 삭제 예정 API(2023년 01월 01일 까지 지원)
 
 > -   SetPlanetImageryType
 > -   changeBaseMap
@@ -8,7 +8,7 @@
 > -   setBaseMapOption
 > -   getBaseMapOption
 
-### 삭제 API 대체 API
+## 삭제 API 대체 API
 
 > -   Module.GoogleMap();
 > -   Module.ArcMap();
@@ -20,7 +20,7 @@
 > -   Module.SKYMap();
 > -   Module.WMTS();
 
-### 대체 API 참소 소스
+## 대체 API 참소 소스
 
 > -   [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 > -   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)

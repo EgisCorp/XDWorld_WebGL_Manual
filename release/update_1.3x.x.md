@@ -1,6 +1,6 @@
 # - API 변경 내용 -
 
-### 추가 API
+## 추가 API
 
 > -   Version_1.39.0 업데이트 내용 참조
 > -   Version_1.38.0 업데이트 내용 참조
@@ -8,14 +8,14 @@
 > -   Version_1.37.33 업데이트 내용 참조
 > -   Version_1.37.29 업데이트 내용 참조
 
-### 추가 API 샌드박스
+## 추가 API 샌드박스
 
 > -   [DEM 경사 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
 > -   [카메라 경로 가시화](http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
 
 # - 업데이트 내역 -
 
-### Version_1.39.0 (2022년 월 일)
+### Version_1.39.0 (2022년 12월 14일)
 
 > -   wmts 하이브리드 로드 오류 수정
 > -   타겟 오브제그트 이동 API 추가.
