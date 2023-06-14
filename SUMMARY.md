@@ -21,6 +21,8 @@
     -   [면적 측정](tutorial/tutorial_area.md)
     -   [높이 측정](tutorial/tutorial_altitude.md)
     -   [반경 측정](tutorial/tutorial_radius.md)
+-   [Release Note](release/release.md)
+    -   [2022년](release/year_2022.md)
 -   [Map](map/map.md)
     -   [JSMap](map/jsmap.md)
     -   [JSTerrain](map/jsterrain.md)
