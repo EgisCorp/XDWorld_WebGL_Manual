@@ -38,9 +38,9 @@
 ### Version_1.38.0 (2022년 12월 07일)
 
 > -   개선 된 기능
->     -   ([화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정](https://github.com/EgisCorp/XDWorld/issues/230))
->     -   ([중복키 이벤트 처리 추가](https://github.com/EgisCorp/XDWorld/issues/218))
->     -   ([화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정](https://github.com/EgisCorp/XDWorld/issues/230))
+>     -   [화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정](https://github.com/EgisCorp/XDWorld/issues/230)
+>     -   [중복키 이벤트 처리 추가](https://github.com/EgisCorp/XDWorld/issues/218)
+>     -   [화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정](https://github.com/EgisCorp/XDWorld/issues/230)
 >     -   JSGridAnal 클래스에 단일 시간 분석 그리드 객체에 대한 표출기능 추가
 >     -   마우스 클릭지점 이격 오류 수정
 
@@ -99,7 +99,7 @@
         -   0 : 상대값 (%) 적용
         -   1 : 절대값 (val) 적용
 
--   api : bool setLegendJSON(object _options)**
+-   api : bool setLegendJSON(object _options)
 -   class : JSGridAnal
 -   parameter
     -   _options : 설정 속성 값
@@ -190,7 +190,7 @@
 
 ### Version_1.37.42 (2022년 11월 28일)
 
-> -   ([이슈#223](https://github.com/EgisCorp/XDWorld/issues/223)) 해결
+> -   [이슈#223](https://github.com/EgisCorp/XDWorld/issues/223) 해결
 
 ### Version_1.37.41 (2022년 11월 25일)
 
@@ -272,13 +272,13 @@ layer.text_character_set = "EUC-KR"; // 디폴트 셋은 UTF-8
 
 ### Version_1.37.26 (2022년 09월 02일)
 
-> -   ([이슈#203](https://github.com/EgisCorp/XDWorld/issues/203)) 해결
+> -   [이슈#203](https://github.com/EgisCorp/XDWorld/issues/203) 해결
 
 ### Version_1.37.23 (2022년 08월 24일)
 
 > -   비디오 텍스쳐 메모리 누수 관련 오류 수정
-> -   ([비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture))
-> -   ([전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard))
+> -   [비디오텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=object_video_texture)
+> -   [전광판](http://sandbox.dtwincloud.com/code/main.do?id=object_ledboard)
 
 ### Version_1.37.22 (2022년 08월 23일)
 
