@@ -10,8 +10,8 @@
 
 ### 추가 API 샌드박스
 
-> -   'DEM 경사 조정' 추가(http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
-> -   '카메라 경로 가시화' 추가(http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
+> -   ([DEM 경사 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate))
+> -   ([카메라 경로 가시화](http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize))
 
 # - 업데이트 내역 -
 
@@ -38,13 +38,13 @@
 ### Version_1.38.0 (2022년 12월 07일)
 
 > -   개선 된 기능
->     -   화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정 (https://github.com/EgisCorp/XDWorld/issues/230)
+>     -   ([화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정](https://github.com/EgisCorp/XDWorld/issues/230))
+>     -   ([중복키 이벤트 처리 추가](https://github.com/EgisCorp/XDWorld/issues/218))
+>     -   ([화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정](https://github.com/EgisCorp/XDWorld/issues/230))
 >     -   JSGridAnal 클래스에 단일 시간 분석 그리드 객체에 대한 표출기능 추가
->     -   중복키 이벤트 처리 추가(https://github.com/EgisCorp/XDWorld/issues/218)
->     -   화면 분할 시 POI 라인이 단독 렌더링되는 현상 수정(https://github.com/EgisCorp/XDWorld/issues/230)
 >     -   마우스 클릭지점 이격 오류 수정
 
-> -   1. 레이어 별 클릭 지점 및 선택 오브젝트 리턴 API.
+> 1. 레이어 별 클릭 지점 및 선택 오브젝트 리턴 API.
 
 ```
 -   name : object pick(unsinged int screenX, unsigned int screenY)
@@ -56,7 +56,7 @@
 -   참고 : (https://github.com/EgisCorp/XDWorld/issues/224)
 ```
 
-> -   2. JSObject 내 오브젝트 속성 정보 저장 및 반환 기능.
+> 2. JSObject 내 오브젝트 속성 정보 저장 및 반환 기능.
 
 ```
 -   api : bool setProperty(string name, number/string value)
@@ -73,12 +73,13 @@
 -   return : 저장한 속성 값 (속성 값이 존재하지 않는 경우 null 반환)
 ```
 
-> -   3. Round 자동이동 위치 세그먼트 설정 프로퍼티 추가.
->     -   JSCamera 클래스 내 autoMoveRoundSegment 프로퍼티가 추가됨.
->     -   기존 setAutoMoveRoundPositions API는 500개의 고정 된 이동 경로 점을 반환하였으나, autoMoveRoundSegment 파라미터를 통해 이동 경로 지점 수를 설정 가능하도록 수정됨.
->     -   세그먼트 수가 적을 수록 지점 간격이 넓어져 이동 속도가 빨라짐.
+> 3. Round 자동이동 위치 세그먼트 설정 프로퍼티 추가.
+>
+>     - JSCamera 클래스 내 autoMoveRoundSegment 프로퍼티가 추가됨.
+>     - 기존 setAutoMoveRoundPositions API는 500개의 고정 된 이동 경로 점을 반환하였으나, autoMoveRoundSegment 파라미터를 통해 이동 경로 지점 수를 설정 가능하도록 수정됨.
+>     - 세그먼트 수가 적을 수록 지점 간격이 넓어져 이동 속도가 빨라짐.
 
-> -   4. 3D 그리드 애니메이션 메쉬의 기준 높이 설정 API 추가.
+> 4. 3D 그리드 애니메이션 메쉬의 기준 높이 설정 API 추가.
 
 ```
 -   api : void setBaseAltitude(float fAlt)
@@ -88,7 +89,7 @@
     -   fAlt : 기준 높이 값
 ```
 
-> -   5. 그리드 범례 절대값 설정 API 추가.
+> 5.  그리드 범례 절대값 설정 API 추가.
 
 ```
 -   api : void setLegendMode(int _nMode)
@@ -106,7 +107,7 @@
 -   setLegendMode 및 컬러테이블 설정
 ```
 
-> -   6. JSGridAnal 클래스 내 단일 시간 다중 분석 그리드 객체에 대한 병합기능 추가.
+> 6. JSGridAnal 클래스 내 단일 시간 다중 분석 그리드 객체에 대한 병합기능 추가.
 
 ```
 -   api : void openMultipleGridDataURL(string szURL, unsigned int nTime, unsigned int nStripSize, unsigned int nStripStart, unsigned int nStripEnd, unsigned char nDataType, unsigned char nMultipleCnt, unsigned char nMultipleIndex)
@@ -123,7 +124,7 @@
 -   그리드 필드 하나에 연결된 모든 데이터 필드를 합산하여 표현
 ```
 
-> -   7. JSGridAnal 클래스 내 마우스 클릭시 격자 정보 콜백기능 추가.
+> 7. JSGridAnal 클래스 내 마우스 클릭시 격자 정보 콜백기능 추가.
 
 ```
 -   api : void setMouseCallback(function _callback)
@@ -134,7 +135,7 @@
         -   콜백 반환 인자 : { longitude : Number, latitude : Number, idx : Number, idy : Number, value : Number , angle : Number }
 ```
 
-> -   8. JSGridAnal 클래스 내 격자 3D 라인 출력기능 추가.
+> 8. JSGridAnal 클래스 내 격자 3D 라인 출력기능 추가.
 
 ```
 -   api : void setGridLineVisible(boolean _visible)
@@ -156,7 +157,7 @@
     -   _fDistance : 그리드 라인의 최대 표현 해발고도
 ```
 
-> -   9. Canvas style left, top 옵션에 따른 마우스 위치 처리 기능 추가.
+> 9. Canvas style left, top 옵션에 따른 마우스 위치 처리 기능 추가.
 
 ```
 -   api : void ApplyCanvasPosition()
@@ -165,7 +166,7 @@
 -   class : Module
 ```
 
-> -   10. JSColorGrid 투명도 조절 API 추가.
+> 10. JSColorGrid 투명도 조절 API 추가.
 
 ```
 -   api : void setOpacity(float _opacity)
@@ -174,7 +175,7 @@
     -   _opacity : 투명도 (0.0~1.0 사이 값 적용)
 ```
 
-> -   11. JSColorPolygon 투명도 조절 API 추가.
+> 11. JSColorPolygon 투명도 조절 API 추가.
 
 ```
 -   api : void setOpacity(float _opacity)
