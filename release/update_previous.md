@@ -1,6 +1,4 @@
-# API 변경 내용
-
-## API 변경 내용
+# - API 변경 내용 -
 
 ### 삭제 예정 API(2023년 01월 01일 까지 지원)
 
@@ -27,7 +25,7 @@
 > -   [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 > -   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
 
-# 업데이트 내역
+# - 업데이트 내역 -
 
 ### 2022년 7월 05일
 
