@@ -10,8 +10,8 @@
 
 ### 추가 API 샌드박스
 
-> -   ([DEM 경사 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate))
-> -   ([카메라 경로 가시화](http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize))
+> -   [DEM 경사 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_slope_rate)
+> -   [카메라 경로 가시화](http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path_visualize)
 
 # - 업데이트 내역 -
 
