@@ -20,7 +20,7 @@
 > -   Module.SKYMap();
 > -   Module.WMTS();
 
-## 대체 API 참소 소스
+## 샌드박스 업데이트
 
 > -   [샌드박스\_배경지도설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
 > -   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)

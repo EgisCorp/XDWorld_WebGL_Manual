@@ -166,7 +166,7 @@ Module.initialize({
 });
 ```
 
-## 추가 API 샌드박스
+## 샌드박스 업데이트
 
 > -   [반사 효과](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_reflect)
 > -   [고스트심볼(Shape)](http://sandbox.dtwincloud.com/code/main.do?id=object_shape_to_ghost_symbol)
