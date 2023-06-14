@@ -129,7 +129,7 @@ line.createbyJson({
 
 # - 업데이트 내역 -
 
-## [Hotfix]1.51.1 (2023년 6월 12일)
+## 1.51.1 Hotfix (2023/6/12)
 
 > -   컬러 폴리곤 생성 기능 추가
 >     -   다수의 정점(vertex)과 인덱싱 정보로 폴리곤 형상을 직접 정의할 수 있는 API가 추가되었습니다.
@@ -152,18 +152,18 @@ line.createbyJson({
 >     -   각 정점 별 색상 지정 시 color 태그에 색상값 배열을 입력하시면 됩니다.
 >     -   각 정점 별 색상 수가 1:1로 매칭되어야 합니다. 매칭되지 않을 시 배열의 첫번째 색상만 참조하여 단일 색상으로 적용됩니다.
 
-## [Hotfix]1.51.2 (2023년 6월 9일)
+## 1.51.2 Hotfix (2023/6/9)
 
 > -   태양광 패널 배치 정보 반환 API(getLayerPannelInfo)를 추가하였습니다.
 > -   태양광 패널 직접 배치 가능 API(addPlannelObject)를 추가 하였습니다.
 > -   [이슈 296](https://github.com/EgisCorp/XDWorld/issues/296#:~:text=%ED%99%94%EB%A9%B4%20%EC%98%A4%EB%A5%98%20%EB%AC%B8%EC%9D%98-,%23296,-Open) 오류 수정 완료
 
-## [Hotfix]1.50.2 (2023년 05월 17일)
+## 1.50.2 Hotfix (2023/05/17)
 
 > -   배경지도(Google, MapBox, OpenStreetMap) 오류 수정
 >     -   일부 배경지도의 특정지역 누락현상이 발생하여 수정되었습니다.
 
-## [Hotfix]1.50.1 (2023년 05월 12일)
+## 1.50.1 Hotfix (2023/05/12)
 
 > -   브이월드 서버 변경에 따른 API 개선
 >     -   요청 URL 변경 http://xdworld.vworld.kr:8080/XDServer/ 에서 http://xdworld.vworld.kr:8080/XDServer3d/
@@ -171,7 +171,7 @@ line.createbyJson({
 >     -   지도 및 시설물 레이어 설정 기능 제공
 > -   JSPipe 오브젝트를 담는 파이프 레이어(ELT_PIPE) 의 수직 단면 교차점 반환 API가 추가되었습니다.
 
-## 1.50.0 (2023년 04월 28일)
+## 1.50.0 (2023/04/28)
 
 > -   JSFlow에 API 및 속성 추가
 >     -   JSFlow::setJSON( \_option ) - 바람장 기반 통합 생성 API 추가 합니다.
