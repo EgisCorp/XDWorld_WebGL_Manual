@@ -193,28 +193,28 @@ Module.initialize({
 
 # - 업데이트 내역 -
 
-## [Hotfix]Version_1.49.2 (2023년 04월 07일)
+## [Hotfix]1.49.2 (2023년 04월 07일)
 
 > -   엔진 실행 중 defaultKey 입력 시 반드시 암호화 된 키 사용
 >     -   스크립트 파일 상 키 노출이 되지 않도록 defaultKey 입력 시 반드시 암호화 된 키를 사용하도록 변경되었습니다.
 
-## [Hotfix]Version_1.49.1 (2023년 04월 06일)
+## [Hotfix]1.49.1 (2023년 04월 06일)
 
 > -   MML_RETURN_ANALYSISPOS 마우스모드 랜더링 오류 수정
 
-## Version_1.49.0 (2023년 04월 04일)
+## 1.49.0 (2023년 04월 04일)
 
 > -   시곡면 분석 각도 적요 오류 수정
 > -   전광판 (CJSFigure) 편집 오류 수정
 > -   파이프 애니메이션 오류 수정
 > -   고스트심볼 편집 오류 수정
 
-## Version_1.48.0 (2023년 03월 24일)
+## 1.48.0 (2023년 03월 24일)
 
 > -   마우스 피킹 방법 설정 옵션 값 반환 API가 추가되었습니다.
 > -   xdo 모델 불러오기 중 발생하는 오류가 수정되었습니다.
 
-## Version_1.47.0 (2023년 03월 13일)
+## 1.47.0 (2023년 03월 13일)
 
 > -   JSObject setPickable 기능 복구
 > -   가시권분석3D 지형 분석 추가
@@ -223,12 +223,12 @@ Module.initialize({
 >     -   Module.getOption().setIndexedDB(true); // IndexedDB 사용 여부 설정
 >     -   Module.getOption().setMaxIndexedDB(15); // IndexedDB 활용 최고 레벨 설정
 
-## Version_1.46.0 (2023년 02월 22일)
+## 1.46.0 (2023년 02월 22일)
 
 > -   JSPoint property z_index 기능 추가 완료
 >     -   그리기 순서 변경 기능 (입력값이 클수록 상위로 작을수로 하위로 가시화)
 
-## Version_1.45.0 (2023년 02월 15일)
+## 1.45.0 (2023년 02월 15일)
 
 > -   모바일에서 지도가 멈추는 현상 수정완료
 > -   폴리곤 외각선 색상 변경 모듈 수정완료
@@ -241,7 +241,7 @@ Module.initialize({
 >     -   HTMLObject는 HTML Element에 종속적으로 개발자가 지정된 left, top을 기준으로 출력 좌표 연산 모듈이 추가
 >     -   추후 샌드박스 업로드 예정
 
-## Version_1.44.0 (2023년 01월 18일)
+## 1.44.0 (2023년 01월 18일)
 
 > -   오브젝트 선택 시 출력되는 색상을 설정할 수 있도록 JSOption에 프로퍼티 가 추가되었습니다.
 
@@ -249,7 +249,7 @@ Module.initialize({
 Module.getOption().selectColor = Module.COLOR_YELLOW;
 ```
 
-## Version_1.43.0 (2023년 01월 11일)
+## 1.43.0 (2023년 01월 11일)
 
 > -   지도 생성 초기에 호출되는 초기화 API Module.Start를 Module.initialize 로 개선
 >     -   기존 Start와 변경된 점
@@ -270,16 +270,16 @@ point.image_scale = 0.5;
 
 ![](../../.gitbook/release_note/1.4/poi_resize.png)
 
-## [Hotfix]Version_1.42.1 (2023년 01월 06일)
+## [Hotfix]1.42.1 (2023년 01월 06일)
 
 > -   JSLayerList 클래스의 SyncLayer API 호출 시 오류 발생 문제 수정
 
-## Version_1.42.0 (2023년 01월 04일)
+## 1.42.0 (2023년 01월 04일)
 
 > -   엔진 초기 로드 시간 단축 및 경량화
 > -   MapBox, ArcMap 요청 URL 업데이트
 
-## Version_1.41.0 (2022년 12월 28일)
+## 1.41.0 (2022년 12월 28일)
 
 > -   레이어 리스트 반환 기능 추가
 >     -   레이어 리스트를 매번 생성하지 않고 Module API를 통해 반환 가능
@@ -293,7 +293,7 @@ point.image_scale = 0.5;
 > -   건물 심플 모드 렌더링 예외처리 추
 > -   JSColor에 적용할 색상 상수 값 추가
 
-## Version_1.40.0 (2022년 12월 21일)
+## 1.40.0 (2022년 12월 21일)
 
 > -   엔진 로드 시 출력되는 콘솔 메시지 간략화
 > -   고스트 심볼 Face 반사 효과 지정 API 추가
