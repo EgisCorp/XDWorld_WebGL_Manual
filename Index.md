@@ -2,7 +2,7 @@
 
 * [튜토리얼](tutorial/tutorial.md)
 * [Release Note](release/release.md)
-* [MAP](release/update\_1.5x.x.md)
+* [MAP](map/map.md)
 * [LAYER](layer/layer.md)
 * [CORE](core/core.md)
 * [OBJECT](object/object.md)
