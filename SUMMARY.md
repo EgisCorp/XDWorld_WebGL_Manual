@@ -63,6 +63,7 @@
     -   [JSSurfaceGraph](object/jssurfacegraph.md)
     -   [JSSymbol](object/jssymbol.md)
     -   [JSTypoon](object/jstypoon.md)
+    -   [JSVideoObject](object/jsvideoobject.md)
     -   [JSViewFrustum](object/jsviewfrustum.md)
 -   [Analysis](analysis/README.md)
     -   [JSAnalysis](analysis/jsanalysis.md)
