@@ -246,12 +246,93 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
 
 ```javascript
 var gridShadow = Module.getAnalysisGridShadow();
-gridShadow.startAnalysis(
-    new Module.JSDateTime(2023, 4, 17, 9, 30, 0),
-    new Module.JSDateTime(2023, 4, 17, 15, 30, 0),
-    10
-);
+gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Module.JSDateTime(2023, 4, 17, 15, 30, 0), 10);
 ```
+
+{% endtab %}
+{% endtabs %}
+
+### createWindow(layerName) → boolean
+
+> 창문분석을 위해 창문을 생성합니다.
+>
+> 마우스(Module.MML_ANALYS_WINDOWSHADOW) 클릭으로 입력된 2점으로 창문을 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| ---- | ------ | ------------ |
+| layerName | string | 레이어명 |
+
+-   Return
+
+    -   true : 창문 생성 성공.
+    -   false : 창문 생성 실패.
+
+-   창문 생성 실패 조건
+
+    -   입력된 점이 2개가 아닐 경우.
+
+-   Sample
+    -   function inputWindow 참조.
+    -   [샌드박스\_창문분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_window_shadow)
+        {% endtab %}
+
+{% endtab %}
+{% endtabs %}
+
+### copyPasteWindow() → boolean
+
+> 창문분석을 위해 창문을 복사 붙여넣기 합니다.
+>
+> 마우스(Module.MML_ANALYS_WINDOWSHADOW) 클릭으로 입력된 지점을 좌상단으로 최근에 생성한 창문을 붙여넣습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+
+    -   true : 창문 복사 성공.
+    -   false : 창문 복사 실패.
+
+-   창문 복사 실패 조건
+
+    -   레이어가 없을 경우.
+    -   생성된 창문이 없을 경우.
+    -   입력된 지점이 없을 경우.
+
+-   Sample
+    -   function copyPasteWindow 참조.
+    -   [샌드박스\_창문분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_window_shadow)
+        {% endtab %}
+
+{% endtab %}
+{% endtabs %}
+
+### copyPasteFloor() → boolean
+
+> 창문분석을 위해 층을 복사 붙여넣기 합니다.
+>
+> 마우스(Module.MML_ANALYS_WINDOWSHADOW) 클릭으로 입력된 지점을 좌상단으로 최근에 생성한 창문을 모두 붙여넣습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+
+    -   true : 층 복사 성공.
+    -   false : 층 복사 실패.
+
+-   층 복사 실패 조건
+
+    -   레이어가 없을 경우.
+    -   생성된 창문이 없을 경우.
+    -   입력된 지점이 없을 경우.
+
+-   Sample
+    -   function copyPasteFloor 참조.
+    -   [샌드박스\_창문분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_window_shadow)
+        {% endtab %}
 
 {% endtab %}
 {% endtabs %}

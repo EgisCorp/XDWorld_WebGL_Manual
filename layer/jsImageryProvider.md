@@ -7,13 +7,13 @@ description: 배경지도 객체를 관리하는 API.
 > Module.[Type](jsImageryProvider.md#type)() API 생성.
 
 ```javascript
-var naver = Module.NaverMap();		( nomal, satellite 지원 )
-var daum = Module.DaumMap();		( nomal, satellite 지원 )
+var naver = Module.NaverMap();		( nomal, terrain, satellite, cadastral 지원 )
+var kakao = Module.KakaoMap();		( nomal, terrain, satellite, cadastral 지원 )
 var google = Module.GoogleMap();	( nomal, terrain, vectorhybrid, satellitehybrid, satellite 지원 )
 var bing = Module.BingMap();		( nomal, satellitehybrid, satellite 지원 )
 var osm = Module.OpenStreetMap();	( nomal, terrain 지원 )
 var arc = Module.ArcMap();			( nomal, terrain, vectorhybrid, satellite 지원 )
-var mapbox = Module.MapBox();		( satellite 지원 )
+var mapbox = Module.MapBox();		( nomal, satellite 지원 )
 var skymap = Module.SKYMap();		( 2012 ~ 2018, 2020 지원 )
 var wmts = Module.WMTS();
 ```
@@ -27,6 +27,8 @@ var wmts = Module.WMTS();
 | quality                                     | string                                    | 배경 영상 지도 이미지 품질.       |
 | zeroLevel                                   | string                                    | 배경 영상 지도 이미지 LOD.        |
 | zerolevelOffset                             | string                                    | 배경 영상 지도 이미지 LOD offset. |
+| maxLevel                                    | number                                    | 배경 영상 지도 최대 레벨.         |
+| minLevel                                    | number                                    | 배경 영상 지도 최소 레벨.         |
 
 ## Function
 
@@ -143,6 +145,7 @@ Module.WMTS().setblank();
 | vectorhybrid    | string |            |         | 벡터 하이브리드 지도. |
 | satellitehybrid | string |            |         | 영상 하이브리드 지도. |
 | satellite       | string |            |         | 영상 지도.            |
+| cadastral       | string |            |         | 지적편집도.           |
 
 #### Provider
 
@@ -152,6 +155,7 @@ Module.WMTS().setblank();
 | ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
 | url           | string                                           |            |               | 요청 서버 URL 구성요소.                          |
 | tileExtent    | [Rect2D](../etc/tag-list.md#rect2d-style-type)   |            |               | 지도 타일링 영역 설정(좌하단, 우상단).           |
+| gridSubset    | [Rect2D](../etc/tag-list.md#rect2d-style-type)   |            |               | 데이터 최소/최대 영역 설정(좌하단, 우상단).      |
 | projection    | string                                           |            |               | 지도 원본 EPSG 코드.                             |
 | resolutions   | array(number)                                    |            |               | 타일링 해상도.                                   |
 | matrixIds     | array(number)                                    |            |               | 타일링 레벨(해상도와 매칭).                      |
