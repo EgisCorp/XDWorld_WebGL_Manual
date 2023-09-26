@@ -25,7 +25,7 @@ var object = Module.createVideoObject("ID");
 | alpha    | number                              | 비디오 투명값.               |
 | axisX    | boolean                             | 좌우 반전.                   |
 | axisY    | boolean                             | 상하 반전.                   |
-| position | [JSVector3D](../core/jsvector3d.md) | 객체 위치.                   |
+| position | [JSVector3D](../core/jsvector3d.md) | 객체 경도, 위도, 고도 위치.  |
 | zoom     | number                              | 비디오 배율.                 |
 | distance | number                              | 카메라와 객체의 거리.        |
 
