@@ -119,6 +119,24 @@ line.createbyJson({
 
 # - 업데이트 내역 -
 
+## 1.54.1 Hotfix (2023/10/13)
+### 1. WMS, WMTS 이미지 투명도 설정 오류 수정
+ * 이미지 일부 영역에 투명 값이 정상적으로 설정되지 않는 부분을 수정하였습니다.
+### 2. JSPolygon loadTexture API 콜백 프로퍼티 추가 ([이슈 #336](https://github.com/EgisCorp/XDWorld/issues/336))
+ * Fire_EventTextureLoadComplete 이벤트 처리 대신 loadTexture API에 이미지 로드 콜백을 받을 수 있도록 수정되었습니다.
+    ``` javascript
+    polygon.loadTexture("polygon_rtt_texture", {
+        url : "./data/polygon_rtt_texture", 
+        callback : function(e) {
+            console.log(e);
+        }
+    });
+    ```
+ * 기존 콜백 처리가 없는 loadTexture API도 혼용 가능합니다.
+    ``` javascript
+    polygon.loadTexture("polygon_rtt_texture", "./data/polygon_rtt_texture");
+    ```
+
 ## 1.54.0 (2023/9/26)
 
 ### 1. 대기 노을 효과
