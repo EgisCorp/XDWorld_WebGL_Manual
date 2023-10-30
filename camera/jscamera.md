@@ -1146,7 +1146,7 @@ Module.getViewCamera().pauseAutoMove(true);
 
 ### reset()
 
-> 카메라의 위치, 거리 속서을 초기 상태로 설정.
+> 카메라의 위치, 거리 속성을초기 상태로 설정.
 
 {% tabs %}
 {% tab title="Template" %}
