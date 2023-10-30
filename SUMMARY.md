@@ -26,6 +26,7 @@
     -   [1.4x 버전 업데이트](release/update_1.4x.x.md)
     -   [1.3x 버전 업데이트](release/update_1.3x.x.md)
     -   [이전 버전 업데이트](release/update_previous.md)
+-   [Module](module/module.md)
 -   [Map](map/map.md)
     -   [JSMap](map/jsmap.md)
     -   [JSTerrain](map/jsterrain.md)
