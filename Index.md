@@ -2,6 +2,7 @@
 
 -   [Tutorial](tutorial/tutorial.md)
 -   [Release Note](release/release.md)
+-   [MODULE](module/module.md)
 -   [MAP](map/map.md)
 -   [LAYER](layer/layer.md)
 -   [CORE](core/core.md)
