@@ -10,663 +10,6 @@ description: 지도 내 카메라 설정 API.
 var camera = Module.getViewCamera();
 ```
 
-### AltitudeDown()
-
-> 카메라의 고도를 낮춤.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.AltitudeDown();
-```
-{% endtab %}
-{% endtabs %}
-
-### AltitudeUp()
-
-> 카메라의 고도를 높임.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.AltitudeUp();
-```
-{% endtab %}
-{% endtabs %}
-
-### AngleDown()
-
-> 카메라의 각도(tilt) 낮춤.
-> 
-> 회전을 지원하지 않는 평면 모드에서는 동작하지 않음.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.AngleDown();
-```
-{% endtab %}
-{% endtabs %}
-
-### AngleUp()
-
-> 카메라의 각도(tilt) 높임.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.AngleUp();
-```
-{% endtab %}
-{% endtabs %}
-
-### FOVDecrease()
-
-> 카메라의 FOV를 내림.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().FOVDecrease();
-```
-{% endtab %}
-{% endtabs %}
-
-### FOVIncrease()
-
-> 카메라의 FOV를 올림.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().FOVIncrease();
-```
-{% endtab %}
-{% endtabs %}
-
-### getAnimationSpeed() -> number
-
-> 카메라 이동 애니메이션 속도 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 이동 애니메이션 속도
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var speed = Module.getViewCamera().getAnimationSpeed();
-```
-{% endtab %}
-{% endtabs %}
-
-### getDirect() -> number
-
-> 카메라의 현재 방향 각도 반환.
-> 
-> 방향 각도 값은 -180도~180도 사이의 값을 가진다.
-> 각도별 카메라가 바라보는 방향은 다음과 같다.
-> - 0도 : 북쪽
-> - +90도 : 동쪽
-> - +180도(=-180도) : 남쪽
-> - -90도 : 서쪽
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 현재 카메라 각도의 방향 각도 반환 (Degree 단위).
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var direct= API.JSCamera.getDirect();
-```
-{% endtab %}
-{% endtabs %}
-
-### getFov() -> number
-
-> 카메라의 FOV 각도 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 현재 카메라 FOV 각도 (Degree 단위).
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var FOV= API.JSCamera.getFOV();
-```
-{% endtab %}
-{% endtabs %}
-
-### getLimitAltitude() -> number
-
-> 카메라에 제한된 최소 고도 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 현재 카메라의 최소 고도 반환(m 단위).
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var limitAltitude = API.JSCamera.getLimitAltitude();
-```
-{% endtab %}
-{% endtabs %}
-
-### getLimitTilt() -> number
-
-> 카메라의 제한된 최소 tilt 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 현재 카메라의 제한 tilt 반환(Degree 단위).
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var limitTilt = API.JSCamera.getLimitTilt();
-```
-{% endtab %}
-{% endtabs %}
-
-### getLocation() -> JSVector3D
-
-> 카메라의 위치 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * JSVector3D: 카메라 위치.
-    - x : 카메라 위치의 경도 (Degree 단위).
-    - y : 카메라 중심점의 위도 (Degree 단위).
-    - z : 카메라 중심점의 고도 (m 단위).
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var location = API.JSCamera.getLocation();
-```
-{% endtab %}
-{% endtabs %}
-
-### getMapZoomLevel() -> long
-
-> 카메라 Zoom Level 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * long: 현재 카메라의 zoom level
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var ZoomLevel= API.JSCamera.getMapZoomLevel();
-```
-{% endtab %}
-{% endtabs %}
-
-### getMoveMode() -> boolean
-
-> 카메라의 회전 모드 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * 현재 카메라의 회전 모드.
-    - True : 1인칭 시점 회전 모드.
-    - False : 3인칭 시점 회전 모드.
-  * False: 엔진이 초기화되지 않아 실패한 경우.
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().getMoveMode();
-```
-{% endtab %}
-{% endtabs %}
-
-### getTilt() -> number
-
-> 카메라의 현재 tilt 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 현재 카메라 각도의 tilt 값 반환 (Degree 단위).
-{% endtab %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var currentTilt = API.JSCamera.getTilt();
-```
-{% endtab %}
-{% endtabs %}
-
-### MapRender()
-
-> 지도 렌더링 화면 갱신.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().MapRender();
-```
-{% endtab %}
-{% endtabs %}
-
-### move(location, tilt, direct, speed)
-
-> 카메라를 지정한 경위도 기반 위치로 이동시킨 후 카메라 각도(tilt, Direct) 및 속도 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| location | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.</br>       |
-| tilt | number | 이동 후 설정할 카메라 tilt.       |
-| direct | number | 이동 후 설정할 카메라 Direct.       |
-| speed | long | 카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
-API.JSCamera.move(vTargetPos, 45.0, 90.0, 1);
-```
-{% endtab %}
-{% endtabs %}
-
-### moveDist(location, tilt, direct, dist, speed)
-
-> 카메라를 지정한 경위도 기반 위치로 이동시킨 후 카메라 각도(tilt, Direct), 거리 및 속도 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| location | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.</br>       |
-| tilt | number | 이동 후 설정할 카메라 tilt.       |
-| direct | number | 이동 후 설정할 카메라 Direct.       |
-| dist | number | 이동 후 설정할 카메라 거리(현재 미적용).       |
-| speed | long | 카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
-API.JSCamera.moveDist(vTargetPos, 45.0, 90.0, 1, 0.0);
-```
-{% endtab %}
-{% endtabs %}
-
-### MoveDown()
-
-> 카메라를 후방으로 이동.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveDown();
-```
-{% endtab %}
-{% endtabs %}
-
-### MoveLeft()
-
-> 카메라를 측면(왼쪽) 방향으로 이동.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveLeft();
-```
-{% endtab %}
-{% endtabs %}
-
-### moveLonLat(longitude, latitude)
-
-> 지정한 경위도 기반 위치로 카메라 이동.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| longitude | number | 이동하는 위치의 경도 (Degree 단위).       |
-| latitude   | number | 이동하는 위치의 위도 (Degree 단위). |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveLonLat(127.0273188, 37.4977981);
-```
-{% endtab %}
-{% endtabs %}
-
-### moveLonLatAlt(longitude, latitude, altitude, smooth)
-
-> 지정한 고도, 경위도 기반 위치로 카메라 이동.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| longitude | number | 이동하는 위치의 경도 (Degree 단위).       |
-| latitude   | number | 이동하는 위치의 위도 (Degree 단위). |
-| altitude | number | 이동하는 위치의 고도 (m 단위).       |
-| smooth | boolean | 카메라 이동 애니메이션 적용 여부.<br>True: 이동 애니메이션 적용.</br><br>False: 애니메이션 없이 바로 이동.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveLonLatAlt(127.0273188, 37.4977981, 500.0, true);
-```
-{% endtab %}
-{% endtabs %}
-
-### moveLonLatAltOval(longitude, latitude, altitude, speed)
-
-> 카메라가 지정한 고도, 경위도 기반 위치로 이동하며, 이동 시 줌 인/아웃 애니메이션 적용.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| longitude | number | 이동하는 위치의 경도 (Degree 단위).       |
-| latitude   | number | 이동하는 위치의 위도 (Degree 단위). |
-| altitude | number | 이동하는 위치의 고도 (m 단위).       |
-| speed | long | 카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveLonLatAltOval(127.0273188, 37.4977981, 500.0, 1);
-```
-{% endtab %}
-{% endtabs %}
-
-### moveLonLatOval(longitude, latitude, speed)
-
-> 카메라가 지정한 고도, 경위도 기반 위치로 이동하며, 이동 시 줌 인/아웃 애니메이션 적용.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| longitude | number | 이동하는 위치의 경도 (Degree 단위).       |
-| latitude   | number | 이동하는 위치의 위도 (Degree 단위). |
-| speed | long | 카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveLonLatOval(127.0273188, 37.4977981, 1);
-```
-{% endtab %}
-{% endtabs %}
-
-### moveOval(location, tilt, Direct, speed)
-
-> 카메라가 지정한 경위도 기반 위치로 이동한 후 카메라 틸트와 방향을 설정하며, 이동 시 줌 인/아웃 애니메이션 적용.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| location | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.</br>       |
-| tilt   | number | 이동 후 설정할 카메라 tilt. |
-| Direct | number | 이동 후 설정할 카메라 Direct.       |
-| speed | long | 카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
-API.JSCamera.moveOval(vTargetPos, 45.0, 90.0, 1);
-```
-{% endtab %}
-{% endtabs %}
-
-### moveOvalDist(location, tilt, Direct, speed)
-
-> 카메라가 지정한 경위도 기반 위치로 이동한 후 카메라 틸트와 방향, 거리를 설정하며, 이동 시 줌 인/아웃 애니메이션 적용.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| location | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.</br>       |
-| tilt   | number | 이동 후 설정할 카메라 tilt. |
-| Direct | number | 이동 후 설정할 카메라 Direct.       |
-| speed | long | 카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.</br>       |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
-API.JSCamera.moveOvalDist(vTargetPos, 45.0, 90.0, 0.0, 1);
-```
-{% endtab %}
-{% endtabs %}
-
-### MoveRight()
-
-> 카메라를 측면(오른쪽) 방향으로 이동.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveRight();
-```
-{% endtab %}
-{% endtabs %}
-
-### MoveUp()
-
-> 카메라를 전방으로 이동.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.moveUp();
-```
-{% endtab %}
-{% endtabs %}
-
-### pauseAutoMove(pause) -> boolean
-
-> 카메라 자동이동을 잠시 멈춤.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type                                | Description                |
-| ---- | ----------------------------------- | -------------------------- |
-| pause   | boolean | 자동이동 설정.<br>True: 멈춤.</br><br>False: 다시 재생.</br> |
-
-* Return
-  * True : 설정에 성공할 경우.
-  * False : 설정에 실패할 경우.
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().pauseAutoMove(true);
-```
-{% endtab %}
-{% endtabs %}
-
-### reset()
-
-> 카메라의 위치, 거리 속서을 초기 상태로 설정.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().reset();
-```
-{% endtab %}
-{% endtabs %}
-
-### rotateLeft()
-
-> 카메라가 시야 왼쪽 방향으로 회전.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.rotateLeft();
-```
-{% endtab %}
-{% endtabs %}
-
-### rotateRight()
-
-> 카메라가 시야 오른쪽 방향으로 회전.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.rotateRight();
-```
-{% endtab %}
-{% endtabs %}
-
-### setDistance(Dist)
-
-> 카메라의 시점-위치 간 거리 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name   | Type   | Description |
-| ------ | ------ | ----------- |
-| Dist | number | 설정 거리(m 단위). |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().setDistance(500.0);
-```
-{% endtab %}
-{% endtabs %}
-
-### viewNorth()
-
-> 카메라가 정북 방향을 바라보도록 회전.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.viewNorth();
-```
-{% endtab %}
-{% endtabs %}
-
-### ZoomIn()
-
-> 화면 중심 위치를 기준으로 카메라 zoom In 실행.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.ZoomIn();
-```
-{% endtab %}
-{% endtabs %}
-
-### ZoomOut()
-
-> 화면 중심 위치를 기준으로 카메라 zoom Out 실행.
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-API.JSCamera.ZoomOut();
-```
-{% endtab %}
-{% endtabs %}
-
 ### look(from, to) → boolean
 
 > from, to 두 점을 이용한 카메라 이동.
@@ -695,7 +38,7 @@ Module.getViewCamera().look(new Module.JSVector3D(129.128265, 35.171834, 500.0),
 
 ### move(position, tilt, direct, speed)
 
-> 카메라를 원하는 위치로 이동 후 tilt, direct 설정.
+> 카메라를 원하는 위치로 이동 후 Tilt, direct 설정.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1198,7 +541,7 @@ Module.getViewCamera().startAutoMove();
   * false : 설정 실패.
 * Sample
   * function stopCameraAutoMove 참조
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera_move_path)
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -1239,3 +582,669 @@ Module.getViewCamera().pauseAutoMove();
 | -------- | ---------------------------------------------- | ---------- | ------- | ------------------ |
 | boundary | [Rect2D](../etc/tag-list.md#rect2d-style-type) |            |         | 카메라 이동 위치.         |
 | complete | function                                       |            |         | 이동 완료 후 발생 이벤트 함수. |
+
+### AltitudeDown()
+
+> 카메라의 고도를 낮춤.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.AltitudeDown();
+```
+{% endtab %}
+{% endtabs %}
+
+### AltitudeUp()
+
+> 카메라의 고도를 높임.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.AltitudeUp();
+```
+{% endtab %}
+{% endtabs %}
+
+### AngleDown()
+
+> 카메라의 각도(tilt) 낮춤.
+>
+> 회전을 지원하지 않는 평면 모드에서는 동작하지 않음.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.AngleDown();
+```
+{% endtab %}
+{% endtabs %}
+
+### AngleUp()
+
+> 카메라의 각도(tilt) 높임.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.AngleUp();
+```
+{% endtab %}
+{% endtabs %}
+
+### FOVDecrease()
+
+> 카메라의 FOV를 내림.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().FOVDecrease();
+```
+{% endtab %}
+{% endtabs %}
+
+### FOVIncrease()
+
+> 카메라의 FOV를 올림.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().FOVIncrease();
+```
+{% endtab %}
+{% endtabs %}
+
+### getAnimationSpeed() -> number
+
+> 카메라 이동 애니메이션 속도 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * number: 이동 애니메이션 속도
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var speed = Module.getViewCamera().getAnimationSpeed();
+```
+{% endtab %}
+{% endtabs %}
+
+### getDirect() -> number
+
+> 카메라의 현재 방향 각도 반환.
+>
+> 방향 각도 값은 -180도\~180도 사이의 값을 가진다. 각도별 카메라가 바라보는 방향은 다음과 같다.
+>
+> * 0도 : 북쪽
+> * \+90도 : 동쪽
+> * \+180도(=-180도) : 남쪽
+> * \-90도 : 서쪽
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * number: 현재 카메라 각도의 방향 각도 반환 (Degree 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var direct= API.JSCamera.getDirect();
+```
+{% endtab %}
+{% endtabs %}
+
+### getFov() -> number
+
+> 카메라의 FOV 각도 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * number: 현재 카메라 FOV 각도 (Degree 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var FOV= API.JSCamera.getFOV();
+```
+{% endtab %}
+{% endtabs %}
+
+### getLimitAltitude() -> number
+
+> 카메라에 제한된 최소 고도 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * number: 현재 카메라의 최소 고도 반환(m 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var limitAltitude = API.JSCamera.getLimitAltitude();
+```
+{% endtab %}
+{% endtabs %}
+
+### getLimitTilt() -> number
+
+> 카메라의 제한된 최소 tilt 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * number: 현재 카메라의 제한 tilt 반환(Degree 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var limitTilt = API.JSCamera.getLimitTilt();
+```
+{% endtab %}
+{% endtabs %}
+
+### getLocation() -> JSVector3D
+
+> 카메라의 위치 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * JSVector3D: 카메라 위치.
+    * x : 카메라 위치의 경도 (Degree 단위).
+    * y : 카메라 중심점의 위도 (Degree 단위).
+    * z : 카메라 중심점의 고도 (m 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var location = API.JSCamera.getLocation();
+```
+{% endtab %}
+{% endtabs %}
+
+### getMapZoomLevel() -> long
+
+> 카메라 Zoom Level 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * long: 현재 카메라의 zoom level
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var ZoomLevel= API.JSCamera.getMapZoomLevel();
+```
+{% endtab %}
+{% endtabs %}
+
+### getMoveMode() -> boolean
+
+> 카메라의 회전 모드 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 현재 카메라의 회전 모드.
+    * True : 1인칭 시점 회전 모드.
+    * False : 3인칭 시점 회전 모드.
+  * False: 엔진이 초기화되지 않아 실패한 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().getMoveMode();
+```
+{% endtab %}
+{% endtabs %}
+
+### getTilt() -> number
+
+> 카메라의 현재 tilt 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * number: 현재 카메라 각도의 tilt 값 반환 (Degree 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var currentTilt = API.JSCamera.getTilt();
+```
+{% endtab %}
+{% endtabs %}
+
+### MapRender()
+
+> 지도 렌더링 화면 갱신.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().MapRender();
+```
+{% endtab %}
+{% endtabs %}
+
+### move(location, tilt, direct, speed)
+
+> 카메라를 지정한 경위도 기반 위치로 이동시킨 후 카메라 각도(tilt, Direct) 및 속도 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type                                | Description                                                        |
+| -------- | ----------------------------------- | ------------------------------------------------------------------ |
+| location | [JSVector3D](../core/jsvector3d.md) | <p>카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.<br></p>    |
+| tilt     | number                              | 이동 후 설정할 카메라 tilt.                                                 |
+| direct   | number                              | 이동 후 설정할 카메라 Direct.                                               |
+| speed    | long                                | <p>카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
+API.JSCamera.move(vTargetPos, 45.0, 90.0, 1);
+```
+{% endtab %}
+{% endtabs %}
+
+### moveDist(location, tilt, direct, dist, speed)
+
+> 카메라를 지정한 경위도 기반 위치로 이동시킨 후 카메라 각도(tilt, Direct), 거리 및 속도 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type                                | Description                                                        |
+| -------- | ----------------------------------- | ------------------------------------------------------------------ |
+| location | [JSVector3D](../core/jsvector3d.md) | <p>카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.<br></p>    |
+| tilt     | number                              | 이동 후 설정할 카메라 tilt.                                                 |
+| direct   | number                              | 이동 후 설정할 카메라 Direct.                                               |
+| dist     | number                              | 이동 후 설정할 카메라 거리(현재 미적용).                                           |
+| speed    | long                                | <p>카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
+API.JSCamera.moveDist(vTargetPos, 45.0, 90.0, 1, 0.0);
+```
+{% endtab %}
+{% endtabs %}
+
+### MoveDown()
+
+> 카메라를 후방으로 이동.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveDown();
+```
+{% endtab %}
+{% endtabs %}
+
+### MoveLeft()
+
+> 카메라를 측면(왼쪽) 방향으로 이동.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLeft();
+```
+{% endtab %}
+{% endtabs %}
+
+### moveLonLat(longitude, latitude)
+
+> 지정한 경위도 기반 위치로 카메라 이동.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description              |
+| --------- | ------ | ------------------------ |
+| longitude | number | 이동하는 위치의 경도 (Degree 단위). |
+| latitude  | number | 이동하는 위치의 위도 (Degree 단위). |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLonLat(127.0273188, 37.4977981);
+```
+{% endtab %}
+{% endtabs %}
+
+### moveLonLatAlt(longitude, latitude, altitude, smooth)
+
+> 지정한 고도, 경위도 기반 위치로 카메라 이동.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type    | Description                                                                        |
+| --------- | ------- | ---------------------------------------------------------------------------------- |
+| longitude | number  | 이동하는 위치의 경도 (Degree 단위).                                                           |
+| latitude  | number  | 이동하는 위치의 위도 (Degree 단위).                                                           |
+| altitude  | number  | 이동하는 위치의 고도 (m 단위).                                                                |
+| smooth    | boolean | <p>카메라 이동 애니메이션 적용 여부.<br>True: 이동 애니메이션 적용.<br><br>False: 애니메이션 없이 바로 이동.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLonLatAlt(127.0273188, 37.4977981, 500.0, true);
+```
+{% endtab %}
+{% endtabs %}
+
+### moveLonLatAltOval(longitude, latitude, altitude, speed)
+
+> 카메라가 지정한 고도, 경위도 기반 위치로 이동하며, 이동 시 줌 인/아웃 애니메이션 적용.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description                                                        |
+| --------- | ------ | ------------------------------------------------------------------ |
+| longitude | number | 이동하는 위치의 경도 (Degree 단위).                                           |
+| latitude  | number | 이동하는 위치의 위도 (Degree 단위).                                           |
+| altitude  | number | 이동하는 위치의 고도 (m 단위).                                                |
+| speed     | long   | <p>카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLonLatAltOval(127.0273188, 37.4977981, 500.0, 1);
+```
+{% endtab %}
+{% endtabs %}
+
+### moveLonLatOval(longitude, latitude, speed)
+
+> 카메라가 지정한 고도, 경위도 기반 위치로 이동하며, 이동 시 줌 인/아웃 애니메이션 적용.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description                                                        |
+| --------- | ------ | ------------------------------------------------------------------ |
+| longitude | number | 이동하는 위치의 경도 (Degree 단위).                                           |
+| latitude  | number | 이동하는 위치의 위도 (Degree 단위).                                           |
+| speed     | long   | <p>카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLonLatOval(127.0273188, 37.4977981, 1);
+```
+{% endtab %}
+{% endtabs %}
+
+### moveOval(location, tilt, Direct, speed)
+
+> 카메라가 지정한 경위도 기반 위치로 이동한 후 카메라 틸트와 방향을 설정하며, 이동 시 줌 인/아웃 애니메이션 적용.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type                                | Description                                                        |
+| -------- | ----------------------------------- | ------------------------------------------------------------------ |
+| location | [JSVector3D](../core/jsvector3d.md) | <p>카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.<br></p>    |
+| tilt     | number                              | 이동 후 설정할 카메라 tilt.                                                 |
+| Direct   | number                              | 이동 후 설정할 카메라 Direct.                                               |
+| speed    | long                                | <p>카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
+API.JSCamera.moveOval(vTargetPos, 45.0, 90.0, 1);
+```
+{% endtab %}
+{% endtabs %}
+
+### moveOvalDist(location, tilt, Direct, speed)
+
+> 카메라가 지정한 경위도 기반 위치로 이동한 후 카메라 틸트와 방향, 거리를 설정하며, 이동 시 줌 인/아웃 애니메이션 적용.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type                                | Description                                                        |
+| -------- | ----------------------------------- | ------------------------------------------------------------------ |
+| location | [JSVector3D](../core/jsvector3d.md) | <p>카메라 위치 (경도, 위도, 고도).<br>경도, 위도는 Degree 단위. 고도는 m 단위.<br></p>    |
+| tilt     | number                              | 이동 후 설정할 카메라 tilt.                                                 |
+| Direct   | number                              | 이동 후 설정할 카메라 Direct.                                               |
+| speed    | long                                | <p>카메라 이동 속도.<br>속도는 정수 1 이상의 값을 가지며 단위가 커질 수록 이동 속도가 빨라짐.<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var vTargetPos = new Module.JSVector3D(longitude, latitude, altitude);
+API.JSCamera.moveOvalDist(vTargetPos, 45.0, 90.0, 0.0, 1);
+```
+{% endtab %}
+{% endtabs %}
+
+### MoveRight()
+
+> 카메라를 측면(오른쪽) 방향으로 이동.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveRight();
+```
+{% endtab %}
+{% endtabs %}
+
+### MoveUp()
+
+> 카메라를 전방으로 이동.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveUp();
+```
+{% endtab %}
+{% endtabs %}
+
+### pauseAutoMove(pause) -> boolean
+
+> 카메라 자동이동을 잠시 멈춤.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type    | Description                                           |
+| ----- | ------- | ----------------------------------------------------- |
+| pause | boolean | <p>자동이동 설정.<br>True: 멈춤.<br><br>False: 다시 재생.<br></p> |
+
+* Return
+  * True : 설정에 성공할 경우.
+  * False : 설정에 실패할 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().pauseAutoMove(true);
+```
+{% endtab %}
+{% endtabs %}
+
+### reset()
+
+> 카메라의 위치, 거리 속서을 초기 상태로 설정.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().reset();
+```
+{% endtab %}
+{% endtabs %}
+
+### rotateLeft()
+
+> 카메라가 시야 왼쪽 방향으로 회전.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.rotateLeft();
+```
+{% endtab %}
+{% endtabs %}
+
+### rotateRight()
+
+> 카메라가 시야 오른쪽 방향으로 회전.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.rotateRight();
+```
+{% endtab %}
+{% endtabs %}
+
+### setDistance(Dist)
+
+> 카메라의 시점-위치 간 거리 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| Dist | number | 설정 거리(m 단위). |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().setDistance(500.0);
+```
+{% endtab %}
+{% endtabs %}
+
+### viewNorth()
+
+> 카메라가 정북 방향을 바라보도록 회전.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.viewNorth();
+```
+{% endtab %}
+{% endtabs %}
+
+### ZoomIn()
+
+> 화면 중심 위치를 기준으로 카메라 zoom In 실행.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.ZoomIn();
+```
+{% endtab %}
+{% endtabs %}
+
+### ZoomOut()
+
+> 화면 중심 위치를 기준으로 카메라 zoom Out 실행.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.ZoomOut();
+```
+{% endtab %}
+{% endtabs %}
