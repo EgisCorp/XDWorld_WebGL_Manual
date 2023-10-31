@@ -249,6 +249,33 @@ newGhostSymbol.moveVertically(150.0);
 {% endtab %}
 {% endtabs %}
 
+### setBasePoint(x, y, z) → boolean
+
+> 고스트 심볼 중심 좌표를 기준으로 입력 값만큼 이동 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description |
+| --------- | ------ | -------- |
+| x         | number | X축 이동 값(미터) |
+| y         | number | Y축 이동 값(미터) |
+| z         | number | Z축 이동 값(미터) |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+  
+* Sample
+  * function setBasePoint 참조.
+  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
 ### setDescription(desc)
 
 > 오브젝트의 설명에 대한 설명을 저장.
@@ -387,33 +414,6 @@ newGhostSymbol.setDirection(90.0);
   
 * Sample
   * function setRotation 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-```
-{% endtab %}
-{% endtabs %}
-
-### setBasePoint(x, y, z) → boolean
-
-> 고스트 심볼 중심 좌표를 기준으로 입력 값만큼 이동 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| x         | number | X축 이동 값(미터) |
-| y         | number | Y축 이동 값(미터) |
-| z         | number | Z축 이동 값(미터) |
-
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function setBasePoint 참조.
   * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
 {% endtab %}
 
