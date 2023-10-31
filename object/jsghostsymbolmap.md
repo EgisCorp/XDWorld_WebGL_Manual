@@ -10,6 +10,57 @@ description: 고스트 심볼 객체 등록 관리하는 API.
 var object = Module.getGhostSymbolMap();
 ```
 
+### addGhostSymbolBy3DS(ghostSymbolModelKey, hostName, fileName) → boolean
+
+> 3DS 파일을 기반으로 고스트 심볼 모델 등록.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description |
+| ---------- | ------ | -------- |
+| ghostSymbolModelKey | string | 고스트 심볼 모델 등록 Key.  |
+| hostName | string | 3DS 파일 위치 Host 주소.  |
+| fileName | string | 3DS 파일 명(확장자 없이 입력).  |
+
+* Return
+  * True : 고스트 심볼 모델 등록 성공.
+  * False : 월드가 초기화되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+ghostSymbolMap.addGhostSymbolBy3DS("STREET_LIGHT", "./data", "StreetLight");
+```
+{% endtab %}
+{% endtabs %}
+
+### addGhostSymbolByXDO(ghostSymbolModelKey, hostName, fileName, version) → boolean
+
+> XDO 파일을 기반으로 고스트 심볼 모델 등록.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description |
+| ---------- | ------ | -------- |
+| ghostSymbolModelKey | string | 고스트 심볼 모델 등록 Key.  |
+| hostName | string | XDO 파일 위치 Host 주소.  |
+| fileName | string | XDO 파일 명(확장자 없이 입력).  |
+| version | bool | XDO 파일 버전.<br>true : 3.0.0.2 버전.</br><br>false : 3.0.0.1 버전.</br>  |
+
+* Return
+  * True : 고스트 심볼 모델 등록 성공.
+  * False : 등록된 고스트 심볼 맵이 없을 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", false);
+```
+{% endtab %}
+{% endtabs %}
+
 ### insert(option) → string
 
 > 3DS 파일을 사용하여 고스트 심볼 등록.
@@ -32,6 +83,33 @@ var object = Module.getGhostSymbolMap();
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setGhostSymbolTexture(ghostSymbolModelKey, hostName, fileName) → boolean
+
+> 고스트 심볼 모델의 텍스쳐 이미지를 지정.
+> 
+> 지정한 이미지는 등록된 고스트 심볼 모델의 텍스쳐 좌표를 따라 적용.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description |
+| ---------- | ------ | -------- |
+| ghostSymbolModelKey | string | 텍스처를 지정하고자 하는 고스트 심볼 모델 등록 Key.  |
+| hostName | string | 텍스처 이미지 파일 위치 Host 주소.  |
+| fileName | string | 텍스처 이미지 파일 명(확장자 포함하여 입력).  |
+
+* Return
+  * True : 텍스처 이미지 지정 성공.
+  * False : 등록된 고스트 심볼 맵이 없을 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLightTexture.jpg");
 ```
 {% endtab %}
 {% endtabs %}
