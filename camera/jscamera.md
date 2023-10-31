@@ -532,30 +532,6 @@ Module.getViewCamera().setDistance(500.0);
 {% endtab %}
 {% endtabs %}
 
-### setDirect(direct)
-
-> 카메라 방향 설정.
->
-> direct 입력 값에 따른 회전 정보 0, 360(북쪽), 90(동쪽), 180(남쪽), 270(서쪽).
-
-{% tabs %}
-{% tab title="Information" %}
-| Name   | Type   | Description |
-| ------ | ------ | ----------- |
-| direct | number | 카메라 direct. |
-
-* Sample
-  * function setDirect 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().setDirect(0);
-```
-{% endtab %}
-{% endtabs %}
-
 ### setAltitude(alt)
 
 > 카메라 고도 설정.
@@ -824,26 +800,9 @@ API.JSCamera.ZoomOut();
 
 ## Getter / Setter
 
-### getAnimationSpeed() -> number
+### getAnimationSpeed(), setAnimationSpeed(speed) -> number
 
-> 카메라 이동 애니메이션 속도 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 이동 애니메이션 속도
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var speed = Module.getViewCamera().getAnimationSpeed();
-```
-{% endtab %}
-{% endtabs %}
-
-### setAnimationSpeed(speed)
-
-> 마우스 카메라 이동 속도 설정.
+> 카메라 이동 애니메이션 속도 설정.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -851,6 +810,8 @@ var speed = Module.getViewCamera().getAnimationSpeed();
 | ----- | ------ | ---------------------------- |
 | speed | number | 카메라 이동 속도(1.0 \~ 10.0 사이 값). |
 
+* Return
+  * number: 이동 애니메이션 속도
 * Sample
   * function setEvent 참조.
   * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
@@ -858,12 +819,13 @@ var speed = Module.getViewCamera().getAnimationSpeed();
 
 {% tab title="Template" %}
 ```javascript
+var speed = Module.getViewCamera().getAnimationSpeed();
 Module.getViewCamera().setAnimationSpeed(5);
 ```
 {% endtab %}
 {% endtabs %}
 
-### getDirect() -> number
+### getDirect(), setDirect(direct) -> number
 
 > 카메라의 현재 방향 각도 반환.
 >
@@ -876,8 +838,15 @@ Module.getViewCamera().setAnimationSpeed(5);
 
 {% tabs %}
 {% tab title="Information" %}
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| direct | number | 카메라 direct. |
+
 * Return
   * number: 현재 카메라 각도의 방향 각도 반환 (Degree 단위).
+* Sample
+  * function setDirect 참조.
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -886,18 +855,26 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 var direct= API.JSCamera.getDirect();
+Module.getViewCamera().setDirect(0);
 ```
 {% endtab %}
 {% endtabs %}
 
-### getFov() -> number
+### getFov(), setFov(fov) -> number
 
-> 카메라의 FOV 각도 반환.
+> 카메라의 FOV 설정.
 
 {% tabs %}
 {% tab title="Information" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| fov  | number | 카메라 fov.    |
+
 * Return
   * number: 현재 카메라 FOV 각도 (Degree 단위).
+* Sample
+  * function setFOV 참조.
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -906,57 +883,14 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 var FOV= API.JSCamera.getFOV();
-```
-{% endtab %}
-{% endtabs %}
-
-### setFov(fov)
-
-> 카메라 FOV 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description |
-| ---- | ------ | ----------- |
-| fov  | number | 카메라 fov.    |
-
-* Sample
-  * function setFOV 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
 Module.getViewCamera().setFov(50);
 ```
 {% endtab %}
 {% endtabs %}
 
-### getMoveMode() -> boolean
+### getMoveMode(), setMoveMode(type) -> boolean
 
 > 카메라의 회전 모드 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * 현재 카메라의 회전 모드.
-    * True : 1인칭 시점 회전 모드.
-    * False : 3인칭 시점 회전 모드.
-  * False: 엔진이 초기화되지 않아 실패한 경우.
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-Module.getViewCamera().getMoveMode();
-```
-{% endtab %}
-{% endtabs %}
-
-### setMoveMode(type)
-
-> 카메라 회전 모드 설정.
->
-> type 입력 값에 따른 정보 true(1인칭 시점 회전모드), false(3인칭 시점 회전모드).
 
 {% tabs %}
 {% tab title="Information" %}
@@ -964,6 +898,11 @@ Module.getViewCamera().getMoveMode();
 | ---- | ------- | ----------- |
 | type | boolean | 카메라 시점.     |
 
+* Return
+  * 현재 카메라의 회전 모드.
+    * True : 1인칭 시점 회전 모드.
+    * False : 3인칭 시점 회전 모드.
+  * False: 엔진이 초기화되지 않아 실패한 경우.
 * Sample
   * function setPerson 참조.
   * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
@@ -971,19 +910,27 @@ Module.getViewCamera().getMoveMode();
 
 {% tab title="Template" %}
 ```javascript
+Module.getViewCamera().getMoveMode();
 Module.getViewCamera().setMoveMode(true);
 ```
 {% endtab %}
 {% endtabs %}
 
-### getLimitAltitude() -> number
+### getLimitAltitude(), setLimitAltitude(alt) -> number
 
-> 카메라에 제한된 최소 고도 반환.
+> 카메라에 제한된 최소 고도 설정.
 
 {% tabs %}
 {% tab title="Information" %}
+| Name | Type   | Description       |
+| ---- | ------ | ----------------- |
+| alt  | number | 제한하고자하는 고도(m 단위). |
+
 * Return
   * number: 현재 카메라의 최소 고도 반환(m 단위).
+* Sample
+  * function initPage 참조
+  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -992,53 +939,12 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 var limitAltitude = API.JSCamera.getLimitAltitude();
-```
-{% endtab %}
-{% endtabs %}
-
-### setLimitAltitude(alt)
-
-> 카메라 제한 고도 값을 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description       |
-| ---- | ------ | ----------------- |
-| alt  | number | 제한하고자하는 고도(m 단위). |
-
-* Sample
-  * function initPage 참조
-  * [샌드박스\_경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
 Module.getViewCamera().setLimitAltitude(3000);
 ```
 {% endtab %}
 {% endtabs %}
 
-### getLimitTilt() -> number
-
-> 카메라의 제한된 최소 tilt 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * number: 현재 카메라의 제한 tilt 반환(Degree 단위).
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var API = {
-    JSCamera : Module.getViewCamera();
-};
-var limitTilt = API.JSCamera.getLimitTilt();
-```
-{% endtab %}
-{% endtabs %}
-
-### setLimitTilt(tilt)
+### getLimitTilt(), setLimitTilt(tilt) -> number
 
 > 카메라의 제한 tilt 각도 설정.
 
@@ -1048,6 +954,8 @@ var limitTilt = API.JSCamera.getLimitTilt();
 | ---- | ------ | ---------------- |
 | tilt | number | 제한하고자하는 tilt 각도. |
 
+* Return
+  * number: 현재 카메라의 제한 tilt 반환(Degree 단위).
 * Sample
   * function initPage 참조.
   * [샌드박스\_카메라 경로이동](http://sandbox.dtwincloud.com/code/main.do?id=camera\_move\_path)
@@ -1055,6 +963,10 @@ var limitTilt = API.JSCamera.getLimitTilt();
 
 {% tab title="Template" %}
 ```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var limitTilt = API.JSCamera.getLimitTilt();
 Module.getViewCamera().setLimitTilt(80);
 ```
 {% endtab %}
@@ -1108,14 +1020,21 @@ Module.getViewCamera().setLocation(new Module.JSVector3D(129.128265, 35.171834, 
 {% endtab %}
 {% endtabs %}
 
-### getTilt() -> number
+### getTilt(), setTilt(tilt) -> number
 
 > 카메라의 현재 tilt 반환.
 
 {% tabs %}
 {% tab title="Information" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| tilt | number | 카메라 tilt.   |
+
 * Return
   * number: 현재 카메라 각도의 tilt 값 반환 (Degree 단위).
+* Sample
+  * function setTilt 참조.
+  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
 {% endtab %}
 
 {% tab title="Template" %}
@@ -1124,27 +1043,6 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 var currentTilt = API.JSCamera.getTilt();
-```
-{% endtab %}
-{% endtabs %}
-
-### setTilt(tilt)
-
-> 카메라의 tilt 각도 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description |
-| ---- | ------ | ----------- |
-| tilt | number | 카메라 tilt.   |
-
-* Sample
-  * function setTilt 참조.
-  * [샌드박스\_카메라 설정](http://sandbox.dtwincloud.com/code/main.do?id=camera\_set)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
 Module.getViewCamera().setTilt(80);
 ```
 {% endtab %}
