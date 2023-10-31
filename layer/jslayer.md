@@ -74,6 +74,57 @@ layer.clearWMSCache();
 {% endtab %}
 {% endtabs %}
 
+### getObjectCount() → number
+
+> 해당 레이어 객체 리스트 갯수 반환.
+>
+> 사용자 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   Return
+    -   \-1 : 해당 레이어에 객체가 존재 하지 않는 경우.
+    -   result>0 : 해당 레이어 객체 갯수.
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectKeyList() → string
+
+> 해당 레이어에서 객체 명칭 반환.
+>
+> 해당 사용자 레이어 객체는 리스트로 관리하며 모든 리스트 객체 명칭 반환
+>
+> 사용자 레이어에서 사용 가능
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   Return
+    -   string : 객체 명칭 반환 성공(구분자 ",").
+    -   "" : 객체 명칭 반환 실패.
+-   ID 반환 실패 조건.
+    -   해당 레이어 객체 수가 0인 경우.
+    -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getType() → number
 
 > 레이어의 타입 값 반환.
@@ -310,57 +361,6 @@ layer.removeAtIndex(0);
     -   해당 레이어 객체 수가 0인 경우.
     -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
     -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getObjectCount() → number
-
-> 해당 레이어 객체 리스트 갯수 반환.
->
-> 사용자 레이어만 가능.
-
-{% tabs %}
-{% tab title="Infomation" %}
-
--   Return
-    -   \-1 : 해당 레이어에 객체가 존재 하지 않는 경우.
-    -   result>0 : 해당 레이어 객체 갯수.
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getObjectKeyList() → string
-
-> 해당 레이어에서 객체 명칭 반환.
->
-> 해당 사용자 레이어 객체는 리스트로 관리하며 모든 리스트 객체 명칭 반환
->
-> 사용자 레이어에서 사용 가능
-
-{% tabs %}
-{% tab title="Infomation" %}
-
--   Return
-    -   string : 객체 명칭 반환 성공(구분자 ",").
-    -   "" : 객체 명칭 반환 실패.
--   ID 반환 실패 조건.
-    -   해당 레이어 객체 수가 0인 경우.
-    -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
         {% endtab %}
 
 {% tab title="Template" %}
