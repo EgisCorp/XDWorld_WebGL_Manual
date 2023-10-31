@@ -57,6 +57,43 @@ layer.addObject(object, 0);
 {% endtab %}
 {% endtabs %}
 
+### clearWMSCache()
+
+> 로드 된 WMS 레이어 이미지 캐시를 비움.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+..(WMS 레이어 추가)..
+var layer = layerList.nameAtLayer(“WMSLayer”);
+layer.clearWMSCache();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getType() → number
+
+> 레이어의 타입 값 반환.
+
+{% tabs %}
+{% tab title="Infomation" %}
+-  Return
+  -  number(0 이상) : 레이어 타입(E_LAYER_TYPE) 반환.
+  -  number(-1) : 레이어 오브젝트가 존재하지 않는 경우.
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(false);
+//..(WMS 레이어 추가)..
+var layer = layerList.nameAtLayer(“WMSLayer”);
+var bVisible = layer.getType();
+```
+{% endtab %}
+{% endtabs %}
+
 ### indexAtKey(index) → string
 
 > 해당 사용자 레이어에서 객체 ID 반환.
@@ -335,6 +372,149 @@ layer.removeAtIndex(0);
 {% endtab %}
 {% endtabs %}
 
+### setConnectionWFS(url, port, param) → boolean
+
+> WFS 레이어 연결 정보를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| url | string | 데이터 요청 url. |
+| port | number | 데이터 요청 Port. |
+| param | string | 데이터 요청 파라미터. |
+
+-   Return
+    -   true : 설정에 성공할 경우.
+    -   false : 해당 레이어가 존재하지 않거나, 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWFSLayer(“newWFSLayer”, 0);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWFS(dataURL, 0, parameter);
+```
+{% endtab %}
+{% endtabs %}
+
+### setConnectionWMS(url, port, param) → boolean
+
+> WMS 레이어 연결 정보를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| url | string | 데이터 요청 url. |
+| port | number | 데이터 요청 Port. |
+| param | string | 데이터 요청 파라미터. |
+
+-   Return
+    -   true : 설정에 성공할 경우.
+    -   false : 해당 레이어가 존재하지 않거나, 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWMSLayer(“newWMSLayer”, 0);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWMS(dataURL, 0, parameter);
+```
+{% endtab %}
+{% endtabs %}
+
+### setFontStyle(fontName, fontSize, fontWeight, color, outColor)
+
+> WFS 글꼴 스타일을 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| fontName | string | 글꼴 명칭. |
+| fontSize | number | 글꼴 크기. |
+| fontWeight | number | 글꼴 두께. |
+| color | [JSColor](../core/jscolor.md) | 글꼴 색상. |
+| outColor | [JSColor](../core/jscolor.md) | 글꼴 외곽 색상. |
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWFSLayer(“newWFSLayer”, 0);
+var dataURL = “http://...(데이터 요청 URL)...”;  
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWFS(dataUrl, 0, parameter);
+var clrFont     = new Module.JSColor(255, 255, 255, 255);
+var clrOutLine  = new Module.JSColor(255, 0, 0, 0);
+layer.setFontStyle(“굴림”, 20, 10, clrFont, clrOutLine); 
+```
+{% endtab %}
+{% endtabs %}
+
+### setLevelWFS(level)
+
+> WFS 레이어의 데이터 출력 레벨 범위를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| level | number | 데이터 출력 최대 레벨. |
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWFSLayer(“newWFSLayer”, 0);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWFS(dataUrl, 0, parameter);
+layer.setLevelWFS(10);
+```
+{% endtab %}
+{% endtabs %}
+
+### setLevelWMS(minLevel, maxLevel) → boolean
+
+> WMS 레이어의 데이터 출력 레벨 범위를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| minLevel | number | 데이터 출력 최소 레벨. |
+| maxLevel | number | 데이터 출력 최대 레벨. |
+
+- Return
+  - true : 설정에 성공할 경우.
+  - 다음의 경우 API는 false를 반환.
+    - 해당 레이어가 존재하지 않는 경우.
+    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWMSLayer(“newWMSLayer”);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWMS(dataUrl, 0, parameter);
+layer.setLevelWMS(10, 12);
+```
+{% endtab %}
+{% endtabs %}
+
 ### setLODRatio(ratio)
 
 > 해당 레이어 가시화 범위 설정
@@ -363,26 +543,48 @@ layer.removeAtIndex(0);
 {% endtab %}
 {% endtabs %}
 
-### setUseRecoverHsv(type) → boolean
+### setName(layerName)
 
-> 해당 서비스 레이어 색상 표현 설정.
->
-> HSV 색상 채널을 적용한 객체 표현 설정.
->
-> 건물, 드론 LOD 레이어만 적용.
+> 레이어의 이름을 설정.
 
 {% tabs %}
 {% tab title="Infomation" %}
 | Name | Type | Description |
-| ---- | ------- | ------------------------------------------------ |
-| type | boolean | <p>true인 경우 HSV 채널 가시화.<br>false인 경우 기본 가시화.</p> |
+| ---- | ------- | ------------------------------------------ |
+| layerName | string | 설정하고자 하는 레이어 이름. |
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+//..(WMS 레이어 추가)..
+var layer = layerList.nameAtLayer(“WMSLayer”);
+layer.setName(“WMSLayer2”);
+```
+{% endtab %}
+{% endtabs %}
+
+### setProxyRequest(type)
+
+> 레이어 프록시 사용 설정.
+>
+> 객체 통신 요청 시 프록시 사용 유무를 설정.
+>
+> 서비스 레이어만 가능.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------------- |
+| type | boolean | <p>true인 경우 프록시 서버 설정.<br>false인 경우 기본 요청 설정.</p> |
 
 -   Return
-    -   true : HSV 채널 가시화 설정 성공.
-    -   false : HSV 채널 가시화 설정 실패.
+    -   true : 프록시 설정 성공.
+    -   false : 프록시 설정 실패.
+-   프록시 설정 실패 조건.
+    -   사용자 레이어 인 경우
 -   Sample
-    -   function setHSV 참조.
-    -   [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
+    -   function createLayerWMS 참조.
+    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
         {% endtab %}
 
 {% tab title="Template" %}
@@ -427,6 +629,65 @@ layer.removeAtIndex(0);
 {% endtab %}
 {% endtabs %}
 
+### setRequestFeatureCount(count)
+
+> WFS 데이터 요청 단위의 타일 크기를 지정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| count | number | 요청 단위 타일 크기. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+    - 해당 레이어 타입이 WFS 레이어 타입이 아닌 경우.
+- 참고
+  - 요청 단위가 클수록 큰 타일 범위의 WFS 데이터 요청
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
+layer.setRequestFeatureCount(64);
+```
+{% endtab %}
+{% endtabs %}
+
+### setStylesWMS(style)
+
+> 요청 하고자 하는 레이어 스타일을 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| style | string | 요청 레이어 스타일. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 해당 레이어가 존재하지 않는 경우.
+    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+- 참고
+  - 스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWMSLayer(“newWMSLayer”);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWMS(dataUrl, 0, parameter);
+layer.setStylesWMS(“LT_C_UQ111”);
+```
+{% endtab %}
+{% endtabs %}
+
 ### setTileAltitudeOffset(offset) → boolean
 
 > 해당 서비스 초기 설정 고도값 설정(기본 0)
@@ -455,6 +716,205 @@ layer.removeAtIndex(0);
 
 ```javascript
 
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTileSizeWMS(size)
+
+> WMS 레이어 타일의 픽셀 크기를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------ |
+| size | number | 타일 픽셀 크기. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 해당 레이어가 존재하지 않는 경우.
+    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+- 참고
+  - 스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWMSLayer(“newWMSLayer”);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWMS(dataUrl, 0, parameter);
+layer.setTileSizeWMS(tileSize);
+```
+{% endtab %}
+{% endtabs %}
+
+### setUseRecoverHsv(type) → boolean
+
+> 해당 서비스 레이어 색상 표현 설정.
+>
+> HSV 색상 채널을 적용한 객체 표현 설정.
+>
+> 건물, 드론 LOD 레이어만 적용.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ---- | ------- | ------------------------------------------------ |
+| type | boolean | <p>true인 경우 HSV 채널 가시화.<br>false인 경우 기본 가시화.</p> |
+
+-   Return
+    -   true : HSV 채널 가시화 설정 성공.
+    -   false : HSV 채널 가시화 설정 실패.
+-   Sample
+    -   function setHSV 참조.
+    -   [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
+        {% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSDescField(fieldName) → boolean
+
+> WFS 데이터 중 Description 데이터로 저장할 태그 이름을 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ------ | ----------------------------------- | ------------- |
+| fieldName | string | Description 데이터를 저장할 태그 이름. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
+    - 레이어 타입이 WFS형 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
+layer.setWFSPropertyName(“STD_SGGCD,BONBUN,AG_GEOM”);
+layer.setWFSDescField(“STD_SGGCD”);
+
+"수신 WFS 데이터"
+<gml:featureMember>
+<LT_P_BONBUN gml:id="LT_P_BONBUN.253000">
+...중략..
+<STD_SGGCD>26500</STD_SGGCD>
+<BONBUN>708</BONBUN>
+<AG_GEOM>
+...중략...
+</gml:featureMember>
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointName(fieldName)
+
+> WFS 레이어 타일의 픽셀 크기를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ------ | ----------------------------------- | ------------- |
+| fieldName | string | 수신한 xml형 WFS 데이터 내 태그 명칭. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 해당 레이어가 존재하지 않는 경우.
+    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+    - 해당 레이어 타입이 WFS 레이어 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWFSLayer(“newWFSLayer”, 0);
+var dataURL = “http://...(데이터 요청 URL)...”;
+var parameter= “...(데이터 요청 파라미터)...”;
+layer.setConnectionWFS(dataUrl, 0, parameter);
+layer.setWFSPointName(“BONBUN”);
+
+"수신 WFS 데이터"
+<gml:featureMember>
+<LT_P_BONBUN gml:id="LT_P_BONBUN.253000">
+...중략..
+<STD_SGGCD>26500</STD_SGGCD>
+<BONBUN>708</BONBUN>
+<AG_GEOM>
+...중략...
+</gml:featureMember>
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPropertyName(propertyName)
+
+> WFS 속성 데이터로 받을 태그 리스트를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ------ | ----------------------------------- | ------------- |
+| propertyName | string | 속성 데이터 태그 리스트. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
+    - 레이어 타입이 WFS형 타입이 아닌 경우.
+- 참고
+  -   설정된 WFS 태그 리스트는 WFS 데이터 요청 파라미터 중 “propertyname” 파라미터에 설정한 내용이 적용된다.
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
+layer.setWFSPropertyName(“STD_SGGCD,BONBUN,AG_GEOM”);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSTextColor(lineColor, fillColor)
+
+> POI WFS 데이터 출력 시 텍스트의 외곽 색상, 채움 색상을 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ------ | ----------------------------------- | ------------- |
+| lineColor | [JSColor](../core/jscolor.md) | 텍스트 외곽 색상. |
+| fillColor | [JSColor](../core/jscolor.md) | 텍스트 채움 색상. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
+    - 레이어 타입이 WFS형 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
+var lineColor = new Module.JSColor(255, 255, 255, 255);
+var fillColor = new Module.JSColor(255, 0, 0, 0);
+layer.setWFSTextColor(lineColor , fillColor);
 ```
 
 {% endtab %}
@@ -505,34 +965,51 @@ let slopeoption = {
 {% endtab %}
 {% endtabs %}
 
-### setProxyRequest(type)
+### setWMSTransparent(transparent)
 
-> 레이어 프록시 사용 설정.
->
-> 객체 통신 요청 시 프록시 사용 유무를 설정.
->
-> 서비스 레이어만 가능.
+> POI WFS 데이터 출력 시 텍스트의 외곽 색상, 채움 색상을 설정.
 
 {% tabs %}
 {% tab title="Infomation" %}
 | Name | Type | Description |
-| ---- | ------- | ------------------------------------------------- |
-| type | boolean | <p>true인 경우 프록시 서버 설정.<br>false인 경우 기본 요청 설정.</p> |
-
--   Return
-    -   true : 프록시 설정 성공.
-    -   false : 프록시 설정 실패.
--   프록시 설정 실패 조건.
-    -   사용자 레이어 인 경우
--   Sample
-    -   function createLayerWMS 참조.
-    -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
-        {% endtab %}
-
+| ------ | ----------------------------------- | ------------- |
+| transparent | boolean | 레이어 출력 방식.<br>true : 레이어 반투명 출력</br><br>false : 레이어 불투명 출력</br> |
+- 참고
+  - true로 설정한 경우 지형 이미지가 함께 보이는 반투명 상태로 출력되며, False로 설정한 경우 지형 이미지가 보이지 않는 불투명 상태로 출력된다.
 {% tab title="Template" %}
 
 ```javascript
+var layerList = new Module.JSLayerList(false);
+//...
+var layer = layerList.nameAtLayer(“WMSLayer”);
+layer.setWMSTransparent(true);
+```
 
+{% endtab %}
+{% endtabs %}
+
+### setWMSVersion(version)
+
+> WMS 이미지의 요청 버전을 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type | Description |
+| ------ | ----------------------------------- | ------------- |
+| version | string | 설정하고자 하는 데이터 요청 버전. |
+
+- Return
+  - true : 설정에 성공한 경우.
+  - 다음의 경우 false 반환.
+    - 레이어 객체가 존재하지 않는 경우.
+    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+//..(WMS 레이어 추가)..
+var layer = layerList.nameAtLayer(“WMSLayer”);
+layer.setWMSVersion(“1.1.0”);
 ```
 
 {% endtab %}
