@@ -10,16 +10,15 @@ description: 3D 오브젝트 기본 클래스. 3D 오브젝트는 형태에 따�
 
 {% tabs %}
 {% tab title="Information" %}
--   Return
-    -   유효한 문자열(string) : 오브젝트의 Key 반환 성공.
-    -   빈 문자열(string) : 오브젝트가 null인 경우.
+* Return
+  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var strKey = object.getId();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -31,16 +30,15 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
--   Return
-    -   유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
-    -   빈 문자열(string) : 오브젝트가 null인 경우.
+* Return
+  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var strDesc = object.getDescription();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -48,17 +46,15 @@ var strDesc = object.getDescription();
 
 > 오브젝트의 설명에 대한 설명을 저장.
 
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
 | desc | string | 오브젝트 설명 문자열. |
-{% tab title="Template" %}
 
+{% tabs %}
+{% tab title="Template" %}
 ```javascript
 object.setDescription('First Object.');
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -68,16 +64,15 @@ object.setDescription('First Object.');
 
 {% tabs %}
 {% tab title="Information" %}
--   Return
-    -   유효한 문자열(string) : 오브젝트의 이름 반환 성공.
-    -   빈 문자열(string) : 오브젝트가 null인 경우.
+* Return
+  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var objName = object.getName();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -85,17 +80,15 @@ var objName = object.getName();
 
 > 오브젝트의 이름을 설정.
 
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
 | name | string | 설정할 오브젝트 이름. |
-{% tab title="Template" %}
 
+{% tabs %}
+{% tab title="Template" %}
 ```javascript
 object.setName('MyObject');
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -105,18 +98,16 @@ object.setName('MyObject');
 
 {% tabs %}
 {% tab title="Information" %}
--   Return
-    - [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환
-    보기 : Module.JS_VISIBLE_ON
-    숨김 : Module.JS_VISIBLE_OFF
-    에러 발생 : Module.JS_SELECTABLE_ERROR(오브젝트가 NULL인 경우)
+* Return
+  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
+  * 보기 : Module.JS\_VISIBLE\_ON
+  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var objName = object.getName();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -124,16 +115,16 @@ var objName = object.getName();
 
 > 오브젝트의 이름을 설정.
 
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| visible | number | [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list).<br>보기 : Module.JS_VISIBLE_ON</br><br>숨김 : Module.JS_VISIBLE_OFF</br> |
-{% tab title="Template" %}
+| Name    | Type   | Description                                                                                                                                    |
+| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
 
+
+
+{% tabs %}
+{% tab title="Template" %}
 ```javascript
 object.setVisible(Module.JS_VISIBLE_ON);
 ```
-
 {% endtab %}
 {% endtabs %}
