@@ -45,6 +45,7 @@
   * [JSVec3Array](core/jsvec3array.md)
   * [JSDateTime](core/jsdatetime.md)
 * [Object](object/object.md)
+  * [JSObject](object/jsobject.md)
   * [JSAntenna](object/jsantenna.md)
   * [JSArrow](object/jsarrow.md)
   * [JSBarGraph](object/jsbargraph.md)
