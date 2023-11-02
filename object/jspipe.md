@@ -46,6 +46,42 @@ var object = Module.createPipe("ID");
 {% endtab %}
 {% endtabs %}
 
+### getExtent() → number
+
+> 3D 파이프의 바운더리 박스의 장축 거리를 반환
+
+{% tabs %}
+{% tab title="Information" %}
+
+* Return
+  * 3차원(x,y,z) 바운더리 박스의 장축(최소점에서 최대점까지 벡터)의 거리 반환, 단위 미터.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getId() → string
+
+> 오브젝트의 Key를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+-   Return
+    -   유효한 문자열(string) : 오브젝트의 Key 반환 성공.
+    -   빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var strKey = object.getId();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getPositions() → [JSVec3Array](../core/jsvec3array.md)
 
 > 3D 파이프의 중심선 좌표를 반환.
@@ -73,6 +109,51 @@ var object = Module.createPipe("ID");
 
 * Return
   * 파이프 반지름(미터).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### moveVertically(altitude) → boolean
+
+> 3D 파이프의 높이 설정.
+> 
+> altitude 최소 -1000 보다 큰 값 입력(해발고도 기준).
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| altitude | number | 높이 재설정 값. |
+  
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setColor(starColor, endColor) → boolean
+
+> 3D 파이프의 시작, 끝 지점의 색상 설정
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| starColor | [JSColor](../core/jscolor.md) | 시작 지점 색상 |
+| endColor | [JSColor](../core/jscolor.md) | 끝 지점 색상 |
+
+* Return
+  * true : 객체 설정 성공.
+  * false : 객체 설정 실패.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -165,29 +246,6 @@ var object = Module.createPipe("ID");
 {% endtab %}
 {% endtabs %}
 
-### moveVertically(altitude) → boolean
-
-> 3D 파이프의 높이 설정.
-> 
-> altitude 최소 -1000 보다 큰 값 입력(해발고도 기준).
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| altitude | number | 높이 재설정 값. |
-  
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-```
-{% endtab %}
-{% endtabs %}
-
 ### setSimplifyRange(range) → boolean
 
 > 3D 파이프의 간소화 표현 거리 설정.
@@ -217,41 +275,117 @@ var object = Module.createPipe("ID");
 {% endtab %}
 {% endtabs %}
 
-### getExtent() → number
+## Getter / Setter
 
-> 3D 파이프의 바운더리 박스의 장축 거리를 반환
+### getDescription() → string
+
+> 오브젝트의 설명에 대한 내용을 반환.
 
 {% tabs %}
 {% tab title="Information" %}
-
-* Return
-  * 3차원(x,y,z) 바운더리 박스의 장축(최소점에서 최대점까지 벡터)의 거리 반환, 단위 미터.
+-   Return
+    -   유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
+    -   빈 문자열(string) : 오브젝트가 null인 경우.
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+var strDesc = object.getDescription();
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setColor(starColor, endColor) → boolean
+### setDescription(desc)
 
-> 3D 파이프의 시작, 끝 지점의 색상 설정
+> 오브젝트의 설명에 대한 설명을 저장.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| starColor | [JSColor](../core/jscolor.md) | 시작 지점 색상 |
-| endColor | [JSColor](../core/jscolor.md) | 끝 지점 색상 |
-
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-{% endtab %}
-
+| desc | string | 오브젝트 설명 문자열. |
 {% tab title="Template" %}
+
 ```javascript
+object.setDescription('First Object.');
 ```
+
+{% endtab %}
+{% endtabs %}
+
+### getName() → string
+
+> 오브젝트의 이름을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+-   Return
+    -   유효한 문자열(string) : 오브젝트의 이름 반환 성공.
+    -   빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objName = object.getName();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setName(name)
+
+> 오브젝트의 이름을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| name | string | 설정할 오브젝트 이름. |
+{% tab title="Template" %}
+
+```javascript
+object.setName('MyObject');
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getVisible() → number
+
+> 오브젝트의 보기/숨김 여부를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+-   Return
+    - [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환
+    보기 : Module.JS_VISIBLE_ON
+    숨김 : Module.JS_VISIBLE_OFF
+    에러 발생 : Module.JS_SELECTABLE_ERROR(오브젝트가 NULL인 경우)
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objName = object.getName();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setVisible(visible)
+
+> 오브젝트의 이름을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| visible | number | [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list).<br>보기 : Module.JS_VISIBLE_ON</br><br>숨김 : Module.JS_VISIBLE_OFF</br> |
+{% tab title="Template" %}
+
+```javascript
+object.setVisible(Module.JS_VISIBLE_ON);
+```
+
 {% endtab %}
 {% endtabs %}
