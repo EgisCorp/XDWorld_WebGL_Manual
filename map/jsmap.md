@@ -186,7 +186,7 @@ var limitAltitude = Module.getMap().getFogLimitAltitude();
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * number(0 ~) : 현재 입력된 점 수.
+  * number(0 이상) : 현재 입력된 점 수.
   * number(-1) : 지도가 초기화되지 않은 경우.
 {% endtab %}
 
