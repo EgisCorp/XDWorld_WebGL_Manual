@@ -14,6 +14,25 @@ var position = new Module.JSVector2D(129.128265, 35.171834);
 var position = new Module.JSVector2D();
 ```
 
+### set(x, y)
+
+> 좌표 값을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| x | number | 2차원 좌표 x. |
+| y | number | 2차원 좌표 y. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var position = new Module.JSVector2D().set(120046.02, 345567.55);
+```
+{% endtab %}
+{% endtabs %}
+
 ## properties
 
 | Name | Type | Description |
