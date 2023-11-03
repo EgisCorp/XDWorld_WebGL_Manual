@@ -305,6 +305,7 @@ var strDesc = object.getDescription();
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | desc | string | 오브젝트 설명 문자열. |
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -342,6 +343,7 @@ var objName = object.getName();
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | name | string | 설정할 오브젝트 이름. |
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -381,6 +383,8 @@ var objName = object.getName();
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | visible | number | [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list).<br>보기 : Module.JS_VISIBLE_ON</br><br>숨김 : Module.JS_VISIBLE_OFF</br> |
+{% endtab %}
+
 {% tab title="Template" %}
 
 ```javascript

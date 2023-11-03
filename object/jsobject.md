@@ -46,11 +46,13 @@ var strDesc = object.getDescription();
 
 > 오브젝트의 설명에 대한 설명을 저장.
 
+{% tabs %}
+{% tab title="Information" %}
 | Name | Type   | Description  |
 | ---- | ------ | ------------ |
 | desc | string | 오브젝트 설명 문자열. |
+{% endtab %}
 
-{% tabs %}
 {% tab title="Template" %}
 ```javascript
 object.setDescription('First Object.');
@@ -80,11 +82,13 @@ var objName = object.getName();
 
 > 오브젝트의 이름을 설정.
 
+{% tabs %}
+{% tab title="Information" %}
 | Name | Type   | Description  |
 | ---- | ------ | ------------ |
 | name | string | 설정할 오브젝트 이름. |
+{% endtab %}
 
-{% tabs %}
 {% tab title="Template" %}
 ```javascript
 object.setName('MyObject');
@@ -115,13 +119,13 @@ var objName = object.getName();
 
 > 오브젝트의 이름을 설정.
 
+{% tabs %}
+{% tab title="Information" %}
 | Name    | Type   | Description                                                                                                                                    |
 | ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
+{% endtab %}
 
-
-
-{% tabs %}
 {% tab title="Template" %}
 ```javascript
 object.setVisible(Module.JS_VISIBLE_ON);
