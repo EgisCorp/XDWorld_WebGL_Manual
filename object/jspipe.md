@@ -376,7 +376,7 @@ var objName = object.getName();
 
 ### setVisible(visible)
 
-> 오브젝트의 이름을 설정.
+> 오브젝트의 보기/숨김 여부를 설정.
 
 {% tabs %}
 {% tab title="Information" %}

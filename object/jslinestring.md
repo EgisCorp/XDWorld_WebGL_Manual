@@ -224,14 +224,14 @@ var length = object.getLength();
 
 ## Getter / Setter
 
-### getCoordinates() → JSCollection
+### getCoordinates() → Collection
 
 > PolyLine을 구성하는 좌표 리스트를 반환.
 
 {% tabs %}
 {% tab title="Information" %}
 -   Return
-    -   JSCollection : 좌표 리스트
+    -   Collection : 좌표 리스트
 {% tab title="Template" %}
 
 ```javascript
@@ -341,7 +341,7 @@ object.setName('MyObject');
 {% endtab %}
 {% endtabs %}
 
-### getStyle() → CJSPolyLineStyle
+### getStyle() → JSPolyLineStyle
 
 > 설정된 오브젝트 스타일을 반환.
 
@@ -407,9 +407,7 @@ var bVisible = object.getVisible();
 
 ### setVisible(visible)
 
-> JSPolyLineStyle 적용된 옵션으로 라인 스타일 변경.
->
-> 색상, 두께, 투명도 설정
+> 오브젝트의 보기/숨김 여부를 설정.
 
 {% tabs %}
 {% tab title="Information" %}
