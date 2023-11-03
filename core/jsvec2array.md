@@ -41,7 +41,7 @@ vectorList.count();
 
 ### get(index) → JSVector2D
 
-> 인덱스에 해당하는 벡터 객체를 반환.
+> 인덱스에 해당하는 벡터 오브젝트를 반환.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -77,26 +77,32 @@ var vector = vectorList.get(2);
 
 {% tab title="Template" %}
 ```javascript
+var vectorList = new Module.JSVec2Array();
+//...
+var lastVector = vectorList.pop();
 ```
 {% endtab %}
 {% endtabs %}
 
 ### push(element) → number
 
-> 배열에 새로운 데이터를 추가.
+> 새 벡터(JSVector2D)를 추가.
 
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| element | [JSVector2D](../core/jsvector2d.md) | 새로 추가하는 데이터. |
+| element | [JSVector2D](../core/jsvector2d.md) | 새 2차원 벡터 객체. |
 
 * Return
-  * 새 데이터 추가 후 배열의 총 데이터 수.
+  * number : 벡터 추가 실행 후 리스트의 벡터 개수.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+var vectorList = new Module.JSVec2Array();
+var newVector = new Module.JSVector2d(100.0, 150.0);
+vectorList.push(newVector);
 ```
 {% endtab %}
 {% endtabs %}
@@ -113,7 +119,7 @@ var vector = vectorList.get(2);
 | dY | number | 새 벡터 프로퍼티 Y. |
 
 * Return
-  * 새 데이터 추가 후 배열의 총 데이터 수.
+  * number : 벡터 추가 실행 후 리스트의 벡터 개수.
 {% endtab %}
 
 {% tab title="Template" %}
