@@ -32,7 +32,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 ```javascript
 var canvas = document.createElement('canvas');
 canvas.id = "canvas";
-canvas.addEventListener("Fire__GhostSymbolRegistComplete", function(e){
+canvas.addEventListener("Fire_GhostSymbolRegistComplete", function(e){
 		// 기능 구현
 });
 

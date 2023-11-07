@@ -97,9 +97,9 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_ON);
 | 108   | MML\_FIGURE\_BEARING\_ARC       | 베어링 형 다면체 입력        |
 | 109   | MML\_FIGURE\_STAR               | 별 형 다면체 입력          |
 | 110   | MML\_FIGURE\_PLUS               | 더하기 기호 다면체 입력       |
-| 200   | MML\_ADD\_SOLAR\_PANEL          | 벽면에 판넬 추가           |
-| 201   | MML\_SELECT\_EDIT\_MODULE       |                     |
-| 202   | MML\_EDIT\_SOLAR\_MODULE        |                     |
+| 200   | MML\_ADD\_SOLAR\_PANEL          | 벽면에 판넬 추가(태양광 모드)           |
+| 201   | MML\_SELECT\_EDIT\_MODULE       | 벽면의 편집 판넬 선택(태양광 모드)     |
+| 202   | MML\_EDIT\_SOLAR\_MODULE        | 지붕 판넬 추가 및 삭제(태양광 모드) |
 
 ```javascript
 Module.XDSetMouseState(Module._NONE);
