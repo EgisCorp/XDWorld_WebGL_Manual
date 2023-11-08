@@ -4,17 +4,35 @@
 
 | Index | Name                   | Description |
 | ----- | ---------------------- | ----------- |
+| 0     | ELT\_POLYHEDRON         | 다면체         |
+| 1     | ELT\_PLANE              | 평면         |
+| 2     | ELT\_PIPE               | 관(실린더)         |
 | 3     | ELT\_BILLBOARD         | 빌보드         |
+| 4     | ELT\_3DLINE             | 3차원 선         |
 | 5     | ELT\_3DPOINT           | POI         |
+| 6     | ELT\_3DS_SYMBOL         | 3차원 심볼         |
 | 7     | ELT\_GHOST\_3DSYMBOL   | 고스트 심볼      |
+| 8     | ELT\_TERRAIN            | 지형 레이어         |
+| 9     | ELT\_MULTILPE           | 다용도 레이어         |
+| 10    | ELT\_KML_GROUND         | kml ground         |
+| 11    | ELT\_TERRAIN_IMAGE      | 영상 레이어         |
+| 12    | ELT\_PICTOMETRY         | 픽토 메트리 데이터         |
+
+```javascript
+let layerList = new Module.JSLayerList(true);
+layerList.createLayer("Layer_Name", Module.ELT_3DPOINT);	// 심볼 텍스트 레이어 생성
+```
+
+## Tile Layer Type List
+
+| Index | Name                   | Description |
+| ----- | ---------------------- | ----------- |
 | 9     | ETLT\_REAL3D           | 건물          |
-| 10    | ETLT\_IMAGE\_PNG       | 하이브리드 이미지   |
+| 10    | ETLT\_PNG\_IMAGE       | 하이브리드 이미지   |
 | 19    | ETLT\_POINT\_CLOUD     | 포인트 클라우드    |
 | 20    | ETLT\_TILE\_LOD\_MODEL | LOD 오브젝트    |
 
 ```javascript
-var layerList = new Module.JSLayerList(true);
-layerList.createLayer("Layer_Name", Module.ELT_3DPOINT);	// 심볼 텍스트 레이어 생성
 ```
 
 ## WFS Type List
@@ -104,6 +122,23 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_ON);
 ```javascript
 Module.XDSetMouseState(Module._NONE);
 ```
+
+## JSFigure Type List
+
+| Index | Name                            | Description         |
+| ----- | ------------------------------- | ------------------- |
+| 0     | EFT\_SOLID                      | 다면체                 |
+| 1     | EFT\_SOLID\_OPEN                 | 지도 이동               |
+| 4     | EFT\_RECT                       | 포인트 선택             |
+| 5     | EFT\_ELLIPSE                    | 면 선택                 |
+| 101   | EFT\_ARROW                      | 사각 선택               |
+| 102   | EFT\_ARROW\_DUEL                 | 반경 선택               |
+| 103   | EFT\_CONVEX                     | 반경 선택               |
+| 104   | EFT\_CONCAVE                    | 반경 선택               |
+| 105   | EFT\_ROUND\_RECT                 | 반경 선택               |
+| 106   | EFT\_BEARING\_ARC                | 반경 선택               |
+| 107   | EFT\_STAR                       | 반경 선택               |
+| 108   | EFT\_PLUS                       | 반경 선택               |
 
 ## Coordinate Type List
 
