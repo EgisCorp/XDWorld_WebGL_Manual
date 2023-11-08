@@ -273,3 +273,249 @@ let object = Module.createSurfaceGraph("newBarGraph3D");
 
 {% endtab %}
 {% endtabs %}
+
+### getAnalysis() → JSAnalysis
+
+> 분석 API 실행 클래스 JSAnalysis의 객체를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+-   Return
+    -   JSAnalysis: 생성한 JSAnalysis 타입 객체.
+    -   null: 오브젝트 생성에 실패한 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+var analysis = Module.getAnalysis();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getGhostSymbolMap() → JSGhostSymbolMap
+
+> 고스트 심볼을 관리하는 API 객체 생성 및 반환.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-    Return
+    - JSGhostSymbolMap: 객체 생성 성공.
+    - null: 생성 실패.
+
+{% endtab %}
+
+```javascript
+let map = Module.getGhostSymbolMap();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### ~~getNavigation() → JSNavigationControl~~
+
+> 지도 네비게이션(나침반) 설정 API 객체 생성 및 반환.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-    Return
+    - JSNavigationControl: 객체 생성 성공.
+    - null: 생성 실패.
+
+{% endtab %}
+
+```javascript
+let navigation = Module.getNavigation();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSlope() → JSSlope
+
+> 경사도, 경사향 분석 API 객체 생성 및 반환.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-    Return
+    - JSSlope: 객체 생성 성공.
+    - null: 생성 실패.
+
+{% endtab %}
+
+```javascript
+let slope = Module.getSlope();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSymbol() → JSSymbol
+
+> 아이콘(JSIcon) 관리 API 객체 생성 및 반환.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-    Return
+    - JSSymbol: 객체 생성 성공.
+    - null: 생성 실패.
+
+{% endtab %}
+
+```javascript
+let symbol = Module.getSymbol();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### Resize(width, height)
+
+> 화면의 크기를 변경하는 함수.
+> 
+> 별다른 설정이 없을 경우, canvas 크기에 뷰포트를 맞추어 변경.
+> 
+> div로 설정 시 div 크기에 맞추어 뷰포트 변경.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name       | Type   | Description               |
+| ---------- | ------ | ------------------------- |
+| width  | number | 변경할 폭. |
+| height | number | 너비. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.Resize(400, 300);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetProxy(proxy)
+
+> 우회 프록시 URL 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type    | Description                                                      |
+| ---- | ------- | ---------------------------------------------------------------- |
+| proxy | string | 프록시 URL. |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetSimpleMode(type)
+
+> 렌더링 심플 모드 설정.
+> 
+> 심플 모드 설정시 텍스처가 적용되지 않은 오브젝트를 렌더링.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type    | Description                                                      |
+| ---- | ------- | ---------------------------------------------------------------- |
+| type | boolean | true인 경우, 심플 모드 활성화.<br>false인 경우, 심플 모드 비활성화. |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+Module.SetSimpleMode(0);
+Module.SetSimpleMode(1);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDClearInputPoint() → boolean
+
+> 입력 점 리스트를 초기화.
+
+{% tabs %}
+{% tab title="Infomation" %}
+- Return
+  - true: 초기화 성공.
+  - false : 엔진이 초기화 되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+Module.XDClearInputPoint();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDIsMouseOverDiv(block)
+
+> 지도 클릭 이벤트 Block 여부를 설정.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type    |Description                                                      |
+| ---- | ------- | ---------------------------------------------- |
+| block | boolean | true인 경우, Block 활성화.<br>false인 경우, Block 비활성화. |
+{% endtab %}
+
+{% tab title="Template" %}
+
+```html
+<div id="testElementDiv" onmouseover="Module.XDIsMouseOverDiv(true);" onmouseout="Module.XDIsMouseOverDiv(false);">
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDRenderData()
+
+> 화면을 갱신.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDRenderData();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDSetMouseState(mode)
+
+> 마우스의 입력 상태를 변경.
+
+{% tabs %}
+{% tab title="Infomation" %}
+| Name | Type    |Description                          |
+| ---- | ------- | ----------------------------------- |
+| mode | number | 설정하고자 하는 마우스 모드 값. |
+{% endtab %}
+
+{% tab title="Template" %}
+
+```html
+<div id="testElementDiv" onmouseover="Module.XDIsMouseOverDiv(true);" onmouseout="Module.XDIsMouseOverDiv(false);">
+```
+
+{% endtab %}
+{% endtabs %}
