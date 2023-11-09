@@ -36,6 +36,24 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
+### getId() → string
+
+> 오브젝트의 Key를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strKey = object.getId();
+```
+{% endtab %}
+{% endtabs %}
+
 ### insertColumn(name, label, color) → boolean
 
 > 그래프 Column 정보 추가.
@@ -85,6 +103,85 @@ var object = Module.createBarGraph3D("ID");
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setAnimationSpeed(speed) → boolean
+
+> 그래프 바 상승 애니메이션 속도 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| speed | number | 바 상승 애니메이션 속도 (0.1~1.0 사이 값 설정). |
+
+* Return
+  * true : 속도 설정 성공.
+  * false : 속도 설정 실패.
+
+* Sample
+  * function createGraph 참조.
+  * [샌드박스\_3D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_3d)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setColumnTextBackgroundColor(key, color) → boolean
+
+> 그래프 바 하단부 Column 라벨 배경 색상을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| key | string | 텍스트 색상을 변경하고자 하는 Column 키. |
+| color | JSColor | 라벨 배경 색상. |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var graph = Module.createBarGraph3D("Graph");
+//...
+var backgroundColor = new Module.JSColor(255, 255, 0);
+graph.setColumnTextColor("Column0", backgroundColor);
+```
+{% endtab %}
+{% endtabs %}
+
+### setColumnTextColor(key, outColor, fillColor) → boolean
+
+> 그래프 바 하단부 Column 라벨 배경 색상을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| key | string | 텍스트 색상을 변경하고자 하는 Column 키. |
+| outColor | JSColor | 텍스트 외곽 색상. |
+| fillColor | JSColor | 텍스트 채움 색상. |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var graph = Module.createBarGraph3D("Graph");
+//...
+var outlineColor = new Module.JSColor(255, 255, 255);
+var fillColor = new Module.JSColor(0, 0, 0);
+graph.setColumnTextColor("Column0", outlineColor, fillColor);
 ```
 {% endtab %}
 {% endtabs %}
@@ -168,27 +265,115 @@ var object = Module.createBarGraph3D("ID");
 {% endtab %}
 {% endtabs %}
 
-### setAnimationSpeed(speed) → boolean
+## Getter / Setter
 
-> 그래프 바 상승 애니메이션 속도 설정.
+### getDescription() → string
+
+> 오브젝트의 설명에 대한 내용을 반환.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| speed | number | 바 상승 애니메이션 속도 (0.1~1.0 사이 값 설정). |
-
 * Return
-  * true : 속도 설정 성공.
-  * false : 속도 설정 실패.
-
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_3D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_3d)
+  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
+var strDesc = object.getDescription();
 ```
 {% endtab %}
 {% endtabs %}
+
+### setDescription(desc)
+
+> 오브젝트의 설명에 대한 설명을 저장.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 오브젝트 설명 문자열. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setDescription('First Object.');
+```
+{% endtab %}
+{% endtabs %}
+
+### getName() → string
+
+> 오브젝트의 이름을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setName(name)
+
+> 오브젝트의 이름을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| name | string | 설정할 오브젝트 이름. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setName('MyObject');
+```
+{% endtab %}
+{% endtabs %}
+
+### getVisible() → number
+
+> 오브젝트의 보기/숨김 여부를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
+  * 보기 : Module.JS\_VISIBLE\_ON
+  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setVisible(visible)
+
+> 오브젝트의 보기/숨김 여부를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                                                                                                    |
+| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setVisible(Module.JS_VISIBLE_ON);
+```
+{% endtab %}
+{% endtabs %}
+
+
