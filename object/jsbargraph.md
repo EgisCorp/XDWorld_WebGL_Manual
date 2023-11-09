@@ -39,6 +39,48 @@ var object = Module.createBarGraph("ID");
 {% endtab %}
 {% endtabs %}
 
+### getId() → string
+
+> 오브젝트의 Key를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strKey = object.getId();
+```
+{% endtab %}
+{% endtabs %}
+
+### restartAnimation(restartRate) → boolean
+
+> 그래프 애니메이션을 재실행.
+
+{% tabs %}
+{% tab title="Information" %}
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| restartRate | number | 애니메이션 실행 시작단계 (0.0~1.0 값을 가지며 0.0은 애니메이션 시작점, 1.0은 애니메이션 끝점입니다.). |
+
+* Return
+  * true : 실행 성공.
+  * false : 오브젝트가 초기화되지 않거나 존재하지 않는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var graph = Module.createBarGraph("Graph");
+//...
+graph.restartAnimation(0.5)
+```
+{% endtab %}
+{% endtabs %}
+
 ### setValueRange(min, max, interval) → boolean
 
 > 그래프 Y축 범위를 설정합니다.
@@ -382,6 +424,117 @@ graph.insertDataSet("2010년", data);
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getDescription() → string
+
+> 오브젝트의 설명에 대한 내용을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strDesc = object.getDescription();
+```
+{% endtab %}
+{% endtabs %}
+
+### setDescription(desc)
+
+> 오브젝트의 설명에 대한 설명을 저장.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 오브젝트 설명 문자열. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setDescription('First Object.');
+```
+{% endtab %}
+{% endtabs %}
+
+### getName() → string
+
+> 오브젝트의 이름을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setName(name)
+
+> 오브젝트의 이름을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| name | string | 설정할 오브젝트 이름. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setName('MyObject');
+```
+{% endtab %}
+{% endtabs %}
+
+### getVisible() → number
+
+> 오브젝트의 보기/숨김 여부를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
+  * 보기 : Module.JS\_VISIBLE\_ON
+  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setVisible(visible)
+
+> 오브젝트의 보기/숨김 여부를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                                                                                                    |
+| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setVisible(Module.JS_VISIBLE_ON);
 ```
 {% endtab %}
 {% endtabs %}
