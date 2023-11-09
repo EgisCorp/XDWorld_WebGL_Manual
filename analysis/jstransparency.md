@@ -10,6 +10,18 @@ description: 터파기 분석 기능 설정 API.
 var transparency = Module.getTransparency();
 ```
 
+### clear()
+
+> 생성된 터파기를 모두 삭제.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+Module.getTransparency().clear();
+```
+{% endtab %}
+{% endtabs %}
+
 ### create(coordinates) → number
 
 > 입력 좌표를 받아 터파기 객체를 생성.
@@ -28,6 +40,13 @@ var transparency = Module.getTransparency();
 * Sample
   * function createTransparency 참조.
   * [샌드박스\_터파기 생성](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_create)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var AreaVertices = Module.getMap().getInputPoints();
+var nIndex = Module.getTransparency().create(AreaVertices);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -52,6 +71,20 @@ var transparency = Module.getTransparency();
   * function setTransparencyAutoMove 참조.
   * [샌드박스\_터파기 이동](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var movePositionList = new Module.JSVec2Array();
+movePositionList.push(new Module.JSVector2D(127.03691229708741, 37.509635136930626));
+movePositionList.push(new Module.JSVector2D(127.03987097629198, 37.50932526196098));
+movePositionList.push(new Module.JSVector2D(127.03695802409491, 37.50865005215346));
+movePositionList.push(new Module.JSVector2D(127.03985503640686, 37.50816724210336));
+movePositionList.push(new Module.JSVector2D(127.03711645791172, 37.50779863443866));
+movePositionList.push(new Module.JSVector2D(127.03978095384555, 37.50738212410067));
+// 터파기 자동 이동 설정
+Module.getTransparency().setAutoMove(movePositionList, 5);
+```
+{% endtab %}
 {% endtabs %}
 
 ### setDepth(depth)
@@ -68,6 +101,12 @@ var transparency = Module.getTransparency();
   * function createTransparency 참조.
   * [샌드박스\_터파기 깊이 설정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_depth)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getTransparency().setDepth(5.5);
+```
+{% endtab %}
 {% endtabs %}
 
 ### setRadius(radius)
@@ -83,6 +122,12 @@ var transparency = Module.getTransparency();
 * Sample
   * function setTransparencyRadius 참조.
   * [샌드박스\_터파기 반경 설정](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_radius)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getTransparency().setRadius(500.0);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -109,6 +154,27 @@ var transparency = Module.getTransparency();
   * function setTransparencyTexture 참조.
   * [샌드박스\_터파기 텍스쳐](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_texture)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var img = new Image();
+// 텍스쳐 이미지 로드
+img.onload = function(){
+    var canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    var imageSize = new Module.JSSize2D(img.width, img.height);
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    // 터파기 텍스쳐 설정
+    var transparency = Module.getTransparency();
+    transparency.setTexture(imageData, canvas.width, canvas.height, true);  // 터파기 바닥면 텍스쳐
+    transparency.setTexture(imageData, canvas.width, canvas.height, false); // 터파기 벽면 텍스쳐
+}
+img.src = "./image/FaceImage.jpg";
+```
+{% endtab %}
 {% endtabs %}
 
 ### startAutoMove() → boolean
@@ -117,30 +183,36 @@ var transparency = Module.getTransparency();
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
-  * true : 설정 성공.
-  * false : 설정 실패.
+  * true : 이동 시작 성공.
+  * false : 이동 시작 실패.
   
 * Sample
   * function startTransparencyAutoMove 참조.
   * [샌드박스\_터파기 이동](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move)
 {% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getTransparency().startAutoMove();
+```
+{% endtab %}
 {% endtabs %}
 
-### stopAutoMove() → boolean
+### stopAutoMove()
 
 > 사전에 지정된 경로를 따라 터파기 자동 이동을 종료합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-
-* Return
-  * true : 설정 성공.
-  * false : 설정 실패.
-  
 * Sample
   * function stopTransparencyAutoMove 참조.
   * [샌드박스\_터파기 이동](http://sandbox.dtwincloud.com/code/main.do?id=analysis_transparency_move)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getTransparency().stopAutoMove();
+```
 {% endtab %}
 {% endtabs %}
