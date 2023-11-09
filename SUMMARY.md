@@ -56,6 +56,7 @@
   * [JSColorPolygon](object/jscolorpolygon.md)
   * [JSGhostSymbol](object/jsghostsymbol.md)
   * [JSGhostSymbolMap](object/jsghostsymbolmap.md)
+  * [JSIcon](object/jsicon.md)
   * [JSLineString](object/jslinestring.md)
   * [JSMultiPoint](object/jsmultipoint.md)
   * [JSPipe](object/jspipe.md)
