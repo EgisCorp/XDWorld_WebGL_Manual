@@ -10,6 +10,32 @@ Module getAnalysis API로 생성할 수 있습니다.
 var analysis = Module.getAnalysis();
 ```
 
+### createShadow(year, month, day, hour, minute) → boolean
+
+> 지정한 날짜, 시간의 그림자를 생성.
+
+{% tabs %}
+{% tab title="Name" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| year | number | 일조 시각 (년도). |
+| month | number | 일조 시각 (월). |
+| day | number | 일조 시각 (일). |
+| hour | number | 일조 시각 (시). |
+| minute | number | 일조 시각 (분). |
+
+* Return
+  * true : 오브젝트 생성 성공.
+  * false : 오브젝트 생성 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
+```
+{% endtab %}
+{% endtabs %}
+
 ### createSlopePlane(angle, color) → boolean
 
 > 시곡면분석 삼각형 평면을 생성합니다.
@@ -175,7 +201,9 @@ var analysis = Module.getAnalysis();
 {% endtab %}
 
 {% tab title="Template" %}
+Module.getAnalysis.setShadowSimulTerm(30);
 ```javascript
+Module.getAnalysis.setShadowSimulTerm(30);
 ```
 {% endtab %}
 {% endtabs %}
@@ -197,6 +225,7 @@ var analysis = Module.getAnalysis();
 
 {% tab title="Template" %}
 ```javascript
+Module.getAnalysis.setShadowSimulTerm(30);
 ```
 {% endtab %}
 {% endtabs %}
@@ -224,6 +253,7 @@ var analysis = Module.getAnalysis();
 
 {% tab title="Template" %}
 ```javascript
+Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 ```
 {% endtab %}
 {% endtabs %}
