@@ -10,6 +10,24 @@ description: 멀티 POI 생성 및 수정 기능 API.
 var object = Module.createMultiPoint("ID");
 ```
 
+### getId() → string
+
+> 오브젝트의 Key를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strKey = object.getId();
+```
+{% endtab %}
+{% endtabs %}
+
 ### setMainPoint(name, position, icon) → boolean
 
 > 멀티 포인트 객체 생성.
@@ -35,6 +53,54 @@ var object = Module.createMultiPoint("ID");
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setMainPointVisible(visible) → boolean
+
+> Main POI의 출력 여부를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| visible | boolean | 출력 여부 설정.<br>true일 경우 출력, false일 경우 출력하지 않음.</br> |
+  
+* Return
+  * true : 오브젝트 설정 성공.
+  * false : 오브젝트가 존재하지 않는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setMainPointVisible(true);  // Visible On
+object.setMainPointVisible(false);  // Visible Off
+```
+{% endtab %}
+{% endtabs %}
+
+### setSpreadEffect(set) → boolean
+
+> 카메라와 오브젝트 간 거리에 따라 Sub POI가 펼쳐져 보이는 효과를 on/off 설정.
+> 
+> Off 설정 시 Sub POI는 카메라 거리와 관계 없이 펼쳐 진 상태를 유지.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| set | boolean | 효과 on/off 설정.<br>true일 경우 on, false일 경우 off.</br> |
+  
+* Return
+  * true : 오브젝트 설정 성공.
+  * false : 오브젝트가 존재하지 않는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setSpreadEffect(true);  // Effect On
+object.setSpreadEffect(false);  // Effect Off
 ```
 {% endtab %}
 {% endtabs %}
@@ -94,6 +160,117 @@ var object = Module.createMultiPoint("ID");
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getDescription() → string
+
+> 오브젝트의 설명에 대한 내용을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strDesc = object.getDescription();
+```
+{% endtab %}
+{% endtabs %}
+
+### setDescription(desc)
+
+> 오브젝트의 설명에 대한 설명을 저장.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 오브젝트 설명 문자열. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setDescription('First Object.');
+```
+{% endtab %}
+{% endtabs %}
+
+### getName() → string
+
+> 오브젝트의 이름을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setName(name)
+
+> 오브젝트의 이름을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| name | string | 설정할 오브젝트 이름. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setName('MyObject');
+```
+{% endtab %}
+{% endtabs %}
+
+### getVisible() → number
+
+> 오브젝트의 보기/숨김 여부를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
+  * 보기 : Module.JS\_VISIBLE\_ON
+  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setVisible(visible)
+
+> 오브젝트의 보기/숨김 여부를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                                                                                                    |
+| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setVisible(Module.JS_VISIBLE_ON);
 ```
 {% endtab %}
 {% endtabs %}
