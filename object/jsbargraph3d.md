@@ -375,5 +375,3 @@ object.setVisible(Module.JS_VISIBLE_ON);
 ```
 {% endtab %}
 {% endtabs %}
-
-
