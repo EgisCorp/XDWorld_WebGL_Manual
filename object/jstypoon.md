@@ -10,6 +10,26 @@ description: 태풍 객체 생성 및 수정 기능 API.
 var object = Module.createTypoon("typoon");
 ```
 
+### create(pos, size, alt) → boolean
+
+> 태풍 오브젝트의 위치 및 크기를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type                                                         | Description   |
+| ---- | ---------------------------------------------------------- | ------------- |
+| pos | JSVector3D | 태풍 위치.<br>Longitude : 경도(Degree)</br><br>Latitude : 위도(Degree)</br><br>Altitude : 고도(m)</br> |
+| size | double | 태풍 너비. |
+| alt | double | 태풍 높이. |
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var vPosition = new Module.JSVector3D(126.7824826, 35.0119469, 15.2752179);
+typoon.create(vPosition, 500.0, 150.0);
+```
+{% endtab %}
+{% endtabs %}
+
 ### createbyJson(options) → object
 
 > 태풍 객체를 생성.
@@ -47,6 +67,24 @@ let json = {
 		unionterrain: false,
 	},	
 };
+```
+{% endtab %}
+{% endtabs %}
+
+### getId() → string
+
+> 오브젝트의 Key를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strKey = object.getId();
 ```
 {% endtab %}
 {% endtabs %}
@@ -119,6 +157,68 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 {% endtab %}
 {% endtabs %}
 
+### setDamageRange(danger, size, alt, color)
+
+> 태풍의 피해 범위를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description  |
+| ----- | ------ | --------- |
+| danger | boolean | 위혐/경고 타입 설정.<br>true : </br><br>false : 피해 범위 타입을 '경고' 수준으로 설정</br> |
+| size | boolean | 피해 범위. |
+| alt | boolean | 범위 출력 고도. |
+| color | boolean | 표시 색상. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var rangeColor = new Module.JSColor(255, 255, 255, 0);
+typoon.setDamageRange(true, 300.0, 10.0, rangeColor);
+```
+{% endtab %}
+{% endtabs %}
+
+### setRotationSpeed(speed)
+
+> 태풍의 회전 속도를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description  |
+| ----- | ------ | --------- |
+| speed | number | 태풍 회전 속도. |
+
+* Sample
+  * function setTypoonSpeed 참조
+  * [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather\_typoon)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setSize(radius, alt)
+
+> 태풍의 크기를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description  |
+| ----- | ------ | --------- |
+| radius | number | 태풍 반경. |
+| alt | number | 태풍 높이. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+typoon.setSize(500.0, 150.0);
+```
+{% endtab %}
+{% endtabs %}
+
 ### setSpeed(speed)
 
 > 태풍 이동 속도 설정.
@@ -163,6 +263,24 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 {% endtab %}
 {% endtabs %}
 
+### setTextureURL(url)
+
+> 태풍 이미지 URL을 설정합니다. (이미지는 1024*1024 크기를 지원합니다.).
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description  |
+| ----- | ------ | --------- |
+| url | string | 태풍 이미지 URL. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+typoon.setTextureURL("./image/Typoon.png");
+```
+{% endtab %}
+{% endtabs %}
+
 ### setVisibleDamageRange(type)
 
 > 태풍 영향권 범위 가시화 옵션.
@@ -182,6 +300,117 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getDescription() → string
+
+> 오브젝트의 설명에 대한 내용을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var strDesc = object.getDescription();
+```
+{% endtab %}
+{% endtabs %}
+
+### setDescription(desc)
+
+> 오브젝트의 설명에 대한 설명을 저장.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 오브젝트 설명 문자열. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setDescription('First Object.');
+```
+{% endtab %}
+{% endtabs %}
+
+### getName() → string
+
+> 오브젝트의 이름을 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
+  * 빈 문자열(string) : 오브젝트가 null인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setName(name)
+
+> 오브젝트의 이름을 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| name | string | 설정할 오브젝트 이름. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setName('MyObject');
+```
+{% endtab %}
+{% endtabs %}
+
+### getVisible() → number
+
+> 오브젝트의 보기/숨김 여부를 반환.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
+  * 보기 : Module.JS\_VISIBLE\_ON
+  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var objName = object.getName();
+```
+{% endtab %}
+{% endtabs %}
+
+### setVisible(visible)
+
+> 오브젝트의 보기/숨김 여부를 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                                                                                                    |
+| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+object.setVisible(Module.JS_VISIBLE_ON);
 ```
 {% endtab %}
 {% endtabs %}
