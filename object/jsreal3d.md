@@ -1,5 +1,5 @@
 ---
-description: Real3D 오브젝트 생성 및 수정 기능 API.
+description: Real3D 오브젝트 생성 및 수정 기능 API. Real3D는 건물의 형태를 출력하는 오브젝트.
 ---
 
 # JSReal3D
@@ -34,14 +34,14 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| elevation | JSCollection | 고도 리스트. |
-| color | JSCollection | 색상 리스트. |
-  
+| Parameter | Type         | Description |
+| --------- | ------------ | ----------- |
+| elevation | JSCollection | 고도 리스트.     |
+| color     | JSCollection | 색상 리스트.     |
+
 * Return
   * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.  
+  * false : 오브젝트 설정 실패.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -61,15 +61,16 @@ object.setElevationSectionColor(elevationList, colorList);
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| type | boolean | <br>true인 경우 심플렌더링 모드 색상 변경.<br>false인 경우 일반 모드 색상 변경.</br> |
-| color | [JSColor](../core/jscolor.md) | 체움 색상 |
-  
+| Parameter | Type                          | Description                                                       |
+| --------- | ----------------------------- | ----------------------------------------------------------------- |
+| type      | boolean                       | <p><br>true인 경우 심플렌더링 모드 색상 변경.<br>false인 경우 일반 모드 색상 변경.<br></p> |
+| color     | [JSColor](../core/jscolor.md) | 체움 색상                                                             |
+
 * Return
   * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.  
+  * false : 오브젝트 설정 실패.
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
@@ -82,37 +83,42 @@ object.setElevationSectionColor(elevationList, colorList);
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| type | number | 설정하고자 하는 출력 타입.<br>0 : 텍스쳐.</br><br>1 : 텍스쳐 + 색상</br><br>2 : 색상</br> |
-  
+| Parameter | Type   | Description                                                              |
+| --------- | ------ | ------------------------------------------------------------------------ |
+| type      | number | <p>설정하고자 하는 출력 타입.<br>0 : 텍스쳐.<br><br>1 : 텍스쳐 + 색상<br><br>2 : 색상<br></p> |
+
 * Return
   * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.  
+  * false : 오브젝트 설정 실패.
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
 {% endtab %}
+
+{% tab title="undefined" %}
 object.setShaderType(1);
+{% endtab %}
 {% endtabs %}
 
 ### setStyle(style) → boolean
 
 > 건물의 스타일을 설정.
-> 
+>
 > 현재는 건물 색상 스타일만 설정 가능.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| type | JSPolygonStyle | 설정하고자 하는 건물 스타일. |
-  
+| Parameter | Type           | Description      |
+| --------- | -------------- | ---------------- |
+| type      | JSPolygonStyle | 설정하고자 하는 건물 스타일. |
+
 * Return
   * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.  
+  * false : 오브젝트 설정 실패.
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 var polyStyle = new Module.JSPolygonStyle();
@@ -122,7 +128,10 @@ polyStyle.setFillColor(new Module.JSColor(255, 255, 0, 0));
 object.setStyle(polyStyle);
 ```
 {% endtab %}
+
+{% tab title="undefined" %}
 object.setShaderType(1);
+{% endtab %}
 {% endtabs %}
 
 ### getFillColor() → [JSColor](../core/jscolor.md)
@@ -131,11 +140,11 @@ object.setShaderType(1);
 
 {% tabs %}
 {% tab title="Information" %}
-  
 * Return
   * [JSColor](../core/jscolor.md) : 오브젝트 색상 반환 성공.
-  * null : 색상 반환 실패.  
+  * null : 색상 반환 실패.
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
@@ -148,11 +157,11 @@ object.setShaderType(1);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
   * [JSVector3D](../core/jsvector3d.md) : Real3D 오브젝트 중하단 중심 경위도 좌표 반환 성공.
   * null : 좌표 반환 실패.
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
@@ -165,10 +174,10 @@ object.setShaderType(1);
 
 {% tabs %}
 {% tab title="Information" %}
-
 * Return
-  * Real3D 오브젝트 높이값(미터) 반환 성공.  
+  * Real3D 오브젝트 높이값(미터) 반환 성공.
 {% endtab %}
+
 {% tab title="Template" %}
 ```javascript
 ```
