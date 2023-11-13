@@ -10,13 +10,9 @@ description: 폴리곤 스타일 객체 생성 및 수정 기능 API.
 > 
 > JSPolygonStyle 객체를 통해 여러 폴리곤 형 오브젝트 스타일의 일괄 지정이 가능.
 
-{% tabs %}
-{% tab title="Template" %}
 ```javascript
 var objectStyle = new Module.JSPolygonStyle();
 ```
-{% endtab %}
-{% endtabs %}
 
 ## Getter / Setter
 
