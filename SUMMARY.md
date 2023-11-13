@@ -63,6 +63,7 @@
   * [JSPoint](object/jspoint.md)
   * [JSPointGraph](object/jspointgraph.md)
   * [JSPolygon](object/jspolygon.md)
+  * [JSPolygonStyle](object/jspolygonstyle.md)
   * [JSReal3D](object/jsreal3d.md)
   * [JSSurfaceGraph](object/jssurfacegraph.md)
   * [JSSymbol](object/jssymbol.md)
