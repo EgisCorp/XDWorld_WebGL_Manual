@@ -10,38 +10,16 @@ Module getNavigation API로 생성할 수 있습니다.
 var navigation = Module.getNavigation();
 ```
 
-### setPadding(number left, number top)
+## Getter / Setter
 
-> 네비게이션(나침반) Padding 값을 설정합니다.
+### getNaviPos() → number
 
-{% tabs %}
-{% tab title="Name" %}
-| Name | Type   | Description    |
-| ---- | ------ | -------------- |
-| left | number | left Padding 값 |
-| top  | number | top Padding 값  |
-
-* Sample
-  * function setNavigationPadding 참조.
-  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-Module.getNavigation().setPadding(50, 50);
-```
-{% endtab %}
-{% endtabs %}
-
-### getPadding() → [JSVector2D](../core/jsvector2d.md)
-
-> 네비게이션(나침반) Padding 값을 반환합니다.
+> 네비게이션(나침반) 정렬 방식(Align) 상태를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * x : left Padding 설정값.
-  * y : top Padding 설정값.
+  * [네비게이션 정렬 타입](../etc/type-list.md#navigation-align-type-list) 반환.
 * Sample
   * function getNavigationProperties 참조.
   * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
@@ -49,7 +27,7 @@ Module.getNavigation().setPadding(50, 50);
 
 {% tab title="Template" %}
 ```javascript
-var padding = Module.getNavigation().getPadding();
+var naviAlign = Module.getNavigation().getNaviPos();
 ```
 {% endtab %}
 {% endtabs %}
@@ -76,14 +54,14 @@ Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
 {% endtab %}
 {% endtabs %}
 
-### getNaviPos() → number
+### getNaviVisible() → number
 
-> 네비게이션(나침반) 정렬 방식(Align) 상태를 반환합니다.
+> 네비게이션(나침반) Display 상태를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * [네비게이션 정렬 타입](../etc/type-list.md#navigation-align-type-list) 반환.
+  * [네비게이션 가시화 타입](../etc/type-list.md#navigation-visible-type-list) 반환.
 * Sample
   * function getNavigationProperties 참조.
   * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
@@ -91,7 +69,7 @@ Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
 
 {% tab title="Template" %}
 ```javascript
-var naviAlign = Module.getNavigation().getNaviPos();
+var naviDisplay = Module.getNavigation().getNaviVisible();
 ```
 {% endtab %}
 {% endtabs %}
@@ -118,14 +96,15 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_AUTO);
 {% endtab %}
 {% endtabs %}
 
-### getNaviVisible() → number
+### getPadding() → [JSVector2D](../core/jsvector2d.md)
 
-> 네비게이션(나침반) Display 상태를 반환합니다.
+> 네비게이션(나침반) Padding 값을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 * Return
-  * [네비게이션 가시화 타입](../etc/type-list.md#navigation-visible-type-list) 반환.
+  * x : left Padding 설정값.
+  * y : top Padding 설정값.
 * Sample
   * function getNavigationProperties 참조.
   * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
@@ -133,7 +112,30 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_AUTO);
 
 {% tab title="Template" %}
 ```javascript
-var naviDisplay = Module.getNavigation().getNaviVisible();
+var padding = Module.getNavigation().getPadding();
+```
+{% endtab %}
+{% endtabs %}
+
+### setPadding(number left, number top)
+
+> 네비게이션(나침반) Padding 값을 설정합니다.
+
+{% tabs %}
+{% tab title="Name" %}
+| Name | Type   | Description    |
+| ---- | ------ | -------------- |
+| left | number | left Padding 값 |
+| top  | number | top Padding 값  |
+
+* Sample
+  * function setNavigationPadding 참조.
+  * [샌드박스\_맵 컨트롤](http://sandbox.dtwincloud.com/code/main.do?id=option\_control\_map)
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getNavigation().setPadding(50, 50);
 ```
 {% endtab %}
 {% endtabs %}
