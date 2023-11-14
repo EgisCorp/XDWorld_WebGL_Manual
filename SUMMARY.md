@@ -58,6 +58,7 @@
   * [JSGhostSymbolMap](object/jsghostsymbolmap.md)
   * [JSIcon](object/jsicon.md)
   * [JSLineString](object/jslinestring.md)
+  * [JSMultiCube](object/jsmulticube.md)
   * [JSMultiPoint](object/jsmultipoint.md)
   * [JSPipe](object/jspipe.md)
   * [JSPoint](object/jspoint.md)
