@@ -128,17 +128,17 @@ Module.XDSetMouseState(Module._NONE);
 | Index | Name                            | Description         |
 | ----- | ------------------------------- | ------------------- |
 | 0     | EFT\_SOLID                      | 다면체                 |
-| 1     | EFT\_SOLID\_OPEN                 | 지도 이동               |
-| 4     | EFT\_RECT                       | 포인트 선택             |
-| 5     | EFT\_ELLIPSE                    | 면 선택                 |
-| 101   | EFT\_ARROW                      | 사각 선택               |
-| 102   | EFT\_ARROW\_DUEL                 | 반경 선택               |
-| 103   | EFT\_CONVEX                     | 반경 선택               |
-| 104   | EFT\_CONCAVE                    | 반경 선택               |
-| 105   | EFT\_ROUND\_RECT                 | 반경 선택               |
-| 106   | EFT\_BEARING\_ARC                | 반경 선택               |
-| 107   | EFT\_STAR                       | 반경 선택               |
-| 108   | EFT\_PLUS                       | 반경 선택               |
+| 1     | EFT\_SOLID\_OPEN                 | 열린 다면체               |
+| 4     | EFT\_RECT                       | 사각형             |
+| 5     | EFT\_ELLIPSE                    | 타원                 |
+| 101   | EFT\_ARROW                      | 화살표(단방향)               |
+| 102   | EFT\_ARROW\_DUEL                 | 화살표(양방향)               |
+| 103   | EFT\_CONVEX                     | 볼록 다각형               |
+| 104   | EFT\_CONCAVE                    | 오목 다각형               |
+| 105   | EFT\_ROUND\_RECT                 | 사각 라운드(모서리가 둥근 사각형) |
+| 106   | EFT\_BEARING\_ARC                | 베어링 아크 |
+| 107   | EFT\_STAR                       | 별 모양 |
+| 108   | EFT\_PLUS                       | 더하기 모양(+)               |
 
 ## Coordinate Type List
 
