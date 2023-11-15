@@ -6,9 +6,9 @@ description: JSSize2D 객체 생성 및 수정 기능 API. JSSize2D는 width, he
 
 | 변수명    | 자료형    | 프로퍼티 역할 |
 | ------ | ------ | ------- |
-| width  | double | 너비.      |
-| height | double | 높이.      |
-| scale  | double | 비율.      |
+| width  | number | 너비.      |
+| height | number | 높이.      |
+| scale  | number | 비율.      |
 
 ```javascript
 let width = 300;
@@ -30,13 +30,13 @@ let size2 = new Module.JSSize2D(width, height, scale);
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| width | double | 너비. |
-| height | double | 높이. |
+| width | number | 너비. |
+| height | number | 높이. |
 
 ### JSSize2D(width, height, scale)
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| width | double | 너비. |
-| height | double | 높이. |
-| scale | double | 비율. |
+| width | number | 너비. |
+| height | number | 높이. |
+| scale | number | 비율. |

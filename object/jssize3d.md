@@ -6,9 +6,9 @@ description: JSSize3D 객체 생성 및 수정 기능 API. JSSize3D는 width, he
 
 | 변수명    | 자료형    | 프로퍼티 역할 |
 | ------ | ------ | ------- |
-| width  | double | 너비.      |
-| height | double | 높이.      |
-| depth  | double | 깊이.      |
+| width  | number | 너비.      |
+| height | number | 높이.      |
+| depth  | number | 깊이.      |
 
 ```javascript
 let width = 300;
@@ -27,6 +27,6 @@ let size1 = new Module.JSSize3D(width, height, depth);
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| width | double | 너비. |
-| height | double | 높이. |
-| depth | double | 깊이. |
+| width | number | 너비. |
+| height | number | 높이. |
+| depth | number | 깊이. |
