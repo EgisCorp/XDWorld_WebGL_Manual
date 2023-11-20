@@ -21,4 +21,3 @@ var position = new Module.JSVector3D();
 | Longitude | number | 경도 |
 | Latitude | number | 위도 |
 | Altitude | number | 고도 |
-
