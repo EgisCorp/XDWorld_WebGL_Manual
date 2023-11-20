@@ -38,6 +38,7 @@
   * [JSImageryProvider](layer/jsImageryProvider.md)
 * [Core](core/core.md)
   * [Collection](core/collection.md)
+  * [JSAABBox3D](core/jsaabbox3d.md)
   * [JSColor](core/jscolor.md)
   * [JSVector2D](core/jsvector2d.md)
   * [JSVector3D](core/jsvector3d.md)
