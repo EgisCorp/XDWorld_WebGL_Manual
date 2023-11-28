@@ -16,9 +16,22 @@ let flow = Module.getFlow();
 Module.GetFlowVisible(true);
 
 // 파라메터 생략. 샌드박스의 setWindLegendLoad()/setWindBandLoad()에서 확인
-let flowParam = ...
+//let flowParam = ...
 flow.setJSON(flowParam);
 ```
+
+### ClearFlowData()
+
+> 바람장 데이터 초기화.
+
+{% tabs %}
+{% tab title="Template" %}
+```javascript
+let flow = Module.getFlow();
+flow.ClearFlowData();
+```
+{% endtab %}
+{% endtabs %}
 
 ### Type Definitions
 
