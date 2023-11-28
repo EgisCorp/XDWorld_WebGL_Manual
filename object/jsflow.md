@@ -29,8 +29,8 @@ flow.setJSON(flowParam);
 | Name | Type | Attributes | Default | Description |
 | --------- | --- | --- | --- | --- |
 | data | [JSFlow.FlowDataOption.dataParam](jsflow.md#jsflow.flowdataoption.dataparam) |  |  | 구성 데이터 필드 |
-| option | [JSFlow.FlowDataOption.optionParam](jsflow.md#jsflow.flowdataoption.optionParam) | optional |  | 초기 데이터 설정 |
-| legend | [JSFlow.FlowDataOption.legendParam](jsflow.md#jsflow.flowdataoption.legendParam) | optional |  | 범례 표현 |
+| option | [JSFlow.FlowDataOption.optionParam](jsflow.md#jsflow.flowdataoption.optionparam) | optional |  | 초기 데이터 설정 |
+| legend | [JSFlow.FlowDataOption.legendParam](jsflow.md#jsflow.flowdataoption.legendparam) | optional |  | 범례 표현 |
 
 #### JSFlow.FlowDataOption.dataParam
 
