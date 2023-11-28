@@ -28,9 +28,9 @@ flow.setJSON(flowParam);
 
 | Name | Type | Attributes | Default | Description |
 | --------- | --- | --- | --- | --- |
-| data | [JSFlow.FlowDataOption.dataParam]() |  |  | 구성 데이터 필드 |
-| option | [JSFlow.FlowDataOption.optionParam]() | optional |  | 초기 데이터 설정 |
-| legend | [JSFlow.FlowDataOption.legendParam]() | optional |  | 범례 표현 |
+| data | [JSFlow.FlowDataOption.dataParam](jsflow.md#jsflow.flowdataoption.dataparam) |  |  | 구성 데이터 필드 |
+| option | [JSFlow.FlowDataOption.optionParam](jsflow.md#jsflow.flowdataoption.optionParam) | optional |  | 초기 데이터 설정 |
+| legend | [JSFlow.FlowDataOption.legendParam](jsflow.md#jsflow.flowdataoption.legendParam) | optional |  | 범례 표현 |
 
 #### JSFlow.FlowDataOption.dataParam
 
@@ -84,14 +84,14 @@ flow.setJSON(flowParam);
 | Name | Type | Description |
 | --------- | --- | --- |
 | maxIndex | number | 진행 궤적 표현시 사용(풍속별 범례에선 255 고정). |
-| fixValue | [JSFlow.FlowDataOption.legendParam.fixValue]()  | 풍속 기준 범례 사용 배열. |
+| fixValue | [JSFlow.FlowDataOption.legendParam.fixValue](jsflow.md#jsflow.flowdataoption.fixvalue)  | 풍속 기준 범례 사용 배열. |
 
 - 진행 궤적 표현
 
 | Name | Type | Description |
 | --------- | --- | --- |
 | maxIndex | number | 바람장 파티클 이동속도 스케일. |
-| fixValue or band | [JSFlow.FlowDataOption.legendParam.band]()  | 풍속별 범례 혹은 진행 궤적 데이터. |
+| fixValue or band | [JSFlow.FlowDataOption.legendParam.band](jsflow.md#jsflow.flowdataoption.band)  | 풍속별 범례 혹은 진행 궤적 데이터. |
 
 #### JSFlow.FlowDataOption.legendParam.fixValue
 
