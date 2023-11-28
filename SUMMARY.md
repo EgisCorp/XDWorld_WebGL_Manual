@@ -57,6 +57,7 @@
   * [JSColorPolygon](object/jscolorpolygon.md)
   * [JSFigure](object/jsfigure.md)
   * [JSFlow](object/jsflow.md)
+  * [JSFlowPolygon](object/jsflowpolygon.md)
   * [JSGhostSymbol](object/jsghostsymbol.md)
   * [JSGhostSymbolMap](object/jsghostsymbolmap.md)
   * [JSIcon](object/jsicon.md)
