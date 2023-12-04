@@ -41,10 +41,61 @@ flowPolygon.create({
 
 ## Function
 
+### createGrid(options) → error
+
+> 그리드 객체 생성.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| --------- | ---- | -------- |
+| options | [JSFlowPolygon.GridDataOption](jsflowpolygon.md#jsflowpolygon.griddataoption) | 그리드 정보 설정값.   |
+
+* Return
+  * "result" 속성이 추가된 object : 객체 생성 성공.
+  * "error" 속성이 추가된 object : 객체 생성 실패.
+    * options에 "vertex" 속성이 없을 경우.
+    * options에 "index" 속성이 없을 경우.
+    * options에 "normaltexture" 속성이 없거나 해당 텍스처 이미지가 유효하지 않을 경우.
+    * 그리드 객체 생성에 실패했을 경우.
+    * "waterlevel" 속성 설정에 실패했을 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### createWall(options) → error
+
+> 수직 벽면 폴리곤 객체 생성.
+>
+> options 변수로 객체 설정.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| --------- | ---- | -------- |
+| options | [JSFlowPolygon.WallDataOption](jsflowpolygon.md#jsflowpolygon.walldataoption) | 벽면 정보 설정값.   |
+
+* Return
+  * "result" 속성이 추가된 object : 객체 생성 성공.
+  * "error" 속성이 추가된 object : 객체 생성 실패.
+    * options에 "vertex" 속성이 없을 경우.
+    * options에 "normaltexture" 속성이 없거나 해당 텍스처 이미지가 유효하지 않을 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
 ### setCullMode(type) → boolean
 
-> 폴리곤 컬링 옵션 설정.
->
+> 수직 벽면 폴리곤 컬링 옵션 설정.
+> 
 > type 입력 값에 따른 컬링 옵션은 0(양면), 1(양면), 2(CW) 3(CCW).
 >
 > 컬링 옵션 초기 설정 3.
@@ -69,12 +120,36 @@ polygon.setCullMode(3);
 
 ### Type Definitions
 
-#### JSFlow.FlowDataOption
+#### JSFlowPolygon.GridDataOption
 
-> 바람 데이터 파라메터.
+> 그리드 정보 파라메터.
 
-| Name   | Type                                                                             | Attributes | Default | Description |
-| ------ | -------------------------------------------------------------------------------- | ---------- | ------- | ----------- |
-| data   | [JSFlow.FlowDataOption.dataParam](jsflow.md#jsflow.flowdataoption.dataparam)     |            |         | 구성 데이터 필드   |
-| option | [JSFlow.FlowDataOption.optionParam](jsflow.md#jsflow.flowdataoption.optionparam) | optional   |         | 초기 데이터 설정   |
-| legend | [JSFlow.FlowDataOption.legendParam](jsflow.md#jsflow.flowdataoption.legendparam) | optional   |         | 범례 표현       |
+| Name | Type | Attributes | Default | Description |
+| --- | --- | --- | --- | --- |
+| vertex | array(JSVector3D) |  |  | 그리드를 이루는 점들의 좌표 목록. |
+| index | array(number) |  |  | 그리드를 이루는 점들의 인덱스 좌표 목록. |
+| normaltexture | JSIcon |            |         | 재질 노말 텍스처. |
+| flowtexture | JSIcon | optional |         | flow map(텍스처 직접 전달). |
+| flowpath | 2차원 array(JSVector2D) | optional |         | flow map(path 전달). |
+| imagetexture | JSIcon | optional |         | 표면 이미지 텍스처. |
+| waterlevel | number | optional | 0.0 | 수위. |
+| positionoffset | [JSFlowPolygon.positionOffset](jsflowpolygon.md#jsflowpolygon.positionoffset) | optional | (0.0, 0.0, 0.0) | 위치 offset. |
+
+#### JSFlowPolygon.WallDataOption
+
+> 벽면 정보 파라메터.
+
+| Name | Type | Attributes | Default | Description |
+| --- | --- | --- | --- | --- |
+| vertex | array(JSVector3D) |  |  | 벽면을 이루는 점들의 좌표 목록. |
+| normaltexture | JSIcon |            |         | 재질 노말 텍스처. |
+| imagetexture | JSIcon | optional |         | 표면 이미지 텍스처. |
+| height | number | optional | 10.0 | 벽 높이. |
+| positionoffset | [JSFlowPolygon.positionOffset](jsflowpolygon.md#jsflowpolygon.positionoffset) | optional | (0.0, 0.0, 0.0) | 위치 offset. |
+
+#### JSFlowPolygon.positionOffset
+| Name | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| longitude | number | 0.0 | 경도. |
+| latitude | number | 0.0 | 위도. |
+| altitude | number | 0.0 | 고도. |
