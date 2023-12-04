@@ -148,9 +148,8 @@ polygon.setCullMode(3);
 | positionoffset | [JSFlowPolygon.positionOffset](jsflowpolygon.md#jsflowpolygon.positionoffset) | optional | (0.0, 0.0, 0.0) | 위치 offset. |
 
 #### JSFlowPolygon.positionOffset
-
 | Name | Type | Default | Description |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | longitude | number | 0.0 | 경도. |
 | latitude | number | 0.0 | 위도. |
 | altitude | number | 0.0 | 고도. |
