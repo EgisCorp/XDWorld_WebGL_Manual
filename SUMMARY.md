@@ -61,6 +61,7 @@
   * [JSGhostSymbol](object/jsghostsymbol.md)
   * [JSGhostSymbolMap](object/jsghostsymbolmap.md)
   * [JSIcon](object/jsicon.md)
+  * [JSInstanceObject](object/jsinstanceobject.md)
   * [JSLine3D](object/jsline3d.md)
   * [JSLineString](object/jslinestring.md)
   * [JSMultiCube](object/jsmulticube.md)
