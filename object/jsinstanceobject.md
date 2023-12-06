@@ -37,3 +37,18 @@ let instanceObject = Module.createInstanceObject("object");
 ```
 {% endtab %}
 {% endtabs %}
+
+### Type Definitions
+
+#### JSInstanceObject.IntersectObjectsParameter
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| objectType | string | "line" | 입력받은 오브젝트의 타입 정의. |
+| coordinates | [JSInstanceObject.IntersectObjectsParameter.coordinates](jsinstanceobject.md#jsinstanceobject.intersectobjectsparameter.coordinates) |  | 위도. |
+
+#### JSInstanceObject.IntersectObjectsParameter.coordinates
+| Name | Type | Description |
+| --- | --- | --- |
+| style | string | 좌표 변환 타입. 아래 네 가지에 해당되지 않는 경우, 오류 발생.<br>XY : 경위도 배열 값 [x, y], [x, y]</br><br>XYZ : 경위고도 배열 값 [x, y, z], [x, y, z]</br><br>XYZARRAY : 경위고도 배열 값 [x, y, z, x, y, z]</br><br>JSVector3D : 경위고도 JSVec3Array 배열 값</br> |
+| coordinates | number | 좌표 목록. |
+
