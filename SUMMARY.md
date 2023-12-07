@@ -77,6 +77,7 @@
   * [JSSize3D](object/jssize3d.md)
   * [JSSurfaceGraph](object/jssurfacegraph.md)
   * [JSSymbol](object/jssymbol.md)
+  * [JSTimeSeriesObject](object/jstimeseriesobject.md)
   * [JSTypoon](object/jstypoon.md)
   * [JSVideoObject](object/jsvideoobject.md)
   * [JSViewFrustum](object/jsviewfrustum.md)
