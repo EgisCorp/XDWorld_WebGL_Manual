@@ -124,6 +124,37 @@ object.merge(/*parameter*/);
 ### Type Definitions
 
 #### JSTimeSeriesObject.ObjectData
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-|  |  |  |  |
+| Name   | Type | Attributes | Default | Description |
+| --- | --- | --- | --- | --- |
+| position   | JSVector3D |           |           | 3차원 좌표(경위고도) |
+| segment    | number | optional | 4 | 다각형 형태(2 평면, 3 삼각형, 4 사각형, 5 오각형) |
+| rotate     | number | optional | 0 | 오브젝트 회전 방향(0,360 : 북쪽, 90 : 동쪽, 180 : 남쪽, 270 : 서쪽) |
+| horizontal | number | optional | 5.0 | create API 동작 시 오브젝트 크기 설정(수평) |
+| vertical   | number | optional | 5.0 | create API 동작 시 오브젝트 크기 설정(수직) |
+| shape      | number | optional | 0 | 오브젝트 형태(0 : polygon, 1 : plane) |
+| color      | JSColor | optional | JSColor(255, 255, 255, 255) | 오브젝트 메인 색상. |
+| area       | [JSTimeSeriesObject.AreaData](jstimeobject.md#jstimeobject.areadata) | optional |           | 오브젝트 크기(텍스처 연산에 필요). |
+| image      | [JSTimeSeriesObject.ImageData](jstimeobject.md#jstimeobject.imagedata)          |           |           |           |
+| legend     | [JSTimeSeriesObject.Legend](jstimeobject.md#jstimeobject.legend) | optional | JSColor(255, 255, 255, 255) | 오브젝트 메인 색상. |
+
+#### JSTimeSeriesObject.AreaData
+| Name   | Type | Description |
+| --- | --- | --- | --- | --- |
+| min | JSVector3D | optional | JSVector3D(0, 0, 0) | 3차원 좌표(경위고도) |
+| max | JSVector3D | optional | JSVector3D(0, 0, 0) | 다각형 형태(2 평면, 3 삼각형, 4 사각형, 5 오각형) |
+
+#### JSTimeSeriesObject.ImageData
+| Name   | Type | Description |
+| --- | --- | --- |
+| width | number | 이미지 가로 크기. |
+| height | number | 이미지 세로 크기. |
+| image | array | 이미지 픽셀 데이터(canvas에서 CanvasRenderingContext2D.getImageData()로 받아오는 픽셀 데이터). |
+
+#### JSTimeSeriesObject.Legend
+
+> 범례 데이터. 하나로 묶은 data와 color 항목 여러 개를 배열로 저장.
+
+| Name   | Type | Description |
+| --- | --- | --- |
+| data | float | 범례의 크기. |
+| color | JSColor or array(argb를 네 개의 float으로 정의한 배열) | 범례의 색상. |
