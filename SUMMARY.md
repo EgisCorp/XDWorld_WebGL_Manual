@@ -78,6 +78,7 @@
   * [JSSurfaceGraph](object/jssurfacegraph.md)
   * [JSSymbol](object/jssymbol.md)
   * [JSTimeSeriesObject](object/jstimeseriesobject.md)
+  * [JSTraceTarget](object/jstracetarget.md)
   * [JSTypoon](object/jstypoon.md)
   * [JSVideoObject](object/jsvideoobject.md)
   * [JSViewFrustum](object/jsviewfrustum.md)
