@@ -28,6 +28,7 @@
   * [이전 버전 업데이트](release/update\_previous.md)
 * [Module](module/README.md)
   * [Module](module/moduleapi.md)
+  * [Initialize](module/initialize.md)
 * [Map](map/map.md)
   * [JSMap](map/jsmap.md)
   * [JSTerrain](map/jsterrain.md)
