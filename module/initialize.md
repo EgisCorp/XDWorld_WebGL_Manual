@@ -37,6 +37,7 @@ initialize() {
 
 * Return
   * 생성 정보 반환.
+
   | Name | Type | Description(Content) |
   | --------- | ---- | -------- |
   | result | number | 성공 유무.<br>성공시 1. 실패시 0.</br> |
