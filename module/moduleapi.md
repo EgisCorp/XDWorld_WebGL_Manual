@@ -18,8 +18,8 @@ Module.initialize({
             servername: "요청 Server 명칭",
         },
         image: {
-            url: "지형 이미지 데이터 요청 URL",
-            name: "지형 이미지 레이어 명칭",
+            url: "지형 영상 이미지 데이터 요청 URL",
+            name: "지형 용상 이미지 레이어 명칭",
             servername: "요청 Server 명칭",
         },
     },
@@ -40,9 +40,9 @@ Module.initialize({
 | defaultKey | string | 엔진 API 발급 Key |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패)
+    -   .result : API 성공 유무 상태 (1 : 성공, 0 : 실패)
     -   .name : 동작 API 명칭
-    -   .return : API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드)
+    -   .return : API 반환 정보 (object : 정상적인 반환값, 문자열 : 실패 에러 코드)
 
 {% tab title="Template" %}
 
@@ -577,15 +577,15 @@ Module.XDRenderData();
 
 | Name       | Type    | Description                                                                                                         |
 | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
-| url        | string  | 지형 데이터 url.                                                                                                    |
-| name       | string  | 지형 레이어 이름.                                                                                                   |
-| servername | string  | 사용자가 설정한 서버 이름.                                                                                          |
+| url        | string  | 지형 DEM 데이터 요청 url.                                                                                           |
+| name       | string  | 지형 DEM 레이어 명칭.                                                                                               |
+| servername | string  | 요청 Server 명칭.                                                                                                   |
 | encoding   | boolean | <p>DEM 암호화 데이터 인식 여부.<br>true인 경우 암호화 되어 있음.<br><br>false인 경우 암호화 되어 있지 않음.<br></p> |
 
 #### Initialize.Terrain.Image
 
-| Name       | Type   | Description                |
-| ---------- | ------ | -------------------------- |
-| url        | string | 영상 데이터 url.           |
-| name       | string | 영상 레이어 이름.          |
-| servername | string | 사용자가 설정한 서버 이름. |
+| Name       | Type   | Description                       |
+| ---------- | ------ | --------------------------------- |
+| url        | string | 지형 영상 이미지 데이터 요청 url. |
+| name       | string | 지형 영상 이미지 레이어 이름.     |
+| servername | string | 요청 Server 명칭.                 |
