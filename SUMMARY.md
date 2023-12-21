@@ -10,7 +10,7 @@
     -   [1.4x 버전 업데이트](release/update_1.4x.x.md)
     -   [1.3x 버전 업데이트](release/update_1.3x.x.md)
     -   [이전 버전 업데이트](release/update_previous.md)
-    -   [Tutorial](tutorial/tutorial.md)
+-   [Tutorial](tutorial/tutorial.md)
     -   [카메라 설정](tutorial/tutorial_camera.md)
     -   [POI 생성하기](tutorial/tutorial_poi.md)
     -   [폴리곤 생성하기](tutorial/tutorial_polygon.md)
