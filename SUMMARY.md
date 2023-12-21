@@ -27,9 +27,7 @@
 
 ## API <a href="#introduce" id="introduce"></a>
 
--   [Module](module/module.md)
-    -   [Initialize](module/initialize.md)
-    -   [Module](module/moduleapi.md)
+-   [Module](module/moduleapi.md)
 -   [Core](core/core.md)
     -   [Collection](core/collection.md)
     -   [JSAABBox3D](core/jsaabbox3d.md)
