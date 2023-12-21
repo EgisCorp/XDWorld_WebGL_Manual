@@ -27,7 +27,7 @@
 
 ## API <a href="#introduce" id="introduce"></a>
 
--   [Module](module/README.md)
+-   [Module](module/module.md)
     -   [Initialize](module/initialize.md)
     -   [Module](module/moduleapi.md)
 -   [Core](core/core.md)
