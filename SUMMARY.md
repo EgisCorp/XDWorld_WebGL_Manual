@@ -10,10 +10,6 @@
     -   [1.4x 버전 업데이트](release/update_1.4x.x.md)
     -   [1.3x 버전 업데이트](release/update_1.3x.x.md)
     -   [이전 버전 업데이트](release/update_previous.md)
-
----
-
--   [INDEX](Index.md)
 -   [Tutorial](tutorial/tutorial.md)
     -   [카메라 설정](tutorial/tutorial_camera.md)
     -   [POI 생성하기](tutorial/tutorial_poi.md)
@@ -26,11 +22,10 @@
     -   [면적 측정](tutorial/tutorial_area.md)
     -   [높이 측정](tutorial/tutorial_altitude.md)
     -   [반경 측정](tutorial/tutorial_radius.md)
--   [Release Note](release/release.md)
-    -   [1.5x 버전 업데이트](release/update_1.5x.x.md)
-    -   [1.4x 버전 업데이트](release/update_1.4x.x.md)
-    -   [1.3x 버전 업데이트](release/update_1.3x.x.md)
-    -   [이전 버전 업데이트](release/update_previous.md)
+
+---
+
+-   [INDEX](Index.md)
 -   [Module](module/README.md)
     -   [Initialize](module/initialize.md)
     -   [Module](module/moduleapi.md)
