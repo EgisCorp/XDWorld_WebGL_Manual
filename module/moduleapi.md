@@ -10,7 +10,7 @@ description: 지도 생성, 제어를 담당하는 기능 목록.
 
 ```javascript
 Module.initialize({
-    container: document.querySelector("#map"),
+    container: document.querySelector("컨테이너 ID"),
     terrain: {
         dem: {
             url: "지형 DEM 데이터 요청 URL,
@@ -36,7 +36,7 @@ Module.initialize({
 | Name | Type | Description |
 | --------- | ------ | -------- |
 | container | HTML Element | 지도를 포함한 Container 영역. |
-| terrain | [Initialize.Terrain](moduleapi.md#initialize.terrain) | Map 생성 정보. |
+| terrain | [Module.CreateOptions](moduleapi.md#module.createoptions) | Map 생성 정보. |
 | defaultKey | string | 엔진 API 발급 Key |
 
 -   Return
@@ -566,14 +566,14 @@ Module.XDRenderData();
 
 ### Type Definitions
 
-#### Initialize.Terrain
+#### Module.CreateOptions
 
-| Name  | Type                                                              | Description  |
-| ----- | ----------------------------------------------------------------- | ------------ |
-| dem   | [Initialize.Terrain.DEM](moduleapi.md#initialize.terrain.dem)     | 지형 데이터. |
-| image | [Initialize.Terrain.Image](moduleapi.md#initialize.terrain.image) | 영상 데이터. |
+| Name  | Type                                                                  | Description  |
+| ----- | --------------------------------------------------------------------- | ------------ |
+| dem   | [Module.CreateOptions.DEM](moduleapi.md#module.createoptions.dem)     | 지형 데이터. |
+| image | [Module.CreateOptions.Image](moduleapi.md#module.createoptions.image) | 영상 데이터. |
 
-#### Initialize.Terrain.DEM
+#### Module.CreateOptions.DEM
 
 | Name       | Type    | Description                                                                                                         |
 | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -582,7 +582,7 @@ Module.XDRenderData();
 | servername | string  | 요청 Server 명칭.                                                                                                   |
 | encoding   | boolean | <p>DEM 암호화 데이터 인식 여부.<br>true인 경우 암호화 되어 있음.<br><br>false인 경우 암호화 되어 있지 않음.<br></p> |
 
-#### Initialize.Terrain.Image
+#### Module.CreateOptions.Image
 
 | Name       | Type   | Description                       |
 | ---------- | ------ | --------------------------------- |
