@@ -564,16 +564,16 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+## Type Definitions
 
-#### Module.CreateOptions
+### Module.CreateOptions
 
 | Name  | Type                                                                  | Description  |
 | ----- | --------------------------------------------------------------------- | ------------ |
 | dem   | [Module.CreateOptions.DEM](moduleapi.md#module.createoptions.dem)     | 지형 데이터. |
 | image | [Module.CreateOptions.Image](moduleapi.md#module.createoptions.image) | 영상 데이터. |
 
-#### Module.CreateOptions.DEM
+### Module.CreateOptions.DEM
 
 | Name       | Type    | Description                                                                                                         |
 | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -582,7 +582,7 @@ Module.XDRenderData();
 | servername | string  | 요청 Server 명칭.                                                                                                   |
 | encoding   | boolean | <p>DEM 암호화 데이터 인식 여부.<br>true인 경우 암호화 되어 있음.<br><br>false인 경우 암호화 되어 있지 않음.<br></p> |
 
-#### Module.CreateOptions.Image
+### Module.CreateOptions.Image
 
 | Name       | Type   | Description                       |
 | ---------- | ------ | --------------------------------- |
