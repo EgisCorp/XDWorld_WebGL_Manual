@@ -120,7 +120,7 @@ line.createbyJson({
 
 ## - 업데이트 내역 -
 
-### 1.57.2 (2024/1/19)
+### 1.57.2 Hotfix (2024/1/19)
 #### 1. 고스트심볼 음영 처리 수정
   * 고스트심볼 오브젝트 음영 처리가 적용되지 않는 부분을 수정하였습니다.
 #### 2. TM 좌표 기반 격자 폴리곤 생성 API 추가
@@ -155,7 +155,7 @@ line.createbyJson({
   });
   ```
 
-### 1.57.1 (2024/1/5)
+### 1.57.1 Hotfix (2024/1/5)
 #### 1.  네트워크 통신 안정화
   * 데이터 요청 프로세스를 안정화하였습니다.
 #### 2. 선택 오브젝트 렌더링 수정 ([이슈 #368](https://github.com/EgisCorp/XDWorld/issues/368))
@@ -185,11 +185,11 @@ line.createbyJson({
 #### 3. 1인칭 카메라 이동 시 가시범위 조정 : [이슈 #363](https://github.com/EgisCorp/XDWorld/issues/363)
   * 1인칭 카메라 설정 시 오브젝트 최소 가시범위를 낮추어 카메라 앞 지형이 컬링되는 현상을 제거하였습니다.
   
-### 1.56.2 (2023/12/21)
+### 1.56.2 Hotfix (2023/12/21)
 
 -   POI 가시화 모듈 수정 [이슈 362](https://github.com/EgisCorp/XDWorld/issues/362) 해결
 
-### 1.56.1 (2023/12/15)
+### 1.56.1 Hotfix (2023/12/15)
 
 -   JSPolygon setHeight 설정 오류 수정 [이슈 359](https://github.com/EgisCorp/XDWorld/issues/359) 해결
     -   setCircle로 생성된 오브젝트에 setHeight 적용 시 폴리곤 컬링 면이 반대로 생성되는 현상을 수정하였습니다.
