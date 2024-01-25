@@ -123,6 +123,7 @@ parameter = {
 };
 
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 parameter = {
@@ -130,6 +131,7 @@ parameter = {
     coordinates: new Module.JSVector3D(200000.0, 378044.651253, 10),
 };
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 // Array 타입 지원
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
@@ -142,6 +144,7 @@ parameter = {
     coordinates: coordinate,
 };
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 ```
 {% endtab %}
 {% endtabs %}
@@ -193,7 +196,7 @@ console.log(list); //epsg 목록
 {% tab title="Template" %}
 ```javascript
 let list = Module.JSProj.find("epsg:5186");
-console.log(result); // API 결과 정보 반환
+console.log(list); // API 결과 정보 반환
 ```
 {% endtab %}
 {% endtabs %}
@@ -217,21 +220,22 @@ console.log(result); // API 결과 정보 반환
 {% endtab %}
 
 {% tab title="Template" %}
-```javascript
-// 단일 변환 지원
-parameter = {
-    target: "epsg:4326"
+<pre class="language-javascript"><code class="lang-javascript">// 단일 변환 지원
+<strong>parameter = {
+</strong>    target: "epsg:4326",
     source: "epsg:5186",
     coordinates: new Module.JSVector2D(200000.0, 378044.651253),
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 parameter = {
-    target: "+proj=longlat +datum=WGS84 +no_defs"
+    target: "+proj=longlat +datum=WGS84 +no_defs",
     source: "+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
     coordinates: new Module.JSVector3D(200000.0, 378044.651253, 10),
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 // Array 타입 지원
 let coordinate = Array();
@@ -239,12 +243,13 @@ coordinate.push(new Module.JSVector3D(200000.0, 378044.651253, 10));
 coordinate.push(new Module.JSVector3D(200000.0, 489012.95569100516, 10));
 coordinate.push(new Module.JSVector3D(289012.929607278, 489480.463416938, 10));
 parameter = {
-    target: "epsg:4326"
+    target: "epsg:4326",
     source: "epsg:5186",
     coordinates: coordinate,
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
-```
+console.log(result);
+</code></pre>
 {% endtab %}
 {% endtabs %}
 
