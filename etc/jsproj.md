@@ -133,7 +133,6 @@ parameter = {
     source: "epsg:5186",
     coordinates: new Module.JSVector2D(200000.0, 378044.651253),
 };
-
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
 console.log(result);
 // or
@@ -283,20 +282,20 @@ console.log(result);
 
 > 좌표 변환 옵션
 
-| Name        | Type                                                  | Description           |
-| ----------- | ----------------------------------------------------- | --------------------- |
-| source      | string                                                | 입력 좌표 CRS 문자열. |
-| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D | 변경 대상 위치좌표.   |
+| Name        | Type                                                                                                                                                      | Description           |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| source      | string                                                                                                                                                    | 입력 좌표 CRS 문자열. |
+| coordinates | Array([JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md)), [JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md) | 변경 대상 위치좌표.   |
 
 #### ClassTransformOptions
 
 > 좌표 변환 옵션
 
-| Name        | Type                                                  | Description           |
-| ----------- | ----------------------------------------------------- | --------------------- |
-| target      | string                                                | 변환 좌표 CRS 문자열. |
-| source      | string                                                | 입력 좌표 CRS 문자열. |
-| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D | 변경 대상 위치좌표.   |
+| Name        | Type                                                                                                                                                      | Description           |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| target      | string                                                                                                                                                    | 변환 좌표 CRS 문자열. |
+| source      | string                                                                                                                                                    | 입력 좌표 CRS 문자열. |
+| coordinates | Array([JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md)), [JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md) | 변경 대상 위치좌표.   |
 
 #### EPSG Coordinate Type List
 
