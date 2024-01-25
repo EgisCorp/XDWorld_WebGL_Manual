@@ -32,7 +32,8 @@ let projection = new Module.JSProj("proj4 코드(+proj=longlat +datum=WGS84 +no_
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -63,7 +64,8 @@ console.log(result); // API 결과 정보 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -85,7 +87,8 @@ console.log(result); // API 결과 정보 반환
 
 -   Return
     -   API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 공백 : JSProj 초기화 상태 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -118,7 +121,8 @@ console.log(result); // epsg:5186 proj4 코드 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -131,6 +135,7 @@ parameter = {
 };
 
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 parameter = {
@@ -138,6 +143,7 @@ parameter = {
     coordinates: new Module.JSVector3D(200000.0, 378044.651253, 10),
 };
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 // Array 타입 지원
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
@@ -150,6 +156,7 @@ parameter = {
     coordinates: coordinate,
 };
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 ```
 
 {% endtab %}
@@ -170,7 +177,8 @@ let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변�
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : epsg 코드 목록 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -200,13 +208,14 @@ console.log(list); //epsg 목록
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
 ```javascript
 let list = Module.JSProj.find("epsg:5186");
-console.log(result); // API 결과 정보 반환
+console.log(list); // API 결과 정보 반환
 ```
 
 {% endtab %}
@@ -228,7 +237,8 @@ console.log(result); // API 결과 정보 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -240,13 +250,15 @@ parameter = {
     coordinates: new Module.JSVector2D(200000.0, 378044.651253),
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 parameter = {
-    target: "+proj=longlat +datum=WGS84 +no_defs"
+    target: "+proj=longlat +datum=WGS84 +no_defs",
     source: "+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
     coordinates: new Module.JSVector3D(200000.0, 378044.651253, 10),
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 // or
 // Array 타입 지원
 let coordinate = Array();
@@ -254,11 +266,12 @@ coordinate.push(new Module.JSVector3D(200000.0, 378044.651253, 10));
 coordinate.push(new Module.JSVector3D(200000.0, 489012.95569100516, 10));
 coordinate.push(new Module.JSVector3D(289012.929607278, 489480.463416938, 10));
 parameter = {
-    target: "epsg:4326"
+    target: "epsg:4326",
     source: "epsg:5186",
     coordinates: coordinate,
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
+console.log(result);
 ```
 
 {% endtab %}
