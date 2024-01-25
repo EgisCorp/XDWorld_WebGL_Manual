@@ -24,25 +24,22 @@ let projection = new Module.JSProj("proj4 코드(+proj=longlat +datum=WGS84 +no_
 
 {% tabs %}
 {% tab title="infomation" %}
-| Name | Type | Description |
+| Name | Type   | Description         |
 | ---- | ------ | ------------------- |
 | code | string | epsg, proj4 코드 입력값. |
 
--   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 결과 정보 반환( 실패 에러 코드 ).
-
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 결과 정보 반환( 실패 에러 코드 ).
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 let result = projection.apply("epsg:5186");
 console.log(result); // API 결과 정보 반환
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -52,29 +49,26 @@ console.log(result); // API 결과 정보 반환
 >
 > 입력된 EPSG 코드를 통해 해당 PROJ4를 반환합니다.
 >
-> 지원 EPSG 목록을 참조epsg 목록 참고.
+> 지원 [EPSG 목록](jsproj.md#epsg-coordinate-type-list) 참고.
 
 {% tabs %}
 {% tab title="infomation" %}
-| Name | Type | Description |
+| Name | Type   | Description  |
 | ---- | ------ | ------------ |
 | epsg | string | epsg 코드 입력값. |
 
--   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 let result = projection.find("epsg:5186");
 console.log(result); // API 결과 정보 반환
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -84,13 +78,11 @@ console.log(result); // API 결과 정보 반환
 
 {% tabs %}
 {% tab title="infomation" %}
-
--   Return
-    -   API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 공백 : JSProj 초기화 상태 ).
-
+* Return
+  * API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 공백 : JSProj 초기화 상태 ).
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 let result = projection.getProjCode();
@@ -100,7 +92,6 @@ let projection = new Module.JSProj("epsg:5186"); // 기본값 epsg:4326으로 �
 let result = projection.getProjCode();
 console.log(result); // epsg:5186 proj4 코드 반환
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -112,19 +103,17 @@ console.log(result); // epsg:5186 proj4 코드 반환
 
 {% tabs %}
 {% tab title="infomation" %}
-| Name | Type | Description |
-| ------ | ------ | ----------- |
-| option | [TransformOptions](jsproj.md#transformoptions) | 좌표 변환 정보. |
+| Name   | Type                                           | Description |
+| ------ | ---------------------------------------------- | ----------- |
+| option | [TransformOptions](jsproj.md#transformoptions) | 좌표 변환 정보.   |
 
--   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
-
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 // 단일 변환 지원
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
@@ -154,7 +143,6 @@ parameter = {
 };
 let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변환
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -168,21 +156,17 @@ let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변�
 
 {% tabs %}
 {% tab title="infomation" %}
-
--   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 결과 정보 반환( Array : epsg 코드 목록 ).
-
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 결과 정보 반환( Array : epsg 코드 목록 ).
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 let list = Module.JSProj.list();
 console.log(list); //epsg 목록
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -192,28 +176,25 @@ console.log(list); //epsg 목록
 >
 > 입력된 EPSG 코드를 통해 해당 PROJ4를 반환합니다.
 >
-> 지원 EPSG 목록을 참조epsg 목록 참고.
+> 지원 [EPSG 목록](jsproj.md#epsg-coordinate-type-list) 참고.
 
 {% tabs %}
 {% tab title="infomation" %}
-| Name | Type | Description |
+| Name | Type   | Description  |
 | ---- | ------ | ------------ |
 | epsg | string | epsg 코드 입력값. |
 
--   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 let list = Module.JSProj.find("epsg:5186");
 console.log(result); // API 결과 정보 반환
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -225,19 +206,17 @@ console.log(result); // API 결과 정보 반환
 
 {% tabs %}
 {% tab title="infomation" %}
-| Name | Type | Description |
-| ------ | ------ | --------------- |
-| option | [ClassTransformOptions](jsproj.md#classtransformoptions) | 좌표 변환 정보. |
+| Name   | Type                                                     | Description |
+| ------ | -------------------------------------------------------- | ----------- |
+| option | [ClassTransformOptions](jsproj.md#classtransformoptions) | 좌표 변환 정보.   |
 
--   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
-
+* Return
+  * .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+  * .name : 동작 API 명칭.
+  * .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 // 단일 변환 지원
 parameter = {
@@ -266,7 +245,6 @@ parameter = {
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -276,20 +254,20 @@ let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 �
 
 > 좌표 변환 옵션
 
-| Name        | Type                                                  | Attributes | Default | Description           |
-| ----------- | ----------------------------------------------------- | ---------- | ------- | --------------------- |
+| Name        | Type                                                  | Attributes | Default | Description    |
+| ----------- | ----------------------------------------------------- | ---------- | ------- | -------------- |
 | source      | string                                                |            |         | 입력 좌표 CRS 문자열. |
-| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D |            |         | 변경 대상 위치좌표.   |
+| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D |            |         | 변경 대상 위치좌표.    |
 
 #### ClassTransformOptions
 
 > 좌표 변환 옵션
 
-| Name        | Type                                                  | Attributes | Default | Description           |
-| ----------- | ----------------------------------------------------- | ---------- | ------- | --------------------- |
+| Name        | Type                                                  | Attributes | Default | Description    |
+| ----------- | ----------------------------------------------------- | ---------- | ------- | -------------- |
 | target      | string                                                |            |         | 변환 좌표 CRS 문자열. |
 | source      | string                                                |            |         | 입력 좌표 CRS 문자열. |
-| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D |            |         | 변경 대상 위치좌표.   |
+| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D |            |         | 변경 대상 위치좌표.    |
 
 #### EPSG Coordinate Type List
 
