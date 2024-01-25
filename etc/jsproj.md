@@ -52,7 +52,7 @@ console.log(result); // API 결과 정보 반환
 >
 > 입력된 EPSG 코드를 통해 해당 PROJ4를 반환합니다.
 >
-> 지원 EPSG 목록을 참조epsg 목록 참
+> 지원 EPSG 목록을 참조epsg 목록 참고.
 
 {% tabs %}
 {% tab title="infomation" %}
@@ -114,7 +114,7 @@ console.log(result); // epsg:5186 proj4 코드 반환
 {% tab title="infomation" %}
 | Name | Type | Description |
 | ------ | ------ | ----------- |
-| option | object | 좌표 변환 정보. |
+| option | [TransformOptions](jsproj.md#transformoptions) | 좌표 변환 정보. |
 
 -   Return
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
@@ -180,6 +180,7 @@ let result = projection.transform(parameter); // 5186 -> 4326으로 좌표 변�
 
 ```javascript
 let list = Module.JSProj.list();
+console.log(list); //epsg 목록
 ```
 
 {% endtab %}
@@ -191,7 +192,7 @@ let list = Module.JSProj.list();
 >
 > 입력된 EPSG 코드를 통해 해당 PROJ4를 반환합니다.
 >
-> 지원 EPSG 목록을 참조epsg 목록 참
+> 지원 EPSG 목록을 참조epsg 목록 참고.
 
 {% tabs %}
 {% tab title="infomation" %}
@@ -226,7 +227,7 @@ console.log(result); // API 결과 정보 반환
 {% tab title="infomation" %}
 | Name | Type | Description |
 | ------ | ------ | --------------- |
-| option | object | 좌표 변환 정보. |
+| option | [ClassTransformOptions](jsproj.md#classtransformoptions) | 좌표 변환 정보. |
 
 -   Return
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
@@ -246,7 +247,6 @@ parameter = {
 };
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
 // or
-let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 parameter = {
     target: "+proj=longlat +datum=WGS84 +no_defs"
     source: "+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
@@ -255,7 +255,6 @@ parameter = {
 let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 변환
 // or
 // Array 타입 지원
-let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 let coordinate = Array();
 coordinate.push(new Module.JSVector3D(200000.0, 378044.651253, 10));
 coordinate.push(new Module.JSVector3D(200000.0, 489012.95569100516, 10));
@@ -270,3 +269,57 @@ let result = Module.JSProj.transform(parameter); // 5186 -> 4326으로 좌표 �
 
 {% endtab %}
 {% endtabs %}
+
+## Type Definitions
+
+#### TransformOptions
+
+> 좌표 변환 옵션
+
+| Name        | Type                                                  | Attributes | Default | Description           |
+| ----------- | ----------------------------------------------------- | ---------- | ------- | --------------------- |
+| source      | string                                                |            |         | 입력 좌표 CRS 문자열. |
+| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D |            |         | 변경 대상 위치좌표.   |
+
+#### ClassTransformOptions
+
+> 좌표 변환 옵션
+
+| Name        | Type                                                  | Attributes | Default | Description           |
+| ----------- | ----------------------------------------------------- | ---------- | ------- | --------------------- |
+| target      | string                                                |            |         | 변환 좌표 CRS 문자열. |
+| source      | string                                                |            |         | 입력 좌표 CRS 문자열. |
+| coordinates | Array(JSVector2D, JSVector3D), JSVector2D, JSVector3D |            |         | 변경 대상 위치좌표.   |
+
+#### EPSG Coordinate Type List
+
+| Index | Name       |
+| ----- | ---------- |
+| 2087  | epsg:2087  |
+| 2096  | epsg:2096  |
+| 2097  | epsg:2097  |
+| 3857  | epsg:3857  |
+| 4019  | epsg:4019  |
+| 4044  | epsg:4044  |
+| 4162  | epsg:4162  |
+| 4166  | epsg:4166  |
+| 4326  | epsg:4326  |
+| 4737  | epsg:4737  |
+| 5173  | epsg:5173  |
+| 5174  | epsg:5174  |
+| 5175  | epsg:5175  |
+| 5176  | epsg:5176  |
+| 5177  | epsg:5177  |
+| 5178  | epsg:5178  |
+| 5179  | epsg:5179  |
+| 5180  | epsg:5180  |
+| 5181  | epsg:5181  |
+| 5182  | epsg:5182  |
+| 5183  | epsg:5183  |
+| 5184  | epsg:5184  |
+| 5185  | epsg:5185  |
+| 5186  | epsg:5186  |
+| 5187  | epsg:5187  |
+| 5188  | epsg:5188  |
+| 32651 | epsg:32651 |
+| 32652 | epsg:32652 |
