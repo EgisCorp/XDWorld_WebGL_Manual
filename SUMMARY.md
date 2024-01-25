@@ -100,7 +100,7 @@
     -   [JSOption](option/jsoption.md)
 -   [ETC](etc/etc.md)
     -   [JSMath](etc/jsmath.md)
-    -   [JSProjection](etc/jsproj.md)
+    -   [JSProj](etc/jsproj.md)
     -   [JSProjection](etc/jsprojection.md)
     -   [SOPObject](etc/sopobject.md)
     -   [EVENT](etc/event.md)
