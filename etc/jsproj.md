@@ -124,7 +124,7 @@ console.log(result); // epsg:5186 proj4 코드 반환
 
 -   Sample
     -   function transform 참조.
-    -   [샌드박스\_좌표 변환](http://https://sandbox.egiscloud.com/code/main.do?id=others_coordinate_conversion)
+    -   [샌드박스\_좌표 변환](https://sandbox.egiscloud.com/code/main.do?id=others_coordinate_conversion)
 
 {% endtab %}
 
