@@ -7,11 +7,13 @@ description: 좌표계 변환 계산 API를 제공합니다.
 > Module.JSProj API 생성합니다.
 >
 > 입력값이 없다면 기본적으로 EPSG:4326으로 설정됩니다.
+>
+> [EPSG 목록](jsproj.md#epsg-coordinate-type-list) 이외 PROJ4코드 입력 시 전세계 좌표계 사용 가능([epsg.io](https://epsg.io/) 참고).
 
 ```javascript
 let projection = new Module.JSProj(); // 기본값 epsg:4326으로 설정
 let projection = new Module.JSProj("epsg 코드(epsg:4326)");
-let projection = new Module.JSProj("proj4 코드(+proj=longlat +datum=WGS84 +no_defs +type=crs)");
+let projection = new Module.JSProj("proj4 코드(+proj=longlat +datum=WGS84 +no_defs +type=crs)"); // proj4 코드
 ```
 
 ## Function
@@ -32,8 +34,7 @@ let projection = new Module.JSProj("proj4 코드(+proj=longlat +datum=WGS84 +no_
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( 실패 에러 코드 ).
-
-{% endtab %}
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -64,8 +65,7 @@ console.log(result); // API 결과 정보 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-
-{% endtab %}
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -87,8 +87,7 @@ console.log(result); // API 결과 정보 반환
 
 -   Return
     -   API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 공백 : JSProj 초기화 상태 ).
-
-{% endtab %}
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -126,7 +125,6 @@ console.log(result); // epsg:5186 proj4 코드 반환
 -   Sample
     -   function transform 참조.
     -   [샌드박스\_좌표 변환](http://https://sandbox.egiscloud.com/code/main.do?id=others_coordinate_conversion)
-        {% endtab %}
 
 {% endtab %}
 
@@ -182,8 +180,7 @@ console.log(result);
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : epsg 코드 목록 ).
-
-{% endtab %}
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -213,8 +210,7 @@ console.log(list); //epsg 목록
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-
-{% endtab %}
+        {% endtab %}
 
 {% tab title="Template" %}
 
@@ -242,8 +238,7 @@ console.log(list); // API 결과 정보 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
-
-{% endtab %}
+        {% endtab %}
 
 {% tab title="Template" %}
 
