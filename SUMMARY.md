@@ -99,7 +99,7 @@
 * [ETC](etc/etc.md)
   * [JSMath](etc/jsmath.md)
   * [JSProj](etc/jsproj.md)
-  * [JSProjection](etc/jsprojection.md)
+  * [JSProjection\_미지원](etc/jsprojection.md)
   * [SOPObject](etc/sopobject.md)
   * [EVENT](etc/event.md)
   * [Type List](etc/type-list.md)
