@@ -118,9 +118,15 @@ console.log(result); // epsg:5186 proj4 코드 반환
 | option | [TransformOptions](jsproj.md#transformoptions) | 좌표 변환 정보. |
 
 -   Return
+
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
+
+-   Sample
+    -   function transform 참조.
+    -   [샌드박스\_좌표 변환](http://https://sandbox.egiscloud.com/code/main.do?id=others_coordinate_conversion)
+        {% endtab %}
 
 {% endtab %}
 
