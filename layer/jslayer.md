@@ -62,6 +62,8 @@ layer.addObject(object, 0);
 > 로드 된 WMS 레이어 이미지 캐시를 비움.
 
 {% tabs %}
+{% tab title="Infomation" %}
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -135,10 +137,11 @@ layer.clearWMSCache();
 {% tab title="Infomation" %}
 
 -   Return
--   number(0 이상) : 레이어 타입(E_LAYER_TYPE) 반환.
--   number(-1) : 레이어 오브젝트가 존재하지 않는 경우.
-    {% endtab %}
-    {% tab title="Template" %}
+    -   number(0 이상) : 레이어 타입(E_LAYER_TYPE) 반환.
+    -   number(-1) : 레이어 오브젝트가 존재하지 않는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
 
 ```javascript
 var layerList = new Module.JSLayerList(false);
@@ -707,7 +710,7 @@ layer.setRequestFeatureCount(64);
         -   해당 레이어가 존재하지 않는 경우.
         -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
 -   참고
-    -   스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+    -   [스타일 설정 참조](http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -775,7 +778,7 @@ layer.setStylesWMS(“LT_C_UQ111”);
         -   해당 레이어가 존재하지 않는 경우.
         -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
 -   참고
-    -   스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+    -   [스타일 설정 참조](http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1392,7 +1395,10 @@ layer.setWMSVersion(“1.1.0”);
 | ----- | ------ | --------------- |
 | speed | number | 애니메이션 변환 속도 설정. |
 
--   애니메이션 Step 설정 실패 조건. - 입력된 최소 Step 보다 작은값이 입력 된 경우. - 입력된 최대 Step 보다 큰값이 입력 된 경우. - createTimeSeriesObject() API로 객체 생성이 안된 경우.
+-   애니메이션 Step 설정 실패 조건.
+    -   입력된 최소 Step 보다 작은값이 입력 된 경우.
+    -   입력된 최대 Step 보다 큰값이 입력 된 경우.
+    -   createTimeSeriesObject() API로 객체 생성이 안된 경우.
 
 {% endtab %}
 {% tab title="Template" %}
