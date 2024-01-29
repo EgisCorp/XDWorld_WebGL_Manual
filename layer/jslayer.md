@@ -42,7 +42,7 @@ let layer = layerList.createLayer("레이어 명칭");
 | Name | Type | Description |
 | --------- | -------- | ----------- |
 | object | JSObject | 생성 된 객체 추가 |
-| ~~level~~ | number | 0 값으로 사용 |
+| ~~level~~ | ~~number~~ | ~~0 값으로 사용~~ |
 {% endtab %}
 
 {% tab title="Template" %}
@@ -63,6 +63,7 @@ layer.addObject(object, 0);
 
 {% tabs %}
 {% tab title="Infomation" %}
+
 {% endtab %}
 {% tab title="Template" %}
 
