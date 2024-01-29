@@ -300,6 +300,12 @@ console.log(result);
 
 #### EPSG Coordinate Type List
 
+> 국내에서 많이 사용하는 EPSG 목록입니다.
+>
+> 엔진 내부에서 EPSG:"번호"를 통해 EPSG에 해당되는 PROJ4 코드를 반환 가능합니다.
+>
+> 미지원하는 EPSG 코드인 경우 [epsg.io](https://epsg.io/)에서 제공되는 PROJ4를 입력 시 사용 가능합니다.
+
 | Index | Name       |
 | ----- | ---------- |
 | 2087  | epsg:2087  |
