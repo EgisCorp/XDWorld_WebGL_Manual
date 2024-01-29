@@ -86,7 +86,8 @@ layer.clearWMSCache();
 -   Return
     -   \-1 : 해당 레이어에 객체가 존재 하지 않는 경우.
     -   result>0 : 해당 레이어 객체 갯수.
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -114,7 +115,8 @@ layer.clearWMSCache();
 -   ID 반환 실패 조건.
     -   해당 레이어 객체 수가 0인 경우.
     -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -131,17 +133,20 @@ layer.clearWMSCache();
 
 {% tabs %}
 {% tab title="Infomation" %}
--  Return
-  -  number(0 이상) : 레이어 타입(E_LAYER_TYPE) 반환.
-  -  number(-1) : 레이어 오브젝트가 존재하지 않는 경우.
-{% endtab %}
-{% tab title="Template" %}
+
+-   Return
+-   number(0 이상) : 레이어 타입(E_LAYER_TYPE) 반환.
+-   number(-1) : 레이어 오브젝트가 존재하지 않는 경우.
+    {% endtab %}
+    {% tab title="Template" %}
+
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //..(WMS 레이어 추가)..
 var layer = layerList.nameAtLayer(“WMSLayer”);
 var bVisible = layer.getType();
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -164,7 +169,8 @@ var bVisible = layer.getType();
     -   "" : Index 해당 객체 ID 반환 실패.
 -   객체 ID 반환 실패 조건.
     -   Index 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우)
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -195,7 +201,8 @@ var bVisible = layer.getType();
 -   객체 반환 실패 조건.
     -   Index가 객체 리스트 범위를 초과한 경우 (0보다 작거나 객체 리스트 수 보다 큰 경우).
     -   해당 레이어 객체 개수가 0인 경우.
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -227,7 +234,8 @@ var bVisible = layer.getType();
     -   동일 명칭 객체가 없는 경우.
     -   name 문자 데이터가 없는 경우.
     -   해당 레이어 객체 개수가 0인 경우.
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -260,7 +268,8 @@ var bVisible = layer.getType();
     -   해당 레이어 객체 수가 0인 경우.
     -   서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
     -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -299,7 +308,8 @@ layer.removeAtIndex(0);
     -   해당 레이어 객체 수가 0인 경우.
     -   서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
     -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -332,7 +342,8 @@ layer.removeAtIndex(0);
     -   해당 레이어 객체 수가 0인 경우.
     -   서비스 레이어 경우(서비스 레이어는 tile 기반으로 객체는 tile에 종속).
     -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -361,7 +372,8 @@ layer.removeAtIndex(0);
     -   해당 레이어 객체 수가 0인 경우.
     -   서비스 레이어 인 경우(서비스 레이어에서 객체는 tile에 종속).
     -   외부 서버를 통해 로드된 데이터인 경우(Ex. WMS, WFS).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -387,6 +399,9 @@ layer.removeAtIndex(0);
 -   Return
     -   true : 설정에 성공할 경우.
     -   false : 해당 레이어가 존재하지 않거나, 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+
+{% endtab %}
+
 {% tab title="Template" %}
 
 ```javascript
@@ -398,6 +413,7 @@ var dataURL = “http://...(데이터 요청 URL)...”;
 var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWFS(dataURL, 0, parameter);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -416,6 +432,9 @@ layer.setConnectionWFS(dataURL, 0, parameter);
 -   Return
     -   true : 설정에 성공할 경우.
     -   false : 해당 레이어가 존재하지 않거나, 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+
+{% endtab %}
+
 {% tab title="Template" %}
 
 ```javascript
@@ -427,6 +446,7 @@ var dataURL = “http://...(데이터 요청 URL)...”;
 var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWMS(dataURL, 0, parameter);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -443,6 +463,8 @@ layer.setConnectionWMS(dataURL, 0, parameter);
 | fontWeight | number | 글꼴 두께. |
 | color | [JSColor](../core/jscolor.md) | 글꼴 색상. |
 | outColor | [JSColor](../core/jscolor.md) | 글꼴 외곽 색상. |
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -450,13 +472,14 @@ var API = {
     JSLayerList : new Module.JSLayerList(false)
 };
 var layer = API.JSLayerList.createWFSLayer(“newWFSLayer”, 0);
-var dataURL = “http://...(데이터 요청 URL)...”;  
+var dataURL = “http://...(데이터 요청 URL)...”;
 var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWFS(dataUrl, 0, parameter);
 var clrFont     = new Module.JSColor(255, 255, 255, 255);
 var clrOutLine  = new Module.JSColor(255, 0, 0, 0);
-layer.setFontStyle(“굴림”, 20, 10, clrFont, clrOutLine); 
+layer.setFontStyle(“굴림”, 20, 10, clrFont, clrOutLine);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -469,6 +492,8 @@ layer.setFontStyle(“굴림”, 20, 10, clrFont, clrOutLine);
 | Name | Type | Description |
 | ---- | ------- | ------------------------------------------ |
 | level | number | 데이터 출력 최대 레벨. |
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -481,6 +506,7 @@ var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWFS(dataUrl, 0, parameter);
 layer.setLevelWFS(10);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -495,11 +521,13 @@ layer.setLevelWFS(10);
 | minLevel | number | 데이터 출력 최소 레벨. |
 | maxLevel | number | 데이터 출력 최대 레벨. |
 
-- Return
-  - true : 설정에 성공할 경우.
-  - 다음의 경우 API는 false를 반환.
-    - 해당 레이어가 존재하지 않는 경우.
-    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+-   Return
+    -   true : 설정에 성공할 경우.
+    -   다음의 경우 API는 false를 반환.
+        -   해당 레이어가 존재하지 않는 경우.
+        -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -512,6 +540,7 @@ var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setLevelWMS(10, 12);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -532,8 +561,8 @@ layer.setLevelWMS(10, 12);
 -   Sample
     -   function init 참조.
     -   [샌드박스\_포물선 라인](http://sandbox.dtwincloud.com/code/main.do?id=object_line_arc)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -552,6 +581,8 @@ layer.setLevelWMS(10, 12);
 | Name | Type | Description |
 | ---- | ------- | ------------------------------------------ |
 | layerName | string | 설정하고자 하는 레이어 이름. |
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -560,6 +591,7 @@ var layerList = new Module.JSLayerList(false);
 var layer = layerList.nameAtLayer(“WMSLayer”);
 layer.setName(“WMSLayer2”);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -585,8 +617,8 @@ layer.setName(“WMSLayer2”);
 -   Sample
     -   function createLayerWMS 참조.
     -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -618,8 +650,8 @@ layer.setName(“WMSLayer2”);
 -   Sample
     -   function setHSV 참조.
     -   [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -639,13 +671,15 @@ layer.setName(“WMSLayer2”);
 | ---- | ------- | ------------------------------------------ |
 | count | number | 요청 단위 타일 크기. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
-    - 해당 레이어 타입이 WFS 레이어 타입이 아닌 경우.
-- 참고
-  - 요청 단위가 클수록 큰 타일 범위의 WFS 데이터 요청
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+        -   해당 레이어 타입이 WFS 레이어 타입이 아닌 경우.
+-   참고
+    -   요청 단위가 클수록 큰 타일 범위의 WFS 데이터 요청
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -653,6 +687,7 @@ var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
 layer.setRequestFeatureCount(64);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -666,13 +701,15 @@ layer.setRequestFeatureCount(64);
 | ---- | ------- | ------------------------------------------ |
 | style | string | 요청 레이어 스타일. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 해당 레이어가 존재하지 않는 경우.
-    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
-- 참고
-  - 스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   해당 레이어가 존재하지 않는 경우.
+        -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+-   참고
+    -   스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -685,6 +722,7 @@ var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setStylesWMS(“LT_C_UQ111”);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -710,8 +748,8 @@ layer.setStylesWMS(“LT_C_UQ111”);
 -   Sample
     -   function init 참조.
     -   [샌드박스\_포인트 클라우드](http://sandbox.dtwincloud.com/code/main.do?id=layer_pointcloud_point_size)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -731,13 +769,15 @@ layer.setStylesWMS(“LT_C_UQ111”);
 | ---- | ------- | ------------------------------------------ |
 | size | number | 타일 픽셀 크기. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 해당 레이어가 존재하지 않는 경우.
-    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
-- 참고
-  - 스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   해당 레이어가 존재하지 않는 경우.
+        -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+-   참고
+    -   스타일 설정 참조 : http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -750,6 +790,7 @@ var parameter= “...(데이터 요청 파라미터)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setTileSizeWMS(tileSize);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -773,8 +814,8 @@ layer.setTileSizeWMS(tileSize);
 -   Sample
     -   function setHSV 참조.
     -   [샌드박스\_지형 색감 조정](http://sandbox.dtwincloud.com/code/main.do?id=terrain_color_tone)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -794,11 +835,13 @@ layer.setTileSizeWMS(tileSize);
 | ------ | ----------------------------------- | ------------- |
 | fieldName | string | Description 데이터를 저장할 태그 이름. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
-    - 레이어 타입이 WFS형 타입이 아닌 경우.
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   레이어 타입이 타일 레이어 타입이 아닌 경우.
+        -   레이어 타입이 WFS형 타입이 아닌 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -831,12 +874,14 @@ layer.setWFSDescField(“STD_SGGCD”);
 | ------ | ----------------------------------- | ------------- |
 | fieldName | string | 수신한 xml형 WFS 데이터 내 태그 명칭. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 해당 레이어가 존재하지 않는 경우.
-    - 해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
-    - 해당 레이어 타입이 WFS 레이어 타입이 아닌 경우.
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   해당 레이어가 존재하지 않는 경우.
+        -   해당 레이어 타입이 타일 레이어 타입이 아닌 경우.
+        -   해당 레이어 타입이 WFS 레이어 타입이 아닌 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -873,13 +918,15 @@ layer.setWFSPointName(“BONBUN”);
 | ------ | ----------------------------------- | ------------- |
 | propertyName | string | 속성 데이터 태그 리스트. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
-    - 레이어 타입이 WFS형 타입이 아닌 경우.
-- 참고
-  -   설정된 WFS 태그 리스트는 WFS 데이터 요청 파라미터 중 “propertyname” 파라미터에 설정한 내용이 적용된다.
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   레이어 타입이 타일 레이어 타입이 아닌 경우.
+        -   레이어 타입이 WFS형 타입이 아닌 경우.
+-   참고
+    -   설정된 WFS 태그 리스트는 WFS 데이터 요청 파라미터 중 “propertyname” 파라미터에 설정한 내용이 적용된다.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -902,11 +949,13 @@ layer.setWFSPropertyName(“STD_SGGCD,BONBUN,AG_GEOM”);
 | lineColor | [JSColor](../core/jscolor.md) | 텍스트 외곽 색상. |
 | fillColor | [JSColor](../core/jscolor.md) | 텍스트 채움 색상. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
-    - 레이어 타입이 WFS형 타입이 아닌 경우.
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   레이어 타입이 타일 레이어 타입이 아닌 경우.
+        -   레이어 타입이 WFS형 타입이 아닌 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -938,8 +987,8 @@ layer.setWFSTextColor(lineColor , fillColor);
 -   Sample
     -   function createLayerWMS 참조.
     -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -974,8 +1023,11 @@ let slopeoption = {
 | Name | Type | Description |
 | ------ | ----------------------------------- | ------------- |
 | transparent | boolean | 레이어 출력 방식.<br>true : 레이어 반투명 출력</br><br>false : 레이어 불투명 출력</br> |
-- 참고
-  - true로 설정한 경우 지형 이미지가 함께 보이는 반투명 상태로 출력되며, False로 설정한 경우 지형 이미지가 보이지 않는 불투명 상태로 출력된다.
+
+-   참고
+    -   true로 설정한 경우 지형 이미지가 함께 보이는 반투명 상태로 출력되며, False로 설정한 경우 지형 이미지가 보이지 않는 불투명 상태로 출력된다.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -998,11 +1050,13 @@ layer.setWMSTransparent(true);
 | ------ | ----------------------------------- | ------------- |
 | version | string | 설정하고자 하는 데이터 요청 버전. |
 
-- Return
-  - true : 설정에 성공한 경우.
-  - 다음의 경우 false 반환.
-    - 레이어 객체가 존재하지 않는 경우.
-    - 레이어 타입이 타일 레이어 타입이 아닌 경우.
+-   Return
+    -   true : 설정에 성공한 경우.
+    -   다음의 경우 false 반환.
+        -   레이어 객체가 존재하지 않는 경우.
+        -   레이어 타입이 타일 레이어 타입이 아닌 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1032,8 +1086,8 @@ layer.setWMSVersion(“1.1.0”);
 -   투명도 설정 실패 조건
     -   유저 레이어 인 경우.
     -   건물 이외 서비스 레이어 인 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1062,8 +1116,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function createLayerWMS 참조.
     -   [샌드박스\_WMS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wms)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1094,8 +1148,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function initSamplePage 참조.
     -   [샌드박스\_도형 생성](http://sandbox.dtwincloud.com/code/main.do?id=object_figure)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1125,8 +1179,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function showGrid 참조.
     -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1156,8 +1210,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function showGrid 참조.
     -   [샌드박스\_그리드(2D)](http://sandbox.dtwincloud.com/code/main.do?id=object_grid_2d)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1183,8 +1237,8 @@ layer.setWMSVersion(“1.1.0”);
 
 -   최대 가시 레벨 실패 조건.
     -   유저 레이어 일 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1203,8 +1257,8 @@ layer.setWMSVersion(“1.1.0”);
 | Name | Type | Description |
 | ---- | ------ | ----------- |
 | name | string | 변경 레이어 명칭. |
-{% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1234,8 +1288,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function JsonLoad 참조.
     -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1265,8 +1319,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function JsonLoad 참조.
     -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1289,8 +1343,8 @@ layer.setWMSVersion(“1.1.0”);
 | Name | Type | Description |
 | ---- | ------- | -------------------------------------------------- |
 | type | boolean | <p>true인 경우 선택 이벤트 동작.<br>false인 경우 선택 이벤트 금지.</p> |
-{% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1317,8 +1371,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function JsonLoad 참조.
     -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1339,8 +1393,8 @@ layer.setWMSVersion(“1.1.0”);
 | speed | number | 애니메이션 변환 속도 설정. |
 
 -   애니메이션 Step 설정 실패 조건. - 입력된 최소 Step 보다 작은값이 입력 된 경우. - 입력된 최대 Step 보다 큰값이 입력 된 경우. - createTimeSeriesObject() API로 객체 생성이 안된 경우.
-    {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1365,8 +1419,8 @@ layer.setWMSVersion(“1.1.0”);
 | Name | Type | Description |
 | ---- | ------ | ------------------------ |
 | tilt | number | 카메라 각도에 따른 객체 가시화 유무 설정. |
-{% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1393,8 +1447,8 @@ layer.setWMSVersion(“1.1.0”);
 -   Sample
     -   function JsonLoad 참조.
     -   [샌드박스\_시계열 Bar](http://sandbox.dtwincloud.com/code/main.do?id=effect_time_bar)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1410,8 +1464,8 @@ layer.setWMSVersion(“1.1.0”);
 {% tab title="Infomation" %}
 
 -   대체 API : setWMSProvider
-    {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1427,8 +1481,8 @@ layer.setWMSVersion(“1.1.0”);
 {% tab title="Infomation" %}
 
 -   대체 API : setWMSProvider
-    {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -1444,8 +1498,8 @@ layer.setWMSVersion(“1.1.0”);
 {% tab title="Infomation" %}
 
 -   사용 안함
-    {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
