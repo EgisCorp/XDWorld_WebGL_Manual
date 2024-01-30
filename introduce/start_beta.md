@@ -1,5 +1,9 @@
 # 시작하기 베타
 
+{% hint style="danger" %}
+2024년 2월 1일 베타 버전 엔진에 대한 사용 설명입니다.
+{% endhint %}
+
 엔진 파일을 받은 후 구동하기까지 과정을 자세히 소개합니다.
 
 최신 엔진 파일은 아래 깃허브에서 다운로드 받으실 수 있습니다.
@@ -10,19 +14,21 @@
 
 깃허브에서는 엔진 파일 / 실행 스크립트 / 기본 HTML 페이지를 함께 배포합니다.
 
-![](../.gitbook/assets/start.png)
+![](../.gitbook/assets/start_beta.png)
 
 엔진 파일은 세 가지 파일로 구성되어 있으며 다운로드 한 파일의 폴더 XDWorld-main/Release/(버전명)/js에서 찾을 수 있습니다.
 
 엔진을 구동할 때 세 파일이 순차적으로 로드되어야 하며,
 
-1. XDWorldEM.asm.js
-2. XDWorld.html.mem
-3. XDWorldEM.js
+1. XDWorldEM.js
+2. XDWorldEM.wasm
+3. XDWorldWorker.js
+4. XDWorldWorker.wasm
 
-파일 순으로 로드합니다.
+일반적인 엔진은 'XDWorldEM.js' 파일을 요청할 때 'XDWorldEM.js'와 동일한 경로에 있는 'XDWorldEM.wasm' 파일을 자동으로 요청합니다.
+지도 생성 시 사용되는 옵션으로, 'worker'를 생성할 때 'XDWorldWorker.js' 파일을 요청하면 'XDWorldWorker.js'와 같은 경로에 있는 'XDWorldWorker.wasm' 파일을 자동으로 요청하고 로드합니다.
 
-![](../.gitbook/assets/start0.png)
+![](../.gitbook/assets/start0_beta.png)
 
 다음 단계에서 각 파일의 로드 과정에 대해 소개합니다.
 
@@ -75,49 +81,45 @@ function init() {
     // 엔진 초기화 API 호출(필수)
     Module.initialize({
         container: document.getElementById("map"),
-        defaultKey: "발급 API KEY",
+        terrain: {
+            dem: {
+                url: "지형 DEM 데이터 요청 URL,
+                name: "지형 DEM 레이어 명칭",
+                servername: "요청 Server 명칭"
+            },
+            image: {
+                url: "지형 영상 이미지 데이터 요청 URL",
+                name: "지형 용상 이미지 레이어 명칭",
+                servername: "요청 Server 명칭"
+            },
+        },
+        worker : {
+            use : "web worker 사용유무",
+            path : "web worker 파일 요청 URL",
+            count : "web worker 사용 개수 설정"
+        },
+        defaultKey : "발급 API KEY"
     });
 }
 
 var Module = {
-    TOTAL_MEMORY: 256 * 1024 * 1024,
+    locateFile: function (path, prefix) {
+        return "./" + prefix + path;
+    },
     postRun: [init],
 };
 
 // 엔진 파일 로드
 (function () {
     // 1. XDWorldEM.asm.js 파일 로드
-    var file = "./js/XDWorldEM.asm.js";
-
+    var file = "./js/XDWorldEM.js";
     var xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("application/wasm");
     xhr.open("GET", file, true);
     xhr.onload = function () {
         var script = document.createElement("script");
         script.innerHTML = xhr.responseText;
         document.body.appendChild(script);
-
-        // 2. XDWorldEM.html.mem 파일 로드
-        setTimeout(function () {
-            (function () {
-                var memoryInitializer = "./js/XDWorldEM.html.mem";
-                var xhr = (Module["memoryInitializerRequest"] = new XMLHttpRequest());
-                xhr.open("GET", memoryInitializer, true);
-                xhr.responseType = "arraybuffer";
-                xhr.onload = function () {
-                    // 3. XDWorldEM.js 파일 로드
-                    var url = "./js/XDWorldEM.js";
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", url, true);
-                    xhr.onload = function () {
-                        var script = document.createElement("script");
-                        script.innerHTML = xhr.responseText;
-                        document.body.appendChild(script);
-                    };
-                    xhr.send(null);
-                };
-                xhr.send(null);
-            })();
-        }, 1);
     };
     xhr.send(null);
 })();
@@ -169,7 +171,9 @@ init.js 의 코드는
 
 ```javascript
 var Module = {
-    TOTAL_MEMORY: 256 * 1024 * 1024,
+    locateFile: function (path, prefix) {
+        return "./" + prefix + path;
+    },
     postRun: [init],
 };
 ```
@@ -192,50 +196,45 @@ function init() {
     // 엔진 초기화 API 호출(필수)
     Module.initialize({
         container: document.getElementById("map"),
-        defaultKey: "발급 API KEY",
+        terrain: {
+            dem: {
+                url: "지형 DEM 데이터 요청 URL,
+                name: "지형 DEM 레이어 명칭",
+                servername: "요청 Server 명칭"
+            },
+            image: {
+                url: "지형 영상 이미지 데이터 요청 URL",
+                name: "지형 용상 이미지 레이어 명칭",
+                servername: "요청 Server 명칭"
+            },
+        },
+        worker : {
+            use : "web worker 사용유무",
+            path : "web worker 파일 요청 URL",
+            count : "web worker 사용 개수 설정"
+        },
+        defaultKey : "발급 API KEY"
     });
 }
 ```
 
 #### 엔진 파일 로드
 
-엔진 파일을 순서대로 로드합니다. 파일 로드 순서에 유의하십시오.
+엔진 파일을 XDWorldEM.js 파일을 요청 및 로드 합니다.
+XDWorldEM.wasm은 XDWorldEM.js 로드 시 내부적으로 파일 요청 및 로드 합니다.
 
 ```javascript
 // 엔진 파일 로드
 (function () {
     // 1. XDWorldEM.asm.js 파일 로드
-    var file = "./js/XDWorldEM.asm.js";
-
+    var file = "./js/XDWorldEM.js";
     var xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("application/wasm");
     xhr.open("GET", file, true);
     xhr.onload = function () {
         var script = document.createElement("script");
         script.innerHTML = xhr.responseText;
         document.body.appendChild(script);
-
-        // 2. XDWorldEM.html.mem 파일 로드
-        setTimeout(function () {
-            (function () {
-                var memoryInitializer = "./js/XDWorldEM.html.mem";
-                var xhr = (Module["memoryInitializerRequest"] = new XMLHttpRequest());
-                xhr.open("GET", memoryInitializer, true);
-                xhr.responseType = "arraybuffer";
-                xhr.onload = function () {
-                    // 3. XDWorldEM.js 파일 로드
-                    var url = "./js/XDWorldEM.js";
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", url, true);
-                    xhr.onload = function () {
-                        var script = document.createElement("script");
-                        script.innerHTML = xhr.responseText;
-                        document.body.appendChild(script);
-                    };
-                    xhr.send(null);
-                };
-                xhr.send(null);
-            })();
-        }, 1);
     };
     xhr.send(null);
 })();
@@ -245,7 +244,16 @@ function init() {
 
 Module의 postRun 함수로 지정한 init 함수에서 Module.Start API를 실행하면 엔진 렌더링이 시작됩니다
 
-![](../.gitbook/assets/start1.png)
+![](../.gitbook/assets/start1_beta.png)
+
+worker 사용 유무에 따라 XDWorldWorker.js 파일을 요청 및 로드 합니다.
+XDWorldWorker.wasm은 XDWorldWorker.js 로드 시 내부적으로 파일 요청 및 로드 합니다.
+
+{% hint style="info" %}
+XDWorldWorker.js와 XDWorldWorker.wasm 파일은 WebAssembly로 구성된 Web Worker입니다.
+엔진에서 연산량이 많은 작업을 Worker를 통해 분산 처리하면 속도 향상이 가능합니다.
+Worker는 필수 사항이 아니며, Module.initialize() 설정에 따라 사용 여부를 정의할 수 있습니다.
+{% endhint %}
 
 엔진 렌더링이 시작되면 초기 화면으로 지구본 화면이 출력됩니다.
 

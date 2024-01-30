@@ -204,11 +204,23 @@ initialize를 구성하는 "container" property로 지정된 element 내부에 c
 ```javascript
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
-    // 엔진 초기화 API 호출(필수)
-    Module.initialize({
-        container: document.getElementById("map"),
-        defaultKey: "발급 API KEY",
-    });
+   // 엔진 초기화 API 호출(필수)
+   Module.initialize({
+      container: document.getElementById("map"),
+      terrain: {
+         dem: {
+            url: "지형 DEM 데이터 요청 URL,
+            name: "지형 DEM 레이어 명칭",
+            servername: "요청 Server 명칭"
+         },
+         image: {
+            url: "지형 영상 이미지 데이터 요청 URL",
+            name: "지형 용상 이미지 레이어 명칭",
+            servername: "요청 Server 명칭"
+         },
+      },
+      defaultKey : "발급 API KEY"
+   });
 }
 ```
 
