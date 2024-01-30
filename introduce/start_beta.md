@@ -104,8 +104,8 @@ function init() {
 
 var Module = {
     locateFile : function(s) {
-		return "https://cdn.xdworld.kr/beta/"+ s;
-	},
+        return "https://cdn.xdworld.kr/beta/"+ s;
+    },
     postRun: [init],
 };
 
@@ -181,9 +181,7 @@ var Module = {
 initialize를 구성하는 "container" property로 지정된 element 내부에 canvas를 동적으로 생성합니다.
 
 ```javascript
-// 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
-    // 엔진 초기화 API 호출(필수)
     Module.initialize({
         container: document.getElementById("map"),
         terrain: {
@@ -214,7 +212,6 @@ function init() {
 XDWorldEM.wasm은 XDWorldEM.js 로드 시 내부적으로 파일 요청 및 로드 합니다.
 
 ```javascript
-// 엔진 파일 로드
 var script = document.createElement("script");
 script.src = "https://cdn.xdworld.kr/beta/XDWorldEM.js";
 document.body.appendChild(script);
