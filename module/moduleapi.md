@@ -25,9 +25,9 @@ Module.initialize({
             servername: "요청 Server 명칭"
         },
         worker : {
-			use : "web worker 사용유무",
-			path : "web worker 파일 요청 URL",
-			count : "web worker 사용 개수 설정"
+            use : "web worker 사용유무",
+            path : "web worker 파일 요청 URL",
+            count : "web worker 사용 개수 설정"
 		},
     },
     defaultKey: "발급키",
@@ -49,7 +49,7 @@ Module.initialize({
 | Name | Type | Description |
 | --------- | ------ | -------- |
 | container | HTML Element | 지도를 포함한 Container 영역. |
-| terrain | [Module.CreateOptions](moduleapi.md#module.createoptions) | Map 생성 정보. |
+| terrain | [Module.CreateOptions](moduleapi.md#module.createterrainoptions) | Map 생성 정보. |
 | worker | [Module.CreateWorkerOptions](moduleapi.md#module.createworkeroptions) | web worker 생성 정보. |
 | defaultKey | string | 엔진 API 발급 Key |
 
@@ -62,7 +62,7 @@ Module.initialize({
 {% tab title="Template" %}
 
 ```javascript
-let object = Module.createBarGraph("newBarGraph");
+
 ```
 
 {% endtab %}
@@ -617,4 +617,3 @@ Module.XDRenderData();
 | url        | string | 지형 영상 이미지 데이터 요청 url. |
 | name       | string | 지형 영상 이미지 레이어 이름.     |
 | servername | string | 요청 Server 명칭.                 |
-|            |

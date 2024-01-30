@@ -4,7 +4,7 @@
 
 -   [XDWorld API](README.md)
 -   [시작하기\_v1](introduce/start_v1.md)
--   [시작하기\_v1](introduce/start_beta.md)
+-   [시작하기\_beta](introduce/start_beta.md)
 -   [About EGIS](introduce/AboutEGIS.md)
 -   [Release Note](release/release.md)
     -   [1.5x 버전 업데이트](release/update_1.5x.x.md)
