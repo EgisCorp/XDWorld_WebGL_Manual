@@ -10,6 +10,11 @@ description: 지도 생성, 제어를 담당하는 기능 목록.
 >
 > web worker 파라미터는 2024년 2월 1일 이후 베타 버전 엔진에서 사용 가능합니다.
 
+{% hint style="info" %}
+Function initialize에 추가된 worker 항목은 2024년 2월 1일부터 베타 버전 엔진에서 지원됩니다.
+엔진과 함께 제공되는 'XDWorldWorker.js', 'XDWorldWorker.wasm'을 이용하여 엔진에 발생할 수 있는 부하를 분산하여 처리합니다.
+{% endhint %}
+
 ```javascript
 Module.initialize({
     container: document.querySelector("컨테이너 ID"),
@@ -41,8 +46,6 @@ Module.initialize({
 > 지도를 생성합니다.
 >
 > worker 항목 옵션을 통해 web worker 기능을 활성화 합니다.
->
-> web worker는 엔진에 종속된 기능으로 엔진 부화를 줄여주는 기능입니다.
 
 {% tabs %}
 {% tab title="Information" %}

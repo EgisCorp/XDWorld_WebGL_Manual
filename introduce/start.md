@@ -36,6 +36,7 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 
 {% tabs %}
 {% tab title="index.html" %}
+
 ```html
 <!doctype html>
 <html>
@@ -61,17 +62,31 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 </body>
 </html>
 ```
+
 {% endtab %}
 {% endtabs %}
 
 {% tabs %}
 {% tab title="init.js" %}
+
 ```javascript
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
    // 엔진 초기화 API 호출(필수)
    Module.initialize({
       container: document.getElementById("map"),
+      terrain: {
+         dem: {
+            url: "지형 DEM 데이터 요청 URL,
+            name: "지형 DEM 레이어 명칭",
+            servername: "요청 Server 명칭"
+         },
+         image: {
+            url: "지형 영상 이미지 데이터 요청 URL",
+            name: "지형 용상 이미지 레이어 명칭",
+            servername: "요청 Server 명칭"
+         },
+      },
       defaultKey : "발급 API KEY"
    });
 }
@@ -85,15 +100,15 @@ var Module = {
 ;(function(){
    // 1. XDWorldEM.asm.js 파일 로드
    var file = "./js/XDWorldEM.asm.js";
-	
+
    var xhr = new XMLHttpRequest();
    xhr.open('GET', file, true);
    xhr.onload = function() {
-	
+
       var script = document.createElement('script');
       script.innerHTML = xhr.responseText;
       document.body.appendChild(script);
-		
+
       // 2. XDWorldEM.html.mem 파일 로드
       setTimeout(function() {
          (function() {
@@ -102,7 +117,7 @@ var Module = {
             xhr.open('GET', memoryInitializer, true);
                xhr.responseType = 'arraybuffer';
                xhr.onload =  function(){
-						
+
                   // 3. XDWorldEM.js 파일 로드
                   var url = "./js/XDWorldEM.js";
                   var xhr = new XMLHttpRequest();
@@ -122,6 +137,7 @@ var Module = {
    }
 )();
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -131,9 +147,9 @@ index.html 파일에서는 엔진 로드를 위한 init.js 를 호출합니다.
 
 ```html
 <script>
-   var initScript = document.createElement('script');
-   initScript.src = "./js/init.js";
-   document.body.appendChild(initScript);
+    var initScript = document.createElement("script");
+    initScript.src = "./js/init.js";
+    document.body.appendChild(initScript);
 </script>
 <div id="map"></div>
 ```
@@ -156,9 +172,9 @@ index.html 에서 필요에 따라 인터페이스를 추가할 수 있습니다
 
 init.js 의 코드는
 
-* 엔진 초기화 함수 선언 부분
-* 지도 모듈 객체 선언 부분
-* 엔진 파일 로드 부분
+-   엔진 초기화 함수 선언 부분
+-   지도 모듈 객체 선언 부분
+-   엔진 파일 로드 부분
 
 으로 구성되어 있습니다.
 
@@ -168,14 +184,14 @@ init.js 의 코드는
 
 ```javascript
 var Module = {
-   TOTAL_MEMORY: 256*1024*1024,
-   postRun: [init],
+    TOTAL_MEMORY: 256 * 1024 * 1024,
+    postRun: [init],
 };
 ```
 
 반드시 객체 이름은 Module 로 선언해주어야 하며 postRun 속성은 필수로 입력되어야 합니다.
 
-* postRun : 엔진 모듈이 준비 된 시점에서 호출되는 함수를 지정합니다.
+-   postRun : 엔진 모듈이 준비 된 시점에서 호출되는 함수를 지정합니다.
 
 #### 엔진 초기화 함수 선언
 
@@ -188,12 +204,12 @@ initialize를 구성하는 "container" property로 지정된 element 내부에 c
 ```javascript
 // 엔진 로드 후 실행할 초기화 함수(Module.postRun)
 function init() {
-   // 엔진 초기화 API 호출(필수)
-   Module.initialize({
-      container: document.getElementById("map"),
-      defaultKey : "발급 API KEY"
-   });
-}  
+    // 엔진 초기화 API 호출(필수)
+    Module.initialize({
+        container: document.getElementById("map"),
+        defaultKey: "발급 API KEY",
+    });
+}
 ```
 
 #### 엔진 파일 로드
@@ -202,46 +218,42 @@ function init() {
 
 ```javascript
 // 엔진 파일 로드
-;(function(){   	
+(function () {
+    // 1. XDWorldEM.asm.js 파일 로드
+    var file = "./js/XDWorldEM.asm.js";
 
-   // 1. XDWorldEM.asm.js 파일 로드
-   var file = "./js/XDWorldEM.asm.js";
-	
-   var xhr = new XMLHttpRequest();
-   xhr.open('GET', file, true);
-   xhr.onload = function() {
-	
-      var script = document.createElement('script');
-      script.innerHTML = xhr.responseText;
-      document.body.appendChild(script);
-		
-      // 2. XDWorldEM.html.mem 파일 로드
-      setTimeout(function() {
-         (function() {
-            var memoryInitializer = "./js/XDWorldEM.html.mem";
-            var xhr = Module['memoryInitializerRequest'] = new XMLHttpRequest();
-            xhr.open('GET', memoryInitializer, true);
-            xhr.responseType = 'arraybuffer';
-            xhr.onload =  function(){
-						
-               // 3. XDWorldEM.js 파일 로드
-               var url = "./js/XDWorldEM.js";
-               var xhr = new XMLHttpRequest();
-               xhr.open('GET',url , true);
-               xhr.onload = function(){
-                  var script = document.createElement('script');
-                  script.innerHTML = xhr.responseText;
-                  document.body.appendChild(script);
-               };
-               xhr.send(null);
-            }
-            xhr.send(null);
-         })();
-         }, 1);
-      };
-      xhr.send(null);
-   }
-)();
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", file, true);
+    xhr.onload = function () {
+        var script = document.createElement("script");
+        script.innerHTML = xhr.responseText;
+        document.body.appendChild(script);
+
+        // 2. XDWorldEM.html.mem 파일 로드
+        setTimeout(function () {
+            (function () {
+                var memoryInitializer = "./js/XDWorldEM.html.mem";
+                var xhr = (Module["memoryInitializerRequest"] = new XMLHttpRequest());
+                xhr.open("GET", memoryInitializer, true);
+                xhr.responseType = "arraybuffer";
+                xhr.onload = function () {
+                    // 3. XDWorldEM.js 파일 로드
+                    var url = "./js/XDWorldEM.js";
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", url, true);
+                    xhr.onload = function () {
+                        var script = document.createElement("script");
+                        script.innerHTML = xhr.responseText;
+                        document.body.appendChild(script);
+                    };
+                    xhr.send(null);
+                };
+                xhr.send(null);
+            })();
+        }, 1);
+    };
+    xhr.send(null);
+})();
 ```
 
 ## 엔진 실행
