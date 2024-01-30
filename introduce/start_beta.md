@@ -103,26 +103,16 @@ function init() {
 }
 
 var Module = {
-    locateFile: function (path, prefix) {
-        return "./" + prefix + path;
-    },
+    locateFile : function(s) {
+		return "https://cdn.xdworld.kr/beta/"+ s;
+	},
     postRun: [init],
 };
 
 // 엔진 파일 로드
-(function () {
-    // 1. XDWorldEM.asm.js 파일 로드
-    var file = "./js/XDWorldEM.js";
-    var xhr = new XMLHttpRequest();
-    xhr.overrideMimeType("application/wasm");
-    xhr.open("GET", file, true);
-    xhr.onload = function () {
-        var script = document.createElement("script");
-        script.innerHTML = xhr.responseText;
-        document.body.appendChild(script);
-    };
-    xhr.send(null);
-})();
+var script = document.createElement('script');
+script.src = "https://cdn.xdworld.kr/beta/XDWorldEM.js";
+document.body.appendChild(script);
 ```
 
 {% endtab %}
@@ -171,8 +161,8 @@ init.js 의 코드는
 
 ```javascript
 var Module = {
-    locateFile: function (path, prefix) {
-        return "./" + prefix + path;
+    locateFile: function (s) {
+        return "https://cdn.xdworld.kr/beta/" + s;
     },
     postRun: [init],
 };
@@ -225,19 +215,9 @@ XDWorldEM.wasm은 XDWorldEM.js 로드 시 내부적으로 파일 요청 및 로�
 
 ```javascript
 // 엔진 파일 로드
-(function () {
-    // 1. XDWorldEM.asm.js 파일 로드
-    var file = "./js/XDWorldEM.js";
-    var xhr = new XMLHttpRequest();
-    xhr.overrideMimeType("application/wasm");
-    xhr.open("GET", file, true);
-    xhr.onload = function () {
-        var script = document.createElement("script");
-        script.innerHTML = xhr.responseText;
-        document.body.appendChild(script);
-    };
-    xhr.send(null);
-})();
+var script = document.createElement("script");
+script.src = "https://cdn.xdworld.kr/beta/XDWorldEM.js";
+document.body.appendChild(script);
 ```
 
 ## 엔진 실행
