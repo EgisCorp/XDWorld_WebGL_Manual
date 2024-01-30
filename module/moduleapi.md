@@ -65,25 +65,26 @@ Module.initialize({
 // 샌드박스 사용
 Module.initialize({
     container: document.getElementById("map"),
-        terrain : {
-            dem : {
-                url : "https://xdworld.vworld.kr",
-                name : "dem",
-                servername : "XDServer3d",
-                encoding : true
-            },
-            image : {
-                url : "https://xdworld.vworld.kr",
-                name : "tile_mo_HD",
-                servername : "XDServer3d"
-            },
+    terrain: {
+        dem: {
+            url: "https://xdworld.vworld.kr",
+            name: "dem",
+            servername: "XDServer3d",
+            encoding: true,
         },
-        worker : {
-            use : true,
-            path : "./worker/XDWorldWorker.js",
-            count : 5
+        image: {
+            url: "https://xdworld.vworld.kr",
+            name: "tile_mo_HD",
+            servername: "XDServer3d",
         },
-        defaultKey : "발급키"
+    },
+    worker: {
+        use: true,
+        path: "./worker/XDWorldWorker.js",
+        count: 5,
+    },
+    defaultKey: "발급키",
+});
 ```
 
 {% endtab %}
