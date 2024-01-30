@@ -17,9 +17,9 @@
 
 Part 구성에 따라 여러가지 형태로 구성됩니다.
 
-|                 한 파트의 폴리곤                 |                 여러 파트의 폴리곤                 |               홀(Hole)이 있는 폴리곤              |
-| :---------------------------------------: | :----------------------------------------: | :----------------------------------------: |
-| ![](<../.gitbook/assets/polygon (1).png>) | ![](<../.gitbook/assets/polygon0 (1).png>) | ![](<../.gitbook/assets/polygon1 (1).png>) |
+|          한 파트의 폴리곤           |          여러 파트의 폴리곤          |        홀(Hole)이 있는 폴리곤        |
+| :---------------------------------: | :----------------------------------: | :----------------------------------: |
+| ![](../.gitbook/assets/polygon.png) | ![](../.gitbook/assets/polygon0.png) | ![](../.gitbook/assets/polygon1.png) |
 
 아래는 폴리곤 오브젝트를 생성하는 전체 코드입니다.
 
@@ -88,10 +88,10 @@ polygon.setPartCoordinates(vertex, part);
 
 폴리곤은 기본적으로 폐곡선 형태로 이루어지며, 좌표의 방향에 따라 외부와 내부가 구분됩니다.
 
-![](<../.gitbook/assets/polygon3 (1).png>)
+![](../.gitbook/assets/polygon3.png)
 
-* 시계방향(CW)으로 좌표 구성 : 외부로 판별되며 폴리곤의 외곽을 구성합니다.
-* 반시계방향(CCW)으로 좌표 구성 : 내부로 판별되며 폴리곤의 홀(Hole)을 구성합니다.
+-   시계방향(CW)으로 좌표 구성 : 외부로 판별되며 폴리곤의 외곽을 구성합니다.
+-   반시계방향(CCW)으로 좌표 구성 : 내부로 판별되며 폴리곤의 홀(Hole)을 구성합니다.
 
 하나의 폐곡선은 하나의 파트로 지정하며, 위 코드의 폴리곤은 점 수가 4개인 한 파트 구성됩니다.
 
@@ -167,6 +167,6 @@ layer.addObject(polygon, 0);
 
 ![](../.gitbook/assets/polygon4.png)
 
-폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color)를 클릭해 주세요
+폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_color)를 클릭해 주세요
 
-높이를 지정한 폴리곤에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_height)를 클릭해 주세요
+높이를 지정한 폴리곤에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)를 클릭해 주세요
