@@ -7,8 +7,6 @@ description: 지도 생성, 제어를 담당하는 기능 목록.
 > Module.initialize를 통해 기본 지도를 생성할 수 있습니다.
 >
 > Module을 통해 다른 Class를 생성 후 사용이 가능합니다.
->
-> web worker 파라미터는 2024년 2월 1일 이후 베타 버전 엔진에서 사용 가능합니다.
 
 {% hint style="info" %}
 Function initialize에 추가된 worker 항목은 2024년 2월 1일부터 베타 버전 엔진에서 지원됩니다.
