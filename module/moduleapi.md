@@ -31,7 +31,7 @@ Module.initialize({
             use : "web worker 사용유무",
             path : "web worker 파일 요청 URL",
             count : "web worker 사용 개수 설정"
-		},
+        },
     },
     defaultKey: "발급키",
 });
