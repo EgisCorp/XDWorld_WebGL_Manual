@@ -7,6 +7,8 @@ description: 지도 생성, 제어를 담당하는 기능 목록.
 > Module.initialize를 통해 기본 지도를 생성할 수 있습니다.
 >
 > Module을 통해 다른 Class를 생성 후 사용이 가능합니다.
+>
+> web worker 파라미터는 2024년 2월 1일 이후 베타 버전 엔진에서 사용 가능합니다.
 
 ```javascript
 Module.initialize({
@@ -15,13 +17,18 @@ Module.initialize({
         dem: {
             url: "지형 DEM 데이터 요청 URL,
             name: "지형 DEM 레이어 명칭",
-            servername: "요청 Server 명칭",
+            servername: "요청 Server 명칭"
         },
         image: {
             url: "지형 영상 이미지 데이터 요청 URL",
             name: "지형 용상 이미지 레이어 명칭",
-            servername: "요청 Server 명칭",
+            servername: "요청 Server 명칭"
         },
+        worker : {
+			use : "web worker 사용유무",
+			path : "web worker 파일 요청 URL",
+			count : "web worker 사용 개수 설정"
+		},
     },
     defaultKey: "발급키",
 });
@@ -31,12 +38,19 @@ Module.initialize({
 
 ### initialize(object) -> object
 
+> 지도를 생성합니다.
+>
+> worker 항목 옵션을 통해 web worker 기능을 활성화 합니다.
+>
+> web worker는 엔진에 종속된 기능으로 엔진 부화를 줄여주는 기능입니다.
+
 {% tabs %}
 {% tab title="Information" %}
 | Name | Type | Description |
 | --------- | ------ | -------- |
 | container | HTML Element | 지도를 포함한 Container 영역. |
 | terrain | [Module.CreateOptions](moduleapi.md#module.createoptions) | Map 생성 정보. |
+| worker | [Module.CreateWorkerOptions](moduleapi.md#module.createworkeroptions) | web worker 생성 정보. |
 | defaultKey | string | 엔진 API 발급 Key |
 
 -   Return
@@ -44,6 +58,7 @@ Module.initialize({
     -   .name : 동작 API 명칭
     -   .return : API 반환 정보 (object : 정상적인 반환값, 문자열 : 실패 에러 코드)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -66,8 +81,8 @@ let object = Module.createBarGraph("newBarGraph");
 -   Return
     -   [JSBarGraph](../object/jsbargraph.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -90,8 +105,8 @@ let object = Module.createBarGraph("newBarGraph");
 -   Return
     -   [JSBarGraph3D](../object/jsbargraph3d.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -114,8 +129,8 @@ let object = Module.createBarGraph3D("newBarGraph3D");
 -   Return
     -   [JSBillboard](../object/jsbillboard.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -138,8 +153,8 @@ let object = Module.createBillboard("newBillboard");
 -   Return
     -   [JSGhostSymbol](../object/jsghostsymbol.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -162,8 +177,8 @@ let ghostSymbol = Module.createGhostSymbol("newGhostSymbol");
 -   Return
     -   [JSLineString](../object/jslinestring.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -186,8 +201,8 @@ let object = Module.createLineString("newPolyLine");
 -   Return
     -   [JSLineString](../object/jslinestring.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -210,8 +225,8 @@ let object = Module.createLineString("newPolyLine");
 -   Return
     -   [JSMultiPoint](../object/jsmultipoint.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -234,8 +249,8 @@ let object = Module.createMultiPoint("newMultiPoint");
 -   Return
     -   [JSPipe](../object/jspipe.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -258,8 +273,8 @@ let object = Module.createPipe("newPipe");
 -   Return
     -   [JSPoint](../object/jspoint.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -282,8 +297,8 @@ let object = Module.createPoint("newPoint");
 -   Return
     -   [JSPointGraph](../object/jspointgraph.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -306,8 +321,8 @@ let object = Module.createPointGraph("newGraph");
 -   Return
     -   [JSSurfaceGraph](../object/jssurfacegraph.md): 오브젝트 생성 성공.
     -   null: 오브젝트 생성에 실패한 경우.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -325,8 +340,8 @@ let object = Module.createSurfaceGraph("newBarGraph3D");
 {% tab title="Information" %}
 
 -   Return - JSAnalysis: 생성한 JSAnalysis 타입 객체. - null: 오브젝트 생성에 실패한 경우.
-    {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -348,6 +363,7 @@ var analysis = Module.getAnalysis();
 -   null: 생성 실패.
 
 {% endtab %}
+{% tab title="Template" %}
 
 ```javascript
 let map = Module.getGhostSymbolMap();
@@ -368,6 +384,7 @@ let map = Module.getGhostSymbolMap();
 -   null: 생성 실패.
 
 {% endtab %}
+{% tab title="Template" %}
 
 ```javascript
 let navigation = Module.getNavigation();
@@ -388,6 +405,7 @@ let navigation = Module.getNavigation();
 -   null: 생성 실패.
 
 {% endtab %}
+{% tab title="Template" %}
 
 ```javascript
 let slope = Module.getSlope();
@@ -408,6 +426,7 @@ let slope = Module.getSlope();
 -   null: 생성 실패.
 
 {% endtab %}
+{% tab title="Template" %}
 
 ```javascript
 let symbol = Module.getSymbol();
@@ -499,7 +518,8 @@ Module.SetSimpleMode(1);
 -   Return
     -   true: 초기화 성공.
     -   false : 엔진이 초기화 되지 않은 경우.
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -566,14 +586,22 @@ Module.XDRenderData();
 
 ## Type Definitions
 
-### Module.CreateOptions
+### Module.CreateTerrainOptions
 
-| Name  | Type                                                                  | Description  |
-| ----- | --------------------------------------------------------------------- | ------------ |
-| dem   | [Module.CreateOptions.DEM](moduleapi.md#module.createoptions.dem)     | 지형 데이터. |
-| image | [Module.CreateOptions.Image](moduleapi.md#module.createoptions.image) | 영상 데이터. |
+| Name  | Type                                                                                | Description  |
+| ----- | ----------------------------------------------------------------------------------- | ------------ |
+| dem   | [Module.CreateTerrainOptions.DEM](moduleapi.md#module.createterrainoptions.dem)     | 지형 데이터. |
+| image | [Module.CreateTerrainOptions.Image](moduleapi.md#module.createterrainoptions.image) | 영상 데이터. |
 
-### Module.CreateOptions.DEM
+### Module.CreateWorkerOptions
+
+| Name  | Type    | Description           |
+| ----- | ------- | --------------------- |
+| use   | boolean | web worker 사용유무.  |
+| path  | string  | web worker 요청 url.  |
+| count | number  | web worker 사용 개수. |
+
+### Module.CreateTerrainOptions.DEM
 
 | Name       | Type    | Description                                                                                                         |
 | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -582,10 +610,11 @@ Module.XDRenderData();
 | servername | string  | 요청 Server 명칭.                                                                                                   |
 | encoding   | boolean | <p>DEM 암호화 데이터 인식 여부.<br>true인 경우 암호화 되어 있음.<br><br>false인 경우 암호화 되어 있지 않음.<br></p> |
 
-### Module.CreateOptions.Image
+### Module.CreateTerrainOptions.Image
 
 | Name       | Type   | Description                       |
 | ---------- | ------ | --------------------------------- |
 | url        | string | 지형 영상 이미지 데이터 요청 url. |
 | name       | string | 지형 영상 이미지 레이어 이름.     |
 | servername | string | 요청 Server 명칭.                 |
+|            |
