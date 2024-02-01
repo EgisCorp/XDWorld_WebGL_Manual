@@ -289,10 +289,10 @@ console.log(result);
 
 > 좌표 변환 옵션
 
-| Name        | Type                                                                                                                                                      | Description           |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| source      | string                                                                                                                                                    | 입력 좌표 CRS 문자열. |
-| coordinates | Array([JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md)), [JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md) | 변경 대상 위치좌표.   |
+| Name        | Type                                                                                                                                                                                                                                    | Description           |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| source      | string                                                                                                                                                                                                                                  | 입력 좌표 CRS 문자열. |
+| coordinates | Array([JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md)), [JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md), [JSVec2Array](../core/jsvec2array.md), [JSVec3Array](../core/jsvec3array.md) | 변경 대상 위치좌표.   |
 
 #### ClassTransformOptions
 
