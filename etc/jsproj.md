@@ -34,7 +34,8 @@ let projection = new Module.JSProj("proj4 코드(+proj=longlat +datum=WGS84 +no_
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -65,7 +66,8 @@ console.log(result); // API 결과 정보 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -87,7 +89,8 @@ console.log(result); // API 결과 정보 반환
 
 -   Return
     -   API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 공백 : JSProj 초기화 상태 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -180,7 +183,8 @@ console.log(result);
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : epsg 코드 목록 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -210,7 +214,8 @@ console.log(list); //epsg 목록
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( proj4 문자열 : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -238,7 +243,8 @@ console.log(list); // API 결과 정보 반환
     -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
     -   .name : 동작 API 명칭.
     -   .return : API 결과 정보 반환( Array : 변환된 좌표 목록, 문자열 : 실패 에러 코드 ).
-        {% endtab %}
+
+{% endtab %}
 
 {% tab title="Template" %}
 
@@ -292,11 +298,11 @@ console.log(result);
 
 > 좌표 변환 옵션
 
-| Name        | Type                                                                                                                                                      | Description           |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| target      | string                                                                                                                                                    | 변환 좌표 CRS 문자열. |
-| source      | string                                                                                                                                                    | 입력 좌표 CRS 문자열. |
-| coordinates | Array([JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md)), [JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md) | 변경 대상 위치좌표.   |
+| Name        | Type                                                                                                                                                                                                                                    | Description           |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| target      | string                                                                                                                                                                                                                                  | 변환 좌표 CRS 문자열. |
+| source      | string                                                                                                                                                                                                                                  | 입력 좌표 CRS 문자열. |
+| coordinates | Array([JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md)), [JSVector2D](../core/jsvector2d.md), [JSVector3D](../core/jsvector3d.md), [JSVec2Array](../core/jsvec2array.md), [JSVec3Array](../core/jsvec3array.md) | 변경 대상 위치좌표.   |
 
 #### EPSG Coordinate Type List
 

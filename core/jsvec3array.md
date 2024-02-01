@@ -15,10 +15,12 @@ var vec_array = new Module.JSVec3Array();
 > 벡터 리스트를 초기화.
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 vectorList.clear();
 ```
+
 {% endtab %}
 
 ### count() → number
@@ -28,15 +30,18 @@ vectorList.clear();
 {% tabs %}
 {% tab title="Information" %}
 
-* Return
-  * number : 벡터 리스트의 벡터 개수.
+-   Return
+    -   number : 벡터 리스트의 벡터 개수.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 vectorList.count();
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -50,39 +55,46 @@ vectorList.count();
 | :--- | :--- | :--- |
 | index | number | 반환하는 데이터 인덱스(0부터 순서대로 정렬) |
 
-* Return
-  * 유효한 벡터 오브젝트(JSVector3D) : 해당 인덱스 벡터 반환 성공.
-  * 초기화 상태의 오브젝트(JSVector3D) : 인덱스가 벡터 리스트 크기를 넘어설 경우.
+-   Return
+    -   유효한 벡터 오브젝트(JSVector3D) : 해당 인덱스 벡터 반환 성공.
+    -   초기화 상태의 오브젝트(JSVector3D) : 인덱스가 벡터 리스트 크기를 넘어설 경우.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 //...
 var vector = vectorList.get(2);
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### pop() → JSVector3D
 
 > 벡터 리스트의 마지막 순서 벡터를 반환.
-> 
+>
 > 반환 후 마지막 벡터는 벡터 리스트에서 삭제됨.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 벡터 오브젝트(JSVector3D) : 마지막 벡터 반환 성공.
-  * 초기화 상태의 오브젝트(JSVector3D) : 벡터 리스트가 비어있을 경우.
+
+-   Return
+    -   유효한 벡터 오브젝트(JSVector3D) : 마지막 벡터 반환 성공.
+    -   초기화 상태의 오브젝트(JSVector3D) : 벡터 리스트가 비어있을 경우.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 //...
 var lastVector = vectorList.pop();
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -96,16 +108,19 @@ var lastVector = vectorList.pop();
 | :--- | :--- | :--- |
 | element | [JSVector3D](../core/jsvector3d.md) | 새 3차원 벡터 객체. |
 
-* Return
-  * number : 벡터 추가 실행 후 리스트의 벡터 개수.
+-   Return
+    -   number : 벡터 추가 실행 후 리스트의 벡터 개수.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
-var newVector = new Module.JSVector3d(100.0, 150.0, 15.0);
+var newVector = new Module.JSVector3D(100.0, 150.0, 15.0);
 vectorList.push(newVector);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -120,15 +135,19 @@ vectorList.push(newVector);
 | lon | number | 새 벡터 경도. |
 | lat | number | 새 벡터 위도. |
 | alt | number | 새 벡터 고도. |
-* Return
-  * number : 벡터 추가 실행 후 리스트의 벡터 개수.
+
+-   Return
+    -   number : 벡터 추가 실행 후 리스트의 벡터 개수.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 vectorList.pushLonLatAlt(100.0, 120.0, 15.0);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -145,12 +164,14 @@ vectorList.pushLonLatAlt(100.0, 120.0, 15.0);
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 //...
 var newVector = new Module.JSVector3D(130.22, 149.3, 15.0);
 vectorList.set(5, newVector);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -169,11 +190,13 @@ vectorList.set(5, newVector);
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 //...
 vectorList.setLonLatAlt(5, 130.22, 149.3, 15.0);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -183,16 +206,20 @@ vectorList.setLonLatAlt(5, 130.22, 149.3, 15.0);
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 벡터 오브젝트(JSVector3D) : 첫 번째 벡터 반환 성공.
-  * 초기화 상태의 오브젝트(JSVector3D) : 벡터 리스트가 비어있을 경우.
+
+-   Return
+    -   유효한 벡터 오브젝트(JSVector3D) : 첫 번째 벡터 반환 성공.
+    -   초기화 상태의 오브젝트(JSVector3D) : 벡터 리스트가 비어있을 경우.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
 var vectorList = new Module.JSVec3Array();
 //...
 var lastVector = vectorList.shift();
 ```
+
 {% endtab %}
 {% endtabs %}
