@@ -136,6 +136,24 @@ line.createbyJson({
 
 ## - 업데이트 내역 -
 
+### 1.59.1 (2024/3/08)
+
+#### 1. createShadow API 실행 시 마우스 모드 고정 현상 수정 
+  * JSAnlysis의 createShadow API 실행 시 마우스 모드가 일반 모드(1번)으로 고정되는 현상을 수정하였습니다. 
+
+#### 2. JSFlowPolygon의 setHeight API 설정 오류 수정
+  * setHeight API 설정 값에 오차가 발생하는 현상을 수정하였습니다.
+
+#### 3. ETLT_TILE_LOD_MODEL 타입의 레이어 LOD Max값 설정 API
+* JSLayer 클래스
+* setTileLODMaxLevel(_nMaxLevel) : LOAD Max 값 설정. -1이면 제한 없음. Default : -1
+* getTileLODMaxLevel() : LOAD Max 값 리턴
+``` javascript
+var layerList = new Module.JSLayerList(false);
+var layer = layerList.nameAtLayer("bldg_us_jsp");
+layer.setTileLODMaxLevel(3);
+```
+
 ### 1.59.0 (2024/2/23)
 
 #### 1. 초기 로딩시 지구본이 검게 표현되는 현상 수정
