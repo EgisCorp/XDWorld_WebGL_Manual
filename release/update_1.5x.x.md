@@ -136,7 +136,7 @@ line.createbyJson({
 
 ## - 업데이트 내역 -
 
-### 1.59.1 (2024/3/08)
+### 1.59.1 (2024/3/8)
 
 #### 1. createShadow API 실행 시 마우스 모드 고정 현상 수정 
   * JSAnlysis의 createShadow API 실행 시 마우스 모드가 일반 모드(1번)으로 고정되는 현상을 수정하였습니다. 
