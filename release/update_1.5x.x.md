@@ -136,6 +136,15 @@ line.createbyJson({
 
 ## - 업데이트 내역 -
 
+### 1.59.2 (2024/3/15)
+
+#### 1.  ETLT_TILE_LOD_MODEL 레이어 삭제시 오류 수정
+  * 레이어 삭제 요청시, 해당 핸들이 남아있어 발생하는 오류를 수정하였습니다.
+#### 2. 그림자 색상 변경 API 수정
+  * JSAnalysis::setShadowColor() API의 색상 설정이 적용되지 않는 오류를 수정하였습니다.
+#### 3.  https://github.com/EgisCorp/XDWorld/issues/391 이슈 수정
+  * 선 두께가 1일때 점선이 그려지지 않은 현상을 수정하였습니다.
+
 ### 1.59.1 (2024/3/8)
 
 #### 1. createShadow API 실행 시 마우스 모드 고정 현상 수정
