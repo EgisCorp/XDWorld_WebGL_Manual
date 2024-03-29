@@ -7,6 +7,7 @@
 -   [시작하기\_beta](introduce/start_beta.md)
 -   [About EGIS](introduce/AboutEGIS.md)
 -   [Release Note](release/release.md)
+    -   [1.6x 버전 업데이트](release/update_1.6x.x.md)
     -   [1.5x 버전 업데이트](release/update_1.5x.x.md)
     -   [1.4x 버전 업데이트](release/update_1.4x.x.md)
     -   [1.3x 버전 업데이트](release/update_1.3x.x.md)
