@@ -2,6 +2,51 @@
 
 ## - 업데이트 내역 -
 
+### 1.61.0 (2024/4/26)
+
+#### 1. 수인한도분석 상세분석 옵션 추가
+  * '수인한도분석' 기능에서, 상세한 분석을 위한 `isdetail` 프로퍼티가 추가되었습니다.
+    * true: 그리드 영역에 햇빛이 들지 않는 영역이 있을 경우, 일조량 계산하지 않음.
+    * false:절반이상 햇빛이 들면 일조량 계산.
+
+#### 2. HeatMap API에 가중치 매개변수 추가
+  - 기존 히트맵 정보를 입력하는 API의 매개변수에 `가중치`가 추가되었습니다.
+  - addHeatMapEX(JSVector3D(경도, 위도, 가중치)) : JSMap 클래스
+    ```javascript
+      var pMap = Module.getMap();
+      pMap.setTerrainEffect(9); // 히트맵 설정
+      for(var i=0; i<4000; ++i)
+      {
+          pMap.addHeatMapEX(new Module.JSVector3D(124.0+Math.random()*8.0, 34.0+Math.random()*6.0, 1.0));
+      }
+    ```
+  - addHeatMapsEX(JSVec3Array(경도, 위도, 가중치)) : JSMap 클래스
+    ```javascript
+      var pMap = Module.getMap();
+      pMap.setTerrainEffect(9); // 히트맵 설정
+      var vList = new Module.JSVec3Array();
+        
+      vList.push(new Module.JSVector3D(128.388791, 36.398409, 1.0));
+      vList.push(new Module.JSVector3D(126.745337, 35.019302, 2.0));
+      vList.push(new Module.JSVector3D(128.902455, 35.319581, 3.0));
+      vList.push(new Module.JSVector3D(129.147955, 36.119326, 4.0));
+      vList.push(new Module.JSVector3D(129.073899, 37.210022, 5.0));
+      vList.push(new Module.JSVector3D(128.373239, 37.765977, 6.0));
+      vList.push(new Module.JSVector3D(127.108525, 37.658713, 7.0));
+      vList.push(new Module.JSVector3D(126.256902, 36.562545, 8.0));
+      vList.push(new Module.JSVector3D(127.445746, 36.108470, 9.0));
+      vList.push(new Module.JSVector3D(127.820355, 36.789230, 10.0));
+      vList.push(new Module.JSVector3D(127.033226, 37.521304, 1.0));
+      vList.push(new Module.JSVector3D(127.042107, 37.520151, 1.0));
+      vList.push(new Module.JSVector3D(127.044620, 37.514160, 1.0));
+      vList.push(new Module.JSVector3D(127.048812, 37.518277, 1.0));
+      vList.push(new Module.JSVector3D(127.030439, 37.506783, 1.0));
+      vList.push(new Module.JSVector3D(127.028751, 37.505695, 1.0));
+
+      pMap.addHeatMapsEX(vList);
+      pMap.setEffectDistance(2000000);
+    ```
+
 ### 1.60.1 / beta 2.2.1 (2024/4/22)
 
 #### 1. JSPolygon 텍스쳐 매핑 옵션 추가
