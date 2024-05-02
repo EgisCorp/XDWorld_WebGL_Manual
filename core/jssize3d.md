@@ -1,32 +1,25 @@
 ---
-description: JSSize3D 객체 생성 및 수정 기능 API. JSSize3D는 width, height, depth로 구성된 3차원 상의 크기를 정의.
+description: 지도 내 크기와 관련된 기능을 관리하기 위한 API 입니다.
 ---
 
 # JSSize3D
 
-| 변수명    | 자료형    | 프로퍼티 역할 |
-| ------ | ------ | ------- |
-| width  | number | 너비.      |
-| height | number | 높이.      |
-| depth  | number | 깊이.      |
+> Module.JSSize3D() API를 생성합니다.
 
 ```javascript
 let width = 300;
 let height = 200;
-let depth = 100;
+let scale = 1.0;
 
 let size0 = new Module.JSSize3D();
-let size1 = new Module.JSSize3D(width, height, depth);
+let size1 = new Module.JSSize3D(width, height);
+let size2 = new Module.JSSize3D(width, height, scale);
 ```
 
-### JSSize3D()
+## properties
 
-> width, height, depth는 0.0으로 자동 초기화.
-
-### JSSize3D(width, height, depth)
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| width | number | 너비. |
-| height | number | 높이. |
-| depth | number | 깊이. |
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| width  | number | 너비.       |
+| height | number | 높이.       |
+| depth  | number | 깊이.       |

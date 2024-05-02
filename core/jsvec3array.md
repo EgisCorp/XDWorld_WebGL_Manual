@@ -1,19 +1,25 @@
 ---
-description: 3차원 좌표 배열 객체 입니다.
+description: 지도 내 3차원 좌표 배열과 관련된 기능을 관리하기 위한 API 입니다.
 ---
 
 # JSVec3Array
 
-> new Module.JSVec3Array API 생성.
+> Module.JSVec3Array() API를 생성합니다
 
 ```javascript
 var vec_array = new Module.JSVec3Array();
 ```
 
+## Function
+
 ### clear()
 
-> 벡터 리스트를 초기화.
+> 등록된 벡터 목록을 삭제합니다
 
+{% tabs %}
+{% tab title="Information" %}
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -22,23 +28,24 @@ vectorList.clear();
 ```
 
 {% endtab %}
+{% endtabs %}
 
 ### count() → number
 
-> 배열의 데이터 수 반환.
+> 등록된 벡터 개수를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   number : 벡터 리스트의 벡터 개수.
+    -   number: 등록 된 총 벡터 개수.
 
 {% endtab %}
-
 {% tab title="Template" %}
 
 ```javascript
-var vectorList = new Module.JSVec3Array();
+var vectorList = new Module.JSVec2Array();
+// ...
 vectorList.count();
 ```
 
@@ -47,46 +54,44 @@ vectorList.count();
 
 ### get(index) → [JSVector3D](../core/jsvector3d.md)
 
-> 인덱스 번호에 해당하는 벡터 오브젝트를 반환.
+> 등록된 벡터 정보를 반환합니다.
+>
+> 입력 변수값(index) 인덱스에 해당하는 값을 반한합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| index | number | 반환하는 데이터 인덱스(0부터 순서대로 정렬) |
+
+| Name  | Type   | Description   |
+| :---- | :----- | :------------ |
+| index | number | 벡터 인덱스.. |
 
 -   Return
-    -   유효한 벡터 오브젝트(JSVector3D) : 해당 인덱스 벡터 반환 성공.
-    -   초기화 상태의 오브젝트(JSVector3D) : 인덱스가 벡터 리스트 크기를 넘어설 경우.
+    -   [JSVector3D](../core/jsvector3d.md)): 반환 성공.
 
 {% endtab %}
-
 {% tab title="Template" %}
 
 ```javascript
 var vectorList = new Module.JSVec3Array();
-//...
 var vector = vectorList.get(2);
 ```
 
 {% endtab %}
 {% endtabs %}
 
-### pop() → JSVector3D
+### pop() → [JSVector3D](./jsvector3d.md)
 
-> 벡터 리스트의 마지막 순서 벡터를 반환.
+> 벡터 목록 중 마지막 데이터를 반환합니다.
 >
-> 반환 후 마지막 벡터는 벡터 리스트에서 삭제됨.
+> 반환 후 마지막 벡터는 벡터 목록에서 삭제 됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   유효한 벡터 오브젝트(JSVector3D) : 마지막 벡터 반환 성공.
-    -   초기화 상태의 오브젝트(JSVector3D) : 벡터 리스트가 비어있을 경우.
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
 
 {% endtab %}
-
 {% tab title="Template" %}
 
 ```javascript
@@ -100,16 +105,17 @@ var lastVector = vectorList.pop();
 
 ### push(element) → number
 
-> 새 벡터(JSVector3D)를 추가.
+> 새로운 벡터를 추가한다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| element | [JSVector3D](../core/jsvector3d.md) | 새 3차원 벡터 객체. |
+
+| Name    | Type                                | Description      |
+| :------ | :---------------------------------- | :--------------- |
+| element | [JSVector3D](../core/jsvector3d.md) | 3차원 벡터 등록. |
 
 -   Return
-    -   number : 벡터 추가 실행 후 리스트의 벡터 개수.
+    -   number: 등록된 벡터 개수 반환.
 
 {% endtab %}
 
@@ -117,7 +123,7 @@ var lastVector = vectorList.pop();
 
 ```javascript
 var vectorList = new Module.JSVec3Array();
-var newVector = new Module.JSVector3D(100.0, 150.0, 15.0);
+var newVector = new Module.JSVector3d(100.0, 150.0);
 vectorList.push(newVector);
 ```
 
@@ -126,18 +132,19 @@ vectorList.push(newVector);
 
 ### pushLonLatAlt(lon, lat, alt) → number
 
-> 새 벡터를 추가.
+> 입력 변수값(lon, lat, alt)으로 새로운 벡터 객체를 추가합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| lon | number | 새 벡터 경도. |
-| lat | number | 새 벡터 위도. |
-| alt | number | 새 벡터 고도. |
+
+| Name | Type   | Description               |
+| :--- | :----- | :------------------------ |
+| lon  | number | 좌표 경도 (degrees 단위). |
+| lat  | number | 좌표 위도 (degrees 단위). |
+| alt  | number | 좌표 고도 (meter 단위).   |
 
 -   Return
-    -   number : 벡터 추가 실행 후 리스트의 벡터 개수.
+    -   number: 등록된 벡터 개수 반환.
 
 {% endtab %}
 
@@ -153,14 +160,16 @@ vectorList.pushLonLatAlt(100.0, 120.0, 15.0);
 
 ### set(index, vec)
 
-> 인덱스에 해당하는 벡터 값을 재설정.
+> 등록 벡터 데이터를 재 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| index | number | 설정할 벡터의 인덱스. |
-| vec | JSVector3D | 설정할 벡터 객체. |
+
+| Name  | Type                          | Description     |
+| :---- | :---------------------------- | :-------------- |
+| index | number                        | 인덱스 번호.    |
+| vec   | [JSVector3D](./jsvector3d.md) | 재설정 벡터 값. |
+
 {% endtab %}
 
 {% tab title="Template" %}
@@ -177,16 +186,18 @@ vectorList.set(5, newVector);
 
 ### setLonLatAlt(index, lon, lat, alt)
 
-> 인덱스에 해당하는 벡터 값을 재설정.
+> 입력 변수값(index, lon, lat, alt)으로 벡터 객체를 수정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| index | number | 설정할 벡터의 인덱스. |
-| lon | number | 설정할 벡터 경도. |
-| lat | number | 설정할 벡터 위도. |
-| alt | number | 설정할 벡터 고도. |
+
+| Name  | Type   | Description               |
+| :---- | :----- | :------------------------ |
+| index | number | 인덱스 번호.              |
+| lon   | number | 좌표 경도 (degrees 단위). |
+| lat   | number | 좌표 위도 (degrees 단위). |
+| alt   | number | 좌표 고도 (meter 단위).   |
+
 {% endtab %}
 
 {% tab title="Template" %}
@@ -202,14 +213,13 @@ vectorList.setLonLatAlt(5, 130.22, 149.3, 15.0);
 
 ### shift()
 
-> 벡터 리스트의 첫 번째 벡터를 반환하고 두 번째 인덱스 벡터부터 순서를 한 칸 앞으로 이동.
+> 벡터 목록의 첫번쨰 벡터를 반환하고 두번째 벡터 목록의 첫번쨰 위치로 한칸씩 앞으로 이동한다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   유효한 벡터 오브젝트(JSVector3D) : 첫 번째 벡터 반환 성공.
-    -   초기화 상태의 오브젝트(JSVector3D) : 벡터 리스트가 비어있을 경우.
+    -   [JSVector3D](../core/jsvector3d.md): 반환성공.
 
 {% endtab %}
 

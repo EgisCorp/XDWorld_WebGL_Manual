@@ -393,6 +393,7 @@ API.JSCamera.moveLonLatAltOval(127.0273188, 37.4977981, 500.0, 1);
 -   Return
     -   true : 설정 성공.
     -   false : 설정 실패.
+    -   실패 조건
         -   [JSCamera.MoveBoundaryOption](jscamera.md#jscamera.moveboundaryoption) 구성 태그가 누락된 경우.
 -   Sample
     -   function moveTestArea 참조.

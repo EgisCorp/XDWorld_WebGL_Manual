@@ -1,14 +1,10 @@
 ---
-description: JSSize2D 객체 생성 및 수정 기능 API. JSSize2D는 width, height로 구성된 2차원 상의 크기를 정의.
+description: 지도 내 크기와 관련된 기능을 관리하기 위한 API 입니다.
 ---
 
 # JSSize2D
 
-| 변수명    | 자료형    | 프로퍼티 역할 |
-| ------ | ------ | ------- |
-| width  | number | 너비.      |
-| height | number | 높이.      |
-| scale  | number | 비율.      |
+> Module.JSSize2D() API를 생성합니다.
 
 ```javascript
 let width = 300;
@@ -20,23 +16,10 @@ let size1 = new Module.JSSize2D(width, height);
 let size2 = new Module.JSSize2D(width, height, scale);
 ```
 
-### JSSize2D()
+## properties
 
-> width, height는 0.0, scale은 1.0으로 자동 초기화.
-
-### JSSize2D(width, height)
-
-> scale은 1.0으로 자동 초기화.
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| width | number | 너비. |
-| height | number | 높이. |
-
-### JSSize2D(width, height, scale)
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| width | number | 너비. |
-| height | number | 높이. |
-| scale | number | 비율. |
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| width  | number | Width.      |
+| height | number | Height.     |
+| scale  | number | Scale.      |
