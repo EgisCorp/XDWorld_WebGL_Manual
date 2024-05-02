@@ -380,7 +380,7 @@ API.JSCamera.moveLonLatAltOval(127.0273188, 37.4977981, 500.0, 1);
 
 ### moveLonLatBoundarybyJson(option) → string
 
-> 최소 좌표 점, 최대 좌표점을 이용한 카메라 이동 및 완료 이벤트를 설정합니다..
+> 최소 좌표점, 최대 좌표점을 이용한 카메라 이동 및 완료 이벤트를 설정합니다..
 
 {% tabs %}
 

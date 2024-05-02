@@ -1,46 +1,57 @@
 ---
-description: 지도 내 레이어 분석을 위한 API.
+description: 지도 내 시야 분석 기능 설정을 위한 API입니다.
 ---
 
 # JSSightAnalysis
 
-> Module.getSightAnalysis API 생성.
+> Module.getSightAnalysis() API를 생성합니다.
 
 ```javascript
 var sightAnalysis = Module.getSightAnalysis();
 ```
 
-### GetObjectPositionsOnPath(coordinates, hbuffer, vbuffer, layer) → [JSON](jssightanalysis.md#jssightanalysis.objectonpathresult)
+## Function
 
-> 지정된 경로에서 객체까지의 거리, 위치를 반환.
+### GetObjectPositionsOnPath(coordinates, hbuffer, vbuffer, layer) → [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysis.objectonpathresult)
+
+> Returns the distance and position of objects from a specified path.
 >
-> 경로에 검색 범위를 바탕으로 범위 내에 존재하는 객체에 대한 경로의 이정 거리 기준으로 분석.
+> Analyzes based on the path's milestone distance for objects within the range, based on the search range along the path.
 >
-> hbuffer 입력값은 수평 버퍼 크기. 값이 클수록 수평으로 넓은 범위의 객체 분석.
+> The hbuffer input value is the horizontal buffer size. The larger the value, the wider the range of objects analyzed horizontally.
 >
-> vbuffer 입력값은 수직 버퍼 크기. 값이 클수록 수직으로 넓은 범위의 객체 분석.
+> The vbuffer input value is the vertical buffer size. The larger the value, the wider the range of objects analyzed vertically.
+
+> 지정된 경로에서 객체까지의 거리, 위치를 반환합니다.
+>
+> 경로에 검색 범위를 바탕으로 범위 내에 존재하는 객체에 대한 경로의 이정 거리 기준으로 분석합니다.
+>
+> 입력 변수값(hbuffer)은 수평 버퍼 크기로 값이 클수록 수평으로 넓은 범위의 객체를 분석합니다.
+>
+> 입력 변수값(vbuffer)은 수직 버퍼 크기로 값이 클수록 수직으로 넓은 범위의 객체를 분석합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
+
+| Name        | Type                                  | Description                                                                                       |
+| :---------- | :------------------------------------ | :------------------------------------------------------------------------------------------------ |
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | ([JSVector3D](../core/jsvector3d.md), [JSVector3D](../core/jsvector3d.md), ...) 분석할 경로 배열. |
-| hbuffer | number | 수평 버퍼 크기. |
-| vbuffer | number | 수직 버퍼 크기. |
-| layer | [JSLayer](../layer/jslayer.md) | 분석할 객체가 속하는 레이어. |
+| hbuffer     | number                                | 수평 버퍼 크기.                                                                                   |
+| vbuffer     | number                                | 수직 버퍼 크기.                                                                                   |
+| layer       | [JSLayer](../layer/jslayer.md)        | 분석할 객체를 포함한 레이어.                                                                      |
 
-* Return
-  * 지정된 경로 진행 중 오브젝트와 수직 방향으로 만나는 지점들의 위치 반환. ([JSON](jssightanalysis.md#jssightanalysis.objectonpathresult))
-  
-* Sample
-  * function analysisPositions 참조.
-  * [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
+-   Return
+    -   [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysis.objectonpathresult): 지정된 경로 진행중 오브젝트와 수직 방향으로 만나는 지점들의 위치를 반환합니다.
+-   Sample
+    -   function analysisPositions 참조.
+    -   [Sandbox_Path Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_line_path_distance)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var coordinates = Module.getMap().getInputPoints();
-var returnJSON = Module.getSightAnalysis().GetObjectPositionsOnPath(coordinates, 30.0, 5.0, "분석 레이어");
+var returnJSON = Module.getSightAnalysis().GetObjectPositionsOnPath(coordinates, 30.0, 5.0, "analysis layer");
 
 let returnJSON = "{
 	[
@@ -60,8 +71,9 @@ let returnJSON = "{
 			Distance : 30,
 			Side : "Right"
 		},
-	]	
+	]
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -69,24 +81,23 @@ let returnJSON = "{
 
 #### JSSightAnalysis.ObjectOnPathResult
 
-> GetObjectPositionsOnPath의 분석 결과의 형식 
+> GetObjectPositionsOnPath 기능을 통해 분석된 결과 데이터 포맷입니다.
 >
-> JSON 구조를 가진 문자열로 반환
+> json 구조를 가진 문자열로 반환됩니다.
 
-| Name         | Type                          | Attributes | Default                 | Description      |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| return | array([JSSightAnalysis.ObjectOnPathResult.Position](jssightanalysis.md#jssightanalysis.objectonpathresult.position)) |  | | 개별 분석 결과 배열 |
+| Name   | Type                                                                                                                 | Description                   |
+| ------ | -------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| return | array([JSSightAnalysis.ObjectOnPathResult.Position](jssightanalysis.md#jssightanalysis.objectonpathresult.position)) | 개별 분석에 대한 결과 데이터. |
 
 #### JSSightAnalysis.ObjectOnPathResult.Position
 
-> [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysisobjectonpathresult)의 단위 객체 정보
+> Unit object information of [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysisobjectonpathresult)
 
-| Name         | Type                          | Attributes | Default                 | Description      |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------- |
-| Longitude | number | | | 검출된 객체의 경도 |
-| Latitude | number | | | 검출된 객체의 위도 |
-| Altitude | number | | | 검출된 객체의 높이 |
-| ObjectKey | string | | | 검출된 객체의 키값 |
-| Distance | number | | | 검출된 객체의 경로상 이정 거리 |
-| Side | string | | | 검출된 객체가 경로상 좌측, 우측여부 (좌측 : "Left", 우측 : "Right") |
-
+| Name      | Type   | Description                                                         |
+| --------- | ------ | ------------------------------------------------------------------- |
+| Longitude | number | 분석에 포함된 객체의 경도.                                          |
+| Latitude  | number | 분석에 포함된 객체의 위도.                                          |
+| Altitude  | number | 분석에 포함된 객체의 고도.                                          |
+| ObjectKey | string | 분석에 포함된 객체의 고유 키.                                       |
+| Distance  | number | 검출된 객체의 경로상 이정 거리.                                     |
+| Side      | string | 검출된 객체가 경로상 좌측, 우측여부 (좌측 : "Left", 우측 : "Right). |
