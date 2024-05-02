@@ -51,7 +51,7 @@ Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
 | Name  | Type                          | Description    |
 | :---- | :---------------------------- | :------------- |
 | angle | number                        | 지형과의 각도. |
-| color | [JSColor](../core/jscolor.md) | 평념 색상/     |
+| color | [JSColor](../core/jscolor.md) | 평면 색상.     |
 
 -   Return
     -   true: 생성 성공.
