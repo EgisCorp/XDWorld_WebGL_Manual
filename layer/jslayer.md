@@ -4,7 +4,7 @@ description: 지도 내 객체를 관리하기 위한 API 입니다.
 
 # JSLayer
 
-> Module.createLayer () API를 생성합니다.
+> Module.createLayer() API를 생성합니다.
 >
 > [createObjectLayer](jslayerlist.md#createobjectlayer-option-jslayer) API로 사용자 레이어를 생성할 수 있습니다.
 >
@@ -1156,7 +1156,7 @@ layer.setWMSVersion(“1.1.0”);
 | ---- | ------- | ------------------------------------------------------------ |
 | edit | boolean | <p>true: 편집 레이어 설정.<br>false: 일반 레이어로 설정.</p> |
 
--   실패조건
+-   실패 조건
     -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속)
 -   Sample
     -   function initSamplePage 참조.
@@ -1187,7 +1187,7 @@ layer.setWMSVersion(“1.1.0”);
 | -------- | ------ | ----------------------------- |
 | distance | number | 최소 가시 거리 (meters 단위). |
 
--   실패조건
+-   실패 조건
     -   최소 가시거리가 최대 가시거리보다 큰 경우.
     -   서비스 레이어인 경우.
 -   Sample
@@ -1219,7 +1219,7 @@ layer.setWMSVersion(“1.1.0”);
 | -------- | ------ | ----------------------------- |
 | distance | number | 최대 가시 거리 (meters 단위). |
 
--   실패조건
+-   실패 조건
     -   최대 가시거리가 최소 가시거리보다 작은 경우.
     -   서비스 레이어인 경우.
 -   Sample
@@ -1249,7 +1249,7 @@ layer.setWMSVersion(“1.1.0”);
 | ----- | ------ | --------------- |
 | level | number | 최대 가시 레벨. |
 
--   실패조건
+-   실패 조건
     -   사용자 레이어인 경우.
 
 {% endtab %}
@@ -1302,7 +1302,7 @@ layer.setName(“WMSLayer2”);
 | ---------- | ------ | --------------- |
 | horizontal | number | 객체 가로 크기. |
 
--   실패조건
+-   실패 조건
     -   0 보다 작은 값이 입력 된 경우.
     -   [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
 -   Sample
@@ -1334,7 +1334,7 @@ layer.setName(“WMSLayer2”);
 | -------- | ------ | --------------- |
 | vertical | number | 객체 세로 크기. |
 
--   실패조건
+-   실패 조건
     -   0 보다 작은 값이 입력 된 경우.
     -   [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
 -   Sample
@@ -1388,7 +1388,7 @@ layer.setName(“WMSLayer2”);
 | ---- | ------ | ---------------- |
 | step | number | 애니메이션 단계. |
 
--   실패조건
+-   실패 조건
     -   입력 변수값(step)이 설정된 최소 step보다 작은값이 입력된 경우.
     -   입력 변수값(step)이 설정된 최대 step보다 큰값이 입력된 경우.
     -   [createTimeSeriesObject()](jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
@@ -1417,7 +1417,7 @@ layer.setName(“WMSLayer2”);
 | ----- | ------ | ----------- |
 | speed | number | 변환 속도.  |
 
--   실패조건
+-   실패 조건
     -   [createTimeSeriesObject()](jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
 
 {% endtab %}
@@ -1460,7 +1460,7 @@ layer.setName(“WMSLayer2”);
 
 ### getVisible(), setVisible(type) → boolean
 
-> 레이어에 포함된 객체에 대한 가시 유무를 설정합니다.
+> 레이어에 포함된 객체에 대한 가시화 유무를 설정합니다.
 >
 > 레이어가 투명/불투명 정보를 반환합니다.
 >

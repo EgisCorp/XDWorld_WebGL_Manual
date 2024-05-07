@@ -1,32 +1,32 @@
 ---
-description: 지도 내 레이어를 관리하는 API를 제공합니다
+description: 지도 내 레이어를 관리하기 위한 API 입니다.
 ---
 
 # JSLayerList
 
-> Module.JSLayerList API 생성.
+> Module.JSLayerList() API를 생성합니다.
 
 ```javascript
-let userlayer = new Module.JSLayerList(true); // 사용자 레이어 반환
+let userlayer = new Module.JSLayerList(true); // Returns a user layer
 
-let serverlayer = new Module.JSLayerList(false); // 서비스 레이어 반환
+let serverlayer = new Module.JSLayerList(false); // Returns a service layer
 ```
 
 ## Function
 
 ### count() → number
 
-> 전체 레이어 갯수 반환.
+> 등록된 레이어 수를 반환합니다.
 >
-> 사용자, 서비스 레이어 전체 갯수.
+> 사용자 레이어, 서비스 레이어의 총 수 입니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   전체 레이어 갯수 .
-        {% endtab %}
+    -   number: 등록된 레이어의 총 수.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -42,20 +42,21 @@ console.log(count);
 
 ### createLayer(name, type) → [JSLayer](../layer/jslayer.md)
 
-> 설정한 레이어 타입을 가지는 새 레이어 생성.
+> 입력 변수값으로 레이어를 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 생성 레이어 명칭. |
-| type | number | [레이어 타입.](../etc/type-list.md#layer-type-list) |
+
+| Name | Type   | Description                                        |
+| :--- | :----- | :------------------------------------------------- |
+| name | string | 레이어 명칭.                                       |
+| type | number | [Layer type.](../etc/type-list.md#layer-type-list) |
 
 -   Return
-    -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
-    -   null : 레이어 반환 실패.
-        {% endtab %}
+    -   [JSLayer](../layer/jslayer.md) : 생성 성공.
+    -   null : 생성 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -68,29 +69,28 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 
 ### createObjectLayer(option) → [JSLayer](../layer/jslayer.md)
 
-> 설정한 레이어 타입을 가지는 새 레이어 생성.
+> 입력 변수값으로 사용자 레이어를 생성합니다.
 >
-> argument 변수로 레이어 객체 설정.
->
-> 사용자 레이어 반환.
+> 사용자 레이어를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| option | [CreateObjectLayerOptions](jslayerlist.md#createobjectlayeroptions) | 레이어 생성 속성 정보 |
+
+| Name   | Type                                                                | Description       |
+| :----- | :------------------------------------------------------------------ | :---------------- |
+| option | [CreateObjectLayerOptions](jslayerlist.md#createobjectlayeroptions) | 레이어 생성 정보. |
 
 -   Return
-    -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
-    -   null : 레이어 반환 실패.
-        {% endtab %}
+    -   [JSLayer](../layer/jslayer.md) : 생성 성공.
+    -   null : 생성 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 let layer = Module.getObjectLayerList().createObjectLayer({
-    name: "레이어 명칭",
-    type: "레이어 타입",
+    name: "Layer Name",
+    type: "Layer Type",
     visible: false,
     selectable: false,
     minDistance: 100.0,
@@ -103,24 +103,25 @@ let layer = Module.getObjectLayerList().createObjectLayer({
 
 ### createWFSLayer(name, type) → [JSLayer](../layer/jslayer.md)
 
-> WFS 레이어 생성.
+> WFS 서비스 레이어를 생성합니다.
 >
 > Web Feature Server로 가시화 된 Tile 영역에 해당되는 오브젝트 요청.
 >
-> WFS 서비스 레이어로 new Module.JSLayerList( false ) 사용.
+> WFS 서비스 레이어로 new Module.JSLayerList( false ) 으로 생성합니다..
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 생성 레이어 명칭. |
-| type | number | [WFS 레이어 타입.](../etc/type-list.md#wfs-type-list) |
+
+| Name | Type   | Description                                          |
+| :--- | :----- | ---------------------------------------------------- |
+| Name | string | 레이어 명칭.                                         |
+| type | number | [WFS layer type.](../etc/type-list.md#wfs-type-list) |
 
 -   Return
-    -   [JSLayer](../layer/jslayer.md) : 반환 성공.
-    -   null : 반환 실패.
-        {% endtab %}
+    -   [JSLayer](../layer/jslayer.md) : 생성 성공.
+    -   null : 생성 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -133,23 +134,24 @@ let wfslayer = layerList.createWFSLayer( “WFS" , 0);
 
 ### createWMSLayer( name ) → [JSLayer](../layer/jslayer.md)
 
-> WMS 레이어 생성.
+> WMS 서비스 레이어를 생성합니다.
 >
 > Web Map Server로 가시화 된 Tile 영역에 해당되는 지형 영상 이미지 요청.
 >
-> WMS 서비스 레이어로 new Module.JSLayerList( false ) 사용.
+> WMS 서비스 레이어로 new Module.JSLayerList( false ) 으로 생성합니다..
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 생성 레이어 명칭. |
+
+| Name | Type   | Description  |
+| :--- | :----- | ------------ |
+| Name | string | 레이어 명칭. |
 
 -   Return
-    -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
-    -   null : 레이어 반환 실패.
-        {% endtab %}
+    -   [JSLayer](../layer/jslayer.md) : 생성 성공.
+    -   null : 생성 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -162,30 +164,29 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 
 ### createXDServerLayer(option) → [JSLayer](../layer/jslayer.md)
 
-> 설정한 레이어 타입을 가지는 새 레이어 생성.
+> 입력 변수값으로 서비스 레이어를 생성합니다.
 >
-> argument 변수로 레이어 객체 설정.
->
-> 서비스 레이어 반환.
+> 서비스 레이어를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| option | [CreateServerLayerOptions](jslayerlist.md#createserverlayeroptions) | 레이어 생성 속성 정보 |
+
+| Name   | Type                                                                | Description       |
+| :----- | :------------------------------------------------------------------ | :---------------- |
+| option | [CreateServerLayerOptions](jslayerlist.md#createserverlayeroptions) | 레이어 생성 정보. |
 
 -   Return
-    -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
-    -   null : 레이어 반환 실패.
-        {% endtab %}
+    -   [JSLayer](../layer/jslayer.md) : 생성 성공.
+    -   null : 생성 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 let layer = Module.getTileLayerList().createXDServerLayer({
-    name: "레이어 명칭",
-    url: "요청 서버 주소",
-    type: "레이어 타입",
+    name: "Layer Name",
+    url: "Request Server Address",
+    type: "Layer Type",
     visible: false,
     selectable: false,
     minLevel: 10,
@@ -198,20 +199,20 @@ let layer = Module.getTileLayerList().createXDServerLayer({
 
 ### delLayerAtFirst() → boolean
 
-> 레이어 삭제.
+> 등록된 레이어를 삭제합니다.
 >
-> 레이어 리스트 첫 순서에 해당되는 레이어 삭제.
+> JSLayerList에 포함된 레이어 목록 첫번째에 해당되는 레이어를 삭제합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   true : 첫 순서 레이어 삭제 성공.
-    -   false : 첫 순서 레이어 삭제 실패.
-        {% endtab %}
+    -   true : 삭제 성공.
+    -   false : 삭제 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -227,23 +228,24 @@ console.log(check);
 
 ### delLayerAtIndex(index) → boolean
 
-> 레이어 삭제.
+> 등록된 레이어를 삭제합니다.
 >
-> 해당 인덱스 레이어 삭제.
+> JSLayerList에 포함된 레이어 목록에서 입력 변수값(index) 위치에 해당되는 레이어를 삭제합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| index | number | 목표 레이어 인덱스. |
+
+| Name  | Type   | Description  |
+| :---- | :----- | :----------- |
+| index | number | 인덱스 번호. |
 
 -   Return
-    -   true : 목표 인덱스 레이어 삭제 성공.
-    -   false : 목표 인덱스 레이어 삭제 실패.
-        {% endtab %}
+    -   true : 삭제 성공.
+    -   false : 삭제 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -260,20 +262,20 @@ check = layerList.delLayerAtName(0);
 
 ### delLayerAtLast() → boolean
 
-> 레이어 삭제.
+> 등록된 레이어를 삭제합니다.
 >
-> 레이어 리스트 끝 순서에 해당되는 레이어 삭제.
+> JSLayerList에 포함된 레이어 목록 마지막에 해당되는 레이어를 삭제합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   true : 끝 순서 레이어 삭제 성공.
-    -   false : 끝 순서 레이어 삭제 실패.
-        {% endtab %}
+    -   true : 삭제 성공.
+    -   false : 삭제 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -289,23 +291,24 @@ console.log(check);
 
 ### delLayerAtName(name) → boolean
 
-> 레이어 삭제.
+> 등록된 레이어를 삭제합니다.
 >
-> 해당 명칭 레이어 삭제.
+> JSLayerList에 포함된 레이어 목록에서 입력 변수값(name)에 해당되는 레이어를 삭제합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 목표 레이어 명칭. |
+
+| Name | Type   | Description  |
+| :--- | :----- | :----------- |
+| name | string | 레이어 명칭. |
 
 -   Return
-    -   true : 목표 레이어 삭제 성공.
-    -   false : 목표 레이어 삭제 실패.
-        {% endtab %}
+    -   true : 삭제 성공.
+    -   false : 삭제 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -324,20 +327,20 @@ console.log(check);
 
 ### firstAtLayer() → [JSLayer](../layer/jslayer.md)
 
-> 레이어 반환.
+> 레이어를 반환합니다.
 >
-> 레이어 리스트 첫 순서에 해당되는 레이어 반환.
+> JSLayerList에 포함된 레이어 목록 첫번째에 해당되는 레이어를 반환합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   [JSLayer](../layer/jslayer.md) : 레이어 반환 성공.
-    -   null : 레이어 반환 실패.
-        {% endtab %}
+    -   [JSLayer](../layer/jslayer.md) : 반환 성공.
+    -   null : 반환 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -352,23 +355,24 @@ let result = layerList.firstAtLayer();
 
 ### indexAtLayer(index) → [JSLayer](../layer/jslayer.md)
 
-> 레이어 반환.
+> 등록된 레이어를 반환합니다.
 >
-> 해당 인덱스 레이어 반환.
+> JSLayerList에 포함된 레이어 목록에서 입력 변수값(index) 위치에 해당되는 레이어를 반환합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| index | number | 목표 레이어 인덱스. |
+
+| Name  | Type   | Description  |
+| :---- | :----- | :----------- |
+| index | number | 인덱스 번호. |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 반환 성공.
     -   null : 반환 실패.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -384,11 +388,11 @@ result = layerList.indexAtLayer(1);
 
 ### lastAtLayer() → [JSLayer](../layer/jslayer.md)
 
-> 레이어 반환.
+> 등록된 레이어를 반환합니다.
 >
-> 레이어 리스트 끝 순서에 해당되는 레이어 반환.
+> JSLayerList에 포함된 레이어 목록 마지막에 해당되는 레이어를 반환합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -396,8 +400,8 @@ result = layerList.indexAtLayer(1);
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 반환 성공.
     -   null : 반환 실패.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -412,21 +416,22 @@ let result = layerList.lastAtLayer();
 
 ### layerAtIndex(layer) → number
 
-> 해당 레이어 인덱스 확인.
+> 입력 변수값(layer)의 인덱스 번호를 반환합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| layer | [JSLayer](../layer/jslayer.md) | 인덱스 확인 레이어. |
+
+| Name  | Type                           | Description |
+| :---- | :----------------------------- | :---------- |
+| layer | [JSLayer](../layer/jslayer.md) | 레이어.     |
 
 -   Return
-    -   -1 : 레이어 리스트에 존재 하지 않는 레이어.
-    -   result&gt;0 : 확인 레이어 인덱스 번호.  
-        {% endtab %}
+    -   result>0: 레이어 인덱스 번호.
+    -   -1: JSLayerList에 포함된 레이어가 아닌 경우.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -444,23 +449,24 @@ console.log(count);
 
 ### nameAtLayer(name) → [JSLayer](../layer/jslayer.md)
 
-> 생성 된 레이어 반환.
+> 등록된 레이어를 반환합니다.
 >
-> 동일한 명칭을 가진 레이어 반환.
+> JSLayerList에 포함된 레이어 목록에서 입력 변수값(name)과 명칭이 동일한 레이어를 반환합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 반환 레이어 명칭. |
+
+| Name | Type   | Description  |
+| :--- | :----- | :----------- |
+| name | string | 레이어 명칭. |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 반환 성공.
     -   null : 반환 실패.
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -473,28 +479,29 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 
 ### setLayerMove(layer, type) → boolean
 
-> 레이어 순서 변경
+> 레이어 목록 순서를 변경합니다.
 >
-> 해당 레이어 인덱스 순서를 move 조건으로 변경
+> 레이어 인덱스 순서를 move 조건으로 변경합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| layer | [JSLayer](../layer/jslayer.md) | 목표 레이어. |
-| type | boolean | <p>true인 경우 인덱스 증가.<br>false인 경우 인덱스 감소.</p> |
+
+| Name  | Type                           | Description                                               |
+| :---- | :----------------------------- | :-------------------------------------------------------- |
+| layer | [JSLayer](../layer/jslayer.md) | 레이어.                                                   |
+| type  | boolean                        | <p>true: 인덱스 번호 증가.<br>false: 인덱스 번호 감소.<p> |
 
 -   Return
-    -   true : 순서 변경 성공.
-    -   false: 순서 변경 실패.
--   순서 변경 실패 조건
-    -   레이어 리스트 2개 미만.
-    -   끝 순서 해당 레이어를 한단계 내린 경우.
-    -   첫 순서 해당 레이어를 한단계 올린 경우.
-        {% endtab %}
+    -   true : 변경 성공.
+    -   false: 변경 실패.
+    -   실패 조건
+        -   등록된 레이어가 2개 미만인 경우.
+        -   마지막 순서에 해당되는 레이어 순서를 뒤로 변경한 경우.
+        -   첫 순서에 해당되는 레이어 순서를 앞으로 변경한 경우.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -509,28 +516,29 @@ let check =  layerList.setLayerMove(end, true);
 
 ### setLayerTopNBottom(layer, type) → boolean
 
-> 레이어 순서 변경.
+> 레이어 목록 순서를 변경합니다.
 >
-> 해당 레이어 인덱스 순서를 type 조건으로 최상단, 최하단으로 변경.
+> 레이어 인덱스 순서를 최상단, 최하단으로 변경합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| layer | [JSLayer](../layer/jslayer.md) | 목표 레이어. |
-| type | boolean | <p>true인 경우 인덱스 최상단으로 변경.<br>false인 경우 인덱스 최하단으로 변경.</p> |
+
+| Name  | Type                           | Description                                                                     |
+| :---- | :----------------------------- | :------------------------------------------------------------------------------ |
+| layer | [JSLayer](../layer/jslayer.md) | 레이어.                                                                         |
+| type  | boolean                        | <p>true: 인덱스 번호 최상단으로 변경.<br>false: 인덱스 번호 최하단으로 변경.<p> |
 
 -   Return
-    -   true : 순서 변경 성공.
-    -   false: 순서 변경 실패.
--   순서 변경 실패 조건.
-    -   레이어 리스트 2개 미만.
-    -   끝 순서 해당 레이어를 한단계 내린 경우.
-    -   첫 순서 해당 레이어를 한단계 올린 경우.
-        {% endtab %}
+    -   true : 변경 성공.
+    -   false: 변경 실패.
+    -   실패 조건
+        -   등록된 레이어가 2개 미만인 경우.
+        -   마지막 순서에 해당되는 레이어 순서를 뒤로 변경한 경우.
+        -   첫 순서에 해당되는 레이어 순서를 앞으로 변경한 경우.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -546,23 +554,24 @@ let check =  layerList.setLayerMove(first, true);
 
 ### getVisible(name) → number
 
-> 레이어 가시화 옵션 정보 반환.
+> 레이어에 포함된 객체에 대한 가시화 유무를 반환합니다.
 >
-> 레이어 투명/반투명 상태 정보 반환.
+> 레이어가 투명/불투명 정보를 반환합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 목표 레이어 명칭. |
+
+| Name | Type   | Description  |
+| :--- | :----- | :----------- |
+| name | string | 레이어 명칭. |
 
 -   Return
-    -   0 : 투명 상태.
-    -   1 : 가시화 상태.
-        {% endtab %}
+    -   1 : 레이어 포함 객체 가시화.
+    -   0 : 레이어 포함 객체 불가시화.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -575,18 +584,20 @@ let visible = layerList.getVisible(“HybridLoad”);
 
 ### setVisible(name, type)
 
-> 레이어 가시화 옵션 설정.
+> 레이어에 포함된 객체에 대한 가시화 유무를 설정합니다.
 >
-> 레이어 투명/반투명 상태 설정.
+> 레이어가 투명/불투명 정보를 설정합니다.
 >
-> 사용자, 서비스 레이어 모두 사용 가능.
+> 사용자 및 서비스 레이어 모두에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Contents |
-| :--- | :--- | :--- |
-| name | string | 목표 레이어 명칭. |
-| type | boolean | <p>true인 경우 레이어 가시화.<br>false인 레이어 숨김.</p> |
+
+| Name | Type    | Description                                                                |
+| :--- | :------ | :------------------------------------------------------------------------- |
+| name | string  | 레이어 명칭.                                                               |
+| type | boolean | <p>true: 레이어 포함 객체 가시화.<br>false: 레이어 포함 객체 불가시화.</p> |
+
 {% endtab %}
 
 {% tab title="Template" %}
@@ -604,27 +615,27 @@ layerList.setVisible(“HybridLoad”, false);
 
 #### CreateObjectLayerOptions
 
-> 오브젝트 레이어 생성 옵션.
+> 사용자 레이어 생성 옵션.
 
-| Name        | Type                                                | Attributes | Default | Description                            |
-| ----------- | --------------------------------------------------- | ---------- | ------- | -------------------------------------- |
-| name        | String                                              |            |         | 생성 레이어 명칭.                      |
-| type        | [레이어 타입.](../etc/type-list.md#layer-type-list) |            |         | 레이어 타입.                           |
-| visible     | boolean                                             | optional   | true    | 레이어 가시화 옵션 설정.               |
-| selectable  | boolean                                             | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
-| minDistance | number                                              | optional   | 0.0     | 레이어 최소 가시범위 거리를 설정.      |
-| maxDistance | number                                              | optional   | 3000.0  | 레이어 최대 가시범위 거리를 설정.      |
+| Name        | Type                                                    | Attributes | Default | Description                            |
+| ----------- | ------------------------------------------------------- | ---------- | ------- | -------------------------------------- |
+| name        | String                                                  |            |         | 레이어 명칭.                           |
+| type        | [Layer type List.](../etc/type-list.md#layer-type-list) |            |         | 레이어 타입.                           |
+| visible     | boolean                                                 | optional   | true    | 레이어 가시화 옵션 설정.               |
+| selectable  | boolean                                                 | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
+| minDistance | number                                                  | optional   | 0.0     | 레이어 최소 가시 거리를 설정.          |
+| maxDistance | number                                                  | optional   | 3000.0  | 레이어 최대 가시 거리를 설정.          |
 
 #### CreateServerLayerOptions
 
-> 서비스 레이어 생성 옵션.
+> Options for creating a service layer.
 
-| Name       | Type                                                | Attributes | Default | Description                            |
-| ---------- | --------------------------------------------------- | ---------- | ------- | -------------------------------------- |
-| name       | String                                              |            |         | 생성 레이어 명칭.                      |
-| url        | String                                              |            |         | 요청 서버 url.                         |
-| type       | [레이어 타입.](../etc/type-list.md#layer-type-list) |            |         | 레이어 타입.                           |
-| visible    | boolean                                             | optional   | true    | 레이어 가시화 옵션 설정.               |
-| selectable | boolean                                             | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
-| minLevel   | number                                              | optional   | 0       | 레이어 최소 가시범위 거리를 설정.      |
-| maxLevel   | number                                              | optional   | 15      | 레이어 최대 가시범위 거리를 설정.      |
+| Name       | Type                                                    | Attributes | Default | Description                            |
+| ---------- | ------------------------------------------------------- | ---------- | ------- | -------------------------------------- |
+| name       | String                                                  |            |         | 레이어 명칭.                           |
+| url        | String                                                  |            |         | 요청 서버 url.                         |
+| type       | [Layer type List.](../etc/type-list.md#layer-type-list) |            |         | 레이어 타입.                           |
+| visible    | boolean                                                 | optional   | true    | 레이어 가시화 옵션 설정.               |
+| selectable | boolean                                                 | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
+| minLevel   | number                                                  | optional   | 0       | 레이어 최소 가시 레벨를 설정.          |
+| maxLevel   | number                                                  | optional   | 15      | 레이어 최대 가시 레벨를 설정.          |

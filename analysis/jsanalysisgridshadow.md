@@ -300,7 +300,7 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
     -   true : 복사 성공.
     -   false : 복사 실패.
-    -   실패조건
+    -   실패 조건
         -   일조량 분석을 사용할 레이어가 없는 경우.
         -   생성된 창문이 없는 경우.
         -   마우스 클릭 이벤트를 통해 입력된 점이 없는 경우.
@@ -334,7 +334,7 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
     -   true : 복사 성공.
     -   false : 복사 실패.
-    -   실패조건
+    -   실패 조건
         -   일조량 분석을 사용할 레이어가 없는 경우.
         -   생성된 창문이 없는 경우.
         -   마우스 클릭 이벤트를 통해 입력된 점이 없는 경우.

@@ -22,7 +22,7 @@ var earthquake = Module.getEarthquake();
 -   Return
     -   true: 초기화 성공.
     -   false: 초기화 실패.
-    -   실패조건
+    -   실패 조건
         -   지도 갱신이 안된 경우.
         -   지진파 분석 결과가 없는 경우.
 
@@ -87,7 +87,7 @@ var earthquake = Module.getEarthquake();
 
     -   true: 설정 성공.
     -   false: 설정 실패.
-    -   실패조건
+    -   실패 조건
         -   0.01보다 작은 지진파 높이가 설정된 경우.
         -   200보다 큰 값이 설정된 경우.
 
