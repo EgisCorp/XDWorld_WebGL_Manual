@@ -1304,7 +1304,7 @@ layer.setName(“WMSLayer2”);
 
 -   실패조건
     -   0 보다 작은 값이 입력 된 경우.
-    -   [createTimeSeriesObject()](jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
+    -   [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
 -   Sample
     -   function JsonLoad 참조.
     -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
@@ -1336,7 +1336,7 @@ layer.setName(“WMSLayer2”);
 
 -   실패조건
     -   0 보다 작은 값이 입력 된 경우.
-    -   [createTimeSeriesObject()](jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
+    -   [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
 -   Sample
     -   function JsonLoad 참조.
     -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
