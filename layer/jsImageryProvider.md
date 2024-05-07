@@ -1,20 +1,20 @@
 ---
-description: 배경지도 객체를 관리하는 API.
+description: 지도 내 배경지도를 관리하기 위한 api 입니다.
 ---
 
 # JSImageryProvider
 
-> Module.[Type](jsImageryProvider.md#type)() API 생성.
+> Module.[Type](jsImageryProvider.md#type)() API를 생성합니다.
 
 ```javascript
-var naver = Module.NaverMap();		( nomal, terrain, satellite, cadastral 지원 )
-var kakao = Module.KakaoMap();		( nomal, terrain, satellite, cadastral 지원 )
-var google = Module.GoogleMap();	( nomal, terrain, vectorhybrid, satellitehybrid, satellite 지원 )
-var bing = Module.BingMap();		( nomal, satellitehybrid, satellite 지원 )
-var osm = Module.OpenStreetMap();	( nomal, terrain 지원 )
-var arc = Module.ArcMap();			( nomal, terrain, vectorhybrid, satellite 지원 )
-var mapbox = Module.MapBox();		( nomal, satellite 지원 )
-var skymap = Module.SKYMap();		( 2012 ~ 2018, 2020 지원 )
+var naver = Module.NaverMap();      ( supports normal, terrain, satellite, cadastral )
+var kakao = Module.KakaoMap();      ( supports normal, terrain, satellite, cadastral )
+var google = Module.GoogleMap();    ( supports normal, terrain, vectorhybrid, satellitehybrid, satellite )
+var bing = Module.BingMap();        ( supports normal, satellitehybrid, satellite )
+var osm = Module.OpenStreetMap();   ( supports normal, terrain )
+var arc = Module.ArcMap();          ( supports normal, terrain, vectorhybrid, satellite )
+var mapbox = Module.MapBox();       ( supports normal, satellite )
+var skymap = Module.SKYMap();       ( supports 2012 ~ 2018, 2020 )
 var wmts = Module.WMTS();
 ```
 
@@ -34,17 +34,17 @@ var wmts = Module.WMTS();
 
 ### clear()
 
-> 배경 영상 지도 초기화.
+> 배경 영상을 초기화 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Sample
-    -   function clearMap 참조
-    -   [샌드박스\_배경지도 설정](http://sandbox.dtwincloud.com/code/main.do?id=layer_basemap)
-    -   [샌드박스\_WMTS](http://sandbox.dtwincloud.com/code/main.do?id=layer_wmts)
-        {% endtab %}
+    -   function clearMap 참조.
+    -   [Sandbox_Base Map Setting](https://sandbox.egiscloud.com/code/main.do?id=layer_basemap)
+    -   [Sandbox_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -64,7 +64,7 @@ Module.WMTS().clear();
 
 ### refresh()
 
-> 배경 영상 다시 불러오기.
+> 배경 영상을 새로 고침 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -89,11 +89,11 @@ Module.WMTS().refresh();
 
 ### setblank()
 
-> 배경 영상 빈 타일 공백 이미지 지정.
+> 배경 영상에서 빈 타일 공백 이미지를 설정합니다.
 >
-> 256 \* 256 검은색 이미지 지정.
+> 256 \* 256 검은색 이미지로 지정합니다.
 >
-> 적용 후 refresh() 실행.
+> 적용 후 refresh() 실행해 주시기 바랍니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -122,34 +122,34 @@ Module.WMTS().setblank();
 
 > 배경 영상 지도 서버 옵션.
 
-| Name            | Type   | Attributes | Default | Description                                                |
-| --------------- | ------ | ---------- | ------- | ---------------------------------------------------------- |
-| NaverMap()      | object |            |         | Naver Map 배경 영상 지도 설정.                             |
-| DaumMap()       | object |            |         | Daum Map 배경 영상 지도 설정.                              |
-| GoogleMap()     | object |            |         | Google Map 배경 영상 지도 설정.                            |
-| BingMap()       | object |            |         | Bing Map 배경 영상 지도 설정.                              |
-| OpenStreetMap() | object |            |         | OpenStreet Map 배경 영상 지도 설정.                        |
-| ArcMap()        | object |            |         | ArcMap Map 배경 영상 지도 설정.                            |
-| MapBox()        | object |            |         | MapBox Map 배경 영상 지도 설정.                            |
-| SKYMap()        | object |            |         | SKY Map 배경 영상 지도 설정.                               |
-| WMTS()          | object |            |         | WMTS(웹 맵 타일 서비스) 표준 프로토콜 배경 영상 지도 설정. |
+| Name            | Type   | Description                                                |
+| --------------- | ------ | ---------------------------------------------------------- |
+| NaverMap()      | object | Naver Map 배경 영상 지도 설정.                             |
+| DaumMap()       | object | Daum Map 배경 영상 지도 설정.                              |
+| GoogleMap()     | object | Google Map 배경 영상 지도 설정.                            |
+| BingMap()       | object | Bing Map 배경 영상 지도 설정.                              |
+| OpenStreetMap() | object | OpenStreet Map 배경 영상 지도 설정.                        |
+| ArcMap()        | object | ArcMap Map 배경 영상 지도 설정.                            |
+| MapBox()        | object | MapBox Map 배경 영상 지도 설정.                            |
+| SKYMap()        | object | SKY Map 배경 영상 지도 설정.                               |
+| WMTS()          | object | WMTS(웹 맵 타일 서비스) 표준 프로토콜 배경 영상 지도 설정. |
 
 #### LayerName
 
-> 배경 영상 지도 레이어명.
+> Background video map layer name.
 
-| Name            | Type   | Attributes | Default | Description           |
-| --------------- | ------ | ---------- | ------- | --------------------- |
-| nomal           | string |            |         | 일반 지도.            |
-| terrain         | string |            |         | 지형 등고선 지도.     |
-| vectorhybrid    | string |            |         | 벡터 하이브리드 지도. |
-| satellitehybrid | string |            |         | 영상 하이브리드 지도. |
-| satellite       | string |            |         | 영상 지도.            |
-| cadastral       | string |            |         | 지적편집도.           |
+| Name            | Type   | Description           |
+| --------------- | ------ | --------------------- |
+| normal          | string | 일반 지도.            |
+| terrain         | string | 등고선 지도.          |
+| vectorhybrid    | string | 벡터 하이브리드 지도. |
+| satellitehybrid | string | 영상 하이브리드 지도. |
+| satellite       | string | 영상 지도.            |
+| cadastral       | string | 지적편집도.           |
 
 #### Provider
 
-> 배경 영상 지도 서버 정보 옵션.
+> Background video map server information option.
 
 | Name          | Type                                             | Attributes | Default       | Description                                      |
 | ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |

@@ -20,7 +20,7 @@
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
-layerList.createLayer("Layer_Name", Module.ELT_3DPOINT); // 심볼 텍스트 레이어 생성
+layerList.createLayer("Layer_Name", Module.ELT_3DPOINT); // Creates a symbol text layer
 ```
 
 ## Tile Layer Type List
