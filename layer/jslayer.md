@@ -1471,7 +1471,7 @@ layer.setName(“WMSLayer2”);
 
 | Name | Type    | Description                                                                |
 | ---- | ------- | -------------------------------------------------------------------------- |
-| type | boolean | <p>true: 레이어 포함 객체 가시화.<br>false: 레이어 포함 객체 불가시화.</p> |
+| type | boolean | <p>true: 레이어 포함 객체 가시화.<br>false: 레이어 포함 객체 비가시화.</p> |
 
 -   Sample
     -   function JsonLoad 참조.

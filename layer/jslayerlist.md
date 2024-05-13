@@ -569,7 +569,7 @@ let check =  layerList.setLayerMove(first, true);
 
 -   Return
     -   1 : 레이어 포함 객체 가시화.
-    -   0 : 레이어 포함 객체 불가시화.
+    -   0 : 레이어 포함 객체 비가시화.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -596,7 +596,7 @@ let visible = layerList.getVisible(“HybridLoad”);
 | Name | Type    | Description                                                                |
 | :--- | :------ | :------------------------------------------------------------------------- |
 | name | string  | 레이어 명칭.                                                               |
-| type | boolean | <p>true: 레이어 포함 객체 가시화.<br>false: 레이어 포함 객체 불가시화.</p> |
+| type | boolean | <p>true: 레이어 포함 객체 가시화.<br>false: 레이어 포함 객체 비가시화.</p> |
 
 {% endtab %}
 

@@ -1,10 +1,10 @@
 ---
-description: 인덱스 맵 설정 및 제어 기능 API.
+description: 지도 내 인덱스 맵을 설정 및 제어하기 위한 API 입니다.
 ---
 
 # JSIndexMap3D
 
-> Module.getIndexMap API 생성.
+> Module.getIndexMap() API를 생성합니다.
 
 ```javascript
 var map = Module.getIndexMap();
@@ -14,15 +14,16 @@ var map = Module.getIndexMap();
 
 ### setCameraTilt(tilt)
 
-> 인덱스맵 카메라 옵션 설정.
+> 인덱스 맵에서 사용할 카메라 옵션을 설정합니다.
 >
-> 카메라 기울기 변경, 단위 Degree
+> 카메라 기울기(degrees 단위)를 변경합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----------- | ------ | -------- |
-| tilt | number | 카메라 tilt. |
+
+| Name | Type   | Description    |
+| ---- | ------ | -------------- |
+| tilt | number | 카메라 기울기. |
 
 {% endtab %}
 
@@ -39,16 +40,17 @@ indexMap3D.setVisible(true);
 
 ### setDistanceMinMax(min, max)
 
-> 인덱스맵 카메라 옵션 설정.
+> 인덱스 맵에서 사용할 카메라 옵션을 설정합니다.
 >
-> 보이는 지점으로 부터 카메라까지의 최소, 최대 거리 설정.
+> 인덱스 맵과 카메라의 시야 최소, 최대 거리를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| --------- | ------ | -------- |
-| min | number | 카메라 최소 시야거리(m단위). |
-| max | number | 카메라 최소 시야거리(m단위). |
+
+| Name | Type   | Description                     |
+| ---- | ------ | ------------------------------- |
+| min  | number | 가시화 최소 거리 (meters 단위). |
+| max  | number | 가시화 최대 거리 (meters 단위). |
 
 {% endtab %}
 
@@ -65,14 +67,16 @@ indexMap3D.setVisible(true);
 
 ### setPosition(x, y)
 
-> 인덱스맵의 위치 설정.
+> 인덱스 맵 위치를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---------- | ------------------------------------ | ------------- |
-| x | number | 화면 가로 축 위치 좌표(px단위). |
-| y | number | 화면 세로 축 위치 좌표(px단위). |
+
+| Name | Type   | Description                  |
+| ---- | ------ | ---------------------------- |
+| x    | number | 화면 X축 좌표 (pixels 단위). |
+| y    | number | 화면 Y축 좌표 (pixels 단위). |
+
 {% endtab %}
 
 {% tab title="Template" %}
@@ -88,14 +92,15 @@ indexMap3D.setVisible(true);
 
 ### setSize(width, height)
 
-> 인덱스맵의 가로 세로 크기 설정.
+> 인덱스 맵 가로 세로 크기 설정.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---------- | ------------------------------------ | ------------- |
-| width | number | 인덱스맵 가로 크기(px단위). |
-| height | number | 인덱스맵 세로 크기(px단위). |
+
+| Name   | Type   | Description              |
+| ------ | ------ | ------------------------ |
+| width  | number | 가로 크기 (pixels 단위). |
+| height | number | 세로 크기 (pixels 단위). |
 
 {% endtab %}
 
@@ -112,15 +117,14 @@ indexMap3D.setVisible(true);
 
 ### setVisible(visible)
 
-> 인덱스맵 가시화 옵션 설정.
->
-> 인덱스맵 투명/반투명 상태 설정.
+> 인덱스 맵 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| --------- | ------ | -------- |
-| visible | boolean | <p>true인 경우 인덱스맵 가시화.<br>false인 인덱스맵 숨김.</p>. |
+
+| Name    | Type    | Description                                                 |
+| ------- | ------- | ----------------------------------------------------------- |
+| visible | boolean | <p>true: 인덱스 맵 가시화.<br>false: 인덱스 맵 비가시화.<p> |
 
 {% endtab %}
 
