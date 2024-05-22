@@ -1,83 +1,99 @@
 ---
-description: 2차원 막대 그래프 객체 생성 및 설정 API.
+description: 지도 내 2차원 막대 그래프 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
 # JSBarGraph
 
-> Module.createBarGraph API 생성.
+> Module.createBarGraph() API를 생성합니다.
 
 ```javascript
 var object = Module.createBarGraph("ID");
 ```
 
-### create(position, size, type) → boolean
-
-> 2차원 막대 그래프 객체 생성.
-> 
-> type 입력 값에 따른 가시화 변경 0(가로 그래프 형태), 1(세로 그래프 형태).
-
-{% tabs %}
-{% tab title="Infomation" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| position | [JSVector3D](../core/jsvector3d.md) | 그래프 경위도 위치(중하단 기준점). |
-| size | JSSize2D | 그래프 크기(너비, 높이 설정). |
-| type | number | 그래프 타입 설정 |
-
-* Return
-  * true : 객체 생성 성공.
-  * false : 객체 생성 실패.  
-
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-```
-{% endtab %}
-{% endtabs %}
+## Function
 
 ### getId() → string
 
-> 오브젝트의 Key를 반환.
+> 객체의 고유 명칭을 반환 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strKey = object.getId();
 ```
+
+{% endtab %}
+{% endtabs %}
+
+### create(position, size, type) → boolean
+
+> 2차원 막대 그래프 객체를 생성합니다.
+>
+> 입력 변수값(type)에 따른 시각화 방법이 변경됩니다.
+>
+> -   0: 수평 그래프 형태.
+> -   1: 수직 그래프 형태.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name     | Type                                | Description                                        |
+| :------- | :---------------------------------- | :------------------------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md) | 그래프 생성 좌표 (경도, 위도, 고도) 기준은 중하단. |
+| size     | [JSSize2D](../core/jssize2d.md)     | 크기(너비, 높이 설정).                             |
+| type     | number                              | 그래프 타입 설정.                                  |
+
+-   Return
+
+    -   true : 생성 성공.
+    -   false : 생성 실패.
+
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
 {% endtab %}
 {% endtabs %}
 
 ### restartAnimation(restartRate) → boolean
 
-> 그래프 애니메이션을 재실행.
+> 그래프 애니메이션을 다시 실행합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| restartRate | number | 애니메이션 실행 시작단계 (0.0~1.0 값을 가지며 0.0은 애니메이션 시작점, 1.0은 애니메이션 끝점입니다.). |
 
-* Return
-  * true : 실행 성공.
-  * false : 오브젝트가 초기화되지 않거나 존재하지 않는 경우.
+| Name        | Type   | Description                                                                                |
+| :---------- | :----- | :----------------------------------------------------------------------------------------- |
+| restartRate | number | <p>애니메이션 시작 위치 설정<br>0.0: 애니메이션 시작 위치.<br>1.0: 애니메이션 끝 위치.</p> |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var graph = Module.createBarGraph("Graph");
 //...
-graph.restartAnimation(0.5)
+graph.restartAnimation(0.5);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -87,51 +103,57 @@ graph.restartAnimation(0.5)
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| min | number | 그래프 Y축 최소 값. |
-| max | number | 그래프 Y축 최대 값. |
-| interval | number | 그래프 격자 간격. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+| Name     | Type   | Description         |
+| :------- | :----- | :------------------ |
+| min      | number | 그래프 Y축 최소 값. |
+| max      | number | 그래프 Y축 최대 값. |
+| interval | number | 그래프 격자 간격.   |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setAnimationSpeed(speed) → boolean
 
 > 그래프 애니메이션 실행 속도를 설정합니다.
-> 
-> speed 입력값은 0.1 ~ 1.0 사이 값을 가지며 1.0 가까울 수록 빠르게 재생.
+>
+> 입력 변수값(speed)는 0.1 ~ 1.0 사이 값을 가지며 1.0 가까울 수록 빠르게 재생합니다..
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
+
+| Name  | Type   | Description                 |
+| :---- | :----- | :-------------------------- |
 | speed | number | 그래프 애니메이션 실행 속도 |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
-{% endtab %}
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
 
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -141,22 +163,25 @@ graph.restartAnimation(0.5)
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| color | [JSColor](../core/jscolor.md) | 색상 값. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-    
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+| Name  | Type                          | Description |
+| :---- | :---------------------------- | :---------- |
+| color | [JSColor](../core/jscolor.md) | 색상.       |
+
+-   Return
+    -   true : 설정 설공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -166,68 +191,78 @@ graph.restartAnimation(0.5)
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| size | JSSize3D | 박스 크기. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-      
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+| Name | Type                            | Description |
+| :--- | :------------------------------ | :---------- |
+| size | [JSSize3D](../core/jssize3d.md) | 박스 크기.  |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setUnitText(text) → boolean
 
-> 그래프 Y축 단위 텍스트를 설정합니다.
+> 그래프 Y축에 해당되는 범례(단위)에 대한 문자열을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| text | string | 단위 텍스트. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-        
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+| Name | Type   | Description  |
+| :--- | :----- | :----------- |
+| text | string | 단위 문자열. |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setGridVisible(type) → boolean
 
-> 그래프 Y축과 격자를 가시화 유무 설정.
+> 그래프 Y축과 격자를 가시화 유무 설정 합니다..
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| type | boolean | <p>true인 경우 Y축 격자 가시화(RTT)<br>false인 경우 Y축 격자 숨김.</p>|
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
+| Name | Type    | Description                                                            |
+| :--- | :------ | :--------------------------------------------------------------------- | --- |
+| type | boolean | <p>true인 경우 Y축 격자 가시화(RTT)<br>false인 경우 Y축 격자 숨김.</p> |     |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -237,29 +272,31 @@ graph.restartAnimation(0.5)
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| name | string | 그래프 범례 그룹 명칭. |
-| label | string | 그래프 범례 명칭. |
-| color | [JSColor](../core/jscolor.md) | 그래프 범례 색상. |
 
-* Return
-  * true : 객체 추가 성공.
-  * false : 객체 추가 실패.
-         
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+| Name  | Type                          | Description            |
+| :---- | :---------------------------- | :--------------------- |
+| name  | string                        | 그래프 범례 그룹 명칭. |
+| label | string                        | 그래프 범례 명칭.      |
+| color | [JSColor](../core/jscolor.md) | 그래프 범례 색상.      |
+
+-   Return
+    -   true: 추가 성공.
+    -   false: 추가 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var graph = Module.createBarGraph("Graph");
-graph.insertLegend("Legend1", "가스", new Module.JSColor(200, 255, 0, 0));
-graph.insertLegend("Legend2", "전기", new Module.JSColor(200, 255, 255, 0));
-graph.insertLegend("Legend3", "수도", new Module.JSColor(200, 0, 0, 255));
-graph.insertLegend("Legend4", "기타", new Module.JSColor(200, 255, 255, 255));
+graph.insertLegend("Legend1", "Gas", new Module.JSColor(200, 255, 0, 0));
+graph.insertLegend("Legend2", "Electricity", new Module.JSColor(200, 255, 255, 0));
+graph.insertLegend("Legend3", "Water", new Module.JSColor(200, 0, 0, 255));
+graph.insertLegend("Legend4", "Others", new Module.JSColor(200, 255, 255, 255));
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -269,272 +306,267 @@ graph.insertLegend("Legend4", "기타", new Module.JSColor(200, 255, 255, 255));
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| name | string | 데이터 셋 명칭 (그래프 하단 텍스트 출력).  |
+
+| Name | Type                                | Description                                                  |
+| :--- | :---------------------------------- | :----------------------------------------------------------- |
+| name | string                              | 데이터 셋 명칭 (그래프 하단 텍스트 출력).                    |
 | data | [Collection](../core/collection.md) | 데이터 값 리스트 (범례 추가 순서를 따르며, 범례와 1:1 대응). |
 
-* Return
-  * true : 객체 추가 성공.
-  * false : 객체 추가 실패.
-           
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
-{% endtab %}
+-   Return
+    -   true: 추가 성공.
+    -   false: 추가 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
 
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var graph = Module.createBarGraph("Graph");
 
 var dataValue = [10.5, 50.1, 97.0, 11.6, 34.9];
 var data = new Module.Collection();
 
-for (var i=0, len=dataValue.length; i<len; i++) {
-	data.add(dataValue[i]);
+for (var i = 0, len = dataValue.length; i < len; i++) {
+    data.add(dataValue[i]);
 }
-		
-graph.insertDataSet("2010년", data);
+
+graph.insertDataSet("2010", data);
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setDataSetNameFont(name, font) → boolean
 
-> 데이터 셋 이름 텍스트 폰트 설정.
+> 데이터 셋 가시화 문자열에 적용할 폰트를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
+
+| Name | Type   | Description     |
+| :--- | :----- | :-------------- |
 | name | string | 데이터 셋 이름. |
-| font | string | 폰트 이름. |
+| font | string | 폰트 이름.      |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
+-   Return
 
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+    -   true : Font setting successful.
+    -   false : Font setting failed.
+
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setDataSetNameTextSize(name, size) → boolean
 
-> 데이터 셋 이름 텍스트 크기 설정.
+> 데이터 셋 가시화 문자열에 적용할 폰트 크기를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
+
+| Name | Type   | Description     |
+| :--- | :----- | :-------------- |
 | name | string | 데이터 셋 이름. |
-| size | number | 텍스트 크기. |
+| size | number | 폰트 크기.      |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
+-   Return
 
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setDataSetNameTextColor(name, textcolor, textOutlineColor) → boolean
 
-> 데이터 셋 이름 텍스트 색상 설정.
+> 데이터 셋 가시화 문자열에 적용할 폰트 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| name | string | 데이터 셋 이름. |
-| textcolor | [JSColor](../core/jscolor.md) | 텍스트 채움 색상. |
+
+| Name             | Type                          | Description       |
+| :--------------- | :---------------------------- | :---------------- |
+| name             | string                        | 데이터 셋 이름.   |
+| textcolor        | [JSColor](../core/jscolor.md) | 텍스트 채움 색상. |
 | textOutlineColor | [JSColor](../core/jscolor.md) | 텍스트 외곽 색상. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
-{% endtab %}
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
 
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setDataSetNameInterval(value) → boolean
 
-> 그래프 화면과 필드 이름 텍스트 간 간격 설정.
+> 그래프 화면과 필드 이름 텍스트 간 간격을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
+
+| Name  | Type   | Description                             |
+| :---- | :----- | :-------------------------------------- |
 | value | number | 그래프 화면과 필드 이름 텍스트 간 간격. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)
-{% endtab %}
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
 
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setFloorDepth(value) → boolean
 
-> 그래프 바닥 평면 세로방향 너비.
+> 그래프 바닥 평면 세로방향 너비를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| value | number | 그래프 바닥 평면 세로방향 너비.|
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
+| Name  | Type   | Description |
+| :---- | :----- | :---------- |
+| value | number | 너비.       |
 
-* Sample
-  * function createGraph 참조.
-  * [샌드박스\_2D 막대 그래프](http://sandbox.dtwincloud.com/code/main.do?id=object_graph_bar_2d_stack)  
+-   Return
+
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
+-   Sample
+    -   the createGraph function 참조.
+    -   [Sandbox_2D Bar Graph](https://sandbox.egiscloud.com/code/main.do?id=object_graph_bar_2d_stack)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ## Getter / Setter
 
-### getDescription() → string
+### getDescription(), setDescription(desc) → string
 
-> 오브젝트의 설명에 대한 내용을 반환.
+> 객체에 대한 설명을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
+
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strDesc = object.getDescription();
+// ... or ...
+object.setDescription("First Object.");
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setDescription(desc)
+### getName(), setName(name) → string
 
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| desc | string | 오브젝트 설명 문자열. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setDescription('First Object.');
-```
-{% endtab %}
-{% endtabs %}
-
-### getName() → string
-
-> 오브젝트의 이름을 반환.
+> 객체 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
+
+-   Return
+    -   string: 객체 이름을 성공적을 반환
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
+// ... or ...
+object.setName("MyObject");
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setName(name)
+### getVisible(), setVisible(visible) → boolean
 
-> 오브젝트의 이름을 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| name | string | 설정할 오브젝트 이름. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setName('MyObject');
-```
-{% endtab %}
-{% endtabs %}
-
-### getVisible() → number
-
-> 오브젝트의 보기/숨김 여부를 반환.
+> 객체의 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
-  * 보기 : Module.JS\_VISIBLE\_ON
-  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
-{% endtab %}
 
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
+
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
+// ... or ...
+object.setVisible(true);
 ```
-{% endtab %}
-{% endtabs %}
 
-### setVisible(visible)
-
-> 오브젝트의 보기/숨김 여부를 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name    | Type   | Description                                                                                                                                    |
-| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setVisible(Module.JS_VISIBLE_ON);
-```
 {% endtab %}
 {% endtabs %}

@@ -4,7 +4,7 @@ description: 지도 내 전파 범위 3차원 모델 객체를 생성 및 설정
 
 # JSAntenna
 
-> > Module.CreateAntenna() API를 생성합니다.
+> Module.CreateAntenna() API를 생성합니다.
 
 ```javascript
 var object = Module.CreateAntenna("ID");
@@ -112,17 +112,17 @@ object.setDescription("First Object.");
 
 ### getName(), setName(name) → string
 
-> 객체 고유 명칭을 설정합니다.
+> 객체 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description     |
-| ---- | ------ | --------------- |
-| name | string | 객체 고유 명칭. |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
 
 -   Return
-    -   string: 객체 고유 명칭이 성공적을 반환
+    -   string: 객체 이름을 성공적을 반환
     -   null: 객체가 null인 경우.
 
 {% endtab %}
