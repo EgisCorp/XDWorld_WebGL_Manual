@@ -1,36 +1,36 @@
 ---
-description: 라인 객체 생성 및 수정 기능 API.
+description: 지도 내 선 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
 # JSLineString
 
-> Module.createLineString API 생성.
+> Module.createLineString() API를 생성합니다.
 
 ```javascript
 var object = Module.createLineString("ID");
 ```
 
+## Function
+
 ### createbyJson(option) → string
 
-> 라인 객체를 생성.
->
-> argument 변수로 라인 객체 설정.
+> 선 객체를 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| option | [JSLineString.CreateOptions](jslinestring.md#jslinestring.createoptions) | 초기화 옵션 속성 정보 |
+
+| Name   | Type                                                                     | Description |
+| ------ | ------------------------------------------------------------------------ | ----------- |
+| option | [JSLineString.CreateOptions](jslinestring.md#jslinestring.createoptions) | 생성 정보.  |
 
 -   Return
-    -   "success" : 생성 성공.
-    -   "error variable undefined null" : options 객체가 없음
+    -   "success": 생성 성공.
     -   이 외 오류 원인을 포함한 에러 메시지
 -   Sample
     -   function createLine 참조.
-    -   [샌드박스\_라인](http://sandbox.dtwincloud.com/code/main.do?id=object_line_Json)
-        {% endtab %}
+    -   [Sandbox_Line](https://sandbox.egiscloud.com/code/main.do?id=object_line_Json)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -40,16 +40,18 @@ var object = Module.createLineString("ID");
 {% endtab %}
 {% endtabs %}
 
-### getBoundary() → number
+### getBoundary() → [JSAABBox3D](../core/jsaabbox3d.md)
 
-> 오브젝트의 바운더리를 반환.
+> 선 객체를 포함하는 박스 영역을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
--   Return
-    -   유효한 값이 들어 있는 JSAABBox3D : 오브젝트 바운더리 반환 성공.
-    -   단순 초기화 상태의 JSAABBox3D : 오브젝트가 null인 경우.
 
+-   Return
+    -   [JSAABBox3D](../core/jsaabbox3d.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -61,19 +63,18 @@ var boundary_max = boundary.max;
 {% endtab %}
 {% endtabs %}
 
-### getCenter() → JSVector3D
+### getCenter() → [JSVector3D](../core/jsvector3d.md)
 
-> 오브젝트의 중심점을 반환.
+> 선 객체를 중심 좌표(경도, 위도, 고도)를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
--   Return
-    -   [JSVector3D](../core/jsvector3d.md) : 오브젝트의 중심 좌표 반환 성공.
-        -   Longitude : 오브젝트 중심 경도(Degree 단위).
-        -   Latitude : 오브젝트 중심 위도 (Degree 단위).
-        -   Altitude : 오브젝트 중심 고도 (m 단위).
-    -   단순 초기화 상태의 JSVector3D : 오브젝트가 null인 경우.
 
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -88,12 +89,15 @@ var dCenterAlt = vCenter.Altitude;
 
 ### getExtent() → number
 
-> 오브젝트 바운더리 Box의 Min-Max 간 거리를 반환.
+> 선 객체를 포함하는 박스 영역을 min, max간 거리를 반환합니다..
 
 {% tabs %}
 {% tab title="Information" %}
+
 -   Return
-    -  number : 오브젝트 바운더리 Box의 Min-Max 간 거리 반환.
+    -   number: 거리 반환.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -105,13 +109,16 @@ var bExtends = object.getExtent();
 
 ### getId() → string
 
-> 오브젝트의 Key를 반환.
+> 객체의 고유 명칭을 반환 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
+
 -   Return
-    -  유효한 문자열(string) : 오브젝트 Key 문자열.
-    -  빈 문자열(string) : 오브젝트가 null인 경우.
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -121,19 +128,22 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
-### getLength(terrainUnion) → number
+### getLength(terrain) → number
 
-> 라인의 길이를 반환.
+> 선 객체의 총 길이를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| terrainUnion | boolean | 지형 결합 고려 여부.<br>true : 라인을 지형과 결합하여 지형 높이를 고려한 길이를 계산.</br><br>false : 라인을 지형과 결합하지 않고 입력한 좌표 리스트의 거리 계산을 통해 길이를 계산.</br> |
+
+| Name    | Type    | Description                                                                                                  |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------ |
+| terrain | boolean | <p>지형 곡면률 설정 유무.<br>true: 지형 곡면률 고려한 길이 계산.<br>false: 입력된 좌표에 대한 길이 계산.</p> |
 
 -   Return
-    -  number(0 이상) : 라인 길이 반환에 성공한 경우.
-    -  number(-1.0) : 오브젝트가 null인 경우.
+    -   number(0 이상): 반환 성공.
+    -   number(-1.0): 반환 실패.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -145,19 +155,20 @@ var length = object.getLength();
 
 ### SetDashType(dash) → boolean
 
-> 줄선 간격 설정.
+> 선 간격을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| dash | number | 점선 간격 |
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| dash | number | 점선 간격.  |
 
 -   Return
-    -   true : 객체 옵션 설정 성공.
-    -   false : 객체 옵션 설정 실패.
-        {% endtab %}
+    -   true: 설정 성공.
+    -   false: 설정 실패.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -169,24 +180,25 @@ var length = object.getLength();
 
 ### setPartCoordinates(coordinates, parts)
 
-> 라인 객체를 생성.
+> 선 객체를 생성합니다.
 >
-> coordinates 구성 요소 개수&gt;3 필수 설정.
+> 입력 변수값(coordinates)은 3개 이상 입력되어야 합니다.
 >
-> parts 구성요소가 개수&gt;0 필수 설정.
+> 입력 변수값(parts)은 1개 이상 입력되어야 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| coordinates | [JSVec3Array](../core/jsvec3array.md) | 라인 구성 경위도 좌표 목록. |
-| parts | [Collection](../core/collection.md) | 라인 구성 점정 개수 목록 |
+
+| Name        | Type                                  | Description                            |
+| ----------- | ------------------------------------- | -------------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 좌표 목록(경도, 위도, 고도).           |
+| parts       | [Collection](../core/collection.md)   | 직선을 구성하는 coordinates 개수 목록. |
 
 -   Sample
     -   function createBufferPolygon 참조.
-    -   [샌드박스\_라인 버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
-        {% endtab %}
+    -   [Sandbox_Line Buffering](https://sandbox.egiscloud.com/code/main.do?id=object_line_buffering)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -198,21 +210,22 @@ var length = object.getLength();
 
 ### setUnionMode(type)
 
-> 라인 가시화 옵션.
+> 선 객체 가시화 옵션을 설정합니다.
 >
-> 라인 지형 결합 유무 설정.
+> 선 생성 시 지형 결합 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| type | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p> |
+
+| Name | Type    | Description                                                |
+| ---- | ------- | ---------------------------------------------------------- |
+| type | boolean | <p>true: 지형 결합 가시화(RTT).<br>false: 일반 가시화.</p> |
 
 -   Sample
     -   function createObjectToPathPosition 참조.
-    -   [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
-        {% endtab %}
+    -   [Sandbox_Path Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_line_path_distance)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -224,14 +237,107 @@ var length = object.getLength();
 
 ## Getter / Setter
 
-### getCoordinates() → Collection
+### getDescription(), setDescription(desc) → string
 
-> PolyLine을 구성하는 좌표 리스트를 반환.
+> 객체에 대한 설명을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
+
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
+
 -   Return
-    -   Collection : 좌표 리스트
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var strDesc = object.getDescription();
+// ... or ...
+object.setDescription("First Object.");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getName(), setName(name) → string
+
+> 객체 이름을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
+
+-   Return
+    -   string: 객체 이름을 성공적을 반환
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objName = object.getName();
+// ... or ...
+object.setName("MyObject");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getVisible(), setVisible(visible) → boolean
+
+> 객체의 가시화 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
+
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objName = object.getName();
+// ... or ...
+object.setVisible(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getCoordinates(), setCoordinates(coordinates) → [Collection](../core/collection.md)
+
+> 선 객체를 구성하는 좌표 목록을 설정합니다.
+>
+> 입력 변수값(coordinates)은 3개 이상 입력되어야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                | Description                  |
+| ----------- | ----------------------------------- | ---------------------------- |
+| coordinates | [Collection](../core/collection.md) | 좌표 목록(경도, 위도, 고도). |
+
+-   Return
+    -   [Collection](../core/collection.md): 선을 구성하는 좌표 목록.
+-   Sample
+    -   function createPathLine 참조.
+    -   [Sandbox_Path Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_line_path_distance)
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -241,115 +347,26 @@ var coorList = object.getCoordinates();
 {% endtab %}
 {% endtabs %}
 
-### setCoordinates(coordinates)
+### getStyle(), setStyle(style) → [JSPolyLineStyle](jspolylinestyle.md)
 
-> 라인 오브젝트의 좌표 리스트 설정.
+> 선 객체를 [JSPolyLineStyle](jspolylinestyle.md)으로 설정된 스타일로 설정합니다.
 >
-> coordinates 구성 요소 개수&gt;3 필수 설정.
+> 색상, 두께, 투명도 등을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| coordinates | [Collection](../core/collection.md) | 라인 구성 경위도 좌표 목록. |
 
+| Name  | Type                                  | Description |
+| ----- | ------------------------------------- | ----------- |
+| style | [JSPolyLineStyle](jspolylinestyle.md) | 선 스타일.  |
+
+-   Return
+    -   [JSPolyLineStyle](jspolylinestyle.md): 설정 성공.
 -   Sample
-    -   function createPathLine 참조.
-    -   [샌드박스\_경로 분석](http://sandbox.dtwincloud.com/code/main.do?id=analysis_line_path_distance)
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
+    -   function createBufferPolygon 참조.
+    -   [Sandbox_Line Buffering](https://sandbox.egiscloud.com/code/main.do?id=object_line_buffering)
 
 {% endtab %}
-{% endtabs %}
-
-### getDescription() → string
-
-> 오브젝트의 설명에 대한 내용을 반환.
-
-{% tabs %}
-{% tab title="Information" %}
--   Return
-    -  유효한 문자열(string) : 오브젝트 설명 문자열 반환에 성공했을 경우.
-    -  빈 문자열(string) : 오브젝트가 null일 경우.
-{% tab title="Template" %}
-
-```javascript
-var strDesc = object.getDescription();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setDescription(desc)
-
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| desc | string | 오브젝트 설명 문자열. |
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-object.setDescription('First Object.');
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getName() → string
-
-> 오브젝트의 이름을 반환.
-
-{% tabs %}
-{% tab title="Information" %}
--   Return
-    -  유효한 문자열(string) : 오브젝트의 이름 반환에 성공한 경우.
-    -  빈 문자열(string) : 오브젝트가 null인 경우.
-{% tab title="Template" %}
-
-```javascript
-var objName = object.getName();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setName(name)
-
-> 오브젝트의 이름을 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| name | string | 설정할 오브젝트 이름. |
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-object.setName('MyObject');
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getStyle() → JSPolyLineStyle
-
-> 설정된 오브젝트 스타일을 반환.
-
-{% tabs %}
-{% tab title="Information" %}
--   Return
-    -  유효한 오브젝트 스타일 객체(JSPolyLineStyle) : 오브젝트 스타일 객체 반환에 성공한 경우.
-    -  단순 초기화 상태의 오브젝트 스타일 객체(JSPolyLineStyle) : 오브젝트가 null인 경우.
 {% tab title="Template" %}
 
 ```javascript
@@ -359,84 +376,20 @@ var objectStyle = polyLine.getStyle();
 {% endtab %}
 {% endtabs %}
 
-### setStyle(style)
-
-> JSPolyLineStyle 적용된 옵션으로 라인 스타일 변경.
->
-> 색상, 두께, 투명도 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| style | JSPolyLineStyle | 라인 스타일 설정 객체 |
-
--   Sample
-    -   function createBufferPolygon 참조.
-    -   [샌드박스\_라인 버퍼링](http://sandbox.dtwincloud.com/code/main.do?id=object_line_buffering)
-        {% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getVisible() → number
-
-> 오브젝트의 보기/숨김 여부를 반환.
-
-{% tabs %}
-{% tab title="Information" %}
--   Return
-    -  number : 옵션 설정 상수
-       -  Module.JS_VISIBLE_ON : 보기.
-       -  Module.JS_VISIBLE_OFF : 숨김.
-       -  Module.JS_VISIBLE_ERROR : 에러 발생(오브젝트가 null인 경우).
-{% tab title="Template" %}
-
-```javascript
-var bVisible = object.getVisible();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setVisible(visible)
-
-> 오브젝트의 보기/숨김 여부를 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| visible | long | 옵션 설정 상수.<br>Module.JS_VISIBLE_ON인 경우 보기.</br><br>Module.JS_VISIBLE_OFF인 경우 숨김.</br> |
-{% tab title="Template" %}
-
-```javascript
-object.setVisible(Module.JS_VISIBLE_ON);
-```
-
-{% endtab %}
-{% endtabs %}
-
 ### Type Definitions
 
 #### JSLineString.CreateOptions
 
-> 라인 객체 생성 옵션.
+> 직선 객체 생성 옵션.
 
-| Name        | Type                          | Attributes | Default                     | Description                                                           |
-| ----------- | ----------------------------- | ---------- | --------------------------- | --------------------------------------------------------------------- |
-| coordinates | tag-list                      |            |                             | 정점 관리 옵션.                                                       |
-| type        | number                        | optional   | 0                           | 라인 가시화 타입.                                                     |
-| skip        | number                        | optional   | 1                           | 애니메이션 디테일 옵션.                                               |
-| width       | number                        | optional   | 1                           | 라인 굵기 옵션.                                                       |
-| dash        | number                        | optional   | 0                           | 점선 간격 옵션.                                                       |
-| speed       | number                        | optional   | 0                           | 애니메이션 속도 옵션.                                                 |
-| union       | boolean                       | optional   | false                       | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 기본 가시화.</p>. |
-| depth       | boolean                       | optional   | true                        | .                                                                     |
-| color       | [JSColor](../core/jscolor.md) | optional   | JSColor(200, 255, 255, 255) | 라인 가시화 색상.                                                     |
+| Name        | Type                                                    | Attributes | Default                     | Description                                                |
+| ----------- | ------------------------------------------------------- | ---------- | --------------------------- | ---------------------------------------------------------- |
+| coordinates | [coordinates Type](../etc/tag-list.md#coordinates-type) |            |                             | 좌표 목록 옵션.                                            |
+| type        | number                                                  | optional   | 0                           | 라인 가시화 타입.                                          |
+| skip        | number                                                  | optional   | 1                           | 애니메이션 디테일 옵션.                                    |
+| width       | number                                                  | optional   | 1                           | 라인 굵기 옵션.                                            |
+| dash        | number                                                  | optional   | 0                           | 점선 간격 옵션.                                            |
+| speed       | number                                                  | optional   | 0                           | 애니메이션 속도 옵션.                                      |
+| union       | boolean                                                 | optional   | false                       | <p>true: 지형 결합 가시화(RTT).<br>false: 일반 가시화.</p> |
+| depth       | boolean                                                 | optional   | true                        | <p>true: 일반 가시화.<br>false: 깊이감 미표현 가시화.</p>  |
+| color       | [JSColor](../core/jscolor.md)                           | optional   | JSColor(200, 255, 255, 255) | 라인 가시화 색상.                                          |

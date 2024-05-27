@@ -32,9 +32,9 @@ let projection = new Module.JSProj("PROJ4 code (+proj=longlat +datum=WGS84 +no_d
 | code | string | EPSG, PROJ4 코드. |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 (문자열 : 실패 에러 코드).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 (문자열 : 실패 에러 코드).
 
 {% endtab %}
 {% tab title="Template" %}
@@ -64,9 +64,9 @@ console.log(result); // Returns API result information
 | epsg | string | EPSG 코드.  |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 (PROJ4 코드 : 정상적인 반환값, 문자열 : 실패 에러 코드).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 (PROJ4 코드 : 정상적인 반환값, 문자열 : 실패 에러 코드).
 
 {% endtab %}
 
@@ -123,9 +123,9 @@ console.log(result); // Returns epsg:5186 proj4 code
 
 -   Return
 
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 (Array : 변환된 좌표 목록,, 문자열 : 실패 에러 코드).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 (Array : 변환된 좌표 목록,, 문자열 : 실패 에러 코드).
 
 -   Sample
     -   function transform 참조.
@@ -182,9 +182,9 @@ console.log(result);
 {% tab title="infomation" %}
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 (Array : epsg 코드 목록 ).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 (Array : epsg 코드 목록 ).
 
 {% endtab %}
 
@@ -214,9 +214,9 @@ console.log(list); //epsg list
 | epsg | string | EPSG 코드.  |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 (PROJ4 코드: 정상적인 반환값, 문자열 : 실패 에러 코드).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 (PROJ4 코드: 정상적인 반환값, 문자열 : 실패 에러 코드).
 
 {% endtab %}
 {% tab title="Template" %}

@@ -1,89 +1,104 @@
 ---
-description: 고스트 심볼 객체 생성 및 수정 기능 API.
+description: 지도 내 고스트 심볼 객체 생성를 생성 및 설정하기 위한 API 입니다.
 ---
 
 # JSGhostSymbol
 
-> Module.createGhostSymbol API 생성.
+> Module.createGhostSymbol() API를 생성합니다.
 
 ```javascript
 var object = Module.createGhostSymbol("ID");
 ```
+
+## Function
+
 ### getBasePointX() → number
 
-> 고스트 심볼 중심 좌표를 기준으로 X축으로 이동 값 반환.
+> 고스트 심볼 중심 좌표를 기준으로 X축으로 이동 값을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * X축 이동 값(미터).
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+    -   number: X축 이동 값(미터).
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getBasePointY() → number
 
-> 고스트 심볼 중심 좌표를 기준으로 Y축으로 이동 값 반환.
+> 고스트 심볼 중심 좌표를 기준으로 Y축으로 이동 값을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * Y축 이동 값(미터).
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+    -   number: Y축 이동 값(미터).
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getBasePointZ() → number
 
-> 고스트 심볼 중심 좌표를 기준으로 Z축으로 이동 값 반환.
+> 고스트 심볼 중심 좌표를 기준으로 Z축으로 이동 값을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * Z축 이동 값(미터).
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+    -   number: Z축 이동 값(미터).
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### getDescription() → string
+### getGhostSymbolMapKey() → string
 
-> 오브젝트의 설명 반환.
+> 고스트 심볼의 참조된 객체 명칭을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * string : 오브젝트 설명 문자열 반환 성공.
-  * null : 오브젝트가 null일 경우.
-{% endtab %}
 
+-   Return
+    -   string: 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
-var strDesc = object.getDescription();
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -93,333 +108,311 @@ var strDesc = object.getDescription();
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * string : 오브젝트 Key 문자열 반환 성공.
-  * null : 오브젝트가 null일 경우.
-{% endtab %}
 
+-   Return
+    -   string : 오브젝트 Key 문자열 반환 성공.
+    -   null : 오브젝트가 null일 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strKey = object.getId();
 ```
-{% endtab %}
-{% endtabs %}
 
-### getGhostSymbolMapKey() → string
-
-> 고스트 심볼의 참조된 객체 명칭 반환.
-
-{% tabs %}
-{% tab title="Information" %}
-
-* Return
-  * string : 고스트 심볼의 참조된 객체 명칭 반환 성공.
-  * null : 명칭 반환 실패.
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-```
 {% endtab %}
 {% endtabs %}
 
 ### getPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> 고스트 심볼 객체의 경위도 위치 반환.
+> 고스트 심볼 객체의 중심 좌표(경도, 위도, 고도)를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [JSVector3D](../core/jsvector3d.md) : 고스트 심볼 중심 위치 반환 성공.
-  * null : 좌표 반환 실패.
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
+    -   null: 반환 실패.
+
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getRotationX() → number
 
-> 고스트 심볼 객체 X축 회전 각도 반환.
+> 고스트 심볼 객체의 X축 회전 값(degree 단위)을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * X축 회전 각도.
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+    -   number: X축 회전 값.
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getRotationY() → number
 
-> 고스트 심볼 객체 Y축 회전 각도 반환.
+> 고스트 심볼 객체의 Y축 회전 값(degree 단위)을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * Y축 회전 각도.
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+    -   number: Y축 회전 값.
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getRotationZ() → number
 
-> 고스트 심볼 객체 Z축 회전 각도 반환.
+> 고스트 심볼 객체의 Z축 회전 값(degree 단위)을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * Z축 회전 각도.
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
 
+-   Return
+    -   number: Z축 회전 값.
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### getScale() → JSSize3D
+### getScale() → [JSSize3D](../core/jssize3d.md)
 
-> 고스트 심볼 객체의 크기 반환.
+> 고스트 심볼 객체의 크기 비율을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-* Return
-  * JSSize3D : 고스트 심볼 크기(x,y,z) 반환 성공.
-  * null : 크기 반환 실패.
-  
-* Sample
-  * function displayGhostSymbolProperties 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
-{% endtab %}
+-   Return
+    -   [JSSize3D](../core/jssize3d.md): 반환 성공(x,y,z).
+    -   null: 반환 실패.
+-   Sample
+    -   function displayGhostSymbolProperties 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
 
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### moveVertically(alt) → boolean
 
-> 오브젝트를 수직(위/아래) 방향으로 이동.
+> 객체를 수직(위/아래) 방향으로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| alt | number | 오브젝트 수직 이동 거리. |
 
-* Return
-  * True : 이동 거리 지정 성공.
-  * False : 이동 거리 지정 실패.
+| Name | Type   | Description          |
+| ---- | ------ | -------------------- |
+| alt  | number | 이동 값(meter 단위). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
-newGhostSymbol.moveVertically(150.0);  
+newGhostSymbol.moveVertically(150.0);
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setBasePoint(x, y, z) → boolean
 
-> 고스트 심볼 중심 좌표를 기준으로 입력 값만큼 이동 설정.
+> 고스트 심볼 객체의 중심 좌표를 기준으로 입력 변수값(x, y, z) 만큼 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| x         | number | X축 이동 값(미터) |
-| y         | number | Y축 이동 값(미터) |
-| z         | number | Z축 이동 값(미터) |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function setBasePoint 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+| Name | Type   | Description              |
+| ---- | ------ | ------------------------ |
+| x    | number | X축 이동 값(meter 단위). |
+| y    | number | Y축 이동 값(meter 단위). |
+| z    | number | Z축 이동 값(meter 단위). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+-   Sample
+    -   function setBasePoint 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
-{% endtab %}
-{% endtabs %}
 
-### setDescription(desc)
-
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| desc | string | 오브젝트 설명 문자열. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setDescription('First Object.');
-```
-{% endtab %}
-{% endtabs %}
-
-### setDirection(angle)
-
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| angle | double | 고스트 심볼 오브젝트의 방향 각도를 지정. |
-
-* Return
-  * true : 방향 각도 지정 성공.
-  * false : 방향 각도 지정 실패.
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
-newGhostSymbol.setDirection(90.0);  
-```
 {% endtab %}
 {% endtabs %}
 
 ### setGhostSymbol(name) → boolean
 
-> 고스트 심볼 맵에 등록된 객체 모델 지정.
+> 고스트 심볼을 관리하는 목록에서 입력 변수값(name)에 해당되는 고스트 심불을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| name | string | 등록된 객체 명칭. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGhostSymbol 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| name | string | 객체 고유 명칭. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+-   Sample
+    -   function createGhostSymbol 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setPosition(position) → boolean
 
-> 고스트 심볼 객체의 위치 설정.
+> 고스트 심볼 객체의 위치를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type                                | Description |
-| --------- | ----------------------------------- | -------- |
-| position  | [JSVector3D](../core/jsvector3d.md) | 고스트 심볼 경위도 위치. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGhostSymbol 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+| Name     | Type                                | Description                  |
+| -------- | ----------------------------------- | ---------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md) | 위치 좌표(경도, 위도, 고도). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+-   Sample
+    -   function createGhostSymbol 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setScale(scale) → boolean
 
-> 고스트 심볼 객체의 크기 설정.
+> 고스트 심볼 객체의 크기 비율을 설정합니다.
 >
-> scale(x,y,z) 입력 값은 0보다 큰값으로 설정.
+> 입력 변수값(scale)을 구성 요소는 0보다 큰값이 설정되어야합니다.
 >
-> 크기 초기 설정 x,y,z(1,1,1).
+> 초기 설정값은 (1,1,1) 입니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type                            | Description  |
-| --------- | ------------------------------- | --------- |
-| scale     | JSSize3D | 고스트 심볼 크기 설정. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function createGhostSymbol 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+| Name  | Type                            | Description               |
+| ----- | ------------------------------- | ------------------------- |
+| scale | [JSSize3D](../core/jssize3d.md) | 크기 비율(X축, Y축, Z축). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+-   Sample
+    -   function createGhostSymbol 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setRotation(x, y, z) → boolean
 
-> 고스트 심볼 객체 회전 각도 설정.
+> 고스트 심볼 객체의 회전 값을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type   | Description    |
-| --------- | ------ | ----------- |
-| x         | number | X축 변경 회전 각도. |
-| y         | number | Y축 변경 회전 각도. |
-| z         | number | Z축 변경 회전 각도. |
 
-* Return
-  * true : 객체 설정 성공.
-  * false : 객체 설정 실패.
-  
-* Sample
-  * function setRotation 참조.
-  * [샌드박스\_고스트 심볼 편집](http://sandbox.dtwincloud.com/code/main.do?id=object_ghost_symbol_edit)
+| Name | Type   | Description               |
+| ---- | ------ | ------------------------- |
+| x    | number | X축 회전 값(degree 단위). |
+| y    | number | Y축 회전 값(degree 단위). |
+| z    | number | Z축 회전 값(degree 단위). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+-   Sample
+    -   function setRotation 참조.
+    -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -427,87 +420,129 @@ newGhostSymbol.setDirection(90.0);
 
 ### getColor(), setColor(color) → [JSColor](../core/jscolor.md)
 
-> 객체 색상 설정.
+> 고스트 심볼 객체의 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type                          | Description |
-| --------- | ----------------------------- | -------- |
-| color     | [JSColor](../core/jscolor.md) | 객체 색상  |
 
-* Return
-  * 객체 색상
+| Name  | Type                          | Description |
+| ----- | ----------------------------- | ----------- |
+| color | [JSColor](../core/jscolor.md) | 색상값.     |
+
+-   Return
+    -   객체 색상.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
+{% endtab %}
+{% endtabs %}
+
+### getDescription(), setDescription(desc) → string
+
+> 객체에 대한 설명을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
+
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var strDesc = object.getDescription();
+// ... or ...
+object.setDescription("First Object.");
+```
+
 {% endtab %}
 {% endtabs %}
 
 ### getName(), setName(name) → string
 
-> 오브젝트의 이름을 반환.
+> 객체 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
+
 | Name | Type   | Description |
-| --------- | ------ | -------- |
-| name | string | 오브젝트 이름 설정. |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
 
-* Return
-  * string : 오브젝트 이름 문자열 반환 성공.
-  * null : 오브젝트가 null일 경우.
+-   Return
+    -   string: 객체 이름을 성공적을 반환.
+    -   null: 객체가 null인 경우.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
-object.setName('MyObject');
+// ... or ...
+object.setName("MyObject");
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getOpacity(), setOpacity(opacity) → number
 
-> 객체 투명도 설정.
+> 고스트 심볼 객체 투명도를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| opacity   | number | 객체 투명도 |
 
-* Return
-  * 객체 투명도
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| opacity | number | 투명도.     |
+
+-   Return
+    -   number: 객체에 설정된 투명도를 성공적으로 반환.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### getVisible(), setVisible(visible) → long
+### getVisible(), setVisible(visible) → boolean
 
-> 오브젝트의 보기/숨김 여부 반환.
+> 객체의 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type   | Description |
-| --------- | ------ | -------- |
-| name | string | 오브젝트의 보기/숨김 여부.<br>True일 경우 보기.</br><br>False일 경우 숨김.</br> |
 
-* Return
-  * True : 보기.
-  * False : 숨김.
-  * False : 오브젝트가 null인 경우.
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
+
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
-var bVisible = object.getVisible();
+var objName = object.getName();
+// ... or ...
 object.setVisible(true);
 ```
+
 {% endtab %}
 {% endtabs %}

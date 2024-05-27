@@ -63,9 +63,9 @@ let curve_pos = {
 | option | [JSMath.BezierLine](jsmath.md#jsmath.bezierline) | 변환 좌표 속성 정보. |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
 -   Sample
     -   function createBallPath 참조
     -   [Sandbox_ParabolicLine](https://sandbox.egiscloud.com/code/main.do?id=object_line_arc)
@@ -100,9 +100,9 @@ let parameters = {
 | option | [JSMath.SlopeOption](jsmath.md#jsmath.slopeoption) | 경사분석 속성 정보. |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드 ).
 
 {% endtab %}
 {% tab title="Template" %}

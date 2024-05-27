@@ -55,9 +55,9 @@ Module.initialize({
 | defaultKey | string                                                                | Engine API 발급키.                  |
 
 -   Return
-    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
-    -   .name : 동작 API 명칭.
-    -   .return : API 반환 정보.
+    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
+    -   .name: 동작 API 명칭.
+    -   .return: API 반환 정보.
 
 {% endtab %}
 {% tab title="Template" %}

@@ -84,7 +84,7 @@ var dCenterAlt = vCenter.Altitude;
 
 ### getExtent() → number
 
-> 객체의 공간 영역의 min, max을 거리(meter 단위)를 반환합니다.
+> 객체의 공간 영역의 장축 거리를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}

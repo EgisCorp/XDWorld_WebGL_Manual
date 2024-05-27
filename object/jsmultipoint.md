@@ -1,276 +1,266 @@
 ---
-description: 멀티 POI 생성 및 수정 기능 API.
+description: 지도 내 멀티 POI 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
 # JSMultiPoint
 
-> Module.createMultiPoint API 생성.
+> Module.createMultiPoint() API를 생성합니다.
 
 ```javascript
 var object = Module.createMultiPoint("ID");
 ```
 
+## Function
+
 ### getId() → string
 
-> 오브젝트의 Key를 반환.
+> 객체의 고유 명칭을 반환 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strKey = object.getId();
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setMainPoint(name, position, icon) → boolean
+### setMainPoint(id, position, icon) → boolean
 
-> 멀티 포인트 객체 생성.
-> 
-> 중심 좌표로 가시화 메인 POI 생성.
+> 멀티 POI 객체를 생성합니다.
+>
+> 중심 좌표(경도, 위도, 고도)를 기준으로 main POI를 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| name | string | 멀티 POI 객체 명칭. |
-| position | [JSVector3D](../core/jsvector3d.md) | 멀티 POI 경위도 위치. |
-| icon | JSIcon | 객체의 표출 아이콘. |
-  
-* Return
-  * true : 객체 생성 성공.
-  * false : 객체 생성 실패.
-  
-* Sample
-  * function initPage 참조.
-  * [샌드박스\_멀티포인트](http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint)  
-{% endtab %}
 
+| Name     | Type                                | Description                   |
+| :------- | :---------------------------------- | :---------------------------- |
+| id       | string                              | 고유 명칭.                    |
+| position | [JSVector3D](../core/jsvector3d.md) | 위치 좌표 (경도, 위도, 고도). |
+| icon     | [JSIcon](./jsicon.md)               | POI 이미지.                   |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+-   Sample
+    -   function initPage 참조.
+    -   [Sandbox_MultiPoint](https://sandbox.egiscloud.com/code/main.do?id=object_multipoint)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setMainPointVisible(visible) → boolean
 
-> Main POI의 출력 여부를 설정.
+> main POI 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| visible | boolean | 출력 여부 설정.<br>true일 경우 출력, false일 경우 출력하지 않음.</br> |
-  
-* Return
-  * true : 오브젝트 설정 성공.
-  * false : 오브젝트가 존재하지 않는 경우.
-{% endtab %}
 
+| Name    | Type    | Description                              |
+| :------ | :------ | :--------------------------------------- |
+| visible | boolean | <p>true: 가시화.<br>false: 비가시화.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
-object.setMainPointVisible(true);  // Visible On
-object.setMainPointVisible(false);  // Visible Off
+object.setMainPointVisible(true); // Visible On
+object.setMainPointVisible(false); // Visible Off
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setSpreadEffect(set) → boolean
 
-> 카메라와 오브젝트 간 거리에 따라 Sub POI가 펼쳐져 보이는 효과를 on/off 설정.
-> 
-> Off 설정 시 Sub POI는 카메라 거리와 관계 없이 펼쳐 진 상태를 유지.
+> 카메라와 멀티 POI 간 거리에 따라 sub POI 표출 애니메이션을 설정합니다.
+>
+> 표출 애니메이션 설정 시 sub POI는 카메라 거리에 따라 중심으로 부터 바깥 방향으로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| set | boolean | 효과 on/off 설정.<br>true일 경우 on, false일 경우 off.</br> |
-  
-* Return
-  * true : 오브젝트 설정 성공.
-  * false : 오브젝트가 존재하지 않는 경우.
-{% endtab %}
 
+| Name | Type    | Description                                               |
+| :--- | :------ | :-------------------------------------------------------- |
+| set  | boolean | <p>true: 표출 애니메이션 사용.<br>false: 일반 가시화.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
-object.setSpreadEffect(true);  // Effect On
-object.setSpreadEffect(false);  // Effect Off
+object.setSpreadEffect(true); // Effect On
+object.setSpreadEffect(false); // Effect Off
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### insertSubPoint(name, icon) → boolean
+### insertSubPoint(id, icon) → boolean
 
-> 멀티 포인트 객체 추가.
-> 
-> 중신 좌표를 기준으로 시계 방향 순으로 자동 배치 되는 POI 추가.
+> main POI에 속하는 sub POI 객체를 추가합니다.
 >
-> 객체의 키구성은 (메인 POI 명칭)#(입력받는 name)로 구성
+> 중심 좌표(경도, 위도, 고도)를 기준으로 시계 방향 순으로 자동 배치되는 sub POI를 추가합니다.
+>
+> 객체의 고유 명칭 구성은 (메인 POI 명칭)#(입력받는 name)로 구성
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| name | string | 멀티 POI 객체 명칭. |
-| icon | JSIcon | 객체의 표출 아이콘. |
-  
-* Return
-  * true : 객체 추가 성공.
-  * false : 객체 추가 실패.
-  
-* Sample
-  * function createSubPoints 참조.
-  * [샌드박스\_멀티포인트](http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint)  
-{% endtab %}
 
+| Name | Type                  | Description |
+| :--- | :-------------------- | :---------- |
+| id   | string                | 고유 명칭.  |
+| icon | [JSIcon](./jsicon.md) | POI 이미지. |
+
+-   Return
+    -   true: 추가 성공.
+    -   false: 추가 실패.
+-   Sample
+    -   function createSubPoints 참조.
+    -   [Sandbox_MultiPoint](https://sandbox.egiscloud.com/code/main.do?id=object_multipoint)
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setBar(color, altitude, width) → boolean
 
-> 메인 POI 위치로 부터 지형을 연결하는 라인 생성.
-> 
-> altitude, width 단위는 미터.
+> main POI 중심 좌표(경도, 위도, 고도)로 부터 지형을 연결하는 선 객체를 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| color | [JSColor](../core/jscolor.md) | 직선 가시화 색상 |
-| altitude | number | 기둥의 시작 높이 |
-| width | number | 기둥의 두께 |
 
-* Return
-  * true : 객체 추가 성공.
-  * false : 객체 추가 실패.
-  
-* Sample
-  * function createMultiPoint 참조.
-  * [샌드박스\_멀티포인트](http://sandbox.dtwincloud.com/code/main.do?id=object_multipoint)  
+| Name     | Type                          | Description            |
+| :------- | :---------------------------- | :--------------------- |
+| color    | [JSColor](../core/jscolor.md) | 선 색상.               |
+| altitude | number                        | 선을 높이(meter 단위). |
+| width    | number                        | 선을 두께.             |
+
+-   Return
+    -   true: 추가 성공.
+    -   false: 추가 실패.
+-   Sample
+    -   function createMultiPoint 참조.
+    -   [Sandbox_MultiPoint](https://sandbox.egiscloud.com/code/main.do?id=object_multipoint)
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ## Getter / Setter
 
-### getDescription() → string
+### getDescription(), setDescription(desc) → string
 
-> 오브젝트의 설명에 대한 내용을 반환.
+> 객체에 대한 설명을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
+
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strDesc = object.getDescription();
+// ... or ...
+object.setDescription("First Object.");
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setDescription(desc)
+### getName(), setName(name) → string
 
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| desc | string | 오브젝트 설명 문자열. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setDescription('First Object.');
-```
-{% endtab %}
-{% endtabs %}
-
-### getName() → string
-
-> 오브젝트의 이름을 반환.
+> 객체 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
+
+-   Return
+    -   string: 객체 이름을 성공적을 반환
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
+// ... or ...
+object.setName("MyObject");
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setName(name)
+### getVisible(), setVisible(visible) → boolean
 
-> 오브젝트의 이름을 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| name | string | 설정할 오브젝트 이름. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setName('MyObject');
-```
-{% endtab %}
-{% endtabs %}
-
-### getVisible() → number
-
-> 오브젝트의 보기/숨김 여부를 반환.
+> 객체의 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
-  * 보기 : Module.JS\_VISIBLE\_ON
-  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
-{% endtab %}
 
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
+
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
+// ... or ...
+object.setVisible(true);
 ```
-{% endtab %}
-{% endtabs %}
 
-### setVisible(visible)
-
-> 오브젝트의 보기/숨김 여부를 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name    | Type   | Description                                                                                                                                    |
-| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setVisible(Module.JS_VISIBLE_ON);
-```
 {% endtab %}
 {% endtabs %}

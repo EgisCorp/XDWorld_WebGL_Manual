@@ -26,9 +26,9 @@ var map = Module.getTerrain();
 | option | [JSTerrain.GridOption](jsterrain.md#jsterrain.gridoption) | Grid data creation information. |
 
 -   Return
-    -   .result : API success status ( 1 : success, 0 : failure ).
-    -   .name : Name of the operation API.
-    -   .return : API return information ( [JSTerrain.GridData](jsterrain.md#jsterrain.griddata) : Normal return value, string : Failure error code ).
+    -   .result: API success status ( 1 : success, 0 : failure ).
+    -   .name: Name of the operation API.
+    -   .return: API return information ( [JSTerrain.GridData](jsterrain.md#jsterrain.griddata) : Normal return value, string : Failure error code ).
 
 {% endtab %}
 {% tab title="Template" %}
