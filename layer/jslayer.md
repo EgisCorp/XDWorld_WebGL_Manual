@@ -984,9 +984,9 @@ layer.setWFSTextColor(lineColor , fillColor);
 {% tabs %}
 {% tab title="Infomation" %}
 
-| Name   | Type                                | Description    |
-| ------ | ----------------------------------- | -------------- |
-| option | [WMSOptions](jslayer.md#wmsoptions) | WMS 생성 정보. |
+| Name   | Type                                | Description |
+| ------ | ----------------------------------- | ----------- |
+| option | [WMSOptions](jslayer.md#wmsoptions) | 속성 정보.  |
 
 -   Return
     -   success : 생성 성공.

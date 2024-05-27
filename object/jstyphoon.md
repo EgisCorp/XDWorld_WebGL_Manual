@@ -16,11 +16,13 @@ var object = Module.createTypoon("typoon");
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---------------------------------------------------------- | ------------- |
-| pos | JSVector3D | 태풍 위치.<br>Longitude : 경도(Degree)</br><br>Latitude : 위도(Degree)</br><br>Altitude : 고도(m)</br> |
-| size | double | 태풍 너비. |
-| alt | double | 태풍 높이. |
+
+| Name | Type       | Description                                                                                            |
+| ---- | ---------- | ------------------------------------------------------------------------------------------------------ |
+| pos  | JSVector3D | 태풍 위치.<br>Longitude : 경도(Degree)</br><br>Latitude : 위도(Degree)</br><br>Altitude : 고도(m)</br> |
+| size | double     | 태풍 너비.                                                                                             |
+| alt  | double     | 태풍 높이.                                                                                             |
+
 {% endtab %}
 {% tab title="Template" %}
 
@@ -40,9 +42,10 @@ typoon.create(vPosition, 500.0, 150.0);
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ---------------------------------------------------------- | ------------- |
-| option | [JSTypoon.CreateOptions](jstypoon.md#jstypoon.createoptions) | 초기화 옵션 속성 정보. |
+
+| Name   | Type                                                         | Description |
+| ------ | ------------------------------------------------------------ | ----------- |
+| option | [JSTypoon.CreateOptions](jstypoon.md#jstypoon.createoptions) | 속성 정보.  |
 
 -   Return
     -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패)
@@ -51,8 +54,8 @@ typoon.create(vPosition, 500.0, 150.0);
 -   Sample
     -   function initPage 참조
     -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript

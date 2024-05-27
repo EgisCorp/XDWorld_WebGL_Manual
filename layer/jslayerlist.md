@@ -76,9 +76,9 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                                | Description       |
-| :----- | :------------------------------------------------------------------ | :---------------- |
-| option | [CreateObjectLayerOptions](jslayerlist.md#createobjectlayeroptions) | 레이어 생성 정보. |
+| Name   | Type                                                                | Description |
+| :----- | :------------------------------------------------------------------ | :---------- |
+| option | [CreateObjectLayerOptions](jslayerlist.md#createobjectlayeroptions) | 속성 정보.  |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 생성 성공.
@@ -171,9 +171,9 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                                | Description       |
-| :----- | :------------------------------------------------------------------ | :---------------- |
-| option | [CreateServerLayerOptions](jslayerlist.md#createserverlayeroptions) | 레이어 생성 정보. |
+| Name   | Type                                                                | Description |
+| :----- | :------------------------------------------------------------------ | :---------- |
+| option | [CreateServerLayerOptions](jslayerlist.md#createserverlayeroptions) | 속성 정보.  |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 생성 성공.

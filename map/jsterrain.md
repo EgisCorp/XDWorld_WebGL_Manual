@@ -21,9 +21,9 @@ var map = Module.getTerrain();
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                      | Description                     |
-| ------ | --------------------------------------------------------- | ------------------------------- |
-| option | [JSTerrain.GridOption](jsterrain.md#jsterrain.gridoption) | Grid data creation information. |
+| Name   | Type                                                      | Description |
+| ------ | --------------------------------------------------------- | ----------- |
+| option | [JSTerrain.GridOption](jsterrain.md#jsterrain.gridoption) | 속성 정보.  |
 
 -   Return
     -   .result: API success status ( 1 : success, 0 : failure ).

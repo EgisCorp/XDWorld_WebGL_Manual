@@ -19,9 +19,9 @@ var math = Module.getMath();
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                               | Description          |
-| ------ | -------------------------------------------------- | -------------------- |
-| option | [JSMath.BezierCurve](jsmath.md#jsmath.beziercurve) | 변환 좌표 속성 정보. |
+| Name   | Type                                               | Description |
+| ------ | -------------------------------------------------- | ----------- |
+| option | [JSMath.BezierCurve](jsmath.md#jsmath.beziercurve) | 속성 정보.  |
 
 -   Return
     -   [JSVec3Array](../core/JSVec3Array.md): 변환 성공
@@ -58,9 +58,9 @@ let curve_pos = {
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                             | Description          |
-| ------ | ------------------------------------------------ | -------------------- |
-| option | [JSMath.BezierLine](jsmath.md#jsmath.bezierline) | 변환 좌표 속성 정보. |
+| Name   | Type                                             | Description |
+| ------ | ------------------------------------------------ | ----------- |
+| option | [JSMath.BezierLine](jsmath.md#jsmath.bezierline) | 속성 정보.  |
 
 -   Return
     -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).
@@ -95,9 +95,9 @@ let parameters = {
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                               | Description         |
-| ------ | -------------------------------------------------- | ------------------- |
-| option | [JSMath.SlopeOption](jsmath.md#jsmath.slopeoption) | 경사분석 속성 정보. |
+| Name   | Type                                               | Description |
+| ------ | -------------------------------------------------- | ----------- |
+| option | [JSMath.SlopeOption](jsmath.md#jsmath.slopeoption) | 속성 정보.  |
 
 -   Return
     -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패 ).

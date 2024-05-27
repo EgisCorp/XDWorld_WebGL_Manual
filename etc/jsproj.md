@@ -117,9 +117,9 @@ console.log(result); // Returns epsg:5186 proj4 code
 {% tabs %}
 {% tab title="infomation" %}
 
-| Name   | Type                                           | Description     |
-| ------ | ---------------------------------------------- | --------------- |
-| option | [TransformOptions](jsproj.md#transformoptions) | 좌표 변환 정보. |
+| Name   | Type                                           | Description |
+| ------ | ---------------------------------------------- | ----------- |
+| option | [TransformOptions](jsproj.md#transformoptions) | 속성 정보.  |
 
 -   Return
 
@@ -238,9 +238,9 @@ console.log(list); // Returns API result information
 {% tabs %}
 {% tab title="infomation" %}
 
-| Name   | Type                                                     | Description     |
-| ------ | -------------------------------------------------------- | --------------- |
-| option | [ClassTransformOptions](jsproj.md#classtransformoptions) | 좌표 변환 정보. |
+| Name   | Type                                                     | Description |
+| ------ | -------------------------------------------------------- | ----------- |
+| option | [ClassTransformOptions](jsproj.md#classtransformoptions) | 속성 정보.  |
 
 -   Return
     -   .result: API success status (1: Success, 0: Failure).

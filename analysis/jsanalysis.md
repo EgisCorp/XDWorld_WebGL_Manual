@@ -77,9 +77,9 @@ Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
 {% tabs %}
 {% tab title="Name" %}
 
-| Name   | Type                                                                           | Description         |
-| :----- | :----------------------------------------------------------------------------- | :------------------ |
-| option | [JSAnalysis.InterpolationOption](jsanalysis.md#jsanalysis.interpolationoption) | 보간된 선 생성 옵션 |
+| Name   | Type                                                                           | Description |
+| :----- | :----------------------------------------------------------------------------- | :---------- |
+| option | [JSAnalysis.InterpolationOption](jsanalysis.md#jsanalysis.interpolationoption) | 속성 정보.  |
 
 -   Return
     -   array: 보간된 선 좌표 목록 반환 성공.

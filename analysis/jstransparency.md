@@ -40,7 +40,7 @@ Module.getTransparency().clear();
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | 터파기 영역 좌표 리스트. |
 
 -   Return
-    -   number >0: 생성 성공.
+    -   number > 0: 생성 성공.
     -   -1: 생성 실패.
 -   Sample
     -   function createTransparency 참조.

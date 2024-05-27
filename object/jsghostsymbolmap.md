@@ -76,9 +76,9 @@ ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", fals
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                                                 | Description     |
-| ------ | ------------------------------------------------------------------------------------ | --------------- |
-| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmap.insertoptions) | 등록 속성 정보. |
+| Name   | Type                                                                                 | Description |
+| ------ | ------------------------------------------------------------------------------------ | ----------- |
+| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmap.insertoptions) | 속성 정보.  |
 
 -   Return
     -   "success": 등록 성공.
@@ -137,9 +137,9 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                                             | Description       |
-| ------ | -------------------------------------------------------------------------------- | ----------------- |
-| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmap.loadtexture) | 이미지 속성 정보. |
+| Name   | Type                                                                             | Description |
+| ------ | -------------------------------------------------------------------------------- | ----------- |
+| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmap.loadtexture) | 속성 정보.  |
 
 -   Return
     -   "success": 설정 성공.

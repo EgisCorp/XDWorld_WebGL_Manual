@@ -386,9 +386,9 @@ API.JSCamera.moveLonLatAltOval(127.0273188, 37.4977981, 500.0, 1);
 
 {% tab title="Information" %}
 
-| Name   | Type                                                                   | Description         |
-| ------ | ---------------------------------------------------------------------- | ------------------- |
-| option | [JSCamera.MoveBoundaryOption](jscamera.md#jscamera.moveboundaryoption) | 카메라 이동 설정값. |
+| Name   | Type                                                                   | Description |
+| ------ | ---------------------------------------------------------------------- | ----------- |
+| option | [JSCamera.MoveBoundaryOption](jscamera.md#jscamera.moveboundaryoption) | 속성 정보.  |
 
 -   Return
     -   true : 설정 성공.
