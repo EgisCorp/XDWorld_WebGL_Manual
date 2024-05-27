@@ -22,18 +22,15 @@ var object = Module.createPolygon("ID");
 
 {% tabs %}
 {% tab title="Information" %}
-
--   Return
-    -   number > 0: 반환 성공.
-    -   number == 0: 반환 실패.
-
+* Return
+  * number > 0: 반환 성공.
+  * number == 0: 반환 실패.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var area = object.getArea();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -43,20 +40,17 @@ var area = object.getArea();
 
 {% tabs %}
 {% tab title="Information" %}
-
--   Return
-    -   [JSAABBox3D](../core/jsaabbox3d.md): 반환 성공.
-    -   null: 반환 실패.
-
+* Return
+  * [JSAABBox3D](../core/jsaabbox3d.md): 반환 성공.
+  * null: 반환 실패.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var boundary = object.getBoundary();
 var boundary_min = boundary.min;
 var boundary_max = boundary.max;
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -66,21 +60,18 @@ var boundary_max = boundary.max;
 
 {% tabs %}
 {% tab title="Information" %}
-
--   Return
-    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
-    -   null: 반환 실패.
-
+* Return
+  * [JSVector3D](../core/jsvector3d.md): 반환 성공.
+  * null: 반환 실패.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var vCenter = object.getCenter();
 var dCenterLon = vCenter.Longitude;
 var dCenterLat = vCenter.Latitude;
 var dCenterAlt = vCenter.Altitude;
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -90,17 +81,14 @@ var dCenterAlt = vCenter.Altitude;
 
 {% tabs %}
 {% tab title="Information" %}
-
--   Return
-    -   number: 거리 반환 성공.
-
+* Return
+  * number: 거리 반환 성공.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var bExtends = object.getExtent();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -110,18 +98,15 @@ var bExtends = object.getExtent();
 
 {% tabs %}
 {% tab title="Information" %}
-
--   Return
-    -   string: 객체 설명 문자열이 성공적으로 반환.
-    -   null: 객체가 null인 경우.
-
+* Return
+  * string: 객체 설명 문자열이 성공적으로 반환.
+  * null: 객체가 null인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var strKey = object.getId();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -131,28 +116,24 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name   | Type                                                              | Description |
 | ------ | ----------------------------------------------------------------- | ----------- |
-| option | [JSPolygon.loadFileOption](jspolygon.md#jspolygon.loadfileoption) | 속성 정보.  |
+| option | [JSPolygon.loadFileOption](jspolygon.md#jspolygon.loadfileoption) | 속성 정보.      |
 
--   Return
-    -   true: 생성 성공.
-    -   false: 생성 실패.
-    -   실패 조건
-        -   positionmode=true 일 때 projectioncode가 설정되지 않은 경우
-        -   positionmode=false 일 때 position이 지정되지 않은 경우
--   Sample
-    -   the load3DS function 참조.
-    -   [Sandbox_3DS](https://sandbox.egiscloud.com/code/main.do?id=object_file_3ds)
-
+* Return
+  * true: 생성 성공.
+  * false: 생성 실패.
+  * 실패 조건
+    * positionmode=true 일 때 projectioncode가 설정되지 않은 경우
+    * positionmode=false 일 때 position이 지정되지 않은 경우
+* Sample
+  * the load3DS function 참조.
+  * [Sandbox\_3DS](https://sandbox.egiscloud.com/code/main.do?id=object\_file\_3ds)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -160,33 +141,29 @@ var strKey = object.getId();
 
 > 평면 객체에 사용할 이미지를 설정합니다.
 >
-> 입력 변수값(name)은 [setFaceTexture](jspolygon.md#setfacetextureindex-name--boolean) API로 텍스쳐를 적용할 때 텍스쳐를 구분하는 용도로 사용합니다.
+> 입력 변수값(name)은 [setFaceTexture ](jspolygon.md#setfacetexture-index-name-boolean)API로 텍스쳐를 적용할 때 텍스쳐를 구분하는 용도로 사용합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name | Type   | Description                |
 | ---- | ------ | -------------------------- |
 | name | string | Texture registration name. |
 | url  | string | Texture image URL.         |
 
--   Return
-    -   true: Object creation successful.
-    -   false: Object creation failed.
-    -   Failure conditions.
-        -   If there is already a texture with the same name.
-        -   If name, url are empty strings.
--   Sample
-    -   the init function 참조.
-    -   [Sandbox_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_image_changing)
-
+* Return
+  * true: Object creation successful.
+  * false: Object creation failed.
+  * Failure conditions.
+    * If there is already a texture with the same name.
+    * If name, url are empty strings.
+* Sample
+  * the init function 참조.
+  * [Sandbox\_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -194,30 +171,26 @@ var strKey = object.getId();
 
 > Creates a circular planar object based on the center coordinates.
 >
-> Must set radius input value \> 0.
+> Must set radius input value > 0.
 >
-> Must set segment input value \> 3.
+> Must set segment input value > 3.
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name     | Type                                | Description                                                   |
 | -------- | ----------------------------------- | ------------------------------------------------------------- |
 | position | [JSVector3D](../core/jsvector3d.md) | Polygon location coordinates (longitude, latitude, altitude). |
 | radius   | number                              | Radius.                                                       |
 | segment  | number                              | Number of vertices.                                           |
 
--   Sample
-    -   the createCirclePolygon function 참조.
-    -   [Sandbox_Circle Polygon](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_circle)
-
+* Sample
+  * the createCirclePolygon function 참조.
+  * [Sandbox\_Circle Polygon](https://sandbox.egiscloud.com/code/main.do?id=object\_polygon\_circle)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -227,29 +200,25 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name  | Type   | Description                                       |
 | ----- | ------ | ------------------------------------------------- |
 | index | number | Polygon face index where the texture will be used |
 | name  | string | Texture name specified with the loadTexture API   |
 
--   Return
-    -   true: Object creation successful.
-    -   false: Object creation failed
-    -   Failure conditions.
-        -   If the specified texture name does not exist
-        -   If the polygon face with the specified index does not exist
--   Sample
-    -   the init function 참조.
-    -   [Sandbox_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_image_changing)
-
+* Return
+  * true: Object creation successful.
+  * false: Object creation failed
+  * Failure conditions.
+    * If the specified texture name does not exist
+    * If the polygon face with the specified index does not exist
+* Sample
+  * the init function 참조.
+  * [Sandbox\_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -259,27 +228,23 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name | Type    | Description                                                                         |
 | ---- | ------- | ----------------------------------------------------------------------------------- |
 | type | boolean | <p>true for fire effect visualization(RTT).<br>false for default visualization.</p> |
 
--   Return
-    -   true: Object setting successful.
-    -   false: Object setting failed.
-    -   Failure conditions.
-        -   If the polygon coordinates are not set.
--   Sample
-    -   the createBurnEffectPolygon function 참조.
-    -   [Sandbox_Fire Effect](https://sandbox.egiscloud.com/code/main.do?id=effect_fire)
-
+* Return
+  * true: Object setting successful.
+  * false: Object setting failed.
+  * Failure conditions.
+    * If the polygon coordinates are not set.
+* Sample
+  * the createBurnEffectPolygon function 참조.
+  * [Sandbox\_Fire Effect](https://sandbox.egiscloud.com/code/main.do?id=effect\_fire)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -287,31 +252,27 @@ var strKey = object.getId();
 
 > Creates a 3D polygon with height from a planar polygon.
 >
-> Must set height input value \> 0 (in meters).
+> Must set height input value > 0 (in meters).
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name   | Type   | Description     |
 | ------ | ------ | --------------- |
 | height | number | Polygon height. |
 
--   Return
-    -   true: Object setting successful.
-    -   false: Object setting failed.
-    -   Failure conditions.
-        -   If the polygon coordinates are not set.
--   Sample
-    -   the createPolygon function 참조.
-    -   [Sandbox_Polygon Height](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_height)
-
+* Return
+  * true: Object setting successful.
+  * false: Object setting failed.
+  * Failure conditions.
+    * If the polygon coordinates are not set.
+* Sample
+  * the createPolygon function 참조.
+  * [Sandbox\_Polygon Height](https://sandbox.egiscloud.com/code/main.do?id=object\_polygon\_height)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -321,29 +282,25 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name        | Type                                  | Description                                        |
 | ----------- | ------------------------------------- | -------------------------------------------------- |
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | List of longitude, latitude, altitude coordinates. |
 | parts       | [Collection](../core/collection.md)   | List of point counts composing the face.           |
 
--   Return
-    -   true: Object creation successful.
-    -   false: Object creation failed.
-    -   Failure conditions
-        -   If there are no components entered for coordinates or if the number of vertices is less than 3.
-        -   If there are no components entered for parts or if there is less than 1 part.
--   Sample
-    -   the createPolygon function 참조.
-    -   [Sandbox_Polygon Height](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_height)
-
+* Return
+  * true: Object creation successful.
+  * false: Object creation failed.
+  * Failure conditions
+    * If there are no components entered for coordinates or if the number of vertices is less than 3.
+    * If there are no components entered for parts or if there is less than 1 part.
+* Sample
+  * the createPolygon function 참조.
+  * [Sandbox\_Polygon Height](https://sandbox.egiscloud.com/code/main.do?id=object\_polygon\_height)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -353,7 +310,6 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name        | Type                                  | Description                                                                              |
 | ----------- | ------------------------------------- | ---------------------------------------------------------------------------------------- |
 | coordinates | [JSVec3Array](../core/jsvec3array.md) | List of longitude, latitude, altitude coordinates.                                       |
@@ -361,25 +317,22 @@ var strKey = object.getId();
 | uv          | [JSVec2Array](../core/jsvec2array.md) | List of UV coordinates for the face.                                                     |
 | type        | boolean                               | <p>true for terrain combined visualization(RTT).<br>false for default visualization.</p> |
 
--   Return
-    -   true: Object creation successful.
-    -   false: Object creation failed
-    -   Failure conditions
-        -   If there are no components entered for coordinates or if the number of vertices is less than 3.
-        -   If there are no components entered for parts or if there is less than 1 part.
-        -   If there are no components entered for uv or if there are less than 3 uv coordinates.
-        -   If the number of coordinates and uv do not match.
--   Sample
-    -   the init function 참조.
-    -   [Sandbox_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_image_changing)
-
+* Return
+  * true: Object creation successful.
+  * false: Object creation failed
+  * Failure conditions
+    * If there are no components entered for coordinates or if the number of vertices is less than 3.
+    * If there are no components entered for parts or if there is less than 1 part.
+    * If there are no components entered for uv or if there are less than 3 uv coordinates.
+    * If the number of coordinates and uv do not match.
+* Sample
+  * the init function 참조.
+  * [Sandbox\_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object\_polygon\_rtt\_image\_changing)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -391,22 +344,18 @@ var strKey = object.getId();
 
 {% tabs %}
 {% tab title="Information" %}
+| Name  | Type                                | Description  |
+| ----- | ----------------------------------- | ------------ |
+| style | [JSPolygonStyle](jspolygonstyle.md) | Object style |
 
-| Name  | Type                                  | Description  |
-| ----- | ------------------------------------- | ------------ |
-| style | [JSPolygonStyle](./jspolygonstyle.md) | Object style |
-
--   Sample
-    -   the createBurnEffectPolygon function 참조.
-    -   [Sandbox_Fire Effect](https://sandbox.egiscloud.com/code/main.do?id=effect_fire)
-
+* Sample
+  * the createBurnEffectPolygon function 참조.
+  * [Sandbox\_Fire Effect](https://sandbox.egiscloud.com/code/main.do?id=effect\_fire)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -416,21 +365,19 @@ var strKey = object.getId();
 
 > Sets the list of coordinates for the polygon object.
 >
-> Must set the number of components in coordinates \> 3.
+> Must set the number of components in coordinates > 3.
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name        | Type                                | Description                                        |
 | ----------- | ----------------------------------- | -------------------------------------------------- |
 | coordinates | [Collection](../core/collection.md) | List of longitude, latitude, altitude coordinates. |
 
--   Return
-    -   [Collection](../core/collection.md): List of longitude, latitude, altitude coordinates.
-
+* Return
+  * [Collection](../core/collection.md): List of longitude, latitude, altitude coordinates.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var coorList = object.getCoordinates();
 // ... or ...
@@ -438,7 +385,6 @@ var vertexList = Module.getMap().getInputPointList();
 var object = Module.createPolygon("polygon");
 object.setCoordinates(vertexList);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -448,24 +394,21 @@ object.setCoordinates(vertexList);
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name | Type   | Description                |
 | ---- | ------ | -------------------------- |
 | desc | string | Object description string. |
 
--   Return
-    -   string: Successful return of the object's description string.
-    -   null: If the object is null.
-
+* Return
+  * string: Successful return of the object's description string.
+  * null: If the object is null.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var strDesc = object.getDescription();
 // ... or ...
 object.setDescription("First Object.");
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -475,24 +418,21 @@ object.setDescription("First Object.");
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name | Type   | Description                     |
 | ---- | ------ | ------------------------------- |
 | name | string | The name to set for the object. |
 
--   Return
-    -   string: Successful return of the object's name.
-    -   null: If the object is null.
-
+* Return
+  * string: Successful return of the object's name.
+  * null: If the object is null.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var objName = object.getName();
 // ... or ...
 object.setName("MyObject");
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -502,51 +442,45 @@ object.setName("MyObject");
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name    | Type    | Description                                                      |
 | ------- | ------- | ---------------------------------------------------------------- |
 | visible | boolean | <p>true: Make the object visible.<br>false: Hide the object.</p> |
 
--   Return
-    -   true: Object visible state.
-    -   false: Object hidden state.
-
+* Return
+  * true: Object visible state.
+  * false: Object hidden state.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var objName = object.getName();
 // ... or ...
 object.setVisible(true);
 ```
-
 {% endtab %}
 {% endtabs %}
 
-### getStyle(), setStyle(style) → [JSPolygonStyle](./jspolygonstyle.md)
+### getStyle(), setStyle(style) → [JSPolygonStyle](jspolygonstyle.md)
 
-> Changes the object style with options applied in [JSPolygonStyle](./jspolygonstyle.md).
+> Changes the object style with options applied in [JSPolygonStyle](jspolygonstyle.md).
 >
 > Sets the color, thickness, and transparency.
 
 {% tabs %}
 {% tab title="Information" %}
+| Name  | Type                                | Description  |
+| ----- | ----------------------------------- | ------------ |
+| style | [JSPolygonStyle](jspolygonstyle.md) | Object style |
 
-| Name  | Type                                  | Description  |
-| ----- | ------------------------------------- | ------------ |
-| style | [JSPolygonStyle](./jspolygonstyle.md) | Object style |
-
--   Return
-    -   A valid object style ([JSPolygonStyle](./jspolygonstyle.md)): If the object style is successfully returned.
-    -   A simply initialized object style ([JSPolygonStyle](./jspolygonstyle.md)): If the object is null.
-
+* Return
+  * A valid object style ([JSPolygonStyle](jspolygonstyle.md)): If the object style is successfully returned.
+  * A simply initialized object style ([JSPolygonStyle](jspolygonstyle.md)): If the object is null.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var objectStyle = polyLine.getStyle();
 ```
-
 {% endtab %}
 {% endtabs %}
 
