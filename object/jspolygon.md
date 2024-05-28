@@ -387,33 +387,6 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
-### setStyle(style)
-
-> 평면 객체을 가시화 스타일을 설정합니다.
->
-> 평면 객체의 색상, 투명도, 외각선 등을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name  | Type                                | Description |
-| ----- | ----------------------------------- | ----------- |
-| style | [JSPolygonStyle](jspolygonstyle.md) | 속성 정보.  |
-
--   Sample
-    -   the createBurnEffectPolygon function 참조.
-    -   [Sandbox_Fire Effect](https://sandbox.egiscloud.com/code/main.do?id=effect_fire)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
 ## Getter / Setter
 
 ### getCoordinates(), setCoordinates(coordinates) → [Collection](../core/collection.md)
