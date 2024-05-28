@@ -93,7 +93,7 @@ Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
 {% endtab %}
 {% endtabs %}
 
-### getNaviVisible(), → number
+### getNaviVisible(), setNaviVisible(display) → number
 
 > 나침반 가시화 유무를 설정합니다.
 
@@ -107,7 +107,7 @@ Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
 -   Return
     -   number: [navigation visibility type](../etc/type-list.md#navigation-visible-type-list) 반환.
 -   Sample
-    -   Refer to the function getNavigationProperties.
+    -   function getNavigationProperties 참조.
     -   [Sandbox_Map Control](https://sandbox.egiscloud.com/code/main.do?id=option_control_map)
 
 {% endtab %}
