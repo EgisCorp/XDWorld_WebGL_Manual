@@ -1,14 +1,12 @@
 ---
-description: 폴리곤 스타일 객체 생성 및 수정 기능 API.
+description: 지도 내 평면 객체에 적용 될 스타일 옵션 설정하기 위한 API 입니다.
 ---
 
 # JSPolygonStyle
 
-### JSPolygonStyle() → JSPolygonStyle
-
-> 폴리곤 형 오브젝트의 스타일을 지정하는 JSPolygonStyle 오브젝트를 생성.
+> Module.JSPolygonStyle() API를 생성합니다.
 >
-> JSPolygonStyle 객체를 통해 여러 폴리곤 형 오브젝트 스타일의 일괄 지정이 가능.
+> JSPolygonStyle을 통해 다양한 평면 객체 스타일의 일괄 설정이 가능합니다.
 
 ```javascript
 var objectStyle = new Module.JSPolygonStyle();
@@ -16,158 +14,130 @@ var objectStyle = new Module.JSPolygonStyle();
 
 ## Getter / Setter
 
-### getFill() → boolean
+### getFill(), setFill(fill) → boolean
 
-> 오브젝트의 채움 색상 적용 여부를 반환.
+> 평면 객체의 채움 색상을 가시화 유무를 설정합니다.
+>
+> 기본적으로 true 옵션으로 설정됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * true : 채움 색상 적용.
-  * false : 채움 색상 적용하지 않음.
-{% endtab %}
 
+| Name | Type    | Description                                               |
+| ---- | ------- | --------------------------------------------------------- |
+| fill | boolean | <p>true: 색상 가시화.<br>false: 평면 객체 옵션 가시화.<p> |
+
+-   Return
+    -   true: 색상 적용.
+    -   false: 색상 미적용.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var bOutlineUsed = polygon.getStyle().getFill();
-```
-{% endtab %}
-{% endtabs %}
-
-### setFill(fill)
-
-> 오브젝트의 채움 색상 적용 여부를 설정.
->
-> 설정하지 않았을 경우, 적용되어 있음(true).
-
-| Name | Type    | Description                                                                |
-| ---- | ------- | -------------------------------------------------------------------------- |
-| fill | boolean | <p>오브젝트의 채움 색상 적용 여부.<br>true일 경우 색상 적용.<br><br>false일 경우 적용하지 않음.<br></p> |
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
+// ... or ...
 var figure = new Module.JSFigure();
-//...
+// ...
 var polyStyle = figure.getStyle();
 polyStyle.setFill(true);
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### getFillColor() → JSColor
+### getFillColor(), setFillColor(color) → [JSColor](../core/jscolor.md)
 
-> 오브젝트의 스타일의 채움 색상을 반환.
+> 평면 객체의 채움 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * JSColor : 설정하고자 하는 색상 오브젝트.
-{% endtab %}
 
+| Name  | Type                          | Description |
+| ----- | ----------------------------- | ----------- |
+| color | [JSColor](../core/jscolor.md) | 색상값.     |
+
+-   Return
+    -   [JSColor](../core/jscolor.md): 적용 색상값.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var figure = new Module.JSFigure();
 //...
 var polyStyle = figure.getStyle();
 var fillColor = polyStyle.getFillColor();
-```
-{% endtab %}
-{% endtabs %}
-
-### setFillColor(color)
-
-> 오브젝트의 스타일의 채움 색상을 설정.
-
-| Name  | Type    | Description       |
-| ----- | ------- | ----------------- |
-| color | JSColor | 설정하고자 하는 색상 오브젝트. |
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
+// ... or ...
 var polyStyle = figure.getStyle();
 var fillColor = new Module.JSColor(255, 255, 100, 0);
 polyStyle.setFillColor(fillColor);
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### getOutLine() → boolean
+### getOutLine(), setOutLine(set) → boolean
 
-> 오브젝트의 외곽 라인 색상 적용 여부를 반환.
+> 평면 객체의 외각선 가시화 유무를 설정합니다.
+>
+> 기본적으로 true 옵션으로 설정됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * true : 외곽 라인 색상 적용.
-  * false : 외곽 라인 색상 적용하지 않음.
-{% endtab %}
 
+| Name | Type    | Description                                            |
+| ---- | ------- | ------------------------------------------------------ |
+| set  | boolean | <p>true: 외각선 가시화.<br>false: 외각선 비가시화.</p> |
+
+-   Return
+    -   true: 외각선 적용.
+    -   false: 외각선 미적용.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var bOutlineUsed = polygon.getStyle().getOutLine();
-```
-{% endtab %}
-{% endtabs %}
-
-### setOutLine(set)
-
-> 오브젝트의 외곽 라인 색상 적용 여부를 설정.
->
-> 설정하지 않았을 경우, 적용되어 있음(true).
-
-| Name | Type    | Description                                                             |
-| ---- | ------- | ----------------------------------------------------------------------- |
-| set  | boolean | <p>외곽 라인 색상 적용 여부.<br>true일 경우 색상 적용.<br><br>false일 경우 적용하지 않음.<br></p> |
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
+// ... or ...
 var figure = new Module.JSFigure();
 //...
 var polyStyle = figure.getStyle();
 polyStyle.setOutLine(false);
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### getOutLineColor() → JSColor
+### getOutLineColor(), setOutLineColor(color) → [JSColor](../core/jscolor.md)
 
-> 오브젝트의 스타일의 외곽 라인 색상을 반환.
+> 평면 객체의 외각선 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * JSColor : 설정한 외곽 라인 색상.
-{% endtab %}
 
+| Name  | Type                          | Description |
+| ----- | ----------------------------- | ----------- |
+| color | [JSColor](../core/jscolor.md) | 색상값.     |
+
+-   Return
+    -   [JSColor](../core/jscolor.md): 적용 색상값.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var figure = new Module.JSFigure();
 //...
 var polyStyle = figure.getStyle();
 var outlineColor = polyStyle.getOutLineColor();
-```
-{% endtab %}
-{% endtabs %}
-
-### settOutLineColor(color)
-
-> 오브젝트의 스타일의 외곽 라인 색상을 설정.
-
-| Name  | Type    | Description       |
-| ----- | ------- | ----------------- |
-| color | JSColor | 설정하고자 하는 색상 오브젝트. |
-
-{% tabs %}
-{% tab title="Template" %}
-```javascript
+// ... or ...
 var figure = new Module.JSFigure();
 //...
 var polyStyle = figure.getStyle();
 var outlineColor = new Module.JSColor(255, 255, 0, 0);
 polyStyle.setOutLineColor(outlineColor);
 ```
+
 {% endtab %}
 {% endtabs %}

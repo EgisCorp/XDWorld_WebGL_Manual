@@ -6,7 +6,7 @@ description: 지도 내 바람 흐름을 표현하는 객체를 생성 및 설�
 
 > Module.getFlow() API를 생성합니다.
 >
-> 입력 변수값은 [JSFlow.FlowDataOption](jsflow.md#jsflow.flowdataoption) fo.
+> 입력 변수값은 [JSFlow.FlowDataOption](jsflow.md#jsflow.flowdataoption) 참조.
 
 ```javascript
 let flow = Module.getFlow();

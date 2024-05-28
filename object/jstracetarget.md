@@ -1,56 +1,61 @@
 ---
-description: 경로 설정 객체 생성 및 수정 기능 API.
+description: 지도 내 경로 기능을 관리하기 위한 API 입니다.
 ---
 
 # JSTraceTarget
 
-> 경위도 기반으로 경로 설정.
-> 
-> Module.createTraceTargetAPI 생성.
->
-> 샌드박스[Trace Target](https://sandbox.dtwincloud.com/code/main.do?id=camera_trace) 참고.
+> Module.createTraceTarget() API를 생성합니다.
 
 ```javascript
-let trace = Module.createTraceTarget("NEW_PATH");
+let trace = Module.createTraceTarget("ID");
 ```
 
-### move(front, right, terrainUnion)
+## Function
 
-> 객체 해당 방향으로 이동.
+### move(front, right, terrain)
+
+> 객체를 이동합니다.
+>
+> 입력 변수값(front, right)으로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| front | number | 전방 이동 상수. |
-| right | number | 우측 이동 상수. |
-| terrainUnion | boolean | 오브젝트 지형 결합 여부.<br>true인 경우 지형과 결합.</br><br>false인 경우 결합하지 않음.</br> |
+
+| Name    | Type    | Description                                        |
+| :------ | :------ | :------------------------------------------------- |
+| front   | number  | 전후 이동 값(in meters).                           |
+| right   | number  | 좌우 이동 값(in meters).                           |
+| terrain | boolean | <p>true: 지형 곡면률 적용.<br>flase: 일반 이동.<p> |
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
-// traceTarget의 생성 및 연결 과정 생략.
+// Omission of traceTarget creation and connection process.
 traceTarget.move(1.0, 1.0, true);
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### moveTarget(options)
 
-> 객체 해당 방향으로 이동.
-> 
-> move()와 달리, 6방향(전/후/좌/우/상/하)의 이동을 매개변수로 전달함.
+> 객체를 이동합니다.
+>
+> [move](jstracetarget.md#move-front-right-terrain)와 달리, 6방향(전,후,좌,우,상,하)으로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| parameter | [JSTraceTarget.moveParameter](jstracetarget.md#jstracetarget.moveparameter) | 이동 정보. |
+
+| Name      | Type                                                                        | Description |
+| :-------- | :-------------------------------------------------------------------------- | :---------- |
+| parameter | [JSTraceTarget.moveParameter](jstracetarget.md#jstracetarget.moveparameter) | 속성 정보.  |
 
 {% endtab %}
 
 {% tab title="Template" %}
-- 샌드박스[Trace Target](https://sandbox.dtwincloud.com/code/main.do?id=camera_trace)의 `renewObjectMoving()`을 변형한 코드.
+
 ```javascript
 var move_front = 0.0;
 var move_back = 0.0;
@@ -78,137 +83,129 @@ if (GLOBAL["KEY_PRESS_q"]) {
 } else;
 
 GLOBAL.TRACE_TARGET.moveTarget({
-    front : move_front,
-    back : move_back,
-    left : move_left,
-    right : move_right,
-    down : move_down,
-    up : move_up
-})
+    front: move_front,
+    back: move_back,
+    left: move_left,
+    right: move_right,
+    down: move_down,
+    up: move_up,
+});
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### ReleaseObject() → boolean
 
-> 연결되어 있는 객체 해제.
+> 연결된 객체를 해제 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * true : 해제에 성공한 경우.
+
+-   Return
+    -   true: 해제 성공.
+    -   false: 해제 실패.
+
 {% endtab %}
 
 {% tab title="Template" %}
+
 ```javascript
-// traceTarget의 생성 및 연결 과정 생략.
+// Omission of traceTarget creation and connection process.
 traceTarget.ReleaseObject();
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### set(options)
 
-> 대상 객체 및 카메라 상태 재설정.
-> 
-> 객체 및 상태를 파라메터로 전달.
+> 대상 객체와 카메라 상태를 재설정합니다.
+>
+> 해당 객체는 [JSGhostSymbol](jsghostsymbol.md) 및 [JSPoint](jspoint.md)만 지원합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| object | [JSGhostSymbol](jsghostsymbol.md) or [JSPoint](jspoint.md) | 대상 객체. |
-| tilt      | number | tilt 상수. |
-| direction | number | direction 상수. |
-| distance  | number | distance 상수. |
-{% endtab %}
 
+| Name      | Type                      | Description |
+| :-------- | :------------------------ | :---------- |
+| object    | [JSObject](./jsobject.md) | 대상 객체.  |
+| tilt      | number                    | 기울기.     |
+| direction | number                    | 방향값.     |
+| distance  | number                    | 거리값.     |
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * true : 해제에 성공한 경우.
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-// traceTarget의 생성 및 연결 과정 생략.
-traceTarget.ReleaseObject();
-```
-{% endtab %}
-{% endtabs %}
-
-
 
 ### unionTargetToTerrain()
 
-> 오브젝트 지형 결합.
+> 객체 이동시 지형 곡면률 적용 합니다.
 
 {% tabs %}
+{% tab title="Information" %}
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
-// traceTarget의 생성 및 연결 과정 생략.
+// Omission of traceTarget creation and connection process.
 traceTarget.unionTargetToTerrain();
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ## Getter / Setter
 
-### getObject → JSObject
+### getObject(), setObject(object) → [JSObject](./jsobject.md)
 
-> 현재 연결되어 있는 대상 객체 반환.
+> 연결된 객체를 입력 변수값(object) 객체로 변경합니다.
+>
+> 해당 객체는 [JSGhostSymbol](jsghostsymbol.md) 및 [JSPoint](jspoint.md)만 지원하니다..
+>
+> 입력 변수값(object) 객체가 null이면 동작하지 않습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [JSObject](jsobject.md) : 반환에 성공한 경우.
-  * null : 연결된 객체가 없는 경우.
-{% endtab %}
 
+| Name   | Type                      | Description |
+| ------ | ------------------------- | ----------- |
+| object | [JSObject](./jsobject.md) | 객체.       |
+
+-   Return
+    -   [JSObject](jsobject.md): returned successfully.
+    -   null : returned failed.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
-// traceTarget의 생성 및 연결 과정 생략.
+// Omission of traceTarget creation and connection process.
 traceTarget.getObject();
-```
-{% endtab %}
-{% endtabs %}
-
-### setObject(object)
-
-> 현재 연결되어 있는 대상 객체 변경.
-> 
-> object가 null인 경우, 동작하지 않음.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| object | [JSObject](jsobject.md) | 대상 객체 정보. |
-
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-// traceTarget의 생성 및 연결 과정 생략.
+// ... or ...
+// Omission of traceTarget creation and connection process.
 traceTarget.setObject(object);
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### Type Definitions
 
 #### JSTraceTarget.moveParameter
-| Name   | Type | Attributes | Default | Description |
-| --- | --- | --- | --- | --- |
-| front | number | optional | 0.0 | 전방 이동 상수. |
-| back  | number | optional | 0.0 | 후방 이동 상수. |
-| left  | number | optional | 0.0 | 좌측 이동 상수. |
-| right | number | optional | 0.0 | 우측 이동 상수. |
-| up    | number | optional | 0.0 | 상측 이동 상수. |
-| down  | number | optional | 0.0 | 하측 이동 상수. |
+
+| Name  | Type   | Attributes | Default | Description              |
+| ----- | ------ | ---------- | ------- | ------------------------ |
+| front | number | optional   | 0.0     | 전방 이동값 (in meters). |
+| back  | number | optional   | 0.0     | 후방 이동값 (in meters). |
+| left  | number | optional   | 0.0     | 좌측 이동값 (in meters). |
+| right | number | optional   | 0.0     | 우측 이동값 (in meters). |
+| up    | number | optional   | 0.0     | 상승 이동값 (in meters). |
+| down  | number | optional   | 0.0     | 하향 이동값 (in meters). |

@@ -1,34 +1,40 @@
 ---
-description: 태풍 객체 생성 및 수정 기능 API.
+description: 지도 내 태풍을 표현하는 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
-# JSTypoon
+# JSTyphoon
 
-> Module.createTypoon API 생성.
+> Module.createTyphoon() API를 생성합니다.
 
 ```javascript
-var object = Module.createTypoon("typoon");
+var object = Module.createTyphoon("id");
 ```
 
-### create(pos, size, alt) → boolean
+## Function
 
-> 태풍 오브젝트의 위치 및 크기를 설정.
+### create(position, size, alt) → boolean
+
+> 태풍 객체의 위치와 크기를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type       | Description                                                                                            |
-| ---- | ---------- | ------------------------------------------------------------------------------------------------------ |
-| pos  | JSVector3D | 태풍 위치.<br>Longitude : 경도(Degree)</br><br>Latitude : 위도(Degree)</br><br>Altitude : 고도(m)</br> |
-| size | double     | 태풍 너비.                                                                                             |
-| alt  | double     | 태풍 높이.                                                                                             |
+| Name     | Type                                | Description                   |
+| -------- | ----------------------------------- | ----------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md) | 중심 좌표 (경도, 위도, 고도). |
+| size     | number                              | 크기.                         |
+| alt      | number                              | 높이.                         |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var vPosition = new Module.JSVector3D(126.7824826, 35.0119469, 15.2752179);
-typoon.create(vPosition, 500.0, 150.0);
+typhoon.create(vPosition, 500.0, 150.0);
 ```
 
 {% endtab %}
@@ -36,31 +42,29 @@ typoon.create(vPosition, 500.0, 150.0);
 
 ### createbyJson(options) → object
 
-> 태풍 객체를 생성.
->
-> argument 변수로 태풍 객체 설정.
+> 태풍 객체를 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                         | Description |
-| ------ | ------------------------------------------------------------ | ----------- |
-| option | [JSTypoon.CreateOptions](jstypoon.md#jstypoon.createoptions) | 속성 정보.  |
+| Name   | Type                                                            | Description |
+| ------ | --------------------------------------------------------------- | ----------- |
+| option | [JSTyphoon.CreateOptions](jstyphoon.md#jstyphoon.createoptions) | 속성 정보.  |
 
 -   Return
-    -   .result: API 성공 유무 상태 ( 1 : 성공, 0 : 실패)
-    -   .name: 동작 API 명칭
-    -   .return: API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드)
+    -   .result : API 성공 유무 상태 ( 1 : 성공, 0 : 실패)
+    -   .name : 동작 API 명칭
+    -   .return : API 반환 정보 ( object : 정상적인 반환값, 문자열 : 실패 에러 코드)
 -   Sample
-    -   function initPage 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
+    -   function initPage 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 let json = {
-    id: "Typoon",
+    id: "Typhoon",
     size: 800,
     height: 1000,
     position: new Module.JSVector3D(126.7852637, 35.0183227, 30.0),
@@ -79,16 +83,16 @@ let json = {
 
 ### getId() → string
 
-> 오브젝트의 Key를 반환.
+> 객체의 고유 명칭을 반환 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   유효한 문자열(string) : 오브젝트의 Key 반환 성공.
-    -   빈 문자열(string) : 오브젝트가 null인 경우.
-        {% endtab %}
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -100,20 +104,20 @@ var strKey = object.getId();
 
 ### moveStart()
 
-> 태풍 이동 시작.
+> 태풍 객체 이동 이벤트를 동작 합니다.
 >
-> JSTypoon API moveList에 추가 한 경위도 좌표로 태풍 이동.
+> [moveList()](jstyphoon.md#movelist-list)를 통해 추가된 좌표로 태풍이 이동합니다.
 >
-> 태풍 이동 이벤트 종료 후 생성 위치로 초기화.
+> 태풍 객체 이동 이벤트 종료 후 위치로 초기화합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Sample
-    -   function moveTypoon 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function moveTyphoon 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -125,18 +129,18 @@ var strKey = object.getId();
 
 ### moveEnd()
 
-> 태풍 강제 이동 종료.
+> 태풍 객체 이동 이벤트를 종료합니다.
 >
-> 태풍 강제 이동 종료 후 생성 위치로 초기화.
+> 태풍 객체 이동 이벤트 종료 후 위치로 초기화합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Sample
-    -   function stopTypoon 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function stopTyphoon 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -146,23 +150,24 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
-### moveList(movelist)
+### moveList(list)
 
-> 태풍 이동 경위도 설정.
+> 태풍 객체을 이동 정점 좌표(경도, 위도, 고도)을 추가합니다.
 >
-> 입력된 경위도 좌표로 순차적으로 이동.
+> 입력된 정점 좌표를 순차적으로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| -------- | ----------------------------------- | -------------- |
-| movelist | [Collection](../core/collection.md) | 태풍 경위도 좌표 목록. |
+
+| Name | Type                                | Description    |
+| ---- | ----------------------------------- | -------------- |
+| list | [Collection](../core/collection.md) | 이동 좌표 목록 |
 
 -   Sample
-    -   function moveTypoon 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function moveTyphoon 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -178,23 +183,24 @@ movePosition.add(new Module.JSVector3D(126.79408620811664, 35.019259090964134, 2
 
 ### setDamageRange(danger, size, alt, color)
 
-> 태풍의 피해 범위를 설정.
+> 태풍 객체의 피해 범위를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----- | ------ | --------- |
-| danger | boolean | 위혐/경고 타입 설정.<br>true : </br><br>false : 피해 범위 타입을 '경고' 수준으로 설정</br> |
-| size | boolean | 피해 범위. |
-| alt | boolean | 범위 출력 고도. |
-| color | boolean | 표시 색상. |
-{% endtab %}
 
+| Name   | Type                          | Description                                                   |
+| ------ | ----------------------------- | ------------------------------------------------------------- |
+| danger | boolean                       | <p>true: '위험' 상태 가시화.<br>false: '경도' 상태 가시화.<p> |
+| size   | number                        | 피해 범위(in meter).                                          |
+| alt    | number                        | 피해 범위 출력 해발고도(in meter).                            |
+| color  | [JSColor](../core/jscolor.md) | 표시 색상값.                                                  |
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var rangeColor = new Module.JSColor(255, 255, 255, 0);
-typoon.setDamageRange(true, 300.0, 10.0, rangeColor);
+typhoon.setDamageRange(true, 300.0, 10.0, rangeColor);
 ```
 
 {% endtab %}
@@ -202,19 +208,20 @@ typoon.setDamageRange(true, 300.0, 10.0, rangeColor);
 
 ### setRotationSpeed(speed)
 
-> 태풍의 회전 속도를 설정.
+> 태풍 객체의 회전 속도를 설정합니다..
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----- | ------ | --------- |
-| speed | number | 태풍 회전 속도. |
+
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| speed | number | 회전 속도.  |
 
 -   Sample
-    -   function setTypoonSpeed 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function setTyphoonSpeed 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -226,20 +233,22 @@ typoon.setDamageRange(true, 300.0, 10.0, rangeColor);
 
 ### setSize(radius, alt)
 
-> 태풍의 크기를 설정.
+> 태풍 객체 크기를 설정 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----- | ------ | --------- |
-| radius | number | 태풍 반경. |
-| alt | number | 태풍 높이. |
+
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| radius | number | 태풍 반경.  |
+| alt    | number | 태풍 높이.  |
+
 {% endtab %}
 
 {% tab title="Template" %}
 
 ```javascript
-typoon.setSize(500.0, 150.0);
+typhoon.setSize(500.0, 150.0);
 ```
 
 {% endtab %}
@@ -247,19 +256,20 @@ typoon.setSize(500.0, 150.0);
 
 ### setSpeed(speed)
 
-> 태풍 이동 속도 설정.
+> 태풍 이동 속도를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----- | ------ | --------- |
-| speed | number | 태풍 이동 속도. |
+
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| speed | number | 이동 속도.  |
 
 -   Sample
-    -   function setTypoonSpeed 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function setTyphoonSpeed 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -271,21 +281,22 @@ typoon.setSize(500.0, 150.0);
 
 ### setUnionTerrain(type)
 
-> 태풍 영향권 범위 가시화 옵션.
+> 태풍 객체를 구성하는 영향권 범위 가시화 옵션을 설정합니다.
 >
-> 태풍 영향권 지형 결합 유무 설정.
+> 영향권 범위를 지형 결합 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----- | ------- | ------------------------------------------------------ |
-| type | boolean | <p>true인 경우 지형결합 가시화(RTT)<br>false인 경우 평면 폴리곤 가시화.</p> |
+
+| Name | Type    | Description                                                |
+| ---- | ------- | ---------------------------------------------------------- |
+| type | boolean | <p>true: 지형 결합 가시화(RTT).<br>false: 일반 기시화.</p> |
 
 -   Sample
-    -   function setDamageRangeDisplay 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function setDamageRangeDisplay 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -297,19 +308,20 @@ typoon.setSize(500.0, 150.0);
 
 ### setTextureURL(url)
 
-> 태풍 이미지 URL을 설정합니다. (이미지는 1024\*1024 크기를 지원합니다.).
+> 태풍 객체를 구성하는 이미지를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ----- | ------ | --------- |
-| url | string | 태풍 이미지 URL. |
-{% endtab %}
 
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| url  | string | 이미지 url. |
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
-typoon.setTextureURL("./image/Typoon.png");
+typhoon.setTextureURL("./image/Typhoon.png");
 ```
 
 {% endtab %}
@@ -317,21 +329,20 @@ typoon.setTextureURL("./image/Typoon.png");
 
 ### setVisibleDamageRange(type)
 
-> 태풍 영향권 범위 가시화 옵션.
->
-> 태풍 영향권 가시화 유무 설정.
+> 태풍 객체를 구성하는 영향권 범위 가시화 유무 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Name | Type | Description |
-| ------- | ------- | -------------------------------------------------- |
-| type | boolean | <p>true인 경우 태풍 영향권 표시<br>false인 경우 태풍 영향권 미표시.</p> |
+
+| Name | Type    | Description                                                      |
+| ---- | ------- | ---------------------------------------------------------------- |
+| type | boolean | <p>true: 영향권 범위 가시화.<br>false: 영향권 범위 비가시화.</p> |
 
 -   Sample
-    -   function setDamageRangeDisplay 참조
-    -   [샌드박스\_태풍](http://sandbox.dtwincloud.com/code/main.do?id=weather_typoon)
-        {% endtab %}
+    -   function setDamageRangeDisplay 참조.
+    -   [Sandbox_Typhoon](https://sandbox.egiscloud.com/code/main.do?id=weather_typoon)
 
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
@@ -343,125 +354,82 @@ typoon.setTextureURL("./image/Typoon.png");
 
 ## Getter / Setter
 
-### getDescription() → string
+### getDescription(), setDescription(desc) → string
 
-> 오브젝트의 설명에 대한 내용을 반환.
+> 객체에 대한 설명을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
--   Return
-    -   유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
-    -   빈 문자열(string) : 오브젝트가 null인 경우.
-        {% endtab %}
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
 
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var strDesc = object.getDescription();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setDescription(desc)
-
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ------ | ------------ |
-| desc | string | 오브젝트 설명 문자열. |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
+// ... or ...
 object.setDescription("First Object.");
 ```
 
 {% endtab %}
 {% endtabs %}
 
-### getName() → string
+### getName(), setName(name) → string
 
-> 오브젝트의 이름을 반환.
+> 객체 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
--   Return
-    -   유효한 문자열(string) : 오브젝트의 이름 반환 성공.
-    -   빈 문자열(string) : 오브젝트가 null인 경우.
-        {% endtab %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
 
+-   Return
+    -   string: 객체 이름을 성공적을 반환
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var objName = object.getName();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setName(name)
-
-> 오브젝트의 이름을 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| ---- | ------ | ------------ |
-| name | string | 설정할 오브젝트 이름. |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
+// ... or ...
 object.setName("MyObject");
 ```
 
 {% endtab %}
 {% endtabs %}
 
-### getVisible() → number
+### getVisible(), setVisible(visible) → boolean
 
-> 오브젝트의 보기/숨김 여부를 반환.
+> 객체의 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
--   Return
-    -   [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
-    -   보기 : Module.JS_VISIBLE_ON
-    -   숨김 : Module.JS_VISIBLE_OFF 에러 발생 : Module.JS_SELECTABLE_ERROR(오브젝트가 NULL인 경우)
-        {% endtab %}
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
 
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
+{% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var objName = object.getName();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setVisible(visible)
-
-> 오브젝트의 보기/숨김 여부를 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
-{% endtab %}
-
-{% tab title="Template" %}
-
-```javascript
-object.setVisible(Module.JS_VISIBLE_ON);
+// ... or ...
+object.setVisible(true);
 ```
 
 {% endtab %}
@@ -469,26 +437,26 @@ object.setVisible(Module.JS_VISIBLE_ON);
 
 ### Type Definitions
 
-#### JSTypoon.CreateOptions
+#### JSTyphoon.CreateOptions
 
 > 태풍 객체 생성 옵션.
 
-| Name     | Type                                                                       | Attributes | Default | Description                         |
-| -------- | -------------------------------------------------------------------------- | ---------- | ------- | ----------------------------------- |
-| id       | string                                                                     |            |         | 태풍 ID.                            |
-| position | [JSVector3D](../core/jsvector3d.md)                                        |            |         | 태풍 경위도 위치.                   |
-| size     | number                                                                     | optional   | 500     | 태풍 가시화 크기.                   |
-| height   | number                                                                     | optional   | 100     | 태풍 가시화 높이.                   |
-| complete | function                                                                   | optional   |         | 태풍 이동 완료 시 동작하는 CallBack |
-| damage   | [JSTypoon.CreateOptions.Damage](jstypoon.md#jstypoon.createoptions.damage) | optional   |         | 태풍 영향권 생성 속성 정보.         |
+| Name     | Type                                                                         | Attributes | Default | Description                            |
+| -------- | ---------------------------------------------------------------------------- | ---------- | ------- | -------------------------------------- |
+| id       | string                                                                       |            |         | 고유 명칭.                             |
+| position | [JSVector3D](../core/jsvector3d.md)                                          |            |         | 중심 좌표 (경도, 위도, 고도).          |
+| size     | number                                                                       | optional   | 500     | 태풍 크기 (in meters).                 |
+| height   | number                                                                       | optional   | 100     | 태풍 높이 (in meters).                 |
+| complete | function                                                                     | optional   |         | 이동 이벤트 완료 시 동작하는 callback. |
+| damage   | [JSTypoon.CreateOptions.Damage](jstyphoon.md#jstyphoon.createoptions.damage) | optional   |         | 영향권 생성 속성 정보.                 |
 
-#### JSTypoon.CreateOptions.Damage
+#### JSTyphoon.CreateOptions.Damage
 
-> 태풍 영향권 객체 생성 옵션.
+> Typhoon impact range object creation options.
 
-| Name         | Type                          | Attributes | Default                 | Description                  |
-| ------------ | ----------------------------- | ---------- | ----------------------- | ---------------------------- |
-| size         | number                        | optional   | 500                     | 영향권 가시화 크기(m단위).   |
-| altitude     | number                        | optional   | 10                      | 영향권 가시화 고도(m단위).   |
-| unionterrain | boolean                       | optional   | false                   | 영향권 가시화 지형결합 유무. |
-| color        | [JSColor](../core/jscolor.md) | optional   | JSColor(200, 255, 0, 0) | 영향권 가시화 색상.          |
+| Name         | Type                          | Attributes | Default                 | Description                   |
+| ------------ | ----------------------------- | ---------- | ----------------------- | ----------------------------- |
+| size         | number                        | optional   | 500                     | 영향권 크기 (in meters).      |
+| altitude     | number                        | optional   | 10                      | 영향권 생성 고도 (in meters). |
+| unionterrain | boolean                       | optional   | false                   | 지형 결합 유무.               |
+| color        | [JSColor](../core/jscolor.md) | optional   | JSColor(200, 255, 0, 0) | 생상값.                       |

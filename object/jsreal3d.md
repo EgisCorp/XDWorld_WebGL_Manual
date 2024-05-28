@@ -1,296 +1,293 @@
 ---
-description: Real3D 오브젝트 생성 및 수정 기능 API. Real3D는 건물의 형태를 출력하는 오브젝트.
+description: 지도 내 시설물 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
 # JSReal3D
 
-> Module.createReal3D API 생성.
+> Module.createReal3D() API를 생성합니다.
+>
+> JSReal3D는 시설물(건물) 형태를 출력하는 오브젝트 입니다.ㅏ
 
 ```javascript
 var object = Module.createReal3D("ID");
 ```
 
+## Function
+
 ### getId() → string
 
-> 오브젝트의 Key를 반환.
+> 객체의 고유 명칭을 반환 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트의 Key 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strKey = object.getId();
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setElevationSectionColor(elevation, color) → boolean
 
-> 건물 층별 색상 리스트를 설정.
+> 시설물 객체에 대한 층별 색상 리스트를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type         | Description |
-| --------- | ------------ | ----------- |
-| elevation | JSCollection | 고도 리스트.     |
-| color     | JSCollection | 색상 리스트.     |
 
-* Return
-  * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.
+| Name      | Type                                | Description |
+| --------- | ----------------------------------- | ----------- |
+| elevation | [Collection](../core/collection.md) | 고도 목록.  |
+| color     | [Collection](../core/collection.md) | 색상 목록.  |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var elevationList = new Module.Collection();
-//.. 고도 값 추가 ..
+//.. add elevation values ..
 var colorList = new Module.Collection();
-//.. 색상 값 추가 ..
+//.. add color values ..
 object.setElevationSectionColor(elevationList, colorList);
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setFillColor(type, color) → boolean
 
-> Real3D 오브젝트 색상 설정.
+> 시설물 객체의 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type                          | Description                                                       |
-| --------- | ----------------------------- | ----------------------------------------------------------------- |
-| type      | boolean                       | <p><br>true인 경우 심플렌더링 모드 색상 변경.<br>false인 경우 일반 모드 색상 변경.<br></p> |
-| color     | [JSColor](../core/jscolor.md) | 체움 색상                                                             |
 
-* Return
-  * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.
+| Name  | Type                          | Description                                              |
+| ----- | ----------------------------- | -------------------------------------------------------- |
+| type  | boolean                       | <p>true: 심플렌더링 설정.<br>false: 일반 렌더링 설정.<p> |
+| color | [JSColor](../core/jscolor.md) | 색상값.                                                  |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### setShaderType(type) → boolean
 
-> 건물 층별 색상 표시 방식을 설정.
+> 시설물 객체의 층별 색상 표시 방식을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type   | Description                                                              |
-| --------- | ------ | ------------------------------------------------------------------------ |
-| type      | number | <p>설정하고자 하는 출력 타입.<br>0 : 텍스쳐.<br><br>1 : 텍스쳐 + 색상<br><br>2 : 색상<br></p> |
 
-* Return
-  * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.
+| Name | Type   | Description                                        |
+| ---- | ------ | -------------------------------------------------- |
+| type | number | <p>0: 이미지.<br>1: 이미지 + 색상.<br>2: 색상.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
-```javascript
-```
-{% endtab %}
 
-{% tab title="undefined" %}
+```javascript
 object.setShaderType(1);
+```
+
 {% endtab %}
 {% endtabs %}
 
 ### setStyle(style) → boolean
 
-> 건물의 스타일을 설정.
+> 시설물 객체의 스타일을 설정합니다.
 >
-> 현재는 건물 색상 스타일만 설정 가능.
+> 시설물 객체는 색상 스타일만 설정 가능합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-| Parameter | Type           | Description      |
-| --------- | -------------- | ---------------- |
-| type      | JSPolygonStyle | 설정하고자 하는 건물 스타일. |
 
-* Return
-  * true : 오브젝트 설정 성공.
-  * false : 오브젝트 설정 실패.
+| Name  | Type                                  | Description       |
+| ----- | ------------------------------------- | ----------------- |
+| style | [JSPolygonStyle](./jspolygonstyle.md) | 스타일 속성 정보. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
 {% endtab %}
-
 {% tab title="Template" %}
+
 ```javascript
 var polyStyle = new Module.JSPolygonStyle();
 polyStyle.setFill(true);
 polyStyle.setFillColor(new Module.JSColor(255, 255, 0, 0));
-...
+//...
 object.setStyle(polyStyle);
 ```
-{% endtab %}
 
-{% tab title="undefined" %}
-object.setShaderType(1);
 {% endtab %}
 {% endtabs %}
 
 ### getFillColor() → [JSColor](../core/jscolor.md)
 
-> Real3D 오브젝트 색상 반환.
+> 시설물 객체의 색상을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [JSColor](../core/jscolor.md) : 오브젝트 색상 반환 성공.
-  * null : 색상 반환 실패.
-{% endtab %}
 
+-   Return
+    -   [JSColor](../core/jscolor.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getPosition() → [JSVector3D](../core/jsvector3d.md)
 
-> Real3D 오브젝트 중심 경위도 좌표 반환.
+> 시설물 객체의 중심 좌표(경도, 위도, 고도)를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [JSVector3D](../core/jsvector3d.md) : Real3D 오브젝트 중하단 중심 경위도 좌표 반환 성공.
-  * null : 좌표 반환 실패.
-{% endtab %}
 
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ### getHeight() → number
 
-> 3D 모델 자체 높이 값을 반환
+> 시설물 객체의 높이값(in meter)을 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * Real3D 오브젝트 높이값(미터) 반환 성공.
-{% endtab %}
 
+-   Return
+    -   number : 반환 성공.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
+
 ```
+
 {% endtab %}
 {% endtabs %}
 
 ## Getter / Setter
 
-### getDescription() → string
+### getDescription(), setDescription(desc) → string
 
-> 오브젝트의 설명에 대한 내용을 반환.
+> 객체에 대한 설명을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트 설명 문자열 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
+
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var strDesc = object.getDescription();
+// ... or ...
+object.setDescription("First Object.");
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setDescription(desc)
+### getName(), setName(name) → string
 
-> 오브젝트의 설명에 대한 설명을 저장.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| desc | string | 오브젝트 설명 문자열. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setDescription('First Object.');
-```
-{% endtab %}
-{% endtabs %}
-
-### getName() → string
-
-> 오브젝트의 이름을 반환.
+> 객체 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * 유효한 문자열(string) : 오브젝트의 이름 반환 성공.
-  * 빈 문자열(string) : 오브젝트가 null인 경우.
-{% endtab %}
 
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
+
+-   Return
+    -   string: 객체 이름을 성공적을 반환
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
+// ... or ...
+object.setName("MyObject");
 ```
+
 {% endtab %}
 {% endtabs %}
 
-### setName(name)
+### getVisible(), setVisible(visible) → boolean
 
-> 오브젝트의 이름을 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| name | string | 설정할 오브젝트 이름. |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setName('MyObject');
-```
-{% endtab %}
-{% endtabs %}
-
-### getVisible() → number
-
-> 오브젝트의 보기/숨김 여부를 반환.
+> 객체의 가시화 유무를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
-* Return
-  * [옵션 설정 상수](../etc/type-list.md#navigation-visible-type-list) 반환.
-  * 보기 : Module.JS\_VISIBLE\_ON
-  * 숨김 : Module.JS\_VISIBLE\_OFF 에러 발생 : Module.JS\_SELECTABLE\_ERROR(오브젝트가 NULL인 경우)
-{% endtab %}
 
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
+
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
+{% endtab %}
 {% tab title="Template" %}
+
 ```javascript
 var objName = object.getName();
+// ... or ...
+object.setVisible(true);
 ```
-{% endtab %}
-{% endtabs %}
 
-### setVisible(visible)
-
-> 오브젝트의 보기/숨김 여부를 설정.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name    | Type   | Description                                                                                                                                    |
-| ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| visible | number | <p><a href="../etc/type-list.md#navigation-visible-type-list">옵션 설정 상수</a>.<br>보기 : Module.JS_VISIBLE_ON<br>숨김 : Module.JS_VISIBLE_OFF<br></p> |
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-object.setVisible(Module.JS_VISIBLE_ON);
-```
 {% endtab %}
 {% endtabs %}
