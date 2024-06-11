@@ -3,8 +3,7 @@
 ## 소개 <a href="#introduce" id="introduce"></a>
 
 -   [XDWorld API](README.md)
--   [시작하기](introduce/start.md)
--   [시작하기\_beta](introduce/start_beta.md)
+-   [시작하기](introduce/start_beta.md)
 -   [About EGIS](introduce/AboutEGIS.md)
 -   [Release Note](release/release.md)
     -   [1.6x 버전 업데이트](release/update_1.6x.x.md)
