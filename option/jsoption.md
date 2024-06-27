@@ -10,6 +10,12 @@ description: 지도 내 환경 옵션을 설정하기 위한 API 입니다.
 var math = Module.getOption();
 ```
 
+## Properties
+
+| Name         | Type   | Description                                                                                                       |
+| ------------ | ------ | ----------------------------------------------------------------------------------------------------------------- |
+| object_ahead | number | 화면 시야 기준 [JSPoint](../object/jspoint.md), HTMLObject 객체 앞 장해물(지형, 시설물) 존재 시 가시화 유무 설정. |
+
 ## Funtion
 
 ### callBackAddPoint(event) → string
