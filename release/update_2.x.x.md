@@ -7,6 +7,7 @@
 -   Module.getOption().setHybridRenderType(number)
 -   Module.getViewCamera().moveLeftRight(number)
 -   Module.getOption().object_ahead
+-   Module.createBillboard("id").setVerticalLine(parameter);
 
 ## 변경된 API
 
@@ -17,27 +18,34 @@
 ### 2.5.0 (2024/7/26)
 
 #### 1. 웹 워커 기능 개선
-  * 기능 개선 및 파일 용량을 감소하여 기능 개선하였습니다.
+
+-   기능 개선 및 파일 용량을 감소하여 기능 개선하였습니다.
+
 #### 2. 도로 시설물 생성 기능 개선
-  * 도로 시설물 중 교량의 교각이 일정 높이 이하인 부분은 생성이 되지 않도록 예외처리 단계가 추가되었습니다.
+
+-   도로 시설물 중 교량의 교각이 일정 높이 이하인 부분은 생성이 되지 않도록 예외처리 단계가 추가되었습니다.
+
 #### 3. 빌보드 수직선 옵션 추가
-  * 빌보드 중심을 기준으로, 지면까지의 수직선을 생성 및 수정하는 API가 추가되었습니다.
-    ``` javascript
-	parameter = {
-		visible: true,						// 가시화 여부(기본값: false)
-		width: 10.0,						// 수직선 두께(기본값: 1.0)
-		color: JSColor(255, 15, 100, 200),	// 수직선 색상(기본값: JSColor(255, 255, 255, 255))
-		altitude: 30.0						// 수직선 끝점 고도(기본값: 0)
-	}
-	billboard.setVerticalLine(parameter);
+
+-   빌보드 중심을 기준으로, 지면까지의 수직선을 생성 및 수정하는 API가 추가되었습니다.
+    ```javascript
+    parameter = {
+        visible: true, // 가시화 여부(기본값: false)
+        width: 10.0, // 수직선 두께(기본값: 1.0)
+        color: JSColor(255, 15, 100, 200), // 수직선 색상(기본값: JSColor(255, 255, 255, 255))
+        altitude: 30.0, // 수직선 끝점 고도(기본값: 0)
+    };
+    billboard.setVerticalLine(parameter);
     ```
-  * 성공적으로 생성/수정하였을 경우 true를 반환합니다.
-  * API의 자세한 사용법은 샌드박스 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_billboard_line)를 확인해주시기 바랍니다.
+-   성공적으로 생성/수정하였을 경우 true를 반환합니다.
+-   API의 자세한 사용법은 샌드박스 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_billboard_line)를 확인해주시기 바랍니다.
+
 #### 4. 지형의 0레벨 지구본 위성영상 자체 포함
-  * 0레벨에 대한 지구본 위성영상을 자체 포함하도록 적용 되었습니다.
-  * 지도 서버에 연결이 정상적이 않아도 지구본은 기본적으로 구성됩니다.
-  * 0 레벨 요청을 실패하여 반복적 네트워크 요청을 처리하지 않습니다.
-  * 엔진의 파일용량이 소폭 증가합니다.
+
+-   0레벨에 대한 지구본 위성영상을 자체 포함하도록 적용 되었습니다.
+-   지도 서버에 연결이 정상적이 않아도 지구본은 기본적으로 구성됩니다.
+-   0 레벨 요청을 실패하여 반복적 네트워크 요청을 처리하지 않습니다.
+-   엔진의 파일용량이 소폭 증가합니다.
 
 ### 2.4.0 (2024/6/28)
 
