@@ -469,6 +469,27 @@ let symbol = Module.getSymbol();
 {% endtab %}
 {% endtabs %}
 
+### getTerrain() → [JSTerrain](../map/jsterrain.md)
+
+> 지형 설정 API를 호출하는 [JSTerrain](../map/jsterrain.md) 객체를 반환합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   Return
+    -   [JSTerrain](../map/jsterrain.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let terrain = Module.getTerrain();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### Resize(width, height)
 
 > 3D 지도 화면의 크기를 변경하는 API 입니다.
