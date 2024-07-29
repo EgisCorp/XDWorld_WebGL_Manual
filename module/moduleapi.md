@@ -406,6 +406,27 @@ let navigation = Module.getNavigation();
 {% endtab %}
 {% endtabs %}
 
+### getMap() → [JSMap](../map/jsmap.md)
+
+> 지도 기능을 호출하는 ([JSMap](../map/jsmap.md)) 객체를 반환합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+-   Return
+    -   [JSMap](../map/jsmap.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+javascript
+let map = Module.getMap();
+
+
+{% endtab %}
+{% endtabs %}
+
 ### getSlope() → [JSSlope](../analysis/jsslope.md)
 
 > 경사 분석을 관리하는 [JSSlope](../analysis/jsslope.md) 객체를 반환합니다.
