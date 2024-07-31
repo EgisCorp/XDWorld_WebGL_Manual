@@ -75,6 +75,7 @@
     -   [JSFlowPolygon](object/jsflowpolygon.md)
     -   [JSGhostSymbol](object/jsghostsymbol.md)
     -   [JSGhostSymbolMap](object/jsghostsymbolmap.md)
+    -   [JSHTMLObject](object/jshtmlobject.md)
     -   [JSIcon](object/jsicon.md)
     -   [JSInstanceObject](object/jsinstanceobject.md)
     -   [JSLineString](object/jslinestring.md)
