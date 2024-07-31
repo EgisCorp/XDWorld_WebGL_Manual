@@ -12,10 +12,11 @@ let trace = Module.createHTMLObject("ID");
 
 ## Properties
 
-| Name            | Type   | Description                                               |
-| --------------- | ------ | --------------------------------------------------------- |
-| verticalAlign   | string | JSHTMLObject 가시화 수평 정렬 설정 (left, center, right). |
-| horizontalAlign | string | JSHTMLObject 가시화 수직 정렬 설정 (top, middle, bottom). |
+| Name            | Type                                | Description                                               |
+| --------------- | ----------------------------------- | --------------------------------------------------------- |
+| verticalAlign   | string                              | JSHTMLObject 가시화 수평 정렬 설정 (left, center, right). |
+| horizontalAlign | string                              | JSHTMLObject 가시화 수직 정렬 설정 (top, middle, bottom). |
+| position        | [JSVector3D](../core/jsvector3d.md) | 중심 좌표 설정 (경도, 위도, 고도).                        |
 
 ## Function
 
