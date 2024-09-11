@@ -14,7 +14,7 @@ var gridShadow = Module.getAnalysisGridShadow();
 
 | Name     			| Type                                	| Description                   |
 | ----------------- | ------------------------------------- | ----------------------------- |
-| strictCalculate 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md)). 			|
+| strictCalculate 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)). 			|
 
 ## Function
 

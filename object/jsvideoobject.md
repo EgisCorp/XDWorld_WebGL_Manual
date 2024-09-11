@@ -49,7 +49,7 @@ var object = Module.createVideoObject("ID");
 | far      		| number                              | 최대 가시거리.                	|
 | bank     		| number                              | 비디오 기울기.                	|
 | zoom     		| number                              | 비디오 배율.                  	|
-| fov      		| number                              | 비디오 화각 설정.             	|
+| fov      		| [Size2D](../etc/tag-list.md#size2d-style-type) | 비디오 화각 설정.             	|
 | streaming		| boolean                             | 비디오 스트리밍 설정.             	|
 | resolution    | boolean                             | 비디오 해상도 설정.             	|
 | xaxis    		| boolean                             | 좌우 반전 설정.               	|
