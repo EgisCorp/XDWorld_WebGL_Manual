@@ -10,6 +10,23 @@ description: 지도 카메라 설정을 위한 API입니다.
 var camera = Module.getViewCamera();
 ```
 
+## Properties
+
+| Name     				| Type                                	| Description                   |
+| --------------------- | ------------------------------------- | ----------------------------- |
+| videoStreaming     	| boolean                              	| 비디오 스트리밍 여부.               	|
+| videoFar     			| number                              	| 비디오 최대 가시거리.              	|
+| videoFovX      		| number                              	| 화각 넓이.               			|
+| videoFovY     		| number                              	| 화각 높이.               			|
+| videoAlpha     		| number                              	| 비디오 투명값.                   	|
+| videoAxisX     		| boolean                              	| 좌우 반전.                   		|
+| videoAxisY    		| boolean                              	| 상하 반전.               			|
+| videoZoom    			| number                             	| 비디오 배율.                   	|
+| videoFarPlane    		| boolean                             	| 비디오 뒷배경 여부.                  |
+| videoResolution 		| number 								| 비디오 해상도.  					|
+| videoObjectMapping   	| boolean                              	| 건물 매핑 여부.                 	|
+| videoIsplayer 		| boolean                            	| 비디오 재생 여부.        			|
+
 ## Function
 
 ### AltitudeDown()
@@ -1227,6 +1244,74 @@ var API = {
 };
 var currentTilt = API.JSCamera.getTilt();
 Module.getViewCamera().setTilt(80);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setVideoInfo(option) -> number
+
+> 비디오 텍스쳐를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description               |
+| :------------ | :-------------------------------- | :------------------------ |
+| url      		| string                            | 미디어 URL 경로.              	|
+| dronemode 	| boolean | 중심 좌표 (경도, 위도, 고도). 	| 드론 모드 설정.				|
+| streaming     | boolean                           | 비디오 스트리밍 설정.             |
+| objectmapping | boolean                           | 건물 매핑 설정.               	|
+| alpha      	| number                           	| 비디오 투명값 설정.              |
+| zoom     		| number                            | 비디오 배율 설정.               |
+| fov     		| number                            | 비디오 화각 설정.               |
+| xaxis			| boolean                           | 비디오 좌우 반전 설정.           	|
+| yaxis    		| boolean                           | 비디오 상하 반전 설정.            |
+| resolution    | number                            | 비디오 해상도 설정.              |
+| farplane    	| boolean                           | 뒷배경 설정.               	|
+
+-   Return
+    -   success : 텍스쳐 생성 성공.
+    -   실패 조건
+        -   url tag isn't exist : url 태그가 없을 경우.
+        -   streaming tag isn't exist : streaming 태그가 없을 경우.
+-   Sample
+    -   function createCCTV, createCCTVDrone 참조.
+    -   [Sandbox_Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearVideo() -> boolean
+
+> 비디오 텍스쳐를 초기화 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true : 초기화 성공.
+    -   false : 초기화 실패.
+    -   실패 조건
+        -   비디오 텍스쳐가 없을 경우.
+        -   비디오 데이터가 없을 경우.
+        -   비디오 경로가 없을 경우.
+-   Sample
+    -   See function setTilt.
+    -   [Sandbox_Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
 ```
 
 {% endtab %}

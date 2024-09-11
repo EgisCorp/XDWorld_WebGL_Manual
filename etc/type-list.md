@@ -147,3 +147,11 @@ Module.XDSetMouseState(Module._NONE);
 | ----- | ------------------------- | ----------- |
 | 13    | Latitude/Logitude (WGS84) | EPSG:4326.  |
 | 14    | Korea TM BESSEL(West)     | EPSG:5186.  |
+
+## Shadow Analysis Type List
+
+| Index | Name                      | Description 						|
+| ----- | ------------------------- | --------------------------------- |
+| 300   | BRIEF_ANALYSIS_MODE 		| 각 그리드의 중점만 분석.  					|
+| 301   | NORMAL_ANALYSIS_MODE 		| 각 그리드에 그림자가 절반이상 생길 경우 일조권 침해.	|
+| 302   | DETAIL_ANALYSIS_MODE 		| 각 그리드에 그림자가 조금이라도 생길 경우 일조권 침해.|

@@ -12,6 +12,15 @@ description: 지도 내 3D figure 객체 생성 및 설정하기 위한 API 입�
 let figure = Module.createFigure("ID");
 ```
 
+## Properties
+
+| Name     			| Type                                	| Description           |
+| ----------------- | ------------------------------------- | --------------------- |
+| isplayer 			| boolean                             	| 비디오 실행 여부. 			|
+| videoStreaming 	| boolean                             	| 비디오 스트리밍 여부. 		|
+| axisX 			| boolean                             	| 좌우 반전. 				|
+| axisY 			| boolean                             	| 상하 반전. 				|
+
 ## Function
 
 ### getAngle() → number
@@ -460,6 +469,40 @@ figure.setStyle(figureStyle);
 var objName = object.getName();
 // ... or ...
 object.setVisible(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setledBoard(option) → string
+
+> 전광판 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+| url      		| string                            | 미디어 URL 경로.			|
+| streaming 	| boolean 							| 비디오 스트리밍 설정. 		|
+| axisX      	| boolean                           | 좌우 반전 설정.           	|
+| axisY     	| boolean                           | 상하 반전 설정.			|
+
+-   Return
+    -   success : 텍스쳐 생성 성공.
+    -   실패 조건
+        -   null : 생성된 객체가 없을 경우.
+        -   url tag isn't exist : url 태그가 없을 경우.
+        -   streaming tag isn't exist. : streaming 태그가 없을 경우.
+-   Sample
+    -   function createBoard 참조.
+    -   [Sandbox_LED Display](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
 ```
 
 {% endtab %}
