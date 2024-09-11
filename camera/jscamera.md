@@ -1104,7 +1104,7 @@ Module.getViewCamera().setDirect(0);
 
 | Name | Type   | Description  |
 | ---- | ------ | ------------ |
-| fov  | number | 카메라 화각. |
+| fov  | [JSVector2D](../core/jsvector2d.md) | 카메라 화각. |
 
 -   Return
     -   number: 카메라 시야 화각 반환 (degree 단위).
@@ -1264,7 +1264,7 @@ Module.getViewCamera().setTilt(80);
 | objectmapping | boolean                           | 건물 매핑 설정.               	|
 | alpha      	| number                           	| 비디오 투명값 설정.              |
 | zoom     		| number                            | 비디오 배율 설정.               |
-| fov     		| number                            | 비디오 화각 설정.               |
+| fov     		| [Size2D](../etc/tag-list.md#size2d-style-type)                            | 비디오 화각 설정.               |
 | xaxis			| boolean                           | 비디오 좌우 반전 설정.           	|
 | yaxis    		| boolean                           | 비디오 상하 반전 설정.            |
 | resolution    | number                            | 비디오 해상도 설정.              |
