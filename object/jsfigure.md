@@ -358,6 +358,41 @@ figure.setSize(50.0, 100.0, 150.0);
 {% endtab %}
 {% endtabs %}
 
+### setledBoard(option) → string
+
+> 전광판 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+| url      		| string                            | 미디어 URL 경로.			|
+| streaming 	| boolean 							| 비디오 스트리밍 설정. 		|
+| xaxis      	| boolean                           | 좌우 반전 설정.           	|
+| yaxis     	| boolean                           | 상하 반전 설정.			|
+
+-   Return
+    -   success : 텍스쳐 생성 성공.
+    -   실패 조건
+        -   null : 생성된 객체가 없을 경우.
+        -   url tag isn't exist : url 태그가 없을 경우.
+        -   streaming tag isn't exist. : streaming 태그가 없을 경우.
+-   Sample
+    -   function createBoard 참조.
+    -   [Sandbox_LED Display](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+
 ## Getter / Setter
 
 ### getDescription(), setDescription(desc) → string
@@ -469,40 +504,6 @@ figure.setStyle(figureStyle);
 var objName = object.getName();
 // ... or ...
 object.setVisible(true);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setledBoard(option) → string
-
-> 전광판 객체를 생성합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name     		| Type                              | Description           |
-| :------------ | :-------------------------------- | :-------------------- |
-| url      		| string                            | 미디어 URL 경로.			|
-| streaming 	| boolean 							| 비디오 스트리밍 설정. 		|
-| axisX      	| boolean                           | 좌우 반전 설정.           	|
-| axisY     	| boolean                           | 상하 반전 설정.			|
-
--   Return
-    -   success : 텍스쳐 생성 성공.
-    -   실패 조건
-        -   null : 생성된 객체가 없을 경우.
-        -   url tag isn't exist : url 태그가 없을 경우.
-        -   streaming tag isn't exist. : streaming 태그가 없을 경우.
--   Sample
-    -   function createBoard 참조.
-    -   [Sandbox_LED Display](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-
 ```
 
 {% endtab %}
