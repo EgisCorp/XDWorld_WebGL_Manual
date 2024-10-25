@@ -387,6 +387,38 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### createVerticalGrid(layername, lefttop, rightbottom, row, col) → boolean
+
+> 평면 그리드 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        	| Type                                  | Description                                                |
+| ----------- 	| ------------------------------------- | ---------------------------------------------------------- |
+| layername 	| string 								| 레이어 이름.							                     |
+| lefttop       | [JSVector3D](../core/jsvector3d.md)   | 좌측 상단 좌표.                     						 |
+| rightbottom   | [JSVector3D](../core/jsvector3d.md) 	| 우측 하단 좌표.     										 |
+| row        	| number                                | 새로 개수. 												 |
+| col        	| number                                | 가로 개수. 												 |
+
+-   Return
+    -   true : 생성 성공.
+    -   false : 생성된 객체가 없을 경우.
+-   Sample
+    -   function createVerticalPlane 참조.
+    -   [Sandbox_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getCoordinates(), setCoordinates(coordinates) → [Collection](../core/collection.md)
