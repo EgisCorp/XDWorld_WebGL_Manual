@@ -37,3 +37,10 @@
 | ---- | ----------------------------------- | ------------------- |
 | min  | [JSVector2D](../core/jsvector2d.md) | 좌하단 경위도 좌표. |
 | max  | [JSVector2D](../core/jsvector2d.md) | 우상단 경위도 좌표. |
+
+### Size2D Style Type
+
+| Name 	 | Type                                	| Description         	|
+| ------ | ------------------------------------ | --------------------- |
+| width  | number 								| 넓이. 					|
+| height | number 								| 높이. 					|

@@ -10,6 +10,12 @@ description: 지도 내 수인한도 분석 기능 설정을 위한 API 입니�
 var gridShadow = Module.getAnalysisGridShadow();
 ```
 
+## Properties
+
+| Name     			| Type                                	| Description                   |
+| ----------------- | ------------------------------------- | ----------------------------- |
+| strictCalculate 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)). 			|
+
 ## Function
 
 ### clear() → boolean

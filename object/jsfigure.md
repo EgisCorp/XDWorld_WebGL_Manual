@@ -12,6 +12,15 @@ description: 지도 내 3D figure 객체 생성 및 설정하기 위한 API 입�
 let figure = Module.createFigure("ID");
 ```
 
+## Properties
+
+| Name     			| Type                                	| Description           |
+| ----------------- | ------------------------------------- | --------------------- |
+| isplayer 			| boolean                             	| 비디오 실행 여부. 			|
+| videoStreaming 	| boolean                             	| 비디오 스트리밍 여부. 		|
+| axisX 			| boolean                             	| 좌우 반전. 				|
+| axisY 			| boolean                             	| 상하 반전. 				|
+
 ## Function
 
 ### getAngle() → number
@@ -344,6 +353,215 @@ figure.setPosition(vPos);
 
 ```javascript
 figure.setSize(50.0, 100.0, 150.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setledBoard(option) → string
+
+> 전광판 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+| url      		| string                            | 미디어 URL 경로.			|
+| streaming 	| boolean 							| 비디오 스트리밍 설정. 		|
+| xaxis      	| boolean                           | 좌우 반전 설정.           	|
+| yaxis     	| boolean                           | 상하 반전 설정.			|
+
+-   Return
+    -   success : 텍스쳐 생성 성공.
+    -   실패 조건
+        -   null : 생성된 객체가 없을 경우.
+        -   url tag isn't exist : url 태그가 없을 경우.
+        -   streaming tag isn't exist. : streaming 태그가 없을 경우.
+-   Sample
+    -   function createBoard 참조.
+    -   [Sandbox_LED Display](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createPlane(min, max) → boolean
+
+> 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+| min      		| [JSVector3D](../core/jsvector3d.md) | 입력된 영역의 좌상단 좌표.			|
+| max 			| [JSVector3D](../core/jsvector3d.md) | 입력된 영역의 우하단 좌표. 		|
+
+-   Return
+    -   true : 객체 생성 성공.
+    -   false : 생성된 객체가 없을 경우.
+-   Sample
+    -   function createPlane 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### editPlane() → boolean
+
+> 평면 객체를 편집상태로 전환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true : 텍스쳐 생성 성공.
+    -   false : 생성된 객체가 없을 경우.
+-   Sample
+    -   function editplane 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createOverlapRTT(option) → boolean
+
+> 이미지 오버랩을 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+| option 		| boolean 							| 지형 성절토 여부. 		|
+
+-   Return
+    -   true : 이미지 오버랩 생성 성공.
+    -   false :
+        -   생성된 객체가 없을 경우.
+        -   입력된 좌표가 4개가 아닐 경우
+-   Sample
+    -   function insertOverlapRTT 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearTexture() → boolean
+
+> 객체에 입력된 텍스쳐를 삭제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+
+-   Return
+    -   true : 텍스쳐 삭제 성공.
+    -   false : 생성된 객체가 없을 경우.
+-   Sample
+    -   function clearObject 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setInfo(option) → boolean
+
+> 현재 객체 정보를 입력합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+| position 		| [JSVector3D](../core/jsvector3d.md)	| 객체 위치 좌표. 	|
+| size 			| [JSVector3D](../core/jsvector3d.md)	| 객체 크기. 		|
+| angle 		| [JSVector3D](../core/jsvector3d.md)	| 객체 회전 각도. 	|
+| color 		| [JSColor](../core/jscolor.md)			| 객체 색상. 		|
+| imagesize[width] 	| number							| 이미지 가로 길이. 	|
+| imagesize[height] | number							| 이미지 세로 길이. 	|
+| imagedata 	| string								| 이미지 데이터. 		|
+
+-   Return
+    -   true : 객체 정보 입력 성공.
+    -   false : 
+		-	생성된 객체가 없을 경우.
+		-	이미지 데이터가 없을 경우.
+-   Sample
+    -   function importData 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getInfo() → string
+
+> 객체 정보를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+
+-   Return
+    -   position : 객체 위치.
+    -   size : 객체 크기.
+    -   angle : 객체 회전 각도.
+    -   color : 객체 색상.
+-   Sample
+    -   function exportData 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
 ```
 
 {% endtab %}

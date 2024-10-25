@@ -12,22 +12,24 @@ var object = Module.createVideoObject("ID");
 
 ## Properties
 
-| Name     | Type                                | Description                  |
-| -------- | ----------------------------------- | ---------------------------- |
-| isplayer | boolean                             | 현재 비디오 재생중인지 여부. |
-| key      | string                              | 객체 키값.                   |
-| tilt     | number                              | 바라보는 각도.               |
-| far      | number                              | 최대 가시거리.               |
-| pan      | number                              | 바라보는 방향.               |
-| bank     | number                              | 비디오 기울기.               |
-| fovX     | number                              | 화각 넓이.                   |
-| fovY     | number                              | 화각 높이.                   |
-| alpha    | number                              | 비디오 투명값.               |
-| axisX    | boolean                             | 좌우 반전.                   |
-| axisY    | boolean                             | 상하 반전.                   |
-| position | [JSVector3D](../core/jsvector3d.md) | 객체 경도, 위도, 고도 위치.  |
-| zoom     | number                              | 비디오 배율.                 |
-| distance | number                              | 카메라와 객체의 거리.        |
+| Name     			| Type                                	| Description                   |
+| ----------------- | ------------------------------------- | ----------------------------- |
+| isplayer 			| boolean                             	| 현재 비디오 재생중인지 여부. 			|
+| key      			| string                              	| 객체 키값.                   		|
+| tilt     			| number                              	| 바라보는 각도.               		|
+| far     			| number                              	| 최대 가시거리.              		|
+| pan      			| number                              	| 바라보는 방향.               		|
+| bank     			| number                              	| 비디오 기울기.               		|
+| fovX     			| number                              	| 화각 넓이.                   		|
+| fovY     			| number                              	| 화각 높이.                   		|
+| alpha    			| number                              	| 비디오 투명값.               		|
+| axisX    			| boolean                             	| 좌우 반전.                   		|
+| axisY    			| boolean                             	| 상하 반전.                   		|
+| position 			| [JSVector3D](../core/jsvector3d.md) 	| 객체 경도, 위도, 고도 위치.  			|
+| zoom     			| number                              	| 비디오 배율.                 		|
+| resolution 		| number                            	| 비디오 해상도.        				|
+| videoStreaming 	| boolean                        		| 비디오 스트리밍 여부.        			|
+| objectMapping 	| boolean                         		| 건물 매핑 여부.        			|
 
 ## Function
 
@@ -38,19 +40,21 @@ var object = Module.createVideoObject("ID");
 {% tabs %}
 {% tab title="Information" %}
 
-| Name     | Type                                | Description                   |
-| :------- | :---------------------------------- | :---------------------------- |
-| url      | string                              | 미디어 URL 경로.              |
-| position | [JSVector3D](../core/jsvector3d.md) | 중심 좌표 (경도, 위도, 고도). |
-| pan      | number                              | 바라보는 방향.                |
-| tilt     | number                              | 바라보는 각도.                |
-| far      | number                              | 최대 가시거리.                |
-| bank     | number                              | 비디오 기울기.                |
-| zoom     | number                              | 비디오 배율.                  |
-| fov      | number                              | 비디오 화각 설정.             |
-| render   | function                            | render callback 함수 설정.    |
-| xaxis    | boolean                             | 좌우 반전 설정.               |
-| yaxis    | boolean                             | 상하 반전 설정.               |
+| Name     		| Type                                | Description                 |
+| :------------ | :---------------------------------- | :-------------------------- |
+| url      		| string                              | 미디어 URL 경로.              	|
+| position 		| [JSVector3D](../core/jsvector3d.md) | 중심 좌표 (경도, 위도, 고도). 		|
+| pan      		| number                              | 바라보는 방향.                	|
+| tilt     		| number                              | 바라보는 각도.                	|
+| far      		| number                              | 최대 가시거리.                	|
+| bank     		| number                              | 비디오 기울기.                	|
+| zoom     		| number                              | 비디오 배율.                  	|
+| fov      		| [Size2D](../etc/tag-list.md#size2d-style-type) | 비디오 화각 설정.             	|
+| streaming		| boolean                             | 비디오 스트리밍 설정.             	|
+| resolution    | boolean                             | 비디오 해상도 설정.             	|
+| xaxis    		| boolean                             | 좌우 반전 설정.               	|
+| yaxis    		| boolean                             | 상하 반전 설정.               	|
+| objectmapping	| boolean                             | 건물 매핑 설정.             		|
 
 -   Return
     -   success : 텍스쳐 생성 성공.
@@ -64,43 +68,6 @@ var object = Module.createVideoObject("ID");
         -   fov tag isn't exist : fov 태그가 없을 경우.
 -   Sample
     -   function createVideoFrustum 참조.
-    -   [Sandbox_Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setTexture(option) → string
-
-> 비디오 객체의 표현 중인 이미지를 변경합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name          | Type    | Description                        |
-| :------------ | :------ | :--------------------------------- |
-| size          | number  | Video size (width, height).        |
-| data          | array   | Array of video frame pixel values. |
-| objectmapping | boolean | Whether to visualize on buildings. |
-
--   Return
-
-    -   success : 생성 성공.
-    -   실패 조건
-        -   null : 생성된 객체가 없을 경우.
-        -   object is null : 객체가 등록되지 않았을 경우.
-        -   size tag isn't exist. : size 태그가 없을 경우.
-        -   imagedata tag isn't exist. : imagedata 태그가 없을 경우.
-        -   texture is't exist : 텍스쳐가 정상적으로 생성되지 않을 경우.
-
--   Sample
-    -   function createVideos 참조.
     -   [Sandbox_Video Object](https://sandbox.egiscloud.com/code/main.do?id=object_video)
 
 {% endtab %}

@@ -7,29 +7,27 @@ description: 지도 내 배경지도를 관리하기 위한 api 입니다.
 > Module.[Type](jsImageryProvider.md#type)() API를 생성합니다.
 
 ```javascript
-var naver = Module.NaverMap();      ( supports normal, terrain, satellite, cadastral )
-var kakao = Module.KakaoMap();      ( supports normal, terrain, satellite, cadastral )
-var google = Module.GoogleMap();    ( supports normal, terrain, vectorhybrid, satellitehybrid, satellite )
-var bing = Module.BingMap();        ( supports normal, satellitehybrid, satellite )
-var osm = Module.OpenStreetMap();   ( supports normal, terrain )
-var arc = Module.ArcMap();          ( supports normal, terrain, vectorhybrid, satellite )
-var mapbox = Module.MapBox();       ( supports normal, satellite )
-var skymap = Module.SKYMap();       ( supports 2012 ~ 2018, 2020 )
+var google = Module.GoogleMap();    ( supports: normal, terrain, vectorhybrid, satellitehybrid, satellite )
+var osm = Module.OpenStreetMap();   ( supports: normal )
+var arc = Module.ArcMap();          ( supports: normal, terrain, vectorhybrid, satellite )
+var mapbox = Module.MapBox();       ( supports: normal, satellite )
 var wmts = Module.WMTS();
 ```
 
 ## Properties
 
-| Name                                        | Type                                      | Description                       |
-| ------------------------------------------- | ----------------------------------------- | --------------------------------- |
-| [layername](jsImageryProvider.md#layername) | string                                    | 배경 영상 지도 레이어명.          |
-| provider                                    | [Provider](jsImageryProvider.md#provider) | 배경 영상 지도 타일링 정보설정.   |
-| quality                                     | string                                    | 배경 영상 지도 이미지 품질.       |
-| zeroLevel                                   | string                                    | 배경 영상 지도 이미지 LOD.        |
-| zerolevelOffset                             | string                                    | 배경 영상 지도 이미지 LOD offset. |
-| maxLevel                                    | number                                    | 배경 영상 지도 최대 레벨.         |
-| minLevel                                    | number                                    | 배경 영상 지도 최소 레벨.         |
-
+| Name                                        | Type                                      | Description                     	|
+| ------------------------------------------- | ----------------------------------------- | ----------------------------------- |
+| [layername](jsImageryProvider.md#layername) | string                                    | 배경 영상 지도 레이어명.          			|
+| provider                                    | [Provider](jsImageryProvider.md#provider) | 배경 영상 지도 타일링 정보설정.   				|
+| layerName                                   | string                                    | 배경 영상 지도 레이어명.         			|
+| quality                                     | string                                    | 배경 영상 지도 이미지 품질.       			|
+| zeroLevel                                   | string                                    | 배경 영상 지도 이미지 LOD.        			|
+| zerolevelOffset                             | string                                    | 배경 영상 지도 이미지 LOD offset. 			|
+| maxLevel                                    | number                                    | 배경 영상 지도 최대 레벨.         			|
+| minLevel                                    | number                                    | 배경 영상 지도 최소 레벨.         			|
+| apikey                                      | string                                    | 배경 영상 지도 apikey.         			|
+	
 ## Function
 
 ### clear()
@@ -48,14 +46,10 @@ var wmts = Module.WMTS();
 {% tab title="Template" %}
 
 ```javascript
-Module.NaverMap().clear();
-Module.DaumMap().clear();
 Module.GoogleMap().clear();
-Module.BingMap().clear();
 Module.OpenStreetMap().clear();
 Module.ArcMap().clear();
 Module.MapBox().clear();
-Module.SKYMap().clear();
 Module.WMTS().clear();
 ```
 
@@ -73,14 +67,10 @@ Module.WMTS().clear();
 {% tab title="Template" %}
 
 ```javascript
-Module.NaverMap().refresh();
-Module.DaumMap().refresh();
 Module.GoogleMap().refresh();
-Module.BingMap().refresh();
 Module.OpenStreetMap().refresh();
 Module.ArcMap().refresh();
 Module.MapBox().refresh();
-Module.SKYMap().refresh();
 Module.WMTS().refresh();
 ```
 
@@ -102,14 +92,10 @@ Module.WMTS().refresh();
 {% tab title="Template" %}
 
 ```javascript
-Module.NaverMap().setblank();
-Module.DaumMap().setblank();
 Module.GoogleMap().setblank();
-Module.BingMap().setblank();
 Module.OpenStreetMap().setblank();
 Module.ArcMap().setblank();
 Module.MapBox().setblank();
-Module.SKYMap().setblank();
 Module.WMTS().setblank();
 ```
 
@@ -124,14 +110,10 @@ Module.WMTS().setblank();
 
 | Name            | Type   | Description                                                |
 | --------------- | ------ | ---------------------------------------------------------- |
-| NaverMap()      | object | Naver Map 배경 영상 지도 설정.                             |
-| DaumMap()       | object | Daum Map 배경 영상 지도 설정.                              |
 | GoogleMap()     | object | Google Map 배경 영상 지도 설정.                            |
-| BingMap()       | object | Bing Map 배경 영상 지도 설정.                              |
 | OpenStreetMap() | object | OpenStreet Map 배경 영상 지도 설정.                        |
 | ArcMap()        | object | ArcMap Map 배경 영상 지도 설정.                            |
 | MapBox()        | object | MapBox Map 배경 영상 지도 설정.                            |
-| SKYMap()        | object | SKY Map 배경 영상 지도 설정.                               |
 | WMTS()          | object | WMTS(웹 맵 타일 서비스) 표준 프로토콜 배경 영상 지도 설정. |
 
 #### LayerName
