@@ -407,7 +407,7 @@ var strKey = object.getId();
     -   false : 생성된 객체가 없을 경우.
 -   Sample
     -   function createVerticalPlane 참조.
-    -   [Sandbox_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid)
+    -   [Sandbox_Vertical_grid](https://sandbox.egiscloud.com/code/main.do?id=object_vertical_grid)
 
 {% endtab %}
 {% tab title="Template" %}
