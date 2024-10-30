@@ -119,7 +119,7 @@ Module.WMTS().setblank();
 
 #### LayerName
 
-> Background video map layer name.
+> 배경 영상 지도 레이어 정보.
 
 | Name            | Type   | Description           |
 | --------------- | ------ | --------------------- |
