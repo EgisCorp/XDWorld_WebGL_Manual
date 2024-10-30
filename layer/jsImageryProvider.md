@@ -103,6 +103,86 @@ Module.WMTS().setblank();
 {% endtab %}
 {% endtabs %}
 
+## Getter / Setter
+
+### setprovider(option), getprovider() -> object
+
+> WMTS 레이어를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                    |
+| ----- | ------ | ------------------------------ |
+| provider | [Provider](jsImageryProvider.md#provider) | WMTS 레이어 설정. |
+
+-   Return
+    -   object: WMTS 레이어 설정 정보.
+-   Sample
+    -   [Sandbox_Layer_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setquality(string), getquality() -> string
+
+> WMTS 레이어 해상도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                    |
+| ----- | ------ | ------------------------------ |
+| quality | string | WMTS 레이어 해상도. |
+
+-   Return
+    -   string: WMTS 레이어 해상도.
+-   Sample
+    -   [Sandbox_Layer_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setzeroLevel(number), getzeroLevel() -> number
+
+> WMTS 레이어 LOD를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                    |
+| ----- | ------ | ------------------------------ |
+| zeroLevel | number | WMTS 레이어 LOD. |
+
+-   Return
+    -   string: WMTS 레이어 LOD.
+-   Sample
+    -   [Sandbox_Layer_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### Type Definitions
 
 #### Type
