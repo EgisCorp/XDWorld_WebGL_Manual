@@ -165,6 +165,9 @@ Module.WMTS().setblank();
 ![](../.gitbook/assets/Tile구조.png)
 
 > 예를들어 EGIS Tile 구조와 다른 Google 이미지를 사용할 경우 Tile이 서로 1:1 매칭되지 않는다. 
+>
 > 그렇기 때문에 EGIS Tile에 걸치는 Google Tile을 모두 요청하여 EGIS Tile에 맞게 이미지를 자른다.
+>
 > 이 과정에서 동일한 레벨의 Google Tile 1개로 EGIS Tile 1개를 만들때 이미지 해상도 차이가 발생한다.
+>
 > 이것을 해결하기 위해 zeroLevel 변수를 활용하여 EGIS의 실제 Tile 레벨 보다 높은 레벨(EGIS 레벨 + zeroLevel)의 Google Tile 이미지를 요청한다.
