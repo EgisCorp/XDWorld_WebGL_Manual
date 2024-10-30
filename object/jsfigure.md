@@ -515,8 +515,7 @@ figure.setSize(50.0, 100.0, 150.0);
 | size 			| [JSVector3D](../core/jsvector3d.md)	| 객체 크기. 		|
 | angle 		| [JSVector3D](../core/jsvector3d.md)	| 객체 회전 각도. 	|
 | color 		| [JSColor](../core/jscolor.md)			| 객체 색상. 		|
-| imagesize[width] 	| number							| 이미지 가로 길이. 	|
-| imagesize[height] | number							| 이미지 세로 길이. 	|
+| imagesize 	| [Size2D](../etc/tag-list.md#size2d-style-type) | 이미지 길이. 	|
 | imagedata 	| string								| 이미지 데이터. 		|
 
 -   Return

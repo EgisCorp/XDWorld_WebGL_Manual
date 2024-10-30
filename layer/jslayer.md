@@ -1079,6 +1079,34 @@ layer.setWMSVersion(“1.1.0”);
 {% endtab %}
 {% endtabs %}
 
+### setWMTSProvider(option)
+
+> WMTS 서비스 레이어를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name    		 | Type   		 | Description 				 |
+| -------------- | ------------- | ------------------------- |
+| serverSetting  | [Provider](jslayer.md#WMTSOption.Server 	 | 서버 정보 설정.  |
+| userSetting  	 | [Provider](jslayer.md#WMTSOption.User 	 | 서비스 정보 설정.  |
+
+-   Return
+    -   success : 생성 성공.
+    -   string : 생성 실패 (실패 오류 메시지 반환).
+-   Sample
+    -   [Sandbox_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getAlpha(), setAlpha(alpha) → number
@@ -1569,3 +1597,31 @@ layer.setName(“WMSLayer2”);
 | request     | string | optional   | GetMap    | GeoServer 요청 지도 타입.              |
 | format      | string | optional   | image/png | GeoServer 요청 이미지 타입.            |
 | transparent | string | optional   | TRUE      | Transparency 이미지 요청 시 투명 옵션. |
+
+#### WMTSOption.Server
+
+> WMTS 레이어 서버 정보.
+
+| Name          | Type                                             | Attributes | Default       | Description                                      |
+| ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
+| url           | string                                           |            |               | 요청 서버 URL 구성요소.                          |
+| vworldTileSet | boolean   						  			   | optional   | false         | 브이월드 타일구조로 타일링일 경우(true).           |
+| projection    | string   										   |            |               | 지도 원본 EPSG 코드.      |
+| tileExtent    | [Rect2D](../etc/tag-list.md#rect2d-style-type)   |            |               | 지도 타일링 영역 설정(좌하단, 우상단).                             |
+| gridSubset    | [Range2D](../etc/tag-list.md#range2d-style-type) | optional   | 지구전체 영역   | 데이터 최소/최대 영역 설정(좌하단, 우상단).                                   |
+| tileSize      | number                                   		   | optional   | 256           | 타일에 가시화 이미지 사이즈 설정.                      |
+| resolutions   | array(number)                                    |     		|            	| 타일링 해상도.                |
+| matrixIds  	| array(number) 								   |     		|  				| 타일링 레벨(해상도와 매칭).              |
+| indexOrder 	| boolean                                          | optional   | true          | 타일 인덱싱 기준점(false: 좌하단, true: 좌상단).         |
+| serviceLevel  | [Range2D](../etc/tag-list.md#range2d-style-type) |     		| 	            | 최소, 최대 이미지 가시화 레벨 설정. |
+
+#### WMTSOption.User
+
+> WMTS 레이어 서비스 정보.
+
+| Name          | Type                                             | Attributes | Default       | Description                                      |
+| ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
+| zeroLevel     | number                                           | optional   | 2             | 서로 다른 타일구조의 매칭을 위한 보간 값(높은값일 수록 요청수가 많아진다).  |
+| quality 		| string   						  			   	   | optional   | 256           | 이미지 해상도.           |
+| iscrack    	| boolean   									   | optional   | false         | 타일링시 크랙이 발생 할 경우(true).      |
+| crackvalue    | number   										   | optional   | 1000          | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).    |
