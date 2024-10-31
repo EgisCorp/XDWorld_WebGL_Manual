@@ -1088,8 +1088,8 @@ layer.setWMSVersion(“1.1.0”);
 
 | Name    		 | Type   		 | Description 				 |
 | -------------- | ------------- | ------------------------- |
-| serverSetting  | [Provider](jslayer.md#WMTSOption.Server 	 | 서버 정보 설정.  |
-| userSetting  	 | [Provider](jslayer.md#WMTSOption.User 	 | 서비스 정보 설정.  |
+| serverSetting  | [WMTSOption.Server](jslayer.md#wmtsoption.server 	 | 서버 정보 설정.  |
+| userSetting  	 | [WMTSOption.User](jslayer.md#wmtsoption.user 	 | 서비스 정보 설정.  |
 
 -   Return
     -   success : 생성 성공.
