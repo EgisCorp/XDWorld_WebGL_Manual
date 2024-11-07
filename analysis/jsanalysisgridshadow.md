@@ -35,7 +35,7 @@ var gridShadow = Module.getAnalysisGridShadow();
         -   수인한도 분석에 사용할 레이어가 없는 경우.
 -   Sample
     -   function setEarthquakeMesh 참조.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -73,7 +73,7 @@ gridShadow.clear();
 
 -   Sample
     -   function setEarthquakeMesh 참조.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -99,7 +99,7 @@ gridShadow.create("gridlayer", 10, true);
     -   각 격자별 일조량, 연속 일조량 결과 반환 (Json).
 -   Sample
     -   function setEarthquakeMesh 참조.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -132,7 +132,7 @@ const json = JSON.parse(result);
 
 -   Sample
     -   function setEarthquakeMesh 참조.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -167,7 +167,7 @@ gridShadow.reset();
         -   수인한도 분석에 사용할 레이어가 없는 경우.
 -   Sample
     -   function setEarthquakeMesh 참조.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -175,6 +175,35 @@ gridShadow.reset();
 ```javascript
 var gridShadow = Module.getAnalysisGridShadow();
 gridShadow.setAnalysis("id", false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### prograss(object) → string
+
+> 분석 진행률을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type    														   | Description                                                    |
+| ---------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| object     | [Prograss.Callback](jsanalysisgridshadow.md#prograss.callback)  | 분석 진행률을 반환받을 callback을 설정합니다.                       |
+
+-   Return
+    -   success : 설정 성공.
+    -   실패 조건
+        -   callback function을 설정하지 않을 경우.
+-   Sample
+    -   function setEarthquakeMesh 참조.
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
 ```
 
 {% endtab %}
@@ -204,7 +233,7 @@ gridShadow.setAnalysis("id", false);
 
 -   Sample
     -   Refer to function setEarthquakeMesh.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -243,7 +272,7 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
 
 -   Sample
     -   function setEarthquakeMesh 참조.
-    -   [Sandbox_Solar Access Analysis](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
+    -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -358,3 +387,11 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 {% endtab %}
 {% endtabs %}
+
+#### Prograss.Callback
+
+> 분석 진행률을 callback을 설정합니다.
+
+| Name          | Type                                             | Attributes | Default       | Description                                      |
+| ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
+| function      | function                                         | 		    |               | 분석 진행률을 반환받을 function을 설정합니다.		   |
