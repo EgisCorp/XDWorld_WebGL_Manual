@@ -649,6 +649,26 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
+### GoogleMap() / OpenStreetMap() / ArcMap() / MapBox() / WMTS()
+
+> 배경지도를 변경합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSImageryProvider](../layer/jsImageryProvider.md): 생성 성공.
+    -   null: 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Type Definitions
 
 ### Module.CreateTerrainOptions
