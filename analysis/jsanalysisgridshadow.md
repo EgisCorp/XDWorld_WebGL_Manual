@@ -187,9 +187,9 @@ gridShadow.setAnalysis("id", false);
 {% tabs %}
 {% tab title="Information" %}
 
-| Name       | Type    														   | Description                                                    |
-| ---------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
-| object     | [Prograss.Callback](jsanalysisgridshadow.md#prograss.callback)  | 분석 진행률을 반환받을 callback을 설정합니다.                       |
+| Name       | Type    	 | Description                                                    |
+| ---------- | --------- | -------------------------------------------------------------- |
+| object     | function  | 분석 진행률을 반환받을 callback을 설정합니다.                       |
 
 -   Return
     -   success : 설정 성공.
@@ -387,11 +387,3 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 {% endtab %}
 {% endtabs %}
-
-#### Prograss.Callback
-
-> 분석 진행률을 callback을 설정합니다.
-
-| Name          | Type                                             | Attributes | Default       | Description                                      |
-| ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
-| function      | function                                         | 		    |               | 분석 진행률을 반환받을 function을 설정합니다.		   |
