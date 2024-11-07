@@ -312,6 +312,154 @@ Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 {% endtab %}
 {% endtabs %}
 
+### setShadowDrawMode(mode)
+
+> 그림자 종류를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description                                                |
+| ----  | ------  | ---------------------------------------------------------- |
+| mode  | number  | <p>0: 선택되지 않은 건물의 그림자영역 제외하고 가시화.<br>1: 선택된 건물의 그림자 가시화.<br>2: 그림자 가시화 중지.<br>3: 그림자를 선으로 가시화.<br>4: 그림자를 면으로 가시화.</p> 										|
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### CreateShadowOutLine(time, color) → boolean
+
+> 그림자 종류를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    							   | Description                    |
+| ----  | -----------------------------------  | ------------------------------ |
+| time  | [JSDateTime](../core/jsdatetime.md)  | 그림자 생성할 시간.			    |
+| color | [JSColor](../core/jscolor.md)  	   | 그림자 색상.			   			|
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   엔진 로드에 실패했을 경우.
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetRenderTerrainShadow(option)
+
+> 지형 그림자 생성여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    	| Description                    |
+| ----  | --------  | ------------------------------ |
+| option | boolean  | 지형 그림자 생성 여부.		     |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearShadow()
+
+> 그림자를 초기화 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### checkInsideArea(array, object, type) → boolean
+
+> 입력된 영역과 객체의 포함여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    								  | Description                    					 		|
+| ----  | --------------------------------------  | ------------------------------------------------------- |
+| array | [JSVec3Array](../core/jsvec3array.md)   | 비교할 영역 좌표 배열.		    					 		|
+| object | [JSObject](../object/jsobject.md)  	  | 비교할 객체.		    							 		|
+| type   | number  								  | <p>0: 완전 포함될 경우.<br>1: 일부라도 포함될 경우.</p>	  	|
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 조건에 맞는 객체가 없을 경우.
+		
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### checkInsideAreas(array, parts, object, type) → boolean
+
+> 여러개의 입력된 영역과 객체의 포함여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    								  | Description                    					 		|
+| ----  | --------------------------------------  | ------------------------------------------------------- |
+| array | [JSVec3Array](../core/jsvec3array.md)   | 비교할 영역 좌표 배열.		    					 		|
+| parts | [JSCollection](../core/collection.md)   | 비교할 영역 parts.		    							|
+| object | [JSObject](../object/jsobject.md)  	  | 비교할 객체.		    							 		|
+| type   | number  								  | <p>0: 완전 포함될 경우.<br>1: 일부라도 포함될 경우.</p>	  	|
+
+-   Sample
+    -   function setShadowSimulationTimeTerm 참조.
+    -   [Sandbox_Object Inside Area](https://sandbox.egiscloud.com/code/main.do?id=analysis_object_inside_area)
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### Type Definitions
 
 #### JSAnalysis.InterpolationOption
