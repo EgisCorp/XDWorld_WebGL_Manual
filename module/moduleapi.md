@@ -669,6 +669,86 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
+### setInspector(mode)
+
+> 엔진 모니터링 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description                                             |
+| ---- | ------ | ------------------------------------------------------- |
+| mode | boolean | 엔진 모니터링 사용 여부 설정. |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getInspector() → object
+
+> 엔진 모니터링 결과값을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   FPS: 현재 FPS.
+    -   Terrain: 지형 요청 URL.
+    -   Satellite: 영상 요청 URL.
+    -   LayerCount: 총 레이어 수.
+    -   LayerName: 레이어 이름.
+    -   RequestCount: 요청 수.
+    -   SuccessCount: 요청 성공 수.
+    -   TotalRequestTime: 총 요청 시간.
+    -   MaxRequestTime: 최대 요청 시간.
+    -   AvgRequestTime: 평균 요청 시간.
+    -   RenderObjCount: 현재 랜더링 객체 수.
+    -   MaxRenderTime: 최대 랜더링 시간.
+    -   AvgRenderTime: 평균 랜더링 시간.
+    -   Layer: 레이어 리스트.
+    -   LayerType: 레이어 타입.
+    -   ObjectCount: 객체 수.
+    -   FaceCount: face 수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### refreshInspector()
+
+> 엔진 모니터링을 초기화 합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description                                             |
+| ---- | ------ | ------------------------------------------------------- |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+
 ## Type Definitions
 
 ### Module.CreateTerrainOptions

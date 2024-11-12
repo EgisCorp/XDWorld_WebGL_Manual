@@ -566,6 +566,35 @@ figure.setSize(50.0, 100.0, 150.0);
 {% endtab %}
 {% endtabs %}
 
+### getRectInfo() → object
+
+> 객체의 좌표정보를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     		| Type                              | Description           |
+| :------------ | :-------------------------------- | :-------------------- |
+
+-   Return
+    -   leftTop : 좌상단 좌표.
+    -   rightTop : 우상단 좌표.
+    -   leftBottom : 좌하단 좌표.
+    -   rightBottom : 우하단 좌표.
+-   Sample
+    -   function exportData 참조.
+    -   [Sandbox_Get_Figure_Coordinate](https://sandbox.egiscloud.com/code/main.do?id=object_figure_coordinate)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getDescription(), setDescription(desc) → string

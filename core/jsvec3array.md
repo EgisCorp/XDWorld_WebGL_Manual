@@ -233,3 +233,47 @@ var lastVector = vectorList.shift();
 
 {% endtab %}
 {% endtabs %}
+
+### getBoundary() → object
+
+> 입력된 좌표리스트의 Boundary를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   min: [JSVector3D](../core/jsvector3d.md)
+    -   max: [JSVector3D](../core/jsvector3d.md)
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### toJSVec2Array() → [JSVec2Array](../core/jsvec2array.md)
+
+> 입력된 좌표리스트의 jsvec2array를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSVec2Array](../core/jsvec2array.md): 반환성공.
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
