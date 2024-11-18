@@ -587,6 +587,79 @@ Module.XDClearInputPoint();
 {% endtab %}
 {% endtabs %}
 
+### XDEMapCreateLayer(layerName, url, port, select, visible, userLayer, layerType, minLevel, maxLevel)
+
+> XDServer 기반 타일 레이어를 추가합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type    | Description                                                      |
+| ----- | ------- | ---------------------------------------------------------------- |
+| layerName | string | <p>레이어 이름.<br>XDServer에서 서비스 되는 레이어 이름 적용.</p> |
+| url | string | <p>XDServer 서비스 URL</p> |
+| port | boolean | <p>포트 번호(현재 미사용).</p> |
+| select | boolean | <p>레이어 오브젝트 선택 가능 여부.</p> |
+| visible | boolean | <p>레이어 가시화 여부.</p> |
+| userLayer | boolean | <p>XDServer 서비스 여부<br>true: 서비스하는 경우.<br>false: 서비스하지 않는 경우.</p> |
+| layerType | number | <p>레이어 타입.</p> |
+| minLevel | number | <p>레이어 타일 최소 레벨.</p> |
+| maxLevel | number | <p>레이어 타일 최대 레벨.</p> |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+Module.XDEMapCreateLayer("facility_build", "server.url", 0, true, true, false, 9, 0, 15);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEPlanetRefresh()
+
+> 지형,영상 서버 변경 후 화면의 재 갱신을 요청합니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEPlanetRefresh();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDSetCamPositionLonLat(longitude, latitude, distance, angle) → boolean
+
+> 경/위도 기준으로 카메라 위치를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type    | Description                                                      |
+| ----- | ------- | ---------------------------------------------------------------- |
+| longitude | number | <p>카메라 위치 좌표(경도).</p> |
+| latitude | number | <p>카메라 위치 좌표(위도).</p> |
+| distance | number | <p>카메라 위치 좌표(고도).</p> |
+| angle | number | <p>카메라의 기울기(tilt).</p> |
+
+-   Return
+    -   true: 이동 성공.
+    -   false: 이동 실패(초기화가 되지 않았을 경우).
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+Module.XDSetCamPositionLonLat(129.128265, 35.171834, 500.0, 20);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### XDIsMouseOverDiv(block)
 
 > 지도 내 클릭 이벤트 사용 유무를 설정합니다.
@@ -611,7 +684,7 @@ Module.XDIsMouseOverDiv(false);
 
 ### XDRenderData()
 
-> 화면을 재 갱신을 요청합니다.
+> 화면의 재 갱신을 요청합니다.
 >
 > 이벤트가 없을 경우 화면을 유지합니다.
 >
