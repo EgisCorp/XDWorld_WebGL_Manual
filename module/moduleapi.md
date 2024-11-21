@@ -341,6 +341,31 @@ let object = Module.createSurfaceGraph("newBarGraph3D");
 {% endtab %}
 {% endtabs %}
 
+### createHTMLObject(id) → [JSHTMLObject](../object/jshtmlobject.md)
+
+> HTML 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| id   | string | 객체 고유 명칭. |
+
+-   Return
+    -   [JSHTMLObject](../object/jshtmlobject.md): 생성 성공.
+    -   null: 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let object = Module.createHTMLObject("newHTML");
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getAnalysis() → [JSAnalysis](../analysis/jsanalysis.md)
 
 > 분석 기능을 실행하는 [JSAnalysis](../analysis/jsanalysis.md) 객체를 반환합니다.
@@ -710,6 +735,39 @@ Module.XDRenderData();
 | Name | Type   | Description                                             |
 | ---- | ------ | ------------------------------------------------------- |
 | mode | number | [Mouse Type List](../etc/type-list.md#mouse-type-list). |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDSetLayerMoveZ(layername, alt)
+
+> 드론 LOD 높이를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name 		 | Type   | Description                         |
+| ---------- | ------ | ----------------------------------- |
+| layername  | string | 드론 LOD 레이어 이름. 				|
+| alt 		 | number | 드론 LOD 레이어 높이 설정. 			|
+
+-   Return
+    -   true: 높이 설정 성공.
+    -   false: 높이 설정 실패.
+    -   실패 조건
+        -   엔진이 로드되지 않았을 경우.
+        -   레이어가 없을 경우.
+	
+-   Sample
+    -   [Sandbox_Layer Drone LOD](https://sandbox.egiscloud.com/code/main.do?id=layer_drone_lod)
 
 {% endtab %}
 
