@@ -17,6 +17,57 @@
 
 ## - 업데이트 내역 -
 
+### 2.8.4_hotfix (2024/11/22)
+
+#### 1. 깜박임 오류 수정
+
+-   특정한 상황에서, 지도가 제대로 그려지지 않고 깜박이는 오류를 수정하였습니다.
+
+#### 2. 건물 simple mode 옵션 추가
+
+-   그라데이션 모드(아래에서부터 위로 점점 밝아지는 음영 효과)가 추가 되었습니다.
+-   Light 방향을 조절할 수 있는 옵션이 추가되었습니다.
+
+#### 3. HTMLObject의 element 속성 추가
+
+-   `HTMLObject.element` 프로퍼티가 추가되었습니다.
+-   자세한 사용법은 [메뉴얼](https://egiscorp.gitbook.io/xdworld-webgl-manual/introduce-1/object/jshtmlobject#properties)을 참고해주시기 바랍니다.
+
+### 2.8.3_hotfix (2024/11/15)
+
+#### 1. JSPolygon.setWaterEffect() 오류 수정
+
+-   `JSPolygon`에서 setWaterEffect()를 호출시, 검은 배경이 나타나는 오류를 수정하였습니다.
+
+### 2.8.2_hotfix (2024/11/08)
+
+#### 1. glTF 애니메이션 오류 수정
+
+-   특정 glTF 모델의 애니메이션이 정상적으로 재생되지 않는 오류를 해결하였습니다.
+
+#### 2. `JSLayer`에 `object_ahead` 속성 추가
+
+-   레이어 차원에서 `object_ahead` 옵션을 관리할 수 있도록, `JSLayer`의 속성이 추가되었습니다.
+-   사용법
+    1. 먼저 해당 옵션을 사용하기 위해, `JSOption.object_ahead` 를 `true`로 설정하여야 합니다.
+    2. `JSOption`와 `JSLayer`의 `object_ahead` 가 모두 `true`일 경우, 해당 레이어에 속한 3d point 오브젝트에 옵션이 적용됩니다.
+    -   `JSOption`의 `object_ahead` 가 `true`여도 `JSLayer` 의 `object_ahead` 가 `false`이면 옵션이 적용되지 않습니다.
+-   `object_ahead` 란?
+    -   (카메라 기준)지형 및 시설물(건물)이 3d point 오브젝트보다 가까이 있을 경우, 오브젝트가 가려지도록 하는 옵션
+    -   자세한 사용법은 [링크](https://sandbox.egiscloud.com/code/main.do?id=object_ahead)를 참고해주시기 바랍니다.
+-   주의 사항
+    -   `JSLayer.object_ahead` 속성은 `ELT_3DPOINT` 레이어에만 적용됩니다. 다른 속성의 레이어에서는 `JSOption.object_ahead`을 사용해주시기 바랍니다.
+
+### 2.8.1_hotfix (2024/11/01)
+
+#### 1. JSTraceTarget의 glTF 애니메이션 포맷 지원
+
+-   JSTraceTarget에서 애니메이션이 포함된 glTF 포맷을 지원하도록 기능이 확장되었습니다.
+
+#### 2. Real3DPack의 객체 버전 확장 적용
+
+-   Real3DPack 레이어가 다양한 버전의 객체를 사용할 수 있도록 기능이 확장되었습니다.
+
 ### 2.8.0 (2024/10/25)
 
 #### 1. 지형과 알파 값이 있는 객체 간의 렌더링 순서 정리
