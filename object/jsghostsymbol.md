@@ -13,7 +13,7 @@ var object = Module.createGhostSymbol("ID");
 
 | Name     			| Type                                	| Description                   |
 | ----------------- | ------------------------------------- | ----------------------------- |
-| opacity 			| number                             	| 객체 투명값 (0 ~ 255).			|
+| opacity 			| number                             	| 객체 투명값 (0.0 ~ 1.0).		|
 | color      		| [JSColor](../core/jscolor.md)        	| 객체 색상값.                   	|
 | lightColor     	| [JSColor](../core/jscolor.md)        	| 객체 조명 색상값.              	|
 | zBufferOff     	| boolean                              	| depthBuffer 사용 유무.        	|
@@ -513,7 +513,7 @@ object.setName("MyObject");
 
 | Name    | Type   | Description |
 | ------- | ------ | ----------- |
-| opacity | number | 투명도(0 ~ 255).     |
+| opacity | number | 투명도(0.0 ~ 1.0).     |
 
 -   Return
     -   number: 객체에 설정된 투명도를 성공적으로 반환.
