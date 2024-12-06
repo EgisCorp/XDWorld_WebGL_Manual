@@ -9,6 +9,14 @@ description: 지도 내 고스트 심볼 객체 생성를 생성 및 설정하�
 ```javascript
 var object = Module.createGhostSymbol("ID");
 ```
+## Properties
+
+| Name     			| Type                                	| Description                   |
+| ----------------- | ------------------------------------- | ----------------------------- |
+| opacity 			| number                             	| 객체 투명값 (0 ~ 255).			|
+| color      		| [JSColor](../core/jscolor.md)        	| 객체 색상값.                   	|
+| lightColor     	| [JSColor](../core/jscolor.md)        	| 객체 조명 색상값.              	|
+| zBufferOff     	| boolean                              	| depthBuffer 사용 유무.        	|
 
 ## Function
 
@@ -505,7 +513,7 @@ object.setName("MyObject");
 
 | Name    | Type   | Description |
 | ------- | ------ | ----------- |
-| opacity | number | 투명도.     |
+| opacity | number | 투명도(0 ~ 255).     |
 
 -   Return
     -   number: 객체에 설정된 투명도를 성공적으로 반환.
