@@ -1732,6 +1732,44 @@ API.JSCamera.AltitudeUp();
 {% endtab %}
 {% endtabs %}
 
+### moveLookAt(lookAt, tilt, direct, distance) → void
+
+> 특정 지점을 기준으로 카메라를 이동시킵니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type       | Description |
+|----------|------------|-------------|
+| lookAt   | JSVector3D | 카메라가 바라볼 대상의 위치. 위도(Y), 경도(X), 고도(Z) 값으로 구성됩니다. |
+| tilt     | number     | 카메라의 상하 기울기 각도 (단위: 도, degree) |
+| direct   | number     | 카메라의 방위각, 즉 수평 방향 (단위: 도, degree) |
+| distance | number     | `lookAt` 지점으로부터 카메라까지의 거리 (단위: meter) |
+
+- Return  
+  - 없음 (void)
+
+- Description  
+  - 지정한 위치를 중심으로, 입력받은 틸트와 방향, 거리 값을 기반으로 카메라의 시점을 설정합니다.  
+  - 내부적으로 구면 좌표계를 사용하여 카메라 위치를 계산하고, `SetCamera()` 및 `SetHeading()`을 호출하여 반영합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera()
+};
+
+var lookAt = new Module.JSVector3D();
+lookAt.X = 126.9780; // 경도
+lookAt.Y = 37.5665;  // 위도
+lookAt.Z = 300.0;    // 고도 (meter)
+
+API.JSCamera.moveLookAt(lookAt, 45.0, 90.0, 1000.0);
+```
+{% endtab %}
+{% endtabs %}
 
 ### Type Definitions
 
