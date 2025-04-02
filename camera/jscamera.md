@@ -1623,6 +1623,86 @@ API.JSCamera.setTraceActive(false); // 추적 중단
 {% endtab %}
 {% endtabs %}
 
+### bankLeft()
+
+> 카메라를 왼쪽으로 기울입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라의 롤(Roll) 축을 따라 왼쪽으로 회전(기울기)합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.bankLeft();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### bankRight()
+
+> 카메라를 오른쪽으로 기울입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라의 롤(Roll) 축을 따라 오른쪽으로 회전(기울기)합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.bankRight();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setAutoMovePath(pathList) → boolean
+
+> 카메라 자동 이동 경로를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type         | Description                          |
+| --------- | ------------ | ------------------------------------ |
+| pathList  | Array<Object> | 이동 경로를 구성하는 지점 목록입니다. 각 요소는 `{ position, direction, tilt }` 객체로 구성됩니다. |
+
+-   Description  
+    -   최소 2개 이상의 경로 지점을 포함해야 합니다.  
+    -   각 경로 지점에는 `position`(JSVector3D), `direction`(number), `tilt`(number)가 포함됩니다.  
+    -   입력값이 유효하지 않으면 경로는 등록되지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+
+var pathList = [
+    { position: new Module.JSVector3D(129.128265, 35.171834, 500), direction: 0.0, tilt: 80.0 },
+    { position: new Module.JSVector3D(129.128500, 35.172000, 500), direction: 20.0, tilt: 85.0 }
+];
+
+API.JSCamera.setAutoMovePath(pathList);
+```
+
+{% endtab %}
+{% endtabs %}
 
 
 
