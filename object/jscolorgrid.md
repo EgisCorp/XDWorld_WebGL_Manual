@@ -799,3 +799,66 @@ object.setVisible(true);
 
 {% endtab %}
 {% endtabs %}
+
+### createHexagonGrid(options) → boolean
+
+> 지정된 영역에 육각형 셀 그리드를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description             |
+| ------- | ------ | ----------------------- |
+| options | object | 육각형 그리드 설정 정보 |
+
+#### options 구조
+
+| Key              | Type                                  | Required | Default        | Description                                                                 |
+|------------------|---------------------------------------|----------|----------------|-----------------------------------------------------------------------------|
+| area             | [JSVec2Array](../core/jsvec2array.md) | true     | -              | 경위도 기준의 영역 좌표 리스트.                                            |
+| cellSize         | number                                | true     | -              | 셀의 한 변 길이 (단위: meter).                                             |
+| altitude         | number                                | false    | 0.0            | 셀의 고도.                                                                 |
+| defaultCellColor | [JSColor](../core/jscolor.md)         | false    | (255,255,255)  | 색상이 지정되지 않은 셀의 기본 색상.                                      |
+| cellColorList    | array<object>                         | false    | []             | 위치별 셀 색상 설정 리스트.                                               |
+
+#### cellColorList 항목 구조
+
+| Key       | Type                         | Description               |
+|-----------|------------------------------|---------------------------|
+| longitude | number                       | 색상을 적용할 셀의 경도.  |
+| latitude  | number                       | 색상을 적용할 셀의 위도.  |
+| color     | [JSColor](../core/jscolor.md) | 적용할 색상 값.            |
+
+- **Return**  
+  - `true`: 생성 성공  
+  - `false`: 파라미터 오류 또는 생성 실패
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var area = new Module.JSVec2Array();
+area.push(new Module.JSVector2D(126.9, 37.5));
+area.push(new Module.JSVector2D(126.91, 37.5));
+area.push(new Module.JSVector2D(126.91, 37.51));
+area.push(new Module.JSVector2D(126.9, 37.51));
+
+var cellColorList = [
+  { longitude: 126.905, latitude: 37.505, color: new Module.JSColor(255, 0, 0) },
+  { longitude: 126.906, latitude: 37.506, color: new Module.JSColor(0, 255, 0) }
+];
+
+var options = {
+  area: area,
+  cellSize: 50,
+  altitude: 10,
+  defaultCellColor: new Module.JSColor(200, 200, 200),
+  cellColorList: cellColorList
+};
+
+var grid = Module.createColorGrid("GRID_ID");
+grid.createHexagonGrid(options);
+```
+
+{% endtab %}
+{% endtabs %}
