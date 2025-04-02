@@ -460,6 +460,196 @@ Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 {% endtab %}
 {% endtabs %}
 
+### getSunset(year, month, day) → number
+
+> 입력한 날짜를 기준으로 일몰 시간(시각)을 반환합니다.  
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| year   | number | 년도        |
+| month  | number | 월 (1~12)   |
+| day    | number | 일 (1~31)   |
+
+- Return  
+  - number: 일몰 시간
+  - 0.0: 계산 실패 (지도 미로드 등)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+const sunsetTime = Module.getAnalysis().getSunset(2025, 4, 2);
+console.log("Sunset:", sunsetTime);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSunrise(year, month, day) → number
+
+> 입력한 날짜를 기준으로 일출 시간(시각)을 반환합니다.  
+> 반환된 값은 24시간제 기준의 실수형 시간값입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| year   | number | 년도        |
+| month  | number | 월 (1~12)   |
+| day    | number | 일 (1~31)   |
+
+- Return  
+  - number: 일출 시간
+  - 0.0: 계산 실패 (지도 미로드 등)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+const sunriseTime = Module.getAnalysis().getSunrise(2025, 4, 2);
+console.log("Sunrise:", sunriseTime);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setShadowMapSize(size)
+
+> 그림자 맵 해상도를 설정합니다.  
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                      |
+| ---- | ------ | -------------------------------- |
+| size | number | 그림자 맵 해상도 (픽셀 단위) 입력 |
+
+- Return  
+  - 없음 (void)
+ 
+> 너무 큰 해상도를 설정할 경우 성능 저하가 발생할 수 있습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getAnalysis().setShadowMapSize(2048);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLimitSunAngle(enable, angle)
+
+> 태양 고도 각도 제한 여부와 제한 각도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                                  |
+| ------ | ------- | -------------------------------------------- |
+| enable | boolean | <p>true: 제한 활성화<br>false: 제한 비활성화</p> |
+| angle  | number  | 제한할 최소 태양 고도 각도 (degree 단위)      |
+
+- Return  
+  - 없음 (void)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getAnalysis().setLimitSunAngle(true, 5.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSunshineObject(objectNames)
+
+> 일조량 분석 시 분석 대상 객체들을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type   | Description                                  |
+| ----------- | ------ | -------------------------------------------- |
+| objectNames | string | 분석 대상 객체들의 키 값 |
+
+-   Return  
+    -   없음 (void)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getAnalysis().setSunshineObject("Building01,Building02");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### CalculateSunshineJson(options) → array
+
+> 지정된 지점들의 일조 시간을 분석하여 각 지점의 일조 시간을 분 단위로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                      |
+| ------- | ------ | ------------------------------------------------ |
+| options | object | 일조 분석 옵션 객체.                             |
+
+**options 필드 설명**:
+
+| Field         | Type     | Required | Default         | Description                                                      |
+| ------------- | -------- | -------- | --------------- | ---------------------------------------------------------------- |
+| positions     | array    | ✅       |                 | 분석할 지점 목록. `[longitude, latitude, altitude]` 형식 배열. |
+| timerange     | object   | ❌       | 오늘 5시~20시   | 시뮬레이션 시간 정보. year, month, day, starthour, endhour 등 포함. |
+| interval      | number   | ❌       | 20              | 분석 시간 간격(단위: 분).                                       |
+| analysistype  | number   | ❌       | 1               | 분석 대상 타입. `0`: 선택 객체, `1`: 가시 객체.                |
+| skip          | number   | ❌       | 0               | 분석 생략할 객체 개수.                                           |
+
+- Return:
+    - array: 각 지점별 일조 시간(분) 리스트.
+    - null: 분석 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+const options = {
+  positions: [
+    [127.0, 37.5, 20],
+    [127.01, 37.51, 25]
+  ],
+  timerange: {
+    year: 2025,
+    mounth: 4,
+    day: 2,
+    starthour: 6,
+    startminute: 0,
+    startsecond: 0,
+    endhour: 18,
+    endminute: 0,
+    endsecond: 0
+  },
+  interval: 10,
+  analysistype: 1
+};
+
+const sunshine = Module.getAnalysis().CalculateSunshineJson(options);
+console.log(sunshine); // [520, 430] 분 단위 일조량
+```
+
+{% endtab %}
+{% endtabs %}
+
+
+
 ### Type Definitions
 
 #### JSAnalysis.InterpolationOption
