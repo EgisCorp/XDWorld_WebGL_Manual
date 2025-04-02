@@ -1889,7 +1889,43 @@ layer.setObjectHeight(30.0);
 {% endtab %}
 {% endtabs %}
 
+### SetPointCloudRenderModeIntensity(intensityMin, intensityMax, colorMode) → boolean
 
+> 포인트 클라우드의 intensity 기반 렌더링 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name         | Type    | Description |
+|--------------|---------|-------------|
+| intensityMin | float   | intensity 값의 최소 범위 |
+| intensityMax | float   | intensity 값의 최대 범위 |
+| colorMode    | boolean | `true`: 색상 모드 사용, `false`: intensity 단일 색상 사용 |
+
+- Return  
+  - `true`: 설정 성공  
+  - `false`: 설정 실패 (레이어 타입이 포인트 클라우드가 아닐 경우 등)
+
+- Description  
+  - 포인트 클라우드 레이어에 대해 intensity 기반 렌더링 모드를 설정합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayer : Module.getLayerByName("MyPointCloud")
+};
+
+// intensity 범위 50 ~ 200, 색상 모드 사용
+var success = API.JSLayer.SetPointCloudRenderModeIntensity(50.0, 200.0, true);
+
+if (!success) {
+    console.error("설정 실패: 해당 레이어는 포인트 클라우드 타입이 아닙니다.");
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Type Definitions
 
