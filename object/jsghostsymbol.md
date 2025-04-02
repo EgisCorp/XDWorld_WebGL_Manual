@@ -554,3 +554,32 @@ object.setVisible(true);
 
 {% endtab %}
 {% endtabs %}
+
+### setScreenFixedSize(size) → boolean
+
+> 고스트 심볼 객체의 화면 고정 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                 |
+| ---- | ------- | --------------------------------------------------------------------------- |
+| size | number  | 고정 크기 값(px 단위). `null` 입력 시 화면 고정 크기 모드가 해제됩니다. |
+
+-   Return  
+    -   true: 설정 성공.  
+    -   false: 잘못된 입력 값 등으로 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 화면 고정 크기 24픽셀로 설정
+object.setScreenFixedSize(24.0);
+
+// 화면 고정 크기 해제
+object.setScreenFixedSize(null);
+```
+
+{% endtab %}
+{% endtabs %}
