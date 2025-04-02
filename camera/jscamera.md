@@ -1393,6 +1393,30 @@ API.JSCamera.moveFront();
 {% endtab %}
 {% endtabs %}
 
+### moveBack()
+
+> 카메라를 현재 시점 방향 기준으로 후진시킵니다.  
+> 1인칭(FPS) 모드일 경우 지형 고도에 따라 자동으로 고도를 조정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라를 뒤로 이동합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveBack();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### Type Definitions
 
 #### JSCamera.MoveBoundaryOption
