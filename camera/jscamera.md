@@ -1395,8 +1395,7 @@ API.JSCamera.moveFront();
 
 ### moveBack()
 
-> 카메라를 현재 시점 방향 기준으로 후진시킵니다.  
-> 1인칭(FPS) 모드일 경우 지형 고도에 따라 자동으로 고도를 조정합니다.
+> 카메라를 뒤로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1416,6 +1415,216 @@ API.JSCamera.moveBack();
 
 {% endtab %}
 {% endtabs %}
+
+### moveLeft()
+
+> 카메라를 현재 위치에서 왼쪽으로 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라를 좌측 방향으로 이동합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLeft();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### moveRight()
+
+> 카메라를 현재 시점 기준으로 오른쪽으로 이동합니다.  
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라를 오른쪽으로 이동합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveRight();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### rotateUp()
+
+> 카메라를 위쪽으로 회전합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라의 X축 기준 기울기(틸트)를 감소시켜 위로 올립니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.rotateUp();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### rotateDown()
+
+> 카메라를 아래쪽으로 회전합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라의 X축 기준 기울기(틸트)를 증가시켜 아래로 내립니다. 
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.rotateDown();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### moveUp()
+
+> 카메라를 현재 위치에서 위로 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라를 현재 위치에서 위로 이동합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveUp();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### moveDown()
+
+> 카메라를 현재 위치에서 아래로 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라를 시점 기준 아래로 이동합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveDown();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTraceTarget(target) → boolean
+
+> 카메라의 추적 대상을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type             | Description               |
+| ------ | ---------------- | ------------------------- |
+| target | JSTraceTarget   | 추적 대상 객체입니다.      |
+
+-   Return  
+    -   `true`: 추적 대상 설정 성공  
+    -   `false`: 대상이 유효하지 않거나 설정 실패
+
+-   Description  
+    -   지정된 객체를 카메라가 지속적으로 따라가도록 설정합니다.  
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var traceTarget = Module.createTraceTarget(model.getId());
+traceTarget.set({
+    object: model,
+    tilt: 45.0,
+    direction: 0.0,
+    distance: 100.0,
+});
+
+var camera = Module.getViewCamera();
+camera.setTraceTarget(traceTarget);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTraceActive(active) → boolean
+
+> 추적 대상의 추적 활성화 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                       |
+| ------ | ------- | --------------------------------- |
+| active | boolean | `true`: 추적 활성화, `false`: 비활성화 |
+
+-   Return  
+    -   `true`: 설정 성공  
+    -   `false`: 설정 실패 (내부 엔진 미정의 상태 등)
+
+-   Description  
+    -   `setTraceTarget()`으로 설정한 대상에 대해 추적을 켜거나 끌 수 있습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setTraceActive(true);  // 추적 시작
+API.JSCamera.setTraceActive(false); // 추적 중단
+```
+
+{% endtab %}
+{% endtabs %}
+
+
+
 
 ### Type Definitions
 
