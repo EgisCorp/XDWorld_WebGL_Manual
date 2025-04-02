@@ -457,3 +457,41 @@ console.log(data);
 ```
 {% endtab %}
 {% endtabs %}
+
+### SetModuleArray(nSection, nSectionCount, nSectionSet) → boolean
+
+> 태양광 모듈의 배열 구성 정보를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name           | Type  | Description |
+|----------------|-------|-------------|
+| nSection       | int   | 단일 배열당 섹션 수 |
+| nSectionCount  | int   | 배열 전체의 섹션 개수 |
+| nSectionSet    | int   | 배열 세트 수 |
+
+- Return  
+  - `true`: 설정 성공 및 모듈 재배치 완료  
+  - `false`: 설정 실패 (엔진 미초기화 또는 내부 오류)
+
+- Description  
+  - 태양광 시스템 내 모듈 배열 구성을 설정합니다.  
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSSolarManager : Module.getSolarManager()
+};
+
+// 예: 각 배열당 5개 섹션, 섹션 총 20개, 세트 2개 구성
+var result = API.JSSolarManager.SetModuleArray(5, 20, 2);
+
+if (!result) {
+    console.error("모듈 배열 설정 실패");
+}
+```
+{% endtab %}
+{% endtabs %}
