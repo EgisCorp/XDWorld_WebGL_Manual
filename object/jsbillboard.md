@@ -266,3 +266,37 @@ object.setVisible(true);
 
 {% endtab %}
 {% endtabs %}
+
+### setVerticalLine(options)
+
+> 빌보드 객체에 수직선(altitude 방향)을 표시합니다.
+>
+> 수직선은 시각적 참조용으로 사용되며, 고도 차이나 위치 강조 시 유용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                          | Description                                                                 |
+| --------- | ----------------------------- | --------------------------------------------------------------------------- |
+| visible   | boolean                       | 수직선 가시화 여부.                                                         |
+| width     | number                        | 수직선의 너비 (기본값: 1.0).                                                |
+| color     | [JSColor](../core/jscolor.md) | 수직선 색상 (기본값: rgba(255,255,255,150)).                                |
+| altitude  | number                        | 수직선 끝 점 고도. 빌보드 시작점에서 아래로 이 고도까지 선이 이어집니다. |
+
+- 모든 옵션이 생략되면 `"Parameter Not Found."` 에러를 반환합니다.
+- `altitude` 값이 설정되면 내부 수직선 객체가 새로 생성됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var obj = Module.getObjectById("Billboard_1");
+
+obj.setVerticalLine({
+    visible: true,
+    width: 2.0,
+    color: new Module.JSColor(255, 100, 100, 200),
+    altitude: 50.0
+});
+```
+{% endtab %}
+{% endtabs %}
