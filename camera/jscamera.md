@@ -1389,6 +1389,7 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 API.JSCamera.moveFront();
+```
 {% endtab %}
 {% endtabs %}
 
