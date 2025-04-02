@@ -10,6 +10,13 @@ description: 지도 내 각종 이벤트 관련 기능을 설정 및 제어하�
 var object = Module.getControl();
 ```
 
+## Properties
+
+| Name     				| Type                                	| Description                   |
+| --------------------- | ------------------------------------- | ----------------------------- |
+| keyboard_sensitivity  | float                              	| 키보드 이동 민감도              |
+
+
 ## Function
 
 ### activeMouse(type) → boolean
