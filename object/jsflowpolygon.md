@@ -110,6 +110,55 @@ polygon.setCullMode(3);
 {% endtab %}
 {% endtabs %}
 
+### create(options) → object
+
+> 물 흐름 폴리곤 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                                                        | Description         |
+| ------- | --------------------------------------------------------------------------- | ------------------- |
+| options | [JSFlowPolygon.GridDataOption](#jsflowpolygongriddataoption)               | 폴리곤 생성 정보.   |
+
+- Return  
+  - `"result"` 속성이 포함된 object: 객체 생성 성공.  
+  - `"error"` 속성이 포함된 object: 객체 생성 실패.  
+    - `vertex` 또는 `normaltexture` 속성이 없을 경우.  
+    - `normaltexture`, `flowtexture`, `flowpath`가 유효하지 않거나 없는 경우.  
+    - 객체 생성 실패 또는 waterlevel 설정 실패 시.
+
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let flowPolygon = Module.createFlowPolygon("FLOW");
+
+let normalIcon = new Module.JSIcon();
+normalIcon.setPath("./data/normal_texture.png");
+
+let flowIcon = new Module.JSIcon();
+flowIcon.setPath("./data/flow_map.png");
+
+let vertices = new Module.JSVec3Array();
+vertices.push(new Module.JSVector3D(129.1, 35.1, 0));
+vertices.push(new Module.JSVector3D(129.2, 35.1, 0));
+vertices.push(new Module.JSVector3D(129.2, 35.2, 0));
+vertices.push(new Module.JSVector3D(129.1, 35.2, 0));
+
+let options = {
+    vertex: vertices,
+    normaltexture: normalIcon,
+    flowtexture: flowIcon,
+    waterlevel: 5.0
+};
+
+let result = flowPolygon.create(options);
+```
+{% endtab %}
+{% endtabs %}
+
+
 ### Type Definitions
 
 #### JSFlowPolygon.GridDataOption
