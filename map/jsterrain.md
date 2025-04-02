@@ -10,6 +10,14 @@ description: 지도 내 지형 설정 및 제어하기 위한 API 입니다.
 var map = Module.getTerrain();
 ```
 
+## Properties
+|Name|Type|Description|
+|demRate|number|DEM 높이 표현 비율|
+|recoverHSV|number|색상 조정 설정 여부|
+|recoverHue|number|색상 Hue 조정 값|
+|recoverSaturation|number|색상 Saturation 조정 값|
+|recoverValue|number|색상 Value 조정 값|
+
 ## Function
 
 ### makeTerrainElevationCellData(option) → object
@@ -24,11 +32,6 @@ var map = Module.getTerrain();
 | Name   | Type                                                      | Description |
 | ------ | --------------------------------------------------------- | ----------- |
 | option | [JSTerrain.GridOption](jsterrain.md#jsterrain.gridoption) | 속성 정보.  |
-|demRate|number|DEM 높이 표현 비율|
-|recoverHSV|number|색상 조정 설정 여부|
-|recoverHue|number|색상 Hue 조정 값|
-|recoverSaturation|number|색상 Saturation 조정 값|
-|recoverValue|number|색상 Value 조정 값|
 
 -   Return
     -   .result: API success status ( 1 : success, 0 : failure ).
