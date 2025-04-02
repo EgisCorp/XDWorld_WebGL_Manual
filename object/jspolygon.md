@@ -740,6 +740,42 @@ poly.setOverlayObject({
 {% endtab %}
 {% endtabs %}
 
+### setUnionMode(bMode) → void
+
+> 폴리곤 객체의 연산 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description |
+|--------|--------|-------------|
+| bMode  | boolean | `true`: 평면 연산 모드(`EOT_PLANE`), `false`: 입체 연산 모드(`EOT_POLYHEDRON`) |
+
+- Return  
+  - 없음 (void)
+
+- Description  
+  - 폴리곤 객체의 연산 방식을 설정합니다.  
+  - `true`로 설정하면 내부 객체 타입이 `EOT_PLANE`으로 설정되어 평면 병합 연산을 수행하며,  
+    `false`로 설정하면 `EOT_POLYHEDRON`으로 처리되어 입체 병합 연산이 가능합니다.  
+  - 설정 이후 RTT(렌더 타겟 텍스처) 갱신 플래그가 활성화됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSPolygon : Module.getPolygon()
+};
+
+// 평면 병합 연산 모드 설정
+API.JSPolygon.setUnionMode(true);
+
+// 입체 병합 연산 모드 설정
+API.JSPolygon.setUnionMode(false);
+```
+{% endtab %}
+{% endtabs %}
 
 ### Type Definitions
 
