@@ -14,7 +14,7 @@ var object = Module.getControl();
 
 | Name     				| Type                                	| Description                   |
 | --------------------- | ------------------------------------- | ----------------------------- |
-| keyboard_sensitivity  | float                              	| 키보드 이동 민감도              |
+| keyboard_sensitivity  | number                              	| 키보드 이동 민감도              |
 
 
 ## Function
