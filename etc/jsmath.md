@@ -120,6 +120,56 @@ let result = Module.getMath().calculationSlopeAnalysis(slop);
 {% endtab %}
 {% endtabs %}
 
+### splitLine(options) → object
+
+> 경위도 좌표 목록을 일정 간격으로 분할한 결과를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                             |
+| ------- | ------- | ------------------------------------------------------- |
+| options | object  | `coordinates` 정보와 `split` 수치를 포함한 옵션 객체. |
+
+-   options 구조
+
+| Key         | Type      | Description                                          |
+| ----------- | --------- | ---------------------------------------------------- |
+| coordinates | object    | 좌표 정보 `{ style, coordinate }`.                 |
+| split       | number    | 나눌 정점 개수. 기본값: 100                         |
+
+-   Return  
+    -   `.result`: API 성공 여부 (1: 성공, 0: 실패)  
+    -   `.name`: API 명칭  
+    -   `.return`: `{ length, count, data }` 객체 반환  
+        - `length`: 전체 거리 (meter)  
+        - `count`: 좌표 개수  
+        - `data`: [JSVec3Array](../core/JSVec3Array.md) 형태의 분할 좌표
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let coordinates = {
+    style: "XYZ",
+    coordinate: [
+        [127.0, 37.5, 10],
+        [127.001, 37.501, 10]
+    ]
+};
+
+let option = {
+    coordinates: coordinates,
+    split: 10
+};
+
+let result = Module.getMath().splitLine(option);
+```
+
+{% endtab %}
+{% endtabs %}
+
+
 ### Type Definitions
 
 #### JSMath.BezierCurve
@@ -141,6 +191,110 @@ let result = Module.getMath().calculationSlopeAnalysis(slop);
 | detail  | number                              | optional   | 50      | 곡선 생성 보간 점 수.                                         |
 | height  | number                              | optional   | 100     | 곡선 최대 높이.                                               |
 | percent | number                              | optional   | 50      | 시작 위치 0%, 끝 위치 100% 기준으로 곡선 최대 높이 지점 설정. |
+
+### getIntervalPositionInRect(min, max, vertical, horizontal) → object
+
+> 경위도 기준의 사각 영역 내에서 일정 간격마다 좌표를 균등 분포로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type                                | Description                                   |
+| ---------- | ----------------------------------- | --------------------------------------------- |
+| min        | [JSVector2D](../core/jsvector2d.md) | 사각 영역의 최소 좌표 (경도, 위도).             |
+| max        | [JSVector2D](../core/jsvector2d.md) | 사각 영역의 최대 좌표 (경도, 위도).             |
+| vertical   | number                              | 세로 간격 (meter 단위).                         |
+| horizontal | number                              | 가로 간격 (meter 단위).                         |
+
+-   Return  
+    -   `position`: [JSVec2Array](../core/jsvec2array.md) 타입의 좌표 목록  
+    -   `positionCountWidth`: 가로 개수  
+    -   `positionCountHeight`: 세로 개수  
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let min = new Module.JSVector2D(127.0, 37.5);
+let max = new Module.JSVector2D(127.01, 37.51);
+
+let result = Module.getMath().getIntervalPositionInRect(min, max, 10, 10);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isPointInPolygon(polygon, points) → Array<boolean>
+
+> 주어진 2D 포인트들이 폴리곤 내부에 포함되는지를 판별합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                             | Description                                         |
+| ------- | -------------------------------- | -------------------------------------------------- |
+| polygon | [JSVec2Array](../core/jsvec2array.md) | 다각형 영역 경계 좌표 목록.                         |
+| points  | Array<[number, number]>          | 경위도 좌표 쌍(경도, 위도) 목록.                   |
+
+-   Return  
+    -   `Array<boolean>`: 각 포인트가 폴리곤 안에 포함되는 여부를 `true` 또는 `false`로 반환하는 배열.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let polygon = new Module.JSVec2Array();
+polygon.push(new Module.JSVector2D(127.0, 37.5));
+polygon.push(new Module.JSVector2D(127.01, 37.5));
+polygon.push(new Module.JSVector2D(127.01, 37.51));
+polygon.push(new Module.JSVector2D(127.0, 37.51));
+
+let points = [
+    [127.005, 37.505],   // 내부
+    [127.02, 37.52]      // 외부
+];
+
+let result = Module.getMath().isPointInPolygon(polygon, points);
+// result => [true, false]
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getScreenEdgeIndicator(position) → object \| null
+
+> 화면 밖에 있는 객체의 위치를 화면 경계 기준으로 보정하여 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                                 |
+| -------- | ----------------------------------- | ------------------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md) | 대상 객체의 지형 상 위치(경도, 위도, 고도). |
+
+-   Return  
+    -   `object`: `{ x, y }` 화면 경계상의 좌표 (픽셀 단위).  
+    -   `null`: 객체가 화면 내에 이미 포함되어 있는 경우.
+
+-   Sample  
+    -   function getOutOfScreenIndicator 참조  
+    -   [Sandbox_Object Indicator](https://sandbox.egiscloud.com/code/main.do?id=math_screen_indicator)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let position = new Module.JSVector3D(127.01, 37.51, 300.0);
+let screenEdge = Module.getMath().getScreenEdgeIndicator(position);
+
+if (screenEdge !== null) {
+    console.log("Out of view. Indicator at:", screenEdge.x, screenEdge.y);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
 
 #### JSMath.SlopeOption
 
