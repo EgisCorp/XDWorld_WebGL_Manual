@@ -243,6 +243,7 @@ Module.getViewCamera().move(new Module.JSVector3D(129.128265, 35.171834, 500.0),
 {% endtab %}
 {% endtabs %}
 
+
 ### moveDist(location, tilt, direct, dist, speed)
 
 > 카메라를 지정된 위치, 기울기, 방향, 거리, 속도를 설정합니다.
@@ -1315,6 +1316,79 @@ var currentTilt = API.JSCamera.getTilt();
 Module.getViewCamera().setTilt(80);
 ```
 
+{% endtab %}
+{% endtabs %}
+
+### moveFrontBack(delta)
+
+> 카메라를 현재 시점 방향 기준으로 앞 또는 뒤로 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                           |
+| ----- | ------ | ------------------------------------- |
+| delta | number | 이동 거리. 양수면 앞으로, 음수면 뒤로 이동. |
+
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveFrontBack(10.0); // 앞으로 10 이동
+API.JSCamera.moveFrontBack(-5.0); // 뒤로 5 이동
+
+{% endtab %}
+{% endtabs %}
+
+### moveLeftRight(delta)
+
+> 카메라를 현재 시점 기준으로 좌우로 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                            |
+| ----- | ------ | -------------------------------------- |
+| delta | number | 이동 거리. 양수면 오른쪽, 음수면 왼쪽으로 이동. |
+
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveLeftRight(10.0); // 오른쪽으로 이동
+API.JSCamera.moveLeftRight(-10.0); // 왼쪽으로 이동
+```
+{% endtab %}
+{% endtabs %}
+
+### moveFront()
+
+> 카메라를 현재 시점 방향으로 전진시킵니다.  
+> 1인칭(FPS) 모드일 경우 지형 고도에 따라 자동으로 고도를 조정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   기본 이동 거리(delta)는 내부 설정값(`getMoveDelta`)을 따릅니다.  
+    -   FPS 모드 활성화 시, 이동 후 지형 높이에 맞춰 카메라 고도가 자동 보정됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.moveFront();
 {% endtab %}
 {% endtabs %}
 
