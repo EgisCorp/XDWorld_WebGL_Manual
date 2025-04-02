@@ -1566,6 +1566,331 @@ layer.setName(“WMSLayer2”);
 {% endtab %}
 {% endtabs %}
 
+### setPointCloudRenderModeRGB(offsetR, offsetG, offsetB) → boolean
+
+> 포인트 클라우드 레이어의 RGB 색상 오프셋을 설정하고, 렌더링 모드를 RGB 모드로 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                   |
+| -------- | ------ | ----------------------------- |
+| offsetR  | number | 빨간색(R) 채널 오프셋 (0~255) |
+| offsetG  | number | 초록색(G) 채널 오프셋 (0~255) |
+| offsetB  | number | 파란색(B) 채널 오프셋 (0~255) |
+
+-   Return  
+    -   true: 설정 성공  
+    -   false: 포인트 클라우드 레이어가 아닌 경우  
+
+-   Note  
+    -   alpha 값은 항상 255로 고정됨  
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layerList = new Module.JSLayerList(false);
+let layer = layerList.nameAtLayer("PointCloudLayer");
+layer.setPointCloudRenderModeRGB(255, 100, 100);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPointCloudRenderModeIntensity(min, max, useColor) → boolean
+
+> 포인트 클라우드 레이어의 Intensity 기반 렌더링 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type    | Description                             |
+| --------- | ------- | --------------------------------------- |
+| min       | number  | Intensity 최소값                       |
+| max       | number  | Intensity 최대값                       |
+| useColor  | boolean | true: 컬러맵 적용, false: 그레이스케일  |
+
+-   Return  
+    -   true: 설정 성공  
+    -   false: 포인트 클라우드 레이어가 아닌 경우  
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layerList = new Module.JSLayerList(false);
+let layer = layerList.nameAtLayer("PointCloudLayer");
+layer.setPointCloudRenderModeIntensity(0.0, 255.0, true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPointCloudRenderModeAltitude(min, max, useColor) → boolean
+
+> 포인트 클라우드 레이어의 고도 기반 렌더링 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type    | Description                                  |
+| -------- | ------- | -------------------------------------------- |
+| min      | number  | 고도 컬러맵 적용 범위 최소값 (meter 단위).   |
+| max      | number  | 고도 컬러맵 적용 범위 최대값 (meter 단위).   |
+| useColor | boolean | true: 컬러맵 적용, false: 그레이스케일 적용. |
+
+-   Return  
+    -   true: 설정 성공  
+    -   false: 포인트 클라우드 레이어가 아닌 경우  
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layerList = new Module.JSLayerList(false);
+let layer = layerList.nameAtLayer("PointCloudLayer");
+layer.setPointCloudRenderModeAltitude(0.0, 100.0, true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPointCloudPointSize(size) → boolean
+
+> 포인트 클라우드 객체의 점 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                        |
+| ---- | ------ | ---------------------------------- |
+| size | number | 점 크기(0.001 이상, meter 단위).     |
+
+-   Return  
+    -   true: 설정 성공  
+    -   false: 잘못된 값이거나 포인트 클라우드 레이어가 아닌 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layerList = new Module.JSLayerList(false);
+let layer = layerList.nameAtLayer("PointCloudLayer");
+layer.setPointCloudPointSize(0.05);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPickInfoAtView(lineFrom, lineTo) → object
+
+> 주어진 뷰 라인(lineFrom → lineTo)을 기준으로 해당 레이어 내 피킹된 객체 정보를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                 |
+| -------- | ----------------------------------- | --------------------------- |
+| lineFrom | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 시작 좌표.       |
+| lineTo   | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 끝 좌표.         |
+
+-   Return  
+    -   `object` : 피킹 성공 시 위치 및 객체 정보 반환  
+    -   `null` : 피킹 실패 시
+
+-   반환 객체 구조
+
+| Key        | Type   | Description                        |
+| ---------- | ------ | ---------------------------------- |
+| position   | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.             |
+| objectKey  | string | 피킹된 객체의 고유 키.              |
+| layerName  | string | 피킹된 객체가 포함된 레이어 이름.     |
+
+-   Note  
+    -   현재 타일 기반 레이어에서만 동작합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let from = new Module.JSVector3D(127.0, 37.5, 100.0);
+let to = new Module.JSVector3D(127.0, 37.5, 0.0);
+
+let pickInfo = layer.getPickInfoAtView(from, to);
+
+if (pickInfo) {
+    console.log("Position:", pickInfo.position);
+    console.log("Object Key:", pickInfo.objectKey);
+    console.log("Layer Name:", pickInfo.layerName);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTileLoadCallback(callback) → boolean
+
+> 타일 로딩 완료 시 호출될 콜백 함수를 설정합니다.  
+> 타일 기반 레이어(`ELST_PLANET_TILE`)에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                 |
+| -------- | ------ | --------------------------- |
+| callback | function | 타일 로딩 시 호출될 콜백 함수. |
+
+-   Return  
+    -   `true` : 설정 성공  
+    -   `false` : 설정 실패  
+        - 비타일 레이어일 경우  
+        - 월드가 초기화되지 않은 경우
+
+-   Note  
+    - 콜백 함수는 JavaScript 함수 객체로 전달되어야 합니다.  
+    - 콜백은 각 타일 로드 완료 시마다 실행됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layer = Module.getLayerByName("MyTileLayer");
+layer.setTileLoadCallback(function() {
+    console.log("Tile loaded!");
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addTileInObject(tileInfo, object) → boolean
+
+> 지정한 타일 위치에 객체를 수동으로 삽입합니다.  
+> 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                           | Description                       |
+| --------- | ------------------------------ | --------------------------------- |
+| tileInfo  | object                         | 타일 위치 정보 `{level, idx, idy}`. |
+| object    | [JSObject](../object/jsobject.md) | 삽입할 객체.                      |
+
+-   Return  
+    -   `true` : 객체 추가 성공  
+    -   `false` : 실패  
+        - 비타일 기반 레이어  
+        - 유효하지 않은 오브젝트  
+        - RTT(Render to Texture) 객체  
+        - 이미 등록된 객체  
+        - tileInfo 누락 또는 오류  
+        - 타일 존재하지 않음
+
+-   Note  
+    - 해당 타일에 객체를 삽입하고 렌더링을 갱신합니다. 
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript;
+layer.addTileInObject(tileInfo, obj);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTileInObjectEnd(tileInfo) → boolean
+
+> 지정한 타일의 객체 수동 삽입 종료를 명시적으로 설정합니다.  
+> 객체 수동 삽입 이후 타일의 요청 플래그를 비활성화합니다.  
+> 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                           |
+| -------- | ------ | ------------------------------------- |
+| tileInfo | object | 타일 위치 정보 `{level, idx, idy}`. |
+
+-   Return  
+    -   `true` : 설정 성공  
+    -   `false` : 실패  
+        - 비타일 기반 레이어  
+        - tileInfo 누락 또는 오류  
+        - 타일 존재하지 않음
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+layer.setTileInObjectEnd(tileInfo);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setUserTileLoadCallback(callback) → boolean
+
+> 사용자 레이어 또는 콜백 레이어에서 타일 로드 시 사용자 정의 콜백 함수를 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description                         |
+| -------- | -------- | ----------------------------------- |
+| callback | function | 사용자 정의 콜백 함수.              |
+
+-   Return  
+    -   `true`: 콜백 등록 성공  
+    -   `false`: 콜백 등록 실패  
+        - 레이어 타입이 사용자 또는 콜백 타입이 아닌 경우  
+        - 지구본 타일 기반 레이어가 아닌 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layerList = new Module.JSLayerList(true);
+let layer = layerList.createLayer("UserCallbackLayer");
+
+layer.setUserTileLoadCallback(function(...) {
+    ...
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setObjectHeight(height)
+
+> 애니메이션 오브젝트에서 레이어에 포함된 객체의 높이 기준값을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description            |
+| ------ | ------ | ---------------------- |
+| height | number | 객체 기준 높이 값(m).  |
+
+-   Note  
+    - 객체 생성 시 높이 보정이 필요한 경우 사용합니다.  
+    - 값 변경 시, 가시화 정보가 즉시 갱신됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(true);
+var layer = layerList.createLayer("MyLayer");
+layer.setObjectHeight(30.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+
+
 ## Type Definitions
 
 #### WMSOptions
