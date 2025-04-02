@@ -111,3 +111,30 @@ object.setVisible(true);
 
 {% endtab %}
 {% endtabs %}
+
+### setPickable(value) → boolean
+
+> 객체의 피킹(Picking) 가능 여부를 설정합니다.  
+> 피킹 기능이 활성화된 경우, 마우스 이벤트 또는 선택 연산 시 해당 객체를 대상으로 인식할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description                            |
+| ----- | ------- | -------------------------------------- |
+| value | boolean | `true`: 피킹 가능, `false`: 피킹 불가 |
+
+- Return  
+  - `true` : 설정 성공  
+  - `false` : 설정 실패 (객체가 null인 경우 등)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+const obj = Module.createPolygon("PICKABLE_OBJECT");
+obj.setPickable(true); // 마우스 피킹 가능 설정
+```
+
+{% endtab %}
+{% endtabs %}
