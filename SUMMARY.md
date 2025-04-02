@@ -50,6 +50,7 @@
     -   [JSSightAnalysis](analysis/jssightanalysis.md)
     -   [JSSlope](analysis/jsslope.md)
     -   [JSTransparency](analysis/jstransparency.md)
+    -   [JSSolarManager](analysis/jssolarmanager.md)
 -   [Camera](camera/README.md)
     -   [JSCamera](camera/jscamera.md)
 -   [Layer](layer/layer.md)
