@@ -1038,3 +1038,228 @@ pMap.setFog(color, 0, 5000, 0.3);
 
 {% endtab %}
 {% endtabs %}
+
+### getPathIntervalPositions(path, interval, isUnionTerrain) → [JSVec3Array](../core/jsvec3array.md)
+
+> 경위도 경로를 일정 간격으로 나눈 좌표 목록을 반환합니다.
+
+#### Parameters
+
+| Name            | Type                                  | Description                        |
+| --------------- | ------------------------------------- | ---------------------------------- |
+| path            | [JSVec3Array](../core/jsvec3array.md) | 경위도 경로 좌표 목록              |
+| interval        | number                                | 간격 (meter 단위)                  |
+| isUnionTerrain  | boolean                               | true: 지형 반영, false: 단순 표면  |
+
+#### Returns
+
+- [JSVec3Array](../core/jsvec3array.md): 간격에 따라 분할된 좌표 목록
+
+#### Sample
+
+```javascript
+let path = new Module.JSVec3Array();
+path.push(new Module.JSVector3D(127.0, 37.5, 0));
+path.push(new Module.JSVector3D(127.01, 37.51, 0));
+
+let result = Module.getMap().getPathIntervalPositions(path, 50, true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTerrHeightFast(lon, lat) → number
+
+> 입력한 경도(lon), 위도(lat) 기준의 지형 고도 값을 빠르게 반환합니다.  
+> 일반 getTerrHeight보다 성능이 빠르지만, 정밀도는 약간 낮을 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description             |
+| ---- | ------ | ----------------------- |
+| lon  | number | 경도 (degrees 단위)     |
+| lat  | number | 위도 (degrees 단위)     |
+
+- Return  
+  - number: 지형 고도 값 (meter 단위)  
+  - 0: 고도 요청 실패
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let lon = 127.0;
+let lat = 37.5;
+let height = Module.getMap().getTerrHeightFast(lon, lat);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPositionByAngleDistance3D(position, distance, angle) → [JSVector3D](../core/jsvector3d.md)
+
+> 기준 좌표(`position`)에서 주어진 거리(`distance`)와 방위각(`angle`)을 기반으로 계산된 위치를 반환합니다.  
+> 방위각은 북쪽을 기준으로 시계 방향으로 증가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                              |
+| -------- | ----------------------------------- | ---------------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md) | 기준 위치 (경도, 위도, 고도).            |
+| distance | number                              | 이동 거리 (meters 단위).                 |
+| angle    | number                              | 이동 방향 각도 (degrees, 북쪽 기준 시계방향). |
+
+- Return  
+  - [JSVector3D](../core/jsvector3d.md): 이동 결과 위치 (경도, 위도, 고도)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let base = new Module.JSVector3D(127.0, 37.5, 100.0);
+let result = Module.getMap().getPositionByAngleDistance3D(base, 100.0, 90.0);  // 동쪽으로 100m 이동
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getAreaIntervalPositions(area, intervalVertical, intervalHorizontal, direction) → [JSVec3Array](../core/jsvec3array.md)
+
+> 주어진 다각형 영역(`area`) 안에 일정 간격(`intervalVertical`, `intervalHorizontal`)으로 점을 분포시켜 반환합니다.  
+> `direction` 값에 따라 정렬 방향을 조절할 수 있으며, 각 점은 실제 지형고도를 반영하여 3D 좌표로 반환됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name              | Type                                  | Description                                         |
+| ----------------- | ------------------------------------- | --------------------------------------------------- |
+| area              | [JSVec3Array](../core/jsvec3array.md) | 영역 경계 좌표 목록 (경도, 위도, 고도).               |
+| intervalVertical  | number                                | 세로 간격 (meter 단위).                             |
+| intervalHorizontal| number                                | 가로 간격 (meter 단위).                             |
+| direction         | number                                | 정렬 기준 각도 (degrees). 북쪽 기준 시계방향으로 회전 |
+
+- Return  
+  - [JSVec3Array](../core/jsvec3array.md): 영역 내부 일정 간격으로 분포된 위치 리스트 (경도, 위도, 고도)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let area = new Module.JSVec3Array();
+area.push(new Module.JSVector3D(127.0, 37.5, 0));
+area.push(new Module.JSVector3D(127.01, 37.5, 0));
+area.push(new Module.JSVector3D(127.01, 37.51, 0));
+area.push(new Module.JSVector3D(127.0, 37.51, 0));
+area.push(new Module.JSVector3D(127.0, 37.5, 0));
+
+let result = Module.getMap().getAreaIntervalPositions(area, 10, 10, 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setHeatMapOpacity(opacity)
+
+> 히트맵의 투명도를 설정합니다.  
+> 값이 작을수록 히트맵이 더 투명하게 표시됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type  | Description                      |
+| ------- | ----- | -------------------------------- |
+| opacity | float | 히트맵 투명도 (0.0 ~ 1.0 사이값). |
+
+- `0.0`: 완전히 투명  
+- `1.0`: 완전히 불투명
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setHeatMapOpacity(0.7);  // 히트맵 투명도 70%로 설정
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDefaultHeatMapColor()
+
+> 히트맵 색상을 기본 색상으로 초기화합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- 현재 설정된 사용자 정의 히트맵 색상 구성을 제거하고, 엔진 기본 색상 구성을 복원합니다.
+- 히트맵 표현이 초기 상태로 재설정됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setDefaultHeatMapColor();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setHeatMapColor(colors)
+
+> 히트맵 색상 구성 목록을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                | Description                      |
+|--------|-------------------------------------|----------------------------------|
+| colors | [Collection](../core/collection.md) | [JSColor](../core/jscolor.md)의 배열. |
+
+- 최소 2개 이상의 색상이 필요합니다.
+- 설정된 색상은 낮은 밀도부터 높은 밀도까지 순차적으로 적용됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let colorList = new Module.Collection();
+colorList.Add(new Module.JSColor(0, 0, 255));   // Low density - blue
+colorList.Add(new Module.JSColor(0, 255, 0));   // Mid density - green
+colorList.Add(new Module.JSColor(255, 0, 0));   // High density - red
+
+Module.getMap().setHeatMapColor(colorList);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPositionByAngleDistance3D(position, distance, angle) → [JSVector3D](../core/jsvector3d.md)
+
+> 입력 위치로부터 특정 각도와 거리만큼 떨어진 지점의 좌표를 반환합니다.
+>
+> 반환 좌표는 경위도 및 고도 형태입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                                       |
+|----------|-------------------------------------|---------------------------------------------------|
+| position | [JSVector3D](../core/jsvector3d.md) | 기준 위치 (경도, 위도, 고도).                    |
+| distance | number                              | 거리 (meter 단위).                               |
+| angle    | number                              | 방향 (degrees, 북쪽 기준 시계방향 각도 0~360도). |
+
+- 거리 < 0 또는 각도가 0~360 범위를 벗어나면 null 벡터가 반환됩니다.
+
+- 결과 좌표는 입력 기준점에서 북쪽 기준 angle 각도 방향으로 distance만큼 이동한 지점을 의미합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let center = new Module.JSVector3D(127.0, 37.5, 100); // 기준 위치
+let offset = Module.getMap().getPositionByAngleDistance3D(center, 1000, 45); // 북동쪽 1km 위치
+```
+
+{% endtab %}
+{% endtabs %}
