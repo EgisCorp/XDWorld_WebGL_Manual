@@ -12,6 +12,7 @@ var map = Module.getTerrain();
 
 ## Properties
 |Name|Type|Description|
+|------|------|------|
 |demRate|number|DEM 높이 표현 비율|
 |recoverHSV|number|색상 조정 설정 여부|
 |recoverHue|number|색상 Hue 조정 값|
