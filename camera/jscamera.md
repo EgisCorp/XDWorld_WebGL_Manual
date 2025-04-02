@@ -1771,6 +1771,39 @@ API.JSCamera.moveLookAt(lookAt, 45.0, 90.0, 1000.0);
 {% endtab %}
 {% endtabs %}
 
+### setViewMode(vMode) → void
+
+> 카메라의 뷰 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type  | Description |
+|--------|-------|-------------|
+| vMode  | int   | 뷰 모드 타입. 정수값으로 지정되며, 엔진 내부에서 정의된 시점 모드로 전환됩니다. |
+
+- Return  
+  - 없음 (void)
+
+- Description  
+  - 카메라의 뷰 모드를 설정합니다.  
+  - `vMode`는 엔진 내부에 정의된 값으로, 예를 들어 기본 뷰, 3인칭 추적 뷰, 탑다운 뷰 등으로 전환될 수 있습니다.  
+  - 설정 후 `UpdateFrame()`을 호출하여 프레임 갱신을 즉시 반영합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera()
+};
+
+// 예: 0 = 기본 뷰, 1 = 3인칭 뷰 등 (정의는 엔진에 따라 다름)
+API.JSCamera.setViewMode(1);
+```
+{% endtab %}
+{% endtabs %}
+
 ### Type Definitions
 
 #### JSCamera.MoveBoundaryOption
