@@ -1704,6 +1704,33 @@ API.JSCamera.setAutoMovePath(pathList);
 {% endtab %}
 {% endtabs %}
 
+### AltitudeUp()
+
+> 카메라의 고도를 높입니다.  
+> 내부적으로는 현재 시점을 기준으로 일정한 틸트, 방향값을 유지하면서, 고도를 증가시켜 새로운 위치로 카메라를 이동시킵니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| 항목 | 설명 |
+|------|------|
+| 클래스 | `JSCamera` |
+| 반환값 | 없음 |
+| 파라미터 | 없음 |
+| 설명 | 현재 카메라의 위치에서 고도를 증가시킨 위치로 카메라를 이동시킵니다. 시점(lookAt)은 그대로 유지하며, 틸트와 방향(heading)도 유지됩니다. 고도 증가는 내부 정의된 일정한 거리만큼 수행됩니다. |
+| 관련 API | `moveLookAt`, `SetCamera`, `SetHeading` |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera()
+};
+API.JSCamera.AltitudeUp();
+```
+{% endtab %}
+{% endtabs %}
 
 
 ### Type Definitions
