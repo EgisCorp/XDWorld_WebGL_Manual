@@ -43,7 +43,7 @@ index.html 파일과 init.js 파일은 다운로드 엔진 다운로드 구성�
 <!doctype html>
 <html>
 <head>
-   <title>[EGIS] Init
+   <title>[EGIS] Init </title>
    <style>
       #map {
          position: absolute;
@@ -79,7 +79,7 @@ function init() {
         container: document.getElementById("map"),
         terrain: {
             dem: {
-                url: "지형 DEM 데이터 요청 URL,
+                url: "지형 DEM 데이터 요청 URL",
                 name: "지형 DEM 레이어 명칭",
                 servername: "요청 Server 명칭"
             },
