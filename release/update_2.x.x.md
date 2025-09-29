@@ -23,7 +23,7 @@
 
 
 ### 2.17.1 (2025/08/21)
-### 1. 이미지 기반 오버레이 기능 구현 [(이슈 502)](https://github.com/EgisCorp/XDWorld/issues/502)
+#### 1. 이미지 기반 오버레이 기능 구현 [(이슈 502)](https://github.com/EgisCorp/XDWorld/issues/502)
   * 기존 색상으로만 표현되던 오버레이 기능을 이미지 기반으로도 적용할 수 있도록 기능이 업데이트 되었습니다.
     ``` javascript
     var polygon = Module.createOverlayObject("POLYGON");		
@@ -40,7 +40,7 @@
     });
     ```
 
-### 2. 수인한도분석 결과값 추가
+#### 2. 수인한도분석 결과값 추가
   * 각 격자에 시간대별 일조량 추가
     ```javascript
     [결과값]
@@ -73,10 +73,10 @@
     .
     ```
 
-### 3. 하드웨어 가속 옵션 삭제
+#### 3. 하드웨어 가속 옵션 삭제
   * 하드웨어 가속 옵션 UI 삭제 및 console 경고 안내
 
-### 4. AABB 추가
+#### 4. AABB 추가
   * ECEF 좌표계에서의 AABB 좌표를 반환하는 기능이 추가되었습니다.
     ``` javascript
     var box = _polygon.getBoundary();
@@ -101,7 +101,7 @@
     ```
 
 ### 2.17.0 (2025/08/11)
-### 1. Figure 객체 편집 UI 제어 API 추가
+#### 1. Figure 객체 편집 UI 제어 API 추가
   - scaleLock, rotateLock, moveLock
     ```javascript
     let fig = Module.createFigure("figs");
@@ -116,7 +116,7 @@
     fig.moveUI = false;
     ```
 
-### 2. 하드웨어 가속 옵션 안내
+#### 2. 하드웨어 가속 옵션 안내
   - Chrome 브라우저가 아닐 경우 Chrome 브라우저 권장 안내
     
     <img width="436" height="124" alt="image" src="https://github.com/user-attachments/assets/4f0f740c-4d97-44c1-a4f3-e8f9b00bbf2b" />
@@ -127,7 +127,7 @@
     <img width="497" height="283" alt="image" src="https://github.com/user-attachments/assets/56b44112-ee37-4ae9-b722-0164d397ed14" />
 
 
-### 3. Indicator 기능 개선
+#### 3. Indicator 기능 개선
  * 타겟이 카메라 뒤에 있는 경우 Indicator가 정상적으로 계산되지 않는 현상을 수정하였습니다.
 
 
@@ -296,7 +296,7 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 
 ### 2.13.0 (2025/04/07)
 
-1. 터파기 가시화 오브젝트 추가(https://github.com/EgisCorp/XDWorld/issues/476)
+#### 1. 터파기 가시화 오브젝트 추가(https://github.com/EgisCorp/XDWorld/issues/476)
      * 기존 JSColorPipe 뿐만 아니라 JSFlowPolygon, JSPolygon, JSReal3d(건물) 오브젝트도 원형 터파기 영역에 보이도록 기능을 추가하였습니다.
      * 보이고자 하는 JSLayer의 setViewInTransparency API를 통해 보이기 여부를 설정할 수 있습니다.
      * 기본 값은 보이지 않음(false) 이며, JSColorPipe 객체는 예외적으로 보임 상태를 유지합니다.
@@ -315,10 +315,10 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
        var visible = layer.getViewInTransparency();
        ```
 
-2. JSPolygon의 Union mode 오류 수정 (https://github.com/EgisCorp/XDWorld/issues/478)
+#### 2. JSPolygon의 Union mode 오류 수정 (https://github.com/EgisCorp/XDWorld/issues/478)
     - JSPolygon에 Union mode 설정 후 RTT 적용이 되지 않는 점을 수정하였습니다.
 
-3. 라인 효과 추가 및 정리
+#### 3. 라인 효과 추가 및 정리
      - 라인 타입에 따른 옵션 및 매개변수 구조를 보다 사용하기 쉽도록 수정하였습니다.
      - 변경 사항
        - type: 기존 숫자로 입력하는 방식에서 Module.BLING (type: NORMAL, OUTLINE, GLOW, ARROW, DASH, FIRE, BLING, WARNING)등의 상수로 정의하도록 변경되었습니다.
@@ -349,12 +349,12 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
      };
      ```
 
-4. POI 가시화 오류 수정
+#### 4. POI 가시화 오류 수정
 
      - 카메라 영역을 벗어날 경우, POI가 화면에서 사라지는 오류를 수정하였습니다.
      - 이제부터 영역을 벗어나면 POI 높이를 조절하여 화면 내부에서 볼 수 있도록 변경됩니다.
 
-5. 빌보드 회전 타입 추가
+#### 5. 빌보드 회전 타입 추가
      * 아래 이미지와 같이 지면과 수평한 빌보드의 회전 타입이 추가되었습니다.
        ![Image](https://github.com/user-attachments/assets/4002a632-4efe-4ba7-8bec-9382c1402d48)
      * JSBillboard의 setRotationMode API를 통해 mode 2번을 선택하시면 적용하실 수 있습니다.
@@ -362,7 +362,7 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
        billboard.setRotationMode(2);
        ```
 
-6. 마우스 조작 이벤트 버튼 설정 기능 추가
+#### 6. 마우스 조작 이벤트 버튼 설정 기능 추가
      * 마우스 버튼을 통해 지도 조작(이동, 회전, 줌) 동작에 사용할 버튼을 설정할 수 있도록 하는 기능이 추가되었습니다.  
      * `setMouseControlEvent`를 통해 조작 타입별 버튼을 설정할 수 있으며, `getMouseControlEvent`로 현재 설정된 버튼 값을 조회할 수 있습니다.  
      * 조작 타입은 `"translate"`, `"rotate"`, `"zoom"` 중 하나이며, 버튼 값은 0(좌클릭), 1(휠클릭), 2(우클릭) 중 하나입니다.  
@@ -404,17 +404,17 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 
 ### 2.12.0 (2025/03/10)
 
-1. POI 선택시 Text 위치 오류 수정
+#### 1. POI 선택시 Text 위치 오류 수정
     - POI 선택시 setTextMargin 이 Text 에 적용되지 않는 오류를 수정하였습니다.
 
-2. 화면분할(Streo View) 모드에서 좌우 객체를 인식할 수 있도록 기능을 수정하였습니다.
+#### 2. 화면분할(Streo View) 모드에서 좌우 객체를 인식할 수 있도록 기능을 수정하였습니다.
 
-3. Text 형태의 POI 선택 인식 및 선택 효과 추가
+#### 3. Text 형태의 POI 선택 인식 및 선택 효과 추가
     - 기존 POI처럼 Text도 선택과 선택 색상(picking color) 적용이 가능하도록 수정하였습니다.
 
-4. 3DTiles B3DM 선택 오류를 수정하였습니다.
+#### 4. 3DTiles B3DM 선택 오류를 수정하였습니다.
 
-5. `AutoMove` 모드에서 카메라 회전 옵션 `lock orientation` 추가
+#### 5. `AutoMove` 모드에서 카메라 회전 옵션 `lock orientation` 추가
     - `AutoMove` 모드에서 카메라를 자유롭게 회전시킬 수 있도록, `lock orientation` 옵션이 추가되었습니다.
        - 활성화(기본값): 카메라가 항상 다음 경로의 위치를 바라봅니다.
        - 비활성화: 카메라를 1인칭 시점에서 회전시킬 수 있습니다(오른쪽 마우스 버튼 사용).
@@ -430,7 +430,7 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
         ```
       - 자세한 사용 방법은 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=camera_move_path_visualize)을 확인해주시기 바랍니다.
 
-6. 서비스 레이어 범위 제한 옵션 `boundaryLimit` 추가
+#### 6. 서비스 레이어 범위 제한 옵션 `boundaryLimit` 추가
      - 서비스 레이어에서 오브젝트를 요청할 때, 요청하는 범위를 경도/위도로 제한할 수 있도록 `boundaryLimit` 옵션이 추가되었습니다.
        - 활성화: 기존 방식에서, 미리 지정해 놓은 범위에 포함되는 오브젝트만 호출합니다.
           - 활성화한 이후에도, `JSLayer::setLimitBoundary()` API를 사용하여 범위를 제한하여야 합니다.
@@ -469,7 +469,7 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 
 ### 2.11.0 (2025/02/10)
 
-1. `3DTiles` 높이 오프셋 옵션 추가
+#### 1. `3DTiles` 높이 오프셋 옵션 추가
      - `import3DTiles()`에 높이 오프셋(단위 m)를 설정할 수 있는 옵션 `offsetZ`가 추가되었습니다.
      - 자세한 사용법은 아래 예시를 확인해주시기 바랍니다.
        ```javascript
@@ -488,7 +488,7 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
        });
        ```
 
-2. 성절토 바닥/옆면 타일링 텍스쳐 설정 API 추가
+#### 2. 성절토 바닥/옆면 타일링 텍스쳐 설정 API 추가
      * 성절토 바닥 텍스쳐 설정 시 텍스쳐 반복 출력(타일링)이 가능하도록 API가 추가되었습니다.
      * API 설정 시 1.0보다 큰 값을 n값을 입력하면 설정한 텍스쳐가 n번 반복 출력됩니다.
      * API 호출 이후 생성되는 성절토 객체에 해당 값이 적용됩니다.
@@ -509,11 +509,11 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
      Module.getEditTerrain().setSlopeTextureTilingScale(10.0, 10.0);
      ```
 
-3. 비디오 객체 오류 수정
+#### 3. 비디오 객체 오류 수정
     * 초기화 시 계속적으로 Hls 네트워크 요청하는 오류가 수정되었습니다.
     * 뒷배경 on/off 기능이 추가되었습니다. [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video_placement)
 
-4. `JSLayer::setObjectVisibleWithBoundary()` API 추가
+#### 4. `JSLayer::setObjectVisibleWithBoundary()` API 추가
    - 매개변수로 전달한 좌표를 벗어날 경우, 오브젝트를 그리지 않도록 설정하는 함수를 추가하였습니다.
    - 함수 정보
      - boolean setObjectVisibleWithBoundary(number minLon, number maxLon, number minLat, number maxLat)
@@ -530,11 +530,11 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
 
 ### 2.10.2 (2025/01/21)
 
-1. `3DTiles` 포맷 처리 기능 안정화
+#### 1. `3DTiles` 포맷 처리 기능 안정화
    - `3DTiles` 파일 처리 속도를 개선하였습니다.
    - 로딩한 모델이 깜박이는 오류를 수정하였습니다.
 
-2. 성절토 바닥 타일링 텍스처 설정 API 추가
+#### 2. 성절토 바닥 타일링 텍스처 설정 API 추가
    - 성절토 바닥 텍스쳐 설정 시 텍스쳐 반복 출력(타일링)이 가능하도록 API가 추가되었습니다.
    - API 설정 시 1.0보다 큰 값을 n값을 입력하면 설정한 텍스쳐가 n번 반복 출력됩니다.
    - API 호출 이후 생성되는 성절토 객체에 해당 값이 적용됩니다.
@@ -547,12 +547,12 @@ var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
       Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
     ```
 
-3. `JSPolygon` 텍스처 오류 수정
+#### 3. `JSPolygon` 텍스처 오류 수정
    - `JSpolygon` 객체에 반투명한 텍스처가 제대로 적용되지 않는 오류를 수정하였습니다.
 
 ### 2.10.1 (2025/01/03)
 
-1. `createTMCoordPlane()` 기능 개선
+#### 1. `createTMCoordPlane()` 기능 개선
     - `createTMCoordPlane()` API의 매개변수 정의 방식이 수정되었습니다. 자세한 사항은 아래 문서를 확인하여 주시기 바랍니다.
         - 변경된 양식
             ```Javascript
