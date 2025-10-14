@@ -1669,6 +1669,37 @@ API.JSCamera.bankRight();
 {% endtab %}
 {% endtabs %}
 
+### setUnionMode(mode) → void
+
+> 1인칭 카메라 모드에서 지형 결합을 실행합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description                                           |
+| ----- | ------- | ----------------------------------------------------- |
+| mode  | boolean | <p>카메라 지형 결합<br>true: 실행<br>false: 해제</p>      |
+
+-   Description  
+    -   카메라가 1인칭 모드인 경우에만 실행됩니다.
+
+-   Sample  
+    -   [Sandbox_View Mode](https://sandbox.egiscloud.com/code/main.do?id=camera_view_mode)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setUnionMode(true); // 실행
+API.JSCamera.setUnionMode(false); // 해제
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setAutoMovePath(pathList) → boolean
 
 > 카메라 자동 이동 경로를 설정합니다.
