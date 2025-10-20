@@ -4,8 +4,8 @@
 
 ### 2.19.0 (2025/10/13)
 #### 1. 오버레이 기능 오류 수정 [(이슈 #513)](https://github.com/EgisCorp/XDWorld/issues/513)
- * 간헐적으로 검은색 이미지가 오버레이 되는 현상이 수정되었습니다.
- * 이미지 오버레이 투명값 옵션이 추가되었습니다.
+  * 간헐적으로 검은색 이미지가 오버레이 되는 현상이 수정되었습니다.
+  * 이미지 오버레이 투명값 옵션이 추가되었습니다.
  ```javascript
 polygon.setOverlayObject({
 	style : "polygon",
@@ -14,13 +14,13 @@ polygon.setOverlayObject({
 	image : _image
 });
  ```
- * 건물 심플모드에 오버레이 적용되지 않는 현상 수정
- * 건물 외곽선 렌더링을 원하지 않을 경우 : Module.SetSimpleModeLineRender(false);
-  <img width="969" height="690" alt="image" src="https://github.com/user-attachments/assets/d4d0761e-c7b2-437e-a3d5-6eedbf4965bf" />
+  * 건물 심플모드에 오버레이 적용되지 않는 현상 수정
+  * 건물 외곽선 렌더링을 원하지 않을 경우 : Module.SetSimpleModeLineRender(false);
+    <img width="969" height="690" alt="image" src="https://github.com/user-attachments/assets/d4d0761e-c7b2-437e-a3d5-6eedbf4965bf" />
 
 #### 2. 라인객체 GLOW 효과 개선
- * 기존 GLOW 효과를 개선하였습니다.
-  <img width="645" height="619" alt="image" src="https://github.com/user-attachments/assets/c4dde99b-8e5d-48d9-a5d9-19758722d2f3" />
+  * 기존 GLOW 효과를 개선하였습니다.
+    <img width="645" height="619" alt="image" src="https://github.com/user-attachments/assets/c4dde99b-8e5d-48d9-a5d9-19758722d2f3" />
 
 #### 3. JSPolygon 편집 API 추가
   * 이동, 회전, 스케일
