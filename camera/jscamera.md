@@ -145,7 +145,7 @@ Module.getViewCamera().FOVIncrease();
 {% endtab %}
 {% endtabs %}
 
-### getMapZoomLevel() -> number
+### getMapZoomLevel() → number
 
 > 카메라 고도에서 가시화 된 지형 정밀 레벨 정보를 반환합니다.
 
@@ -596,7 +596,7 @@ API.JSCamera.moveUp();
 {% endtab %}
 {% endtabs %}
 
-### pauseAutoMove(pause) -> boolean
+### pauseAutoMove(pause) → boolean
 
 > 카메라 자동 이동 시 일시 중지를 설정합니다.
 
@@ -681,7 +681,7 @@ API.JSCamera.rotateRight();
 {% endtab %}
 {% endtabs %}
 
-### getDistance(), setDistance(Dist) -> number
+### getDistance(), setDistance(Dist) → number
 
 > 카메라 시점, 위치 간의 거리를 설정 및 반환합니다.
 
@@ -1014,7 +1014,7 @@ API.JSCamera.Zoom(0, 0, -100.0); // Zoom In
 {% endtab %}
 {% endtabs %}
 
-### setVideoInfo(option) -> string
+### setVideoInfo(option) → string
 
 > 비디오 텍스쳐를 생성합니다.
 
@@ -1054,7 +1054,7 @@ API.JSCamera.Zoom(0, 0, -100.0); // Zoom In
 {% endtab %}
 {% endtabs %}
 
-### clearVideo() -> boolean
+### clearVideo() → boolean
 
 > 비디오 텍스쳐를 초기화 합니다.
 
@@ -1085,7 +1085,7 @@ API.JSCamera.Zoom(0, 0, -100.0); // Zoom In
 
 ## Getter / Setter
 
-### getAnimationSpeed(), setAnimationSpeed(speed) -> number
+### getAnimationSpeed(), setAnimationSpeed(speed) → number
 
 > 카메라 이동 애니메이션의 속도를 설정합니다.
 
@@ -1113,7 +1113,7 @@ Module.getViewCamera().setAnimationSpeed(5);
 {% endtab %}
 {% endtabs %}
 
-### getDirect(), setDirect(direct) -> number
+### getDirect(), setDirect(direct) → number
 
 > 카메라의 현재 방향 각도를 설정 및 반환합니다.
 >
@@ -1151,7 +1151,7 @@ Module.getViewCamera().setDirect(0);
 {% endtab %}
 {% endtabs %}
 
-### getAltitude(), setAltitude(alt) -> number
+### getAltitude(), setAltitude(alt) → number
 
 > 카메라 고도를 설정 및 반환합니다.
 
@@ -1182,7 +1182,7 @@ Module.getViewCamera().setAltitude(1000);
 {% endtab %}
 {% endtabs %}
 
-### getFov(), setFov(fov) -> number
+### getFov(), setFov(fov) → number
 
 > 카메라의 화각을 설정 및 반환 합니다.
 
@@ -1213,7 +1213,7 @@ Module.getViewCamera().setFov(50);
 {% endtab %}
 {% endtabs %}
 
-### getCenterPoint() -> [JSVector3D](../core/jsvector3d.md)
+### getCenterPoint() → [JSVector3D](../core/jsvector3d.md)
 
 > 화면 중심의 지도 좌표를 반환합니다.
 
@@ -1233,7 +1233,7 @@ Module.getViewCamera().getCenterPoint();
 {% endtab %}
 {% endtabs %}
 
-### getLocation() -> JSVector3D
+### getLocation() → JSVector3D
 
 > 카메라 위치 좌표를 반환합니다.
 
@@ -1285,7 +1285,7 @@ Module.getViewCamera().setLocation(new Module.JSVector3D(129.128265, 35.171834, 
 {% endtab %}
 {% endtabs %}
 
-### getMoveMode(), setMoveMode(type) -> boolean
+### getMoveMode(), setMoveMode(type) → boolean
 
 > 1인칭, 3인칭 카메라 회전 모드를 설정 및 반환 합니다.
 
@@ -1369,7 +1369,7 @@ Module.getViewCamera().setLimitRectAlt(126.920355, 37.520472, 126.930938, 37.529
 {% endtab %}
 {% endtabs %}
 
-### getLimitAltitude(), setLimitAltitude(alt) -> number
+### getLimitAltitude(), setLimitAltitude(alt) → number
 
 > 카메라 제한 고도값을 설정 및 반환합니다.
 
@@ -1400,7 +1400,7 @@ Module.getViewCamera().setLimitAltitude(3000);
 {% endtab %}
 {% endtabs %}
 
-### getLimitTilt(), setLimitTilt(tilt) -> number
+### getLimitTilt(), setLimitTilt(tilt) → number
 
 > 카메라 제한 기울기 각도를 설정 및 반환합니다.
 
@@ -1431,7 +1431,7 @@ Module.getViewCamera().setLimitTilt(80);
 {% endtab %}
 {% endtabs %}
 
-### getTilt(), setTilt(tilt) -> number
+### getTilt(), setTilt(tilt) → number
 
 > 카메라 기울기 각도를 설정 및 반환합니다.
 
