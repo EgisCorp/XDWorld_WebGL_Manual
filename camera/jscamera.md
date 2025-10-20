@@ -991,7 +991,7 @@ API.JSCamera.ZoomOut();
 {% tab title="Information" %}
 
 | Name     | Type   | Description                                |
-| -------- | ------ | ---------------------------------------- - |
+| -------- | ------ | ------------------------------------------ |
 | screenX  | number | 화면의 X 좌표(정수)                          |
 | screenY  | number | 화면의 Y 좌표(정수)                          |
 | distance | number | 확대/축소 거리. 양수면 줌아웃, 음수면 줌인.      |
@@ -1328,6 +1328,8 @@ Module.getViewCamera().setMoveMode(true);
 
 -   Description
     -   카메라 이동 경계 박스 제한과 고도 제한을 설정/해제 합니다.
+        - true : 제한 설정
+        - false : 제한 해제
 -   Sample
     -   [Sandbox_Camera Limit](https://sandbox.egiscloud.com/code/main.do?id=camera_limit)
 
