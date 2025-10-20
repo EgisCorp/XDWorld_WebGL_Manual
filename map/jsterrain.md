@@ -24,8 +24,6 @@ var map = Module.getTerrain();
 ### makeTerrainElevationCellData(option) → object
 
 > 입력된 정점 좌표 목록을 기반으로 변수값 격자 구조를 생성하고 정보를 반환합니다.
->
-> 격자 구조는 위치Returns information after creating GRID data with an argument variable.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -115,6 +113,45 @@ Module.getTerrain().getServerAltitude(input, function (result) {
 {% endtabs %}
 
 
+### setImageMask(option) → bool
+
+> 지정한 경위도 사각 범위 바깥의 지역을 임의의 색상으로 마스킹합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                                              | Description |
+| ------ | ----------------------------------------------------------------- | ----------- |
+| option | [JSTerrain.MaskingOptions](jsterrain.md#jsterrain.maskingoptions) | 속성 정보    |
+
+-   Return
+    -   성공 시 true, 실패 시 false를 반환합니다.
+
+-   Sample
+    -   [Sandbox_RequestBoundary](https://sandbox.egiscloud.com/code/main.do?id=layer_building_request_boundary)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getTerrain().setImageMask({
+    active : true,
+    range : {
+        min : [126.930052, 37.529214],
+        max : [126.941028, 37.520294]
+    },
+    color : {
+        a : 200,
+        r : 0,
+        g : 0,
+        b : 0
+    }
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
 
 
 ### Type Definitions
@@ -155,3 +192,13 @@ Module.getTerrain().getServerAltitude(input, function (result) {
 | min       | [JSVector2D](../core/jsvector2d.md) | Lower left latitude and longitude coordinates of the Cell.       |
 | max       | [JSVector2D](../core/jsvector2d.md) | Upper right latitude and longitude coordinates of the Cell.      |
 | center    | [JSVector2D](../core/jsvector2d.md) | Center latitude and longitude coordinates of the Cell.           |
+
+#### JSTerrain.MaskingOptions
+
+> 지형 영상 마스킹 옵션 속성
+
+| Name      | Type     | Description                                           |
+| --------- | -------- | ------------------------------------------------------|
+| active    | boolean  | 옵션 활성화 여부                                         |
+| range     | object   | 2차원 경위도 좌표 min, max 속성으로 이루어진 마스킹 범위     |
+| color     | object   | 0~255 사이 정수 a, r, g, b 속성으로 이루어진 마스킹 색상 값 |
