@@ -383,7 +383,6 @@ var height = Module.getMap().getTerrHeight(126.92836647767662, 37.52439503321471
 | speed     | number | 카메라 이동속도 (기본 1).             |
 
 {% endtab %}
-
 {% tab title="Template" %}
 
 ```javascript
@@ -396,9 +395,42 @@ API.JSCamera.moveLonLatAltOval(127.0273188, 37.4977981, 500.0, 1);
 {% endtab %}
 {% endtabs %}
 
+### moveLonLatBoundary(min, max) → boolean
+
+> 최소 좌표점, 최대 좌표점을 이용한 카메라 이동 및 완료 이벤트를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type                                | Description         |
+| ---- | ----------------------------------- | ------------------- |
+| min  | [JSVector2D](../core/jsvector2d.md) | 2차원 경위도 min 좌표 |
+| max  | [JSVector2D](../core/jsvector2d.md) | 2차원 경위도 max 좌표 |
+
+- Return
+    - true : 설정 성공.
+    - false : 설정 실패
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var Boundary = {
+    min : new Module.JSVector2D(min_longitude, min_latitude);
+    max : new Module.JSVector2D(max_longitude, max_latitude);
+}
+API.JSCamera.moveLonLatBoundary(Boundary.min, Boundary.max);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### moveLonLatBoundarybyJson(option) → string
 
-> 최소 좌표점, 최대 좌표점을 이용한 카메라 이동 및 완료 이벤트를 설정합니다..
+> 최소 좌표점, 최대 좌표점을 이용한 카메라 이동 및 완료 이벤트를 설정합니다.
 
 {% tabs %}
 
@@ -649,9 +681,9 @@ API.JSCamera.rotateRight();
 {% endtab %}
 {% endtabs %}
 
-### setDistance(Dist)
+### getDistance(), setDistance(Dist) -> number
 
-> 카메라 시점, 위치 간의 거리를 설정합니다.
+> 카메라 시점, 위치 간의 거리를 설정 및 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -661,36 +693,11 @@ API.JSCamera.rotateRight();
 | Dist | number | 카메라 시야 거리 (meters 단위). |
 
 {% endtab %}
-
 {% tab title="Template" %}
 
 ```javascript
+var dist = Module.getViewCamera().getDistance();
 Module.getViewCamera().setDistance(500.0);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setAltitude(alt)
-
-> 카메라 고도를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name | Type   | Description                         |
-| ---- | ------ | ----------------------------------- |
-| alt  | number | 카메라 위치 고도 좌표 (meter 단위). |
-
--   Sample
-    -   function setAltitude 참조.
-    -   [Sandbox_Camera Setting](https://sandbox.egiscloud.com/code/main.do?id=camera_set)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-Module.getViewCamera().setAltitude(1000);
 ```
 
 {% endtab %}
@@ -976,16 +983,22 @@ API.JSCamera.ZoomOut();
 {% endtab %}
 {% endtabs %}
 
-### getLocation() -> JSVector3D
+### Zoom(screenX, screenY, distance)
 
-> 카메라 위치 좌표를 반환합니다.
+> 화면 특정 좌표를 기준으로 카메라 확대/축소를 실행합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
--   Return
-    -   [JSVector3D](../core/jsvector3d.md): 카메라 위치 좌표 (경도, 위도, 고도)를 성공적으로 반환.
-    -   null: 카메라 위치 좌표 반환에 실패.
+| Name     | Type   | Description                                |
+| -------- | ------ | ---------------------------------------- - |
+| screenX  | number | 화면의 X 좌표(정수)                          |
+| screenY  | number | 화면의 Y 좌표(정수)                          |
+| distance | number | 확대/축소 거리. 양수면 줌아웃, 음수면 줌인.      |
+
+- Return
+    - true: 확대/축소 성공
+    - false: 확대/축소 실패
 
 {% endtab %}
 {% tab title="Template" %}
@@ -994,35 +1007,8 @@ API.JSCamera.ZoomOut();
 var API = {
     JSCamera : Module.getViewCamera();
 };
-var location = API.JSCamera.getLocation();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setLocation(position) → boolean
-
-> 카메라 위치 좌표를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name     | Type                                | Description                          |
-| -------- | ----------------------------------- | ------------------------------------ |
-| position | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 좌표 (경도, 위도, 고도). |
-
--   Return
-    -   true: 설정 성공.
-    -   false: 설정 실패.
--   Sample
-    -   function setMove 참조.
-    -   [Sandbox_Camera Setting](https://sandbox.egiscloud.com/code/main.do?id=camera_set)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-Module.getViewCamera().setLocation(new Module.JSVector3D(129.128265, 35.171834, 500.0));
+API.JSCamera.Zoom(0, 0, 100.0); // Zoom Out
+API.JSCamera.Zoom(0, 0, -100.0); // Zoom In
 ```
 
 {% endtab %}
@@ -1165,9 +1151,40 @@ Module.getViewCamera().setDirect(0);
 {% endtab %}
 {% endtabs %}
 
+### getAltitude(), setAltitude(alt) -> number
+
+> 카메라 고도를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                         |
+| ---- | ------ | ----------------------------------- |
+| alt  | number | 카메라 위치 고도 좌표 (meter 단위).     |
+
+-   Return
+    -   number: 카메라 위치 고도 좌표 (meter 단위).
+-   Sample
+    -   function setAltitude 참조.
+    -   [Sandbox_Camera Setting](https://sandbox.egiscloud.com/code/main.do?id=camera_set)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var altitude = API.JSCamera.getAltitude();
+Module.getViewCamera().setAltitude(1000);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getFov(), setFov(fov) -> number
 
-> 카메라의 화각 설정 및 반환 합니다.
+> 카메라의 화각을 설정 및 반환 합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1191,6 +1208,78 @@ var API = {
 };
 var FOV= API.JSCamera.getFOV();
 Module.getViewCamera().setFov(50);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getCenterPoint() -> [JSVector3D](../core/jsvector3d.md)
+
+> 화면 중심의 지도 좌표를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().getCenterPoint();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getLocation() -> JSVector3D
+
+> 카메라 위치 좌표를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 카메라 위치 좌표 (경도, 위도, 고도)를 성공적으로 반환.
+    -   null: 카메라 위치 좌표 반환에 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var location = API.JSCamera.getLocation();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLocation(position) → boolean
+
+> 카메라 위치 좌표를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                          |
+| -------- | ----------------------------------- | ------------------------------------ |
+| position | [JSVector3D](../core/jsvector3d.md) | 카메라 위치 좌표 (경도, 위도, 고도). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+-   Sample
+    -   function setMove 참조.
+    -   [Sandbox_Camera Setting](https://sandbox.egiscloud.com/code/main.do?id=camera_set)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().setLocation(new Module.JSVector3D(129.128265, 35.171834, 500.0));
 ```
 
 {% endtab %}
@@ -1223,6 +1312,60 @@ Module.getViewCamera().getMoveMode();
 Module.getViewCamera().setMoveMode(true);
 ```
 
+{% endtab %}
+{% endtabs %}
+
+### setLimitCamera(type)
+
+> 카메라 이동 제한 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description        |
+| ---- | ------- | ------------------ |
+| type | boolean | 카메라 이동 제한 여부 |
+
+-   Description
+    -   카메라 이동 경계 박스 제한과 고도 제한을 설정/해제 합니다.
+-   Sample
+    -   [Sandbox_Camera Limit](https://sandbox.egiscloud.com/code/main.do?id=camera_limit)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().setLimitCamera(true); // 설정
+Module.getViewCamera().setLimitCamera(false); // 해제
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLimitRectAlt(minX, minY, maxX, maxY, altitude)
+
+> 카메라 이동 경계 박스를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                   |
+| -------- | ------ | ----------------------------- |
+| minX     | number | 경도의 최솟값                   |
+| minY     | number | 위도의 최솟값                   |
+| maxX     | number | 경도의 최댓값                   |
+| maxY     | number | 위도의 최댓값                   |
+| altitude | number | 카메라 제한 고도값 (meters 단위) |
+
+-   Description
+    -   카메라 이동 경계 박스를 설정합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().setLimitRectAlt(126.920355, 37.520472, 126.930938, 37.529579, 1000);
+```
 {% endtab %}
 {% endtabs %}
 
@@ -1554,6 +1697,31 @@ API.JSCamera.moveDown();
 {% endtab %}
 {% endtabs %}
 
+### getCameraSpeed(), setCameraSpeed(speed) → number
+
+> 카메라의 이동 속도를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description         |
+| ----- | ------ | ------------------- |
+| speed | number | 카메라 이동 속도(정수) |
+
+{% endtab %}
+{% tab title="Template" %}
+
+``` javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var speed = API.JSCamera.getCameraSpeed();
+Module.getViewCamera().setCameraSpeed(5);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setTraceTarget(target) → boolean
 
 > 카메라의 추적 대상을 설정합니다.
@@ -1563,7 +1731,7 @@ API.JSCamera.moveDown();
 
 | Name   | Type             | Description               |
 | ------ | ---------------- | ------------------------- |
-| target | JSTraceTarget   | 추적 대상 객체입니다.      |
+| target | JSTraceTarget    | 추적 대상 객체입니다.        |
 
 -   Return  
     -   `true`: 추적 대상 설정 성공  
