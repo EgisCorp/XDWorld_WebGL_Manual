@@ -84,6 +84,27 @@ var dCenterAlt = vCenter.Altitude;
 {% endtab %}
 {% endtabs %}
 
+### getParts() → [Collection](../core/collection.md)
+
+> 객체의 파트 리스트를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [Collection](../core/collection.md): 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getExtent() → number
 
 > 평면 객체의 공간 영역의 장축 거리를 반환합니다.
@@ -221,6 +242,42 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### setSphere(parameter)
+
+> 중심 좌표(경도, 위도, 고도)를 기준으로 구 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type  | Description                   |
+| -------- | ----- | ----------------------------- |
+| paramter | Array | 구의 속성을 구성하는 목록입니다. 각 요소는 `{ position, radius, segment, color }` 객체로 구성됩니다. |
+
+-   Description
+    -   `position`([JSVector3D](../core/jsvector3d.md))이 포함되지 않으면 구 폴리곤이 생성되지 않습니다.
+    -   속성에는 `radius`(number), `segment`(number), `color`([JSVector3D](../core/jscolor.md))가 포함됩니다.
+    -   각 속성의 기본값은 `radius`(10), `segment`(30), `color`({255, 255, 255, 255}) 입니다.
+    -   `radius`는 0.00005보다 큰 값, `segment`는 6보다 큰 값이 설정됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var polygon = Module.createPolygon("SPHERE");
+
+var param = {
+    position : new Module.JSVector3D(129.127, 35.17, 160.0),
+    radius : 10,
+    segment : 30,
+    color : new Module.JSColor(255, 255, 255, 0)
+};
+
+polygon.setSphere(param);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setFaceTexture(index, id) → boolean
 
 > 평면 객체를 구성하는 face에 이미지를 설정합니다.
@@ -288,8 +345,8 @@ var strKey = object.getId();
 ### setHeight(height) → boolean
 
 > 평면 객체 생성 시 높이값을 가진 3d 객체를 생성합니다.
->
 > 입력 변수값(height)은 0보다 큰값이 설정됩니다.
+> 이 API는 기존에 `setPartCoordinates()` 또는 `setCoordinates()`로 정의된 객체에만 적용 가능합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -317,6 +374,434 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### setHeightByType(height, type) → boolean
+
+> 평면 객체 생성 시 높이값을 가진 3d 객체를 생성합니다.
+> 입력 변수값(type)은 윗면 정의 방법을 설정합니다.
+> 이 API는 기존에 `setPartCoordinates()` 또는 `setCoordinates()`로 정의된 객체에만 적용 가능합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description          |
+| ------ | ------ | -------------------- |
+| height | number | 객체 높이(in meter).  |
+| type   | number | <p>0: `setHeight()`(기존 방식) 사용(각 정점에서 일정 높이만큼 더함)<br>1: 윗면이 동일한 고도(height)가 되도록 보정</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   평면 객체 생성 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setHeights(height) → boolean
+
+> 평면 객체 생성 시 높이값을 가진 3d 객체를 생성합니다.
+> 입력 변수값(height)은 0보다 큰값이 설정되며, 각 정점에 대한 높이를 설정합니다.
+> 이 API는 기존에 `setPartCoordinates()` 또는 `setCoordinates()`로 정의된 객체에만 적용 가능합니다.
+
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                | Description          |
+| ------ | ----------------------------------- | -------------------- |
+| height | [Collection](../core/collection.md) | 각 정점에 대한 높이(in meter). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   평면 객체 생성 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setVerticalPlane(height, closed) → boolean
+
+> 위가 뚫린 3D 객체(벽 폴리곤)를 생성합니다.
+> 이 API는 기존에 `setPartCoordinates()` 또는 `setCoordinates()`로 정의된 객체에만 적용 가능합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description          |
+| ------ | ------- | -------------------- |
+| height | number  | 객체 높이(in meter).  |
+| closed | boolean | 시작점과 끝점 연결 여부 |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   평면 객체 생성 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setVerticalPlane(50, true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setFileMesh(path, name, pos) → boolean
+
+> 모델 파일(3ds, xdo, 등)을 이용한 메쉬를 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type                                | Description                   |
+| ---- | ----------------------------------- | ----------------------------- |
+| path | string                              | 파일 경로                      |
+| name | string                              | 파일 이름                      |
+| pos  | [JSVector3D](../core/jsvector3d.md) | 생성 중심 좌표 (경도, 위도, 고도) |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   파일 경로가 없거나 너무 긴 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetTexturePlane(coordinates, parts, uv, texture, type) → boolean
+
+> 텍스처 지정 폴리곤을 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                                            |
+| ----------- | ------------------------------------- | ------------------------------------------------------ |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 고도)                          |
+| parts       | [Collection](../core/collection.md)   | 평면을 구성하는 coordinates 개수 목록                      |
+| uv          | [JSVec2Array](../core/jsvec2array.md) | cordinates에 입력된 좌표 목록에 해당되는 uv 좌표 목록        |
+| texture     | [JSIcon](../object/jsicon.md)         | 텍스쳐로 활용할 아이콘 객체                                |
+| type        | boolean                               | <p>true: 지형 결합 가시화(RTT).<br>false: 기본 가시화.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   정점 좌표가 2개 이하인 경우.
+        -   part가 하나도 없는 경우.
+        -   uv 좌표가 2개 이하인 경우.
+        -   정점 좌표 개수와 uv 좌표 개수가 다른 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetTexture(texture, faceIndex, type) → boolean
+
+> 폴리곤에 텍스처를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                          | Description                                            |
+| ----------- | ----------------------------- | ------------------------------------------------------ |
+| texture     | [JSIcon](../object/jsicon.md) | 텍스쳐로 활용할 아이콘 객체                                |
+| faceIndex   | number                        | face 인덱스                                             |
+| type        | boolean                       | <p>true: 지형 결합 가시화(RTT).<br>false: 기본 가시화.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   텍스처 객체가 없는 경우
+        -   face 인덱스를 잘못 지정하는 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetRenderToTexture(type) → boolean
+
+> 지형 결합 가시화(RTT)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                          | Description                                            |
+| ----------- | ----------------------------- | ------------------------------------------------------ |
+| type        | boolean                       | <p>true: 지형 결합 가시화(RTT).<br>false: 기본 가시화.</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setCullMode(type) → boolean
+
+> 객체의 cull 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                         | Description                                            |
+| ----------- | ---------------------------- | ------------------------------------------------------ |
+| type        | number                       | <p>1: none<br>2: cw<br>3: ccw</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPipe(center, radius, length, slice, color) → boolean
+
+> 중심 좌표(경도, 위도, 고도)를 기준으로 원통 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                | Description                                       |
+| ------ | ----------------------------------- | --------------------------------------------------|
+| center | [JSVector3D](../core/jsvector3d.md) | 중심 좌표 (경도, 위도, 고도)                         |
+| radius | number                              | 반지름 (in meter)                                  |
+| length | number                              | 길이 (in meter)                                    |
+| slice  | number                              | 단면의 다각수                                       |
+| color  | [JSColor](../core/jscolor.md)       | 객체 색상  (기본값: 흰색 `rgba(255, 255, 255, 1)`) |
+
+-   Description
+    -   `radius`로 원통의 반지름을 설정합니다.
+    -   `length`로 원통의 길이를 설정합니다.
+    -   `slice`로 원통의 위/아래 면의 다각수를 설정합니다.
+    -   `color`로 원통의 색상을 설정합니다.
+    -   `radius`와 `length`가 너무 작거나, `slice`가 2 이하인 경우에는 원통이 생성되지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setExtraPosition(addLon, addLat, addHeight) → boolean
+
+> 객체의 위치를 현재 위치에서 특정 좌표`(경도, 위도, 높이)`만큼 추가하여 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description         |
+| --------- | ------ | ------------------- |
+| addLon    | number | 추가적으로 이동할 경도 |
+| addLat    | number | 추가적으로 이동할 위도 |
+| addHeight | number | 추가적으로 이동할 높이 |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setExtraPosition(0.5, -1.5, 10.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### move(lon, lat, alt) → boolean
+
+> 객체의 위치를 특정 위치`(경도, 위도, 고도)`로 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description    |
+| ---- | ------ | -------------- |
+| lon  | number | 이동할 경도 좌표 |
+| lat  | number | 이동할 위도 좌표 |
+| alt  | number | 이동할 고도 값   |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.move(129.127, 35.17, 160.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### moveAltitude(alt, type) → boolean
+
+> 객체의 높이를 조절합니다.
+> 입력 변수(type)에 따라 상대 이동 / 절대 이동을 구분합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description  |
+| ---- | ------- | ------------ |
+| alt  | number  | 이동할 고도 값 |
+| type | boolean | <p>true: 목표 위치로 이동(절대 이동)<br>false: 입력 위치만큼 추가로 이동(상대 이동)</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.moveAltitude(100.0, true); // 절대 이동
+polygon.moveAltitude(70.0, false); // 상대 이동
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRotation(x, y, z) → boolean
+
+> 객체를 회전시킵니다.
+> x, y, z 각 축을 기준으로 일정 각도 만큼 회전합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description      |
+| ---- | ------- | ---------------- |
+| x    | number  | x축 기준 회전 각도 |
+| y    | number  | y축 기준 회전 각도 |
+| z    | number  | z축 기준 회전 각도 |
+
+-   Sample
+    -   [Sandbox_Edit Polygon](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setRotation(30.0, 45.0, 90.0); // x축 30도, y축 45도, z축 90도 회전
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setScale(x, y, z) → boolean
+
+> 객체의 크기를 조절합니다.
+> x, y, z 각 축을 기준으로 일정 비율 만큼 확대/축소 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description          |
+| ---- | ------- | -------------------- |
+| x    | number  | x축 기준 확대/축소 비율 |
+| y    | number  | y축 기준 확대/축소 비율 |
+| z    | number  | z축 기준 확대/축소 비율 |
+
+-   Sample
+    -   [Sandbox_Edit Polygon](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setScale(0.5, 1.5, 2.0); // x축 0.5배, y축 1.5배, z축 2배 확대/축소
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getAxisEndpoint(axis, length) → [JSVector3D](../core/jsvector3d.md)
+
+> 객체의 기준이 되는 축의 끝점 좌표를 반환합니다.
+> 입력 변수(length)로 축의 길이를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type      | Description                     |
+| ------ | ------- | ------------------------------- |
+| axis   | number  | 반환할 축(0: x축, 1: y축, 2: z축) |
+| length | number  | 축의 길이                        |
+
+-   Sample
+    -   [Sandbox_Edit Polygon](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_edit)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let xvec = polygon.getAxisEndpoint(0, 200); // 객체 중심 기준 (200, 0, 0) 좌표 반환
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getAltitude() → number
+
+> 객체 중심의 고도를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    - [JSVector3D](../core/jsvector3d.md): 반환 성공
+    - null: 반환 실패
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let alt = polygon.getAltitude();
+```
+
+{% endtab %}
+{% endtabs %}
+
+
 ### setPartCoordinates(coordinates, parts) → boolean
 
 > 평면 객체 생성에 필요한 정점 좌표 목록을 설정합니다.
@@ -326,7 +811,7 @@ var strKey = object.getId();
 
 | Name        | Type                                  | Description                            |
 | ----------- | ------------------------------------- | -------------------------------------- |
-| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 경도).     |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 고도).     |
 | parts       | [Collection](../core/collection.md)   | 평면을 구성하는 coordinates 개수 목록. |
 
 -   Return
@@ -349,6 +834,29 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### setPlaneCoordinates(coordinates, altitude) → void
+
+> 2차원 좌표로 평면 객체를 생성합니다.
+> 입력 변수값(altitude)로 평면의 높이를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                            |
+| ----------- | ------------------------------------- | -------------------------------------- |
+| coordinates | [JSVec2Array](../core/jsvec2array.md) | 정점 좌표 목록 (경도, 위도).              |
+| altitude    | number                                | 고도                                    |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setPartCoordinatesUV(coordinates, parts, uv, type) → boolean
 
 > 평면 객체를 생성합니다.
@@ -360,7 +868,7 @@ var strKey = object.getId();
 
 | Name        | Type                                  | Description                                                |
 | ----------- | ------------------------------------- | ---------------------------------------------------------- |
-| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 경도).                         |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 고도).                         |
 | parts       | [Collection](../core/collection.md)   | 평면을 구성하는 coordinates 개수 목록.                     |
 | uv          | [JSVec2Array](../core/jsvec2array.md) | cordinates에 입력된 좌표 목록에 해당되는 uv 좌표 목록.     |
 | type        | boolean                               | <p>true: 지형 결합 가시화(RTT).<br>false: 기본 가시화.</p> |
@@ -376,6 +884,38 @@ var strKey = object.getId();
 -   Sample
     -   the init function 참조.
     -   [Sandbox_Polygon RTT](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_image_changing)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPartCoordinatesCW(coordinates, parts, cw) → boolean
+
+> 평면 객체를 생성합니다.
+>
+> 입력 변수값(cw)로 폴리곤의 방향을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                                                |
+| ----------- | ------------------------------------- | ---------------------------------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 고도).                             |
+| parts       | [Collection](../core/collection.md)   | 평면을 구성하는 coordinates 개수 목록.                         |
+| cw          | boolean                               | <p>true: 시계 방향(CW).<br>false: 반시계 방향(CCW).</p>       |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+    -   실패 조건
+        -   입력 변수값(coordinates) 구성요소가 없거나 정점 개수가 3개 이하인 경우.
+        -   입력 변수값(parts) 구성요소가 없거나 입력 배열이 1개 이하인 경우.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -431,7 +971,7 @@ var strKey = object.getId();
 {% tab title="Information" %}
 | Name | Type | Description |
 | ----------- | ----------------------------------- | -------------------------------------------------- |
-| coordinates | [Collection](../core/collection.md) | 정점 좌표 목록 (경도, 위도, 경도). |
+| coordinates | [Collection](../core/collection.md) | 정점 좌표 목록 (경도, 위도, 고도). |
 
 -   Return
     -   [Collection](../core/collection.md): 반환 성공.
@@ -710,7 +1250,7 @@ polygon.setHeightUV(uvList, 20);
 | ---------- | ------------------------------------- | -------- | -------------------------------------------- |
 | coordinate | [JSVec3Array](../core/jsvec3array.md) | ✔        | 객체를 구성하는 좌표 목록 (경도, 위도, 고도). 최소 3개 이상 필요. |
 | style      | string                                | ✔        | 스타일 설정. `"polygon"` 또는 `"line"` 중 하나. |
-| color      | [JSColor](../core/jscolor.md)         |          | 객체 색상. (기본값: 빨간색 `rgba(255, 0, 0, 1)`) |
+| color      | [JSColor](../core/jscolor.md)         |          | 객체 색상. (기본값: 흰색 `rgba(255, 255, 255, 1)`) |
 
 - Return  
   - `true` : 오버레이 생성 성공.  
@@ -740,7 +1280,7 @@ poly.setOverlayObject({
 {% endtab %}
 {% endtabs %}
 
-### setUnionMode(bMode) → void
+### getUnionMode(), setUnionMode(bMode) → void
 
 > 폴리곤 객체의 연산 모드를 설정합니다.
 
