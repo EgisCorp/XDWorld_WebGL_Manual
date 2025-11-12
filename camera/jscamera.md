@@ -1877,7 +1877,7 @@ API.JSCamera.bankRight();
 | mode  | boolean | <p>플레이어 모드<br>true: 활성화<br>false: 비활성화</p>      |
 
 -   Description  
-    -   [1인칭 지형 결합 모드](#setunionmodemode--void)와 함께 활성화 되어 있을 때, [점프](#jump--void)가 가능하며 자연스러운 중력 낙하 효과가 적용됩니다.
+    -   [1인칭 지형 결합 모드](#setunionmode-mode-void)와 함께 활성화 되어 있을 때, [점프](#jump-void)가 가능하며 자연스러운 중력 낙하 효과가 적용됩니다.
 
 -   Sample  
     -   [Sandbox_View Mode](https://sandbox.egiscloud.com/code/main.do?id=camera_view_mode)
@@ -1904,12 +1904,12 @@ API.JSCamera.setPlayerMode(false); // 플레이어 모드 비활성화
 {% tab title="Information" %}
 
 - Description
-    -   [플레이어 모드](#setPlayerModemode--void)가 활성화된 상태에서만 지면 여부를 판별합니다.
-    -   true일 때만 [점프](#jump--void)가 가능합니다.
+    -   [플레이어 모드](#setplayermode-mode-void)가 활성화된 상태에서만 지면 여부를 판별합니다.
+    -   true일 때만 [점프](#jump-void)가 가능합니다.
 
 -   Return  
     -   true : 지면에 닿아 있음.
-    -   false : 지면과 닿아 있지 않음 또는 [플레이어 모드]((#setPlayerModemode--void))가 비활성화
+    -   false : 지면과 닿아 있지 않음 또는 [플레이어 모드]((#setplayermode-mode-void))가 비활성화
 
 -   Sample
     -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
@@ -1935,8 +1935,8 @@ API.JSCamera.isGround();
 {% tab title="Information" %}
 
 - Description
-    -   [1인칭 지형 결합 모드](#setunionmodemode--void)와 [플레이어 모드](#setPlayerModemode--void)가 모두 활성화된 상태에서만 동작합니다.
-    -   [점프 세기](#getJumpForce-setJumpForcejumpForce--number), [중력](#getGravity-setGravitygravity--number), [시간 간격](#getTimeStep-setTimeSteptimeStep--number)을 조절할 수 있습니다.
+    -   [1인칭 지형 결합 모드](#setunionmode-mode-void)와 [플레이어 모드](#setplayermode-mode-void)가 모두 활성화된 상태에서만 동작합니다.
+    -   [점프 세기](#getjumpforce-setjumpforce-jumpforce-number), [중력](#getgravity-setgravity-gravity-number), [시간 간격](#gettimestep-settimestep-timestep-number)을 조절할 수 있습니다.
 
 -   Sample
     -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
@@ -2046,7 +2046,7 @@ var timeStep = API.JSCamera.getTimeStep();
 
 ### setLandingElevation(elevation) → void
 
-> [플레이어 모드](#setPlayerModemode--void)에서 카메라의 착지 고도를 설정합니다.
+> [플레이어 모드](#setplayermode-mode-void)에서 카메라의 착지 고도를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2056,7 +2056,7 @@ var timeStep = API.JSCamera.getTimeStep();
 | elevation | number | 카메라의 착지 고도 |
 
 -   Description  
-    -   카메라가 [플레이어 모드](#setPlayerModemode--void)인 경우에만 실행됩니다.
+    -   카메라가 [플레이어 모드](#setplayermode-mode-void)인 경우에만 실행됩니다.
     -   점프/낙하 시 카메라는 설정한 고도에 착지합니다.
 
 -   Sample
@@ -2077,13 +2077,13 @@ API.JSCamera.setLandingElevation(20.0);
 
 ### setLandingElevationToTerrain() → void
 
-> [플레이어 모드](#setPlayerModemode--void)에서 카메라의 착지 고도를 현재 지형 고도로 설정합니다.
+> [플레이어 모드](#setplayermode-mode-void)에서 카메라의 착지 고도를 현재 지형 고도로 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Description  
-    -   카메라가 [플레이어 모드](#setPlayerModemode--void)인 경우에만 실행됩니다.
+    -   카메라가 [플레이어 모드](#setplayermode-mode-void)인 경우에만 실행됩니다.
     -   점프/낙하 시 카메라는 설정한 시점의 지형 고도에 착지합니다.
 
 -   Sample
