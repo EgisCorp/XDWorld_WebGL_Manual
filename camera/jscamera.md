@@ -1257,6 +1257,32 @@ var location = API.JSCamera.getLocation();
 {% endtab %}
 {% endtabs %}
 
+### getTargetLocation() → [JSVector3D](../core/jsvector3d.md)
+
+> 카메라 타겟 좌표를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 카메라 타겟 좌표 (경도, 위도, 고도)를 반환.
+    -   카메라 이동 애니메이션이 적용된 상태에서 카메라의 최종 목적지 좌표를 반환.
+-   Sample
+    -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var targetLoc = API.JSCamera.getTargetLocation();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setLocation(position) → boolean
 
 > 카메라 위치 좌표를 설정합니다.
@@ -1834,6 +1860,243 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 API.JSCamera.bankRight();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPlayerMode(mode) → void
+
+> 1인칭 카메라 모드에서 플레이어 모드(물리 기반)를 활성화/비활성화 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description                                           |
+| ----- | ------- | ----------------------------------------------------- |
+| mode  | boolean | <p>플레이어 모드<br>true: 활성화<br>false: 비활성화</p>      |
+
+-   Description  
+    -   [1인칭 지형 결합 모드](#setunionmodemode--void)와 함께 활성화 되어 있을 때, [점프](#jump--void)가 가능하며 자연스러운 중력 낙하 효과가 적용됩니다.
+
+-   Sample  
+    -   [Sandbox_View Mode](https://sandbox.egiscloud.com/code/main.do?id=camera_view_mode)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setPlayerMode(true); // 플레이어 모드 활성화
+API.JSCamera.setPlayerMode(false); // 플레이어 모드 비활성화
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isGround() → boolean
+
+> 1인칭 카메라 모드에서 카메라가 현재 지면에 닿아 있는지 여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Description
+    -   [플레이어 모드](#setPlayerModemode--void)가 활성화된 상태에서만 지면 여부를 판별합니다.
+    -   true일 때만 [점프](#jump--void)가 가능합니다.
+
+-   Return  
+    -   true : 지면에 닿아 있음.
+    -   false : 지면과 닿아 있지 않음 또는 [플레이어 모드]((#setPlayerModemode--void))가 비활성화
+
+-   Sample
+    -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.isGround();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### jump() → void
+
+> 1인칭 카메라 지형결합 모드, 플레이어 모드에서 카메라가 자연스럽게 공중으로 올라갔다가 떨어집니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Description
+    -   [1인칭 지형 결합 모드](#setunionmodemode--void)와 [플레이어 모드](#setPlayerModemode--void)가 모두 활성화된 상태에서만 동작합니다.
+    -   [점프 세기](#getJumpForce-setJumpForcejumpForce--number), [중력](#getGravity-setGravitygravity--number), [시간 간격](#getTimeStep-setTimeSteptimeStep--number)을 조절할 수 있습니다.
+
+-   Sample
+    -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setUnionMode(true);
+API.JSCamera.setPlayerMode(true);
+API.JSCamera.jump();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getJumpForce(), setJumpForce(jumpForce) → number
+
+> 초기 점프 속도(점프 세기)를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description            |
+| --------- | ------ | ---------------------- |
+| jumpForce | number | 초기 점프 속도(점프 세기) |
+
+-   Sample
+    -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setJumpForce(30.0); // 기본값 10.0
+var jumpForce = API.JSCamera.getJumpForce();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getGravity(), setGravity(gravity) → number
+
+> 카메라 중력을 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| gravity | number | 카메라 중력   |
+
+-   Sample
+    -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setGravity(1.62); // 기본값 9.8
+var gravity = API.JSCamera.getGravity();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTimeStep(), setTimeStep(timeStep) → number
+
+> 카메라 점프/낙하 동작의 시간 간격을 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description      |
+| -------- | ------ | ---------------- |
+| timeStep | number | 점프/낙하 시간 간격 |
+
+-   Description
+    -   한 프레임 당 점프/낙하 동작의 간격을 설정합니다.
+    -   timeStep이 작을 수록 구간을 더 촘촘하게 잘라 점프/낙하 속도가 느려집니다.
+
+-   Sample
+    -   [Sandbox_Camera Jump](https://sandbox.egiscloud.com/code/main.do?id=camera_jump)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setTimeStep(0.08); // 기본값 0.05
+var timeStep = API.JSCamera.getTimeStep();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLandingElevation(elevation) → void
+
+> [플레이어 모드](#setPlayerModemode--void)에서 카메라의 착지 고도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description      |
+| --------- | ------ | ---------------- |
+| elevation | number | 카메라의 착지 고도 |
+
+-   Description  
+    -   카메라가 [플레이어 모드](#setPlayerModemode--void)인 경우에만 실행됩니다.
+    -   점프/낙하 시 카메라는 설정한 고도에 착지합니다.
+
+-   Sample
+    -   [Sandbox_View Mode](https://sandbox.egiscloud.com/code/main.do?id=camera_view_mode)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setLandingElevation(20.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLandingElevationToTerrain() → void
+
+> [플레이어 모드](#setPlayerModemode--void)에서 카메라의 착지 고도를 현재 지형 고도로 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   카메라가 [플레이어 모드](#setPlayerModemode--void)인 경우에만 실행됩니다.
+    -   점프/낙하 시 카메라는 설정한 시점의 지형 고도에 착지합니다.
+
+-   Sample
+    -   [Sandbox_View Mode](https://sandbox.egiscloud.com/code/main.do?id=camera_view_mode)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setLandingElevationToTerrain();
 ```
 
 {% endtab %}
