@@ -1708,7 +1708,8 @@ layer.setPointCloudPointSize(0.05);
 | layerName  | string | 피킹된 객체가 포함된 레이어 이름.     |
 
 -   Note  
-    -   현재 타일 기반 레이어에서만 동작합니다.
+    -   ~~현재 타일 기반 레이어에서만 동작합니다.~~
+    -   카메라의 뷰 영역 내부인 객체만 피킹합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1718,6 +1719,53 @@ let from = new Module.JSVector3D(127.0, 37.5, 100.0);
 let to = new Module.JSVector3D(127.0, 37.5, 0.0);
 
 let pickInfo = layer.getPickInfoAtView(from, to);
+
+if (pickInfo) {
+    console.log("Position:", pickInfo.position);
+    console.log("Object Key:", pickInfo.objectKey);
+    console.log("Layer Name:", pickInfo.layerName);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPickInfo(lineFrom, lineTo) → object
+
+> 주어진 뷰 라인(lineFrom → lineTo)을 기준으로 해당 레이어 내 피킹된 객체 정보를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                 |
+| -------- | ----------------------------------- | --------------------------- |
+| lineFrom | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 시작 좌표.       |
+| lineTo   | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 끝 좌표.         |
+
+-   Return  
+    -   `object` : 피킹 성공 시 위치 및 객체 정보 반환  
+    -   `null` : 피킹 실패 시
+
+-   반환 객체 구조
+
+| Key        | Type   | Description                        |
+| ---------- | ------ | ---------------------------------- |
+| position   | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.             |
+| objectKey  | string | 피킹된 객체의 고유 키.              |
+| layerName  | string | 피킹된 객체가 포함된 레이어 이름.     |
+
+-   Note  
+    -   ~~현재 타일 기반 레이어에서만 동작합니다.~~
+    -   카메라의 뷰 영역에 상관없이 피킹합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let from = new Module.JSVector3D(127.0, 37.5, 100.0);
+let to = new Module.JSVector3D(127.0, 37.5, 0.0);
+
+let pickInfo = layer.getPickInfo(from, to);
 
 if (pickInfo) {
     console.log("Position:", pickInfo.position);
