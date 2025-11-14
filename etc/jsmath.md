@@ -319,7 +319,7 @@ let closestPosition = Module.getMath().getClosestPositionOnPath(point, path);
 
 -   Sample  
     -   function getOutOfScreenIndicator 참조  
-    -   [Sandbox_Object Indicator](https://sandbox.egiscloud.com/code/main.do?id=math_screen_indicator)
+    -   [Sandbox_Object Indicator](https://sandbox.egiscloud.com/code/main.do?id=coordinate_indicator)
 
 {% endtab %}
 {% tab title="Template" %}
