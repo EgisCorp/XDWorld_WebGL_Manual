@@ -91,6 +91,26 @@ Module.initialize({
 {% endtab %}
 {% endtabs %}
 
+### getVersion() → string
+
+> 현재 엔진의 버전을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   엔진 버전
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let version = Module.getVersion();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### createBarGraph(id) → [JSBarGraph](../object/jsbargraph.md)
 
 > 2차원 막대 그래프 객체를 생성합니다.
@@ -707,6 +727,28 @@ Module.XDIsMouseOverDiv(false);
 {% endtab %}
 {% endtabs %}
 
+### XDIsKeyOverDiv(block)
+
+> 지도 내 키보드 이벤트 사용 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type    | Description                                                      |
+| ----- | ------- | ---------------------------------------------------------------- |
+| block | boolean | <p>true: 키보드 이벤트 비활성화.<br>false: 키보드 이벤트 활성화.</p> |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+Module.XDIsKeyOverDiv(false);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### XDRenderData()
 
 > 화면의 재 갱신을 요청합니다.
@@ -780,7 +822,7 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
-### GoogleMap() / OpenStreetMap() / ArcMap() / MapBox() / WMTS()
+### GoogleMap() / OpenStreetMap() / ArcMap() / ~~MapBox()~~ / WMTS() / BingMap() / KakaoMap() / NaverMap() / XDLMap() / SKYMap() / DawulMap()
 
 > 배경지도를 변경합니다.
 
@@ -861,6 +903,48 @@ Module.XDRenderData();
 ### refreshInspector()
 
 > 엔진 모니터링을 초기화 합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description                                             |
+| ---- | ------ | ------------------------------------------------------- |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTileLayerList() → [CJSLayerList](../layer/jslayerlist.md)
+
+> 타일 레이어 리스트를 반환합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description                                             |
+| ---- | ------ | ------------------------------------------------------- |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectLayerList() → [CJSLayerList](../layer/jslayerlist.md)
+
+> 옥트리 레이어 리스트를 반환합니다.
 
 {% tabs %}
 {% tab title="Infomation" %}

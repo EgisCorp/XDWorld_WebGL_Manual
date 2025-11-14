@@ -927,6 +927,34 @@ let alt = polygon.getAltitude();
 {% endtab %}
 {% endtabs %}
 
+### setFaceTextureWrapU(faceIndex, wrapType), setFaceTextureWrapV(faceIndex, wrapType) → boolean
+
+> 타일링 텍스쳐 매핑 방식을 설정합니다(u, v).
+>
+> uv(텍스쳐) 좌표 범위(0.0 ~ 1.0)를 벗어난 영역에 대한 패턴을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     	| Type   | Description           |
+| --------- | ------ | --------------------- |
+| faceIndex | number | face 인덱스            |
+| wrapType  | number | <p>0x2901: GL_REPEAT(이미지 반복)<br>0x8370: GL_MIRRORED_REPEAT(이미지 뒤집어서 반복)<br>0x812F: GL_CLAMP_TO_EDGE(0과 1 사이의 좌표 고정. 가장자리 패턴이 늘어남)</p> |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 해당 face 인덱스를 가진 face가 없을 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### createVerticalGrid(layername, lefttop, rightbottom, row, col) → boolean
 
 > 평면 그리드 객체를 생성합니다.
@@ -1075,7 +1103,7 @@ object.setVisible(true);
 
 > [JSPolygonStyle](jspolygonstyle.md)으로 적용된 스타일을 평면 객체에 설정합니다.
 >
-> 평면 객체의 색상, 투명도, 외각선 등을 설정합니다.
+> 평면 객체의 색상, 투명도, 외곽선 등을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}

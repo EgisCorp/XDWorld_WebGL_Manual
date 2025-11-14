@@ -78,7 +78,7 @@ ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", fals
 
 | Name   | Type                                                                                 | Description |
 | ------ | ------------------------------------------------------------------------------------ | ----------- |
-| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmap.insertoptions) | 속성 정보.  |
+| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmapinsertoptions) | 속성 정보.  |
 
 -   Return
     -   "success": 등록 성공.
@@ -130,6 +130,39 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 {% endtab %}
 {% endtabs %}
 
+### setGhostSymbolPositionOffset(id, front, right, up) → boolean
+
+> 고스트 심볼 모델의 오프셋을 설정합니다.
+>
+> 설정된 오프셋 만큼 고스트 심볼 모델을 이동시킵니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description        |
+| ----- | ------ | ------------------ |
+| id    | string | 고스트 심볼 고유 명칭 |
+| front | number | front 방향 오프셋    |
+| right | number | front 방향 오프셋    |
+| up    | number | front 방향 오프셋    |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   입력 변수값(id)에 해당되는 고스트심볼 모델이 존재하지 않는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setModelTexture(option) → string
 
 > 등록된 고스트 심볼 모델를 구성하는 face 별 이미지를 설정합니다.
@@ -139,7 +172,7 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 
 | Name   | Type                                                                             | Description |
 | ------ | -------------------------------------------------------------------------------- | ----------- |
-| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmap.loadtexture) | 속성 정보.  |
+| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmaploadtexture) | 속성 정보.  |
 
 -   Return
     -   "success": 설정 성공.
@@ -171,6 +204,33 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 | id    | string                        | 고스트 심볼 고유 명칭. |
 | index | number                        | face 인덱스.           |
 | color | [JSColor](../core/jscolor.md) | 설정 색상.             |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setModelFaceReflect(id, index, reflect) → boolean
+
+> 등록된 고스트 심볼 모델를 구성하는 face 별 반사도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description         |
+| ------- | ------ | ------------------- |
+| id      | string | 고스트 심볼 고유 명칭. |
+| index   | number | face 인덱스.         |
+| reflect | number | 설정 반사도.          |
 
 -   Return
     -   true: 설정 성공.
@@ -305,6 +365,57 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 {% endtab %}
 {% endtabs %}
 
+### getReferenceCount(id) → number
+
+> 입력 변수값(id)과 동일한 명칭을 가진 고스트 심볼 모델을 참조하는 객체의 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description            |
+| ---- | ------ | ---------------------- |
+| id   | string | 고스트 심볼 고유 명칭. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### removeModel(id) → boolean
+
+> 입력 변수값(id)과 동일한 명칭을 가진 고스트 심볼 모델을 삭제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description            |
+| ---- | ------ | ---------------------- |
+| id   | string | 고스트 심볼 고유 명칭. |
+
+-   Return
+    -   true: 삭제 성공.
+    -   false: 삭제 실패.
+    -   실패 조건
+        -   입력 변수값(id)에 해당되는 고스트심볼 모델이 존재하지 않는 경우.
+        -   입력 변수값(id)에 해당되는 고스트심볼 모델을 참조로 사용하는 객체가 존재하는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getGhostSymbolSize(id) → [JSSize3D](../core/jssize3d.md)
 
 > 등록된 고스트 심볼 모델 크기를 반환합니다.
@@ -339,12 +450,13 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 
 > Options for registering a 3D model object as a ghost symbol.
 
-| Name     | Type     | Attributes | Default | Description                     |
-| -------- | -------- | ---------- | ------- | ------------------------------- |
-| id       | string   |            |         | 고스트 심볼 고유 명칭.          |
-| url      | string   |            |         | 고스트 심볼 모델 파일 요청 URL. |
-| format   | string   | optional   |         | 요청 파일 포맷(3ds만 지원).     |
-| callback | function | optional   |         | 등록 완료 시 동작하는 CallBack  |
+| Name     | Type                      | Attributes | Default | Description                     |
+| -------- | ------------------------- | ---------- | ------- | ------------------------------- |
+| id       | string                    |            |         | 고스트 심볼 고유 명칭.          |
+| url      | string                    |            |         | 고스트 심볼 모델 파일 요청 URL. |
+| polygon  | [JSPolygon](jspolygon.md) |            |         | 고스트 심볼 모델 폴리곤         |
+| format   | string                    | optional   |         | 요청 파일 포맷(3ds만 지원).     |
+| callback | function                  | optional   |         | 등록 완료 시 동작하는 CallBack  |
 
 #### JSGhostSymbolMap.LoadTexture
 

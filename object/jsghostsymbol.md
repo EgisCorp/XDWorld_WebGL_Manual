@@ -308,7 +308,7 @@ newGhostSymbol.moveVertically(150.0);
 
 ### setGhostSymbol(name) → boolean
 
-> 고스트 심볼을 관리하는 목록에서 입력 변수값(name)에 해당되는 고스트 심불을 설정합니다.
+> 고스트 심볼을 관리하는 목록에서 입력 변수값(name)에 해당되는 고스트 심볼을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -356,7 +356,11 @@ newGhostSymbol.moveVertically(150.0);
 {% tab title="Template" %}
 
 ```javascript
+var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
 
+// 오브젝트 위치 지정
+var vPosition = new Module.JSVector3D(129.126046, 35.169985, 4.5);
+newGhostSymbol.setPosition(vPosition);	
 ```
 
 {% endtab %}
@@ -388,7 +392,11 @@ newGhostSymbol.moveVertically(150.0);
 {% tab title="Template" %}
 
 ```javascript
+var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
 
+// 오브젝트 스케일 지정
+var vScale = new Module.JSSize3D(1.0, 1.5, 1.0);
+newGhostSymbol.setScale(vScale);
 ```
 
 {% endtab %}
@@ -418,7 +426,60 @@ newGhostSymbol.moveVertically(150.0);
 {% tab title="Template" %}
 
 ```javascript
+var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
+newGhostSymbol.setRotation(45.0, 90.0, 180.0);
+```
 
+{% endtab %}
+{% endtabs %}
+
+### setDirection(angle) → boolean
+
+> 고스트 심볼 객체의 방향 각도를 설정합니다.
+>
+> [setRotation(0, angle, 0)](#setrotationx-y-z--boolean)과 같은 기능을 수행합니다.
+
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description              |
+| ----- | ------ | ------------------------ |
+| angle | number | 오브젝트 방향(degree 단위). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
+newGhostSymbol.setDirection(90.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getDirection() → number
+
+> 고스트 심볼 객체의 방향 각도를 반환합니다.
+>
+> [getRotationY()](#getrotationy--number)와 같은 기능을 수행합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 오브젝트 방향(degree 단위).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var newGhostSymbol = Module.createGhostSymbol("newGhostSymbol");
+var direction = newGhostSymbol.getDirection();
 ```
 
 {% endtab %}

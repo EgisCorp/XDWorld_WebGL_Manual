@@ -19,9 +19,9 @@ var object = Module.createLineString("ID");
 {% tabs %}
 {% tab title="Information" %}
 
-| Name   | Type                                                                     | Description |
-| ------ | ------------------------------------------------------------------------ | ----------- |
-| option | [JSLineString.CreateOptions](jslinestring.md#jslinestring.createoptions) | 속성 정보.  |
+| Name   | Type                                                                    | Description |
+| ------ | ----------------------------------------------------------------------- | ----------- |
+| option | [JSLineString.CreateOptions](#jslinestringcreateoptions) | 속성 정보.  |
 
 -   Return
     -   "success": 생성 성공.
@@ -208,9 +208,9 @@ var length = object.getLength();
 {% endtab %}
 {% endtabs %}
 
-### setUnionMode(type)
+### setUnionMode(type), getUnionMode() → boolean
 
-> 선 객체 가시화 옵션을 설정합니다.
+> 선 객체 가시화 옵션을 설정 및 반환합니다.
 >
 > 선 생성 시 지형 결합 유무를 설정합니다.
 
@@ -229,7 +229,62 @@ var length = object.getLength();
 {% tab title="Template" %}
 
 ```javascript
+let line = Module.createLineString(id);
+/* line 좌표 설정 */
+line.setUnionMode(true);
+```
 
+{% endtab %}
+{% endtabs %}
+
+### setLineType(type)
+
+> 선의 타입을 설정합니다.
+>
+> 실선, 점선 등과 같은 타입을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                |
+| ---- | ------ | ---------------------------------------------------------- |
+| type | number | <p>0: NORMAL<br>1: OUTLINE<br>2: GLOW<br>3: ARROW<br>4: DASH<br>5: FIRE<br>6: TWINKLE<br>7: WARNING</p> |
+
+-   Sample
+    -   타입 별 가시화 샘플
+    -   [Sandbox_Line](https://sandbox.egiscloud.com/code/main.do?id=object_line_Json)
+    -   [Sandbox_Line Effect](https://sandbox.egiscloud.com/code/main.do?id=object_line_effect)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let line = Module.createLineString(id);
+/* line 좌표 설정 */
+line.setLineType(2); // GLOW
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDepthBufferTest(type)
+
+> 선의 Depth 버퍼를 활성화/비활성화 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description              |
+| ---- | ------- | ------------------------ |
+| type | boolean | <p>true: 활성화<br>false: 비활성화</p> |
+
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+line.setDepthBufferTest(true); // 활성화
+line.setDepthbufferTest(false); // 비활성화
 ```
 
 {% endtab %}

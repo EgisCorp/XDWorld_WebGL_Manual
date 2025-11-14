@@ -261,6 +261,47 @@ let result = Module.getMath().isPointInPolygon(polygon, points);
 {% endtab %}
 {% endtabs %}
 
+### getClosestPositionOnPath(point, path) → object
+
+> 한 점에서부터 path 까지의 거리 중 가장 가까운 위치의 정보를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                                  | Description |
+| ----- | ------------------------------------- | ----------- |
+| point | [JSVector3D](../core/jsvector3d.md)   | 기준 점      |
+| path  | [JSVec3Array](../core/jsvec3array.md) | path array  |
+
+-   Description
+    - 가장 가까운 점이 선분 범위 밖에 위치하는 경우 path의 시작점 또는 끝점을 반환합니다.
+    - 가장 가까운 점이 선분 내에 위치하는 경우 해당 지점의 좌표 정보를 반환합니다.
+-   Return
+    -   object
+        -   distance : 거리
+        -   position : 좌표
+        -   index : path 인덱스
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let point = new Module.JSVector3D(127.003, 37.49, 10);
+let path = new Module.JSVec3Array();
+path.push(new Module.JSVector2D(127.0, 37.5));
+path.push(new Module.JSVector2D(127.01, 37.5));
+path.push(new Module.JSVector2D(127.01, 37.51));
+path.push(new Module.JSVector2D(127.0, 37.51));
+
+let closestPosition = Module.getMath().getClosestPositionOnPath(point, path);
+// closestPosition.distance
+// closestPosition.position
+// closestPosition.index
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getScreenEdgeIndicator(position) → object \| null
 
 > 화면 밖에 있는 객체의 위치를 화면 경계 기준으로 보정하여 반환합니다.

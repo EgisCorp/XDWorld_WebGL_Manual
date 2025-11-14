@@ -162,18 +162,53 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 {% endtab %}
 {% endtabs %}
 
-### createXDServerLayer(option) → [JSLayer](../layer/jslayer.md)
+### createUserLayer(option) → [JSLayer](../layer/jslayer.md)
 
-> 입력 변수값으로 서비스 레이어를 생성합니다.
+> 입력 변수값으로 사용자 타일 레이어를 생성합니다.
 >
-> 서비스 레이어를 반환합니다.
+> 사용자 레이어를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 | Name   | Type                                                                | Description |
 | :----- | :------------------------------------------------------------------ | :---------- |
-| option | [CreateServerLayerOptions](jslayerlist.md#createserverlayeroptions) | 속성 정보.  |
+| option | [CreateUserLayerOptions](jslayerlist.md#createuserlayeroptions)   | 속성 정보.  |
+
+-   Return
+    -   [JSLayer](../layer/jslayer.md) : 생성 성공.
+    -   null : 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layer = Module.getTileLayerList().createUserLayer({
+    name: "Layer Name",
+    url: "Request Server Address",
+    type: "Layer Type",
+    visible: false,
+    selectable: false,
+    minLevel: 10,
+    maxLevel: 14,
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createXDServerLayer(option) → [JSLayer](../layer/jslayer.md)
+
+> 입력 변수값으로 사용자/서비스 레이어를 생성합니다.
+>
+> 사용자/서비스 레이어를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                                                    | Description |
+| :----- | :---------------------------------------------------------------------- | :---------- |
+| option | [CreateXDServerLayerOptions](jslayerlist.md#createxdserverlayeroptions) | 속성 정보.  |
 
 -   Return
     -   [JSLayer](../layer/jslayer.md) : 생성 성공.
@@ -191,6 +226,7 @@ let layer = Module.getTileLayerList().createXDServerLayer({
     selectable: false,
     minLevel: 10,
     maxLevel: 14,
+    ...
 });
 ```
 
@@ -626,7 +662,7 @@ layerList.setVisible(“HybridLoad”, false);
 | minDistance | number                                                  | optional   | 0.0     | 레이어 최소 가시 거리를 설정.          |
 | maxDistance | number                                                  | optional   | 3000.0  | 레이어 최대 가시 거리를 설정.          |
 
-#### CreateServerLayerOptions
+#### CreateUserLayerOptions
 
 > Options for creating a service layer.
 
@@ -639,3 +675,24 @@ layerList.setVisible(“HybridLoad”, false);
 | selectable | boolean                                                 | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
 | minLevel   | number                                                  | optional   | 0       | 레이어 최소 가시 레벨를 설정.          |
 | maxLevel   | number                                                  | optional   | 15      | 레이어 최대 가시 레벨를 설정.          |
+
+#### CreateXDServerLayerOptions
+
+> Options for creating a service layer.
+
+| Name       | Type                                                    | Attributes | Default | Description                            |
+| ---------- | ------------------------------------------------------- | ---------- | ------- | -------------------------------------- |
+| name       | String                                                  |            |         | 레이어 명칭.                           |
+| url        | String                                                  |            |         | 요청 서버 url.                         |
+| type       | [Layer type List.](../etc/type-list.md#layer-type-list) |            |         | 레이어 타입.                           |
+| visible    | boolean                                                 | optional   | true    | 레이어 가시화 옵션 설정.               |
+| selectable | boolean                                                 | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
+| minLevel   | number                                                  | optional   | 0       | 레이어 최소 가시 레벨를 설정.          |
+| maxLevel   | number                                                  | optional   | 15      | 레이어 최대 가시 레벨를 설정.          |
+| userLayer  | boolean                                                 | optional   | false   | 사용자 레이어 / 서비스 레이어.         |
+| tileRatio  | number                                                  | optional   |         | LOD Ratio 값.                       |
+| textureExt | String                                                  | optional   | "jpg"   | 텍스처 확장자(소문자).                |
+| boundaryLimit | object                                               | optional   |         | Limit Boundary 설정.               |
+| servername | String                                                  | optional   |         | 서버 이름 설정.                      |
+| maxLevelOverlap | boolean                                            | optional   | false   | 하이브리드 레이어 최대레벨 초과 시 부모 참조 옵션 설정.|
+| Authorization | boolean                                              | optional   | false   | 인증 토큰 fetch 방식 변경 플래그.      |

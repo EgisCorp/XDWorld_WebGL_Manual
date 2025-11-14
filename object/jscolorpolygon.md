@@ -202,3 +202,47 @@ object.setVisible(true);
 
 {% endtab %}
 {% endtabs %}
+
+### setOpacity(opacity) → void
+
+> 객체의 투명도(0.0 ~ 1.0)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description             |
+| ------- | ------- | ----------------------- |
+| visible | boolean | 객체 투명도 값(0.0 ~ 1.0) |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+object.setOpacity(0.5);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### toLonlatArray() → object
+
+> 구성된 좌표 목록을 경위도, 고도로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - object
+    - result: 1 → 생성 성공 / 0 → 실패
+    - data: 좌표 데이터
+    - return: 메시지
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var positions = object.toLonlatArray();
+```
+
+{% endtab %}
+{% endtabs %}
