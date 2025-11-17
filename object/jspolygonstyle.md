@@ -79,7 +79,7 @@ polyStyle.setFillColor(fillColor);
 
 ### getOutLine(), setOutLine(set) → boolean
 
-> 평면 객체의 외각선 가시화 유무를 설정합니다.
+> 평면 객체의 외곽선 가시화 유무를 설정합니다.
 >
 > 기본적으로 true 옵션으로 설정됩니다.
 
@@ -88,11 +88,39 @@ polyStyle.setFillColor(fillColor);
 
 | Name | Type    | Description                                            |
 | ---- | ------- | ------------------------------------------------------ |
-| set  | boolean | <p>true: 외각선 가시화.<br>false: 외각선 비가시화.</p> |
+| set  | boolean | <p>true: 외곽선 가시화.<br>false: 외곽선 비가시화.</p> |
 
 -   Return
-    -   true: 외각선 적용.
-    -   false: 외각선 미적용.
+    -   true: 외곽선 적용.
+    -   false: 외곽선 미적용.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var outLineWidth = polygon.getStyle().getOutLineWidth();
+// ... or ...
+var figure = new Module.JSFigure();
+//...
+var polyStyle = figure.getStyle();
+polyStyle.setOutLineWidth(5.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getOutLineWidth(), setOutLineWidth(lineWidth) → void
+
+> 평면 객체의 외곽선 두께를 설정 및 반환합니다.
+>
+> 기본적으로 1.0 으로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description |
+| --------- | ------ | ----------- |
+| lineWidth | number | 외곽선 두께   |
 
 {% endtab %}
 {% tab title="Template" %}
@@ -111,7 +139,7 @@ polyStyle.setOutLine(false);
 
 ### getOutLineColor(), setOutLineColor(color) → [JSColor](../core/jscolor.md)
 
-> 평면 객체의 외각선 색상을 설정합니다.
+> 평면 객체의 외곽선 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}

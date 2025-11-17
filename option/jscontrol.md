@@ -405,3 +405,84 @@ Module.getControl().setMouseZoomMode(true);
 
 {% endtab %}
 {% endtabs %}
+
+### getTouchPanEnable(), setTouchPanEnable(type) → boolean
+
+> 터치를 통한 카메라 이동 가능 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                          |
+| :--- | :------ | :------------------------------------------------------------------- |
+| type | boolean | <p>true: 터치 이동 활성화.<br>false: 터치 이동 비활성화.</p> |
+
+-   Return
+    -   true: 활성화 상태.
+    -   false: 비활성화 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var vTouchPanEnable = Module.getControl().getTouchPanEnable();
+// ... or ...
+Module.getControl().setTouchPanEnable(false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTouchRotateEnable(), setTouchRotateEnable(type) → boolean
+
+> 터치를 통한 카메라 회전 가능 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                          |
+| :--- | :------ | :------------------------------------------------------------------- |
+| type | boolean | <p>true: 터치 회전 활성화.<br>false: 터치 회전 비활성화.</p> |
+
+-   Return
+    -   true: 활성화 상태.
+    -   false: 비활성화 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var vTouchRotateEnable = Module.getControl().getTouchRotateEnable();
+// ... or ...
+Module.getControl().setTouchRotateEnable(false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTouchZoomEnable(), setTouchZoomEnable(type) → boolean
+
+> 터치를 통한 카메라 확대, 축소 가능 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                          |
+| :--- | :------ | :------------------------------------------------------------------- |
+| type | boolean | <p>true: 터치 확대, 축소 활성화.<br>false: 터치 확대, 축소 비활성화.</p> |
+
+-   Return
+    -   true: 활성화 상태.
+    -   false: 비활성화 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var vTouchZoomEnable = Module.getControl().getTouchZoomEnable();
+// ... or ...
+Module.getControl().setTouchZoomEnable(false);
+```
+
+{% endtab %}
+{% endtabs %}

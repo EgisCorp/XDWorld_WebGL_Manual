@@ -234,6 +234,37 @@ var lastVector = vectorList.shift();
 {% endtab %}
 {% endtabs %}
 
+### removeDuplicateVectors(distance) → number
+
+> 중복된 점을 제거합니다.
+>
+> 입력 변수값(distance) 보다 거리가 짧은 점들은 중복되는 것으로 간주하여 제거합니다.
+>
+> 제거된 점의 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description       |
+| :------- | :----- | :---------------- |
+| distance | number | 중복점 거리 기준 값. |
+
+-   Return
+    -   number: 제거된 점의 개수.
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+var vectorList = new Module.JSVec3Array();
+//...
+var removedCount = vectorList.removeDuplicateVectors(0.1);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getBoundary() → object
 
 > 입력된 좌표리스트의 Boundary를 반환합니다.
@@ -276,4 +307,3 @@ var lastVector = vectorList.shift();
 
 {% endtab %}
 {% endtabs %}
-

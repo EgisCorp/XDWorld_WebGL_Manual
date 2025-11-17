@@ -229,3 +229,67 @@ var lastVector = vectorList.shift();
 
 {% endtab %}
 {% endtabs %}
+
+### pointToString() → string
+
+> 포인트 리스트를 문자열로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   string: "x1,y1,x2,y2,x3,y3,..."
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getBoundary() → object
+
+> 입력된 좌표 리스트의 Boundary를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   min: [JSVector2D](../core/jsvector2d.md)
+    -   max: [JSVector2D](../core/jsvector2d.md)
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### toJSVec3Array() → [JSVec3Array](../core/jsvec3array.md)
+
+> 입력된 좌표리스트의 jsvec3array를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSVec3Array](../core/jsvec3array.md): 반환성공.
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}

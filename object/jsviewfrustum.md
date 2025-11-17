@@ -55,6 +55,27 @@ var object = Module.createViewFrustum("ID");
 {% endtab %}
 {% endtabs %}
 
+### getEyepos() → [JSVector3D](../core/jsvector3d.md)
+
+> 절두체 객체의 중심 좌표를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md) : 반환 성공.
+    -   null: 반환 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getFov() → [JSVector2D](../core/jsvector2d.md)
 
 > 절두체 객체의 화각(x: 너비, y: 높이)을 반환합니다.
@@ -265,7 +286,11 @@ object.setName("MyObject");
 {% tab title="Template" %}
 
 ```javascript
-// ... or ...
+var frustum = Module.createViewFrustum(id);
+frustum.createFrustum(
+    // Somthing...
+)
+frustum.setPan(90);
 ```
 
 {% endtab %}
@@ -284,8 +309,8 @@ object.setName("MyObject");
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
 | tilt | number | x축 회전 값. |
 
 -   Return
@@ -300,7 +325,39 @@ object.setName("MyObject");
 {% tab title="Template" %}
 
 ```javascript
-// ... or ...
+var frustum = Module.createViewFrustum(id);
+frustum.createFrustum(
+    // Somthing...
+)
+frustum.setTilt(-10);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getDistance(), setDistance(distance) → number
+
+> 절두체 객체의 길이를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description  |
+| -------- | ------ | ------------ |
+| distance | number | 절두체 길이. |
+
+-   Return
+    -   number: 설정된 절두체의 길이.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var frustum = Module.createViewFrustum(id);
+frustum.createFrustum(
+    // Somthing...
+)
+frustum.setDistance(100.0);
 ```
 
 {% endtab %}
