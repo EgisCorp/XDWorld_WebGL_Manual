@@ -153,6 +153,28 @@ var strKey = object.getId();
 ```javascript
 
 ```
+                                                                                                        
+{% endtab %}
+{% endtabs %}
+
+### getHeight() → number
+
+> 고스트 심볼 객체의 높이를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+
+    -   number: 반환 성공.
+    -   0.0: 반환 실패.(렌더링 유효 오브젝트 아님)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var height = object.getHeight();
+```
 
 {% endtab %}
 {% endtabs %}
