@@ -156,9 +156,124 @@ object.setName("MyObject");
 {% tab title="Template" %}
 
 ```javascript
-var objName = object.getName();
+var objVisible = object.getVisible();
 // ... or ...
 object.setVisible(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPosition(), setPosition(pos) → void
+
+> 화살표 객체의 시작점을 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type                                | Description        |
+| ---- | ----------------------------------- | ------------------ |
+| pos  | [JSVector3D](../core/jsvector3d.md) | 화살표 객체의 시작점. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var startPos = object.getPosition();
+// ... or ...
+object.setPosition(pos);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getOrient(), setOrient(orient) → void
+
+> 화살표 객체의 방향을 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description      |
+| ------ | ------ | ---------------- |
+| orient | number | 화살표 객체의 방향 |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var dir = object.getOrient();
+// ... or ...
+object.setOrient(orient);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTilt(), setTilt(tilt) → void
+
+> 화살표 객체의 틸트를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description      |
+| ---- | ------ | ---------------- |
+| tilt | number | 화살표 객체의 틸트 |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var tilt = object.getTilt();
+// ... or ...
+object.setTilt(tilt);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getDist(), setDist(dist) → void
+
+> 객체의 길이를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description      |
+| ---- | ------ | ---------------- |
+| dist | number | 화살표 객체의 길이 |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var dist = object.getDist();
+// ... or ...
+object.setDist(dist);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getColor(), setColor(color) → void
+
+> 객체의 색상을 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                          | Description      |
+| ----- | ----------------------------- | ---------------- |
+| color | [JSColor](../core/jscolor.md) | 화살표 객체의 색상 |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var color = object.getColor();
+// ... or ...
+object.setColor(color);
 ```
 
 {% endtab %}
