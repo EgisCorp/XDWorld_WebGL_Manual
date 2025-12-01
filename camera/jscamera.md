@@ -169,6 +169,59 @@ var ZoomLevel= API.JSCamera.getMapZoomLevel();
 {% endtab %}
 {% endtabs %}
 
+### getMapScale() → number
+
+> 직교 투영시 축척을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 1cm에 대한 축척.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+var mapScale= API.JSCamera.getMapScale();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLookAt(f_altitude, f_longitude, f_latitude, t_altitude, t_longitude, t_latitude) → boolean
+
+> 두 점을 사용하여 카메라를 이동합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                | Description                                |
+| ----------- | ------ | ------------------------------------------ |
+| f_altitude  | number | 카메라 위치 고도 좌표 (degrees 단위).          |
+| f_altitude  | number | 카메라 위치 고도 좌표 (degrees 단위).          |
+| f_longitude | number | 카메라 위치 경도 좌표 (degrees 단위).          |
+| f_latitude  | number | 카메라 위치 위도 좌표 (degrees 단위).          |
+| t_altitude  | number | 카메라가 보고 있는 위치 고도 좌표(degrees 단위). |
+| t_longitude | number | 카메라가 보고 있는 위치 경도 좌표(degrees 단위). |
+| t_latitude  | number | 카메라가 보고 있는 위치 위도 좌표(degrees 단위). |
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().setLookAt(129.128265, 35.171834, 500.0, 129.128265, 35.161834, 10.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### look(from, to) → boolean
 
 > 두 점을 사용하여 카메라를 이동합니다.
@@ -193,6 +246,55 @@ var ZoomLevel= API.JSCamera.getMapZoomLevel();
 
 ```javascript
 Module.getViewCamera().look(new Module.JSVector3D(129.128265, 35.171834, 500.0), new Module.JSVector3D(129.128265, 35.161834, 10.0));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getLookPosition(distance) → [JSVector3D](../core/jsvector3d.md)
+
+> 카메라가 바라보는 점의 좌표를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                        |
+| -------- | ------ | ---------------------------------- |
+| distance | number | 카메라에서부터 바라보는 지점까지의 거리. |
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md) : 카메라가 보는 방향으로 distance 만큼 진행한 좌표.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var lookPosition = Module.getViewCamera().getLookPosition();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSmoothMove(type) → void
+
+> 카메라의 부드러운 움직임을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                         |
+| -----| ------- | --------------------------------------------------- |
+| type | boolean | <p>Smooth Move<br>true: 활성화<br>false: 비활성화</p> |
+
+-   Description
+    -   카메라 이동 시 현재 위치와 다음 위치 사이를 보간하여 더 자연스러운 움직임을 구현합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().setSmoothMove(true); // 활성화(기본값)
+Module.getViewCamera().setSmoothMove(false); // 비활성화
 ```
 
 {% endtab %}
@@ -736,6 +838,35 @@ Module.getViewCamera().setAutoMovePosition(vMovePositionList);
 {% endtab %}
 {% endtabs %}
 
+### insertAutoMovePosition(coordinates, direct, tilt) → boolean
+
+> 카메라의 자동 이동 좌표 목록에 새로운 좌표를 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                | Description                                     |
+| ----------- | ----------------------------------- | ----------------------------------------------- |
+| coordinates | [JSVector3D](../core/jsvector3d.md) | 추가할 좌표. 경도, 위도, 고도로 구성. (degrees 단위) |
+| tilt        | number                              | 카메라의 상하 기울기 각도 (단위: 도, degree).        |
+| direct      | number                              | 카메라의 방위각, 즉 수평 방향 (단위: 도, degree)     |
+
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var movePosition = new Module.JSVector3D(129.12695440075726, 35.16601614946393, 50.0);
+Module.getViewCamera().insertAutoMovePosition(movePosition, 90, 45);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setAutoMoveWaitFrame(speed) → boolean
 
 > 카메라의 자동 이동 중 카메라의 이동 간격 발생 프레임을을 설정합니다.
@@ -759,6 +890,31 @@ Module.getViewCamera().setAutoMovePosition(vMovePositionList);
 
 ```javascript
 Module.getViewCamera().setAutoMoveWaitFrame(3);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetAutoMoveIntrerval(interval) → boolean
+
+> 카메라의 자동 이동 중 카메라의 한 구간 이동 간격을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description            |
+| -------- | ------ | ---------------------- |
+| interval | number | 카메라 한 구간 이동 간격. |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().SetAutoMoveIntrerval(0.01);
 ```
 
 {% endtab %}
@@ -1453,7 +1609,63 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 var limitTilt = API.JSCamera.getLimitTilt();
-Module.getViewCamera().setLimitTilt(80);
+API.JSCamera.setLimitTilt(80);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getLimitminTilt(), setLimitminTilt(tilt) → number
+
+> 카메라 제한 기울기 최소 각도를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                            |
+| ---- | ------ | -------------------------------------- |
+| tilt | number | 카메라 제한 기울기 최소 각도 (degree 단위). |
+
+-   Return
+    -   number: 카메라 제한 기울기 최소 각도를 반환합니다 (degree 단위).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setLimitminTilt(20);
+var minTilt = API.JSCamera.getLimitminTilt();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getLimitmaxTilt(), setLimitmaxTilt(tilt) → number
+
+> 카메라 제한 기울기 최대 각도를 설정 및 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                            |
+| ---- | ------ | -------------------------------------- |
+| tilt | number | 카메라 제한 기울기 최대 각도 (degree 단위). |
+
+-   Return
+    -   number: 카메라 제한 기울기 최대 각도를 반환합니다 (degree 단위).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.setLimitmaxTilt(80);
+var maxTilt = API.JSCamera.getLimitmaxTilt();
 ```
 
 {% endtab %}
@@ -1819,6 +2031,29 @@ API.JSCamera.setTraceActive(false); // 추적 중단
 {% endtab %}
 {% endtabs %}
 
+### ReleaseTrace() → boolean
+
+> 카메라의 추적 대상을 삭제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Description  
+    -   설정된 카메라의 추적 대상을 삭제합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+API.JSCamera.ReleaseTrace();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### bankLeft()
 
 > 카메라를 왼쪽으로 기울입니다.
@@ -2168,6 +2403,57 @@ API.JSCamera.setAutoMovePath(pathList);
 {% endtab %}
 {% endtabs %}
 
+### setLockOrientationAutoMove(type) → void
+
+> 카메라 방향/틸트 고정 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                          |
+| ---- | ------- | ------------------------------------ |
+| type | boolean | 카메라 방향/틸트 고정 여부 설정 (true: 고정, false: 고정 해제) |
+
+-   Description
+    -   카메라 방향과 틸트의 고정 여부를 설정합니다.
+    -   기본값은 true 입니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera();
+};
+
+API.JSCamera.setLockOrientationAutoMove(true); // 고정
+API.JSCamera.setLockOrientationAutoMove(false); // 고정 해제
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearAutoMovePosition() → boolean
+
+> 설정된 카메라 자동 이동 좌표 목록을 삭제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true : 삭제 성공.
+    -   false : 삭제 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getViewCamera().clearAutoMovePosition();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### AltitudeUp()
 
 > 카메라의 고도를 높입니다.  
@@ -2214,7 +2500,7 @@ API.JSCamera.AltitudeUp();
   - 없음 (void)
 
 - Description  
-  - 지정한 위치를 중심으로, 입력받은 틸트와 방향, 거리 값을 기반으로 카메라의 시점을 설정합니다.  
+  - 지정한 위치를 중심으로, 입력받은 틸트와 방향, 거리 값을 기반으로 카메라의 시점을 설정합니다.
   - 내부적으로 구면 좌표계를 사용하여 카메라 위치를 계산하고, `SetCamera()` 및 `SetHeading()`을 호출하여 반영합니다.
 
 {% endtab %}
@@ -2231,6 +2517,45 @@ lookAt.Y = 37.5665;  // 위도
 lookAt.Z = 300.0;    // 고도 (meter)
 
 API.JSCamera.moveLookAt(lookAt, 45.0, 90.0, 1000.0);
+```
+{% endtab %}
+{% endtabs %}
+
+### setViewAt(longitude, latitude, altitude, tilt, direct) → void
+
+> 특정 지점을 바라보도록 카메라를 설정합니다.
+>
+> 입력 변수값(altitude, tilt, heading)을 적용하여 카메라를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type       | Description                                 |
+|-----------|------------|---------------------------------------------|
+| longitude | number     | 카메라가 바라볼 위치의 경도 좌표 (degrees 단위). |
+| latitude  | number     | 카메라가 바라볼 위치의 위도 좌표 (degrees 단위)  |
+| altitude  | number     | 카메라 위치 고도 좌표 (meter 단위).             |
+| tilt      | number     | 카메라의 상하 기울기 각도 (단위: 도, degree).    |
+| direct    | number     | 카메라의 방위각, 즉 수평 방향 (단위: 도, degree) |
+
+- Return  
+  - 없음 (void)
+
+- Description  
+  - 지정한 위치를 중심으로, 입력받은 고도값과 틸트, 방향을 기반으로 카메라의 시점을 설정합니다.  
+  - 바라보는 지점의 고도는 0이며, `SetCamera()` 및 `SetHeading()`을 호출하여 반영합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSCamera : Module.getViewCamera()
+};
+
+var longitude = 126.9780; // 경도
+var latitude = 37.5665;  // 위도
+API.JSCamera.setViewAt(longitude, latitude, 1000, 45, 90);
 ```
 {% endtab %}
 {% endtabs %}
