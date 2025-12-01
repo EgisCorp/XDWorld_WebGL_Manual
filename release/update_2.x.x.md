@@ -2,6 +2,101 @@
 
 ## - 업데이트 내역 -
 
+### 2.21.0 (2025/12/01)
+#### 1. 카메라 타겟 좌표 반환 API 추가
+- 카메라 이동 애니메이션이 적용된 상태에서 카메라의 최종 목적지 좌표를 반환하는 API가 추가되었습니다.
+```javascript
+var pos = Module.getViewCamera().getTargetLocation();
+```
+
+#### 2. 카메라 플레이어 모드 추가
+- 1인칭 카메라에 플레이어 모드(물리 기반)가 추가되었습니다.
+- 이 모드에서는 점프 및 중력 낙하 효과가 자연스럽게 적용됩니다.
+```javascript
+var camera = Module.getViewCamera();
+camera.setPlayerMode(true); // 플레이어 모드 활성화
+camera.setPlayerMode(false); // 플레이어 모드 비활성화
+```
+
+#### 3. 카메라 점프 기능 API 추가
+- 플레이어 모드에서 카메라가 점프 동작을 수행할 수 있는 API가 추가되었습니다.
+- 점프 세기(jumpForce), 중력(gravity), 시간 간격(timeStep)을 조절할 수 있습니다.
+- [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=camera_jump_outdoor)
+```javascript
+var camera = Module.getViewCamera();
+camera.setJumpForce(30.0); // 기본값 10.0
+camera.setGravity(9.8); // 기본값 9.8
+camera.setTimeStep(0.06); // 기본값 0.05
+camera.jump();
+```
+
+#### 4. 카메라 지면 감지 API 추가
+- 1인칭 카메라가 현재 지면에 닿아 있는지 여부를 확인할 수 있는 API가 추가되었습니다.
+- isGround()가 true일 때만 점프 기능이 동작합니다.
+```javascript
+var camera = Module.getViewCamera();
+camera.isGround();
+```
+
+#### 5. 착지 고도 설정 API 추가
+- 플레이어 모드에서 카메라의 착지 고도를 직접 지정할 수 있는 기능이 추가되었습니다.
+- 특정 고도를 수동으로 설정하거나, 현재 위치의 지형 고도를 자동으로 적용할 수 있습니다.
+```javascript
+var camera = Module.getViewCamera();
+camera.setLandingElevation(50.0); // 특정 고도를 착지 고도로 설정
+camera.setLandingElevationToTerrain(); // 지형 고도를 착지 고도로 설정
+```
+
+#### 6. 카메라 범위 외 레이어 피킹 API 추가
+- 기존에는 카메라 시야 영역 내 객체만 피킹이 가능했지만, 시야 영역에 관계없이 피킹이 가능한 API가 추가되었습니다.
+```javascript
+let buildingLayer = Module.getTileLayerList().nameAtLayer("facility_build");
+pickPosition = buildingLayer.getPickInfoAtView(_from, _to); // 기존: 카메라 영역 내부만 피킹
+pickPosition = buildingLayer.getPickInfo(_from, _to); // 추가: 카메라 영역 상관 없이 피킹
+```
+
+#### 7. 영역 내부의 건물 오브젝트 아이디 반환 API 추가
+- 영역 내부의 건물 오브젝트 아이디를 반환하는 API가 추가되었습니다.
+```javascript
+var boundary = [
+  [126.93790903169547, 37.522875202560655, 0.0],
+  [126.92841620055285, 37.516978366894115, 0.0],
+  [126.91894402430914, 37.52022975707285, 0.0]
+] // 고도값 유무 상관 없음
+
+var objects = Module.getTileLayerList().nameAtLayer("facility_build").getObjectsInBoundary(boundary);
+
+console.log(objects.id);
+```
+
+#### 8. 3DTiles 요청 및 렌더링 최적화
+- 3DTiles 요청시 SSE 기준 요청으로 변경
+- 요청 순서 최적화
+- 요청 수 관리로 브라우저 안정화
+
+#### 9. 모바일 서비스 안정화
+
+ -   일부 기기에서 POI 객체 선택시 오류 수정
+
+#### 10. 선택된 객체 리스트 반환
+- [선택된 객체 리스트 반환](https://sandbox.egiscloud.com/code/main.do?engine=latest_test&id=object_select_info)
+
+#### 11. 빌보드 객체 지형 아래 랜더링 오류 수정
+- 빌보드 객체가 지형 아래로 내려가거나 걸칠경우 랜더링 되지 않는 현상 수정
+
+### 2.20.1 (2025/11/11)
+#### 1. JSFlowPolygon 인덱스 기반 생성 기능 추가
+  - JSFlowPolygon 생성 시 버텍스 및 삼각분할 된 인덱스 기반으로 생성할 수 있도록 API 기능이 추가되었습니다.
+    ``` javascript
+    var polygon = Module.createFlowPolygon("FLOW_POLYGON");
+    ...
+    var result = polygon.create({
+        vertex: geometry,                       // Polygon shape
+        index : indices,                          // Triangulated index
+        normaltexture: GLOBAL_FLOW_NOISE_TEXTURE,       // River flow noise texture
+    });
+    ```
+
 ### 2.20.0 (2025/11/03)
 #### 1. 성능 개선 및 내부 안정화 작업을 수행하였습니다.
 
