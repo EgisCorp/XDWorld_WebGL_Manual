@@ -39,6 +39,34 @@ var count = array.GetCount();
 {% endtab %}
 {% endtabs %}
 
+### extend(elements) → void
+
+> 배열에 새로운 데이터 리스트를 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type  | Description      |
+| :------ | :---- | :--------------- |
+| element | array | 추가 데이터 리스트. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var array = new Module.Collection();
+var items = [
+    new Module.JSVector3D(126.77599416643791, 35.02714918251881, 34.293371013365686),
+    new Module.JSVector3D(126.78374897355015, 35.03318059967435, 35.54886215366423),
+    new Module.JSVector3D(126.79212321528658, 35.03203801070689, 25.686076117679477),
+    new Module.JSVector3D(126.79408620811664, 35.019259090964134, 29.999966450035572)
+];
+array.extend(items);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### add(element) → number
 
 > 배열에 새로운 데이터를 추가합니다.
