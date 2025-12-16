@@ -26,6 +26,9 @@ let layer = layerList.createLayer("Layer Name");
 | simple_real3d           | boolean | 건물 객체 심플모드 설정.                         |
 | text_character_set      | string  | 레이어 텍스트 문자셋 값 설정.                    |
 | tile_load_ratio         | number  | 서비스 레이어 가시화 거리 비율 설정.             |
+| view_underground        | boolean | 지형 아래에 렌더링 되는 레이어 설정.             |
+| object_ahead            | boolean | 지형 또는 시설물이 앞에 존재할 경우 비가시화 설정. |
+| boundaryLimit           | boolean | 오브젝트 요청 범위 제한 설정.                   |
 
 ## Function
 
@@ -103,6 +106,35 @@ layer.clearWMSCache();
 {% endtab %}
 {% endtabs %}
 
+### findInsideObject(center, range) → string
+
+> 입력값(range) 반경 이내에 속하는 오브젝트의 고유 명칭을 반환합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type                                | Description     |
+| ------ | ----------------------------------- | --------------- |
+| center | [JSVector3D](../core/jsvector3d.md) | 반경의 중심 좌표. |
+| range  | number                              | 반경(반지름)      |
+
+-   Return
+    -   string : 반환 성공 (구분자 "#").
+    -   "0" : 반환 실패.
+    -   실패 조건
+        -   레이어가 없는 경우.
+        -   레이어에 포함된 객체 수가 0인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getObjectKeyList() → string
 
 > 레이어에 포함된 객체의 고유 명칭을 반환합니다.
@@ -120,6 +152,260 @@ layer.clearWMSCache();
     -   실패 조건
         -   사용자 레이어에 포함된 객체 수가 0인 경우.
         -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getObjectsInBoundary(boundary) → object
+
+> 폴리곤 범위 내에 속하는 오브젝트를 반환합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name     | Type   | Description     |
+| -------- | ------ | --------------- |
+| boundary | object | 폴리곤 영역 좌표. |
+
+-   Return
+    -   object : 반환 성공
+        -   | Name | Type   | Description   |
+            | ---- | ------ | ------------- |
+            | id   | string | 객체 고유 명칭. |
+    -   return : 반환 실패.
+    -   실패 조건
+        -   폴리곤을 구성하는 좌표가 3개 미만인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var boundary = [
+  [126.93790903169547, 37.522875202560655, 0.0],
+  [126.92841620055285, 37.516978366894115, 0.0],
+  [126.91894402430914, 37.52022975707285, 0.0]
+] // 고도값 유무 상관 없음
+
+var objects = Module.getTileLayerList().nameAtLayer("facility_build").getObjectsInBoundary(boundary);
+
+console.log(objects.id);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTileObjectInitColor(color) → boolean
+
+> 타일 레이어 초기화 색상을 설정합니다.
+>
+> 벡터 파이프 레이어 또는 건물 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type                          | Description |
+| ----- | ----------------------------- | ----------- |
+| color | [JSColor](../core/jscolor.md) | 초기화 색상. |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   레이어가 없는 경우.
+        -   사용자 레이어인 경우.
+        -   벡터 파이프 레이어 또는 건물 레이어가 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTileObjectColor(objkey, color) → boolean
+
+> 타일 레이어 오브젝트 색상을 설정합니다.
+>
+> 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type                          | Description  |
+| ------ | ----------------------------- | ------------ |
+| objkey | string                        | 객체 고유 명칭 |
+| color  | [JSColor](../core/jscolor.md) | 초기화 색상.   |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   레이어가 없는 경우.
+        -   사용자 레이어인 경우.
+        -   입력값(objkey)을 갖는 오브젝트가 없는 경우.
+        -   벡터 파이프 레이어가 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTileObjectCenterPosition(objkey) → [JSVector3D](../core/jsvector3d.md)
+
+> 타일 레이어 오브젝트의 중점을 반환합니다.
+>
+> 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type   | Description  |
+| ------ | ------ | ------------ |
+| objkey | string | 객체 고유 명칭 |
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md) : 반환 성공.
+    -   null : 반환 실패.
+    -   실패 조건
+        -   레이어가 없는 경우.
+        -   사용자 레이어인 경우.
+        -   입력값(objkey)을 갖는 오브젝트가 없는 경우.
+        -   벡터 파이프 레이어가 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setCrsWMS(crs) → boolean
+
+> WMS 레이어의 지도 좌표계(Coordinate Reference System)를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description    |
+| ---- | ------ | -------------- |
+| crs  | string | 지도 입력 좌표계 |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   레이어가 없는 경우.
+        -   사용자 레이어인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+//...(Add WMS layer)...
+var layer = layerList.nameAtLayer(“WMSLayer”);
+layer.setCrsWMS("EPSG:4326");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointDefaultIcon(icon) → boolean
+
+> WFS 레이어의 디폴트 포인트 심볼을 지정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type                          | Description |
+| ---- | ----------------------------- | ----------- |
+| icon | [JSIcon](../object/jsicon.md) | 포인트 심볼   |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+        -   icon의 텍스처가 없는 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointDefaultHighlightIcon(icon) → boolean
+
+> WFS 레이어의 디폴트 하이라이트 포인트 심볼을 지정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type                          | Description           |
+| ---- | ----------------------------- | --------------------- |
+| icon | [JSIcon](../object/jsicon.md) | 하이라이트 포인트 심볼   |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+        -   icon의 텍스처가 없는 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointHighlightActive(objkey, active) → boolean
+
+> WFS 레이어의 포인트 하이라이트 활성화를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type    | Description                                       |
+| ------ | ------- | ------------------------------------------------- |
+| objkey | string  | 객체 고유 명칭                                      |
+| active | boolean | <p>활성화 여부<br>true: 활성화<br>false: 비활성화</p> |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+        -   입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
+        -   오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
 
 {% endtab %}
 {% tab title="Template" %}
@@ -869,7 +1155,7 @@ layer.setWFSDescField(“STD_SGGCD”);
 
 ### setWFSPointName(fieldName)
 
-> WFS 서비스 레이어에서 요창 받은 XML 포맷에서 POI 가시화 문자열 태그 이름을 설정합니다.
+> WFS 서비스 레이어에서 요청 받은 XML 포맷에서 POI 가시화 문자열 태그 이름을 설정합니다.
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -877,13 +1163,6 @@ layer.setWFSDescField(“STD_SGGCD”);
 | Name      | Type   | Description |
 | --------- | ------ | ----------- |
 | fieldName | string | 태그 명칭.  |
-
--   Return
-    -   true: 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WFS 레이어 타입이 아닌 경우.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -907,6 +1186,62 @@ layer.setWFSPointName(“BONBUN”);
 <AG_GEOM>
 //...omitted...
 </gml:featureMember>
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLayersWFS(fieldName)
+
+> 요청 하고자 하는 WFS 명칭을 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name      | Type   | Description    |
+| --------- | ------ | -------------- |
+| fieldName | string | 요청 WFS 명칭.  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWFSLayer(“newWFSLayer”, 0);
+var dataURL = “http://...(Data request URL)...”;
+var parameter= “...(Data request parameters)...”;
+layer.setConnectionWFS(dataUrl, 0, parameter);
+layer.setLayersWFS(“BONBUN”);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLayersWMS(fieldName)
+
+> 요청 하고자 하는 WMS 명칭을 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name      | Type   | Description    |
+| --------- | ------ | -------------- |
+| fieldName | string | 요청 WMS 명칭.  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var API = {
+    JSLayerList : new Module.JSLayerList(false)
+};
+var layer = API.JSLayerList.createWFSLayer(“newWMSLayer”, 0);
+var dataURL = “http://...(Data request URL)...”;
+var parameter= “...(Data request parameters)...”;
+layer.setConnectionWMS(dataUrl, 0, parameter);
+layer.setLayersWMS(“BONBUN”);
 ```
 
 {% endtab %}
@@ -939,6 +1274,40 @@ layer.setWFSPointName(“BONBUN”);
 var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
 layer.setWFSPropertyName(“STD_SGGCD,BONBUN,AG_GEOM”);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSColor(lineColor, fontSize, fillColor)
+
+> WFS 서비스 레이어 중 POI 객체를 출력하기 위한 텍스쳐의 윤곽선, 크기 및 채우기 색상을 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name      | Type                          | Description       |
+| --------- | ----------------------------- | ----------------- |
+| lineColor | [JSColor](../core/jscolor.md) | 문자 윤곽선 색상. |
+| fontSize  | number                        | 문자 크기        |
+| fillColor | [JSColor](../core/jscolor.md) | 문자 색상.        |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   서비스 레이어가 아닌 경우.
+        -   WFS 레이어 타입이 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var layerList = new Module.JSLayerList(false);
+var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
+var lineColor = new Module.JSColor(255, 255, 255, 255);
+var fillColor = new Module.JSColor(255, 0, 0, 0);
+layer.setWFSColor(lineColor, 12, fillColor);
 ```
 
 {% endtab %}
@@ -1266,7 +1635,7 @@ layer.setWMSVersion(“1.1.0”);
 
 ### getMaxLevel(), setMaxLevel(level) → number
 
-> 서비스 레이어 가시 레벨을 설정합니다.
+> 서비스 레이어 최대 가시 레벨을 설정합니다.
 >
 > 서비스 레이어에서만 사용할 수 있습니다.
 
@@ -1276,6 +1645,32 @@ layer.setWMSVersion(“1.1.0”);
 | Name  | Type   | Description     |
 | ----- | ------ | --------------- |
 | level | number | 최대 가시 레벨. |
+
+-   실패 조건
+    -   사용자 레이어인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMinLevel(), setMinLevel(level) → number
+
+> 서비스 레이어 최소 가시 레벨을 설정합니다.
+>
+> 서비스 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type   | Description     |
+| ----- | ------ | --------------- |
+| level | number | 최소 가시 레벨. |
 
 -   실패 조건
     -   사용자 레이어인 경우.
@@ -1368,6 +1763,51 @@ layer.setName(“WMSLayer2”);
 -   Sample
     -   function JsonLoad 참조.
     -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setObjectVisibleWithBoundary(minLon, maxLon, minLat, maxLat) → number
+
+> 경위도 범위 내의 오브젝트 가시화를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type   | Description              |
+| ------ | ------ | ------------------------ |
+| minLon | number | 최소 경도값(degrees 단위). |
+| maxLon | number | 최대 경도값(degrees 단위). |
+| minLat | number | 최소 위도값(degrees 단위). |
+| maxLat | number | 최대 위도값(degrees 단위). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setOctreeCullDistanceCheckType(type) → boolean
+
+> 거리로 컬링할 때의 기준을 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description              |
+| ---- | ------ | ------------------------ |
+| type | string | <p>"layer": 레이어와의 거리로 컬링.<br>"object": 오브젝트와의 거리로 컬링.</p> |
 
 {% endtab %}
 {% tab title="Template" %}
