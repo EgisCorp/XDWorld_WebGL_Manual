@@ -2339,7 +2339,7 @@ layer.setTileInObjectEnd(tileInfo);
 {% tab title="Template" %}
 
 ```javascript
-let layerList = new Module.JSLayerList(true);
+let layerList = new Module.JSLayerList(false);
 let layer = layerList.createLayer("UserCallbackLayer");
 
 layer.setUserTileLoadCallback(function(...) {
