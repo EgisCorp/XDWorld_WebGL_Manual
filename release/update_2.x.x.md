@@ -4,30 +4,27 @@
 
 ### 2.22.0 (2026/01/12)
 #### 1. 시곡면 분석 정확도 향상
-  - [시곡면 분석](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) 정확도 향상 및 0~360도 범위 확장
+  - [시곡면 분석](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) 정확도 향상 및 0~360도 범위 확장<br>
 <img width="916" height="690" alt="image" src="https://github.com/user-attachments/assets/f091e9f7-1fd9-4a67-8dd6-f2d738cdfd96" />
 
 #### 2. 1인칭 카메라 비디오 텍스쳐 기능 지원 중단
   - 기존 1인칭 카메라 비디오 텍스쳐 기능은 2025년까지 지원합니다. 
   - JSCamera 클래스의 삭제 API ---------> JSVideoObject 클래스의 대체 API 
-    - [x] setVideoInfo ---------> createVideo
-    - [x] clearVideo -----------> clearTexture
-    <details>
-     <summary>JSCamera 클래스의 삭제 property ---------> JSVideoObject 클래스의 대체 property</summary>
-     
-     - [x] videoStreaming ---------------> videoStreaming
-     - [x] videoFar -----------------------> far
-     - [x] videoFovX ---------------------> fovX
-     - [x] videoFovY ---------------------> fovY
-     - [x] videoAlpha --------------------> alpha
-     - [x] videoAxisX --------------------> axisX
-     - [x] videoAxisY --------------------> axisY
-     - [x] videoZoom --------------------> zoom
-     - [x] videoFarPlane -----------------> background
-     - [x] videoResolution ---------------> resolution
-     - [x] videoObjectMapping ---------> objectMapping
-     - [x] videoIsplayer ------------------> isPlayer
-   </details>
+    - setVideoInfo ---------> createVideo
+    - clearVideo -----------> clearTexture
+  - JSCamera 클래스의 삭제 property ---------> JSVideoObject 클래스의 대체 property
+    - videoStreaming ---------------> videoStreaming
+    - videoFar -----------------------> far
+    - videoFovX ---------------------> fovX
+    - videoFovY ---------------------> fovY
+    - videoAlpha --------------------> alpha
+    - videoAxisX --------------------> axisX
+    - videoAxisY --------------------> axisY
+    - videoZoom --------------------> zoom
+    - videoFarPlane -----------------> background
+    - videoResolution ---------------> resolution
+    - videoObjectMapping ---------> objectMapping
+    - videoIsplayer ------------------> isPlayer
 
   - 비디오 객체  [비디오 객체](https://sandbox.egiscloud.com/code/main.do?id=object_video), [전광판](https://sandbox.egiscloud.com/code/main.do?id=object_ledboard), [RTT 비디오](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_rtt_video_image_texture)를 참고하시기 바랍니다.
 
