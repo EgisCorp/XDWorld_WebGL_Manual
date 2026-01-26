@@ -106,6 +106,27 @@ layer.clearWMSCache();
 {% endtab %}
 {% endtabs %}
 
+### setWFSBoxRatio(ratio)
+
+> WFS 레이어의 쿼리 범위 레벨을 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | ------------- |
+| ratio | number | 쿼리 범위 레벨. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### findInsideObject(center, range) → string
 
 > 입력값(range) 반경 이내에 속하는 오브젝트의 고유 명칭을 반환합니다.
@@ -417,6 +438,157 @@ layer.setCrsWMS("EPSG:4326");
 {% endtab %}
 {% endtabs %}
 
+### setWFSPointValueIcon(value, icon) → boolean
+
+> WFS 레이어의 데이터 태그의 값을 이용한 포인트 심볼을 지정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type                          | Description           |
+| ----- | ----------------------------- | --------------------- |
+| value | string                        | WFS 데이터 tag 값      |
+| icon  | [JSIcon](../object/jsicon.md) | 하이라이트 포인트 심볼   |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+        -   icon의 텍스처가 없는 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointPositionLine(type) → boolean
+
+> 지형까지 수직으로 내리는 WFS POI 라인 렌더링 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type    | Description    |
+| ----- | ------- | -------------- |
+| type  | boolean | 라인 렌더링 여부 |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointBlinkActive(active) → boolean
+
+> WFS 레이어의 포인트 깜빡임 활성화를 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type    | Description                                       |
+| ------ | ------- | ------------------------------------------------- |
+| objkey | string  | 객체 고유 명칭                                      |
+| active | boolean | <p>활성화 여부<br>true: 활성화<br>false: 비활성화</p> |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+        -   입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
+        -   오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointBlinkOptions(name, color, size, speed) → boolean
+
+> WFS 레이어의 포인트 깜빡임 옵션을 설정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name  | Type                          | Description  |
+| ----- | ----------------------------- | ------------ |
+| name  | string                        | 객체 고유 명칭 |
+| color | [JSColor](../core/jscolor.md) | 깜빡임 색상    |
+| size  | number                        | 깜빡임 크기    |
+| speed | number                        | 깜빡임 속도    |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
+        -   입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
+        -   오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSRTT(type) → boolean
+
+> WFS 레이어의 RTT 적용 여부를 설정합니다.
+>
+> WFS LINE과 WFS POLYGON 타입 레이어에서만 적용됩니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type    | Description  |
+| ---- | ------- | ------------ |
+| type | boolean | RTT 적용 여부 |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   레이어 타입이 WFS LINE 또는 WFS POLY 레이어가 아닌 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getType() → number
 
 > 레이어 타입 번호를 반환합니다.
@@ -510,8 +682,6 @@ var bVisible = layer.getType();
 > 사용자 레이어에 포함된 객체를 반환합니다.
 >
 > 사용자 레이어에 포함된 객체는 목록으로 관리하고 객체 고유 명칭과 입력 변수 name 비교 후 만족하는 객체를 반환합니다.
->
-> 사용자 레이어에서만 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -527,6 +697,35 @@ var bVisible = layer.getType();
         -   동일한 고유 명칭 객체가 없는 경우.
         -   입력 변수 name 문자열 데이터가 없는 경우.
         -   레이어의 포함 객체 수가 0인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### containsKey(name) → string
+
+> 사용자 레이어에 포함된 객체 중 객체 고유 명칭 입력 변수 name인 객체의 존재 여부를 반환합니다.
+>
+> 객체 고유 명칭에 입력 변수 name이 일부만 포함이 되어 있어도 성공적으로 반환합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| name | string | 객체 고유 명칭.   |
+
+-   Return
+    -   string : 반환 성공.
+    -   "" : 반환 실패
+    -   실패 조건
+        -   객체 고유 명칭에 name이 포함된 객체가 없는 경우
 
 {% endtab %}
 {% tab title="Template" %}
@@ -898,6 +1097,34 @@ layer.setLevelWMS(10, 12);
 -   Sample
     -   function createLayerWMS 참조.
     -   [Sandbox_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWFSPointsHeightFromGround(height)
+
+> WFS POI 레이어의 지형으로부터의 높이를 지정합니다.
+
+{% tabs %}
+{% tab title="Infomation" %}
+
+| Name   | Type   | Description      |
+| ------ | ------ | ---------------- |
+| height | number | 지형으로부터의 높이 |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   사용자 레이어인 경우.
+        -   레이어 타입이 WFS POI 레이어가 아닌 경우
 
 {% endtab %}
 {% tab title="Template" %}
@@ -2350,7 +2577,7 @@ layer.setUserTileLoadCallback(function(...) {
 {% endtab %}
 {% endtabs %}
 
-### setObjectHeight(height)
+### getObjectHeight(), setObjectHeight(height)
 
 > 애니메이션 오브젝트에서 레이어에 포함된 객체의 높이 기준값을 설정합니다.
 
