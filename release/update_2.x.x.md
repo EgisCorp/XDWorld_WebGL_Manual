@@ -2,6 +2,75 @@
 
 ## - 업데이트 내역 -
 
+### 2.23.0 (2026/02/02)
+#### 1. JSPolygon `loadFile` projectioncode 타입 변경
+  * projectioncode  : "EPSG:5186"
+  * 기존 숫자코드는 가독성이 떨어져 EPSG 코드를 입력할 수 있도록 변경하였습니다.
+
+#### 2. 오브젝트레이어 POI 원근 스타일 설정 추가 
+   - JSLayerList::createObjectLayer로 생성한 레이어 한정
+   - JSLayer : setLayerStyle({object}) 추가
+   - POI가 카메라와 표출 거리에 따른 크기 및 투명도 설정
+  ```
+ let option = {
+         "poi" : {
+            "scaleable" : {             // 거리별 가변 크기 적용
+                "activate" : true,      // 동작 설정
+                "range" : {
+                    "min" : 1000,       // 최소 구간 (보다 가까우면 원본 POI 표현)
+                    "max" : 3000        // 최대 구간 (보다 멀면 최소 픽셀 POI 표현)
+                }, 
+                "minPixel" : {          // 아이콘 최소 픽셀 크기 설정 (아이콘 크기에서 x,y중 작은쪽 크기가 최소 크기보다 작으면 해당 크기로 고정)
+                    "x" : 4,         
+                    "y" : 16
+                },
+                "tiltRange" : {             // 각도에 따른 크기 왜곡 추가
+                    "activate" : true,      // 왜곡 사용
+                    "minAngle" : 60,        // 최소 왜곡 각도 (이하 각도에서는 기존 배율적용)
+                    "maxAngle" : 80         // 최대 왜곡 각도 (이상 각도에서는 원본 크기로 표현)
+                }
+            },
+            "fadeable" : {              // 거리별 투명도 적용
+                "activate" : true,      // 동작 설정
+                "range" : {
+                    "min" : 3000,       // 최소 구간 (보다 가까우면 불투명)
+                    "max" : 5000        // 최대 구간 (보다 멀면 최소 알파값 적용)
+                },
+                "minAlpha" : 0.2,        // 최소 투명도값 1>minAlpha>0 ( 이보다 더 투명해지지 않음 )
+                "tiltRange" : {             // 각도에 따른 투명도 왜곡 추가
+                    "activate" : true,      // 왜곡 사용
+                    "minAngle" : 60,        // 최소 왜곡 각도 (이하 각도에서는 기존 배율적용)
+                    "maxAngle" : 80         // 최대 왜곡 각도 (이상 각도에서는 원본 크기로 표현)
+                }
+            }
+        }
+    };
+```
+
+#### 기본형태 
+<img width="674" height="754" alt="image" src="https://github.com/user-attachments/assets/c768699e-3dd0-4547-8476-3d1114b5e81c" />
+
+#### 크기 가변형태
+<img width="840" height="638" alt="image" src="https://github.com/user-attachments/assets/2f2b4cd4-e7b5-4e97-b37e-41bf2785fbf1" />
+
+#### 투명도 가변형태
+<img width="801" height="789" alt="image" src="https://github.com/user-attachments/assets/4e8216a8-659c-4766-b304-7c55708381f4" />
+
+#### 혼합사용 형태
+<img width="1027" height="786" alt="image" src="https://github.com/user-attachments/assets/2a38301f-bf2d-4c00-803a-e8ba61d0a00d" />
+
+#### 각도 왜곡 미적용 (Tilt와 관계 없이 거리별 크기 적용)
+<img width="776" height="810" alt="image" src="https://github.com/user-attachments/assets/cc4a999d-cb1a-4070-a3e4-d5f3a5467295" />
+
+#### 각도 왜곡 적용 (지정된 Tilt각 이상에서는 원본 크기로 적용 왜곡)
+<img width="677" height="914" alt="image" src="https://github.com/user-attachments/assets/ae0edb6f-0e41-4c44-9c42-138cd6519061" />
+
+#### 3. JSPoint POI 자동 높이 조절 기능 property 추가
+  ```javascript
+  var point = Module.createPoint("POI");
+  point.autoHeight  = true;
+  ```
+  
 ### 2.22.0 (2026/01/12)
 #### 1. 시곡면 분석 정확도 향상
   - [시곡면 분석](https://sandbox.egiscloud.com/code/main.do?id=analysis_building_height_regulation) 정확도 향상 및 0~360도 범위 확장<br>
