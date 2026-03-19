@@ -1,6 +1,41 @@
-# 1.6x 버전 업데이트
+# 2.x.x 버전 업데이트
 
 ## - 업데이트 내역 -
+
+### 2.24.1 (2026/03/13)
+#### 1. JSSolarManager API 추가
+- 판넬의 옵션을 레이어 전체로 변경하는 API 추가
+  ```javascript
+   var dModuleWidth 	= 1.48;
+   var dModuleHeight      = 1.0;
+   var dModuleThick	= 0.1;
+   var dModuleAngle	= 45.0;
+   
+   var solar = Module.GetSolarManager();
+
+   // updateModuleOptionByLayer("레이어 명칭", 판넬 가로 크기, 판넬 세로 크기, 판넬 두께, 판넬 각도);
+   solar .updateModuleOptionByLayer(dModuleWidth, dModuleHeight, dModuleThick, dModuleAngle);
+  ```
+
+### 2.24.0 (2026/03/09)
+#### 1. JSPipe `setRadius` API 추가
+- 파이프의 반경을 변경하는 API가 추가되었습니다.
+  ```javascript
+  var pipe = Module.createPipe("MY_PIPE");
+  // pipe.create(...);
+  pipe.setRadius(10.0);
+  ```
+  
+#### 2. Module.getDataVisualizer API 생성 시 오류 수정
+  * Module.getDataVisualizer를 통해 객체 생성 중 회전 각도가 잘못 적용되는 현상을 수정하였습니다. ([이슈 #547](https://github.com/EgisCorp/XDWorld/issues/547))
+
+#### 3. JSPolygon 좌표 순서에 따른 컬링 오류 수정
+  * setCoordinates(), setPartCoordinates() 함수에서 좌표의 순서가 반대로 들어온 경우에도 정상적으로 컬링이 되도록 수정하였습니다.
+
+#### 4. 객체 선택 효과 변경
+  * 기존 빨간색 반투명 효과를 홀로그램 효과로 변경하였습니다.
+
+https://github.com/user-attachments/assets/5dd1d297-5f97-49c6-8f4e-025e7b55b8e1
 
 ### 2.23.0 (2026/02/02)
 #### 1. JSPolygon `loadFile` projectioncode 타입 변경
