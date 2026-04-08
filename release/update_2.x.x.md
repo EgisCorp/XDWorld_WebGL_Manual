@@ -2,6 +2,16 @@
 
 ## - 업데이트 내역 -
 
+### 2.25.0 (2026/04/06)
+#### 1. 기즈모 마우스 모드 추가
+* 기즈모 UI를 통해 객체를 편집할 수 있는 마우스 모드가 추가되었습니다. [(샌드박스 샘플)](https://sandbox.egiscloud.com/code/main.do?id=object_gizmo)
+```javascript
+Module.XDSetMouseState(Module.MML_EDIT_GIZMO);
+
+Module.setGizmoMode(0); // Translate (default)
+Module.setGizmoMode(1); // Rotate
+```
+
 ### 2.24.1 (2026/03/13)
 #### 1. JSSolarManager API 추가
 - 판넬의 옵션을 레이어 전체로 변경하는 API 추가
