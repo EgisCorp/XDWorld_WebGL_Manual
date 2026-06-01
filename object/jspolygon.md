@@ -342,6 +342,42 @@ polygon.setSphere(param);
 {% endtab %}
 {% endtabs %}
 
+### setWaterEffect(type, option) → boolean
+
+> 평면 객체에 불 효과를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                                     |
+| ------ | ------- | ----------------------------------------------- |
+| type   | boolean | <p>true: 물 효과 가시화.<br>false: 기본 가시화.</p> |
+| option | object  | flow map 옵션                                    |
+
+**options 구조**
+
+| Name            | Type   | Description   |
+| --------------- | ------ | ------------- |
+| flow_map_url    | string | flow map url  |
+| flow_map_width  | number | flow map 너비 |
+| flow_map_height | number | flow map 높이 |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   평면 객체 생성 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setHeight(height) → boolean
 
 > 평면 객체 생성 시 높이값을 가진 3d 객체를 생성합니다.
@@ -1125,7 +1161,7 @@ var objectStyle = polyLine.getStyle();
 {% endtab %}
 {% endtabs %}
 
-### SetAnimationByID(id) → boolean
+### setAnimationByID(id) → boolean
 
 > GLTF 객체의 애니메이션을 ID 기준으로 설정합니다.  
 > 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
@@ -1148,7 +1184,35 @@ var objectStyle = polyLine.getStyle();
 
 ```javascript
 var gltfObject = Module.createPolygon("GLTF_OBJECT");
-gltfObject.SetAnimationByID(0);
+gltfObject.setAnimationByID(0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setAnimationSpeed(speed) → boolean
+
+> GLTF 객체의 애니메이션 재생 속도를 설정합니다.
+> 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description              |
+| ----- | ------ | ------------------------ |
+| speed | number | 애니메이션 재생 속도(배율). |
+
+-   Return  
+    -   true: 설정 성공.  
+    -   false: 설정 실패.  
+        - 객체가 null이거나 GLTF 객체가 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationSpeed(1.5);
 ```
 
 {% endtab %}
