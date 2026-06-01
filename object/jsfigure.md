@@ -20,6 +20,9 @@ let figure = Module.createFigure("ID");
 | videoStreaming 	| boolean                             	| 비디오 스트리밍 여부. 		|
 | axisX 			| boolean                             	| 좌우 반전. 				|
 | axisY 			| boolean                             	| 상하 반전. 				|
+| scaleUI 			| boolean                             	| 크기조절 UI 				|
+| rotateUI 			| boolean                             	| 회전 UI 				|
+| moveUI 			| boolean                             	| 이동 UI 				|
 
 ## Function
 
@@ -106,29 +109,6 @@ var dCenterAlt = vCenter.Altitude;
 
 ```javascript
 var bExtends = figure.getExtent();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getFigureType() → number
-
-> 객체의 figure 타입을 반환합니다.
->
-> [JSFigure Type Constants](../etc/type-list.md#jsfigure-type-list)
-
-{% tabs %}
-{% tab title="Information" %}
-
--   Return
-    -   number: 반환 성공.
-    -   -1: 반환 실패.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var figureType = figure.getFigureType();
 ```
 
 {% endtab %}
@@ -358,6 +338,38 @@ figure.setSize(50.0, 100.0, 150.0);
 {% endtab %}
 {% endtabs %}
 
+### setTexture(imageData, width, height) → boolean
+
+> 객체에 텍스처를 적용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description           |
+| :-------- | :----- | :-------------------- |
+| imageData | string | 이미지 데이터           |
+| width     | number | 이미지 너비(pixel 단위) |
+| height    | number | 이미지 높이(pixel 단위) |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+        -	생성된 객체가 없을 경우.
+		-	이미지 데이터가 없을 경우.
+-   Sample
+    -   function setOverlapTexture 참조.
+    -   [Sandbox_Image_overlap](https://sandbox.egiscloud.com/code/main.do?id=object_image_overlap)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setledBoard(option) → string
 
 > 전광판 객체를 생성합니다.
@@ -502,6 +514,64 @@ figure.setSize(50.0, 100.0, 150.0);
 {% endtab %}
 {% endtabs %}
 
+### createImageOverLap(vertex, option) → boolean
+
+> 이미지 오버랩을 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    	| Type                                  | Description                             |
+| :-------- | :------------------------------------ | :-------------------------------------- |
+| vertex 	| [JSVec3Array](../core/jsvec3array.md)	| 입력 좌표(좌하단, 좌상단, 우상단, 우하단)    |
+| option 	| boolean 							    | 지형 성절토 여부. 		                |
+
+-   Return
+    -   true : 이미지 오버랩 생성 성공.
+    -   false :
+        -   생성된 객체가 없을 경우.
+        -   입력된 좌표가 4개가 아닐 경우
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### undoEditTerrain() → boolean
+
+> 객체와 겹치는 영역의 지형 성절토 편집을 원복합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    	| Type                                  | Description                             |
+| :-------- | :------------------------------------ | :-------------------------------------- |
+
+-   Return
+    -   true : 원복 성공.
+    -   false :
+        -   생성된 객체가 없을 경우.
+        -   원복할 지형이 없는 경우(객체와 편집된 지형이 겹치지 않는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var fig = Module.createFigure("fig");
+fig.setTexture();
+fig.createOverlapRTT(true);
+
+fig.undoEditTerrain();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setInfo(option) → boolean
 
 > 현재 객체 정보를 입력합니다.
@@ -596,6 +666,29 @@ figure.setSize(50.0, 100.0, 150.0);
 {% endtabs %}
 
 ## Getter / Setter
+
+### getFigureType(), setFigureType → number
+
+> 객체의 figure 타입을 반환합니다.
+>
+> [JSFigure Type Constants](../etc/type-list.md#jsfigure-type-list)
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 반환 성공.
+    -   -1: 반환 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var figureType = figure.getFigureType();
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### getDescription(), setDescription(desc) → string
 
