@@ -2,6 +2,53 @@
 
 ## - 업데이트 내역 -
 
+### 2.27.0 (2026/06/01)
+#### 1. voxel 인스턴싱 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=analysis_wildfire_spread))
+  - voxel 인스턴싱으로 여러개의 voxel 생성에도 성능이 유지됩니다.
+  - Grid 데이터를 수용할 수 있도록 API를 추가하였습니다.(createGridVoxel, updateGridData)
+
+#### 2. JSFigure 지형 편집 원복 함수 추가 ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+* JSFigure 객체별로 Figure와 겹치는 영역의 편집을 원복할 수 있는 함수를 추가하였습니다.
+```javascript
+var fig = Module.createFigure("fig");
+fig.setTexture();
+fig.createOverlapRTT(true);
+
+fig.undoEditTerrain();
+```
+
+#### 3. JSEditTerrain 지형 원복 오류 수정 ([issue #555](https://github.com/EgisCorp/XDWorld/issues/555))
+* JSEditTerrain::clear(), JSEditTerrain::removeAtIndex() 함수 실행 시, 원복 대상 지형 이외의 지형에도 영향이 발생하는 문제를 수정하였습니다.
+* CJSFigure::createOverlapRTT() 실행 시 다른 지형의 편집이 초기화되는 문제를 수정하였습니다.
+
+#### 4. MML_ANALYS_DISTANCE_STRAIGHT 오류 수정 ([issue #556](https://github.com/EgisCorp/XDWorld/issues/556))
+* MML_ANALYS_DISTANCE_STRAIGHT 마우스 모드에서 라인이 제대로 그려지지 않는 문제를 수정하였습니다.
+
+#### 5. gltf, glb 텍스쳐 로드 콜백 ([issue #552](https://github.com/EgisCorp/XDWorld/issues/552))
+  * loadFile API를 통해 로드한 gltf, glb의 텍스쳐가 로딩 완료되었을 경우 콜백 함수가 호출되도록 기능을 추가하였습니다.
+  * 콜백 파라미터를 통해 텍스쳐 명칭(textureName) 및 전체 텍스쳐 수(textureTotalCount), 로드 된 텍스쳐 인덱스(textureIndex)를 조회하실 수 있습니다.
+```javascript
+polygon.loadFile({
+  url : url,
+  type : "glb",
+  position : _position,
+  callback : function(e) {
+    console.log(e.textureName);
+    console.log(e.textureTotalCount);
+    console.log(e.textureIndex);
+  }
+});
+```
+
+#### 6. 타일레이어 기반 유저생성 폴리곤에 대한 그림자 렌더링 지원 ([issue #560](https://github.com/EgisCorp/XDWorld/issues/560))
+  * 유저생성 폴리곤 객체에서도 그림자 분석 처리가 가능하도록 수정하였습니다.
+
+#### 7. 마우스 이벤트 처리 수정
+  * 마우스 드래그 상태로 지도 밖에 나간 후 버튼을 해제한 후에 다시 지도로 들어올 때 버튼을 놓아도 드래그로 인식한 문제를 수정하였습니다.
+ 
+#### 8. 고스트심볼 Pitch, Yaw, Roll 회전 수정
+  * Yaw -> Pitch -> Roll 방식으로 회전축 변화에 맞게 수정하였습니다.
+
 ### 2.26.0 (2026/05/08)
 #### 1. 성절토 편집 렌더링 오류 수정 ([issue #557](https://github.com/EgisCorp/XDWorld/issues/557))
   * 성절토 편집 후 하위 타일들의 영상을 가져오지 않는 문제를 수정하였습니다.
