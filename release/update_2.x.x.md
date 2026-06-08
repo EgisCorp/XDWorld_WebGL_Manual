@@ -2,6 +2,28 @@
 
 ## - 업데이트 내역 -
 
+### 2.27.1 (2026/06/08)
+#### 1. skin 데이터 없는 glTF 애니메이션 지원
+* skin 데이터가 포함되지 않은 glb/gltf 파일에서도 애니메이션이 정상적으로 재생되도록 수정하였습니다.
+
+#### 2. glTF 애니메이션 속도 조절 API 추가
+* 기존 프레임 기반으로 동작하던 애니메이션을 시간 기반으로 동작하도록 개선하였습니다.
+* 애니메이션의 재생 속도를 제어할 수 있는 API를 추가하였습니다.
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationSpeed(1.5); // default: 1.0
+```
+
+#### 3. CJSFigure::createPlane() uv 매핑 수정 ([Issue 555](https://github.com/EgisCorp/XDWorld/issues/555))
+* CJSFigure::createPlane() 함수로 생성한 객체의 텍스처가 회전된 상태로 적용되는 문제를 수정하였습니다.
+
+#### 4. glTF 다중 애니메이션 설정 API 추가
+* 2개 이상의 애니메이션을 설정할 수 있는 API를 추가하였습니다.
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationsByID([0, 1]);
+```
+
 ### 2.27.0 (2026/06/01)
 #### 1. voxel 인스턴싱 기능 추가 ([샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?engine=latest&id=analysis_wildfire_spread))
   - voxel 인스턴싱으로 여러개의 voxel 생성에도 성능이 유지됩니다.
