@@ -1190,6 +1190,35 @@ gltfObject.setAnimationByID(0);
 {% endtab %}
 {% endtabs %}
 
+### setAnimationsByID(id) → boolean
+
+> GLTF 객체의 애니메이션을 ID 기준으로 설정합니다.
+> 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description              |
+| ---- | ------ | ------------------------ |
+| id   | object | 애니메이션 ID (정수 값). |
+
+-   Return  
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+        - 객체가 null이거나 GLTF 객체가 아닌 경우.
+        - 입력된 ID와 일치하는 애니메이션이 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var gltfObject = Module.createPolygon("GLTF_OBJECT");
+gltfObject.setAnimationByID([0, 1]);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setAnimationSpeed(speed) → boolean
 
 > GLTF 객체의 애니메이션 재생 속도를 설정합니다.
