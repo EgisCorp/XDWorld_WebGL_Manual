@@ -78,47 +78,56 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_ON);
 
 ## Mouse Type List
 
-| Index | Name                         | Description                         |
-| ----- | ---------------------------- | ----------------------------------- |
-| 0     | MML_NONE                     | 기본                                |
-| 1     | MML_MOVE_GRAB                | 지도 이동                           |
-| 6     | MML_SELECT_POINT             | 포인트 선택                         |
-| 7     | MML_SELECT_FACE              | 면 선택                             |
-| 9     | MML_SELECT_RECT              | 사각 선택                           |
-| 10    | MML_SELECT_CIRCLE            | 반경 선택                           |
-| 11    | MML_SELECT_POLY              | 폴리곤 선택                         |
-| 13    | MML_SELECT_ROOF              | 지붕 선택                           |
-| 14    | MML_SELECT_EXCLUDE_ROOF      | 지붕 제외지역 선택                  |
-| 20    | MML_INPUT_POINT              | 점 입력                             |
-| 21    | MML_INPUT_LINE               | 라인 입력                           |
-| 22    | MML_INPUT_RECT               | 사각 입력(정북방향)                 |
-| 23    | MML_INPUT_CIRCLE             | 원 입력                             |
-| 24    | MML_INPUT_AREA               | 영역 입력                           |
-| 25    | MML_INPUT_SPHERE             | 구 입력                             |
-| 27    | MML_INPUT_RECT_SCREEN        | 사각 입력 상태                      |
-| 80    | MML_ANALYS_AREA              | 면적 계산                           |
-| 81    | MML_ANALYS_DISTANCE          | 거리 계산                           |
-| 82    | MML_ANALYS_VIEWSHED          | 가시권 분석                         |
-| 84    | MML_ANALYS_JOMANG            | 조망 가시화                         |
-| 85    | MML_VIEW_UNDERGROUND         | 지하 시설물 가시화                  |
-| 86    | MML_ANALYS_ALTITUDE          | 높이 측정                           |
-| 87    | MML_ANALYS_DISTANCE_STRAIGHT | 직선거리계산                        |
-| 88    | MML_ANALYS_AREA_PLANE        | 면적계산(일반 평면, RTT미적용)      |
-| 89    | MML_ANALYS_AREA_CIRCLE       | 수직 평면 객체 반경 계산            |
-| 94    | MML_ANALYS_JOMANGPOINT       | 조망점 관리                         |
-| 101   | MML_FIGURE_RECT              | 사각 박스 입력                      |
-| 102   | MML_FIGURE_ELLIPSE           | 구 객체 입력                        |
-| 103   | MML_FIGURE_ARROW             | 화살표 객체 입력                    |
-| 104   | MML_FIGURE_ARROW_DUEL        | 양방향 화살표 다면체 입력           |
-| 105   | MML_FIGURE_CONVEX            | 볼록형 다면체 입력                  |
-| 106   | MML_FIGURE_CONCAVE           | 오목형 다면체 입력                  |
-| 107   | MML_FIGURE_ROUND_RECT        | 사각 라운드 육면체 입력             |
-| 108   | MML_FIGURE_BEARING_ARC       | 베어링 형 다면체 입력               |
-| 109   | MML_FIGURE_STAR              | 별 형 다면체 입력                   |
-| 110   | MML_FIGURE_PLUS              | 더하기 기호 다면체 입력             |
-| 200   | MML_ADD_SOLAR_PANEL          | 벽면에 판넬 추가(태양광 모드)       |
-| 201   | MML_SELECT_EDIT_MODULE       | 벽면의 편집 판넬 선택(태양광 모드)  |
-| 202   | MML_EDIT_SOLAR_MODULE        | 지붕 판넬 추가 및 삭제(태양광 모드) |
+| Index | Name                         | Description                                         |
+| ----- | ---------------------------- | --------------------------------------------------- |
+| 0     | MML_NONE                     | 기본                                                |
+| 1     | MML_MOVE_GRAB                | 마우스 드래그 및 휠 조작으로 지도 이동, 회전, 확대/축소    |
+| 6     | MML_SELECT_POINT             | 객체를 클릭하여 선택                                   |
+| 7     | MML_SELECT_FACE              | 면을 클릭하여 선택(MML_SELECT_POINT와 동일)            |
+| 9     | MML_SELECT_RECT              | 사각형 영역을 드래그하여 영역 내의 객체를 모두 선택        |
+| 10    | MML_SELECT_CIRCLE            | 중심점과 반경을 드래그하여 원형 영역 내의 객체를 모두 선택  |
+| 11    | MML_SELECT_POLY              | 다각형 선택 영역을 생성하여 영역 내의 객체를 모두 선택      |
+| 13    | MML_SELECT_ROOF              | 태양광 설치 대상 지붕 선택                              |
+| 14    | MML_SELECT_EXCLUDE_ROOF      | 태양광 설치 제외 영역으로 사용할 지붕 선택                |
+| 15    | MML_SELECT_SOLAR_TERRAIN     | 태양광 모듈을 설치 할 지면 영역 선택                     |
+| 16    | MML_SELECT_WALL_INFO         | 벽면 정보를 조회할 벽면 선택                            |
+| 17    | MML_SELECT_WALL_INFO_POINT   | 벽면 정보와 조회 및 선택 효과 표시                       |
+| 20    | MML_INPUT_POINT              | 클릭한 위치에 점 입력                                   |
+| 21    | MML_INPUT_LINE               | 여러 점을 지정하여 라인 입력                             |
+| 22    | MML_INPUT_RECT               | 사각형 영역을 드래그하여 정북 방향 기준의 사각형 입력       |
+| 23    | MML_INPUT_CIRCLE             | 중심점과 반경을 드래그하여 원 입력                        |
+| 24    | MML_INPUT_AREA               | 여러 개의 점을 지정하여 다각형 영역 입력                  |
+| 25    | MML_INPUT_SPHERE             | 구 입력(현재 사용되지 않음)                             |
+| 27    | MML_INPUT_RECT_SCREEN        | 화면 방향을 기준으로 사각형 영역 입력                     |
+| 30    | MML_RETURN_ANALYSISPOS       | 분석에 사용할 선택 지점의 경위도 반환                     |
+| 50    | MML_EDIT_GIZMO               | Gizmo를 이용하여 객체 편집(이동, 회전)                   |
+| 80    | MML_ANALYS_AREA              | 지정한 다각형 영역의 면적 계산                           |
+| 81    | MML_ANALYS_DISTANCE          | 여러 점을 지정하여 지형을 고려한 거리 계산                 |
+| 82    | MML_ANALYS_VIEWSHED          | 선택한 지점을 기준으로 부채꼴 형태의 2D 가시권 분석         |
+| 83    | MML_ANALYS_ALTDISTANCE       | 두 점을 지정하여 높이, 거리 및 직선거리 계산               |
+| 84    | MML_ANALYS_JOMANG            | 선택한 위치의 조망 결과 가시화                           |
+| 85    | MML_VIEW_UNDERGROUND         | 지하 시설물 가시화                                     |
+| 86    | MML_ANALYS_ALTITUDE          | 선택한 위치의 고도 측정                                 |
+| 87    | MML_ANALYS_DISTANCE_STRAIGHT | 여러 점을 지정하여 직선거리 계산                         |
+| 88    | MML_ANALYS_AREA_PLANE        | RTT를 적용하지 않는 일반 평면 기준으로 면적 계산           |
+| 89    | MML_ANALYS_AREA_CIRCLE       | 수직 평면 객체의 반경 계산                              |
+| 90    | MML_ANALYS_GRIDSHADOW        | 수인한도분석                                           |
+| 91    | MML_ANALYS_WINDOWSHADOW      | 창문분석                                              |
+| 94    | MML_ANALYS_JOMANGPOINT       | 조망 분석에 사용할 조망점 관리                           |
+| 101   | MML_FIGURE_RECT              | 직육면체 사각 박스 입력                                 |
+| 102   | MML_FIGURE_ELLIPSE           | 원기둥 객체 입력                                       |
+| 103   | MML_FIGURE_ARROW             | 단방향 화살표 객체 입력                                 |
+| 104   | MML_FIGURE_ARROW_DUEL        | 양방향 화살표 객체 입력                                 |
+| 105   | MML_FIGURE_CONVEX            | 볼록형 다면체 입력                                      |
+| 106   | MML_FIGURE_CONCAVE           | 오목형 다면체 입력                                      |
+| 107   | MML_FIGURE_ROUND_RECT        | 모서리가 둥근 직육면체 입력                              |
+| 108   | MML_FIGURE_BEARING_ARC       | 베어링 형 호(Arc) 기반 다면체 입력                       |
+| 109   | MML_FIGURE_STAR              | 별 모양 다면체 입력                                     |
+| 110   | MML_FIGURE_PLUS              | 더하기 기호 다면체 입력                                  |
+| 200   | MML_ADD_SOLAR_PANEL          | 벽면에 단일 태양광 패널 추가                              |
+| 201   | MML_SELECT_EDIT_MODULE       | 편집할 벽면 태양광 패널 선택                              |
+| 202   | MML_EDIT_SOLAR_MODULE        | 지붕 태양광 패널 추가 또는 삭제                           |
+| 203   | MML_ADD_WALL_PANEL_RECT      | 영역을 지정하여 영역의 벽면에 태양광 패널 일괄 추가          |
 
 ```javascript
 Module.XDSetMouseState(Module._NONE);
