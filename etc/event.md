@@ -30,12 +30,47 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | 8     | Fire\_EventFinishTransparencyAutoMove      | 터파기 자동 이동 종료 시 이벤트 |
 | 9     | Fire\_EventCompleteShadowSimulation      | 일조 분석(그림자) 시뮬레이션 종료 시 이벤트 |
 
-- 별도의 표기가 없는 경우, 해당 이벤트는 변수를 제공하지 않습니다.
+### Fire_EventSelectedObject
+|변수 이름 | 자료형 | 상세 설명|
+| ------------- | ------------- | ------------------- |
+| layerName     | string        | 레이어 명             |
+| objKey        | string        | 오브젝트 키           |
+| dataFile      | string        | 실제 객체의 파일 명    |
+| objID         | unsigned int  | 오브젝트 ID           |
+| objType       | unsigned char | 오브젝트 타입          |
+| idx           | int           | 메쉬의 X id           |
+| idy           | int           | 메쉬의 Y id           |
+| iLevel        | int           | 메쉬 레벨             |
+| objVersion    | unsigned int  | 오브젝트 버전          |
+| bIsReal3D     | bool          | read3d 여부           |
+| instanceIndex | unsigned int  | 인스턴스 오브젝트 인덱스 |
+| instanceId    | string        | 인스턴스 오브젝트 ID    |
 
 ### Fire_EventRotateCompass
 |변수 이름 | 자료형 | 상세 설명|
 | ----- | ------------------------- | ----------------- |
 | dCameraHeadAngle | double | 나침반(네비게이션) 방향 각도(Degree) |
+
+### Fire_EventCameraMoveEnd
+|변수 이름   | 자료형  |   상세 설명 |
+| --------- | ------ | --------- |
+| longitude | double | 카메라 경도 |
+| latitude  | double | 카메라 위도 |
+| altitude  | double | 카메라 고도 |
+
+### Fire_JSEventResize
+* 변수 제공 안함
+
+### Fire_EventAddRadius
+|변수 이름        | 자료형  |   상세 설명 |
+| -------------- | ------ | --------- |
+| dLon           | double | 원의 중심 경도 |
+| dLat           | double | 원의 중심 위도 |
+| dAlt           | double | 원의 중심 고도 |
+| dMidLon        | double | 라인의 중심 경도 |
+| dMidLat        | double | 라인의 중심 위도 |
+| dMidAlt        | double | 라인의 중심 고도 |
+| dTotalDistance | double | 라인의 총 길이 |
 
 ### Fire_EventAddDistancePoint
 |변수 이름 | 자료형 | 상세 설명|
@@ -65,6 +100,12 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | dLon | double | 높이 측정 표시 경도(Degree 단위) |
 | dLat | double | 높이 측정 표시 위도(Degree 단위) |
 | dAlt | double | 높이 측정 표시 고도(m 단위) |
+
+### Fire_EventFinishTransparencyAutoMove
+* 변수 제공 안함
+
+### Fire_EventCompleteShadowSimulation
+* 변수 제공 안함
 
 ## Ghost Symbol Event
 
