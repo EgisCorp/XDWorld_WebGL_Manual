@@ -27,8 +27,8 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | 5     | Fire\_RMouseUp | 마우스 RB Up 시 이벤트 |
 | 6     | Fire\_click | 마우스 LB 클릭(Down) 시 이벤트 |
 | 7     | Fire\_dblClick | 마우스 LB 더블 클릭 시 이벤트|
-| 8     | Fire\_EventMouseMove | 마우스 이동 시 이벤트???? |
-| 9     | Fire\_EventMouseDrag | 마우스 드래그 시 이벤트???? |
+| 8     | Fire\_EventMouseMove | 마우스 이동 시 이벤트 |
+| 9     | Fire\_EventMouseDrag | 마우스 드래그 시 이벤트 |
 | 10    | Fire\_EventClickPosition | 특정 지점 클릭(Down-Up) 시 이벤트 |
 | 11    | Fire\_EventRotateCompass  | 나침반 회전 시 이벤트      |
 | 12    | Fire\_EventCameraMoveEnd  | 카메라 이동 종료 시 이벤트   |
@@ -109,6 +109,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 
 ### Fire_EventMouseMove
 * Module.getOption().setEventMouseMove(true); 설정 필요
+
 |변수 이름 | 자료형 | 상세 설명|
 | ------- | -----| ------------------- |
 | dLon    | double  | 마우스 지점의 경도 |
@@ -116,6 +117,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 
 ### Fire_EventMouseDrag
 * Module.getOption().setEventMouseMove(true); 설정 필요
+
 |변수 이름 | 자료형 | 상세 설명|
 | ------- | -----| ------------------- |
 | dLon    | double  | 마우스 지점의 경도 |
@@ -123,6 +125,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 
 ### Fire_EventClickPosition
 * Mouse Type : MML_MOVE_GRAB
+
 |변수 이름 | 자료형 | 상세 설명|
 | ------- | -----| ------------------- |
 | dLon    | double  | 클릭한 지점의 경도 |
@@ -165,7 +168,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 ### Fire_KeyDown
 |변수 이름 | 자료형  |   상세 설명 |
 | ------- | ------ | --------- |
-| nChar   | int |  |
+| nChar   | int | 키 코드 |
 | nFlag   | int | 0 |
 
 ### Fire_KeyUp
@@ -179,6 +182,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 
 ### Fire_EventAddRadius
 * Mouse Type : MML_MOVE_GRAB
+
 |변수 이름        | 자료형  |   상세 설명 |
 | -------------- | ------ | --------- |
 | dLon           | double | 클릭 지점의 경도 |
