@@ -2,6 +2,56 @@
 
 ## - 업데이트 내역 -
 
+### 2.28.0 (2026/07/06)
+#### 1. JSPolygon getCoordinates API 기능 개선([이슈 #569](https://github.com/EgisCorp/XDWorld/issues/569))
+  - JSPolygon의 `move`, `moveAltitude`, `setRotate`, `setScale` API를 통해 좌표가 변경된 경우 getCoordinates로 반환되는 좌표 값이 갱신되도록 기능을 개선하였습니다.
+
+#### 2. Catmull-Rom 곡선 생성 API 추가
+* 모든 입력 좌표를 지나는 부드러운 곡선을 생성할 수 있는 API가 추가되었습니다.
+  * 기존 베지어 곡선 생성 API는 시작점과 끝점을 제외한 나머지 점들은 곡선이 지나지 않습니다. 
+* 내비게이션 및 카메라 이동 경로 생성에 적합합니다.
+
+```javascript
+var coord = [
+  [lon, lat, alt],
+  [lon, lat, alt],
+  // ...
+  [lon, lat, alt]
+];
+
+var parameters = {
+  coordinates : {
+    coordinate : coord,
+    style : "XYZ"
+  },
+  alpha: 0.5,     // default: 0.0 (0~1, 곡선의 안정성. 0.5일 때 가장 안정적)
+  tension: 0.5,   // default: 0.0 (0~1, 값이 클수록 직선에 가까워짐)
+  samples: 10,    // default: 20 (구간당 생성할 샘플 좌표 수)
+  simplify: true, // default: false (근접 좌표 단순화 적용 여부)
+  epsilon: 0.5,   // default: 0.5 (simplify 적용 시 단순화 거리 임계값)
+  union: true,    // default: false (지형 결합 여부)
+  height: 1.5     // default: 0.0 (지형 결합 시 지형으로부터의 높이)
+}
+
+var catmullrom = Module.getMath().convertCatmullRom(parameters);
+var catmullrom.position // 좌표
+var catmullrom.times    // 누적 거리
+```
+
+### 2.27.2 (2026/06/23)
+#### 1. JSPolygon의 loadFile에서 glb/gltf 파일 로드 시 회전/이동 기능 추가 ([이슈 #565](https://github.com/EgisCorp/XDWorld/issues/565))
+  * glb/gltf 파일을 로드 loadFile API를 통해 로드 한 후 JSPolygon의 move, setRotation 함수가 정상 동작하도록 기능이 추가되었습니다.
+
+#### 2. Gizmo 오류 수정 ([이슈 #563](https://github.com/EgisCorp/XDWorld/issues/563))
+  * 마우스 모드가 MML_EDIT_GIZMO가 아닌 경우에는 Gizmo가 표시되지 않도록 수정하였습니다.
+  * setSelectObject로 객체를 선택한 경우에도 Gizmo가 정상적으로 표시되도록 수정하였습니다.
+
+#### 3. addObject 중복 키 추가 방지 ([이슈 #564](https://github.com/EgisCorp/XDWorld/issues/564))
+  * addObject 함수를 사용하여 같은 키의 객체를 추가하는 경우 레이어에 추가되지 않도록 수정하였습니다.
+
+#### 4. 이미지 텍스처 회전 오류 수정([이슈 #568](https://github.com/EgisCorp/XDWorld/issues/568))
+  * 이미지 텍스처가 회전되어 표출되는 문제를 수정하였습니다.
+
 ### 2.27.1 (2026/06/08)
 #### 1. skin 데이터 없는 glTF 애니메이션 지원
 * skin 데이터가 포함되지 않은 glb/gltf 파일에서도 애니메이션이 정상적으로 재생되도록 수정하였습니다.
