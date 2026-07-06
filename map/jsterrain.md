@@ -11,13 +11,14 @@ var map = Module.getTerrain();
 ```
 
 ## Properties
-|Name|Type|Description|
-|------|------|------|
-|demRate|number|DEM 높이 표현 비율|
-|recoverHSV|number|색상 조정 설정 여부|
-|recoverHue|number|색상 Hue 조정 값|
-|recoverSaturation|number|색상 Saturation 조정 값|
-|recoverValue|number|색상 Value 조정 값|
+
+| Name              | Type   | Description        |
+| ----------------- | ------ | ------------------ |
+| demRate           | number | DEM 높이 표현 비율       |
+| recoverHSV        | number | 색상 조정 설정 여부        |
+| recoverHue        | number | 색상 Hue 조정 값        |
+| recoverSaturation | number | 색상 Saturation 조정 값 |
+| recoverValue      | number | 색상 Value 조정 값      |
 
 ## Function
 
@@ -27,19 +28,17 @@ var map = Module.getTerrain();
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name   | Type                                                      | Description |
 | ------ | --------------------------------------------------------- | ----------- |
-| option | [JSTerrain.GridOption](jsterrain.md#jsterrain.gridoption) | 속성 정보.  |
+| option | [JSTerrain.GridOption](jsterrain.md#jsterrain.gridoption) | 속성 정보.      |
 
--   Return
-    -   .result: API success status ( 1 : success, 0 : failure ).
-    -   .name: Name of the operation API.
-    -   .return: API return information ( [JSTerrain.GridData](jsterrain.md#jsterrain.griddata) : Normal return value, string : Failure error code ).
-
+* Return
+  * .result: API success status ( 1 : success, 0 : failure ).
+  * .name: Name of the operation API.
+  * .return: API return information ( [JSTerrain.GridData](jsterrain.md#jsterrain.griddata) : Normal return value, string : Failure error code ).
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let point = new Module.JSVec3Array();
 point.push(new Module.JSVector3D(127.01969238371277, 37.56514815604788, 24.40620245039463));
@@ -57,7 +56,6 @@ let parameter = {
 };
 let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -67,34 +65,30 @@ let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 
 {% tabs %}
 {% tab title="Information" %}
-
-| Name     | Type     | Description                                     |
-| -------- | -------- | ----------------------------------------------- |
-| options  | object   | 요청할 좌표 정보.                               |
+| Name     | Type     | Description                 |
+| -------- | -------- | --------------------------- |
+| options  | object   | 요청할 좌표 정보.                  |
 | callback | function | 요청 완료 후 결과 고도값을 반환하는 콜백 함수. |
 
-#### options 구조
+**options 구조**
 
-| Key       | Type        | Description                                       |
-| --------- | ----------- | ------------------------------------------------- |
-| level     | number      | 요청할 지형 타일 레벨.                            |
-| positions | array       | 고도 요청할 좌표 목록. 2D 배열(lon, lat) 또는 [JSVec2Array](../core/jsvec2array.md) 가능. |
+| Key       | Type   | Description                                                                |
+| --------- | ------ | -------------------------------------------------------------------------- |
+| level     | number | 요청할 지형 타일 레벨.                                                              |
+| positions | array  | 고도 요청할 좌표 목록. 2D 배열(lon, lat) 또는 [JSVec2Array](../core/jsvec2array.md) 가능. |
 
--   Return  
-    -   `true`: 요청 성공.  
-    -   `false`: 파라미터 오류 또는 실패.
-
--   Error Conditions
-    -   `callback`이 함수가 아닌 경우.
-    -   `positions`가 배열도 JSVec2Array도 아닌 경우.
-    -   `level` 또는 `positions`가 누락된 경우.
-
--   Sample
-    -   [Sandbox_TerrainAltitude](https://sandbox.egiscloud.com/code/main.do?id=terrain_dem_from_server)
-
+* Return
+  * `true`: 요청 성공.
+  * `false`: 파라미터 오류 또는 실패.
+* Error Conditions
+  * `callback`이 함수가 아닌 경우.
+  * `positions`가 배열도 JSVec2Array도 아닌 경우.
+  * `level` 또는 `positions`가 누락된 경우.
+* Sample
+  * [Sandbox\_TerrainAltitude](https://sandbox.egiscloud.com/code/main.do?id=terrain_dem_from_server)
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var input = {
     level: 10,
@@ -108,10 +102,8 @@ Module.getTerrain().getServerAltitude(input, function (result) {
     console.log("Altitude result:", result);
 });
 ```
-
 {% endtab %}
 {% endtabs %}
-
 
 ### setImageMask(option) → bool
 
@@ -119,20 +111,17 @@ Module.getTerrain().getServerAltitude(input, function (result) {
 
 {% tabs %}
 {% tab title="Information" %}
-
 | Name   | Type                                                              | Description |
 | ------ | ----------------------------------------------------------------- | ----------- |
-| option | [JSTerrain.MaskingOptions](jsterrain.md#jsterrain.maskingoptions) | 속성 정보    |
+| option | [JSTerrain.MaskingOptions](jsterrain.md#jsterrain.maskingoptions) | 속성 정보       |
 
--   Return
-    -   성공 시 true, 실패 시 false를 반환합니다.
-
--   Sample
-    -   [Sandbox_RequestBoundary](https://sandbox.egiscloud.com/code/main.do?id=layer_building_request_boundary)
-
+* Return
+  * 성공 시 true, 실패 시 false를 반환합니다.
+* Sample
+  * [Sandbox\_RequestBoundary](https://sandbox.egiscloud.com/code/main.do?id=layer_building_request_boundary)
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 Module.getTerrain().setImageMask({
     active : true,
@@ -148,11 +137,8 @@ Module.getTerrain().setImageMask({
     }
 });
 ```
-
 {% endtab %}
 {% endtabs %}
-
-
 
 ### Type Definitions
 
@@ -197,8 +183,8 @@ Module.getTerrain().setImageMask({
 
 > 지형 영상 마스킹 옵션 속성
 
-| Name      | Type     | Description                                           |
-| --------- | -------- | ------------------------------------------------------|
-| active    | boolean  | 옵션 활성화 여부                                         |
-| range     | object   | 2차원 경위도 좌표 min, max 속성으로 이루어진 마스킹 범위     |
-| color     | object   | 0~255 사이 정수 a, r, g, b 속성으로 이루어진 마스킹 색상 값 |
+| Name   | Type    | Description                                |
+| ------ | ------- | ------------------------------------------ |
+| active | boolean | 옵션 활성화 여부                                  |
+| range  | object  | 2차원 경위도 좌표 min, max 속성으로 이루어진 마스킹 범위       |
+| color  | object  | 0\~255 사이 정수 a, r, g, b 속성으로 이루어진 마스킹 색상 값 |

@@ -73,7 +73,7 @@ line.createbyJson({
 
 |               실선 (type : 0)              |            점선 (type : 3)           |           화살표 (type : 4)           |
 | :--------------------------------------: | :--------------------------------: | :--------------------------------: |
-| ![](<../.gitbook/assets/lines0 (5).png>) | ![](../.gitbook/assets/lines1.png) | ![](../.gitbook/assets/lines2.png) |
+| ![](<../.gitbook/assets/lines0 (1).png>) | ![](../.gitbook/assets/lines1.png) | ![](../.gitbook/assets/lines2.png) |
 
 #### union
 
@@ -123,4 +123,4 @@ layer.addObject(line, 0);
 
 ![](../.gitbook/assets/lines7.png)
 
-라인 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_line\_Json)를 클릭해 주세요
+라인 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_line_Json)를 클릭해 주세요

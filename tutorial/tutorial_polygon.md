@@ -4,7 +4,7 @@
 
 ## 폴리곤 생성하기
 
-폴리곤은 특정 좌표를 입력받아 [JSPolygon](../object/jspoygon.md) 오브젝트를 이용해 생성합니다.
+폴리곤은 특정 좌표를 입력받아 [JSPolygon](https://github.com/EgisCorp/XDWorld_WebGL_Manual/blob/master/object/jspoygon.md) 오브젝트를 이용해 생성합니다.
 
 폴리곤은 아래 단계를 거쳐 가시화 할 수 있습니다.
 
@@ -167,6 +167,6 @@ layer.addObject(polygon, 0);
 
 ![](../.gitbook/assets/polygon4.png)
 
-폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_color)를 클릭해 주세요
+폴리곤 생성 과정에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_color)를 클릭해 주세요
 
-높이를 지정한 폴리곤에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object\_polygon\_height)를 클릭해 주세요
+높이를 지정한 폴리곤에 대한 라이브 코드를 확인해 보고 싶으시다면? [여기](http://sandbox.dtwincloud.com/code/main.do?id=object_polygon_height)를 클릭해 주세요

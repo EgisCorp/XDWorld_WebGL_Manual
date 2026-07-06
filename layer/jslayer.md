@@ -17,18 +17,18 @@ let layer = layerList.createLayer("Layer Name");
 
 ## Properties
 
-| Name                    | Type    | Description                                      |
-| ----------------------- | ------- | ------------------------------------------------ |
-| altitude_offset         | number  | 포인트클라우드, 드론LOD 데이터 실시간 높이 설정. |
-| lod_object_alpha        | number  | 서비스 레이어 속성 색상 알파값 설정.             |
-| lod_object_detail_ratio | number  | 서비스 레이어 객체 가시화 거리 비율 설정.        |
-| serverURL               | string  | 요청 서버 url 반환.                              |
-| simple_real3d           | boolean | 건물 객체 심플모드 설정.                         |
-| text_character_set      | string  | 레이어 텍스트 문자셋 값 설정.                    |
-| tile_load_ratio         | number  | 서비스 레이어 가시화 거리 비율 설정.             |
-| view_underground        | boolean | 지형 아래에 렌더링 되는 레이어 설정.             |
-| object_ahead            | boolean | 지형 또는 시설물이 앞에 존재할 경우 비가시화 설정. |
-| boundaryLimit           | boolean | 오브젝트 요청 범위 제한 설정.                   |
+| Name                       | Type    | Description                   |
+| -------------------------- | ------- | ----------------------------- |
+| altitude\_offset           | number  | 포인트클라우드, 드론LOD 데이터 실시간 높이 설정. |
+| lod\_object\_alpha         | number  | 서비스 레이어 속성 색상 알파값 설정.         |
+| lod\_object\_detail\_ratio | number  | 서비스 레이어 객체 가시화 거리 비율 설정.      |
+| serverURL                  | string  | 요청 서버 url 반환.                 |
+| simple\_real3d             | boolean | 건물 객체 심플모드 설정.                |
+| text\_character\_set       | string  | 레이어 텍스트 문자셋 값 설정.             |
+| tile\_load\_ratio          | number  | 서비스 레이어 가시화 거리 비율 설정.         |
+| view\_underground          | boolean | 지형 아래에 렌더링 되는 레이어 설정.         |
+| object\_ahead              | boolean | 지형 또는 시설물이 앞에 존재할 경우 비가시화 설정. |
+| boundaryLimit              | boolean | 오브젝트 요청 범위 제한 설정.             |
 
 ## Function
 
@@ -42,23 +42,19 @@ let layer = layerList.createLayer("Layer Name");
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name      | Type                              | Description        |
 | --------- | --------------------------------- | ------------------ |
 | object    | [JSObject](../object/jsobject.md) | Add created object |
-| ~~level~~ | ~~number~~                        | ~~0 고정 사용~~    |
-
+| ~~level~~ | ~~number~~                        | ~~0 고정 사용~~        |
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 let layername = "objectlayer";
 let layerList = new Module.JSLayerList(true);
 let layer = layerList.createLayer(layername);
 layer.addObject(object, 0);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -72,14 +68,12 @@ layer.addObject(object, 0);
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //...(Add WMS layer)...
 var layer = layerList.nameAtLayer(“WMSLayer”);
 layer.clearWMSCache();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -91,18 +85,14 @@ layer.clearWMSCache();
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   Return
-    -   result>0 : 레이어에 포함된 객체 수.
-    -   \-1 : 레이어에 포하된 객체가 없는 경우.
-
+* Return
+  * result>0 : 레이어에 포함된 객체 수.
+  * -1 : 레이어에 포하된 객체가 없는 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -112,18 +102,14 @@ layer.clearWMSCache();
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name  | Type   | Description   |
-| ----- | ------ | ------------- |
-| ratio | number | 쿼리 범위 레벨. |
-
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| ratio | number | 쿼리 범위 레벨.   |
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -133,26 +119,22 @@ layer.clearWMSCache();
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name   | Type                                | Description |
+| ------ | ----------------------------------- | ----------- |
+| center | [JSVector3D](../core/jsvector3d.md) | 반경의 중심 좌표.  |
+| range  | number                              | 반경(반지름)     |
 
-| Name   | Type                                | Description     |
-| ------ | ----------------------------------- | --------------- |
-| center | [JSVector3D](../core/jsvector3d.md) | 반경의 중심 좌표. |
-| range  | number                              | 반경(반지름)      |
-
--   Return
-    -   string : 반환 성공 (구분자 "#").
-    -   "0" : 반환 실패.
-    -   실패 조건
-        -   레이어가 없는 경우.
-        -   레이어에 포함된 객체 수가 0인 경우.
-
+* Return
+  * string : 반환 성공 (구분자 "#").
+  * "0" : 반환 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 레이어에 포함된 객체 수가 0인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -166,21 +148,17 @@ layer.clearWMSCache();
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   Return
-    -   string : 반환 성공 (구분자 ",").
-    -   "" : 반환 실패.
-    -   실패 조건
-        -   사용자 레이어에 포함된 객체 수가 0인 경우.
-        -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속)
-
+* Return
+  * string : 반환 성공 (구분자 ",").
+  * "" : 반환 실패.
+  * 실패 조건
+    * 사용자 레이어에 포함된 객체 수가 0인 경우.
+    * 서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -190,23 +168,21 @@ layer.clearWMSCache();
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name     | Type   | Description |
+| -------- | ------ | ----------- |
+| boundary | object | 폴리곤 영역 좌표.  |
 
-| Name     | Type   | Description     |
-| -------- | ------ | --------------- |
-| boundary | object | 폴리곤 영역 좌표. |
-
--   Return
-    -   object : 반환 성공
-        -   | Name | Type   | Description   |
-            | ---- | ------ | ------------- |
-            | id   | string | 객체 고유 명칭. |
-    -   return : 반환 실패.
-    -   실패 조건
-        -   폴리곤을 구성하는 좌표가 3개 미만인 경우.
-
+* Return
+  * object : 반환 성공
+    * | Name | Type   | Description |
+      | ---- | ------ | ----------- |
+      | id   | string | 객체 고유 명칭.   |
+  * return : 반환 실패.
+  * 실패 조건
+    * 폴리곤을 구성하는 좌표가 3개 미만인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var boundary = [
   [126.93790903169547, 37.522875202560655, 0.0],
@@ -218,7 +194,6 @@ var objects = Module.getTileLayerList().nameAtLayer("facility_build").getObjects
 
 console.log(objects.id);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -230,26 +205,22 @@ console.log(objects.id);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name  | Type                          | Description |
 | ----- | ----------------------------- | ----------- |
-| color | [JSColor](../core/jscolor.md) | 초기화 색상. |
+| color | [JSColor](../core/jscolor.md) | 초기화 색상.     |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   레이어가 없는 경우.
-        -   사용자 레이어인 경우.
-        -   벡터 파이프 레이어 또는 건물 레이어가 아닌 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 사용자 레이어인 경우.
+    * 벡터 파이프 레이어 또는 건물 레이어가 아닌 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -261,28 +232,24 @@ console.log(objects.id);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name   | Type                          | Description |
+| ------ | ----------------------------- | ----------- |
+| objkey | string                        | 객체 고유 명칭    |
+| color  | [JSColor](../core/jscolor.md) | 초기화 색상.     |
 
-| Name   | Type                          | Description  |
-| ------ | ----------------------------- | ------------ |
-| objkey | string                        | 객체 고유 명칭 |
-| color  | [JSColor](../core/jscolor.md) | 초기화 색상.   |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   레이어가 없는 경우.
-        -   사용자 레이어인 경우.
-        -   입력값(objkey)을 갖는 오브젝트가 없는 경우.
-        -   벡터 파이프 레이어가 아닌 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 사용자 레이어인 경우.
+    * 입력값(objkey)을 갖는 오브젝트가 없는 경우.
+    * 벡터 파이프 레이어가 아닌 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -294,27 +261,23 @@ console.log(objects.id);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| objkey | string | 객체 고유 명칭    |
 
-| Name   | Type   | Description  |
-| ------ | ------ | ------------ |
-| objkey | string | 객체 고유 명칭 |
-
--   Return
-    -   [JSVector3D](../core/jsvector3d.md) : 반환 성공.
-    -   null : 반환 실패.
-    -   실패 조건
-        -   레이어가 없는 경우.
-        -   사용자 레이어인 경우.
-        -   입력값(objkey)을 갖는 오브젝트가 없는 경우.
-        -   벡터 파이프 레이어가 아닌 경우.
-
+* Return
+  * [JSVector3D](../core/jsvector3d.md) : 반환 성공.
+  * null : 반환 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 사용자 레이어인 경우.
+    * 입력값(objkey)을 갖는 오브젝트가 없는 경우.
+    * 벡터 파이프 레이어가 아닌 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -324,28 +287,25 @@ console.log(objects.id);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| crs  | string | 지도 입력 좌표계   |
 
-| Name | Type   | Description    |
-| ---- | ------ | -------------- |
-| crs  | string | 지도 입력 좌표계 |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   레이어가 없는 경우.
-        -   사용자 레이어인 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 사용자 레이어인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //...(Add WMS layer)...
 var layer = layerList.nameAtLayer(“WMSLayer”);
 layer.setCrsWMS("EPSG:4326");
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -355,26 +315,22 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name | Type                          | Description |
 | ---- | ----------------------------- | ----------- |
-| icon | [JSIcon](../object/jsicon.md) | 포인트 심볼   |
+| icon | [JSIcon](../object/jsicon.md) | 포인트 심볼      |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-        -   icon의 텍스처가 없는 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
+    * icon의 텍스처가 없는 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -384,26 +340,22 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type                          | Description  |
+| ---- | ----------------------------- | ------------ |
+| icon | [JSIcon](../object/jsicon.md) | 하이라이트 포인트 심볼 |
 
-| Name | Type                          | Description           |
-| ---- | ----------------------------- | --------------------- |
-| icon | [JSIcon](../object/jsicon.md) | 하이라이트 포인트 심볼   |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-        -   icon의 텍스처가 없는 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
+    * icon의 텍스처가 없는 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -413,28 +365,24 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name   | Type    | Description                                       |
-| ------ | ------- | ------------------------------------------------- |
-| objkey | string  | 객체 고유 명칭                                      |
+| Name   | Type    | Description                               |
+| ------ | ------- | ----------------------------------------- |
+| objkey | string  | 객체 고유 명칭                                  |
 | active | boolean | <p>활성화 여부<br>true: 활성화<br>false: 비활성화</p> |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-        -   입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
-        -   오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
+    * 입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
+    * 오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -444,27 +392,23 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type                          | Description   |
+| ----- | ----------------------------- | ------------- |
+| value | string                        | WFS 데이터 tag 값 |
+| icon  | [JSIcon](../object/jsicon.md) | 하이라이트 포인트 심볼  |
 
-| Name  | Type                          | Description           |
-| ----- | ----------------------------- | --------------------- |
-| value | string                        | WFS 데이터 tag 값      |
-| icon  | [JSIcon](../object/jsicon.md) | 하이라이트 포인트 심볼   |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-        -   icon의 텍스처가 없는 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
+    * icon의 텍스처가 없는 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -474,25 +418,21 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type    | Description |
+| ---- | ------- | ----------- |
+| type | boolean | 라인 렌더링 여부   |
 
-| Name  | Type    | Description    |
-| ----- | ------- | -------------- |
-| type  | boolean | 라인 렌더링 여부 |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -502,28 +442,24 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name   | Type    | Description                                       |
-| ------ | ------- | ------------------------------------------------- |
-| objkey | string  | 객체 고유 명칭                                      |
+| Name   | Type    | Description                               |
+| ------ | ------- | ----------------------------------------- |
+| objkey | string  | 객체 고유 명칭                                  |
 | active | boolean | <p>활성화 여부<br>true: 활성화<br>false: 비활성화</p> |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-        -   입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
-        -   오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
+    * 입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
+    * 오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -533,30 +469,26 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type                          | Description |
+| ----- | ----------------------------- | ----------- |
+| name  | string                        | 객체 고유 명칭    |
+| color | [JSColor](../core/jscolor.md) | 깜빡임 색상      |
+| size  | number                        | 깜빡임 크기      |
+| speed | number                        | 깜빡임 속도      |
 
-| Name  | Type                          | Description  |
-| ----- | ----------------------------- | ------------ |
-| name  | string                        | 객체 고유 명칭 |
-| color | [JSColor](../core/jscolor.md) | 깜빡임 색상    |
-| size  | number                        | 깜빡임 크기    |
-| speed | number                        | 깜빡임 속도    |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-        -   입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
-        -   오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
+    * 입력값(objkey)을 갖는 오브젝트가 레이어에 없는 경우
+    * 오브젝트가 심볼 텍스트(POI) 타입이 아닌 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -568,24 +500,20 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type    | Description |
+| ---- | ------- | ----------- |
+| type | boolean | RTT 적용 여부   |
 
-| Name | Type    | Description  |
-| ---- | ------- | ------------ |
-| type | boolean | RTT 적용 여부 |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   레이어 타입이 WFS LINE 또는 WFS POLY 레이어가 아닌 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 레이어 타입이 WFS LINE 또는 WFS POLY 레이어가 아닌 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -595,21 +523,18 @@ layer.setCrsWMS("EPSG:4326");
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   Return
-    -   number(0 이상) : 레이어 타입 반환([Layer Type List](../etc/type-list.md#layer-type-list)).
-    -   number(-1) : 레이어가 존재하지 않는 경우.
-
+* Return
+  * number(0 이상) : 레이어 타입 반환([Layer Type List](../etc/type-list.md#layer-type-list)).
+  * number(-1) : 레이어가 존재하지 않는 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //...(Add WMS layer)...
 var layer = layerList.nameAtLayer(“WMSLayer”);
 var bVisible = layer.getType();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -623,25 +548,21 @@ var bVisible = layer.getType();
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| index | number | 인덱스 번호.     |
 
-| Name  | Type   | Description  |
-| ----- | ------ | ------------ |
-| index | number | 인덱스 번호. |
-
--   Return
-    -   string : 반환 성공.
-    -   "" : 반환 실패.
-    -   실패 조건
-        -   입력 변수 index가 레이어에 포함된 객체 목록의 범위를 초과하는 경우(0보다 작거나 목록의 개체 수보다 큰 경우).
-        -   레이어의 포함 객체 수가 0인 경우.
-
+* Return
+  * string : 반환 성공.
+  * "" : 반환 실패.
+  * 실패 조건
+    * 입력 변수 index가 레이어에 포함된 객체 목록의 범위를 초과하는 경우(0보다 작거나 목록의 개체 수보다 큰 경우).
+    * 레이어의 포함 객체 수가 0인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -655,25 +576,21 @@ var bVisible = layer.getType();
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| index | number | 인덱스 번호.     |
 
-| Name  | Type   | Description  |
-| ----- | ------ | ------------ |
-| index | number | 인덱스 번호. |
-
--   Return
-    -   [JSObject](../object/jsobject.md) : 반환 성공.
-    -   null : 반환 실패.
-    -   실패 조건
-        -   입력 변수 index가 레이어에 포함된 객체 목록의 범위를 초과하는 경우(0보다 작거나 목록의 개체 수보다 큰 경우).
-        -   레이어의 포함 객체 수가 0인 경우.
-
+* Return
+  * [JSObject](../object/jsobject.md) : 반환 성공.
+  * null : 반환 실패.
+  * 실패 조건
+    * 입력 변수 index가 레이어에 포함된 객체 목록의 범위를 초과하는 경우(0보다 작거나 목록의 개체 수보다 큰 경우).
+    * 레이어의 포함 객체 수가 0인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -685,26 +602,22 @@ var bVisible = layer.getType();
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 고유 명칭.   |
 
-| Name | Type   | Description     |
-| ---- | ------ | --------------- |
-| name | string | 객체 고유 명칭. |
-
--   Return
-    -   [JSObject](../object/jsobject.md) : 반환 성공.
-    -   null : 반환 실패.
-    -   실패 조건
-        -   동일한 고유 명칭 객체가 없는 경우.
-        -   입력 변수 name 문자열 데이터가 없는 경우.
-        -   레이어의 포함 객체 수가 0인 경우.
-
+* Return
+  * [JSObject](../object/jsobject.md) : 반환 성공.
+  * null : 반환 실패.
+  * 실패 조건
+    * 동일한 고유 명칭 객체가 없는 경우.
+    * 입력 변수 name 문자열 데이터가 없는 경우.
+    * 레이어의 포함 객체 수가 0인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -716,24 +629,20 @@ var bVisible = layer.getType();
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type   | Description     |
-| ---- | ------ | --------------- |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
 | name | string | 객체 고유 명칭.   |
 
--   Return
-    -   string : 반환 성공.
-    -   "" : 반환 실패
-    -   실패 조건
-        -   객체 고유 명칭에 name이 포함된 객체가 없는 경우
-
+* Return
+  * string : 반환 성공.
+  * "" : 반환 실패
+  * 실패 조건
+    * 객체 고유 명칭에 name이 포함된 객체가 없는 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -747,23 +656,21 @@ var bVisible = layer.getType();
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| index | number | 인덱스 번호.     |
 
-| Name  | Type   | Description  |
-| ----- | ------ | ------------ |
-| index | number | 인덱스 번호. |
-
--   Return
-    -   true : 삭제 성공.
-    -   false : 삭제 실패.
-    -   실패 조건
-        -   입력 변수 index가 레이어에 포함된 객체 목록의 범위를 초과하는 경우(0보다 작거나 목록의 개체 수보다 큰 경우).
-        -   레이어의 포함 객체 수가 0인 경우.
-        -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
-        -   외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
-
+* Return
+  * true : 삭제 성공.
+  * false : 삭제 실패.
+  * 실패 조건
+    * 입력 변수 index가 레이어에 포함된 객체 목록의 범위를 초과하는 경우(0보다 작거나 목록의 개체 수보다 큰 경우).
+    * 레이어의 포함 객체 수가 0인 경우.
+    * 서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
+    * 외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layername = "objectlayer"
 let layerList = new Module.JSLayerList(true);
@@ -772,7 +679,6 @@ let layerList.createLayer(layername );
 layer.addObject(object, 0);
 layer.removeAtIndex(0);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -786,28 +692,24 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 고유 명칭.   |
 
-| Name | Type   | Description     |
-| ---- | ------ | --------------- |
-| name | string | 객체 고유 명칭. |
-
--   Return
-    -   true : 삭제 성공.
-    -   false : 삭제 실패.
-    -   실패 조건
-        -   사용자 레이어에 포함된 객체을 고유 명칭이 입력 변수 name와 동일한 객체가 없는 경우.
-        -   입력 변수 name 문자열 데이터가 없는 경우.
-        -   레이어의 포함 객체 수가 0인 경우.
-        -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
-        -   외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
-
+* Return
+  * true : 삭제 성공.
+  * false : 삭제 실패.
+  * 실패 조건
+    * 사용자 레이어에 포함된 객체을 고유 명칭이 입력 변수 name와 동일한 객체가 없는 경우.
+    * 입력 변수 name 문자열 데이터가 없는 경우.
+    * 레이어의 포함 객체 수가 0인 경우.
+    * 서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
+    * 외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -821,27 +723,23 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name   | Type                              | Description |
 | ------ | --------------------------------- | ----------- |
-| object | [JSObject](../object/jsobject.md) | 객체.       |
+| object | [JSObject](../object/jsobject.md) | 객체.         |
 
--   Return
-    -   true : 삭제 성공.
-    -   false : 삭제 실패.
-    -   실패 조건
-        -   사용자 레이어에 포함된 객체와 입력 변수 object와 동일한 객체가 없는 경우.
-        -   레이어의 포함 객체 수가 0인 경우.
-        -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
-        -   외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
-
+* Return
+  * true : 삭제 성공.
+  * false : 삭제 실패.
+  * 실패 조건
+    * 사용자 레이어에 포함된 객체와 입력 변수 object와 동일한 객체가 없는 경우.
+    * 레이어의 포함 객체 수가 0인 경우.
+    * 서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
+    * 외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -855,22 +753,18 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   Return
-    -   true: 삭제 성공.
-    -   false: 삭제 실패.
-    -   실패 조건
-        -   레이어의 포함 객체 수가 0인 경우.
-        -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
-        -   외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
-
+* Return
+  * true: 삭제 성공.
+  * false: 삭제 실패.
+  * 실패 조건
+    * 레이어의 포함 객체 수가 0인 경우.
+    * 서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속).
+    * 외부 서버를 통해 가시화 된 데이터인 경우(Ex. WMS, WFS).
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -880,23 +774,21 @@ layer.removeAtIndex(0);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name  | Type   | Description           |
-| ----- | ------ | --------------------- |
-| url   | string | 데이터 요청 url.      |
-| port  | number | 데이터 요청 port.     |
+| Name  | Type   | Description  |
+| ----- | ------ | ------------ |
+| url   | string | 데이터 요청 url.  |
+| port  | number | 데이터 요청 port. |
 | param | string | 데이터 요청 파라미터. |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   생성한 레이어가 WFS 서비스 레이어가 아닌 경우.
-        -   생성한 레이어가 사용자 레이어인 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 생성한 레이어가 WFS 서비스 레이어가 아닌 경우.
+    * 생성한 레이어가 사용자 레이어인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -906,7 +798,6 @@ var dataURL = “http://...(Data request URL)...”;
 var parameter= “...(Data request parameters)...”;
 layer.setConnectionWFS(dataURL, 0, parameter);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -916,23 +807,21 @@ layer.setConnectionWFS(dataURL, 0, parameter);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name  | Type   | Description           |
-| ----- | ------ | --------------------- |
-| url   | string | 데이터 요청 url.      |
-| port  | number | 데이터 요청 port.     |
+| Name  | Type   | Description  |
+| ----- | ------ | ------------ |
+| url   | string | 데이터 요청 url.  |
+| port  | number | 데이터 요청 port. |
 | param | string | 데이터 요청 파라미터. |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   생성한 레이어가 WMS 레이어가 아닌 경우.
-        -   생성한 레이어가 사용자 레이어인 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 생성한 레이어가 WMS 레이어가 아닌 경우.
+    * 생성한 레이어가 사용자 레이어인 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -942,7 +831,6 @@ var dataURL = “http://...(Data request URL)...”;
 var parameter= “...(Data request parameters)...”;
 layer.setConnectionWMS(dataURL, 0, parameter);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -954,18 +842,16 @@ layer.setConnectionWMS(dataURL, 0, parameter);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name       | Type                          | Description     |
-| ---------- | ----------------------------- | --------------- |
+| Name       | Type                          | Description |
+| ---------- | ----------------------------- | ----------- |
 | fontName   | string                        | 폰트 명칭.      |
 | fontSize   | number                        | 폰트 크기.      |
 | fontWeight | number                        | 폰트 굵기.      |
 | color      | [JSColor](../core/jscolor.md) | 폰트 색상.      |
-| outColor   | [JSColor](../core/jscolor.md) | 폰트 외각 색상. |
-
+| outColor   | [JSColor](../core/jscolor.md) | 폰트 외각 색상.   |
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -978,7 +864,6 @@ var clrFont     = new Module.JSColor(255, 255, 255, 255);
 var clrOutLine  = new Module.JSColor(255, 0, 0, 0);
 layer.setFontStyle(“Arial ”, 20, 10, clrFont, clrOutLine);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -988,14 +873,12 @@ layer.setFontStyle(“Arial ”, 20, 10, clrFont, clrOutLine);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name  | Type   | Description       |
-| ----- | ------ | ----------------- |
-| level | number | 가시화 최대 레벨. |
-
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| level | number | 가시화 최대 레벨.  |
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1006,7 +889,6 @@ var parameter= “...(Data request parameters)...”;
 layer.setConnectionWFS(dataUrl, 0, parameter);
 layer.setLevelWFS(10);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1016,19 +898,17 @@ layer.setLevelWFS(10);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name     | Type   | Description |
+| -------- | ------ | ----------- |
+| minLevel | number | 가시화 최소 레벨.  |
+| maxLevel | number | 가시화 최대 레벨.  |
 
-| Name     | Type   | Description       |
-| -------- | ------ | ----------------- |
-| minLevel | number | 가시화 최소 레벨. |
-| maxLevel | number | 가시화 최대 레벨. |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1039,7 +919,6 @@ var parameter= “...(Data request parameters)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setLevelWMS(10, 12);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1053,22 +932,18 @@ layer.setLevelWMS(10, 12);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name  | Type   | Description                                 |
-| ----- | ------ | ------------------------------------------- |
+| Name  | Type   | Description               |
+| ----- | ------ | ------------------------- |
 | ratio | number | 가시화 거리 비율(높을수록 가시화범위 증가). |
 
--   Sample
-    -   function init 참조.
-    -   [Sandbox_Parabolic Line](https://sandbox.egiscloud.com/code/main.do?id=object_line_arc)
-
+* Sample
+  * function init 참조.
+  * [Sandbox\_Parabolic Line](https://sandbox.egiscloud.com/code/main.do?id=object_line_arc)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1084,27 +959,23 @@ layer.setLevelWMS(10, 12);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type    | Description                                              |
-| ---- | ------- | -------------------------------------------------------- |
+| Name | Type    | Description                                 |
+| ---- | ------- | ------------------------------------------- |
 | type | boolean | <p>true: 프록시 서버 사용.<br>false: 기본 서버 사용.</p> |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
--   Sample
-    -   function createLayerWMS 참조.
-    -   [Sandbox_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+* Sample
+  * function createLayerWMS 참조.
+  * [Sandbox\_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1114,25 +985,21 @@ layer.setLevelWMS(10, 12);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| height | number | 지형으로부터의 높이  |
 
-| Name   | Type   | Description      |
-| ------ | ------ | ---------------- |
-| height | number | 지형으로부터의 높이 |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   사용자 레이어인 경우.
-        -   레이어 타입이 WFS POI 레이어가 아닌 경우
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 사용자 레이어인 경우.
+    * 레이어 타입이 WFS POI 레이어가 아닌 경우
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1146,27 +1013,23 @@ layer.setLevelWMS(10, 12);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name       | Type   | Description         |
-| ---------- | ------ | ------------------- |
+| Name       | Type   | Description       |
+| ---------- | ------ | ----------------- |
 | hue        | number | HSV channel (색상). |
 | saturation | number | HSV channel (채도). |
 | value      | number | HSV channel (명도). |
 
--   Return
-    -   true: 설정 성공.
-    -   false: 설정 실패.
--   Sample
-    -   function setHSV 참조.
-    -   [Sandbox_Adjust layer color](https://sandbox.egiscloud.com/code/main.do?id=layer_color_tone)
-
+* Return
+  * true: 설정 성공.
+  * false: 설정 실패.
+* Sample
+  * function setHSV 참조.
+  * [Sandbox\_Adjust layer color](https://sandbox.egiscloud.com/code/main.do?id=layer_color_tone)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1176,29 +1039,26 @@ layer.setLevelWMS(10, 12);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name  | Type   | Description |
 | ----- | ------ | ----------- |
-| count | number | 타일 크기.  |
+| count | number | 타일 크기.      |
 
--   Return
-    -   true: 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WFS 서비스 레이어 타입이 아닌 경우.
--   Note
-    -   요창 단위가 클수록 큰 타일 범위의 WFS 데이터 요청.
-
+* Return
+  * true: 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WFS 서비스 레이어 타입이 아닌 경우.
+* Note
+  * 요창 단위가 클수록 큰 타일 범위의 WFS 데이터 요청.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
 layer.setRequestFeatureCount(64);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1208,23 +1068,21 @@ layer.setRequestFeatureCount(64);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name  | Type   | Description |
 | ----- | ------ | ----------- |
-| style | string | 스타일.     |
+| style | string | 스타일.        |
 
--   Return
-    -   true: 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WMS 레이어 타입이 아닌 경우.
--   Note
-    -   [스타일 설정 참조](http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do)
-
+* Return
+  * true: 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WMS 레이어 타입이 아닌 경우.
+* Note
+  * [스타일 설정 참조](http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do)
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1235,7 +1093,6 @@ var parameter= “...(Data request parameters)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setStylesWMS(“LT_C_UQ111”);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1251,25 +1108,21 @@ layer.setStylesWMS(“LT_C_UQ111”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| offset | number | 초기 고도 설정값.  |
 
-| Name   | Type   | Description       |
-| ------ | ------ | ----------------- |
-| offset | number | 초기 고도 설정값. |
-
--   Return
-    -   true: 설정 성공.
-    -   false: 설정 실패.
--   Sample
-    -   function init 참조.
-    -   [Sandbox_Point Cloud](https://sandbox.egiscloud.com/code/main.do?id=layer_pointcloud_point_size)
-
+* Return
+  * true: 설정 성공.
+  * false: 설정 실패.
+* Sample
+  * function init 참조.
+  * [Sandbox\_Point Cloud](https://sandbox.egiscloud.com/code/main.do?id=layer_pointcloud_point_size)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1279,23 +1132,21 @@ layer.setStylesWMS(“LT_C_UQ111”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| size | number | 이미지 크기.     |
 
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| size | number | 이미지 크기. |
-
--   Return
-    -   true: 설정 성공.
-    -   false: 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WMS 레이어 타입이 아닌 경우.
--   Note
-    -   [스타일 설정 참조](http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do)
-
+* Return
+  * true: 설정 성공.
+  * false: 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WMS 레이어 타입이 아닌 경우.
+* Note
+  * [스타일 설정 참조](http://dev.vworld.kr/dev/v4dv_wmsguide_s001.do)
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1306,7 +1157,6 @@ var parameter= “...(Data request parameters)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setTileSizeWMS(tileSize);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1320,25 +1170,21 @@ layer.setTileSizeWMS(tileSize);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type    | Description                                   |
+| ---- | ------- | --------------------------------------------- |
+| type | boolean | <p>true: HSV 색상 채널 시각화.<br>false: 일반 시각화.</p> |
 
-| Name | Type    | Description                                              |
-| ---- | ------- | -------------------------------------------------------- |
-| type | boolean | <p>true: HSV 색상 채널 시각화.<br>false: 일반 시각화.<p> |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
--   Sample
-    -   function setHSV 참조.
-    -   [Sandbox_Terrain Color Adjustment](https://sandbox.egiscloud.com/code/main.do?id=terrain_color_tone)
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+* Sample
+  * function setHSV 참조.
+  * [Sandbox\_Terrain Color Adjustment](https://sandbox.egiscloud.com/code/main.do?id=terrain_color_tone)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1348,18 +1194,16 @@ layer.setTileSizeWMS(tileSize);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name      | Type   | Description |
 | --------- | ------ | ----------- |
-| fieldName | string | 태그 명칭.  |
+| fieldName | string | 태그 명칭.      |
 
--   Return
-    -   true: 설정 성공.
-    -   false: 설정 실패.
-
+* Return
+  * true: 설정 성공.
+  * false: 설정 실패.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
@@ -1376,7 +1220,6 @@ layer.setWFSDescField(“STD_SGGCD”);
 //...omitted...
 </gml:featureMember>
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1386,14 +1229,12 @@ layer.setWFSDescField(“STD_SGGCD”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name      | Type   | Description |
 | --------- | ------ | ----------- |
-| fieldName | string | 태그 명칭.  |
-
+| fieldName | string | 태그 명칭.      |
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1414,7 +1255,6 @@ layer.setWFSPointName(“BONBUN”);
 //...omitted...
 </gml:featureMember>
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1424,14 +1264,12 @@ layer.setWFSPointName(“BONBUN”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name      | Type   | Description    |
-| --------- | ------ | -------------- |
+| Name      | Type   | Description |
+| --------- | ------ | ----------- |
 | fieldName | string | 요청 WFS 명칭.  |
-
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1442,7 +1280,6 @@ var parameter= “...(Data request parameters)...”;
 layer.setConnectionWFS(dataUrl, 0, parameter);
 layer.setLayersWFS(“BONBUN”);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1452,14 +1289,12 @@ layer.setLayersWFS(“BONBUN”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name      | Type   | Description    |
-| --------- | ------ | -------------- |
+| Name      | Type   | Description |
+| --------- | ------ | ----------- |
 | fieldName | string | 요청 WMS 명칭.  |
-
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayerList : new Module.JSLayerList(false)
@@ -1470,7 +1305,6 @@ var parameter= “...(Data request parameters)...”;
 layer.setConnectionWMS(dataUrl, 0, parameter);
 layer.setLayersWMS(“BONBUN”);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1480,29 +1314,26 @@ layer.setLayersWMS(“BONBUN”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name         | Type   | Description |
 | ------------ | ------ | ----------- |
-| propertyName | string | 태그 명칭.  |
+| propertyName | string | 태그 명칭.      |
 
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WFS 레이어 타입이 아닌 경우.
--   Note
-    -   설정된 WFS 태그 목록은 WFS 데이터 요청 파라미터 중 “propertyname” 파라미터에 설정한 내용이 적용된다.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WFS 레이어 타입이 아닌 경우.
+* Note
+  * 설정된 WFS 태그 목록은 WFS 데이터 요청 파라미터 중 “propertyname” 파라미터에 설정한 내용이 적용된다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
 layer.setWFSPropertyName(“STD_SGGCD,BONBUN,AG_GEOM”);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1512,23 +1343,21 @@ layer.setWFSPropertyName(“STD_SGGCD,BONBUN,AG_GEOM”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name      | Type                          | Description |
+| --------- | ----------------------------- | ----------- |
+| lineColor | [JSColor](../core/jscolor.md) | 문자 윤곽선 색상.  |
+| fontSize  | number                        | 문자 크기       |
+| fillColor | [JSColor](../core/jscolor.md) | 문자 색상.      |
 
-| Name      | Type                          | Description       |
-| --------- | ----------------------------- | ----------------- |
-| lineColor | [JSColor](../core/jscolor.md) | 문자 윤곽선 색상. |
-| fontSize  | number                        | 문자 크기        |
-| fillColor | [JSColor](../core/jscolor.md) | 문자 색상.        |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WFS 레이어 타입이 아닌 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WFS 레이어 타입이 아닌 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
@@ -1536,7 +1365,6 @@ var lineColor = new Module.JSColor(255, 255, 255, 255);
 var fillColor = new Module.JSColor(255, 0, 0, 0);
 layer.setWFSColor(lineColor, 12, fillColor);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1546,22 +1374,20 @@ layer.setWFSColor(lineColor, 12, fillColor);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name      | Type                          | Description |
+| --------- | ----------------------------- | ----------- |
+| lineColor | [JSColor](../core/jscolor.md) | 문자 윤곽선 색상.  |
+| fillColor | [JSColor](../core/jscolor.md) | 문자 색상.      |
 
-| Name      | Type                          | Description       |
-| --------- | ----------------------------- | ----------------- |
-| lineColor | [JSColor](../core/jscolor.md) | 문자 윤곽선 색상. |
-| fillColor | [JSColor](../core/jscolor.md) | 문자 색상.        |
-
--   Return
-    -   true : 설정 성공.
-    -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WFS 레이어 타입이 아닌 경우.
-
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WFS 레이어 타입이 아닌 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 var layer = GLOBAL.JSLayerList.createWFSLayer(“NewWFSLayer”, 0);
@@ -1569,7 +1395,6 @@ var lineColor = new Module.JSColor(255, 255, 255, 255);
 var fillColor = new Module.JSColor(255, 0, 0, 0);
 layer.setWFSTextColor(lineColor , fillColor);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1579,21 +1404,19 @@ layer.setWFSTextColor(lineColor , fillColor);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name   | Type                                | Description |
 | ------ | ----------------------------------- | ----------- |
-| option | [WMSOptions](jslayer.md#wmsoptions) | 속성 정보.  |
+| option | [WMSOptions](jslayer.md#wmsoptions) | 속성 정보.      |
 
--   Return
-    -   success : 생성 성공.
-    -   string : 생성 실패 (실패 오류 메시지 반환).
--   Sample
-    -   function createLayerWMS 참조.
-    -   [Sandbox_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
-
+* Return
+  * success : 생성 성공.
+  * string : 생성 실패 (실패 오류 메시지 반환).
+* Sample
+  * function createLayerWMS 참조.
+  * [Sandbox\_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let slopeoption = {
 	url: strUrl,
@@ -1613,7 +1436,6 @@ let slopeoption = {
 	}
 };
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1623,24 +1445,21 @@ let slopeoption = {
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name        | Type    | Description                                         |
-| ----------- | ------- | --------------------------------------------------- |
+| Name        | Type    | Description                             |
+| ----------- | ------- | --------------------------------------- |
 | transparent | boolean | <p>true: 반투명 가시화.<br>false: 불투명 가시화</p> |
 
--   Note
-    -   true로 설정한 경우 지형 이미지가 함께 보이는 반투명 상태로 출력되며, False로 설정한 경우 지형 이미지가 보이지 않는 불투명 상태로 출력된다.
-
+* Note
+  * true로 설정한 경우 지형 이미지가 함께 보이는 반투명 상태로 출력되며, False로 설정한 경우 지형 이미지가 보이지 않는 불투명 상태로 출력된다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //...
 var layer = layerList.nameAtLayer(“WMSLayer”);
 layer.setWMSTransparent(true);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1650,28 +1469,25 @@ layer.setWMSTransparent(true);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name    | Type   | Description |
 | ------- | ------ | ----------- |
-| version | string | 버전 정보.  |
+| version | string | 버전 정보.      |
 
--   Return
-    -   true : 설정 성공.
-        -   false : 설정 실패.
-    -   실패 조건
-        -   서비스 레이어가 아닌 경우.
-        -   WMS 레이어 타입이 아닌 경우.
-
+* Return
+  * true : 설정 성공.
+    * false : 설정 실패.
+  * 실패 조건
+    * 서비스 레이어가 아닌 경우.
+    * WMS 레이어 타입이 아닌 경우.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //...(Add WMS layer)...
 var layer = layerList.nameAtLayer(“WMSLayer”);
 layer.setWMSVersion(“1.1.0”);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1681,25 +1497,21 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name          | Type                                               | Description |
+| ------------- | -------------------------------------------------- | ----------- |
+| serverSetting | \[WMTSOption.Server]\(jslayer.md#wmtsoption.server | 서버 정보 설정.   |
+| userSetting   | \[WMTSOption.User]\(jslayer.md#wmtsoption.user     | 서비스 정보 설정.  |
 
-| Name    		 | Type   		 | Description 				 |
-| -------------- | ------------- | ------------------------- |
-| serverSetting  | [WMTSOption.Server](jslayer.md#wmtsoption.server 	 | 서버 정보 설정.  |
-| userSetting  	 | [WMTSOption.User](jslayer.md#wmtsoption.user 	 | 서비스 정보 설정.  |
-
--   Return
-    -   success : 생성 성공.
-    -   string : 생성 실패 (실패 오류 메시지 반환).
--   Sample
-    -   [Sandbox_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
-
+* Return
+  * success : 생성 성공.
+  * string : 생성 실패 (실패 오류 메시지 반환).
+* Sample
+  * [Sandbox\_WMTS](https://sandbox.egiscloud.com/code/main.do?id=layer_wmts)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1713,22 +1525,18 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name  | Type   | Description |
 | ----- | ------ | ----------- |
-| alpha | number | 투명도.     |
+| alpha | number | 투명도.        |
 
--   실패 조건
-    -   사용자 레이어인 경우.
-    -   시설물 이외 서비스 레이어인 경우.
-
+* 실패 조건
+  * 사용자 레이어인 경우.
+  * 시설물 이외 서비스 레이어인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1744,22 +1552,18 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name | Type    | Description |
 | ---- | ------- | ----------- |
-| type | boolean | 좌표 옵션.  |
+| type | boolean | 좌표 옵션.      |
 
--   Sample
-    -   function createLayerWMS 참조.
-    -   [Sandbox_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
-
+* Sample
+  * function createLayerWMS 참조.
+  * [Sandbox\_WMS](https://sandbox.egiscloud.com/code/main.do?id=layer_wms)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1775,24 +1579,20 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type    | Description                                                  |
-| ---- | ------- | ------------------------------------------------------------ |
+| Name | Type    | Description                                   |
+| ---- | ------- | --------------------------------------------- |
 | edit | boolean | <p>true: 편집 레이어 설정.<br>false: 일반 레이어로 설정.</p> |
 
--   실패 조건
-    -   서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속)
--   Sample
-    -   function initSamplePage 참조.
-    -   [Sandbox_Shape Creation](https://sandbox.egiscloud.com/code/main.do?id=object_figure)
-
+* 실패 조건
+  * 서비스 레이어인 경우(서비스 레이어에서 객체는 Tile에 종속)
+* Sample
+  * function initSamplePage 참조.
+  * [Sandbox\_Shape Creation](https://sandbox.egiscloud.com/code/main.do?id=object_figure)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1806,25 +1606,21 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name     | Type   | Description                   |
-| -------- | ------ | ----------------------------- |
+| Name     | Type   | Description           |
+| -------- | ------ | --------------------- |
 | distance | number | 최소 가시 거리 (meters 단위). |
 
--   실패 조건
-    -   최소 가시거리가 최대 가시거리보다 큰 경우.
-    -   서비스 레이어인 경우.
--   Sample
-    -   function showGrid 참조.
-    -   [Sandbox_Grid (2D)](https://sandbox.egiscloud.com/code/main.do?id=object_grid_2d)
-
+* 실패 조건
+  * 최소 가시거리가 최대 가시거리보다 큰 경우.
+  * 서비스 레이어인 경우.
+* Sample
+  * function showGrid 참조.
+  * [Sandbox\_Grid (2D)](https://sandbox.egiscloud.com/code/main.do?id=object_grid_2d)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1838,25 +1634,21 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name     | Type   | Description                   |
-| -------- | ------ | ----------------------------- |
+| Name     | Type   | Description           |
+| -------- | ------ | --------------------- |
 | distance | number | 최대 가시 거리 (meters 단위). |
 
--   실패 조건
-    -   최대 가시거리가 최소 가시거리보다 작은 경우.
-    -   서비스 레이어인 경우.
--   Sample
-    -   function showGrid 참조.
-    -   [Sandbox_Grid (2D)](https://sandbox.egiscloud.com/code/main.do?id=object_grid_2d)
-
+* 실패 조건
+  * 최대 가시거리가 최소 가시거리보다 작은 경우.
+  * 서비스 레이어인 경우.
+* Sample
+  * function showGrid 참조.
+  * [Sandbox\_Grid (2D)](https://sandbox.egiscloud.com/code/main.do?id=object_grid_2d)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1868,21 +1660,17 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| level | number | 최대 가시 레벨.   |
 
-| Name  | Type   | Description     |
-| ----- | ------ | --------------- |
-| level | number | 최대 가시 레벨. |
-
--   실패 조건
-    -   사용자 레이어인 경우.
-
+* 실패 조건
+  * 사용자 레이어인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1894,21 +1682,17 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name  | Type   | Description |
+| ----- | ------ | ----------- |
+| level | number | 최소 가시 레벨.   |
 
-| Name  | Type   | Description     |
-| ----- | ------ | --------------- |
-| level | number | 최소 가시 레벨. |
-
--   실패 조건
-    -   사용자 레이어인 경우.
-
+* 실패 조건
+  * 사용자 레이어인 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1918,22 +1702,18 @@ layer.setWMSVersion(“1.1.0”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| name | string | 레이어 명칭. |
-
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 레이어 명칭.     |
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
 var layerList = new Module.JSLayerList(false);
 //...(Add WMS layer)...
 var layer = layerList.nameAtLayer(“WMSLayer”);
 layer.setName(“WMSLayer2”);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1947,25 +1727,21 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name       | Type   | Description |
+| ---------- | ------ | ----------- |
+| horizontal | number | 객체 가로 크기.   |
 
-| Name       | Type   | Description     |
-| ---------- | ------ | --------------- |
-| horizontal | number | 객체 가로 크기. |
-
--   실패 조건
-    -   0 보다 작은 값이 입력 된 경우.
-    -   [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
--   Sample
-    -   function JsonLoad 참조.
-    -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
-
+* 실패 조건
+  * 0 보다 작은 값이 입력 된 경우.
+  * [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
+* Sample
+  * function JsonLoad 참조.
+  * [Sandbox\_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -1979,25 +1755,21 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name     | Type   | Description |
+| -------- | ------ | ----------- |
+| vertical | number | 객체 세로 크기.   |
 
-| Name     | Type   | Description     |
-| -------- | ------ | --------------- |
-| vertical | number | 객체 세로 크기. |
-
--   실패 조건
-    -   0 보다 작은 값이 입력 된 경우.
-    -   [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
--   Sample
-    -   function JsonLoad 참조.
-    -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
-
+* 실패 조건
+  * 0 보다 작은 값이 입력 된 경우.
+  * [createTimeSeriesObject()](../object/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
+* Sample
+  * function JsonLoad 참조.
+  * [Sandbox\_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2007,21 +1779,17 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name   | Type   | Description              |
-| ------ | ------ | ------------------------ |
+| Name   | Type   | Description         |
+| ------ | ------ | ------------------- |
 | minLon | number | 최소 경도값(degrees 단위). |
 | maxLon | number | 최대 경도값(degrees 단위). |
 | minLat | number | 최소 위도값(degrees 단위). |
 | maxLat | number | 최대 위도값(degrees 단위). |
-
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2031,18 +1799,14 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type   | Description              |
-| ---- | ------ | ------------------------ |
+| Name | Type   | Description                                               |
+| ---- | ------ | --------------------------------------------------------- |
 | type | string | <p>"layer": 레이어와의 거리로 컬링.<br>"object": 오브젝트와의 거리로 컬링.</p> |
-
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2056,19 +1820,14 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type    | Description                                                      |
-| ---- | ------- | ---------------------------------------------------------------- |
+| Name | Type    | Description                                     |
+| ---- | ------- | ----------------------------------------------- |
 | type | boolean | <p>true: 선택 이벤트 활성화.<br>false: 선택 이벤트 비활성화.</p> |
-
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2078,26 +1837,22 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| step | number | 애니메이션 단계.   |
 
-| Name | Type   | Description      |
-| ---- | ------ | ---------------- |
-| step | number | 애니메이션 단계. |
-
--   실패 조건
-    -   입력 변수값(step)이 설정된 최소 step보다 작은값이 입력된 경우.
-    -   입력 변수값(step)이 설정된 최대 step보다 큰값이 입력된 경우.
-    -   [createTimeSeriesObject()](jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
--   Sample
-    -   function JsonLoad 참조.
-    -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
-
+* 실패 조건
+  * 입력 변수값(step)이 설정된 최소 step보다 작은값이 입력된 경우.
+  * 입력 변수값(step)이 설정된 최대 step보다 큰값이 입력된 경우.
+  * [createTimeSeriesObject()](https://github.com/EgisCorp/XDWorld_WebGL_Manual/blob/master/layer/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
+* Sample
+  * function JsonLoad 참조.
+  * [Sandbox\_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2107,21 +1862,17 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
 | Name  | Type   | Description |
 | ----- | ------ | ----------- |
-| speed | number | 변환 속도.  |
+| speed | number | 변환 속도.      |
 
--   실패 조건
-    -   [createTimeSeriesObject()](jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
-
+* 실패 조건
+  * [createTimeSeriesObject()](https://github.com/EgisCorp/XDWorld_WebGL_Manual/blob/master/layer/jstimeseriesobject.md#JSTimeSeriesObject) API로 객체 생성이 안된 경우.
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2137,19 +1888,14 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type   | Description              |
-| ---- | ------ | ------------------------ |
+| Name | Type   | Description          |
+| ---- | ------ | -------------------- |
 | tilt | number | 제한 tilt(degrees 단위). |
-
 {% endtab %}
 
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2163,22 +1909,18 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
-| Name | Type    | Description                                                                |
-| ---- | ------- | -------------------------------------------------------------------------- |
+| Name | Type    | Description                                           |
+| ---- | ------- | ----------------------------------------------------- |
 | type | boolean | <p>true: 레이어 포함 객체 가시화.<br>false: 레이어 포함 객체 비가시화.</p> |
 
--   Sample
-    -   function JsonLoad 참조.
-    -   [Sandbox_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
-
+* Sample
+  * function JsonLoad 참조.
+  * [Sandbox\_Time Series Bar](https://sandbox.egiscloud.com/code/main.do?id=effect_time_bar)
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2186,16 +1928,12 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   대체 API: setWMSProvider
-
+* 대체 API: setWMSProvider
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2203,16 +1941,12 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   대체 API: setWMSProvider
-
+* 대체 API: setWMSProvider
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2220,16 +1954,12 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Infomation" %}
-
--   사용되지 않음
-
+* 사용되지 않음
 {% endtab %}
+
 {% tab title="Template" %}
-
 ```javascript
-
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2239,29 +1969,25 @@ layer.setName(“WMSLayer2”);
 
 {% tabs %}
 {% tab title="Information" %}
+| Name    | Type   | Description            |
+| ------- | ------ | ---------------------- |
+| offsetR | number | 빨간색(R) 채널 오프셋 (0\~255) |
+| offsetG | number | 초록색(G) 채널 오프셋 (0\~255) |
+| offsetB | number | 파란색(B) 채널 오프셋 (0\~255) |
 
-| Name     | Type   | Description                   |
-| -------- | ------ | ----------------------------- |
-| offsetR  | number | 빨간색(R) 채널 오프셋 (0~255) |
-| offsetG  | number | 초록색(G) 채널 오프셋 (0~255) |
-| offsetB  | number | 파란색(B) 채널 오프셋 (0~255) |
-
--   Return  
-    -   true: 설정 성공  
-    -   false: 포인트 클라우드 레이어가 아닌 경우  
-
--   Note  
-    -   alpha 값은 항상 255로 고정됨  
-
+* Return
+  * true: 설정 성공
+  * false: 포인트 클라우드 레이어가 아닌 경우
+* Note
+  * alpha 값은 항상 255로 고정됨
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(false);
 let layer = layerList.nameAtLayer("PointCloudLayer");
 layer.setPointCloudRenderModeRGB(255, 100, 100);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2271,26 +1997,23 @@ layer.setPointCloudRenderModeRGB(255, 100, 100);
 
 {% tabs %}
 {% tab title="Information" %}
+| Name     | Type    | Description                 |
+| -------- | ------- | --------------------------- |
+| min      | number  | Intensity 최소값               |
+| max      | number  | Intensity 최대값               |
+| useColor | boolean | true: 컬러맵 적용, false: 그레이스케일 |
 
-| Name      | Type    | Description                             |
-| --------- | ------- | --------------------------------------- |
-| min       | number  | Intensity 최소값                       |
-| max       | number  | Intensity 최대값                       |
-| useColor  | boolean | true: 컬러맵 적용, false: 그레이스케일  |
-
--   Return  
-    -   true: 설정 성공  
-    -   false: 포인트 클라우드 레이어가 아닌 경우  
-
+* Return
+  * true: 설정 성공
+  * false: 포인트 클라우드 레이어가 아닌 경우
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(false);
 let layer = layerList.nameAtLayer("PointCloudLayer");
 layer.setPointCloudRenderModeIntensity(0.0, 255.0, true);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2300,26 +2023,23 @@ layer.setPointCloudRenderModeIntensity(0.0, 255.0, true);
 
 {% tabs %}
 {% tab title="Information" %}
-
-| Name     | Type    | Description                                  |
-| -------- | ------- | -------------------------------------------- |
-| min      | number  | 고도 컬러맵 적용 범위 최소값 (meter 단위).   |
-| max      | number  | 고도 컬러맵 적용 범위 최대값 (meter 단위).   |
+| Name     | Type    | Description                     |
+| -------- | ------- | ------------------------------- |
+| min      | number  | 고도 컬러맵 적용 범위 최소값 (meter 단위).    |
+| max      | number  | 고도 컬러맵 적용 범위 최대값 (meter 단위).    |
 | useColor | boolean | true: 컬러맵 적용, false: 그레이스케일 적용. |
 
--   Return  
-    -   true: 설정 성공  
-    -   false: 포인트 클라우드 레이어가 아닌 경우  
-
+* Return
+  * true: 설정 성공
+  * false: 포인트 클라우드 레이어가 아닌 경우
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(false);
 let layer = layerList.nameAtLayer("PointCloudLayer");
 layer.setPointCloudRenderModeAltitude(0.0, 100.0, true);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2329,24 +2049,21 @@ layer.setPointCloudRenderModeAltitude(0.0, 100.0, true);
 
 {% tabs %}
 {% tab title="Information" %}
+| Name | Type   | Description               |
+| ---- | ------ | ------------------------- |
+| size | number | 점 크기(0.001 이상, meter 단위). |
 
-| Name | Type   | Description                        |
-| ---- | ------ | ---------------------------------- |
-| size | number | 점 크기(0.001 이상, meter 단위).     |
-
--   Return  
-    -   true: 설정 성공  
-    -   false: 잘못된 값이거나 포인트 클라우드 레이어가 아닌 경우
-
+* Return
+  * true: 설정 성공
+  * false: 잘못된 값이거나 포인트 클라우드 레이어가 아닌 경우
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(false);
 let layer = layerList.nameAtLayer("PointCloudLayer");
 layer.setPointCloudPointSize(0.05);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2356,31 +2073,28 @@ layer.setPointCloudPointSize(0.05);
 
 {% tabs %}
 {% tab title="Information" %}
+| Name     | Type                                | Description   |
+| -------- | ----------------------------------- | ------------- |
+| lineFrom | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 시작 좌표. |
+| lineTo   | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 끝 좌표.  |
 
-| Name     | Type                                | Description                 |
-| -------- | ----------------------------------- | --------------------------- |
-| lineFrom | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 시작 좌표.       |
-| lineTo   | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 끝 좌표.         |
+* Return
+  * `object` : 피킹 성공 시 위치 및 객체 정보 반환
+  * `null` : 피킹 실패 시
+* 반환 객체 구조
 
--   Return  
-    -   `object` : 피킹 성공 시 위치 및 객체 정보 반환  
-    -   `null` : 피킹 실패 시
+| Key       | Type                                | Description         |
+| --------- | ----------------------------------- | ------------------- |
+| position  | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.          |
+| objectKey | string                              | 피킹된 객체의 고유 키.       |
+| layerName | string                              | 피킹된 객체가 포함된 레이어 이름. |
 
--   반환 객체 구조
-
-| Key        | Type   | Description                        |
-| ---------- | ------ | ---------------------------------- |
-| position   | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.             |
-| objectKey  | string | 피킹된 객체의 고유 키.              |
-| layerName  | string | 피킹된 객체가 포함된 레이어 이름.     |
-
--   Note  
-    -   ~~현재 타일 기반 레이어에서만 동작합니다.~~
-    -   카메라의 뷰 영역 내부인 객체만 피킹합니다.
-
+* Note
+  * ~~현재 타일 기반 레이어에서만 동작합니다.~~
+  * 카메라의 뷰 영역 내부인 객체만 피킹합니다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let from = new Module.JSVector3D(127.0, 37.5, 100.0);
 let to = new Module.JSVector3D(127.0, 37.5, 0.0);
@@ -2393,7 +2107,6 @@ if (pickInfo) {
     console.log("Layer Name:", pickInfo.layerName);
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2403,31 +2116,28 @@ if (pickInfo) {
 
 {% tabs %}
 {% tab title="Information" %}
+| Name     | Type                                | Description   |
+| -------- | ----------------------------------- | ------------- |
+| lineFrom | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 시작 좌표. |
+| lineTo   | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 끝 좌표.  |
 
-| Name     | Type                                | Description                 |
-| -------- | ----------------------------------- | --------------------------- |
-| lineFrom | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 시작 좌표.       |
-| lineTo   | [JSVector3D](../core/jsvector3d.md) | 피킹 라인의 끝 좌표.         |
+* Return
+  * `object` : 피킹 성공 시 위치 및 객체 정보 반환
+  * `null` : 피킹 실패 시
+* 반환 객체 구조
 
--   Return  
-    -   `object` : 피킹 성공 시 위치 및 객체 정보 반환  
-    -   `null` : 피킹 실패 시
+| Key       | Type                                | Description         |
+| --------- | ----------------------------------- | ------------------- |
+| position  | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.          |
+| objectKey | string                              | 피킹된 객체의 고유 키.       |
+| layerName | string                              | 피킹된 객체가 포함된 레이어 이름. |
 
--   반환 객체 구조
-
-| Key        | Type   | Description                        |
-| ---------- | ------ | ---------------------------------- |
-| position   | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.             |
-| objectKey  | string | 피킹된 객체의 고유 키.              |
-| layerName  | string | 피킹된 객체가 포함된 레이어 이름.     |
-
--   Note  
-    -   ~~현재 타일 기반 레이어에서만 동작합니다.~~
-    -   카메라의 뷰 영역에 상관없이 피킹합니다.
-
+* Note
+  * ~~현재 타일 기반 레이어에서만 동작합니다.~~
+  * 카메라의 뷰 영역에 상관없이 피킹합니다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let from = new Module.JSVector3D(127.0, 37.5, 100.0);
 let to = new Module.JSVector3D(127.0, 37.5, 0.0);
@@ -2440,108 +2150,96 @@ if (pickInfo) {
     console.log("Layer Name:", pickInfo.layerName);
 }
 ```
-
 {% endtab %}
 {% endtabs %}
 
 ### setTileLoadCallback(callback) → boolean
 
-> 타일 로딩 완료 시 호출될 콜백 함수를 설정합니다.  
+> 타일 로딩 완료 시 호출될 콜백 함수를 설정합니다.\
 > 타일 기반 레이어(`ELST_PLANET_TILE`)에서만 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-
-| Name     | Type   | Description                 |
-| -------- | ------ | --------------------------- |
+| Name     | Type     | Description        |
+| -------- | -------- | ------------------ |
 | callback | function | 타일 로딩 시 호출될 콜백 함수. |
 
--   Return  
-    -   `true` : 설정 성공  
-    -   `false` : 설정 실패  
-        - 비타일 레이어일 경우  
-        - 월드가 초기화되지 않은 경우
-
--   Note  
-    - 콜백 함수는 JavaScript 함수 객체로 전달되어야 합니다.  
-    - 콜백은 각 타일 로드 완료 시마다 실행됩니다.
-
+* Return
+  * `true` : 설정 성공
+  * `false` : 설정 실패
+    * 비타일 레이어일 경우
+    * 월드가 초기화되지 않은 경우
+* Note
+  * 콜백 함수는 JavaScript 함수 객체로 전달되어야 합니다.
+  * 콜백은 각 타일 로드 완료 시마다 실행됩니다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layer = Module.getLayerByName("MyTileLayer");
 layer.setTileLoadCallback(function() {
     console.log("Tile loaded!");
 });
 ```
-
 {% endtab %}
 {% endtabs %}
 
 ### addTileInObject(tileInfo, object) → boolean
 
-> 지정한 타일 위치에 객체를 수동으로 삽입합니다.  
+> 지정한 타일 위치에 객체를 수동으로 삽입합니다.\
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
+| Name     | Type                              | Description                   |
+| -------- | --------------------------------- | ----------------------------- |
+| tileInfo | object                            | 타일 위치 정보 `{level, idx, idy}`. |
+| object   | [JSObject](../object/jsobject.md) | 삽입할 객체.                       |
 
-| Name      | Type                           | Description                       |
-| --------- | ------------------------------ | --------------------------------- |
-| tileInfo  | object                         | 타일 위치 정보 `{level, idx, idy}`. |
-| object    | [JSObject](../object/jsobject.md) | 삽입할 객체.                      |
-
--   Return  
-    -   `true` : 객체 추가 성공  
-    -   `false` : 실패  
-        - 비타일 기반 레이어  
-        - 유효하지 않은 오브젝트  
-        - RTT(Render to Texture) 객체  
-        - 이미 등록된 객체  
-        - tileInfo 누락 또는 오류  
-        - 타일 존재하지 않음
-
--   Note  
-    - 해당 타일에 객체를 삽입하고 렌더링을 갱신합니다. 
-
+* Return
+  * `true` : 객체 추가 성공
+  * `false` : 실패
+    * 비타일 기반 레이어
+    * 유효하지 않은 오브젝트
+    * RTT(Render to Texture) 객체
+    * 이미 등록된 객체
+    * tileInfo 누락 또는 오류
+    * 타일 존재하지 않음
+* Note
+  * 해당 타일에 객체를 삽입하고 렌더링을 갱신합니다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript;
 layer.addTileInObject(tileInfo, obj);
 ```
-
 {% endtab %}
 {% endtabs %}
 
 ### setTileInObjectEnd(tileInfo) → boolean
 
-> 지정한 타일의 객체 수동 삽입 종료를 명시적으로 설정합니다.  
-> 객체 수동 삽입 이후 타일의 요청 플래그를 비활성화합니다.  
+> 지정한 타일의 객체 수동 삽입 종료를 명시적으로 설정합니다.\
+> 객체 수동 삽입 이후 타일의 요청 플래그를 비활성화합니다.\
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
-
-| Name     | Type   | Description                           |
-| -------- | ------ | ------------------------------------- |
+| Name     | Type   | Description                   |
+| -------- | ------ | ----------------------------- |
 | tileInfo | object | 타일 위치 정보 `{level, idx, idy}`. |
 
--   Return  
-    -   `true` : 설정 성공  
-    -   `false` : 실패  
-        - 비타일 기반 레이어  
-        - tileInfo 누락 또는 오류  
-        - 타일 존재하지 않음
-
+* Return
+  * `true` : 설정 성공
+  * `false` : 실패
+    * 비타일 기반 레이어
+    * tileInfo 누락 또는 오류
+    * 타일 존재하지 않음
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 layer.setTileInObjectEnd(tileInfo);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2551,20 +2249,18 @@ layer.setTileInObjectEnd(tileInfo);
 
 {% tabs %}
 {% tab title="Information" %}
+| Name     | Type     | Description   |
+| -------- | -------- | ------------- |
+| callback | function | 사용자 정의 콜백 함수. |
 
-| Name     | Type     | Description                         |
-| -------- | -------- | ----------------------------------- |
-| callback | function | 사용자 정의 콜백 함수.              |
-
--   Return  
-    -   `true`: 콜백 등록 성공  
-    -   `false`: 콜백 등록 실패  
-        - 레이어 타입이 사용자 또는 콜백 타입이 아닌 경우  
-        - 지구본 타일 기반 레이어가 아닌 경우
-
+* Return
+  * `true`: 콜백 등록 성공
+  * `false`: 콜백 등록 실패
+    * 레이어 타입이 사용자 또는 콜백 타입이 아닌 경우
+    * 지구본 타일 기반 레이어가 아닌 경우
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 let layerList = new Module.JSLayerList(false);
 let layer = layerList.createLayer("UserCallbackLayer");
@@ -2573,7 +2269,6 @@ layer.setUserTileLoadCallback(function(...) {
     ...
 });
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2583,24 +2278,21 @@ layer.setUserTileLoadCallback(function(...) {
 
 {% tabs %}
 {% tab title="Information" %}
+| Name   | Type   | Description    |
+| ------ | ------ | -------------- |
+| height | number | 객체 기준 높이 값(m). |
 
-| Name   | Type   | Description            |
-| ------ | ------ | ---------------------- |
-| height | number | 객체 기준 높이 값(m).  |
-
--   Note  
-    - 객체 생성 시 높이 보정이 필요한 경우 사용합니다.  
-    - 값 변경 시, 가시화 정보가 즉시 갱신됩니다.
-
+* Note
+  * 객체 생성 시 높이 보정이 필요한 경우 사용합니다.
+  * 값 변경 시, 가시화 정보가 즉시 갱신됩니다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var layerList = new Module.JSLayerList(true);
 var layer = layerList.createLayer("MyLayer");
 layer.setObjectHeight(30.0);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -2610,23 +2302,20 @@ layer.setObjectHeight(30.0);
 
 {% tabs %}
 {% tab title="Information" %}
-
-| Name         | Type    | Description |
-|--------------|---------|-------------|
-| intensityMin | float   | intensity 값의 최소 범위 |
-| intensityMax | float   | intensity 값의 최대 범위 |
+| Name         | Type    | Description                                   |
+| ------------ | ------- | --------------------------------------------- |
+| intensityMin | float   | intensity 값의 최소 범위                            |
+| intensityMax | float   | intensity 값의 최대 범위                            |
 | colorMode    | boolean | `true`: 색상 모드 사용, `false`: intensity 단일 색상 사용 |
 
-- Return  
-  - `true`: 설정 성공  
-  - `false`: 설정 실패 (레이어 타입이 포인트 클라우드가 아닐 경우 등)
-
-- Description  
-  - 포인트 클라우드 레이어에 대해 intensity 기반 렌더링 모드를 설정합니다.
-
+* Return
+  * `true`: 설정 성공
+  * `false`: 설정 실패 (레이어 타입이 포인트 클라우드가 아닐 경우 등)
+* Description
+  * 포인트 클라우드 레이어에 대해 intensity 기반 렌더링 모드를 설정합니다.
 {% endtab %}
-{% tab title="Template" %}
 
+{% tab title="Template" %}
 ```javascript
 var API = {
     JSLayer : Module.getLayerByName("MyPointCloud")
@@ -2648,15 +2337,15 @@ if (!success) {
 
 > WMS 레이어의 기본 생성 옵션.
 
-| Name         | Type                                                      | Attributes | Default   | Description                  |
-| ------------ | --------------------------------------------------------- | ---------- | --------- | ---------------------------- |
-| url          | string                                                    |            |           | GeoServer 요청 url.          |
-| layer        | string                                                    |            |           | GeoServer 요청 레이어 명칭.  |
-| minimumLevel | number                                                    | optional   | 0         | WMS 가시화 최소 레벨.        |
-| maximumLevel | number                                                    | optional   | 15        | WMS 가시화 최대 레벨.        |
-| tileSize     | number                                                    | optional   | 256       | WMS 요청 이미지 크기.        |
-| crs          | string                                                    | optional   | EPSG:4326 | WMS 등록 레이어 원본 좌표계. |
-| parameters   | [WMSOptions.SubOptions](jslayer.md#wmsoptions.suboptions) | optional   |           | WMS 요청 스타일, 속성 정보.. |
+| Name         | Type                                                      | Attributes | Default   | Description          |
+| ------------ | --------------------------------------------------------- | ---------- | --------- | -------------------- |
+| url          | string                                                    |            |           | GeoServer 요청 url.    |
+| layer        | string                                                    |            |           | GeoServer 요청 레이어 명칭. |
+| minimumLevel | number                                                    | optional   | 0         | WMS 가시화 최소 레벨.       |
+| maximumLevel | number                                                    | optional   | 15        | WMS 가시화 최대 레벨.       |
+| tileSize     | number                                                    | optional   | 256       | WMS 요청 이미지 크기.       |
+| crs          | string                                                    | optional   | EPSG:4326 | WMS 등록 레이어 원본 좌표계.   |
+| parameters   | [WMSOptions.SubOptions](jslayer.md#wmsoptions.suboptions) | optional   |           | WMS 요청 스타일, 속성 정보..  |
 
 #### WMSOptions.SubOptions
 
@@ -2666,38 +2355,38 @@ if (!success) {
 >
 > ex) style 옵션 등.
 
-| Name        | Type   | Attributes | Default   | Description                            |
-| ----------- | ------ | ---------- | --------- | -------------------------------------- |
-| version     | string | optional   | 1.1.0     | GeoServer 버전.                        |
-| service     | string | optional   | WMS       | GeoServer 요청 타입.                   |
-| request     | string | optional   | GetMap    | GeoServer 요청 지도 타입.              |
-| format      | string | optional   | image/png | GeoServer 요청 이미지 타입.            |
+| Name        | Type   | Attributes | Default   | Description                  |
+| ----------- | ------ | ---------- | --------- | ---------------------------- |
+| version     | string | optional   | 1.1.0     | GeoServer 버전.                |
+| service     | string | optional   | WMS       | GeoServer 요청 타입.             |
+| request     | string | optional   | GetMap    | GeoServer 요청 지도 타입.          |
+| format      | string | optional   | image/png | GeoServer 요청 이미지 타입.         |
 | transparent | string | optional   | TRUE      | Transparency 이미지 요청 시 투명 옵션. |
 
 #### WMTSOption.Server
 
 > WMTS 레이어 서버 정보.
 
-| Name          | Type                                             | Attributes | Default       | Description                                      |
-| ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
-| url           | string                                           |            |               | 요청 서버 URL 구성요소.                          |
-| vworldTileSet | boolean   						  			   | optional   | false         | 브이월드 타일구조로 타일링일 경우(true).           |
-| projection    | string   										   |            |               | 지도 원본 EPSG 코드.      |
-| tileExtent    | [Rect2D](../etc/tag-list.md#rect2d-style-type)   |            |               | 지도 타일링 영역 설정(좌하단, 우상단).                             |
-| gridSubset    | [Range2D](../etc/tag-list.md#range2d-style-type) | optional   | 지구전체 영역   | 데이터 최소/최대 영역 설정(좌하단, 우상단).                                   |
-| tileSize      | number                                   		   | optional   | 256           | 타일에 가시화 이미지 사이즈 설정.                      |
-| resolutions   | array(number)                                    |     		|            	| 타일링 해상도.                |
-| matrixIds  	| array(number) 								   |     		|  				| 타일링 레벨(해상도와 매칭).              |
-| indexOrder 	| boolean                                          | optional   | true          | 타일 인덱싱 기준점(false: 좌하단, true: 좌상단).         |
-| serviceLevel  | [Range2D](../etc/tag-list.md#range2d-style-type) |     		| 	            | 최소, 최대 이미지 가시화 레벨 설정. |
+| Name          | Type                                             | Attributes | Default | Description                        |
+| ------------- | ------------------------------------------------ | ---------- | ------- | ---------------------------------- |
+| url           | string                                           |            |         | 요청 서버 URL 구성요소.                    |
+| vworldTileSet | boolean                                          | optional   | false   | 브이월드 타일구조로 타일링일 경우(true).          |
+| projection    | string                                           |            |         | 지도 원본 EPSG 코드.                     |
+| tileExtent    | [Rect2D](../etc/tag-list.md#rect2d-style-type)   |            |         | 지도 타일링 영역 설정(좌하단, 우상단).            |
+| gridSubset    | [Range2D](../etc/tag-list.md#range2d-style-type) | optional   | 지구전체 영역 | 데이터 최소/최대 영역 설정(좌하단, 우상단).         |
+| tileSize      | number                                           | optional   | 256     | 타일에 가시화 이미지 사이즈 설정.                |
+| resolutions   | array(number)                                    |            |         | 타일링 해상도.                           |
+| matrixIds     | array(number)                                    |            |         | 타일링 레벨(해상도와 매칭).                   |
+| indexOrder    | boolean                                          | optional   | true    | 타일 인덱싱 기준점(false: 좌하단, true: 좌상단). |
+| serviceLevel  | [Range2D](../etc/tag-list.md#range2d-style-type) |            |         | 최소, 최대 이미지 가시화 레벨 설정.              |
 
 #### WMTSOption.User
 
 > WMTS 레이어 서비스 정보.
 
-| Name          | Type                                             | Attributes | Default       | Description                                      |
-| ------------- | ------------------------------------------------ | ---------- | ------------- | ------------------------------------------------ |
-| zeroLevel     | number                                           | optional   | 2             | 서로 다른 타일구조의 매칭을 위한 보간 값(높은값일 수록 요청수가 많아진다).  |
-| quality 		| string   						  			   	   | optional   | 256           | 이미지 해상도.           |
-| iscrack    	| boolean   									   | optional   | false         | 타일링시 크랙이 발생 할 경우(true).      |
-| crackvalue    | number   										   | optional   | 1000          | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).    |
+| Name       | Type    | Attributes | Default | Description                                 |
+| ---------- | ------- | ---------- | ------- | ------------------------------------------- |
+| zeroLevel  | number  | optional   | 2       | 서로 다른 타일구조의 매칭을 위한 보간 값(높은값일 수록 요청수가 많아진다). |
+| quality    | string  | optional   | 256     | 이미지 해상도.                                    |
+| iscrack    | boolean | optional   | false   | 타일링시 크랙이 발생 할 경우(true).                     |
+| crackvalue | number  | optional   | 1000    | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).              |
