@@ -2,11 +2,22 @@
 
 ## - 업데이트 내역 -
 
+### 2.28.3 (2026/07/23)
+#### 1. 지구본에서 RTT 렌더링시 간헐적 희게 번지는 현상을 수정하였습니다.
+
+#### 2. POI 중첩표현시 객체 선택 및 선택 순서 오류를 수정하였습니다.
+
+### 2.28.2 (2026/07/08)
+#### 1. 3DTiles의 높이값을 변경하는 API 오류를 수정하였습니다.
+
+#### 2. 3DTiles 네트워크 안정화 작업을 수행하였습니다.
+
+### 2.28.1 (2026/07/07)
+#### 1. 3DTiles 안정화 작업을 수행하였습니다.
+
 ### 2.28.0 (2026/07/06)
-
 #### 1. JSPolygon getCoordinates API 기능 개선([이슈 #569](https://github.com/EgisCorp/XDWorld/issues/569))
-
-* JSPolygon의 `move`, `moveAltitude`, `setRotate`, `setScale` API를 통해 좌표가 변경된 경우 getCoordinates로 반환되는 좌표 값이 갱신되도록 기능을 개선하였습니다.
+- JSPolygon의 `move`, `moveAltitude`, `setRotate`, `setScale` API를 통해 좌표가 변경된 경우 getCoordinates로 반환되는 좌표 값이 갱신되도록 기능을 개선하였습니다.
 
 #### 2. Catmull-Rom 곡선 생성 API 추가
 
