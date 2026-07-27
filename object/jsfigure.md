@@ -23,6 +23,10 @@ let figure = Module.createFigure("ID");
 | scaleUI 			| boolean                             	| 크기조절 UI 				|
 | rotateUI 			| boolean                             	| 회전 UI 				|
 | moveUI 			| boolean                             	| 이동 UI 				|
+| element 			| object                             	| 전광판/영상 오버랩 재생용 HTML5 video 엘리먼트 참조. |
+| canvas 			| object                             	| 전광판/영상 오버랩 재생용 canvas 엘리먼트 참조. |
+| context 			| object                             	| canvas의 렌더링 context 참조. |
+| hls 				| object                             	| HLS 스트리밍 재생 객체(hls.js 등) 참조. |
 
 ## Function
 
@@ -109,27 +113,6 @@ var dCenterAlt = vCenter.Altitude;
 
 ```javascript
 var bExtends = figure.getExtent();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getId() → string
-
-> 객체의 고유 명칭을 반환 합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
--   Return
-    -   string: 객체 설명 문자열이 성공적으로 반환.
-    -   null: 객체가 null인 경우.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var strKey = object.getId();
 ```
 
 {% endtab %}
@@ -636,6 +619,37 @@ fig.undoEditTerrain();
 {% endtab %}
 {% endtabs %}
 
+### createFigure(position, size, color, type) → boolean
+
+> 지정한 타입(type)의 Figure 형태(사각형, 타원, 화살표 등)를 생성합니다.
+>
+> [JSFigure Type Constants](../etc/type-list.md#jsfigure-type-list)
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description                    |
+| :------- | :------------------------------------ | :------------------------------ |
+| position | [JSVector3D](../core/jsvector3d.md)  | 객체 중심 좌표(경도, 위도, 고도). |
+| size     | [JSVector3D](../core/jsvector3d.md)  | 객체 크기(x, y, z, meter 단위).  |
+| color    | [JSColor](../core/jscolor.md)        | 객체 색상.                       |
+| type     | number                                | 생성할 Figure 타입.              |
+
+-   Return
+    -   true : 생성 성공.
+    -   false : 생성 실패, 혹은 생성된 객체가 없을 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var fig = Module.createFigure("FIG_ID");
+fig.createFigure(new Module.JSVector3D(127.0, 37.5, 30.0), new Module.JSVector3D(50.0, 100.0, 50.0), new Module.JSColor(255, 255, 0, 0), 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getRectInfo() → object
 
 > 객체의 좌표정보를 반환합니다.
@@ -690,55 +704,60 @@ var figureType = figure.getFigureType();
 {% endtab %}
 {% endtabs %}
 
-### getDescription(), setDescription(desc) → string
+### getFactor(index), setFactor(index, value) → number
 
-> 객체에 대한 설명을 설정합니다.
+> Figure 타입 별 형태를 결정하는 인덱스(0~3)의 계수(factor) 값을 설정 및 반환합니다.
+>
+> 계수 값의 의미는 `setFigureType`으로 설정된 Figure 타입에 따라 다릅니다(예: EFT_ROUND_RECT의 경우 factor1은 라운드 반경 비율).
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| desc | string | 설명 문자열. |
+| Name  | Type   | Description                     |
+| ----- | ------ | -------------------------------- |
+| index | number | 계수 인덱스(0 \~ 3).              |
+| value | number | 설정할 계수 값.                  |
 
 -   Return
-    -   string: 객체 설명 문자열이 성공적으로 반환.
-    -   null: 객체가 null인 경우.
+    -   number: 계수 값.
+    -   0.0: 객체가 없거나 index가 0~3 범위를 벗어난 경우.
+-   실패 조건(setFactor)
+    -   객체가 없는 경우, 혹은 index가 0~3 범위를 벗어난 경우 아무 동작도 하지 않음.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
-var strDesc = object.getDescription();
+var value = figure.getFactor(0);
 // ... or ...
-object.setDescription("First Object.");
+figure.setFactor(0, 0.2);
 ```
 
 {% endtab %}
 {% endtabs %}
 
-### getName(), setName(name) → string
+### getSegment(), setSegment(segment) → number
 
-> 객체 이름을 설정합니다.
+> Figure 객체(원, 부채꼴 등)의 분할(segment) 개수를 설정 및 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description |
-| ---- | ------ | ----------- |
-| name | string | 객체 이름.  |
+| Name    | Type   | Description   |
+| ------- | ------ | -------------- |
+| segment | number | 분할 개수 값.  |
 
 -   Return
-    -   string: 객체 이름을 성공적을 반환
-    -   null: 객체가 null인 경우.
+    -   number: 분할 개수 값.
+    -   0: 객체가 없는 경우.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
-var objName = object.getName();
+var segment = figure.getSegment();
 // ... or ...
-object.setName("MyObject");
+figure.setSegment(36);
 ```
 
 {% endtab %}
@@ -772,33 +791,6 @@ var figure = new Module.JSFigure();
 var figureStyle = new Module.JSFigureStyle();
 //...
 figure.setStyle(figureStyle);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getVisible(), setVisible(visible) → boolean
-
-> 객체의 가시화 유무를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name    | Type    | Description                                        |
-| ------- | ------- | -------------------------------------------------- |
-| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
-
--   Return
-    -   true: 객체 가시화 상태.
-    -   false: 객체 비가시화 상태.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var objName = object.getName();
-// ... or ...
-object.setVisible(true);
 ```
 
 {% endtab %}

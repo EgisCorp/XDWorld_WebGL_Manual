@@ -1,5 +1,5 @@
 ---
-description: 지도 내 경로 기능을 관리하기 위한 API 입니다.
+description: 지도 내 HTML 요소를 오버레이하기 위한 API 입니다.
 ---
 
 # JSHTMLObject
@@ -80,7 +80,7 @@ object.refresh();
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+## Type Definitions
 
 #### JSHTMLObject.CreateOptions
 

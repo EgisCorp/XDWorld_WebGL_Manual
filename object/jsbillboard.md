@@ -1,8 +1,8 @@
 ---
-description: 지도 내 전파 범위 3차원 모델 객체를 생성 및 설정하기 위한 API 입니다.
+description: 지도 내 빌보드(항상 카메라를 향하는 이미지 판) 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
-# CJSBillboard
+# JSBillboard
 
 Module.createBillboard() API를 생성합니다.
 
@@ -179,6 +179,49 @@ var strKey = object.getId();
 
 ```javascript
 
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createbyJson(option) → object
+
+> JSON 형태의 파라미터로 빌보드 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name             | Type                                | Description                                                       |
+| :--------------- | :----------------------------------- | :------------------------------------------------------------------- |
+| position         | [JSVector3D](../core/jsvector3d.md) | 빌보드 위치 좌표(경도, 위도, 고도).                                |
+| width            | number(optional, 기본값 100)         | 빌보드 너비.                                                       |
+| height           | number(optional, 기본값 100)         | 빌보드 높이.                                                       |
+| horizontalAlign  | string(optional)                     | 수평 정렬("left", "center", "right", 그 외/생략 시 "center").      |
+| verticalAlign    | string(optional)                     | 수직 정렬("top", "middle", "bottom", 그 외/생략 시 "middle").      |
+| image            | object                               | 이미지 정보(그룹 이미지 파싱 규칙에 따름, 필수).                   |
+
+-   Return
+    -   .result: API 성공 유무 상태 (1: 성공, 0: 실패).
+    -   .name: 동작 API 명칭("JSBillboard.createbyJson").
+    -   .return: API 반환 정보(문자열: 실패 에러 코드).
+    -   실패 조건
+        -   월드가 로드되지 않은 경우.
+        -   position이 없는 경우.
+        -   image가 없거나 이미지 데이터를 텍스처로 변환하지 못한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var billboard = Module.createBillboard("newBillboard");
+var result = billboard.createbyJson({
+    position: new Module.JSVector3D(127.02635, 37.49593, 600),
+    width: 30,
+    height: 20,
+    horizontalAlign: "center",
+    verticalAlign: "middle",
+    image: { url: "./image/billboard.png" }
+});
 ```
 
 {% endtab %}

@@ -25,7 +25,7 @@ var color = new Module.JSColor();
 
 ## Function
 
-### getValue(index) → number
+### getValue() → number
 
 > 색상 값이 저장된 2진수 데이터를 10진수로 반환.
 >
@@ -71,7 +71,7 @@ var value = color.getValue(); // value : 4278460516
 
 ```javascript
 var color = new Module.JSColor();
-color.SetARGB(255, 255, 0, 200);
+color.setARGB(255, 255, 0, 200);
 ```
 
 {% endtab %}

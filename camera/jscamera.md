@@ -14,18 +14,10 @@ var camera = Module.getViewCamera();
 
 | Name               | Type    | Description  |
 | ------------------ | ------- | ------------ |
-| videoStreaming     | boolean | 비디오 스트리밍 여부. |
-| videoFar           | number  | 비디오 최대 가시거리. |
-| videoFovX          | number  | 화각 넓이.       |
-| videoFovY          | number  | 화각 높이.       |
-| videoAlpha         | number  | 비디오 투명값.     |
-| videoAxisX         | boolean | 좌우 반전.       |
-| videoAxisY         | boolean | 상하 반전.       |
-| videoZoom          | number  | 비디오 배율.      |
-| videoFarPlane      | boolean | 비디오 뒷배경 여부.  |
-| videoResolution    | number  | 비디오 해상도.     |
-| videoObjectMapping | boolean | 건물 매핑 여부.    |
-| videoIsplayer      | boolean | 비디오 재생 여부.   |
+| limit              | object  | 카메라 이동/고도/틸트 제한 정보. `{ bound: {min, max, enable}, altitude: {min, max, enable}, tilt: {min, max} }` 형태. |
+| autoMoveRoundSegment | number | 카메라 원형 자동 이동 시 구간을 나누는 세그먼트 수. |
+| collision_type      | boolean | 카메라 충돌 감지 모드 사용 여부. |
+| collision_distance  | number  | 카메라 충돌 감지 거리. |
 
 ## Function
 
@@ -1058,66 +1050,6 @@ API.JSCamera.Zoom(0, 0, -100.0); // Zoom In
 {% endtab %}
 {% endtabs %}
 
-### setVideoInfo(option) → string
-
-> 비디오 텍스쳐를 생성합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name          | Type                                           | Description         |
-| ------------- | ---------------------------------------------- | ------------------- |
-| url           | string                                         | 미디어 URL 경로.         |
-| dronemode     | boolean                                        | 중심 좌표 (경도, 위도, 고도). |
-| streaming     | boolean                                        | 비디오 스트리밍 설정.        |
-| objectmapping | boolean                                        | 건물 매핑 설정.           |
-| alpha         | number                                         | 비디오 투명값 설정.         |
-| zoom          | number                                         | 비디오 배율 설정.          |
-| fov           | [Size2D](../etc/tag-list.md#size2d-style-type) | 비디오 화각 설정.          |
-| xaxis         | boolean                                        | 비디오 좌우 반전 설정.       |
-| yaxis         | boolean                                        | 비디오 상하 반전 설정.       |
-| resolution    | number                                         | 비디오 해상도 설정.         |
-| farplane      | boolean                                        | 뒷배경 설정.             |
-
-* Return
-  * success : 텍스쳐 생성 성공.
-  * 실패 조건
-    * url tag isn't exist : url 태그가 없을 경우.
-    * streaming tag isn't exist : streaming 태그가 없을 경우.
-* Sample
-  * function createCCTV, createCCTVDrone 참조.
-  * [Sandbox\_Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-```
-{% endtab %}
-{% endtabs %}
-
-### clearVideo() → boolean
-
-> 비디오 텍스쳐를 초기화 합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-* Return
-  * true : 초기화 성공.
-  * false : 초기화 실패.
-  * 실패 조건
-    * 비디오 텍스쳐가 없을 경우.
-    * 비디오 데이터가 없을 경우.
-    * 비디오 경로가 없을 경우.
-* Sample
-  * See function setTilt.
-  * [Sandbox\_Video Texture](https://sandbox.egiscloud.com/code/main.do?id=camera_video_texture)
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-```
-{% endtab %}
-{% endtabs %}
-
 ## Getter / Setter
 
 ### getAnimationSpeed(), setAnimationSpeed(speed) → number
@@ -1270,6 +1202,107 @@ var API = {
     JSCamera : Module.getViewCamera();
 };
 var location = API.JSCamera.getLocation();
+```
+{% endtab %}
+{% endtabs %}
+
+### getPanMoveLocation(moveType, distance) → [JSVector3D](../core/jsvector3d.md)
+
+> 현재 카메라 위치에서 지정한 방향(전/후/좌/우)으로 일정 거리만큼 이동했을 때의 좌표를 계산하여 반환합니다 (카메라 자체는 이동하지 않음).
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type   | Description                                                                    |
+| -------- | ------ | ------------------------------------------------------------------------------- |
+| moveType | number | 이동 방향 (0: 전방, 1: 후방, 2: 좌측, 3: 우측).                                 |
+| distance | number | 이동 거리 (meter 단위).                                                        |
+
+* Return
+  * [JSVector3D](../core/jsvector3d.md): 계산된 좌표 (경도, 위도, 고도).
+  * (0,0,0): moveType이 0~3 범위를 벗어나거나 지도가 초기화되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var pos = Module.getViewCamera().getPanMoveLocation(0, 10.0); // 전방 10m 위치 좌표
+```
+{% endtab %}
+{% endtabs %}
+
+### setFixedZoom(fixed, distance)
+
+> 고정된 거리로 줌 인/아웃 하는 기능을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type    | Description                                       |
+| -------- | ------- | ---------------------------------------------------- |
+| fixed    | boolean | <p>true: 고정 줌 사용.<br>false: 미사용.</p>       |
+| distance | number  | 고정 줌 시 사용할 거리 값.                          |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().setFixedZoom(true, 100.0);
+```
+{% endtab %}
+{% endtabs %}
+
+### SetAutoMoveSpeed(speed) → boolean
+
+> 카메라 원형 자동 이동(setAutoMoveRoundPositions)의 이동 속도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                             |
+| ----- | ------ | ------------------------------------------ |
+| speed | number | 이동 속도 (0.00001 ~ 1.0 사이로 보정됨). |
+
+* Return
+  * true: 설정 성공.
+  * false: 지도가 초기화되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().SetAutoMoveSpeed(0.5);
+```
+{% endtab %}
+{% endtabs %}
+
+### setPersonHeight(height)
+
+> 1인칭(플레이어) 모드에서 사용자의 눈높이(신장)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description                    |
+| ------ | ------ | ---------------------------------- |
+| height | number | 사용자 눈높이 (meter 단위).       |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().setPersonHeight(1.7);
+```
+{% endtab %}
+{% endtabs %}
+
+### setCeiling(altitude)
+
+> 1인칭 플레이어 모드에서 카메라가 위로 올라갈 수 있는 최대 고도(천장)를 설정합니다. 인자 없이 호출하면 천장 제한을 해제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type   | Description                                              |
+| -------- | ------ | ----------------------------------------------------------- |
+| altitude | number | (optional) 천장으로 설정할 고도. 생략 시 천장 제한 해제. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+Module.getViewCamera().setCeiling(50.0); // 고도 50m로 천장 설정
+Module.getViewCamera().setCeiling(); // 천장 제한 해제
 ```
 {% endtab %}
 {% endtabs %}

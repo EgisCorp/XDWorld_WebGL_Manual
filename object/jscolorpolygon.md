@@ -33,6 +33,81 @@ let parameter = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### createbyJson(parameter) → object
+
+> JSON 형태의 옵션 정보로 벽(Wall) 형태의 컬러 폴리곤 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description        |
+| --------- | ------ | ------------------- |
+| parameter | object | 폴리곤 생성 옵션 정보. |
+
+**parameter 구조**
+
+| Key         | Type   | Required | Description                                                             |
+| ----------- | ------ | -------- | ------------------------------------------------------------------------ |
+| coordinates | object | true     | `coordinate`(좌표 배열), `index`(정점 인덱스 배열, 3의 배수) 필드를 포함하는 객체. |
+| color       | array  | true     | 정점 별 색상 배열([JSColor](../core/jscolor.md) 목록, coordinates.coordinate와 개수가 같아야 함). |
+| thickness   | number | false    | 벽 두께.                                                                 |
+
+-   Return
+    -   object
+        -   name: "JSColorPolygon.createbyJson" 고정 문자열.
+        -   result: 실패 시 0. (성공 시 위 경고 참조 — 정상적으로 설정되지 않는 것으로 의심됨.)
+        -   return: 실패 사유 메시지.
+    -   실패 조건
+        -   지도가 로드되지 않은 경우.
+        -   coordinates.coordinate 파싱 실패 또는 정점 개수가 3개 미만인 경우.
+        -   coordinates.index 개수가 3의 배수가 아닌 경우.
+        -   color 파싱 실패, 혹은 정점 개수와 색상 개수가 일치하지 않는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### set(parameter) → boolean
+
+> 정점, 색상(및 선택적으로 인덱스) 배열로 컬러 메쉬(폴리곤) 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description   |
+| --------- | ------ | -------------- |
+| parameter | object | 메쉬 생성 옵션. |
+
+**parameter 구조**
+
+| Key    | Type                                | Required | Description                                                    |
+| ------ | ------------------------------------ | -------- | ---------------------------------------------------------------- |
+| vertex | array                                | true     | 정점 좌표 배열([JSVector3D](../core/jsvector3d.md) 목록).       |
+| color  | array                                | true     | 정점 별 색상 배열([JSColor](../core/jscolor.md) 목록).          |
+| index  | array                                | false    | 정점 인덱스 배열. 지정하지 않으면 vertex 순서대로 메쉬를 구성.  |
+
+-   Return
+    -   true : 생성 성공.
+    -   false : 생성 실패.
+    -   실패 조건
+        -   parameter에 vertex 또는 color가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### SetVerticalPlane(coordinates, parts, height, startColor, endColor) → boolean
 
 > 수직 벽 폴리곤 객체를 생성합니다.
@@ -120,6 +195,50 @@ colorPolygon.SetVerticalPlane(coordinates, parts, -50.0, new Module.JSColor(0, 2
 {% endtab %}
 {% endtabs %}
 
+### setOpacity(opacity) → void
+
+> 객체의 투명도(0.0 ~ 1.0)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description               |
+| ------- | ------ | -------------------------- |
+| opacity | number | 객체 투명도 값(0.0 ~ 1.0) |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+object.setOpacity(0.5);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### toLonlatArray() → object
+
+> 구성된 좌표 목록을 경위도, 고도로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - object
+    - result: 1 → 생성 성공 / 0 → 실패
+    - data: 좌표 데이터
+    - return: 메시지
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var positions = object.toLonlatArray();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getDescription(), setDescription(desc) → string
@@ -198,50 +317,6 @@ object.setName("MyObject");
 var objName = object.getName();
 // ... or ...
 object.setVisible(true);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setOpacity(opacity) → void
-
-> 객체의 투명도(0.0 ~ 1.0)를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name    | Type    | Description             |
-| ------- | ------- | ----------------------- |
-| visible | boolean | 객체 투명도 값(0.0 ~ 1.0) |
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-object.setOpacity(0.5);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### toLonlatArray() → object
-
-> 구성된 좌표 목록을 경위도, 고도로 반환합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-- Return
-  - object
-    - result: 1 → 생성 성공 / 0 → 실패
-    - data: 좌표 데이터
-    - return: 메시지
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var positions = object.toLonlatArray();
 ```
 
 {% endtab %}

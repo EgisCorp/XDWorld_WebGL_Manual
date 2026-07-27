@@ -182,6 +182,113 @@ object.setSpreadEffect(false); // Effect Off
 {% endtab %}
 {% endtabs %}
 
+### setClusterPoint(key, icon) → boolean
+
+> 클러스터(군집) 상태로 표시될 때 사용할 대표 포인트 이미지를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type                   | Description         |
+| :--- | :--------------------- | :--------------------- |
+| key  | string                 | 클러스터 포인트 고유 명칭. |
+| icon | [JSIcon](./jsicon.md)  | 클러스터 포인트 이미지.  |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   객체가 없는 경우.
+        -   icon에 텍스처가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setClusterDistance(distance) → boolean
+
+> sub POI가 클러스터로 병합되는 기준 거리를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                  |
+| :------- | :----- | :---------------------------- |
+| distance | number | 클러스터 병합 기준 거리(픽셀 단위). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패(객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setClusterBar(color, altitudeFrom, altitudeTo, size) → boolean
+
+> 클러스터 포인트로부터 지형을 연결하는 선(bar) 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name         | Type                          | Description       |
+| :----------- | :----------------------------- | :-------------------- |
+| color        | [JSColor](../core/jscolor.md) | 선 색상.             |
+| altitudeFrom | number                         | 선 시작 고도(meter 단위). |
+| altitudeTo   | number                         | 선 끝 고도(meter 단위).   |
+| size         | number                         | 선 두께.             |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패(객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setClusterPointVisible(visible) → boolean
+
+> 클러스터 포인트의 가시화 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                              |
+| :------ | :------ | :--------------------------------------- |
+| visible | boolean | <p>true: 가시화.<br>false: 비가시화.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패(객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+object.setClusterPointVisible(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getDescription(), setDescription(desc) → string

@@ -12,7 +12,164 @@ description: 지도 내 바람 흐름을 표현하는 객체를 생성 및 설�
 let flow = Module.getFlow();
 ```
 
+## Properties
+
+| Name         | Type   | Description                       |
+| ------------ | ------ | ------------------------------------ |
+| velocity     | number | 바람장 파티클 이동속도 스케일.     |
+| offsetHeight | number | 바람장 파티클 높이.                |
+| particleNum  | number | 화면에 표출되는 파티클 수.         |
+
 ## Function
+
+### createFlow(options) → boolean
+
+> 고유 ID를 가진 새로운 바람장(Flow) 객체를 비동기로 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                                                                                                            |
+| ------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options | object | `url`(필수, 바람장 파일 경로), `id`(필수, 고유 식별자), `start_color`, `end_color`(object, 파티클 시작/종료 색상), `velocity`, `base_altitude`, `particle_count`, `particle_life_time_min`, `particle_life_time_max`, `underground_altitude`, `thickness` 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 요청 성공(비동기 로드 시작).
+    -   false: `url` 또는 `id`가 없거나, 이미 동일한 `id`가 존재하는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### deleteFlow(id) → boolean
+
+> 지정한 ID의 바람장 객체를 제거합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description       |
+| ---- | ------ | -------------------- |
+| id   | string | 제거할 바람장 고유 ID. |
+
+-   Return
+    -   true: 제거 성공.
+    -   false: 해당 ID가 존재하지 않는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isExist(id) → boolean
+
+> 지정한 ID의 바람장 객체가 존재하는지 확인합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description        |
+| ---- | ------ | --------------------- |
+| id   | string | 확인할 바람장 고유 ID. |
+
+-   Return
+    -   true: 존재함.
+    -   false: 존재하지 않음.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### GetFlowData(url, type, velocity, height, particleNum)
+
+> (레거시) 바람장 파일을 요청하여 가시화 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type   | Description               |
+| ----------- | ------ | ---------------------------- |
+| url         | string | 바람장 파일 경로.          |
+| type        | number | 바람장 파일 타입.          |
+| velocity    | number | 파티클 이동속도 스케일.    |
+| height      | number | 파티클 높이.               |
+| particleNum | number | 파티클 수.                 |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### GetWaterDepthData(url, type, scale)
+
+> (레거시) 해수심도 데이터 파일을 요청하여 가시화 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description        |
+| ----- | ------ | --------------------- |
+| url   | string | 해수심도 파일 경로. |
+| type  | number | 파일 타입.          |
+| scale | number | 표현 스케일 값.     |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetFlowColor(startRed, startGreen, startBlue, endRed, endGreen, endBlue)
+
+> (레거시) 바람장 파티클의 시작/종료 색상을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type   | Description        |
+| ---------- | ------ | --------------------- |
+| startRed   | number | 시작 색상 red 값.   |
+| startGreen | number | 시작 색상 green 값. |
+| startBlue  | number | 시작 색상 blue 값.  |
+| endRed     | number | 종료 색상 red 값.   |
+| endGreen   | number | 종료 색상 green 값. |
+| endBlue    | number | 종료 색상 blue 값.  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### ClearFlowData()
 
@@ -28,6 +185,142 @@ let flow = Module.getFlow();
 ```javascript
 let flow = Module.getFlow();
 flow.ClearFlowData();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### CreateFlowData(velocity, height, particleNum) → boolean
+
+> (레거시) AddFlowData()로 등록한 데이터를 기반으로 바람장 가시화 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type   | Description               |
+| ----------- | ------ | ---------------------------- |
+| velocity    | number | 파티클 이동속도 스케일.    |
+| height      | number | 파티클 높이.               |
+| particleNum | number | 파티클 수.                 |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### AddFlowData(lat, lon, speed, direction)
+
+> (레거시) 바람장 데이터 지점(위경도, 풍속, 방향)을 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description   |
+| --------- | ------ | -------------- |
+| lat       | number | 위도.          |
+| lon       | number | 경도.          |
+| speed     | number | 풍속.          |
+| direction | number | 풍향.          |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setJSON(options) → boolean
+
+> [JSFlow.FlowDataOption](jsflow.md#jsflow.flowdataoption) 형식의 통합 옵션으로 바람장을 생성합니다.
+>
+> `data.url`(바람장 파일) 또는 `data.grid`(격자 데이터 직접 입력) 중 하나를 사용해 데이터를 구성하며, `data.dem`으로 DEM 결합, `legend`로 색상 표현 방식을 설정할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                                                     | Description  |
+| ------- | --------------------------------------------------------------------------- | -------------- |
+| options | [JSFlow.FlowDataOption](jsflow.md#jsflow.flowdataoption)                | 속성 정보.   |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: `data`가 없거나, `data.grid`/`data.url`이 모두 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setUnionTerrain(unionTerrain) → boolean
+
+> 바람장 파티클의 지형 결합(지표면 높이 반영) 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name         | Type    | Description                                    |
+| ------------ | ------- | -------------------------------------------------- |
+| unionTerrain | boolean | <p>true: 지형 결합.<br>false: 미결합.</p>       |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getVisible(id), setVisible(id, visible) → boolean
+
+> 지정한 ID의 바람장 가시화 유무를 설정하거나 반환합니다.
+>
+> setVisible()의 첫 번째 인자가 문자열이 아닌 경우, ID로 구분되지 않는 기본(전역) 바람장 객체에 적용됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                          |
+| ------- | ------- | ------------------------------------------------------- |
+| id      | string  | 대상 바람장 고유 ID.                                  |
+| visible | boolean | <p>true: 가시화.<br>false: 비가시화.</p>             |
+
+-   Return (get)
+    -   true: 가시화 상태.
+    -   false: 비가시화 상태이거나 해당 ID가 존재하지 않는 경우.
+-   Return (set)
+    -   true: 설정 성공.
+    -   false: id가 문자열이고 해당 ID가 존재하지 않는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
 ```
 
 {% endtab %}

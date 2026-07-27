@@ -248,7 +248,7 @@ line.setUnionMode(true);
 
 | Name | Type   | Description                                                |
 | ---- | ------ | ---------------------------------------------------------- |
-| type | number | <p>0: NORMAL<br>1: OUTLINE<br>2: GLOW<br>3: ARROW<br>4: DASH<br>5: FIRE<br>6: TWINKLE<br>7: WARNING</p> |
+| type | number | <p>0(`Module.NORMAL`): NORMAL<br>1(`Module.OUTLINE`): OUTLINE<br>2(`Module.GLOW`): GLOW<br>3(`Module.ARROW`): ARROW<br>4(`Module.DASH`): DASH<br>5(`Module.FIRE`): FIRE<br>6(`Module.TWINKLE`): TWINKLE<br>7(`Module.WARNING`): WARNING</p> |
 
 -   Sample
     -   타입 별 가시화 샘플
@@ -285,6 +285,104 @@ line.setLineType(2); // GLOW
 ```javascript
 line.setDepthBufferTest(true); // 활성화
 line.setDepthbufferTest(false); // 비활성화
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRenderToTexture(set) → boolean
+
+> 선 객체의 타입을 지형 결합(3DLINE) 또는 하늘선(SKY_LINE) 타입으로 전환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                        |
+| ---- | ------- | -------------------------------------------------------------------- |
+| set  | boolean | true: 3DLINE(지형 결합) 타입으로 전환, false: SKY_LINE 타입으로 전환. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+line.setRenderToTexture(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createGridArrowLine(option) → boolean
+
+> 격자(Grid) 셀 데이터를 기반으로 화살표 형태의 라인 세트(예: 바람장 등 방향 시각화)를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name             | Type           | Description                                                          |
+| ---------------- | -------------- | ------------------------------------------------------------------- |
+| option            | object         | 격자 화살표 라인 생성 옵션.                                          |
+| ↳ origin          | object         | 격자 시작 좌표 `{x, y}`(coordinate 옵션 좌표계 기준).                |
+| ↳ coordinate      | string(optional) | 좌표계 문자열("5180" 포함 시 EPSG:5180, 그 외에는 EPSG:5174 처리). |
+| ↳ min             | number         | 색상 매핑 최소값.                                                    |
+| ↳ max             | number         | 색상 매핑 최대값.                                                    |
+| ↳ cell            | array(object)  | 격자 셀 목록.                                                        |
+| &nbsp;&nbsp;• cell\[].direction | object | 방향 벡터 `{x, y, z}`(크기가 화살표 색상 강도 계산에 사용됨).   |
+| &nbsp;&nbsp;• cell\[].min       | object | 셀의 최소 좌표(origin 기준 상대 평면 좌표) `{x, y, z}`.          |
+| &nbsp;&nbsp;• cell\[].max       | object | 셀의 최대 좌표(origin 기준 상대 평면 좌표) `{x, y, z}`.          |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+    -   실패 조건
+        -   option에 cell 또는 origin이 없는 경우.
+        -   origin.x, origin.y가 없는 경우.
+        -   cell 배열이 비어있는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+line.createGridArrowLine({
+    origin: { x: 198000, y: 450000 },
+    coordinate: "5174",
+    min: 0,
+    max: 10,
+    cell: [
+        { direction: { x: 1, y: 0, z: 0 }, min: { x: 0, y: 0, z: 0 }, max: { x: 10, y: 10, z: 0 } }
+    ]
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getAxisMovePosition(pickPoint, mapPoint) → [JSVector3D](../core/jsvector3d.md)
+
+> 축(Axis) 편집 기즈모(정점 2개, 파트 1개로 구성된 라인)에서, 축 위의 피킹 좌표(pickPoint)와 현재 마우스 위치에 대응하는 지도 좌표(mapPoint)를 이용해 축 방향으로 제한된 이동 위치를 계산합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                                 | Description                        |
+| --------- | ------------------------------------- | ----------------------------------- |
+| pickPoint | [JSVector3D](../core/jsvector3d.md)  | 축 위에서 피킹한 좌표.              |
+| mapPoint  | [JSVector3D](../core/jsvector3d.md)  | 현재 마우스 위치에 대응하는 지도 좌표. |
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 축 방향으로 제한된 이동 결과 좌표.
+    -   (0, 0, 0): 객체가 정점 2개, 파트 1개로 구성된 축(Axis) 라인이 아닌 경우.
+-   Note
+    -   카메라 시점과 축 방향으로 구성되는 평면과 마우스 레이(ray)의 교차점을 축 방향으로 투영한 위치를 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let result = line.getAxisMovePosition(pickPoint, mapPoint);
 ```
 
 {% endtab %}
@@ -426,6 +524,32 @@ var coorList = object.getCoordinates();
 
 ```javascript
 var objectStyle = polyLine.getStyle();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isInstancedRender(), setInstancedRender(set) → boolean
+
+> 선 객체의 인스턴싱(Instanced) 렌더링 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                  |
+| ---- | ------- | ----------------------------------------------- |
+| set  | boolean | true: 인스턴싱 렌더링 사용, false: 미사용.      |
+
+-   Return
+    -   true: 설정/조회 성공.
+    -   false: 객체가 없거나, 라인 타입(S3dExline) 객체가 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+line.setInstancedRender(true);
+var isInstanced = line.isInstancedRender();
 ```
 
 {% endtab %}

@@ -47,11 +47,26 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | 25    | Fire\_EventCompleteShadowSimulation      | 일조 분석(그림자) 시뮬레이션 종료 시 이벤트 |
 | 26    | Fire\_EventCurrentTime | 일조 분석(그림자) 시뮬레이션 시 이벤트|
 | 27    | Fire\_EventBinaryTextureLoad | 바이너리 텍스처 지정 폴리곤 생성 시 이벤트 |
-| 28   | Fire\_EventTyphoonMoveFinished | 태풍 이동 종료 이벤트 |
-| 29   | Fire\_EventAnalysisPos | 분석 지점 선택 시 이벤트 |
-| 30   | Fire\_EventWMTSRequest | 타일 메쉬 생성 시 이벤트 |
-| 31   | Fire\_EventCreateBoundBox | 타일 메쉬 생성 시 이벤트(BoundBox 가시화) |
-| 32   | Fire\_EventCreateBox | 타일 메쉬 생성 시 이벤트(Box 가시화) |
+| 28    | Fire\_EventTyphoonMoveFinished | 태풍 이동 종료 이벤트 |
+| 29    | Fire\_EventAnalysisPos | 분석 지점 선택 시 이벤트 |
+| 30    | Fire\_EventWMTSRequest | 타일 메쉬 생성 시 이벤트 |
+| 31    | Fire\_EventCreateBoundBox | 타일 메쉬 생성 시 이벤트(BoundBox 가시화) |
+| 32    | Fire\_EventCreateBox | 타일 메쉬 생성 시 이벤트(Box 가시화) |
+| 33    | Fire\_EventSolarUpdate | 태양광 분석 정보 갱신 시 이벤트 |
+| 34    | Fire\_EventSolarCompleteRadiation | 태양광 일사량 분석 완료 시 이벤트 |
+| 35    | Fire\_EventCompleteAutoPanel | 태양광 패널 자동 배치 완료 시 이벤트 |
+| 36    | Fire\_EventFailedSolarServer | 태양광 서버 요청 실패 시 이벤트 |
+| 37    | Fire\_EventSelectedEditModule | 태양광 모듈 편집 선택 시 이벤트 |
+| 38    | Fire\_EventSelectedRoof | 지붕(Roof) 선택 시 이벤트 |
+| 39    | Fire\_EventSetSelectedRoofInfo | 지붕(Roof) 선택 정보 갱신 시 이벤트 |
+| 40    | Fire\_EventChangeModuleState | 태양광 모듈 상태 변경 시 이벤트 |
+| 41    | Fire\_EventAddSolarInfo | 태양광 패널 생성 시 이벤트 |
+| 42    | Fire\_EventAddBISolarInfo | 벽면 태양광 패널 생성 시 이벤트 |
+| 43    | Fire\_EventWallPoint | 벽면 지점 선택 시 이벤트 |
+| 44    | Fire\_EventWideSlice | 광역 단면 값 반환 시 이벤트 |
+| 45    | Fire\_EventSliceLine | 광역 단면 라인 생성 시 이벤트 |
+| 46    | Fire\_EventLoadGridData | 그리드 데이터 로드 시작 시 이벤트 |
+| 47    | Fire\_EventLoadDataFinish | 전체 그리드 데이터 로드 완료 시 이벤트 |
 
 ### Fire_MouseDown
 |변수 이름 | 자료형 | 상세 설명|
@@ -165,18 +180,6 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | latitude  | double | 카메라 위도 |
 | altitude  | double | 카메라 고도 |
 
-### Fire_KeyDown
-|변수 이름 | 자료형  |   상세 설명 |
-| ------- | ------ | --------- |
-| nChar   | int | 키 코드 |
-| nFlag   | int | 0 |
-
-### Fire_KeyUp
-|변수 이름 | 자료형  |   상세 설명 |
-| ------- | ------ | --------- |
-| nChar   | int | 키 코드 |
-| nFlag   | int | 0 |
-
 ### Fire_JSEventResize
 * 변수 제공 안함
 
@@ -240,7 +243,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | ----------- | ------------ | ----------------- |
 | ErrorStatus | unsigned int | GL 에러 타입 |
 
-### Fire__EventCompleteGridData
+### Fire\_EventCompleteGridData
 |변수 이름 | 자료형 | 상세 설명|
 | ----------- | ------ | ------------- |
 | strJSONData | string | 분석 결과 Json |
@@ -285,7 +288,7 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | lat1  | double | 메쉬 중심 위도 |
 | lon2  | double | 매쉬 중심 경도 | 
 | lat2  | double | 메쉬 중심 위도 |
-| alt   | doubel | 메쉬 중심 고도 |
+| alt   | double | 메쉬 중심 고도 |
 | level | int    | 메쉬 레벨     |
 | idx   | int    | 메쉬 idx     |
 | idy   | int    | 메쉬 idy      |
@@ -323,6 +326,102 @@ canvas.addEventListener("Fire_~~~~", function(e){
 | level  | int    | 메쉬 레벨              |
 | idx    | int    | 메쉬 idx              |
 | idy    | int    | 메쉬 idy              |
+
+### Fire_EventSolarUpdate
+* 변수 제공 안함
+
+### Fire_EventSolarCompleteRadiation
+* 변수 제공 안함
+
+### Fire_EventCompleteAutoPanel
+* 변수 제공 안함
+
+### Fire_EventFailedSolarServer
+* 변수 제공 안함
+
+### Fire_EventSelectedEditModule
+|변수 이름 | 자료형 | 상세 설명|
+| ------------ | ------ | --------- |
+| click        | int    | 편집 모듈 선택 성공 여부(1: 성공, 0: 실패) |
+| x            | long   | 선택 지점의 화면 X 좌표 |
+| y            | long   | 선택 지점의 화면 Y 좌표 |
+| dLon         | double | 선택 지점의 경도(선택 실패 시 0) |
+| dLat         | double | 선택 지점의 위도(선택 실패 시 0) |
+| dAlt         | double | 선택 지점의 고도(선택 실패 시 0) |
+| strKey       | string | 선택된 모듈의 오브젝트 키 |
+| dWidth       | double | 모듈 너비 |
+| dHeight      | double | 모듈 높이 |
+| dThickness   | double | 모듈 두께 |
+| dAngle       | double | 패널 각도 |
+| dDirection   | double | 패널 방향 |
+
+### Fire_EventSelectedRoof
+|변수 이름 | 자료형  | 상세 설명 |
+| -------- | ------- | --------- |
+| selected | boolean | 지붕 선택 성공 여부 |
+| layerName| string  | 레이어 명 |
+| objKey   | string  | 오브젝트 키 |
+| angle    | double  | 지붕 각도 |
+
+### Fire_EventSetSelectedRoofInfo
+* 변수 제공 안함
+
+### Fire_EventChangeModuleState
+|변수 이름 | 자료형 | 상세 설명|
+| ------ | ------ | --------- |
+| bAlive | int    | 변경된 모듈 상태 값 |
+
+### Fire_EventAddSolarInfo
+|변수 이름 | 자료형 | 상세 설명|
+| ----- | ------ | --------- |
+| dLon  | double | 생성 지점의 경도 |
+| dLat  | double | 생성 지점의 위도 |
+| dAlt  | double | 생성 지점의 고도 |
+| dAngle| double | 패널 각도 |
+
+### Fire_EventAddBISolarInfo
+* 벽면 패널(BI Solar) 생성 시 이벤트 입니다.
+
+|변수 이름 | 자료형 | 상세 설명|
+| ------ | ------ | --------- |
+| objkey | string | 생성된 오브젝트 키 |
+
+### Fire_EventWallPoint
+|변수 이름 | 자료형 | 상세 설명|
+| ---- | ------ | --------- |
+| lon  | double | 선택 지점 경도 |
+| lat  | double | 선택 지점 위도 |
+| alt  | double | 선택 지점 고도 |
+| norX | double | 벽면 법선 벡터 X |
+| norY | double | 벽면 법선 벡터 Y |
+| norZ | double | 벽면 법선 벡터 Z |
+
+### Fire_EventWideSlice
+|변수 이름 | 자료형  | 상세 설명 |
+| ----- | ------- | --------- |
+| Tx    | double  | 단면 영역 상단 X 좌표 |
+| Ty    | double  | 단면 영역 상단 Y 좌표 |
+| Bx    | double  | 단면 영역 하단 X 좌표 |
+| By    | double  | 단면 영역 하단 Y 좌표 |
+| flag  | boolean | 단면 갱신 여부 |
+| isEnd | boolean | 단면 작업 종료 여부 |
+| maxY  | double  | 단면 영역 최대 Y 값 |
+
+### Fire_EventSliceLine
+|변수 이름 | 자료형 | 상세 설명|
+| ----- | ------ | --------- |
+| lon1  | double | 라인 시작점 경도 |
+| lat1  | double | 라인 시작점 위도 |
+| lon2  | double | 라인 끝점 경도 |
+| lat2  | double | 라인 끝점 위도 |
+| alt   | double | 라인 고도 |
+| cnt   | int    | 라인 포인트 개수 |
+
+### Fire_EventLoadGridData
+* 변수 제공 안함
+
+### Fire_EventLoadDataFinish
+* 변수 제공 안함
 
 ## Ghost Symbol Event
 

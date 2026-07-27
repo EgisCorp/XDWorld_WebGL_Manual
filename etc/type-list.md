@@ -2,6 +2,8 @@
 
 ## Layer Type List
 
+> `Module.ELT_*` 형태로 접근하는 사용자(로컬) 레이어 생성 시 타입 상수입니다([JSLayerList.createLayer()](../layer/jslayerlist.md#createlayername-type-jslayer) 등에서 사용).
+
 | Index | Name               | Description        |
 | ----- | ------------------ | ------------------ |
 | 0     | ELT_POLYHEDRON     | 다면체             |
@@ -17,6 +19,25 @@
 | 10    | ELT_KML_GROUND     | kml ground         |
 | 11    | ELT_TERRAIN_IMAGE  | 영상 레이어        |
 | 12    | ELT_PICTOMETRY     | 픽토 메트리 데이터 |
+| 13    | ELT_WATER          | 수면(물) 레이어    |
+| 14    | ELT_3DASH          | 화산재(3D Ash)     |
+| 15    | ELT_ASHTREE        | 화산재 확산 트리    |
+| 16    | ELT_PRESENT        | 프레젠트(추정)      |
+| 17    | ELT_ASH_FALL3D     | 화산재 낙하(Fall3D) |
+| 18    | ELT_SKY_PLANE      | 하늘 평면(RTT 미적용 평면) |
+| 19    | ELT_SKY_LINE       | 하늘 선(RTT 미적용 선) |
+| 20    | ELT_UNION_LINE     | 지형 결합(RTT) 선   |
+| 21    | ELT_UNION_POINT    | 지형 결합(RTT) 포인트 |
+| 22    | ELT_TYPHOON        | 태풍(구 이름 ELT_TYPOON은 오탈자로 남아있는 동일 값) |
+| 23    | ELT_GRAPH          | 그래프 객체         |
+| 24    | ELT_3D_PYLON       | 송전탑(철탑)        |
+| 25    | ELT_RESERVOIR      | 저수지/저류조        |
+| 26    | ELT_3DTILES        | 3D Tiles 레이어     |
+| 27    | ELT_OVERLAY        | 오버레이 레이어      |
+
+-   Note
+    -   `ELT_TYPOON`은 오탈자가 있던 예전 이름으로, `ELT_TYPHOON`과 동일한 값을 가리키는 별칭으로 여전히 등록되어 있습니다. 신규 코드에서는 `ELT_TYPHOON` 사용을 권장합니다.
+    -   실제 인덱스 값은 빌드된 enum 정의에 따라 달라질 수 있으며, 위 Index 열은 참고용 순번입니다. 정확한 값은 항상 `Module.ELT_XXX` 상수를 통해 참조하십시오.
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -25,15 +46,30 @@ layerList.createLayer("Layer_Name", Module.ELT_3DPOINT); // Creates a symbol tex
 
 ## Tile Layer Type List
 
-| Index | Name                | Description       |
-| ----- | ------------------- | ----------------- |
-| 9     | ETLT_REAL3D         | 건물              |
-| 10    | ETLT_PNG_IMAGE      | 하이브리드 이미지 |
-| 19    | ETLT_POINT_CLOUD    | 포인트 클라우드   |
-| 20    | ETLT_TILE_LOD_MODEL | LOD 오브젝트      |
+> `Module.TILE_LAYER_TYPE_*` 형태로 접근하는 서비스(타일) 레이어 생성 시 타입 상수입니다.
+
+| Name                                | Description       |
+| ----------------------------------- | ----------------- |
+| TILE_LAYER_TYPE_POI                 | POI(포인트) 레이어 |
+| TILE_LAYER_TYPE_GHOST_SYMBOL        | 고스트 심볼 레이어 |
+| TILE_LAYER_TYPE_REAL3D              | 건물(Real3D) 레이어 |
+| TILE_LAYER_TYPE_IMAGE               | 하이브리드 이미지 레이어 |
+| TILE_LAYER_TYPE_WMS                 | WMS 레이어         |
+| TILE_LAYER_TYPE_WFS_POINT           | WFS POI 레이어     |
+| TILE_LAYER_TYPE_WFS_POLYGON         | WFS POLYGON 레이어 |
+| TILE_LAYER_TYPE_WFS_LINE            | WFS LINE 레이어    |
+| TILE_LAYER_TYPE_TILE_OBJECT         | 타일 오브젝트 레이어 |
+| TILE_LAYER_TYPE_POINT_CLOUD         | 포인트 클라우드 레이어 |
+| TILE_LAYER_TYPE_LOD_OBJECT          | 드론 LOD 오브젝트 레이어 |
+| TILE_LAYER_TYPE_VECTOR_PIPE         | 벡터 파이프 레이어  |
+| TILE_LAYER_TYPE_REAL3D_PACK         | 건물(Real3D) XDO 패킹 레이어 |
 
 ```javascript
-
+var layer = Module.getTileLayerList().createXDServerLayer({
+    name: "Layer Name",
+    url: "Request Server Address",
+    type: Module.TILE_LAYER_TYPE_REAL3D
+});
 ```
 
 ## WFS Type List
@@ -53,12 +89,15 @@ layerList.createWFSLayer(“WFS_Line" , 2);
 
 ## Navigation Align Type List
 
-| Index | Name             | Description       |
-| ----- | ---------------- | ----------------- |
-| 0     | JS_NAVIGATION_LT | 좌상단 위치 옵션. |
-| 1     | JS_NAVIGATION_RT | 우상단 위치 옵션. |
-| 2     | JS_NAVIGATION_LB | 좌하단 위치 옵션. |
-| 3     | JS_NAVIGATION_RB | 우하단 위치 옵션. |
+| Index | Name               | Description                                   |
+| ----- | ------------------ | ---------------------------------------------- |
+| -     | JS_NAVIGATION_MASK  | 위치 옵션 값 마스크(내부 비트 연산용).         |
+| 0     | JS_NAVIGATION_LT    | 좌상단 위치 옵션.                              |
+| 1     | JS_NAVIGATION_RT    | 우상단 위치 옵션.                              |
+| 2     | JS_NAVIGATION_LB    | 좌하단 위치 옵션.                              |
+| 3     | JS_NAVIGATION_RB    | 우하단 위치 옵션.                              |
+| -     | JS_NAVIGATION_LARGE | 네비게이션(나침판) 크게 표시 옵션.              |
+| -     | JS_NAVIGATION_SMALL | 네비게이션(나침판) 작게 표시 옵션.              |
 
 ```javascript
 Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
@@ -68,9 +107,11 @@ Module.getNavigation().setNaviPos(Module.JS_NAVIGATION_LT);
 
 | Index | Name            | Description                              |
 | ----- | --------------- | ---------------------------------------- |
+| -     | JS_VISIBLE_MASK | 가시화 옵션 값 마스크(내부 비트 연산용). |
 | 0     | JS_VISIBLE_ON   | 네비게이션(나침판) 가시화 활성화.        |
 | 1     | JS_VISIBLE_OFF  | 네비게이션(나침판) 가시화 비 활성화.     |
 | 2     | JS_VISIBLE_AUTO | 네비게이션(나침판) 간소화 가시화 활성화. |
+| -     | JS_VISIBLE_ERROR | 가시화 옵션 오류 값.                   |
 
 ```javascript
 Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_ON);

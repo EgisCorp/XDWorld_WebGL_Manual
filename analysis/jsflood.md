@@ -62,58 +62,6 @@ var flood = Module.getFlood();
 {% endtab %}
 {% endtabs %}
 
-### setHeight(height)
-
-> 물판 위치에 대한 고도를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name   | Type   | Description                                |
-| :----- | :----- | :----------------------------------------- |
-| height | number | 해발고도 기준 물판 고도 설정 (meter 단위). |
-
--   Sample
-    -   Refer to function setFloodHeight.
-    -   [Sandbox_Flood](https://sandbox.egiscloud.com/code/main.do?id=weather_flood)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setVisibleAltitude(distance)
-
-> 물판 가시거리를 설정합니다.
->
-> 설정값이 클수록 먼 거리에서 물판 가시화가 가능합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name     | Type   | Description              |
-| :------- | :----- | :----------------------- |
-| distance | number | 가시 거리 (meters 단위). |
-
--   Sample
-    -   function setFloodVisibleAltitude 참조.
-    -   [Sandbox_Flood](https://sandbox.egiscloud.com/code/main.do?id=weather_flood)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-
-```
-
-{% endtab %}
-{% endtabs %}
-
 ### setWaterSpeed(speed)
 
 > 물판에서 물흐름 속도를 설정합니다.
@@ -154,6 +102,68 @@ var flood = Module.getFlood();
 
 -   Sample
     -   function visibleWaterPlane 참조.
+    -   [Sandbox_Flood](https://sandbox.egiscloud.com/code/main.do?id=weather_flood)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getHeight(), setHeight(height) → number
+
+> 물판 위치에 대한 고도를 설정하거나 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                                |
+| :----- | :----- | :----------------------------------------- |
+| height | number | 해발고도 기준 물판 고도 설정 (meter 단위). |
+
+-   Return (get)
+    -   number: 현재 설정된 물판 고도.
+    -   0.0: 지도가 초기화되지 않은 경우.
+
+-   Sample
+    -   Refer to function setFloodHeight.
+    -   [Sandbox_Flood](https://sandbox.egiscloud.com/code/main.do?id=weather_flood)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getVisibleAltitude(), setVisibleAltitude(distance) → number
+
+> 물판 가시거리를 설정하거나 반환합니다.
+>
+> 설정값이 클수록 먼 거리에서 물판 가시화가 가능합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description              |
+| :------- | :----- | :----------------------- |
+| distance | number | 가시 거리 (meters 단위). |
+
+-   Return (get)
+    -   number: 현재 설정된 가시 거리.
+    -   0.0: 지도가 초기화되지 않은 경우.
+
+-   Sample
+    -   function setFloodVisibleAltitude 참조.
     -   [Sandbox_Flood](https://sandbox.egiscloud.com/code/main.do?id=weather_flood)
 
 {% endtab %}

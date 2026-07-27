@@ -484,6 +484,199 @@ newGhostSymbol.setDirection(90.0);
 {% endtab %}
 {% endtabs %}
 
+### getPitch() → number
+
+> 고스트 심볼 객체의 Pitch 회전 값(degree 단위)을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: Pitch 값.
+    -   0: 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var pitch = object.getPitch();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getYaw() → number
+
+> 고스트 심볼 객체의 Yaw 회전 값(degree 단위)을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: Yaw 값.
+    -   0: 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var yaw = object.getYaw();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoll() → number
+
+> 고스트 심볼 객체의 Roll 회전 값(degree 단위)을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: Roll 값.
+    -   0: 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var roll = object.getRoll();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRotationPYR(pitch, yaw, roll) → boolean
+
+> Pitch, Yaw, Roll 값으로 고스트 심볼 객체의 회전을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description               |
+| ----- | ------ | -------------------------- |
+| pitch | number | Pitch 값(degree 단위).     |
+| yaw   | number | Yaw 값(degree 단위).       |
+| roll  | number | Roll 값(degree 단위).      |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+object.setRotationPYR(0.0, 90.0, 0.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### exportFileFormat(options) → object
+
+> 고스트 심볼 객체를 지정한 파일 포맷의 바이너리 데이터로 내보냅니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description         |
+| ------- | ------ | --------------------- |
+| options | object | 내보내기 옵션 정보. |
+
+**options 구조**
+
+| Key           | Type   | Required | Description                                                                                  |
+| ------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| format        | string | true     | 내보낼 포맷("xdo"만 지원).                                                                     |
+| worldPosition | boolean| false    | 실좌표(world position) 포함 여부. 기본값 false.                                                |
+| version       | string | false    | xdo 포맷 버전("3.0.0.1", "3.0.0.2" 등 지정에 따라 인덱스 32비트 지원 여부가 달라짐).            |
+| texture       | object | false    | LOD 텍스쳐 정보. `level`(number, LOD 레벨), `fileName`(string, 텍스쳐 기본 이름) 필드를 포함. |
+
+-   Return
+    -   object(typed array): 내보낸 바이너리 데이터.
+    -   null: 내보내기 실패.
+    -   실패 조건
+        -   객체가 없는 경우.
+        -   format이 "xdo"가 아닌 경우.
+        -   내부 export 처리(exportXDO)가 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var data = object.exportFileFormat({ format: "xdo", worldPosition: true });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### exportTexture(options) → object
+
+> 고스트 심볼 객체의 특정 면(face)에 적용된 텍스쳐를 이미지 파일 형식의 바이너리 데이터로 내보냅니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description         |
+| ------- | ------ | --------------------- |
+| options | object | 내보내기 옵션 정보. |
+
+**options 구조**
+
+| Key    | Type   | Required | Description                                       |
+| ------ | ------ | -------- | ---------------------------------------------------- |
+| format | string | true     | 이미지 포맷("jpg", "tga", "png", 그 외에는 bmp).    |
+| faceID | number | false    | 텍스쳐를 추출할 면 인덱스. 기본값 0.                |
+
+-   Return
+    -   object(typed array): 내보낸 이미지 바이너리 데이터.
+    -   null: 내보내기 실패.
+    -   실패 조건
+        -   객체가 없는 경우.
+        -   format이 지정되지 않은 경우.
+        -   해당 faceID의 면이 없거나, 면에 텍스쳐가 없거나 surface 텍스쳐인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var data = object.exportTexture({ format: "png", faceID: 0 });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setScreenFixedSize(size) → boolean
+
+> 고스트 심볼 객체의 화면 고정 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                 |
+| ---- | ------- | --------------------------------------------------------------------------- |
+| size | number  | 고정 크기 값(px 단위). `null` 입력 시 화면 고정 크기 모드가 해제됩니다. |
+
+-   Return  
+    -   true: 설정 성공.  
+    -   false: 잘못된 입력 값 등으로 설정 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 화면 고정 크기 24픽셀로 설정
+object.setScreenFixedSize(24.0);
+
+// 화면 고정 크기 해제
+object.setScreenFixedSize(null);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getDirection() → number
 
 > 고스트 심볼 객체의 방향 각도를 반환합니다.
@@ -638,30 +831,54 @@ object.setVisible(true);
 {% endtab %}
 {% endtabs %}
 
-### setScreenFixedSize(size) → boolean
+### getLightColor(), setLightColor(color) → [JSColor](../core/jscolor.md)
 
-> 고스트 심볼 객체의 화면 고정 크기를 설정합니다.
+> 고스트 심볼 객체의 조명 색상을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type    | Description                                                                 |
-| ---- | ------- | --------------------------------------------------------------------------- |
-| size | number  | 고정 크기 값(px 단위). `null` 입력 시 화면 고정 크기 모드가 해제됩니다. |
+| Name  | Type                          | Description   |
+| ----- | ----------------------------- | -------------- |
+| color | [JSColor](../core/jscolor.md) | 조명 색상값.  |
 
--   Return  
-    -   true: 설정 성공.  
-    -   false: 잘못된 입력 값 등으로 설정 실패.
+-   Return
+    -   [JSColor](../core/jscolor.md): 객체 조명 색상.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
-// 화면 고정 크기 24픽셀로 설정
-object.setScreenFixedSize(24.0);
+var lightColor = object.getLightColor();
+// ... or ...
+object.setLightColor(new Module.JSColor(255, 255, 255, 255));
+```
 
-// 화면 고정 크기 해제
-object.setScreenFixedSize(null);
+{% endtab %}
+{% endtabs %}
+
+### getZbufferOff(), setZbufferOff(set) → boolean
+
+> depthBuffer(Z-Buffer) 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                            |
+| ---- | ------- | -------------------------------------------------------- |
+| set  | boolean | true: depthBuffer 미사용(항상 위에 표시).<br>false: depthBuffer 사용. |
+
+-   Return
+    -   true: depthBuffer 미사용 상태.
+    -   false: depthBuffer 사용 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var zBufferOff = object.getZbufferOff();
+// ... or ...
+object.setZbufferOff(true);
 ```
 
 {% endtab %}

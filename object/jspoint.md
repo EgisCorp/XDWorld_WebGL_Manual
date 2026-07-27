@@ -769,7 +769,365 @@ object.setVisibleRange(true, 50.0, 20000.0);
 {% endtab %}
 {% endtabs %}
 
+### isUserRegister() → boolean
+
+> 서비스(외부 데이터) 레이어를 통해 생성된 POI 객체인지 여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 서비스 레이어를 통해 생성된 객체.
+    -   false: 사용자 레이어 객체이거나, 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var isServiceObject = point.isUserRegister();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTextMargin(marginX, marginY) → boolean
+
+> POI 문자열이 표시되는 위치의 여백(현재 위치 기준 픽셀 오프셋)을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description        |
+| :------ | :----- | :--------------------- |
+| marginX | number | X축 방향 여백(pixel). |
+| marginY | number | Y축 방향 여백(pixel). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패(객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setTextMargin(10, -10);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRange(option) → boolean
+
+> POI 객체의 가시 범위 및 텍스트 표시 범위를 설정합니다.
+>
+> [setVisibleRange()](jspoint.md#setvisiblerangeenable-min-max-boolean)의 확장판으로, 텍스트 표시 범위(textMin, textMax)를 별도로 지정할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type    | Description                                                    |
+| :------- | :------ | :------------------------------------------------------------- |
+| option   | object  | 가시 범위 옵션.                                                 |
+| ↳ enable | boolean | 가시 범위 사용 여부(필수).                                       |
+| ↳ min    | number(optional) | 최소 가시거리.                                         |
+| ↳ max    | number(optional) | 최대 가시거리.                                         |
+| ↳ textMin| number(optional) | 텍스트 최소 표시거리(생략 시 min 값과 동기화).         |
+| ↳ textMax| number(optional) | 텍스트 최대 표시거리(생략 시 max 값과 동기화).         |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   객체가 없는 경우.
+        -   option 또는 option.enable이 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setRange({ enable: true, min: 50.0, max: 20000.0, textMin: 100.0, textMax: 5000.0 });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### releaseIcon() → boolean
+
+> POI 객체가 참조하는 일반 이미지 텍스처의 참조를 해제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 해제 성공.
+    -   false: 해제 실패(객체가 없거나, 설정된 이미지가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.releaseIcon();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### releaseHighlightIcon() → boolean
+
+> POI 객체가 참조하는 하이라이트 이미지 텍스처의 참조를 해제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 해제 성공.
+    -   false: 해제 실패(객체가 없거나, 설정된 하이라이트 이미지가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.releaseHighlightIcon();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBlinkColor(red, green, blue)
+
+> POI 객체의 깜빡임(Blink) 효과 색상을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| :---- | :----- | :---------------- |
+| red   | number | 색상 R 값(0~255). |
+| green | number | 색상 G 값(0~255). |
+| blue  | number | 색상 B 값(0~255). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setBlinkColor(255, 0, 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBlinkSize(size)
+
+> POI 객체의 깜빡임(Blink) 효과 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description    |
+| :--- | :----- | :----------------- |
+| size | number | 깜빡임 효과 크기.  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setBlinkSize(20.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBlinkSpeed(speed)
+
+> POI 객체의 깜빡임(Blink) 효과 속도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| :---- | :----- | ----------------- |
+| speed | number | 깜빡임 효과 속도. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setBlinkSpeed(1.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addScreenPosition(x, y) → boolean
+
+> POI 객체의 화면상 표시 위치에 픽셀 오프셋을 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description        |
+| :--- | :----- | ---------------------- |
+| x    | number | X축 방향 화면 오프셋(pixel). |
+| y    | number | Y축 방향 화면 오프셋(pixel). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패(객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.addScreenPosition(0, -20);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
+
+### getBlink(), setBlink(set) → boolean
+
+> POI 객체의 깜빡임(Blink) 효과 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                    |
+| :--- | :------ | :----------------------------------------------- |
+| set  | boolean | <p>true: 깜빡임 효과 사용.<br>false: 미사용.</p> |
+
+-   Return
+    -   true: 깜빡임 효과 사용 상태.
+    -   false: 미사용 상태(또는 객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setBlink(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRenderOrder(), setRenderOrder(order) → number
+
+> POI 객체의 렌더링 순서(값이 클수록 나중에 그려짐)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                       |
+| :---- | :----- | ------------------------------------- |
+| order | number | 렌더링 순서 값(0 미만 입력 시 0으로 보정). |
+
+-   Return
+    -   number: 설정된 렌더링 순서 값(객체가 없으면 0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setRenderOrder(2);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### color (property), setColor(color) → [JSColor](../core/jscolor.md)
+
+> POI 이미지에 적용할 색상(틴트)을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                          | Description |
+| :---- | :----------------------------- | :---------- |
+| color | [JSColor](../core/jscolor.md) | 적용할 색상.  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.color = new Module.JSColor(255, 255, 0, 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### imageScale, image_scale (property), setImageScale(scale) → number
+
+> POI 이미지의 배율을 설정합니다. 기본값 1.0.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| :---- | :----- | ----------------- |
+| scale | number | 이미지 배율(기본값 1.0). |
+
+-   Return
+    -   number: 설정된 이미지 배율(객체가 없으면 0.0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.imageScale = 1.5;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### zIndex, z_index (property), setZIndex(index) → number
+
+> POI 객체의 Z-Index(렌더링 우선순위 값)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| :---- | :----- | ----------------- |
+| index | number | Z-Index 값.       |
+
+-   Return
+    -   number: 설정된 Z-Index 값(객체가 없으면 0.0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.zIndex = 1.0;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### autoHeight (property), setautoHeight(set) → boolean
+
+> POI 객체의 높이 자동 조절(지형 고도 자동 반영) 기능 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                              |
+| :--- | :------ | --------------------------------------------- |
+| set  | boolean | <p>true: 자동 높이 조절 사용, false: 미사용.</p> |
+
+-   Return
+    -   true: 자동 높이 조절 사용 상태.
+    -   false: 미사용 상태(또는 객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.autoHeight = true;
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### getDescription(), setDescription(desc) → string
 

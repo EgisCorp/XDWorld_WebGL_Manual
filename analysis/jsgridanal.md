@@ -10,7 +10,395 @@ description: 지도 내 물판 기능 설정을 위한 API입니다.
 var object = Module.getAnalysis().getGridAnal();
 ```
 
+## Properties
+
+| Name              | Type    | Description                                    |
+| ----------------- | ------- | ------------------------------------------------- |
+| view_underground  | boolean | 지형 아래에 렌더링되는 레이어 표시 여부.        |
+
 ## Function
+
+### objectClear()
+
+> 그리드 분석의 가시화 객체만 삭제합니다 (분석 데이터 자체는 유지).
+
+{% tabs %}
+{% tab title="Information" %}
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### openMultipleGridDataURL(url, time, size, start, end, type, multipleCount, multipleIndex)
+
+> openGridDataURL()의 다중 격자 병합 버전입니다. 여러 데이터를 하나의 격자로 병합해서 사용할 때 사용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name          | Type   | Description                       |
+| ------------- | ------ | ------------------------------------ |
+| url           | string | 파일 주소.                         |
+| time          | number | 분석 결과 데이터의 시계열 인덱스. |
+| size          | number | Grid를 구성하는 Cell의 Byte 크기. |
+| start         | number | 수집 데이터 Cell의 시작 Offset.   |
+| end           | number | 수집 데이터 Cell의 종료 Offset.   |
+| type          | number | 데이터 형식.                       |
+| multipleCount | number | 병합할 데이터 총 개수.            |
+| multipleIndex | number | 현재 데이터의 병합 순서 인덱스.   |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getAreaByAltitude(resolution, minLon, minLat, maxLon, maxLat, checkAltitude) → number
+
+> 지정한 영역 내에서, 지형 고도가 기준 고도 이하인(바다 제외) 영역의 면적을 계산합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name          | Type   | Description                                     |
+| ------------- | ------ | -------------------------------------------------- |
+| resolution    | number | 계산 해상도(격자 간격, meter 단위).             |
+| minLon        | number | 대상 영역 최소 경도.                              |
+| minLat        | number | 대상 영역 최소 위도.                              |
+| maxLon        | number | 대상 영역 최대 경도.                              |
+| maxLat        | number | 대상 영역 최대 위도.                              |
+| checkAltitude | number | 판정 기준 고도 (이 고도 이하이면서 0.2m 초과인 지형을 포함). |
+
+-   Return
+    -   number: 계산된 면적 (m²).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getEditAreaWindTerrainData(resolution) → string
+
+> 현재 편집 영역의 지형 고도 데이터를 ESRI ASCII Grid(.asc) 형식 문자열로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type   | Description             |
+| ---------- | ------ | -------------------------- |
+| resolution | number | 격자 해상도 (meter 단위). |
+
+-   Return
+    -   string: ASCII Grid 형식의 지형 고도 데이터.
+    -   빈 문자열: 데이터 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getEditAreaWindBuildingData(resolution, minLon, minLat, maxLon, maxLat) → string
+
+> 지정한 영역 내 시설물(건물) 높이 데이터를 ESRI ASCII Grid(.asc) 형식 문자열로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type   | Description             |
+| ---------- | ------ | -------------------------- |
+| resolution | number | 격자 해상도 (meter 단위). |
+| minLon     | number | 대상 영역 최소 경도.     |
+| minLat     | number | 대상 영역 최소 위도.     |
+| maxLon     | number | 대상 영역 최대 경도.     |
+| maxLat     | number | 대상 영역 최대 위도.     |
+
+-   Return
+    -   string: ASCII Grid 형식의 건물 높이 데이터.
+    -   빈 문자열: 데이터 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getEditAreaWindLandCoverMapData(resolution) → string
+
+> 현재 편집 영역의 토지피복도 데이터를 ESRI ASCII Grid(.asc) 형식 문자열로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type   | Description             |
+| ---------- | ------ | -------------------------- |
+| resolution | number | 격자 해상도 (meter 단위). |
+
+-   Return
+    -   string: ASCII Grid 형식의 토지피복도 데이터.
+    -   빈 문자열: 데이터 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMouseCallback(callback)
+
+> 그리드 분석 관련 마우스 업(mouse up) 이벤트 콜백을 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description   |
+| -------- | -------- | -------------- |
+| callback | function | 콜백 함수.    |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGridLineVisible(visible)
+
+> 그리드 라인 표시 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                    |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 그리드 라인 표시.<br>false: 미표시.</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGridLineBaseAlt(altitude)
+
+> 그리드 라인 표시 기준 고도(여백)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description   |
+| -------- | ------ | -------------- |
+| altitude | number | 기준 고도 값. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGridLineMaxDistance(distance)
+
+> 그리드 라인이 표시되는 최대 거리를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description   |
+| -------- | ------ | -------------- |
+| distance | number | 최대 표시 거리. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBaseAltitude(altitude)
+
+> 그리드 분석 결과의 기준 고도(오프셋)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description   |
+| -------- | ------ | -------------- |
+| altitude | number | 기준 고도 값. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLegendJSON(options) → boolean
+
+> 그리드 분석 결과에 적용할 범례 색상을 JSON 옵션으로 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                                                                                                              |
+| ------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| options | object | `legendMode`(0: 바람 범례, 1: 고정 범례), `legend`(모드에 따라 `val`/`color`(고정 범례) 또는 `wfcolor`/`wacolor`(바람 범례) 속성을 가지는 항목 배열) 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: `legendMode` 또는 `legend`가 없거나, `legend` 배열이 비어 있는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLegendMode(mode)
+
+> 그리드 분석 범례 표현 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description   |
+| ---- | ------ | -------------- |
+| mode | number | 범례 모드 값. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createRasterImgData(name, ptr, memSize, width, height, time) → boolean
+
+> 메모리에 로드된 이미지 데이터를 사용해 2D Raster 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                            |
+| ------- | ------ | ---------------------------------------------------------- |
+| name    | string | 객체 고유 명칭.                                          |
+| ptr     | number | 이미지 데이터가 위치한 메모리 포인터 주소.               |
+| memSize | number | 이미지 데이터 크기 (byte 단위).                          |
+| width   | number | 이미지 가로 크기 (0이면 격자의 가로 셀 수 사용).        |
+| height  | number | 이미지 세로 크기 (0이면 격자의 세로 셀 수 사용).        |
+| time    | number | 시계열 인덱스.                                           |
+
+-   Return
+    -   true: 생성 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createPIGridDataJSON(options) → boolean
+
+> Point/Image 기반 그리드(PIGrid) 데이터를 설정합니다. DEM 결합, 값 범위 등을 포함한 확장된 격자 생성 방식입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                                                                                                                       |
+| ------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options | object | `kind`(필수, 격자 그룹명), `cols`, `rows`(필수, 셀 개수), `llcorner`(필수, `projNum`,`pos`), `size`(필수, 셀 크기), `dem`(`size`,`data`), `range`(`min`,`max`), `callback`, `isLittleEndian` 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 필수 항목이 누락되었거나 격자 객체 생성에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPIGridValue(options) → boolean
+
+> createPIGridDataJSON()으로 생성된 PIGrid의 현재/다음 시점 텍스처 데이터를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                          |
+| ------- | ------ | --------------------------------------------------------------------------------------- |
+| options | object | `current`(`length`,`data`: 메모리 포인터), `next`(`length`,`data`: 메모리 포인터) 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: PIGrid 객체가 없거나 필수 항목이 누락된 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### clear()
 

@@ -33,6 +33,40 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### SetGrid(left, top, right, bottom, altitude, row, col) → number
+
+> 최소, 최대 경위도 값을 기준으로 3차원 격자 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description       |
+| -------- | ------ | ------------------ |
+| left     | number | 좌측 경도.          |
+| top      | number | 상단 위도.          |
+| right    | number | 우측 경도.          |
+| bottom   | number | 하단 위도.          |
+| altitude | number | 객체 높이.          |
+| row      | number | 그리드 가로 개수.    |
+| col      | number | 그리드 세로 개수.    |
+
+-   Return
+    -   number: 격자를 구성하는 cell 갯수.
+    -   0: 생성 실패.
+    -   실패 조건
+        -   row \< 1 또는 col \< 1 값이 입력된 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var colorGrid3D = Module.createColorGrid3D("COLOR_GRID_3D");
+var gridCellNum = colorGrid3D.SetGrid(124.2, 39, 130.5, 34.5, 1000.0, 100, 100);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, row, col) → number
 
 > 3차원 격자의 각 꼭지점 좌표(경도, 위도)를 기준으로 격자 객체를 생성합니다.
@@ -329,6 +363,142 @@ colorGrid3D.Create();
 {% endtab %}
 {% endtabs %}
 
+### getCellBox(row, column) → object
+
+> 지정한 셀(row, column)의 8개 꼭지점 좌표(경도, 위도, 고도)를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description       |
+| ------ | ------ | ----------------- |
+| row    | number | 가로 인덱스 번호. |
+| column | number | 세로 인덱스 번호. |
+
+-   Return
+    -   object: 8개 꼭지점 좌표를 담은 객체. 필드: upLeftTop, upRightTop, upRightBottom, upLeftBottom, downLeftTop, downRightTop, downRightBottom, downLeftBottom ([JSVector3D](../core/jsvector3d.md) 타입).
+    -   null: 반환 실패.
+    -   실패 조건
+        -   row 또는 column이 유효하지 않을 경우.
+        -   내부 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var colorGrid3D = Module.createColorGrid3D("GRID_ID");
+var box = colorGrid3D.getCellBox(0, 0);
+var upLeftTop = box.upLeftTop;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getCellHeight(row, column) → number
+
+> 지정한 셀(row, column)의 높이값을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description       |
+| ------ | ------ | ----------------- |
+| row    | number | 가로 인덱스 번호. |
+| column | number | 세로 인덱스 번호. |
+
+-   Return
+    -   number: 셀의 높이값(meter 단위).
+    -   0: 반환 실패.
+    -   실패 조건
+        -   row 또는 column이 유효하지 않을 경우.
+        -   내부 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var colorGrid3D = Module.createColorGrid3D("GRID_ID");
+var height = colorGrid3D.getCellHeight(0, 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getCellWidthCount() → number
+
+> 3차원 격자 객체의 가로(Cell Width) 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return  
+    -   number: 가로 방향 셀 개수.  
+    -   0: 객체가 없거나 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var colorGrid3D = Module.createColorGrid3D("GRID_ID");
+var widthCount = colorGrid3D.getCellWidthCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getCellHeightCount() → number
+
+> 3차원 격자 객체의 세로(Cell Height) 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return  
+    -   number: 세로 방향 셀 개수.  
+    -   0: 객체가 없거나 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var colorGrid3D = Module.createColorGrid3D("GRID_ID");
+var heightCount = colorGrid3D.getCellHeightCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getCellColor(row, column) → [JSColor](../core/jscolor.md)
+
+> 지정한 셀(row, column)의 색상값을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description       |
+| ------ | ------ | ----------------- |
+| row    | number | 가로 인덱스 번호. |
+| column | number | 세로 인덱스 번호. |
+
+-   Return  
+    -   [JSColor](../core/jscolor.md): 셀의 색상값.  
+    -   실패 시 기본 색상 반환.
+
+-   실패 조건  
+    -   row 또는 column이 유효하지 않을 경우.  
+    -   내부 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var colorGrid3D = Module.createColorGrid3D("GRID_ID");
+var cellColor = colorGrid3D.getCellColor(0, 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getDescription(), setDescription(desc) → string
@@ -412,77 +582,3 @@ object.setVisible(true);
 {% endtab %}
 {% endtabs %}
 
-### getCellWidthCount() → number
-
-> 3차원 격자 객체의 가로(Cell Width) 개수를 반환합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
--   Return  
-    -   number: 가로 방향 셀 개수.  
-    -   0: 객체가 없거나 실패한 경우.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var colorGrid3D = Module.createColorGrid3D("GRID_ID");
-var widthCount = colorGrid3D.getCellWidthCount();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getCellHeightCount() → number
-
-> 3차원 격자 객체의 세로(Cell Height) 개수를 반환합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
--   Return  
-    -   number: 세로 방향 셀 개수.  
-    -   0: 객체가 없거나 실패한 경우.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var colorGrid3D = Module.createColorGrid3D("GRID_ID");
-var heightCount = colorGrid3D.getCellHeightCount();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getCellColor(row, column) → [JSColor](../core/jscolor.md)
-
-> 지정한 셀(row, column)의 색상값을 반환합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name   | Type   | Description       |
-| ------ | ------ | ----------------- |
-| row    | number | 가로 인덱스 번호. |
-| column | number | 세로 인덱스 번호. |
-
--   Return  
-    -   [JSColor](../core/jscolor.md): 셀의 색상값.  
-    -   실패 시 기본 색상 반환.
-
--   실패 조건  
-    -   row 또는 column이 유효하지 않을 경우.  
-    -   내부 객체가 null인 경우.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var colorGrid3D = Module.createColorGrid3D("GRID_ID");
-var cellColor = colorGrid3D.getCellColor(0, 0);
-```
-
-{% endtab %}
-{% endtabs %}

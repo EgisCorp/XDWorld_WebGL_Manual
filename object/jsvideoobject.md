@@ -30,6 +30,14 @@ var object = Module.createVideoObject("ID");
 | resolution 		| number                            	| 비디오 해상도.        				|
 | videoStreaming 	| boolean                        		| 비디오 스트리밍 여부.        			|
 | objectMapping 	| boolean                         		| 건물 매핑 여부.        			|
+| background 		| boolean                         		| 배경(오브젝트 렌더링 뒤) 표시 여부. true로 설정 시 objectMapping도 자동으로 true가 됨. |
+| frustum 			| boolean                         		| 카메라 절두체(Frustum) 가시화 여부.  |
+| frustumColor 		| [JSColor](../core/jscolor.md)     	| 카메라 절두체(Frustum) 색상.        |
+| meshPrecision 	| string(set) / number(get)         	| 비디오 매핑 메쉬 정밀도. set 시 "low"(200), "normal"(50), "high"(2) 중 하나(그 외 값은 0)로 설정, get 시 설정된 숫자값 반환. |
+| element 			| object                             	| 비디오 재생용 HTML 엘리먼트 참조(JS 객체). |
+| canvas 			| object                             	| 비디오 프레임을 그리는 canvas 엘리먼트 참조(JS 객체). |
+| context 			| object                             	| canvas의 2D 렌더링 컨텍스트 참조(JS 객체). |
+| hls 				| object                             	| HLS(HTTP Live Streaming) 재생에 사용하는 hls.js 인스턴스 참조(JS 객체). |
 
 ## Function
 
@@ -75,6 +83,31 @@ var object = Module.createVideoObject("ID");
 
 ```javascript
 
+```
+
+{% endtab %}
+{% endtabs %}
+
+### move(front, right)
+
+> 비디오 객체를 현재 방향 기준 전/후, 좌/우로 이동시킵니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                          |
+| ----- | ------ | ----------------------------------------- |
+| front | number | 전/후 방향 이동 거리(+: 전진, -: 후진).   |
+| right | number | 좌/우 방향 이동 거리(+: 우측, -: 좌측).   |
+
+-   Note
+    -   생성된 객체가 없거나 비디오 데이터가 없는 경우 아무 동작도 하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+object.move(1.0, 0.0); // 전진
 ```
 
 {% endtab %}

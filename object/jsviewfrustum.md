@@ -174,7 +174,85 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### createSlicedViewFrustum(eye, pan, tilt, xAngle, yAngle, maxDistance, widthSegment, heightSegment)
+
+> 절두체를 가로/세로 분할된(sliced) 셀 형태로 생성합니다.
+>
+> pan, tilt 입력값에 따른 회전 정보는 [createViewFrustum()](jsviewfrustum.md#createviewfrustumposition-pan-tilt-x-y-distance)과 동일합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name          | Type                                 | Description                    |
+| :------------ | -------------------------------------- | --------------------------------- |
+| eye           | [JSVector3D](../core/jsvector3d.md)   | 시점 중심 좌표(경도, 위도, 고도). |
+| pan           | number                                  | Y축 회전 설정.                    |
+| tilt          | number                                  | X축 회전 설정.                    |
+| xAngle        | number                                  | 화각 너비 설정.                   |
+| yAngle        | number                                  | 화각 높이 설정.                   |
+| maxDistance   | number                                  | 절두체 길이.                      |
+| widthSegment  | number                                  | 가로 분할 개수.                   |
+| heightSegment | number                                  | 세로 분할 개수.                   |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPlaneEdge(planeType) → [JSVec3Array](../core/jsvec3array.md)
+
+> 절두체를 구성하는 특정 평면의 경계 좌표 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description             |
+| :-------- | :----- | :------------------------- |
+| planeType | number | 조회할 평면 타입 번호(내부 정의값). |
+
+-   Return
+    -   [JSVec3Array](../core/jsvec3array.md): 경계 좌표 목록(경도, 위도, 고도). 조회 실패 시 빈 배열.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var edge = frustum.getPlaneEdge(0);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
+
+### eyePosition, eye_position (property), setEyePosition(position) → [JSVector3D](../core/jsvector3d.md)
+
+> 절두체 객체의 중심(시점) 좌표를 설정합니다.
+>
+> [getEyepos()](jsviewfrustum.md#geteyepos-jsvector3d) 함수와 동일한 값을 프로퍼티(`object.eyePosition` 또는 `object.eye_position`) 형태로도 조회할 수 있으며, 이 프로퍼티를 통해서만 값을 설정(set)할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                   |
+| -------- | ------------------------------------ | -------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md) | 중심(시점) 좌표(경도, 위도, 고도). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+frustum.eyePosition = new Module.JSVector3D(127.0, 37.5, 100.0);
+var eye = frustum.eyePosition;
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### getColor(), setColor(color) → [JSColor](../core/jscolor.md)
 

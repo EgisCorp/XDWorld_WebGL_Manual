@@ -164,7 +164,7 @@ object.setVisible(true);
 {% endtab %}
 {% endtabs %}
 
-### getPosition(), setPosition(pos) → void
+### getPosition(), setPosition(pos) → JSVector3D
 
 > 화살표 객체의 시작점을 설정 및 반환합니다.
 
@@ -174,6 +174,9 @@ object.setVisible(true);
 | Name | Type                                | Description        |
 | ---- | ----------------------------------- | ------------------ |
 | pos  | [JSVector3D](../core/jsvector3d.md) | 화살표 객체의 시작점. |
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 화살표 객체의 시작점(경위도/고도).
 
 {% endtab %}
 {% tab title="Template" %}
@@ -187,7 +190,7 @@ object.setPosition(pos);
 {% endtab %}
 {% endtabs %}
 
-### getOrient(), setOrient(orient) → void
+### getOrient(), setOrient(orient) → number
 
 > 화살표 객체의 방향을 설정 및 반환합니다.
 
@@ -197,6 +200,9 @@ object.setPosition(pos);
 | Name   | Type   | Description      |
 | ------ | ------ | ---------------- |
 | orient | number | 화살표 객체의 방향 |
+
+-   Return
+    -   number: 화살표 객체의 방향 값(pan).
 
 {% endtab %}
 {% tab title="Template" %}
@@ -210,7 +216,7 @@ object.setOrient(orient);
 {% endtab %}
 {% endtabs %}
 
-### getTilt(), setTilt(tilt) → void
+### getTilt(), setTilt(tilt) → number
 
 > 화살표 객체의 틸트를 설정 및 반환합니다.
 
@@ -220,6 +226,9 @@ object.setOrient(orient);
 | Name | Type   | Description      |
 | ---- | ------ | ---------------- |
 | tilt | number | 화살표 객체의 틸트 |
+
+-   Return
+    -   number: 화살표 객체의 틸트 값.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -233,7 +242,7 @@ object.setTilt(tilt);
 {% endtab %}
 {% endtabs %}
 
-### getDist(), setDist(dist) → void
+### getDist(), setDist(dist) → number
 
 > 객체의 길이를 설정 및 반환합니다.
 
@@ -243,6 +252,9 @@ object.setTilt(tilt);
 | Name | Type   | Description      |
 | ---- | ------ | ---------------- |
 | dist | number | 화살표 객체의 길이 |
+
+-   Return
+    -   number: 화살표 객체의 길이 값.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -256,7 +268,7 @@ object.setDist(dist);
 {% endtab %}
 {% endtabs %}
 
-### getColor(), setColor(color) → void
+### getColor(), setColor(color) → JSColor
 
 > 객체의 색상을 설정 및 반환합니다.
 
@@ -266,6 +278,9 @@ object.setDist(dist);
 | Name  | Type                          | Description      |
 | ----- | ----------------------------- | ---------------- |
 | color | [JSColor](../core/jscolor.md) | 화살표 객체의 색상 |
+
+-   Return
+    -   [JSColor](../core/jscolor.md): 화살표 객체의 색상.
 
 {% endtab %}
 {% tab title="Template" %}

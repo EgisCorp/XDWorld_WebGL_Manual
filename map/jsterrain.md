@@ -19,8 +19,299 @@ var map = Module.getTerrain();
 | recoverHue        | number | 색상 Hue 조정 값        |
 | recoverSaturation | number | 색상 Saturation 조정 값 |
 | recoverValue      | number | 색상 Value 조정 값      |
+| demServerURL      | string | (읽기 전용) DEM 서버 요청 URL |
+| demServerRoot     | string | (읽기 전용) DEM 서버 루트 경로 |
+| demLayerName      | string | (읽기 전용) DEM 서버 레이어 명칭 |
+| imageServerURL    | string | (읽기 전용) 지형 영상 서버 요청 URL |
+| imageServerRoot   | string | (읽기 전용) 지형 영상 서버 루트 경로 |
+| imageLayerName    | string | (읽기 전용) 지형 영상 서버 레이어 명칭 |
+| demBox            | object | (읽기 전용) 설정된 DEM Box 정보. `getDemBox()`와 동일한 형태. |
 
 ## Function
+
+### insertTerrainHoleArea(areaPositions) → boolean
+
+> 지정한 경위도 영역에 지형 홀(구멍) 영역을 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name          | Type                                   | Description                    |
+| ------------- | ----------------------------------------- | --------------------------------- |
+| areaPositions | [JSVec2Array](../core/jsvec2array.md)   | 홀 영역을 구성하는 좌표 목록 (2개 이상). |
+
+-   Return
+    -   항상 false (구현상 성공 여부와 무관하게 false 반환).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTerrainHoleAreaVisible(index, visible) → boolean
+
+> 등록된 지형 홀(구멍) 영역의 가시화 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                          |
+| ------- | ------- | ------------------------------------------------------- |
+| index   | number  | 대상 홀 영역 인덱스 (`insertTerrainHoleArea` 등록 순서). |
+| visible | boolean | <p>true: 가시화.<br>false: 비가시화.</p>              |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: index가 유효 범위를 벗어난 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMaxLevel(level)
+
+> 지형 요청 최대 레벨을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | -------------- |
+| level | number | 지형 최대 레벨. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRequestUrlOption(options) → boolean
+
+> DEM(고도) 및 지형 영상 데이터 요청 URL 옵션을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                                                        |
+| ------- | ------ | --------------------------------------------------------------------------------------------------------------------- |
+| options | object | `urltype`(필수, "xdserver" 또는 "user"), `dem`(`url`,`server`/`path`,`layer`/`format`), `image`(`url`,`server`/`path`,`layer`/`format`) 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: `urltype`이 누락되었거나 "xdserver", "user" 중 어디에도 해당하지 않는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setUseDemBox(use)
+
+> DEM Box(특정 영역에 대한 별도 DEM 요청) 기능 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                        |
+| ---- | ------- | ------------------------------------------------------ |
+| use  | boolean | <p>true: DEM Box 사용.<br>false: 미사용.</p>       |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDemBox(options) → boolean
+
+> DEM Box 영역 및 서버 요청 정보를 설정합니다. `demBox` 속성(getDemBox())으로 설정된 값을 조회할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                                                                             |
+| ------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| options | object | `server`(`url`, `request_type`("file"/그 외), `format` 또는 `layer_name`), `area`(`min`,`max`: `{lon,lat}`, `minlevel`, `maxlevel`), `encoding`(boolean) 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않았거나, `area`의 `min`/`max`에 `lon`/`lat`이 누락된 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearDemBoxArea() → boolean
+
+> 설정된 DEM Box 타일 인덱스 정보를 초기화합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 초기화 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBlankTileTextureURL(url) → boolean
+
+> 데이터가 없는 빈 타일에 대해 표시할 대체 텍스처 URL을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description       |
+| ---- | ------ | ------------------- |
+| url  | string | 대체 텍스처 URL 경로. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTerrainColor(options) → boolean
+
+> 고도 기반 지형 색상(DEM Color) 표현 옵션을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                                     |
+| ------- | ------ | --------------------------------------------------------------------------------------------------- |
+| options | object | `altitudemin`(필수, 최소 고도), `altitudemax`(필수, 최대 고도), `colorlist`(고도 구간별 색상 목록, [JSColor](../core/jscolor.md) 배열) 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않았거나, `altitudemin`/`altitudemax`가 누락된 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSkirtHeight(height)
+
+> 지형 타일 경계의 스커트(skirt, 이음새 가림용 수직 벽) 높이를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                |
+| ------ | ------ | ---------------------------- |
+| height | number | 스커트 높이 (meter 단위). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setImageryQuality(quality) → boolean
+
+> 지형 영상(이미지) 품질을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description       |
+| ------- | ------ | ------------------- |
+| quality | number | 영상 품질 값.       |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGridLine(options) → boolean
+
+> 경위도 그리드 라인 표시 옵션을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                          |
+| ------- | ------ | ---------------------------------------------------------------------------------------- |
+| options | object | `active`(boolean, 표시 여부), `width`(number, 라인 두께), `fadeAngle`(number, 페이드 시작 각도) 속성을 포함하는 옵션 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않았거나 options가 유효하지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### makeTerrainElevationCellData(option) → object
 

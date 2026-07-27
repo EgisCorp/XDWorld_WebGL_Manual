@@ -80,6 +80,36 @@ let parameters = {
 {% endtab %}
 {% endtabs %}
 
+### convertCatmullRom(options) → object
+
+> 좌표 목록으로 Catmull-Rom 곡선을 생성합니다. RDP 알고리즘 기반 좌표 간소화, 지형 결합 옵션을 지원합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                                                    |
+| ------- | ------ | ------------------------------------------------------------------------------------------------ |
+| options | object | `coordinates`(필수, `{style, coordinate}`), `alpha`(0~1), `tension`(0~1), `samples`(구간별 샘플 수, 기본 20), `simplify`(RDP 간소화 여부), `epsilon`(RDP 간소화 허용 오차), `union`(지형 결합 여부), `height`(지형 결합 시 추가 높이) 속성을 포함하는 옵션 객체. |
+
+* Return
+  * `.result`: API 성공 유무 (1: 성공, 0: 실패).
+  * `.name`: 동작 API 명칭.
+  * `.simplified`: RDP 간소화가 적용된 원본 제어점 목록 ([JSVec3Array](../core/jsvec3array.md)).
+  * `.position`: 생성된 Catmull-Rom 곡선 좌표 목록 ([JSVec3Array](../core/jsvec3array.md)).
+  * `.times`: 각 좌표까지의 누적 거리 목록 (array).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let option = {
+    coordinates: { style: "XYZ", coordinate: [[127.0, 37.5, 10], [127.01, 37.51, 10], [127.02, 37.49, 10]] },
+    samples: 20,
+    alpha: 0.5,
+};
+let result = Module.getMath().convertCatmullRom(option);
+```
+{% endtab %}
+{% endtabs %}
+
 ### calculationSlopeAnalysis(options) → object
 
 > 3\*3(0 배열 좌상단 9 배열 우하단) 배열값을 통한 경사 분석 결과 반환.
@@ -113,6 +143,8 @@ let result = Module.getMath().calculationSlopeAnalysis(slop);
 
 ### splitLine(options) → object
 
+> 이 함수는 `Module.JSMath.splitLine(...)`로 호출해야 합니다.
+>
 > 경위도 좌표 목록을 일정 간격으로 분할한 결과를 반환합니다.
 
 {% tabs %}
@@ -152,7 +184,187 @@ let option = {
     split: 10
 };
 
-let result = Module.getMath().splitLine(option);
+let result = Module.JSMath.splitLine(option);
+```
+{% endtab %}
+{% endtabs %}
+
+### getDistance2D(point0, point1) → number
+
+> 두 지점 간의 지형(고도) 결합 거리를 반환합니다 (입력 좌표 자체의 고도값은 사용하지 않고, 각 지점의 지형 고도를 조회하여 계산).
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type                                 | Description         |
+| ------ | ------------------------------------- | -------------------- |
+| point0 | [JSVector2D](../core/jsvector2d.md)  | 시작 좌표 (경도, 위도). |
+| point1 | [JSVector2D](../core/jsvector2d.md)  | 종료 좌표 (경도, 위도). |
+
+* Return
+  * number: 두 지점 간 거리 (meter 단위, 지형 고도 반영).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let d = Module.getMath().getDistance2D(new Module.JSVector2D(127.0, 37.5), new Module.JSVector2D(127.01, 37.51));
+```
+{% endtab %}
+{% endtabs %}
+
+### getDistance3D(point0, point1) → number
+
+> 두 지점(경도, 위도, 고도) 간의 직선 거리를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type                                 | Description               |
+| ------ | ------------------------------------- | --------------------------- |
+| point0 | [JSVector3D](../core/jsvector3d.md)  | 시작 좌표 (경도, 위도, 고도). |
+| point1 | [JSVector3D](../core/jsvector3d.md)  | 종료 좌표 (경도, 위도, 고도). |
+
+* Return
+  * number: 두 지점 간 직선 거리 (meter 단위).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let d = Module.getMath().getDistance3D(new Module.JSVector3D(127.0, 37.5, 10), new Module.JSVector3D(127.01, 37.51, 20));
+```
+{% endtab %}
+{% endtabs %}
+
+### getCubeBuffer(options) → array
+
+> 시작-끝 두 지점을 잇는 선을 기준으로, xRadius/yRadius 만큼 떨어진 8개의 정점 좌표(경도, 위도, 고도가 반복된 flat 배열)를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                          |
+| ------- | ------ | ----------------------------------------------------------------------- |
+| options | object | `from`(시작 좌표 [x,y,z] 배열), `to`(끝 좌표 [x,y,z] 배열), `xRadius`, `yRadius`(반경 값) 속성을 포함하는 옵션 객체. |
+
+* Return
+  * array: `[lon, lat, alt, lon, lat, alt, ...]` 형태의 8개 정점 좌표 (flat 배열).
+  * null: `from`, `to`, `xRadius`, `yRadius` 중 하나라도 누락된 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let option = {
+    from: [127.0, 37.5, 10],
+    to: [127.01, 37.51, 10],
+    xRadius: 2,
+    yRadius: 2,
+};
+let buffer = Module.getMath().getCubeBuffer(option);
+```
+{% endtab %}
+{% endtabs %}
+
+### transformBeZierCurve(options) → object
+
+> 이 함수는 `Module.JSMath.transformBeZierCurve(...)`로 호출해야 합니다.
+>
+> 다각형 좌표 목록을 베지어 곡선으로 변환하고, 변환된 곡선의 전체 길이와 좌표 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                                          |
+| ------- | ------ | ----------------------------------------------------------------------- |
+| options | object | `coordinates`(필수, `{style, coordinate}`, 3개 이상), `detail`(보간 점 수, 기본값 = 20 \* 정점 수) 속성을 포함하는 옵션 객체. |
+
+* Return
+  * `.result`: API 성공 유무 (1: 성공, 0: 실패).
+  * `.name`: 동작 API 명칭.
+  * `.return.length`: 변환된 곡선의 전체 길이.
+  * `.return.count`: 변환된 좌표 개수.
+  * `.return.data`: 변환된 좌표 목록 ([JSVec3Array](../core/jsvec3array.md)).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let option = {
+    coordinates: { style: "XYZ", coordinate: [[127.0, 37.5, 10], [127.01, 37.51, 10], [127.02, 37.49, 10]] },
+};
+let result = Module.JSMath.transformBeZierCurve(option);
+```
+{% endtab %}
+{% endtabs %}
+
+### triangulatePointsToConvexHull(positions) → array
+
+> 이 함수는 `Module.JSMath.triangulatePointsToConvexHull(...)`로 호출해야 합니다.
+>
+> 입력한 좌표 목록을 삼각분할하여 인덱스 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type                                    | Description             |
+| --------- | ----------------------------------------- | ------------------------- |
+| positions | Array<[JSVector3D](../core/jsvector3d.md)> | 삼각분할할 좌표 목록 (3개 이상). |
+
+* Return
+  * array: 삼각형을 구성하는 정점 인덱스 목록 (3개씩 하나의 삼각형).
+  * null: 입력이 배열이 아니거나, 중복 제거 후 좌표가 3개 미만인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let positions = [
+    new Module.JSVector3D(127.0, 37.5, 0),
+    new Module.JSVector3D(127.01, 37.5, 0),
+    new Module.JSVector3D(127.01, 37.51, 0),
+    new Module.JSVector3D(127.0, 37.51, 0),
+];
+let indices = Module.JSMath.triangulatePointsToConvexHull(positions);
+```
+{% endtab %}
+{% endtabs %}
+
+### triangulatePolygonWithInnerPoints(polygonPoints, innerPoints) → object
+
+> 이 함수는 `Module.JSMath.triangulatePolygonWithInnerPoints(...)`로 호출해야 합니다.
+>
+> 폴리곤 외곽 좌표와 내부 좌표를 함께 사용하여 삼각분할을 수행합니다 (Constrained Delaunay Triangulation).
+
+{% tabs %}
+{% tab title="Information" %}
+| Name          | Type  | Description                                              |
+| ------------- | ----- | ----------------------------------------------------------- |
+| polygonPoints | array | 폴리곤 외곽 좌표 목록, `[[lon, lat(, alt)], ...]` 형태 (3개 이상). |
+| innerPoints   | array | 폴리곤 내부에 포함될 좌표 목록, `[[lon, lat(, alt)], ...]` 형태. |
+
+* Return
+  * `.index`: 삼각형을 구성하는 정점 인덱스 목록 (3개씩 하나의 삼각형, 폴리곤 내부에 속하는 삼각형만 포함).
+  * `.vertex`: 전체 정점 좌표 목록 (외곽 + 내부, [JSVector3D](../core/jsvector3d.md) 배열).
+  * null: polygonPoints가 배열이 아니거나 유효한 좌표가 3개 미만인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let polygon = [[127.0, 37.5], [127.01, 37.5], [127.01, 37.51], [127.0, 37.51]];
+let inner = [[127.005, 37.505]];
+let result = Module.JSMath.triangulatePolygonWithInnerPoints(polygon, inner);
+```
+{% endtab %}
+{% endtabs %}
+
+### testParse(parameter)
+
+> 이 함수는 `Module.JSMath.testParse(...)`로 호출해야 합니다.
+>
+> 내부 파라미터 파싱(ConvertVal) 기능 검증을 위한 디버그/테스트 전용 함수입니다. 반환값 없이 각 파싱 결과를 콘솔(printf)에 출력합니다. 프로덕션 API 용도가 아닙니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description        |
+| --------- | ------ | -------------------- |
+| parameter | object | 테스트할 파라미터 객체. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -179,7 +391,7 @@ let result = Module.getMath().splitLine(option);
 | height  | number                              | optional   | 100     | 곡선 최대 높이.                                |
 | percent | number                              | optional   | 50      | 시작 위치 0%, 끝 위치 100% 기준으로 곡선 최대 높이 지점 설정. |
 
-### getIntervalPositionInRect(min, max, vertical, horizontal) → object
+### GetIntervalPositionInRect(min, max, vertical, horizontal) → object
 
 > 경위도 기준의 사각 영역 내에서 일정 간격마다 좌표를 균등 분포로 반환합니다.
 
@@ -203,7 +415,7 @@ let result = Module.getMath().splitLine(option);
 let min = new Module.JSVector2D(127.0, 37.5);
 let max = new Module.JSVector2D(127.01, 37.51);
 
-let result = Module.getMath().getIntervalPositionInRect(min, max, 10, 10);
+let result = Module.getMath().GetIntervalPositionInRect(min, max, 10, 10);
 ```
 {% endtab %}
 {% endtabs %}

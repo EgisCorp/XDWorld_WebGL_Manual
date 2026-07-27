@@ -69,6 +69,76 @@ ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", fals
 {% endtab %}
 {% endtabs %}
 
+### addGhostSymbolByGLB(id, url, name) → boolean
+
+> glb 포맷 파일을 고스트 심볼 모델로 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description            |
+| ---- | ------ | ---------------------- |
+| id   | string | 고스트 심볼 고유 명칭. |
+| url  | string | glb 파일 위치 경로.    |
+| name | string | glb 파일 명칭.         |
+
+-   Return
+    -   true: 등록 성공.
+    -   false: 등록 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+ghostSymbolMap.addGhostSymbolByGLB("MODEL_KEY", "./data", "model");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addGhostSymbolBy3DSbyJson(info) → string
+
+> 3ds 포맷 파일을 JSON 옵션 정보로 고스트 심볼 모델로 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description       |
+| ---- | ------ | ------------------- |
+| info | object | 등록 옵션 정보.    |
+
+**info 구조**
+
+| Key      | Type     | Required | Description                        |
+| -------- | -------- | -------- | ------------------------------------- |
+| id       | string   | true     | 고스트 심볼 고유 명칭.               |
+| file     | string   | true     | 3ds 파일 명(확장자 없이 입력).        |
+| basePath | string   | true     | 3ds 파일 위치 경로.                   |
+| complete | function | false    | 등록 완료 시 호출되는 콜백 함수(등록된 객체의 key 문자열을 인자로 전달). |
+
+-   Return
+    -   "success" : 등록 성공.
+    -   실패 조건에 따른 예외 메시지 문자열 반환.
+        -   id, file, basePath 속성이 없는 경우.
+        -   지도가 로드되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let info = {
+    id: "STREET_LIGHT",
+    file: "StreetLight",
+    basePath: "./data"
+};
+let ghostSymbolMap = Module.getGhostSymbolMap();
+ghostSymbolMap.addGhostSymbolBy3DSbyJson(info);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### insert(option) → string
 
 > 3ds 포맷 파일을 고스트 심볼 모델로 등록합니다.
@@ -78,7 +148,7 @@ ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", fals
 
 | Name   | Type                                                                                 | Description |
 | ------ | ------------------------------------------------------------------------------------ | ----------- |
-| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmapinsertoptions) | 속성 정보.  |
+| option | [JSGhostSymbolMap.InsertOptions](jsghostsymbolmap.md#jsghostsymbolmap.insertoptions) | 속성 정보.  |
 
 -   Return
     -   "success": 등록 성공.
@@ -130,6 +200,67 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 {% endtab %}
 {% endtabs %}
 
+### addGhostSymbolByBinary(id, data, extension, options) → boolean
+
+> 바이너리 데이터를 고스트 심볼 모델로 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description                                   |
+| --------- | ------ | ----------------------------------------------- |
+| id        | string | 고스트 심볼 고유 명칭.                          |
+| data      | array  | 모델 파일 바이너리 데이터(byte 배열).           |
+| extension | string | 파일 확장자.                                    |
+| options   | object | 등록 옵션. `isAxisYUp`(boolean, 기본값 true): Y축 업벡터 여부. |
+
+-   Return
+    -   true: 등록 성공.
+    -   false: 등록 실패.
+    -   실패 조건
+        -   data가 비어있거나 id가 빈 문자열인 경우.
+        -   내부 모델 파싱(insertByBinary)이 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGhostSymbolTextureByPixels(id, imageData, width, height) → boolean
+
+> 픽셀 데이터(raw image data)로 고스트 심볼 모델의 텍스쳐를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description                    |
+| --------- | ------ | --------------------------------- |
+| id        | string | 고스트 심볼 고유 명칭.           |
+| imageData | array  | 이미지 픽셀 바이너리 데이터.     |
+| width     | number | 이미지 너비(pixel 단위).         |
+| height    | number | 이미지 높이(pixel 단위).         |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   imageData가 비어있거나 id가 빈 문자열인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setGhostSymbolPositionOffset(id, front, right, up) → boolean
 
 > 고스트 심볼 모델의 오프셋을 설정합니다.
@@ -172,7 +303,7 @@ ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
 
 | Name   | Type                                                                             | Description |
 | ------ | -------------------------------------------------------------------------------- | ----------- |
-| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmaploadtexture) | 속성 정보.  |
+| option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmap.loadtexture) | 속성 정보.  |
 
 -   Return
     -   "success": 설정 성공.
@@ -444,17 +575,19 @@ var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+## Type Definitions
 
 #### JSGhostSymbolMap.InsertOptions
 
 > Options for registering a 3D model object as a ghost symbol.
+>
+> url, polygon 중 하나는 반드시 지정해야 합니다(둘 다 없으면 실패).
 
 | Name     | Type                      | Attributes | Default | Description                     |
 | -------- | ------------------------- | ---------- | ------- | ------------------------------- |
 | id       | string                    |            |         | 고스트 심볼 고유 명칭.          |
-| url      | string                    |            |         | 고스트 심볼 모델 파일 요청 URL. |
-| polygon  | [JSPolygon](jspolygon.md) |            |         | 고스트 심볼 모델 폴리곤         |
+| url      | string                    | optional*  |         | 고스트 심볼 모델 파일 요청 URL(polygon과 양자택일). |
+| polygon  | [JSPolygon](jspolygon.md) | optional*  |         | 고스트 심볼 모델 폴리곤(url과 양자택일).            |
 | format   | string                    | optional   |         | 요청 파일 포맷(3ds만 지원).     |
 | callback | function                  | optional   |         | 등록 완료 시 동작하는 CallBack  |
 
@@ -462,9 +595,11 @@ var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
 
 > Options for registering face textures for the registered ghost symbol object.
 
-| Name     | Type     | Attributes | Default | Description                       |
-| -------- | -------- | ---------- | ------- | --------------------------------- |
-| id       | number   |            |         | 고스트 심볼 고유 명칭.            |
-| url      | boolean  |            |         | 고스트 심볼 모델 이미지 요청 URL. |
-| index    | number   | optional   | 0       | 참조 객체 face Index.             |
-| callback | function | optional   |         | 등록 완료 시 동작하는 CallBack    |
+| Name       | Type                                 | Attributes | Default      | Description                          |
+| ---------- | ------------------------------------- | ---------- | ------------ | -------------------------------------- |
+| id         | string                                |            |              | 고스트 심볼 고유 명칭.               |
+| url        | string                                |            |              | 고스트 심볼 모델 이미지 요청 URL.    |
+| face_index | number                                | optional   | 0            | 텍스쳐를 적용할 face Index.          |
+| uv         | [JSVector2D](../core/jsvector2d.md)  | optional   | (1.0, 1.0)   | 텍스쳐 UV 반복(tiling) 배율.         |
+| reuse      | boolean                               | optional   | false        | 텍스처 이미지 재사용 여부(export용). |
+| callback   | function                              | optional   |              | 등록 완료 시 동작하는 CallBack       |

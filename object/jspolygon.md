@@ -216,8 +216,6 @@ var strKey = object.getId();
 > 중심 좌표(경도, 위도, 고도)를 기준으로 원 객체를 생성합니다.
 >
 > 입력 변수값(radius)으로 크기를 설정합니다.
->
-> 입력 변수값(radius)은 0보다 큰값, 입력 변수값(segment)은 3보다 큰값이 설정됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -242,22 +240,26 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
-### setSphere(parameter)
+### setSphere(parameter) → object
 
 > 중심 좌표(경도, 위도, 고도)를 기준으로 구 객체를 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name     | Type  | Description                   |
-| -------- | ----- | ----------------------------- |
-| paramter | Array | 구의 속성을 구성하는 목록입니다. 각 요소는 `{ position, radius, segment, color }` 객체로 구성됩니다. |
+| Name     | Type   | Description                   |
+| -------- | ------ | ----------------------------- |
+| paramter | object | 구의 속성을 구성하는 객체입니다. `{ position, radius, segment, color }` 형태로 구성됩니다. |
 
+-   Return
+    -   object
+        -   result: 1 → 생성 성공 / 0 → 실패
+        -   name: `"JSPolygon.setSphere"`
+        -   return: 메시지 문자열 (실패 시 오류 메시지, 성공 시 `"success"`)
 -   Description
-    -   `position`([JSVector3D](../core/jsvector3d.md))이 포함되지 않으면 구 폴리곤이 생성되지 않습니다.
+    -   `position`([JSVector3D](../core/jsvector3d.md))이 포함되지 않으면 구 폴리곤이 생성되지 않고 실패 결과를 반환합니다.
     -   속성에는 `radius`(number), `segment`(number), `color`([JSVector3D](../core/jscolor.md))가 포함됩니다.
     -   각 속성의 기본값은 `radius`(10), `segment`(30), `color`({255, 255, 255, 255}) 입니다.
-    -   `radius`는 0.00005보다 큰 값, `segment`는 6보다 큰 값이 설정됩니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -818,14 +820,13 @@ let xvec = polygon.getAxisEndpoint(0, 200); // 객체 중심 기준 (200, 0, 0) 
 
 ### getAltitude() → number
 
-> 객체 중심의 고도를 반환합니다.
+> 객체 중심의 고도(m)를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    - [JSVector3D](../core/jsvector3d.md): 반환 성공
-    - null: 반환 실패
+    -   number: 객체 중심의 고도(m). 객체가 NULL인 경우 0.0을 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1023,144 +1024,6 @@ let alt = polygon.getAltitude();
 {% endtab %}
 {% endtabs %}
 
-## Getter / Setter
-
-### getCoordinates(), setCoordinates(coordinates) → [Collection](../core/collection.md)
-
-> 평면 객체를 구성하는 좌표 목록을 설정합니다.
->
-> 입력 변수값(coordinates)은 최소 3개 이상의 배열로 구성합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name | Type | Description |
-| ----------- | ----------------------------------- | -------------------------------------------------- |
-| coordinates | [Collection](../core/collection.md) | 정점 좌표 목록 (경도, 위도, 고도). |
-
--   Return
-    -   [Collection](../core/collection.md): 반환 성공.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var coorList = object.getCoordinates();
-// ... or ...
-var vertexList = Module.getMap().getInputPointList();
-var object = Module.createPolygon("polygon");
-object.setCoordinates(vertexList);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getDescription(), setDescription(desc) → string
-
-> 객체에 대한 설명을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name | Type   | Description  |
-| ---- | ------ | ------------ |
-| desc | string | 설명 문자열. |
-
--   Return
-    -   string: 객체 설명 문자열이 성공적으로 반환.
-    -   null: 객체가 null인 경우.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var strDesc = object.getDescription();
-// ... or ...
-object.setDescription("First Object.");
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getName(), setName(name) → string
-
-> 객체 이름을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name | Type   | Description |
-| ---- | ------ | ----------- |
-| name | string | 객체 이름.  |
-
--   Return
-    -   string: 객체 이름을 성공적을 반환
-    -   null: 객체가 null인 경우.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var objName = object.getName();
-// ... or ...
-object.setName("MyObject");
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getVisible(), setVisible(visible) → boolean
-
-> 객체의 가시화 유무를 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name    | Type    | Description                                        |
-| ------- | ------- | -------------------------------------------------- |
-| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
-
--   Return
-    -   true: 객체 가시화 상태.
-    -   false: 객체 비가시화 상태.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var objName = object.getName();
-// ... or ...
-object.setVisible(true);
-```
-
-{% endtab %}
-{% endtabs %}
-
-### getStyle(), setStyle(style) → [JSPolygonStyle](jspolygonstyle.md)
-
-> [JSPolygonStyle](jspolygonstyle.md)으로 적용된 스타일을 평면 객체에 설정합니다.
->
-> 평면 객체의 색상, 투명도, 외곽선 등을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name  | Type                                | Description |
-| ----- | ----------------------------------- | ----------- |
-| style | [JSPolygonStyle](jspolygonstyle.md) | 속성 정보.  |
-
--   Return
-    -   [JSPolygonStyle](jspolygonstyle.md): 반환 성공.
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
-var objectStyle = polyLine.getStyle();
-```
-
-{% endtab %}
-{% endtabs %}
-
 ### setAnimationByID(id) → boolean
 
 > GLTF 객체의 애니메이션을 ID 기준으로 설정합니다.  
@@ -1192,28 +1055,29 @@ gltfObject.setAnimationByID(0);
 
 ### setAnimationsByID(id) → boolean
 
-> GLTF 객체의 애니메이션을 ID 기준으로 설정합니다.
+> GLTF 객체의 다중 애니메이션을 ID 기준으로 설정합니다.
 > 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
+> 입력값이 배열이 아니면 `setAnimationByID(id)`와 동일하게 단일 ID로 처리됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description              |
-| ---- | ------ | ------------------------ |
-| id   | object | 애니메이션 ID (정수 값). |
+| Name | Type            | Description                              |
+| ---- | --------------- | ----------------------------------------- |
+| id   | number \| number[] | 애니메이션 ID (단일 정수 값 또는 정수 배열). |
 
 -   Return  
-    -   true: 설정 성공.
+    -   true: 설정 성공. (배열로 입력한 경우, 모든 ID가 유효 애니메이션과 일치해야 true)
     -   false: 설정 실패.
         - 객체가 null이거나 GLTF 객체가 아닌 경우.
-        - 입력된 ID와 일치하는 애니메이션이 없는 경우.
+        - 입력된 ID 중 일치하는 애니메이션이 없는 것이 하나라도 있는 경우.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var gltfObject = Module.createPolygon("GLTF_OBJECT");
-gltfObject.setAnimationByID([0, 1]);
+gltfObject.setAnimationsByID([0, 1]);
 ```
 
 {% endtab %}
@@ -1401,25 +1265,1291 @@ poly.setOverlayObject({
 {% endtab %}
 {% endtabs %}
 
-### getUnionMode(), setUnionMode(bMode) → void
+### create(options) → boolean
 
-> 폴리곤 객체의 연산 모드를 설정합니다.
+> 옵션 객체를 기반으로 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                        |
+| ------- | ------ | ------------------------------------------------------------------- |
+| options | object | 생성 옵션. `style` 속성으로 생성 방식을 구분합니다(아래 참고).        |
+
+**options 구조 (공통)**
+
+| Name  | Type   | Required | Description                                              |
+| ----- | ------ | -------- | --------------------------------------------------------- |
+| style | string | ✔        | `"edge"`, `"viewplane"`, `"triangulated"` 중 하나.        |
+
+-   `style === "edge"`: `coordinate`([JSVec3Array](../core/jsvec3array.md), 3개 이상 필요) 로 외곽선 평면을 생성합니다.
+-   `style === "viewplane"`: 내부적으로 `createViewPlane(options)`를 호출합니다(자세한 옵션은 구현부 미확인).
+-   `style === "triangulated"`: `vertices`([JSVec3Array](../core/jsvec3array.md), 3개 이상), `indices`(삼각형 인덱스 배열, `[a,b,c,...]` 또는 `[[a,b,c],...]` 형태)로 삼각분할된 평면을 생성합니다.
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+        -   `style`이 없는 경우.
+        -   `style === "edge"`: `coordinate`가 없거나 정점 수가 3개 미만인 경우.
+        -   `style === "triangulated"`: `vertices`/`indices`가 없거나, 인덱스 개수가 3의 배수가 아니거나, 인덱스가 정점 범위를 벗어나는 경우.
+        -   그 외 `style` 값인 경우(인식되지 않는 style은 무시되어 false 반환).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var polygon = Module.createPolygon("EDGE_POLY");
+polygon.create({
+    style: "edge",
+    coordinate: vertexList // JSVec3Array, 3개 이상
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createByJson(parameter) → object
+
+> JSON 형태의 파라미터로 평면 객체를 생성합니다. (바인딩된 이름은 `createByJson`이며, `createbyJson`으로도 동일하게 호출 가능합니다.)
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description                    |
+| --------- | ------ | ------------------------------- |
+| parameter | object | 생성 파라미터(아래 구조 참고). |
+
+**parameter 구조**
+
+| Name                     | Type   | Required | Description                                                        |
+| ------------------------ | ------ | -------- | -------------------------------------------------------------------- |
+| coordinates.coordinate   | array  | ✔        | 정점 좌표 목록(경도, 위도, 고도).                                     |
+| coordinates.parts        | array  | ✔        | 평면을 구성하는 coordinate 개수 목록.                                 |
+| unionterrain             | boolean|          | 지형 결합(RTT) 여부. 기본값 false.                                    |
+| height                   | number |          | 높이값. 0보다 크면 각기둥(prism) 형태로 생성. 기본값 0.               |
+| image.uv                 | array  |          | 텍스처 좌표 목록. `image` 지정 시 좌표 수와 coordinate 수가 같아야 함. |
+| style.lineWidth          | number |          | 외곽선 두께.                                                         |
+| style.fill               | color  |          | 채움 색상. 기본값 흰색.                                               |
+| style.stroke              | color  |          | 외곽선 색상. 기본값 검정.                                            |
+
+-   Return (object)
+    -   result: 1 → 생성 성공 / 0 → 실패
+    -   name: `"JSPolygon.createbyJson"`
+    -   return: 실패 사유 메시지 또는 `"success"`
+-   실패 조건
+    -   지도가 로드되지 않은 경우.
+    -   `parameter`가 없는 경우.
+    -   `coordinates.coordinate` 또는 `coordinates.parts` 파싱에 실패한 경우.
+    -   `image`가 지정됐으나 `uv` 개수와 좌표 개수가 다르거나 `uv`가 비어있는 경우.
+    -   폴리곤 생성(`CreatePlane`)에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var polygon = Module.createPolygon("JSON_POLY");
+var result = polygon.createByJson({
+    coordinates: {
+        coordinate: [[127.0, 37.5, 0], [127.1, 37.5, 0], [127.1, 37.6, 0]],
+        parts: [3]
+    },
+    style: { fill: { r: 255, g: 0, b: 0, a: 255 } }
+});
+console.log(result.result, result.return);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isInsidePosition(position) → boolean
+
+> 입력한 평면 좌표(경도, 위도)가 평면 객체 내부에 포함되는지 여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description        |
+| -------- | ------------------------------------ | ------------------- |
+| position | [JSVector2D](../core/jsvector2d.md)  | 검사할 좌표(경도, 위도). |
+
+-   Return
+    -   true: position이 평면 내부에 포함됨.
+    -   false: 포함되지 않거나, 판정에 필요한 정점/파트 정보가 3개 미만인 경우.
+-   Description
+    -   최초 호출 시 내부적으로 공간 연산용 2차원 폴리곤을 생성하여 캐시하고, 이후 호출부터는 캐시된 폴리곤으로 판정합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var isInside = polygon.isInsidePosition(new Module.JSVector2D(127.05, 37.55));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### removeAllTexture() → void
+
+> 평면 객체에 설정된 모든 face 텍스처를 제거합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   없음(void). 객체가 NULL인 경우 아무 동작도 하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.removeAllTexture();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPartCoordinatesHeightUV(coordinates, parts, uv, height) → boolean
+
+> 정점 좌표, 파트, UV 좌표, 높이값을 이용해 텍스처가 적용된 각기둥(prism) 형태의 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                            |
+| ----------- | -------------------------------------- | -------------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md)  | 정점 좌표 목록 (경도, 위도, 고도).     |
+| parts       | [Collection](../core/collection.md)    | 평면을 구성하는 coordinates 개수 목록. |
+| uv          | [JSVec2Array](../core/jsvec2array.md)  | 정점에 대응하는 uv 좌표 목록.          |
+| height      | number                                 | 각기둥 높이(m). 0 이하인 경우 1.0으로 대체되어 적용됩니다.  |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+        -   parts 구성요소가 없는 경우.
+        -   coordinates 개수와 parts 합이 다른 경우.
+        -   정점/파트 정보가 비어있는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDisplayGridSurface(visibleVertical, visibleHorizontal) → boolean
+
+> 평면 객체 표면을 격자(그리드) 라인 형태로 렌더링할지 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name              | Type    | Description               |
+| ----------------- | ------- | ------------------------- |
+| visibleVertical   | boolean | 수직 방향 격자 라인 표시 여부. |
+| visibleHorizontal | boolean | 수평 방향 격자 라인 표시 여부. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 NULL인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setDisplayGridSurface(true, true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGridSurfaceStyle(lineColor, lineWidth, gridSize) → boolean
+
+> 격자(그리드) 표면 라인의 색상, 두께, 격자 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                               | Description             |
+| --------- | ----------------------------------- | ------------------------ |
+| lineColor | [JSColor](../core/jscolor.md)      | 격자 라인 색상.          |
+| lineWidth | number                              | 격자 라인 두께.          |
+| gridSize  | [JSSize3D](../core/jssize3d.md)    | 격자 셀 크기(width, height, depth). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 NULL인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDemShape(coordinates, positionAltitude, height, terrainLineNum, terrainLineInterval) → boolean
+
+> 지정한 영역 내에 로드된 지형(DEM) 형태를 따라가는 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name                | Type                                   | Description                    |
+| ------------------- | --------------------------------------- | ------------------------------- |
+| coordinates         | [JSVec2Array](../core/jsvec2array.md)  | 영역을 구성하는 좌표 목록(경도, 위도). 3개 이상 필요. |
+| positionAltitude    | number                                  | 생성 기준 고도(m).               |
+| height              | number                                  | 객체 높이(m).                    |
+| terrainLineNum      | number                                  | 지형 라인 수.                    |
+| terrainLineInterval | number                                  | 지형 라인 간격.                  |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패. (coordinates 개수가 3개 미만인 경우, 객체가 NULL인 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRenderOffset(offset) → boolean
+
+> 폴리곤 면의 렌더링 오프셋을 설정합니다. 동일 위치의 라인 객체와 z-fighting(깜빡임)이 발생할 때 값을 다소 높여 보정하는 용도로 사용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description   |
+| ------ | ------ | -------------- |
+| offset | number | 렌더링 오프셋 값. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 NULL인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setRenderOffset(0.5);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTexturePlaneWithPixelData(coordinates, parts, uv, imageData, size, setRTT) → boolean
+
+> 픽셀 데이터(바이트 배열)를 텍스처로 사용하여 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                                              |
+| ----------- | -------------------------------------- | --------------------------------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 고도). 3개 이상 필요.          |
+| parts       | [Collection](../core/collection.md)   | 평면을 구성하는 coordinates 개수 목록. 1개 이상 필요.      |
+| uv          | [JSVec2Array](../core/jsvec2array.md) | 정점에 대응하는 uv 좌표 목록. 3개 이상, coordinates와 개수 동일 필요. |
+| imageData   | Uint8Array (또는 유사 배열)            | 픽셀 데이터(RGBA 바이트 배열).                            |
+| size        | [JSSize2D](../core/jssize2d.md)       | 이미지 가로/세로 크기.                                    |
+| setRTT      | boolean                                | true: 지형 결합(RTT) 가시화, false: 기본 가시화.          |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+        -   coordinates, parts, uv 중 하나라도 조건(정점 3개 미만/parts 없음/uv 3개 미만)을 만족하지 못하는 경우.
+        -   coordinates 개수와 uv 개수가 다른 경우.
+        -   imageData 길이가 0인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTexturePlaneWithBinaryTextures(vertices, uv, url, isRTT) → boolean
+
+> 텍스처 이미지를 url로부터 비동기로 받아와 평면 객체에 적용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                  | Description                                     |
+| -------- | -------------------------------------- | ------------------------------------------------ |
+| vertices | [JSVec3Array](../core/jsvec3array.md) | 정점 좌표 목록 (경도, 위도, 고도). 3개 이상 필요. |
+| uv       | [JSVec2Array](../core/jsvec2array.md) | 정점에 대응하는 uv 좌표 목록. 3개 이상 필요.      |
+| url      | string                                 | 텍스처(바이너리) url.                            |
+| isRTT    | boolean                                | true: 지형 결합(RTT) 가시화, false: 기본 가시화. |
+
+-   Return
+    -   true: 생성 성공(비동기 텍스처 로드 요청까지 완료).
+    -   false: 생성 실패. (vertices 또는 uv 개수가 3개 미만인 경우)
+-   Description
+    -   텍스처 로드가 완료되기 전까지 객체는 비가시화(`m_bVisible = false`) 상태이며, 로드가 끝나면 자동으로 표시됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTextureByName(textureName, faceIndex) → boolean
+
+> 이미 등록되어 있는 텍스처 이름으로 특정 face에 텍스처를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type   | Description   |
+| ----------- | ------ | -------------- |
+| textureName | string | 등록된 텍스처 이름. |
+| faceIndex   | number | face 인덱스.    |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+        -   등록된 텍스처 이름이 없는 경우.
+        -   face 인덱스가 face 개수를 초과하거나 음수인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getNodeCount() → number
+
+> GLTF 객체를 구성하는 하위 노드(파트) 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 노드 개수. 객체가 NULL이거나 GLTF 타입이 아닌 경우 0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var count = gltfObject.getNodeCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setNodeVisibleByIndexRange(indexMin, indexMax) → boolean
+
+> GLTF 객체의 하위 노드 중 인덱스 범위(indexMin ~ indexMax)에 해당하는 노드만 가시화하고, 나머지는 비가시화합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description       |
+| -------- | ------ | ------------------ |
+| indexMin | number | 가시화할 최소 인덱스. |
+| indexMax | number | 가시화할 최대 인덱스. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 NULL이거나 GLTF 타입이 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+gltfObject.setNodeVisibleByIndexRange(0, 3);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setNodeVisibleByIndex(index, visible) → boolean
+
+> GLTF 객체의 특정 인덱스 노드의 가시화 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description       |
+| ------- | ------- | ------------------ |
+| index   | number  | 노드 인덱스.        |
+| visible | boolean | 가시화 여부.        |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+        -   객체가 NULL이거나 GLTF 타입이 아닌 경우.
+        -   index가 음수이거나 노드 개수 이상인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+gltfObject.setNodeVisibleByIndex(2, false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setNodeVisibleByKey(key, visible) → boolean
+
+> GLTF 객체의 특정 키(노드 이름)를 가진 노드의 가시화 및 선택(pickable) 가능 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description        |
+| ------- | ------- | ------------------- |
+| key     | string  | 노드 고유 키(이름).  |
+| visible | boolean | 가시화 및 선택 가능 여부. |
+
+-   Return
+    -   true: 설정 성공(일치하는 키가 없어도 true를 반환합니다).
+    -   false: 객체가 NULL이거나 GLTF 타입이 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+gltfObject.setNodeVisibleByKey("Node_01", false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getNodeKeyByIndex(index) → string
+
+> GLTF 객체의 특정 인덱스에 해당하는 노드의 고유 키(이름)를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description |
+| ----- | ------ | ------------ |
+| index | number | 노드 인덱스. |
+
+-   Return
+    -   string: 노드 고유 키.
+    -   "" (빈 문자열): 객체가 NULL이거나 GLTF 타입이 아니거나, index가 유효 범위를 벗어난 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var key = gltfObject.getNodeKeyByIndex(0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTextureByte(ptr, memSize, width, height, filter) → boolean
+
+> 메모리 포인터로 전달된 픽셀 바이트 데이터를 텍스처로 직접 교체합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                     |
+| ------ | ------- | --------------------------------- |
+| ptr    | number  | 픽셀 데이터가 위치한 메모리 주소(포인터). |
+| memSize| number  | 메모리 크기(byte).                |
+| width  | number  | 이미지 가로 크기.                  |
+| height | number  | 이미지 세로 크기.                  |
+| filter | boolean | 텍스처 필터링 적용 여부.           |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: ptr이 NULL이거나, memSize/width/height 중 1 미만인 값이 있는 경우.
+-   Description
+    -   기존에 설정되어 있던 텍스처는 제거되고 새 텍스처로 교체됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTextureBASE64(base64Data, filter) → boolean
+
+> base64로 인코딩된 이미지 데이터를 디코딩하여 텍스처로 교체합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type    | Description                  |
+| ---------- | ------- | ------------------------------ |
+| base64Data | string  | base64로 인코딩된 이미지 데이터. |
+| filter     | boolean | 텍스처 필터링 적용 여부.        |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+        -   엔진이 초기화되지 않은 경우.
+        -   디코딩된 이미지 데이터가 비어있는 경우.
+        -   텍스처 바이트 로드에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDome(position, radius, segment, color) → boolean
+
+> 중심 좌표를 기준으로 3D 돔(반구) 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description               |
+| -------- | ------------------------------------- | -------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md)  | 중심 좌표(경도, 위도, 고도). |
+| radius   | number                                | 반지름(m).                 |
+| segment  | number                                | 단면의 다각수.              |
+| color    | [JSColor](../core/jscolor.md)        | 돔 색상.                   |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패. (엔진이 초기화되지 않았거나 객체가 NULL인 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setDome(new Module.JSVector3D(127.0, 37.5, 0), 20, 24, new Module.JSColor(255, 255, 255, 255));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setCurvatureRect(parameter) → boolean
+
+> 지구 곡률을 반영한 사각 평면(rect)을 생성합니다. 4개 모서리 좌표(corners) 또는 최소/최대 경위도(min/max) 두 가지 방식으로 입력할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description                                                   |
+| --------- | ------ | ---------------------------------------------------------------- |
+| parameter | object | `altitude`(number, 고도, 기본 0), `segment`(number, 기본 32)와 함께, `corners` 또는 `minLon`/`minLat`/`maxLon`/`maxLat` 중 하나를 지정합니다. |
+
+**corners 방식**: `parameter.corners = { LT: [lon, lat], RT: [lon, lat], LB: [lon, lat], RB: [lon, lat] }`
+
+**min/max 방식**: `parameter.minLon`, `parameter.minLat`, `parameter.maxLon`, `parameter.maxLat`(모두 number)
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+        -   엔진이 초기화되지 않았거나 객체가 NULL인 경우.
+        -   `corners` 방식 사용 시, LT/RT/LB/RB 중 하나라도 없거나 좌표 요소가 2개 미만인 경우.
+        -   `min/max` 방식 사용 시, minLon/minLat/maxLon/maxLat 중 하나라도 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setCurvatureRect({
+    minLon: 127.0, minLat: 37.5,
+    maxLon: 127.1, maxLat: 37.6,
+    segment: 32
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSavedTextureCount() → number
+
+> 평면 객체에 등록(저장)되어 있는 텍스처 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 등록된 텍스처 개수. 객체가 NULL인 경우 0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var count = polygon.getSavedTextureCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setFaceTextureByIndex(faceIndex, textureIndex) → boolean
+
+> 등록된 텍스처 목록 중 인덱스(textureIndex)로 지정한 텍스처를 face(faceIndex)에 적용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name         | Type   | Description                          |
+| ------------ | ------ | -------------------------------------- |
+| faceIndex    | number | 텍스처를 적용할 face 인덱스.           |
+| textureIndex | number | 적용할 텍스처의 등록 순번(0부터 시작). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패. (객체가 NULL이거나, textureIndex에 해당하는 텍스처가 없거나, 텍스처 적용에 실패한 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createTMCoordPlane(options) → boolean
+
+> TM(평면 직각) 좌표계 격자를 기준으로 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                                 |
+| ------- | ------ | ----------------------------------------------------------------------------- |
+| options | object | `llcorner`(좌하단 좌표: `coordCode`, `x`, `y`), `grid`(`col`, `row`, `cellSize`, `ratioMode`, `xSplit`, `ySplit`), `gab`(간격, ratioMode 0일 때), `ureverse`/`vreverse`(uv 반전 여부) 등으로 구성됩니다. |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패. (`options`가 없거나, 필수 하위 속성이 누락된 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.createTMCoordPlane({
+    llcorner: { coordCode: 5186, x: 200000, y: 500000 },
+    grid: { col: 10, row: 10, cellSize: 100 },
+    gab: 50
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRoadObject(options) → boolean
+
+> 도로(Road) 타입 객체에 도로 형태(노면, 기둥, 가드레일, 포장, 텍스처 등)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type   | Description                                                       |
+| ---------- | ------ | ------------------------------------------------------------------- |
+| options    | object | `coordinate`([JSVec3Array](../core/jsvec3array.md), 필수, 2개 이상), `road`(폭/중앙선/측선/차로 수/여유길이), `pillar`(기둥 타입/반지름/개수/간격/하단부 옵션), `guardrail`(가드레일 타입), `pavement`(포장 타입/폭), `texture`(각 부위별 텍스처 경로) 등으로 구성됩니다. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패. (객체가 NULL이거나 Road 타입이 아닌 경우, `coordinate`가 없거나 2개 미만인 경우, `road` 옵션이 없는 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### changeRoadObject(options) → boolean
+
+> 이미 생성된 도로(Road) 타입 객체의 옵션을 변경하고 재생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                         |
+| ------- | ------ | ---------------------------------------------------------------------- |
+| options | object | `setRoadObject()`와 동일한 구조(`road`, `pillar`, `guardrail`, `pavement`, `texture`). 지정된 항목만 변경됩니다. |
+
+-   Return
+    -   true: 변경 성공.
+    -   false: 객체가 NULL이거나 Road 타입이 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadWidth() → number
+
+> 도로(Road) 객체의 노면 폭을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 노면 폭(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var width = roadObject.getRoadWidth();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadExtraLength() → number
+
+> 도로(Road) 객체의 노면 여유 길이(extraLength)를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 여유 길이(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var length = roadObject.getRoadExtraLength();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadPillarInterval() → number
+
+> 도로(Road) 객체 기둥(pillar)의 배치 간격을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 기둥 간격(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var interval = roadObject.getRoadPillarInterval();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadPillarRadius() → number
+
+> 도로(Road) 객체 기둥(pillar)의 반지름을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 기둥 반지름(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var radius = roadObject.getRoadPillarRadius();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadPillarBottomWidth() → number
+
+> 도로(Road) 객체 기둥 하단부(bottom)의 폭을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 하단부 폭(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var width = roadObject.getRoadPillarBottomWidth();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadPillarBottomDepth() → number
+
+> 도로(Road) 객체 기둥 하단부(bottom)의 깊이를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 하단부 깊이(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var depth = roadObject.getRoadPillarBottomDepth();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadPillarBottomHeight() → number
+
+> 도로(Road) 객체 기둥 하단부(bottom)의 높이를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 하단부 높이(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var height = roadObject.getRoadPillarBottomHeight();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRoadPavementWidth() → number
+
+> 도로(Road) 객체 포장(pavement)의 폭을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 포장 폭(m). 객체가 NULL이거나 Road 타입이 아니거나 도로 정보가 없는 경우 0.0을 반환합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var width = roadObject.getRoadPavementWidth();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getFormatData(format) → Uint8Array
+
+> 도로(Road) 타입 객체의 지오메트리를 지정한 포맷의 바이너리 데이터로 변환하여 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                              |
+| ------ | ------ | ------------------------------------------ |
+| format | string | 변환할 포맷 문자열. (`"3DS"`, `"XDO"` 대소문자 무관) |
+
+-   Return
+    -   Uint8Array: 변환 성공("3DS" 포맷).
+    -   null: 객체가 NULL이거나 Road 타입이 아닌 경우, 또는 지원되지 않는 포맷인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var bytes = roadObject.getFormatData("3DS");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### create3DCubeData(options) → boolean
+
+> 8개의 정점 좌표로 구성된 3D 육면체(큐브) 형태의 임시 인덱싱 모델을 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name              | Type   | Description                                                  |
+| ----------------- | ------ | ---------------------------------------------------------------- |
+| options.coordinates | array | 정점 좌표 목록. 정확히 8개(정육면체의 8개 꼭짓점)여야 합니다.       |
+| options.fillColor  | [JSColor](../core/jscolor.md) | 채움 색상(선택, 기본값: 흰색). |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패. (`options`가 없거나, `coordinates`가 없거나, 좌표 개수가 8개가 아닌 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGeoJSON2D(feature) → boolean
+
+> GeoJSON Feature(Polygon 또는 MultiPolygon) 데이터를 기반으로 2D 평면 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                     |
+| ------- | ------ | -------------------------------------------------- |
+| feature | object | GeoJSON Feature 객체. `type`은 `"Feature"`, `geometry.type`은 `"Polygon"` 또는 `"MultiPolygon"`이어야 합니다. |
+
+-   Return
+    -   true: 생성 성공.
+    -   false: 생성 실패.
+        -   `feature`가 없거나, `type`이 `"Feature"`가 아닌 경우.
+        -   `geometry`가 없거나, `geometry.type`이 `"Polygon"`/`"MultiPolygon"`이 아닌 경우.
+        -   `geometry.coordinates`가 없는 경우.
+-   Description
+    -   `MultiPolygon`인 경우 첫 번째 폴리곤만 지원합니다.
+    -   `geometry.triangles`(삼각형 인덱스 배열)가 있으면 인덱스 기반으로, 없으면 비-인덱스 방식으로 평면을 생성합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setGeoJSON2D({
+    type: "Feature",
+    geometry: {
+        type: "Polygon",
+        coordinates: [[[127.0, 37.5], [127.1, 37.5], [127.1, 37.6], [127.0, 37.5]]]
+    }
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createGridRasterPoly(url, useProxy, layerName, level, minX, minY, maxX, maxY, gridSize, type) → boolean
+
+> 서버 기반 경사도/경사향 분석 결과를 그리드 래스터 형태의 평면 객체로 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type    | Description                              |
+| --------- | ------- | ------------------------------------------ |
+| url       | string  | 분석 서버 접속 URL.                        |
+| useProxy  | boolean | 프록시 사용 여부.                          |
+| layerName | string  | 분석할 레이어 명.                          |
+| level     | number  | 분석 레벨.                                 |
+| minX      | number  | 분석 영역 최소 경도.                       |
+| minY      | number  | 분석 영역 최소 위도.                       |
+| maxX      | number  | 분석 영역 최대 경도.                       |
+| maxY      | number  | 분석 영역 최대 위도.                       |
+| gridSize  | number  | 그리드 간격.                               |
+| type      | number  | 분석 타입 (0: 경사도, 1: 경사향).          |
+
+-   Return
+    -   true: 요청 성공(비동기 요청이 정상적으로 시작됨).
+-   Description
+    -   호출과 동시에 내부적으로 객체의 좌표를 (minX,minY)~(maxX,maxY) 사각형으로 설정하고, 분석 서버로 비동기 요청을 보냅니다. 결과는 비동기 콜백을 통해 반영됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createGridRasterPolyEX(url, useProxy, layerName, level, minX, minY, maxX, maxY, gridSize, type, height) → boolean
+
+> `createGridRasterPoly()`의 확장판으로, 기준 높이(height)를 지정하여 3D 평면 형태로 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type    | Description                              |
+| --------- | ------- | ------------------------------------------ |
+| url       | string  | 분석 서버 접속 URL.                        |
+| useProxy  | boolean | 프록시 사용 여부.                          |
+| layerName | string  | 분석할 레이어 명.                          |
+| level     | number  | 분석 레벨.                                 |
+| minX      | number  | 분석 영역 최소 경도.                       |
+| minY      | number  | 분석 영역 최소 위도.                       |
+| maxX      | number  | 분석 영역 최대 경도.                       |
+| maxY      | number  | 분석 영역 최대 위도.                       |
+| gridSize  | number  | 그리드 간격.                               |
+| type      | number  | 분석 타입 (0: 경사도, 1: 경사향).          |
+| height    | number  | 기준 높이값(m).                            |
+
+-   Return
+    -   true: 요청 성공(비동기 요청이 정상적으로 시작됨). 객체가 NULL인 경우 false.
+-   Description
+    -   지형 결합(RTT) 모드를 사용하지 않도록 설정한 뒤, 지정한 높이의 사각 좌표로 비동기 분석 요청을 보냅니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createVideo(info) → string
+
+> 평면 객체에 비디오(RTT 영상)를 재생하는 LED 보드 형태로 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name           | Type    | Description                        |
+| -------------- | ------- | ------------------------------------ |
+| info.url       | string  | 비디오 url.                          |
+| info.streaming | boolean | 스트리밍(HLS 등) 여부.               |
+| info.xaxis     | boolean | x축 반전 여부(선택, 기본 false).     |
+| info.yaxis     | boolean | y축 반전 여부(선택, 기본 false).     |
+
+-   Return
+    -   "success": 설정 성공.
+    -   "fail": 객체가 NULL인 경우.
+    -   "url tag isn't exist.": `url`이 없는 경우.
+    -   "streaming tag isn't exist.": `streaming`이 없는 경우.
+-   Description
+    -   설정된 비디오 재생/제어는 `element`, `canvas`, `context`, `hls`, `videoStreaming`, `isplayer` 프로퍼티([Getter/Setter](jspolygon.md#getter-setter) 참고)와 함께 사용됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var result = polygon.createVideo({ url: "video.mp4", streaming: false });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### loadGLBWithOriginalVertex(option) → boolean
+
+> GLB 파일을 원본 정점(버텍스) 정보를 유지한 상태로 비동기 로드합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name              | Type    | Description                              |
+| ----------------- | ------- | ------------------------------------------ |
+| option.url        | string  | GLB 파일 url.                             |
+| option.textureurl | string  | 텍스처 url(선택).                          |
+| option.projection | string  | 투영 좌표계 코드.                          |
+| option.callback   | function| 로드 완료 콜백(선택).                      |
+| option.matrixType | number  | 변환 매트릭스 타입(선택).                  |
+
+-   Return
+    -   true: 요청 성공(비동기 로드 요청이 시작됨).
+    -   false: 실패. (객체가 NULL이거나, `option`이 없거나, `url`/`projection`이 없는 경우)
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.loadGLBWithOriginalVertex({
+    url: "model.glb",
+    projection: "4326"
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getCoordinates(), setCoordinates(coordinates) → [Collection](../core/collection.md)
+
+> 평면 객체를 구성하는 좌표 목록을 설정합니다.
+>
+> 입력 변수값(coordinates)은 최소 3개 이상의 배열로 구성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type | Description |
+| ----------- | ----------------------------------- | -------------------------------------------------- |
+| coordinates | [Collection](../core/collection.md) | 정점 좌표 목록 (경도, 위도, 고도). |
+
+-   Return
+    -   [Collection](../core/collection.md): 반환 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var coorList = object.getCoordinates();
+// ... or ...
+var vertexList = Module.getMap().getInputPointList();
+var object = Module.createPolygon("polygon");
+object.setCoordinates(vertexList);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getDescription(), setDescription(desc) → string
+
+> 객체에 대한 설명을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description  |
+| ---- | ------ | ------------ |
+| desc | string | 설명 문자열. |
+
+-   Return
+    -   string: 객체 설명 문자열이 성공적으로 반환.
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var strDesc = object.getDescription();
+// ... or ...
+object.setDescription("First Object.");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getName(), setName(name) → string
+
+> 객체 이름을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| name | string | 객체 이름.  |
+
+-   Return
+    -   string: 객체 이름을 성공적을 반환
+    -   null: 객체가 null인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objName = object.getName();
+// ... or ...
+object.setName("MyObject");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getVisible(), setVisible(visible) → boolean
+
+> 객체의 가시화 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 객체 가시화.<br>false: 객체 비가시화.</p> |
+
+-   Return
+    -   true: 객체 가시화 상태.
+    -   false: 객체 비가시화 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objName = object.getName();
+// ... or ...
+object.setVisible(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getStyle(), setStyle(style) → [JSPolygonStyle](jspolygonstyle.md)
+
+> [JSPolygonStyle](jspolygonstyle.md)으로 적용된 스타일을 평면 객체에 설정합니다.
+>
+> 평면 객체의 색상, 투명도, 외곽선 등을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                                | Description |
+| ----- | ----------------------------------- | ----------- |
+| style | [JSPolygonStyle](jspolygonstyle.md) | 속성 정보.  |
+
+-   Return
+    -   [JSPolygonStyle](jspolygonstyle.md): 반환 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var objectStyle = polyLine.getStyle();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getUnionMode(), setUnionMode(bMode) → boolean
+
+> 폴리곤 객체의 지형 결합(RTT Union) 모드를 반환/설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 | Name   | Type   | Description |
 |--------|--------|-------------|
-| bMode  | boolean | `true`: 평면 연산 모드(`EOT_PLANE`), `false`: 입체 연산 모드(`EOT_POLYHEDRON`) |
+| bMode  | boolean | `true`: 지형 결합(RTT) 모드 활성화, `false`: 비활성화 |
 
-- Return  
-  - 없음 (void)
+- Return
+    -   getUnionMode() : boolean - 객체가 NULL이면 false, 아니면 현재 결합 모드 값(`m_bTUnion`)을 반환.
+    -   setUnionMode(bMode) : 반환값 없음(void).
 
-- Description  
-  - 폴리곤 객체의 연산 방식을 설정합니다.  
-  - `true`로 설정하면 내부 객체 타입이 `EOT_PLANE`으로 설정되어 평면 병합 연산을 수행하며,  
-    `false`로 설정하면 `EOT_POLYHEDRON`으로 처리되어 입체 병합 연산이 가능합니다.  
-  - 설정 이후 RTT(렌더 타겟 텍스처) 갱신 플래그가 활성화됩니다.
+- Description
+    -   내부적으로 `SetRenderToTexture()`와 동일하게 객체의 `m_bTUnion`(지형 결합/RTT union) 플래그를 설정합니다.
+    -   설정 이후 RTT(렌더 타겟 텍스처) 갱신 플래그(`m_RTTRefresh`)가 활성화됩니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1438,7 +2568,276 @@ API.JSPolygon.setUnionMode(false);
 {% endtab %}
 {% endtabs %}
 
-### Type Definitions
+### getUnderground(), setUnderground(value) → boolean
+
+> 객체를 지하(underground) 상태로 표시할지 여부를 반환/설정합니다. (base 클래스 `JSObject`에서 상속되는 API이며, JSPolygon에도 동일하게 바인딩되어 있습니다.)
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description                                          |
+| ----- | ------- | ------------------------------------------------------ |
+| value | boolean | true: 지하 상태(`ELEVATION_STATUS_BELOW`)로 설정, false: 지상 상태(`ELEVATION_STATUS_ABOVE`)로 설정. |
+
+-   Return
+    -   getUnderground() : boolean - 지하 상태이면 true, 아니면 false. 객체가 NULL인 경우 false.
+    -   setUnderground(value) : 반환값 없음(void). 객체가 NULL인 경우 아무 동작도 하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.setUnderground(true);
+var isUnderground = polygon.getUnderground();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### zBufferOff (property) → boolean
+
+> 객체의 Z-Buffer 비활성화 여부를 반환/설정하는 프로퍼티입니다. (`object.zBufferOff` 형태로 직접 접근)
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type    | Description                          |
+| ---------- | ------- | --------------------------------------- |
+| zBufferOff | boolean | true: Z-Buffer 비활성화, false: 활성화(기본). |
+
+-   Return
+    -   boolean: 현재 설정값. 객체가 NULL인 경우 false.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.zBufferOff = true;
+var isOff = polygon.zBufferOff;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### regular (property) → boolean
+
+> 좌표 입력값을 구면 좌표계로 변환하지 않고 그대로(평면 좌표로) 사용할지 여부를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                                                 |
+| ------- | ------- | ------------------------------------------------------------------------------- |
+| regular | boolean | true: 입력 좌표를 정규화(평면 좌표)로 그대로 사용, false: 구면 좌표계로 변환하여 사용(기본). |
+
+-   Return
+    -   boolean: 현재 설정값. 객체가 NULL인 경우 false.
+-   Description
+    -   `true`로 설정하면 `setPartCoordinatesHeightUV()` 등에서 입력 좌표를 구면 좌표 변환 없이 `(-y, -x, z)` 형태로 그대로 사용합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.regular = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isplayer (property) → boolean
+
+> 평면 객체를 비디오 렌더링(재생) 대상으로 사용할지 여부를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type    | Description                  |
+| -------- | ------- | ------------------------------ |
+| isplayer | boolean | 비디오 렌더링 활성화 여부.     |
+
+-   Return
+    -   boolean: 현재 설정값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.isplayer = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### element (property) → object
+
+> 비디오 재생에 사용할 HTML 엘리먼트(예: `<video>`)를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                    |
+| ------- | ------ | --------------------------------- |
+| element | object | HTML 엘리먼트 참조(JS 객체).     |
+
+-   Return
+    -   object: 현재 설정된 엘리먼트 참조.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.element = document.getElementById("video1");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### canvas (property) → object
+
+> 비디오 프레임을 그리는 데 사용할 canvas 엘리먼트를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                |
+| ------ | ------ | ----------------------------- |
+| canvas | object | canvas 엘리먼트 참조(JS 객체). |
+
+-   Return
+    -   object: 현재 설정된 canvas 참조.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.canvas = document.createElement("canvas");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### context (property) → object
+
+> canvas의 2D 렌더링 컨텍스트(context)를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                    |
+| ------- | ------ | --------------------------------- |
+| context | object | canvas 2D context 참조(JS 객체). |
+
+-   Return
+    -   object: 현재 설정된 context 참조.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.context = polygon.canvas.getContext("2d");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### hls (property) → object
+
+> HLS(HTTP Live Streaming) 비디오 재생에 사용하는 hls.js 인스턴스 등을 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description             |
+| ---- | ------ | -------------------------- |
+| hls  | object | HLS 재생 인스턴스 참조(JS 객체). |
+
+-   Return
+    -   object: 현재 설정된 hls 참조.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.hls = new Hls();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### videoStreaming (property) → boolean
+
+> 비디오가 스트리밍(HLS 등) 방식으로 재생되는지 여부를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name           | Type    | Description         |
+| -------------- | ------- | ---------------------- |
+| videoStreaming | boolean | 스트리밍 재생 여부.    |
+
+-   Return
+    -   boolean: 현재 설정값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.videoStreaming = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### axisX (property) → boolean
+
+> 비디오/텍스처를 x축 기준으로 반전하여 표시할지 여부를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description       |
+| ----- | ------- | -------------------- |
+| axisX | boolean | x축 반전 여부.      |
+
+-   Return
+    -   boolean: 현재 설정값(내부적으로 1/0 정수 플래그를 boolean으로 변환하여 반환).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.axisX = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### axisY (property) → boolean
+
+> 비디오/텍스처를 y축 기준으로 반전하여 표시할지 여부를 반환/설정하는 프로퍼티입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type    | Description       |
+| ----- | ------- | -------------------- |
+| axisY | boolean | y축 반전 여부.      |
+
+-   Return
+    -   boolean: 현재 설정값(내부적으로 1/0 정수 플래그를 boolean으로 변환하여 반환).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+polygon.axisY = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Type Definitions
 
 #### JSPolygon.loadFileOption
 

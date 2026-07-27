@@ -30,6 +30,37 @@ var strKey = object.getId();
 {% endtab %}
 {% endtabs %}
 
+### SetGrid(left, top, right, bottom, altitude, row, col) → number
+
+> 최소, 최대 경위도 값을 기준으로 2차원 격자 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type   | Description  |
+| -------- | ------ | ------------ |
+| left     | number | 좌측 경도.        |
+| top      | number | 상단 위도.        |
+| right    | number | 우측 경도.        |
+| bottom   | number | 하단 위도.        |
+| altitude | number | 객체 높이.        |
+| row      | number | 그리드 가로 개수.    |
+| col      | number | 그리드 세로 개수.    |
+
+* Return
+  * number: 격자를 구성하는 cell 갯수.
+  * 0: 생성 실패.
+  * 실패 조건
+    * row \< 1 또는 col \< 1 값이 입력된 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
+var gridCellNum = colorGrid2D.SetGrid(124.2, 39, 130.5, 34.5, 100000.0, 100, 100);
+```
+{% endtab %}
+{% endtabs %}
+
 ### SetGridPosition(leftTop, rightTop, rightBottom, leftBottom, altitude, row, col) → number
 
 > 2차원 격자의 각 꼭지점 좌표(경도, 위도)를 기준으로 격자 객체를 생성합니다.
@@ -110,6 +141,34 @@ var gridCellNum = colorGrid2D.SetGridPositionByCellOptions(new Module.JSVector2D
 ```javascript
 var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
 var gridCellNum = colorGrid2D.SetGridPositionByCellSize(new Module.JSVector2D(124.2, 39), new Module.JSVector2D(130.5, 34.5), 100000.0, 1000, 1000);
+```
+{% endtab %}
+{% endtabs %}
+
+### SetGridPositionByAltitude(leftTop, rightBottom, altitude, width, height) → [JSSize2D](../core/jssize2d.md)
+
+> 최소, 최대 위치 좌표(경도 위도)를 기준으로 2차원 격자 객체를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name        | Type                                | Description    |
+| ----------- | ----------------------------------- | -------------- |
+| leftTop     | [JSVector2D](../core/jsvector2d.md) | 좌상단 좌표(경도 위도). |
+| rightBottom | [JSVector2D](../core/jsvector2d.md) | 우하단 좌표(경도 위도). |
+| altitude    | number                              | 객체 높이.         |
+| width       | number                              | 그리드 셀 가로 크기.   |
+| height      | number                              | 그리드 셀 세로 크기.   |
+
+* Return
+  * [JSSize2D](../core/jssize2d.md): 격자 가로, 세로 cell 갯수.
+  * 실패 조건
+    * width \< 0.00001 또는 height \< 0.00001 값이 입력된 경우 (0,0) 반환.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
+var gridSize = colorGrid2D.SetGridPositionByAltitude(new Module.JSVector2D(124.2, 39), new Module.JSVector2D(130.5, 34.5), 100000.0, 1000, 1000);
 ```
 {% endtab %}
 {% endtabs %}
@@ -580,7 +639,7 @@ var alt = leftTop.Altitude;
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.Create();
 
-var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 39.5, 100));
+var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector3D(124.2, 39.5, 100));
 ```
 {% endtab %}
 {% endtabs %}
@@ -600,7 +659,7 @@ var Index = colorGrid2D.GetGridCellIndexByPosition(new Module.JSVector2D(124.2, 
 {% tab title="Information" %}
 | Name  | Type   | Description |
 | ----- | ------ | ----------- |
-| type  | string | 반환 정보 설정값.  |
+| type  | number | 반환 정보 설정값.  |
 | value | number | 테두리 margin. |
 
 * Return
@@ -641,6 +700,85 @@ var linelist = colorGrid2D.GetGridEdgeLinePosition(0, 0);
 ```javascript
 var colorGrid2D = Module.createColorGrid2D("COLOR_GRID_2D");
 colorGrid2D.Create();
+```
+{% endtab %}
+{% endtabs %}
+
+### setOpacity(opacity) → void
+
+> 2차원 격자 객체의 불투명도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description                                    |
+| ------- | ------ | ----------------------------------------------- |
+| opacity | number | 불투명도(0.0 \~ 1.0, 범위를 벗어나면 경계값으로 보정). |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var colorGrid2D = Module.createColorGrid("COLOR_GRID_2D");
+colorGrid2D.setOpacity(0.5);
+```
+{% endtab %}
+{% endtabs %}
+
+### createHexagonGrid(options) → boolean
+
+> 지정된 영역에 육각형 셀 그리드를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description   |
+| ------- | ------ | ------------- |
+| options | object | 육각형 그리드 설정 정보 |
+
+**options 구조**
+
+| Key              | Type                                  | Required | Default       | Description            |
+| ---------------- | ------------------------------------- | -------- | ------------- | ---------------------- |
+| area             | [JSVec2Array](../core/jsvec2array.md) | true     | -             | 경위도 기준의 영역 좌표 리스트.     |
+| cellSize         | number                                | true     | -             | 셀의 한 변 길이 (단위: meter). |
+| altitude         | number                                | false    | 0.0           | 셀의 고도.                 |
+| defaultCellColor | [JSColor](../core/jscolor.md)         | false    | (255,255,255) | 색상이 지정되지 않은 셀의 기본 색상.  |
+| cellColorList    | array                                 | false    | \[]           | 위치별 셀 색상 설정 리스트.       |
+
+**cellColorList 항목 구조**
+
+| Key       | Type                          | Description    |
+| --------- | ----------------------------- | -------------- |
+| longitude | number                        | 색상을 적용할 셀의 경도. |
+| latitude  | number                        | 색상을 적용할 셀의 위도. |
+| color     | [JSColor](../core/jscolor.md) | 적용할 색상 값.      |
+
+* **Return**
+  * `true`: (구현상 도달하지 않는 것으로 의심됨. 위 경고 참조.)
+  * `false`: 파라미터 오류 또는 생성 실패, 혹은 정상 생성된 경우에도 항상 반환됨.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var area = new Module.JSVec2Array();
+area.push(new Module.JSVector2D(126.9, 37.5));
+area.push(new Module.JSVector2D(126.91, 37.5));
+area.push(new Module.JSVector2D(126.91, 37.51));
+area.push(new Module.JSVector2D(126.9, 37.51));
+
+var cellColorList = [
+  { longitude: 126.905, latitude: 37.505, color: new Module.JSColor(255, 0, 0) },
+  { longitude: 126.906, latitude: 37.506, color: new Module.JSColor(0, 255, 0) }
+];
+
+var options = {
+  area: area,
+  cellSize: 50,
+  altitude: 10,
+  defaultCellColor: new Module.JSColor(200, 200, 200),
+  cellColorList: cellColorList
+};
+
+var grid = Module.createColorGrid("GRID_ID");
+grid.createHexagonGrid(options);
 ```
 {% endtab %}
 {% endtabs %}
@@ -715,66 +853,6 @@ object.setName("MyObject");
 var objName = object.getName();
 // ... or ...
 object.setVisible(true);
-```
-{% endtab %}
-{% endtabs %}
-
-### createHexagonGrid(options) → boolean
-
-> 지정된 영역에 육각형 셀 그리드를 생성합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-| Name    | Type   | Description   |
-| ------- | ------ | ------------- |
-| options | object | 육각형 그리드 설정 정보 |
-
-**options 구조**
-
-| Key              | Type                                  | Required | Default       | Description            |
-| ---------------- | ------------------------------------- | -------- | ------------- | ---------------------- |
-| area             | [JSVec2Array](../core/jsvec2array.md) | true     | -             | 경위도 기준의 영역 좌표 리스트.     |
-| cellSize         | number                                | true     | -             | 셀의 한 변 길이 (단위: meter). |
-| altitude         | number                                | false    | 0.0           | 셀의 고도.                 |
-| defaultCellColor | [JSColor](../core/jscolor.md)         | false    | (255,255,255) | 색상이 지정되지 않은 셀의 기본 색상.  |
-| cellColorList    | array                                 | false    | \[]           | 위치별 셀 색상 설정 리스트.       |
-
-**cellColorList 항목 구조**
-
-| Key       | Type                          | Description    |
-| --------- | ----------------------------- | -------------- |
-| longitude | number                        | 색상을 적용할 셀의 경도. |
-| latitude  | number                        | 색상을 적용할 셀의 위도. |
-| color     | [JSColor](../core/jscolor.md) | 적용할 색상 값.      |
-
-* **Return**
-  * `true`: 생성 성공
-  * `false`: 파라미터 오류 또는 생성 실패
-{% endtab %}
-
-{% tab title="Template" %}
-```javascript
-var area = new Module.JSVec2Array();
-area.push(new Module.JSVector2D(126.9, 37.5));
-area.push(new Module.JSVector2D(126.91, 37.5));
-area.push(new Module.JSVector2D(126.91, 37.51));
-area.push(new Module.JSVector2D(126.9, 37.51));
-
-var cellColorList = [
-  { longitude: 126.905, latitude: 37.505, color: new Module.JSColor(255, 0, 0) },
-  { longitude: 126.906, latitude: 37.506, color: new Module.JSColor(0, 255, 0) }
-];
-
-var options = {
-  area: area,
-  cellSize: 50,
-  altitude: 10,
-  defaultCellColor: new Module.JSColor(200, 200, 200),
-  cellColorList: cellColorList
-};
-
-var grid = Module.createColorGrid("GRID_ID");
-grid.createHexagonGrid(options);
 ```
 {% endtab %}
 {% endtabs %}

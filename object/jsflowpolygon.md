@@ -119,7 +119,7 @@ polygon.setCullMode(3);
 
 | Name    | Type                                                                        | Description         |
 | ------- | --------------------------------------------------------------------------- | ------------------- |
-| options | [JSFlowPolygon.GridDataOption](#jsflowpolygongriddataoption)               | 폴리곤 생성 정보.   |
+| options | [JSFlowPolygon.GridDataOption](jsflowpolygon.md#jsflowpolygon.griddataoption) | 폴리곤 생성 정보.   |
 
 - Return  
   - `"result"` 속성이 포함된 object: 객체 생성 성공.  
@@ -159,7 +159,93 @@ let result = flowPolygon.create(options);
 {% endtabs %}
 
 
-### Type Definitions
+### setHeight(options) → boolean
+
+> 폴리곤의 수위(높이)를 설정합니다. `options`가 number 타입이면 현재 위치 기준으로 수직 이동하며, object 타입이면 지정된 두 기준선(startline, endline) 사이의 경사에 따라 정점 높이를 보간합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                                          | Description                                                        |
+| ------- | -------------------------------------------------------------- | -------------------------------------------------------------------- |
+| options | number \| [JSFlowPolygon.HeightLineOption](jsflowpolygon.md#jsflowpolygon.heightlineoption) | number: 이동할 고도값. object: 시작/끝 라인 기준 경사 보간 정보. |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건(object 타입인 경우)
+        -   startline 또는 endline 속성이 없는 경우.
+        -   startline/endline에 from, to, height 속성이 없는 경우.
+        -   객체 데이터가 유효하지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+flowPolygon.setHeight(5.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setVertex(index, position) → boolean
+
+> 지정한 인덱스의 정점 좌표를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description         |
+| -------- | ------------------------------------ | --------------------- |
+| index    | number                               | 정점 인덱스.          |
+| position | [JSVector3D](../core/jsvector3d.md) | 설정할 정점 좌표(경도, 위도, 고도). |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   생성된 객체가 없는 경우.
+        -   index가 정점 개수 범위를 벗어난 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+flowPolygon.setVertex(0, new Module.JSVector3D(129.1, 35.1, 0));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWallHeight(height) → boolean
+
+> `createWall`로 생성된 수직 벽 객체의 높이를 재설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| height | number | 벽 높이.    |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패.
+    -   실패 조건
+        -   `createWall`로 생성된 벽 형태(사각형 4정점)의 객체가 아닌 경우.
+        -   `createWall` 호출 시 입력한 좌표(from, to) 2개가 저장되어 있지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+flowPolygon.setWallHeight(15.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Type Definitions
 
 #### JSFlowPolygon.GridDataOption
 
@@ -195,3 +281,20 @@ let result = flowPolygon.create(options);
 | longitude | number | 0.0     | 경도.       |
 | latitude  | number | 0.0     | 위도.       |
 | altitude  | number | 0.0     | 고도.       |
+
+#### JSFlowPolygon.HeightLineOption
+
+> `setHeight`에 object 타입 옵션으로 전달하는 경사 보간 기준선 정보.
+
+| Name      | Type                                                | Default | Description                          |
+| --------- | ---------------------------------------------------- | ------- | -------------------------------------- |
+| startline | [JSFlowPolygon.HeightLine](jsflowpolygon.md#jsflowpolygon.heightline) | -       | 기준 시작 라인 정보.                  |
+| endline   | [JSFlowPolygon.HeightLine](jsflowpolygon.md#jsflowpolygon.heightline) | -       | 기준 끝 라인 정보.                    |
+
+#### JSFlowPolygon.HeightLine
+
+| Name   | Type                                 | Default | Description       |
+| ------ | ------------------------------------- | ------- | ------------------- |
+| from   | [JSVector2D](../core/jsvector2d.md)  | -       | 라인 시작 좌표(경도, 위도). |
+| to     | [JSVector2D](../core/jsvector2d.md)  | -       | 라인 끝 좌표(경도, 위도).   |
+| height | number                                | -       | 해당 라인 위치의 높이값.    |

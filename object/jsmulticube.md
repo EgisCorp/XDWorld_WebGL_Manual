@@ -15,7 +15,7 @@ var object = Module.createMultiCube("ID", vPosition, false);
 
 ### addCube(id, size, count, angle, interval, fillColor, outLine, outLineColor)
 
-> 멀티 큐브 객체를 생성합니다.
+> MultiCube 내 새로운 큐브를 추가합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -54,7 +54,7 @@ object.addCube("id", size, 6, 30.0, 10.0, fillColor, true, outlineColor);
 
 -   Return
     -   number(0 ~) : 반환 성공.
-    -   number(-1) : 반환 실패.
+    -   number(-1) : 반환 실패. (다음의 경우 발생: 엔진이 초기화 되지 않은 경우, Cube 컨테이너 오브젝트가 NULL인 경우)
 
 {% endtab %}
 {% tab title="Template" %}

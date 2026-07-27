@@ -39,6 +39,27 @@ var count = array.GetCount();
 {% endtab %}
 {% endtabs %}
 
+### getArray() → Collection
+
+> 현재 Collection 객체 자신을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   Collection: 현재 배열 객체 자신.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var array = new Module.Collection();
+var self = array.getArray();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### extend(elements) → void
 
 > 배열에 새로운 데이터 리스트를 추가합니다.

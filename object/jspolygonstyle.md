@@ -98,12 +98,12 @@ polyStyle.setFillColor(fillColor);
 {% tab title="Template" %}
 
 ```javascript
-var outLineWidth = polygon.getStyle().getOutLineWidth();
+var bOutlineUsed = polygon.getStyle().getOutLine();
 // ... or ...
 var figure = new Module.JSFigure();
 //...
 var polyStyle = figure.getStyle();
-polyStyle.setOutLineWidth(5.0);
+polyStyle.setOutLine(false);
 ```
 
 {% endtab %}
@@ -126,12 +126,12 @@ polyStyle.setOutLineWidth(5.0);
 {% tab title="Template" %}
 
 ```javascript
-var bOutlineUsed = polygon.getStyle().getOutLine();
+var outLineWidth = polygon.getStyle().getOutLineWidth();
 // ... or ...
 var figure = new Module.JSFigure();
 //...
 var polyStyle = figure.getStyle();
-polyStyle.setOutLine(false);
+polyStyle.setOutLineWidth(5.0);
 ```
 
 {% endtab %}

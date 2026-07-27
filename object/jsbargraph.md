@@ -490,6 +490,106 @@ graph.insertDataSet("2010", data);
 
 ## Getter / Setter
 
+### getDataDecimalPoint(), setDataDecimalPoint(digit) → number
+
+> 그래프 데이터 값 텍스트의 소수점 자릿수를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| :---- | :----- | :------------ |
+| digit | number | 소수점 자릿수. |
+
+-   Return
+    -   number: 설정된 소수점 자릿수(객체가 없으면 0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+graph.dataDecimalPoint = 2;
+var digit = graph.dataDecimalPoint;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getGridDecimalPoint(), setGridDecimalPoint(digit) → number
+
+> Y축 라벨(격자 눈금) 텍스트의 소수점 자릿수를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| :---- | :----- | :------------ |
+| digit | number | 소수점 자릿수. |
+
+-   Return
+    -   number: 설정된 소수점 자릿수(객체가 없으면 0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+graph.gridDecimalPoint = 1;
+var digit = graph.gridDecimalPoint;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getColumnValueVisible(), setColumnValueVisible(visible) → boolean
+
+> 그래프 바 컬럼 내부에 데이터 값 텍스트 표시 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                        |
+| :------ | :------ | :-------------------------------------------------- |
+| visible | boolean | <p>true: 텍스트 표시.<br>false: 텍스트 숨김.</p>    |
+
+-   Return
+    -   true: 텍스트 표시 상태.
+    -   false: 텍스트 숨김 상태(또는 객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+graph.columnValueVisible = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTotalColumnValueVisible(), setTotalColumnValueVisible(visible) → boolean
+
+> 그래프 바 컬럼 상단에 합계 값 텍스트 표시 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                        |
+| :------ | :------ | :-------------------------------------------------- |
+| visible | boolean | <p>true: 텍스트 표시.<br>false: 텍스트 숨김.</p>    |
+
+-   Return
+    -   true: 텍스트 표시 상태.
+    -   false: 텍스트 숨김 상태(또는 객체가 없는 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+graph.totalColumnValueVisible = true;
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getDescription(), setDescription(desc) → string
 
 > 객체에 대한 설명을 설정합니다.

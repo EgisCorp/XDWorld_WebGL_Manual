@@ -9,11 +9,10 @@ description: 지도 내 크기와 관련된 기능을 관리하기 위한 API �
 ```javascript
 let width = 300;
 let height = 200;
-let scale = 1.0;
+let depth = 100;
 
 let size0 = new Module.JSSize3D();
-let size1 = new Module.JSSize3D(width, height);
-let size2 = new Module.JSSize3D(width, height, scale);
+let size1 = new Module.JSSize3D(width, height, depth);
 ```
 
 ## properties

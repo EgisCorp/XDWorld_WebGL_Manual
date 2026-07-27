@@ -10,6 +10,12 @@ description: 지도 설정 및 제어하기 위한 API 입니다.
 var map = Module.getMap();
 ```
 
+## Properties
+
+| Name           | Type   | Description                                                                        |
+| -------------- | ------ | ------------------------------------------------------------------------------------ |
+| lastRenderTime | object | 마지막 렌더링 시각. `{ year, month, day, hour, minute, second }` 형태 (읽기 전용). |
+
 ## Function
 
 ### addHeatMaps(coordinates)
@@ -973,6 +979,1122 @@ Module.getMap().updateRTT();
 {% endtab %}
 {% endtabs %}
 
+### setLayerVisible(layerName, visible) → boolean
+
+> 특정 레이어의 가시화 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type    | Description                                            |
+| --------- | ------- | -------------------------------------------------------- |
+| layerName | string  | 대상 레이어 명칭.                                       |
+| visible   | boolean | <p>true: 레이어 가시화.<br>false: 레이어 비가시화.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 대상 레이어를 찾지 못한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### mapReset() → boolean
+
+> 사용자 입력(거리/면적 측정) 및 임시 레이어를 초기화하고, 지구(Planet)의 오브젝트를 모두 초기화합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 초기화 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().mapReset();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addChild(object, level)
+
+> 지도에 임시 레이어를 통해 오브젝트를 추가합니다.
+>
+> object는 JSPoint, JSLineString, JSPolygon, JSMultiObject, JSFigure, JSLODPOI 타입만 지원합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                                                                                     |
+| ------ | ------ | ------------------------------------------------------------------------------------------------- |
+| object | object | 추가할 객체 ([JSPoint](../object/jspoint.md), [JSLineString](../object/jslinestring.md), [JSPolygon](../object/jspolygon.md), [JSMultiObject](../object/jsmultiobject.md), [JSFigure](../object/jsfigure.md), JSLODPOI 중 하나). |
+| level  | number | 사용되지 않는 예약 파라미터. (cpp 구현상 값이 사용되지 않음.)                                     |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSelectColor(color)
+
+> 오브젝트 선택 색상을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                           | Description  |
+| ----- | ------------------------------- | ------------ |
+| color | [JSColor](../core/jscolor.md)  | 설정 색상 객체. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setSelectColor(new Module.JSColor(255, 255, 0, 0));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addSelectObject(object)
+
+> 지정한 오브젝트를 선택 상태로 추가합니다 (기존 선택은 유지되고 다중 선택 상태에 추가).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                              | Description               |
+| ------ | ---------------------------------- | -------------------------- |
+| object | [JSObject](../object/jsobject.md) | 선택 상태로 추가할 오브젝트. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var object = GLOBAL.Layer.keyAtObject("object_2");
+Module.getMap().addSelectObject(object);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSelectObjectByIndex(index) → [JSObject](../object/jsobject.md)
+
+> 다중 선택된 오브젝트 목록 중, 입력한 인덱스에 해당하는 오브젝트를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| ----- | ------ | ------------ |
+| index | number | 조회할 인덱스. |
+
+-   Return
+    -   object: 인덱스에 해당하는 오브젝트.
+    -   null: 선택된 오브젝트가 없거나 index가 유효 범위를 벗어난 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getSelectObjectList() → array
+
+> 현재 선택된 오브젝트 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   array: `{ key: string, object: object }` 형태 항목의 배열.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var list = Module.getMap().getSelectObjectList();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSelectObjectFromPolygon(polygon) → number
+
+> 지정한 폴리곤 좌표 영역 내에 존재하는 오브젝트를 선택 상태로 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                   | Description                        |
+| ------- | --------------------------------------- | ------------------------------------ |
+| polygon | [JSVec3Array](../core/jsvec3array.md)  | 선택 영역을 구성하는 폴리곤 좌표 (3개 이상). |
+
+-   Return
+    -   number: 선택된 오브젝트 수.
+    -   0: 폴리곤 좌표가 3개 미만인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setRenderMode(mode)
+
+> 시설물(Real3D) 레이어의 렌더링 모드(심플 모드)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                        |
+| ---- | ------ | --------------------------------------------------- |
+| mode | number | <p>0: 일반 모드.<br>0이 아닌 값: 심플 모드.</p>      |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPlaneModeToggle()
+
+> 평면(Plane) 모드와 구체(지구본) 모드를 서로 전환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setPlaneModeToggle();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setTileObjectRenewLevel(level) → boolean
+
+> 타일 오브젝트의 DrawLevel 갱신 대상이 되는 타일 레벨을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | -------------- |
+| level | number | 타일 레벨 값. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isSimpleMode() → boolean
+
+> 현재 심플 모드 적용 상태를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 심플 모드 적용 상태.
+    -   false: 일반 모드 상태 또는 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var simple = Module.getMap().isSimpleMode();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setColorEffect(effect)
+
+> 시설물, 지형의 컬러 효과(색상 강조)를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                                                   |
+| ------ | ------ | --------------------------------------------------------------- |
+| effect | number | <p>0: 효과 없음.<br>1: 시설물/지형 회색조(GRAY) 표현.</p>     |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setColorEffect(1);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLighting(lighting)
+
+> 조명 모드를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description   |
+| -------- | ------ | -------------- |
+| lighting | number | 조명 모드 값. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSnowfallDrawLevel(level) → number
+
+> 적설 효과가 표현되는 타일 드로우 레벨(0~15)을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description             |
+| ----- | ------ | ------------------------ |
+| level | number | 드로우 레벨 (0 ~ 15).   |
+
+-   Return
+    -   number: 설정된(0~15 범위로 보정된) 드로우 레벨.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearRangeColor()
+
+> 범위 색상(range color) 효과 목록을 초기화합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addRangeColor(position, color, range)
+
+> 특정 위치를 중심으로 하는 범위 색상 효과를 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                     |
+| -------- | ------------------------------------- | -------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md)  | 중심 위치 (경도, 위도, 고도).    |
+| color    | [JSColor](../core/jscolor.md)        | 범위 색상.                       |
+| range    | number                                | 범위 반경.                       |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setPickTerrain(pick)
+
+> 마우스 피킹 시 지형만 대상으로 할지 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                       |
+| ---- | ------- | --------------------------------------------------------------------- |
+| pick | boolean | <p>true: 지형만 피킹 대상.<br>false: 지형 외 오브젝트도 피킹 대상.</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setSimpleModeColorType(type)
+
+> 심플 모드에서 사용할 색상 타입을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description   |
+| ---- | ------ | -------------- |
+| type | number | 색상 타입 값. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setGlobalSimpleModeColor(color)
+
+> 심플 모드에서 전역으로 사용할 색상을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                          | Description       |
+| ----- | ------------------------------ | ------------------ |
+| color | [JSColor](../core/jscolor.md) | 심플 모드 전역 색상. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMapLoadCompleteEventLevel(level) → boolean
+
+> 지형 로드 완료 이벤트(Fire_JSEventTerrainLoadComplete)가 발생할 기준 레벨을 설정합니다.
+>
+> ※ 엔진 빌드 옵션 `_EVENT_DATA_LOAD_`가 활성화된 경우에만 바인딩됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | -------------- |
+| level | number | 이벤트 발생 기준 레벨 (0 이상). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않았거나 level이 0 미만인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getHeatMapSize() → number
+
+> 등록된 히트맵 포인트 수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 등록된 히트맵 포인트 수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDrawLevelVisible(visible) → boolean
+
+> 특정 타일 레벨 이하에서 작은 오브젝트를 그리지 않는 옵션을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description  |
+| ------- | ------- | ------------- |
+| visible | boolean | 작은 오브젝트 가시화 여부. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### fixedTextureLevel(level)
+
+> 고정 텍스처를 적용할 레벨을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                          |
+| ----- | ------ | ------------------------------------------------------ |
+| level | number | 고정 텍스처 레벨 (0 ~ 5). 범위를 벗어나면 -1(미사용)로 설정됨. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setFixedTextureByLevel(level)
+
+> 레벨별 고정 텍스처 사용 방식을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                       |
+| ----- | ------ | --------------------------------------------------- |
+| level | number | 설정 값 (0 ~ 2). 범위를 벗어나면 2로 설정됨.       |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getRenderTileMeshList() → string
+
+> 현재 렌더링 범위에 있는 타일 메쉬 목록을 문자열로 반환합니다.
+>
+> 반환 형식: `Level#Idx#Idy#최소경도#최소위도#최대경도#최대위도,...` (타일마다 콤마로 구분).
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   string: 렌더링 중인 타일 메쉬 정보 목록.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### GetPointsVolume(coordinates) → number
+
+> 입력한 좌표 목록으로 구성된 폴리곤의 면적(부피)을 계산하여 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                   | Description                    |
+| ----------- | ---------------------------------------- | -------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md)   | 폴리곤 좌표 목록 (2개 이상).    |
+
+-   Return
+    -   number: 계산된 면적 값.
+    -   0: 좌표가 2개 미만인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetProxyRequestTerrainDEM(set)
+
+> 지형 DEM 데이터 요청 시 프록시 서버 경유 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                          |
+| ---- | ------- | -------------------------------------- |
+| set  | boolean | true: 프록시 경유. false: 직접 요청. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetProxyRequestTerrainImage(set)
+
+> 지형 이미지(텍스쳐) 요청 시 프록시 서버 경유 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                          |
+| ---- | ------- | -------------------------------------- |
+| set  | boolean | true: 프록시 경유. false: 직접 요청. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetProxyUrlEncoding(set)
+
+> 프록시 요청 URL에 대한 인코딩 적용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                    |
+| ---- | ------- | --------------------------------- |
+| set  | boolean | true: URL 인코딩 적용. false: 미적용. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getLonLatHeight(lon, lat) → number
+
+> 경위도 좌표에서 지형 또는 오브젝트를 기준으로 한 고도 값을 반환합니다. (지형과 오브젝트 중 더 높은 값을 반환)
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description               |
+| ---- | ------ | --------------------------- |
+| lon  | number | 경도 (degrees 단위).      |
+| lat  | number | 위도 (degrees 단위).      |
+
+-   Return
+    -   number: 고도 값 (meter 단위).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### selectIntersectObject(polygon)
+
+> 입력한 폴리곤 영역과 겹치는 오브젝트를 선택 상태로 처리합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                              | Description       |
+| ------- | ------------------------------------ | ------------------- |
+| polygon | [JSPolygon](../object/jspolygon.md) | 대상 폴리곤 객체. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### ClearMap()
+
+> 지도를 초기화합니다 (엔진 내부 XDEClearMap 수행 및 DEM 메쉬 갱신 상태 초기화).
+
+{% tabs %}
+{% tab title="Information" %}
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().ClearMap();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### GetSelectedObjectInfomation() → string
+
+> 현재 선택된 오브젝트들의 정보를 문자열로 반환합니다.
+>
+> 반환 형식: `선택개수@레이어명#objid#objkey@레이어명#objid#objkey...`
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   string: 선택된 오브젝트 정보 문자열.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### requestMeshLoadCallback(callback) → boolean
+
+> 지형 메쉬 로딩 시 호출되는 콜백 함수를 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description   |
+| -------- | -------- | -------------- |
+| callback | function | 콜백 함수.    |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### requestObjectLoadCallback(callback) → boolean
+
+> 오브젝트 로딩 시 호출되는 콜백 함수를 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description   |
+| -------- | -------- | -------------- |
+| callback | function | 콜백 함수.    |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### changeTileMatrix(info) → boolean
+
+> 베이스맵 타일 구조(타일 행렬 구성, 인덱싱 순서 등)를 변경합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                                                                    |
+| ---- | ------ | ----------------------------------------------------------------------------------------------------------------- |
+| info | object | `url`, `tileExtent`(`min`,`max`), `indexorder`, `mercator`, `quadkey`, `differentmatrix`, `servicelevel`, `tilematrix`(`x`,`y`) 속성을 포함하는 설정 객체. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 필수 항목(url, tileExtent, tilematrix)이 누락된 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMapSelectObjectFromPosition(position) → [JSObject](../object/jsobject.md)
+
+> 화면 좌표가 아닌 지도 좌표(경위도) 기준으로 오브젝트를 선택합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description         |
+| -------- | -------------------------------------- | --------------------- |
+| position | [JSVector2D](../core/jsvector2d.md)   | 조회할 지도 좌표 (경도, 위도). |
+
+-   Return
+    -   object: 선택된 오브젝트.
+    -   null: 선택된 오브젝트가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### mapToScreenPoint(position) → [JSVector2D](../core/jsvector2d.md)
+>
+> 지도 좌표를 화면 좌표로 변환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description                     |
+| -------- | --------------------------------------- | ---------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md)   | 지도 위치 좌표 (경도, 위도, 고도). |
+
+-   Return
+    -   [JSVector2D](../core/jsvector2d.md): 화면 좌표 (Y값은 정상적으로 반영되지 않음).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addWaterFall(key, position, direction, tilt, particleCount, size, imageData, imageWidth, imageHeight) → boolean
+
+> 특정 위치에 폭포 효과를 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name          | Type                                 | Description                        |
+| ------------- | --------------------------------------- | ------------------------------------- |
+| key           | string                                  | 폭포 고유 키.                        |
+| position      | [JSVector3D](../core/jsvector3d.md)    | 폭포 생성 위치 (경도, 위도, 고도).   |
+| direction     | number                                  | 폭포 방향.                           |
+| tilt          | number                                  | 폭포 기울기.                        |
+| particleCount | number                                  | 파티클 수.                          |
+| size          | number                                  | 파티클 크기.                        |
+| imageData     | object                                  | 폭포 파티클 이미지 픽셀 데이터.     |
+| imageWidth    | number                                  | 이미지 가로 크기.                   |
+| imageHeight   | number                                  | 이미지 세로 크기.                   |
+
+-   Return
+    -   true: 생성 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### removeWaterFall(key) → boolean
+
+> 지정한 폭포를 제거합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description   |
+| ---- | ------ | -------------- |
+| key  | string | 폭포 고유 키. |
+
+-   Return
+    -   true: 제거 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### stopWaterFall()
+
+> 모든 폭포 효과를 정지합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWaterFallSpeedRatio(key, ratio)
+
+> 지정한 폭포의 낙하 속도 비율을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | -------------- |
+| key   | string | 폭포 고유 키. |
+| ratio | number | 속도 비율.    |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWaterFallDirection(key, direction, tilt)
+
+> 지정한 폭포의 방향과 기울기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description   |
+| --------- | ------ | -------------- |
+| key       | string | 폭포 고유 키. |
+| direction | number | 방향.         |
+| tilt      | number | 기울기.       |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWaterFallGravityRatio(key, ratio)
+
+> 지정한 폭포의 중력 비율을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | -------------- |
+| key   | string | 폭포 고유 키. |
+| ratio | number | 중력 비율.    |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWaterFallActive(key, active)
+
+> 지정한 폭포의 활성화 상태를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                                        |
+| ------ | ------- | ---------------------------------------------------- |
+| key    | string  | 폭포 고유 키.                                       |
+| active | boolean | <p>true: 활성화.<br>false: 비활성화.</p>          |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addHeatMap(position)
+
+> 히트맵에 좌표 1개를 추가합니다 (가중치 1.0 고정).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description                     |
+| -------- | --------------------------------------- | ---------------------------------- |
+| position | [JSVector3D](../core/jsvector3d.md)   | 히트맵 위치 좌표 (경도, 위도, 고도). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addHeatMapEX(position)
+
+> 히트맵에 좌표 1개를 가중치(고도값 사용)와 함께 추가합니다.
+>
+> position의 z(고도) 값이 해당 지점의 히트맵 가중치로 사용됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description                                   |
+| -------- | --------------------------------------- | ------------------------------------------------ |
+| position | [JSVector3D](../core/jsvector3d.md)   | 히트맵 위치 좌표 (경도, 위도, 가중치로 사용될 값). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addHeatMapsEX(coordinates)
+
+> 히트맵 좌표 목록을 가중치(고도값 사용)와 함께 추가합니다.
+>
+> 각 좌표의 z(고도) 값이 해당 지점의 히트맵 가중치로 사용됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                                        |
+| ----------- | ------------------------------------- | ----------------------------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 히트맵 위치 좌표(경도, 위도, 가중치로 사용될 값) 목록. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addHeatMap3D(position)
+
+> 3D 히트맵에 좌표를 추가합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                 | Description                     |
+| -------- | --------------------------------------- | ---------------------------------- |
+| position | [JSVector2D](../core/jsvector2d.md)   | 히트맵 위치 좌표 (경도, 위도).    |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getSelectObject(), setSelectObject(object) → [JSObject](../object/jsobject.md)
@@ -1039,7 +2161,7 @@ pMap.setFog(color, 0, 5000, 0.3);
 {% endtab %}
 {% endtabs %}
 
-### getPathIntervalPositions(path, interval, isUnionTerrain) → [JSVec3Array](../core/jsvec3array.md)
+### GetPathIntervalPositions(path, interval, isUnionTerrain) → [JSVec3Array](../core/jsvec3array.md)
 
 > 경위도 경로를 일정 간격으로 나눈 좌표 목록을 반환합니다.
 
@@ -1062,7 +2184,7 @@ let path = new Module.JSVec3Array();
 path.push(new Module.JSVector3D(127.0, 37.5, 0));
 path.push(new Module.JSVector3D(127.01, 37.51, 0));
 
-let result = Module.getMap().getPathIntervalPositions(path, 50, true);
+let result = Module.getMap().GetPathIntervalPositions(path, 50, true);
 ```
 
 {% endtab %}
@@ -1125,7 +2247,7 @@ let result = Module.getMap().getPositionByAngleDistance3D(base, 100.0, 90.0);  /
 {% endtab %}
 {% endtabs %}
 
-### getAreaIntervalPositions(area, intervalVertical, intervalHorizontal, direction) → [JSVec3Array](../core/jsvec3array.md)
+### GetAreaIntervalPositions(area, intervalVertical, intervalHorizontal, direction) → [JSVec3Array](../core/jsvec3array.md)
 
 > 주어진 다각형 영역(`area`) 안에 일정 간격(`intervalVertical`, `intervalHorizontal`)으로 점을 분포시켜 반환합니다.  
 > `direction` 값에 따라 정렬 방향을 조절할 수 있으며, 각 점은 실제 지형고도를 반영하여 3D 좌표로 반환됩니다.
@@ -1154,7 +2276,7 @@ area.push(new Module.JSVector3D(127.01, 37.51, 0));
 area.push(new Module.JSVector3D(127.0, 37.51, 0));
 area.push(new Module.JSVector3D(127.0, 37.5, 0));
 
-let result = Module.getMap().getAreaIntervalPositions(area, 10, 10, 0);
+let result = Module.getMap().GetAreaIntervalPositions(area, 10, 10, 0);
 ```
 
 {% endtab %}
@@ -1234,31 +2356,82 @@ Module.getMap().setHeatMapColor(colorList);
 {% endtab %}
 {% endtabs %}
 
-### getPositionByAngleDistance3D(position, distance, angle) → [JSVector3D](../core/jsvector3d.md)
+### getPositionByAngleDistance(position, distance, angle) → [JSVector2D](../core/jsvector2d.md)
 
-> 입력 위치로부터 특정 각도와 거리만큼 떨어진 지점의 좌표를 반환합니다.
+> 기준 좌표(position)에서 주어진 거리(distance)와 방위각(angle)을 기반으로 계산된 위치를 반환합니다 (2D, 고도 미반영).
 >
-> 반환 좌표는 경위도 및 고도 형태입니다.
+> getPositionByAngleDistance3D(position, distance, angle)의 2D(경위도만) 버전이며, 내부적으로 해당 함수를 호출합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name     | Type                                | Description                                       |
-|----------|-------------------------------------|---------------------------------------------------|
-| position | [JSVector3D](../core/jsvector3d.md) | 기준 위치 (경도, 위도, 고도).                    |
-| distance | number                              | 거리 (meter 단위).                               |
-| angle    | number                              | 방향 (degrees, 북쪽 기준 시계방향 각도 0~360도). |
+| Name     | Type                                 | Description                                       |
+| -------- | ------------------------------------- | -------------------------------------------------- |
+| position | [JSVector2D](../core/jsvector2d.md)  | 기준 위치 (경도, 위도).                           |
+| distance | number                                | 이동 거리 (meters 단위).                          |
+| angle    | number                                | 이동 방향 각도 (degrees, 북쪽 기준 시계방향 0~360). |
 
-- 거리 < 0 또는 각도가 0~360 범위를 벗어나면 null 벡터가 반환됩니다.
-
-- 결과 좌표는 입력 기준점에서 북쪽 기준 angle 각도 방향으로 distance만큼 이동한 지점을 의미합니다.
+-   Return
+    -   [JSVector2D](../core/jsvector2d.md): 이동 결과 위치 (경도, 위도).
+    -   (0, 0): distance가 0 미만이거나 angle이 0~360 범위를 벗어난 경우.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
-let center = new Module.JSVector3D(127.0, 37.5, 100); // 기준 위치
-let offset = Module.getMap().getPositionByAngleDistance3D(center, 1000, 45); // 북동쪽 1km 위치
+let center = new Module.JSVector2D(127.0, 37.5);
+let offset = Module.getMap().getPositionByAngleDistance(center, 1000, 45);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getWorkMode(), setWorkMode(mode) → number
+
+> 마우스 동작 모드(작업 모드)를 설정하거나 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description   |
+| ---- | ------ | -------------- |
+| mode | number | 마우스 동작 모드 값. |
+
+-   Return (get)
+    -   number: 현재 마우스 동작 모드 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getPlaneMode(), setPlaneMode(plane, rotation) → boolean
+
+> 평면(Plane) 모드와 구체(지구본) 모드를 설정하거나, 현재 평면 모드 여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type    | Description                                                |
+| -------- | ------- | ------------------------------------------------------------ |
+| plane    | boolean | <p>true: 평면 모드로 전환.<br>false: 구체 모드로 전환.</p> |
+| rotation | boolean | 카메라 회전 유지 여부.                                       |
+
+-   Return (get)
+    -   true: 현재 평면 모드 상태.
+    -   false: 현재 구체 모드 상태.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setPlaneMode(true, false);
+var isPlane = Module.getMap().getPlaneMode();
 ```
 
 {% endtab %}

@@ -10,16 +10,42 @@ description: 지도 내 네비게이션(난침반 UI) 기능을 설정 및 제�
 var navigation = Module.getNavigation();
 ```
 
-## Function
+### setZoomDelta(delta)
 
-### getPadding() → [JSVector2D](../core/jsvector2d.md)
-
-> 나침반 Padding 값을 반환합니다.
+> 나침반(맵 컨트롤) 확대/축소 이동 비율을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
--   Return
+| Name  | Type   | Description        |
+| ----- | ------ | --------------------- |
+| delta | number | 확대/축소 이동 비율 값. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+## Getter / Setter
+
+### getPadding(), setPadding(left, top) → [JSVector2D](../core/jsvector2d.md)
+
+> 나침반 Padding 값을 설정하거나 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description      |
+| ---- | ------ | ---------------- |
+| left | number | left Padding 값. |
+| top  | number | top Padding 값.  |
+
+-   Return (get)
     -   x : left Padding 설정값.
     -   y : top Padding 설정값.
 -   Sample
@@ -31,38 +57,38 @@ var navigation = Module.getNavigation();
 
 ```javascript
 var padding = Module.getNavigation().getPadding();
-```
-
-{% endtab %}
-{% endtabs %}
-
-### setPadding(number left, number top)
-
-> 나침반 Padding 값을 설정합니다.
-
-{% tabs %}
-{% tab title="Information" %}
-
-| Name | Type   | Description      |
-| ---- | ------ | ---------------- |
-| left | number | left Padding 값. |
-| top  | number | top Padding 값.  |
-
--   Sample
-    -   function getNavigationProperties 참조.
-    -   [Sandbox_Map Control](https://sandbox.egiscloud.com/code/main.do?id=option_control_map)
-
-{% endtab %}
-{% tab title="Template" %}
-
-```javascript
+// ... or ...
 Module.getNavigation().setPadding(50, 50);
 ```
 
 {% endtab %}
 {% endtabs %}
 
-## Getter / Setter
+### getControlSpeed(), setControlSpeed(speed) → number
+
+> 나침반(맵 컨트롤) 조작 속도를 설정하거나 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | -------------- |
+| speed | number | 조작 속도 값. |
+
+-   Return (get)
+    -   number: 현재 설정된 조작 속도 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var speed = Module.getNavigation().getControlSpeed();
+// ... or ...
+Module.getNavigation().setControlSpeed(5.0);
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### getNaviPos(), setNaviPos(align) → number
 

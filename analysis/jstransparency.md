@@ -12,6 +12,156 @@ var transparency = Module.getTransparency();
 
 ## Function
 
+### add() → number
+
+> 빈 터파기 객체를 추가하고, 생성된 터파기의 인덱스를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 생성된 터파기 인덱스 (0 이상).
+    -   -1: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createPipeGraph(transparencyIndex, position, layerNames) → number
+
+> 지정한 터파기 위치에서, 관로(파이프) 레이어들의 단면 분석 그래프를 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name              | Type                                 | Description                                      |
+| ----------------- | --------------------------------------- | ----------------------------------------------------- |
+| transparencyIndex | number                                | 대상 터파기 인덱스.                                  |
+| position          | [JSVector3D](../core/jsvector3d.md)  | 그래프 생성 위치 (경도, 위도, 고도).                |
+| layerNames        | string                                | 콤마(,)로 구분된 관로 레이어 명칭 목록.             |
+
+-   Return
+    -   number > -1: 생성 성공, 생성된 그래프 인덱스.
+    -   -1: layerNames가 비어 있거나, 분석 대상 레이어를 하나도 찾지 못한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getClosePipes(transparencyIndex, pipeLayerName, pipeObjectKey, targetLayerNames, distance) → string
+
+> 지정한 파이프 객체 기준으로, 대상 레이어들 내에서 일정 거리 이내에 있는 인접 파이프 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name              | Type   | Description                                    |
+| ----------------- | ------ | --------------------------------------------------- |
+| transparencyIndex | number | 대상 터파기(파이프 그래프) 인덱스.                |
+| pipeLayerName     | string | 기준 파이프가 속한 레이어 명칭.                  |
+| pipeObjectKey     | string | 기준 파이프 객체 고유 키.                        |
+| targetLayerNames  | string | 콤마(,)로 구분된 탐색 대상 레이어 명칭 목록.     |
+| distance          | number | 인접 판정 거리 (0보다 커야 함).                  |
+
+-   Return
+    -   string: 인접 파이프 목록 정보.
+    -   "": 파라미터가 유효하지 않거나 transparencyIndex가 범위를 벗어난 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearPipeGraph() → boolean
+
+> 생성된 파이프 단면 분석 그래프 및 터파기를 모두 삭제합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 삭제 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### addExpandViewLayer(layer) → boolean
+
+> 터파기 확장뷰(Expand View) 기능을 적용할 레이어를 등록합니다.
+>
+> [JSPipe](../object/jspipe.md), JSGhostSymbol, [JSPolygon](../object/jspolygon.md)(폴리곤 계열) 타입의 레이어만 지원합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type                            | Description         |
+| ----- | -------------------------------- | ---------------------- |
+| layer | [JSLayer](../layer/jslayer.md)  | 등록할 대상 레이어. |
+
+-   Return
+    -   true: 등록 성공.
+    -   false: 레이어가 유효하지 않거나 지원하지 않는 레이어 타입인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setExpandViewRate(rate) → boolean
+
+> 터파기 확장뷰 배율을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                     |
+| ---- | ------ | ---------------------------------- |
+| rate | number | 확장 배율 (1.0 미만이면 1.0으로 보정). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### clear()
 
 > 터파기 결과를 초기화 합니다.

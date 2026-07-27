@@ -1515,6 +1515,1369 @@ layer.setWMSVersion(“1.1.0”);
 {% endtab %}
 {% endtabs %}
 
+### addObjects(objects)
+
+> 여러 객체를 사용자 레이어에 한 번에 추가합니다.
+>
+> 이미 동일한 고유 명칭의 객체가 존재하는 경우 해당 객체는 건너뜁니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type                                      | Description       |
+| ------- | ------------------------------------------ | ------------------- |
+| objects | array([JSObject](../object/jsobject.md))  | 추가할 객체 배열.    |
+
+* Note
+  * 입력값이 배열이 아니거나 비어있는 경우 아무 동작도 하지 않습니다.
+  * 배열 내 개별 객체가 null/undefined 이거나 이미 등록된 키를 가진 경우 해당 객체만 건너뛰고 나머지는 계속 처리합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let layerList = new Module.JSLayerList(true);
+let layer = layerList.createLayer("objectlayer");
+layer.addObjects([object1, object2, object3]);
+```
+{% endtab %}
+{% endtabs %}
+
+### setObjectColorListByKey(simpleColorMode, color, objectKeyList) → boolean
+
+> 지정한 객체 고유 명칭 목록에 대해 색상을 일괄 설정합니다.
+>
+> 건물(Real3D) 타입 서비스 레이어에서 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name            | Type                           | Description                                          |
+| ---------------- | ------------------------------ | ------------------------------------------------------- |
+| simpleColorMode  | boolean                        | true: 심플 모드 색상 설정, false: 텍스처 모드 색상 설정. |
+| color            | [JSColor](../core/jscolor.md)  | 설정할 색상.                                             |
+| objectKeyList    | array(string)                  | 색상을 설정할 객체 고유 명칭 목록.                        |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 사용자 레이어인 경우.
+* Note
+  * 이미 등록된 객체 고유 명칭인 경우 심플/텍스처 모드에 해당하는 색상값만 갱신합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layer = Module.getTileLayerList().nameAtLayer("facility_build");
+var color = new Module.JSColor(255, 255, 0, 0);
+layer.setObjectColorListByKey(true, color, ["obj_key_1", "obj_key_2"]);
+```
+{% endtab %}
+{% endtabs %}
+
+### clearObjectColorList() → boolean
+
+> [setObjectColorListByKey](jslayer.md#setobjectcolorlistbykeysimplecolormode-color-objectkeylist-boolean) 로 설정된 객체 색상 목록을 초기화하고, 색상이 변경된 건물(Real3D) 객체를 원래 색상으로 되돌립니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * true : 초기화 성공.
+  * false : 초기화 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 사용자 레이어인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layer = Module.getTileLayerList().nameAtLayer("facility_build");
+layer.clearObjectColorList();
+```
+{% endtab %}
+{% endtabs %}
+
+### setWFSGroupIcon(layerName, imageData, width, height) → boolean
+
+> WFS 레이어에서 다수 포인트가 겹칠 경우 표시할 그룹 아이콘 이미지를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type          | Description                         |
+| --------- | ------------- | -------------------------------------- |
+| layerName | string        | 레이어 명칭(현재 미사용).               |
+| imageData | array(number) | 이미지 픽셀 데이터(ARGB, byte 배열).    |
+| width     | number        | 이미지 너비.                            |
+| height    | number        | 이미지 높이.                            |
+
+* Return
+  * true : 설정 성공.
+* Note
+  * imageData 배열 길이가 1 이하인 경우 아이콘 텍스처 없이 설정됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setShaderReal3D(shaderType) → boolean
+
+> Real3D(건물) 레이어의 셰이더 타입을 설정합니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name       | Type   | Description             |
+| ---------- | ------ | -------------------------- |
+| shaderType | number | 셰이더 타입(0\~10 범위). |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * Real3D 레이어가 아닌 경우.
+* Note
+  * 이미 로드된 타일 내 모든 객체에도 즉시 반영됩니다.
+  * 범위를 벗어난 값(0 미만 또는 10 초과)은 0으로 보정됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### import3DTiles(option) → boolean
+
+> 3D Tiles 포맷 데이터를 레이어에 로드합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name                 | Type                            | Description                                       |
+| -------------------- | -------------------------------- | ---------------------------------------------------- |
+| option                | object                            | 3D Tiles 로드 옵션.                                  |
+| ↳ url                 | string                            | tileset.json 요청 url.                               |
+| ↳ autoMove            | boolean (optional, 기본값 false)  | 로드 후 카메라 자동 이동 여부.                        |
+| ↳ offsetZ             | number (optional, 기본값 0.0)     | 높이(Z) 오프셋(meters 단위).                         |
+| ↳ discardVertexData   | boolean (optional, 기본값 false) | 정점 데이터 보관 여부(true: 미보관, 메모리 절약).      |
+| ↳ Authorization       | boolean (optional, 기본값 false) | 인증 헤더 사용 여부.                                  |
+
+* Return
+  * true : 로드 요청 성공.
+  * false : 실패.
+  * 실패 조건
+    * 3D Tiles 레이어가 아닌 경우.
+    * option이 null/undefined인 경우.
+    * url이 없는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var layerList = new Module.JSLayerList(false);
+var layer = layerList.create3DTilesLayer("3dtiles_layer");
+layer.import3DTiles({
+    url: "http://.../tileset.json",
+    autoMove: true,
+    offsetZ: 0.0
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### setDebugMode(debug) → boolean
+
+> 3D Tiles 레이어의 디버그 모드(바운딩 볼륨 등 시각화)를 설정합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type    | Description                                |
+| ----- | ------- | --------------------------------------------- |
+| debug | boolean | true: 디버그 모드 활성화, false: 비활성화.     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 3D Tiles 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### reloadTiles() → boolean
+
+> 타일 기반 레이어의 로드된 타일을 모두 지우고 다시 로드합니다.
+>
+> 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * true : 재로드 성공.
+  * false : 실패.
+  * 실패 조건
+    * 지구본 타일 기반 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.reloadTiles();
+```
+{% endtab %}
+{% endtabs %}
+
+### setRenderReal3dEdgeLine(set) → boolean
+
+> Real3D(건물) 레이어 심플 모드의 외곽 라인 렌더링 여부를 설정합니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type    | Description                               |
+| ---- | ------- | -------------------------------------------- |
+| set  | boolean | true: 외곽 라인 렌더링, false: 렌더링 안함.   |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+* Note
+  * 이미 로드된 객체에도 즉시 반영됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setReal3dEdgeLineColor(color) → boolean
+
+> Real3D(건물) 레이어 심플 모드 외곽 라인 색상을 설정합니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type                          | Description    |
+| ----- | ----------------------------- | ------------------ |
+| color | [JSColor](../core/jscolor.md) | 외곽 라인 색상.    |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setReal3dEdgeLineWidth(width) → boolean
+
+> Real3D(건물) 레이어 외곽 라인 두께를 설정합니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description     |
+| ----- | ------ | ------------------- |
+| width | number | 외곽 라인 두께.     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setRenderReal3dWireFrame(set) → boolean
+
+> Real3D(건물) 레이어의 와이어프레임 렌더링 여부를 설정합니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type    | Description                                  |
+| ---- | ------- | ------------------------------------------------ |
+| set  | boolean | true: 와이어프레임 렌더링, false: 렌더링 안함.    |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setReal3dWireFrameColor(color) → boolean
+
+> Real3D(건물) 레이어 와이어프레임 색상을 설정합니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type                          | Description       |
+| ----- | ----------------------------- | --------------------- |
+| color | [JSColor](../core/jscolor.md) | 와이어프레임 색상.    |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getReal3DFormatData(objectKey, format) → ArrayBuffer
+
+> Real3D(건물) 객체 데이터를 지정한 포맷(3DS 또는 XDO)의 바이너리 데이터로 반환합니다.
+>
+> VWorld 건물 서비스 레이어인 경우 보안상 사용할 수 없습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description                              |
+| --------- | ------ | -------------------------------------------- |
+| objectKey | string | 객체 고유 명칭.                              |
+| format    | string | 변환 포맷("3DS" 또는 "XDO", 대소문자 무관).  |
+
+* Return
+  * ArrayBuffer(typed array) : 반환 성공.
+  * null : 반환 실패.
+  * 실패 조건
+    * VWorld 건물 서비스 레이어인 경우.
+    * Real3D 레이어가 아닌 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없거나 Real3D 타입이 아닌 경우.
+    * format이 "3DS", "XDO" 둘 다 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getReal3dTexture(objectKey, textureLevel) → [JSIcon](../object/jsicon.md)
+
+> Real3D(건물) 객체의 텍스처를 JSIcon 형태로 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name         | Type   | Description                                     |
+| ------------ | ------ | --------------------------------------------------- |
+| objectKey    | string | 객체 고유 명칭.                                     |
+| textureLevel | number | 텍스처 레벨(-1 입력 시 로드된 것 중 최고화질 반환). |
+
+* Return
+  * [JSIcon](../object/jsicon.md) : 반환 성공.
+  * null : 반환 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없는 경우.
+    * 오브젝트에 텍스처가 없는 경우.
+    * 지정한 레벨의 텍스처가 로드되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getReal3dTextureFileName(objectKey) → string
+
+> Real3D(건물) 객체의 텍스처 파일 이름을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description     |
+| --------- | ------ | ------------------- |
+| objectKey | string | 객체 고유 명칭.    |
+
+* Return
+  * string : 반환 성공.
+  * "" : 반환 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getReal3dTextureData(objectKey, textureLevel) → ArrayBuffer
+
+> Real3D(건물) 객체 텍스처의 픽셀 데이터를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name         | Type   | Description                                     |
+| ------------ | ------ | --------------------------------------------------- |
+| objectKey    | string | 객체 고유 명칭.                                     |
+| textureLevel | number | 텍스처 레벨(-1 입력 시 로드된 것 중 최고화질 반환). |
+
+* Return
+  * ArrayBuffer(typed array) : 반환 성공.
+  * null : 반환 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없는 경우.
+    * 오브젝트에 텍스처가 없는 경우.
+    * 텍스처가 압축 포맷인 경우.
+    * 지정한 레벨의 텍스처가 로드되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setReal3dLodTextureRatio(ratio) → boolean
+
+> Real3D(건물) 레이어 텍스처 LOD 비율을 조정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description             |
+| ----- | ------ | --------------------------- |
+| ratio | number | 텍스처 LOD 비율(0 이상).   |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * ratio가 0보다 작은 경우.
+    * Real3D 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDefineMeshColorByObjectKey(checkString, compareType, color, isSimpleMode) → boolean
+
+> 객체 고유 명칭 조건에 따라 Real3D 타일 객체의 메쉬 색상을 정의합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name         | Type                           | Description                                              |
+| ------------ | ------------------------------ | ------------------------------------------------------------ |
+| checkString  | string                          | 비교할 문자열.                                              |
+| compareType  | number                          | 비교 방식(내부 정의값).                                      |
+| color        | [JSColor](../core/jscolor.md)  | 설정할 메쉬 색상.                                            |
+| isSimpleMode | boolean                         | true: 심플 모드 색상 설정, false: 텍스처 모드 색상 설정.     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+* Note
+  * 이미 로드된 타일 내 객체에도 즉시 반영됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDefineMeshColorByObjectKeyList(objectKeyList, compareType, color, isSimpleMode) → boolean
+
+> 객체 고유 명칭 목록에 대해 Real3D 타일 객체의 메쉬 색상을 정의합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name          | Type                           | Description                                              |
+| ------------- | ------------------------------- | ------------------------------------------------------------ |
+| objectKeyList | array(string)                   | 색상을 설정할 객체 고유 명칭 목록.                          |
+| compareType   | number                          | 비교 방식(내부 정의값).                                      |
+| color         | [JSColor](../core/jscolor.md)  | 설정할 메쉬 색상.                                            |
+| isSimpleMode  | boolean                         | true: 심플 모드 색상 설정, false: 텍스처 모드 색상 설정.     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+* Note
+  * 목록 중 실제 레이어에 존재하는 객체에 대해서만 적용됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDefineEdgeLineColorByObjectKey(checkString, compareType, color) → boolean
+
+> 객체 고유 명칭 조건에 따라 Real3D 타일 객체의 외곽 라인 색상을 정의합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name        | Type                           | Description                     |
+| ----------- | ------------------------------- | ------------------------------------ |
+| checkString | string                           | 비교할 문자열.                       |
+| compareType | number                           | 비교 방식(내부 정의값).               |
+| color       | [JSColor](../core/jscolor.md)   | 설정할 외곽 라인 색상.                |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+* Note
+  * 이미 로드된 타일 내 객체에도 즉시 반영됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setDefineVisibleByFileName(checkString, compareType, visible) → boolean
+
+> 파일 이름 조건에 따라 Real3D 타일 객체의 가시화 여부를 정의합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name        | Type    | Description                    |
+| ----------- | ------- | ---------------------------------- |
+| checkString | string  | 비교할 파일 이름 문자열.           |
+| compareType | number  | 비교 방식(내부 정의값).            |
+| visible     | boolean | true: 가시화, false: 비가시화.     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어가 아닌 경우.
+* Note
+  * 이미 로드된 타일 내 객체에도 즉시 반영됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### clearDefineTileObjectStyle() → boolean
+
+> [setDefineMeshColorByObjectKey](jslayer.md#setdefinemeshcolorbyobjectkeycheckstring-comparetype-color-issimplemode), [setDefineEdgeLineColorByObjectKey](jslayer.md#setdefineedgelinecolorbyobjectkeycheckstring-comparetype-color), [setDefineVisibleByFileName](jslayer.md#setdefinevisiblebyfilenamecheckstring-comparetype-visible) 로 정의된 스타일 조건을 모두 초기화합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * true : 초기화 성공.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setReal3dCutHeight(objectKey, height) → boolean
+
+> Real3D(건물) 객체의 수평 단면 절단 높이를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description                          |
+| --------- | ------ | ---------------------------------------- |
+| objectKey | string | 객체 고유 명칭.                          |
+| height    | number | 절단 기준 높이(고도, meters 단위).       |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어(또는 XDO 패킹 레이어)가 아닌 경우.
+    * 레이어에 객체가 없는 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setReal3dCutUse(objectKey, use) → boolean
+
+> Real3D(건물) 객체의 수평 단면 절단 효과 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type    | Description                            |
+| --------- | ------- | ------------------------------------------ |
+| objectKey | string  | 객체 고유 명칭.                            |
+| use       | boolean | true: 단면 절단 효과 사용, false: 미사용.  |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * Real3D 레이어(또는 XDO 패킹 레이어)가 아닌 경우.
+    * 레이어에 객체가 없는 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### cutReal3d(objectKey, option) → boolean
+
+> Real3D(건물) 객체의 횡단면(절단) 가시화를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name        | Type                                       | Description                            |
+| ----------- | -------------------------------------------- | ------------------------------------------ |
+| objectKey   | string                                        | 객체 고유 명칭.                            |
+| option      | object                                         | 절단 옵션.                                 |
+| ↳ use       | boolean (optional)                             | 절단 효과 사용 여부.                        |
+| ↳ height    | number (optional, 기본값 9999.9)               | 절단 기준 높이.                            |
+| ↳ alpha     | number (optional, 기본값 1.0)                  | 절단면 투명도.                              |
+| ↳ lineColor | [JSColor](../core/jscolor.md) (optional)      | 절단면 외곽선 색상.                         |
+| ↳ lineWidth | number (optional)                              | 절단면 외곽선 두께.                         |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 지구본 타일 기반 레이어가 아닌 경우.
+    * 입력값(objectKey)을 갖는 오브젝트가 없는 경우.
+* Note
+  * option에 없는 필드는 변경하지 않고 이전 값을 그대로 유지합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.cutReal3d("obj_key_1", {
+    use: true,
+    height: 50.0,
+    alpha: 0.5,
+    lineColor: new Module.JSColor(255, 255, 0, 0),
+    lineWidth: 2.0
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### setVectorPipeDirectionEffect(startColor, endColor, interval, speed) → boolean
+
+> 벡터 파이프 레이어의 흐름 방향 효과 색상, 간격, 속도를 설정합니다.
+>
+> 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name       | Type                          | Description       |
+| ---------- | ----------------------------- | --------------------- |
+| startColor | [JSColor](../core/jscolor.md) | 효과 시작 색상.      |
+| endColor   | [JSColor](../core/jscolor.md) | 효과 끝 색상.        |
+| interval   | number                         | 효과 간격.           |
+| speed      | number                         | 효과 이동 속도.       |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 벡터 파이프 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setVectorPipeDirectionEffectVisible(visible) → boolean
+
+> 벡터 파이프 레이어의 흐름 방향 효과 표시 여부를 설정합니다.
+>
+> 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type    | Description                        |
+| ------- | ------- | -------------------------------------- |
+| visible | boolean | true: 효과 표시, false: 효과 비표시.   |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 벡터 파이프 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setVectorPipeDirectionEffectAltitude(altitude) → boolean
+
+> 벡터 파이프 레이어의 흐름 방향 효과 표시 고도를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type   | Description |
+| -------- | ------ | ----------- |
+| altitude | number | 표시 고도.  |
+
+* Return
+  * true : 설정 성공.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setVectorPipeDirectionEffectMinimumRadius(minimumRadius) → boolean
+
+> 벡터 파이프 레이어의 흐름 방향 효과가 표시되는 최소 반경을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name          | Type   | Description             |
+| ------------- | ------ | --------------------------- |
+| minimumRadius | number | 최소 반경(0.001 이상).     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * minimumRadius가 0.001보다 작은 경우.
+    * 벡터 파이프 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setVectorPipeMinimumRadius(minimumRadius) → boolean
+
+> 벡터 파이프 오브젝트가 렌더링되는 최소 반경을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name          | Type   | Description             |
+| ------------- | ------ | --------------------------- |
+| minimumRadius | number | 최소 반경(0.001 이상).     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * minimumRadius가 0.001보다 작은 경우.
+    * 벡터 파이프 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setVectorPipeSimplyRange(simplyRange) → boolean
+
+> 벡터 파이프 오브젝트의 단순화(Simplify) 범위를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name        | Type   | Description               |
+| ----------- | ------ | ----------------------------- |
+| simplyRange | number | 단순화 범위(0.001 이상).     |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * simplyRange가 0.001보다 작은 경우.
+    * 벡터 파이프 레이어가 아닌 경우.
+* Note
+  * 이미 로드된 파이프 객체에도 즉시 반영됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getPipeIntersection(path) → array
+
+> 지정한 경로(path)와 옥트리 레이어 내 벡터 파이프 오브젝트가 교차하는 지점들을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type                                     | Description     |
+| ---- | ------------------------------------------ | ------------------- |
+| path | [JSVec2Array](../core/jsvec2array.md)     | 교차 검사 경로.    |
+
+* Return
+  * array : 교차점 목록.
+    * | Name      | Type                                  | Description                |
+      | --------- | -------------------------------------- | ------------------------------ |
+      | objectKey | string                                 | 교차한 파이프 객체 고유 명칭. |
+      | position  | [JSVector3D](../core/jsvector3d.md)   | 교차 위치.                    |
+  * [] : 레이어에 객체가 없는 경우.
+* Note
+  * 파이프(EOT\_PIPE) 타입 오브젝트만 대상으로 검사합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let path = new Module.JSVec2Array();
+//...(경로 좌표 추가)...
+let intersections = layer.getPipeIntersection(path);
+```
+{% endtab %}
+{% endtabs %}
+
+### setOctreeLoadCallback(callback) → boolean
+
+> 옥트리 레이어 타일 로드 완료 시 호출될 콜백 함수를 설정합니다.
+>
+> 옥트리 구조 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type     | Description              |
+| -------- | -------- | ---------------------------- |
+| callback | function | 로드 완료 시 호출될 콜백 함수. |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 옥트리 구조 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setOctreeLoadCallback(function() {
+    console.log("Octree loaded!");
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### getObjects() → array
+
+> 레이어에 포함된 모든 객체와 고유 명칭 목록을 반환합니다.
+>
+> 지구본 타일 기반 레이어 또는 옥트리 구조 레이어에서 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * array : 반환 성공.
+    * | Name   | Type                                | Description   |
+      | ------ | -------------------------------------- | --------------- |
+      | key    | string                                  | 객체 고유 명칭. |
+      | object | [JSObject](../object/jsobject.md)      | 객체.           |
+  * [] : 반환 실패.
+  * 실패 조건
+    * 지구본 타일 기반 레이어 또는 옥트리 구조 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let objects = layer.getObjects();
+objects.forEach(o => console.log(o.key, o.object));
+```
+{% endtab %}
+{% endtabs %}
+
+### setGhostSymbolTilePosition(option) → boolean
+
+> 고스트 심볼(Ghost 3D Symbol) 레이어의 심볼 위치 정렬 기준을 설정합니다.
+>
+> 고스트 심볼 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name        | Type                      | Description                                     |
+| ----------- | -------------------------- | ---------------------------------------------------- |
+| option      | object                     | 정렬 옵션.                                            |
+| ↳ align     | string (optional)          | "CENTER", "BOTTOM", "TOP" 중 하나(대소문자 무관).      |
+| ↳ basepoint | array(number) (optional)   | 기준점 좌표 [x, y, z] (3개 원소 필요).                 |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 고스트 심볼 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setGhostSymbolTilePosition({
+    align: "BOTTOM",
+    basepoint: [0, 0, 0]
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### pick(screenX, screenY) → object
+
+> 화면 좌표를 기준으로 레이어 내 오브젝트를 피킹합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type   | Description             |
+| ------- | ------ | --------------------------- |
+| screenX | number | 화면 X 좌표(pixel).         |
+| screenY | number | 화면 Y 좌표(pixel).         |
+
+* Return
+  * object : 피킹 성공.
+    * | Key       | Type                                  | Description             |
+      | --------- | -------------------------------------- | --------------------------- |
+      | position  | [JSVector3D](../core/jsvector3d.md)   | 피킹된 좌표.               |
+      | objectKey | string                                  | 피킹된 객체 고유 명칭.     |
+  * null : 피킹 실패.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let pickInfo = layer.pick(500, 300);
+if (pickInfo) {
+    console.log(pickInfo.objectKey, pickInfo.position);
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### rebuildObjectLayer() → boolean
+
+> 옥트리 레이어의 오브젝트를 다시 배치(트리 재구성)합니다.
+>
+> 옥트리 구조 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * true : 재배치 성공.
+  * false : 옥트리 구조 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.rebuildObjectLayer();
+```
+{% endtab %}
+{% endtabs %}
+
+### setMouseHover(hover)
+
+> 레이어의 마우스 호버 모드 사용 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type    | Description                                 |
+| ----- | ------- | ----------------------------------------------- |
+| hover | boolean | true: 마우스 호버 모드 사용, false: 미사용.     |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setMouseHover(true);
+```
+{% endtab %}
+{% endtabs %}
+
+### setUserTileJsonParsing(set) → boolean
+
+> 사용자 레이어 타일 로드 시 JSON 파싱 사용 여부를 설정합니다.
+>
+> 사용자 레이어(지구본 타일 기반)에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type    | Description                          |
+| ---- | ------- | ----------------------------------------- |
+| set  | boolean | true: JSON 파싱 사용, false: 미사용.      |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 지구본 타일 기반 사용자 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setMaxLevelOverlap(overlap) → boolean
+
+> 하이브리드 레이어의 최대 레벨 초과 시 부모 타일 참조 여부를 설정합니다.
+>
+> 하이브리드 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name    | Type    | Description                                        |
+| ------- | ------- | ----------------------------------------------------- |
+| overlap | boolean | true: 최대 레벨 초과 시 부모 타일 참조, false: 미참조. |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 지구본 타일 기반 레이어가 아닌 경우.
+    * 하이브리드 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getObjectInScreenRect(startX, startY, endX, endY) → array
+
+> 화면 영역(사각형) 내에 보이는 레이어 객체 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description           |
+| ------ | ------ | -------------------------- |
+| startX | number | 영역 시작 X 좌표(pixel).  |
+| startY | number | 영역 시작 Y 좌표(pixel).  |
+| endX   | number | 영역 끝 X 좌표(pixel).    |
+| endY   | number | 영역 끝 Y 좌표(pixel).    |
+
+* Return
+  * array : 화면 영역 내 객체 목록.
+    * | Name      | Type                                  | Description        |
+      | --------- | -------------------------------------- | ---------------------- |
+      | objectKey | string                                  | 객체 고유 명칭.       |
+      | position  | [JSVector3D](../core/jsvector3d.md)   | 객체 중심 좌표.       |
+  * [] : 반환 실패.
+  * 실패 조건
+    * 지구본 타일 기반 레이어 또는 옥트리 구조 레이어가 아닌 경우.
+    * 화면 영역 내 시야에 들어온 객체가 없는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
+```
+{% endtab %}
+{% endtabs %}
+
+### setPointCloudeSize(size)
+
+> 포인트 클라우드(3D Tiles 기반) 레이어의 포인트 크기를 설정합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description  |
+| ---- | ------ | ----------------- |
+| size | number | 포인트 크기.      |
+
+* Note
+  * [setPointCloudPointSize](jslayer.md#setpointcloudpointsizesize-boolean) 와 유사하나, 3D Tiles 레이어 전용으로 동작합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setPointCloudInterpolateMode(mode) → boolean
+
+> 포인트 클라우드 레이어의 보간 모드를 설정합니다.
+>
+> 포인트 클라우드 또는 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description     |
+| ---- | ------ | ------------------- |
+| mode | number | 보간 모드 값.       |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 포인트 클라우드 또는 3D Tiles 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### setLimitBoundary(option) → boolean
+
+> 타일 레이어의 요청 범위를 다각형 경계로 제한합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name       | Type                     | Description                                              |
+| ---------- | ------------------------ | ------------------------------------------------------------ |
+| option     | object                   | 경계 옵션.                                                    |
+| ↳ boundary | object                   | 경계 정의(아래 두 형태 중 하나).                              |
+| &nbsp;&nbsp;• min/max | array(number)[2] | 사각형 경계(최소, 최대 좌표) [lon, lat].               |
+| &nbsp;&nbsp;• 배열     | array(array(number)[2]) | 다각형 경계 좌표 배열(각 원소 [lon, lat], 3개 이상 필요). |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 월드 또는 레이어가 없는 경우.
+    * boundary가 없는 경우.
+    * min/max 또는 배열 형식이 올바르지 않은 경우.
+    * 유효 좌표 개수가 3개 미만인 경우.
+* Note
+  * [boundaryLimit](jslayer.md#properties) 속성과 함께 사용되어 요청 범위를 제한합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setLimitBoundary({
+    boundary: {
+        min: [126.9, 37.5],
+        max: [127.0, 37.6]
+    }
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### getViewInTransparency() → boolean
+
+> 레이어가 투명 상태에서도 보이도록 설정되었는지 여부를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * true : 투명 상태에서도 렌더링됨.
+  * false : 투명 상태에서 렌더링 안됨.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getPickInfoWithinRadius(center, radius) → object
+
+> 중심 좌표(center)로부터 일정 반경(radius) 이내에서 카메라 뷰와 상관없이 피킹된 객체 정보를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type                                  | Description               |
+| ------ | -------------------------------------- | ------------------------------ |
+| center | [JSVector3D](../core/jsvector3d.md)   | 피킹 기준 중심 좌표.          |
+| radius | number                                  | 피킹 반경(meters 단위).      |
+
+* Return
+  * `object` : 피킹 성공 시 위치 및 객체 정보 반환
+  * `null` : 피킹 실패 시
+* 반환 객체 구조
+
+| Key       | Type                                | Description         |
+| --------- | ----------------------------------- | -------------------- |
+| position  | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.     |
+| objectKey | string                               | 피킹된 객체의 고유 키. |
+| layerName | string                               | 피킹된 객체가 포함된 레이어 이름. |
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let center = new Module.JSVector3D(127.0, 37.5, 50.0);
+let pickInfo = layer.getPickInfoWithinRadius(center, 100.0);
+
+if (pickInfo) {
+    console.log("Position:", pickInfo.position);
+    console.log("Object Key:", pickInfo.objectKey);
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### addTileInData(tileInfo) → boolean
+
+> 바람장(Wind Layer/Tile Flow) 레이어의 타일에 UV 흐름 데이터를 삽입합니다.
+>
+> 타일 흐름(Tile Flow) 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name                 | Type                     | Description                          |
+| --------------------- | ------------------------ | ---------------------------------------- |
+| tileInfo              | object                    | 타일 데이터 정보.                        |
+| ↳ header              | object                    | 타일 위치/크기 정보.                     |
+| &nbsp;&nbsp;• level/idx/idy | number             | 타일 위치 정보.                          |
+| &nbsp;&nbsp;• col/row       | number             | 타일 데이터 그리드 열/행 개수.           |
+| ↳ data                | array(array(number)[2])  | UV 데이터 배열([u, v] 쌍의 배열).        |
+
+* Return
+  * true : 삽입 성공.
+  * false : 삽입 실패.
+  * 실패 조건
+    * 타일 흐름(Tile Flow) 레이어가 아닌 경우.
+    * header 또는 data 누락, 혹은 level/idx/idy/col/row 누락.
+    * data 배열 길이가 (col + 2\*halo) \* (row + 2\*halo) 와 다른 경우.
+    * 해당 위치의 타일이 존재하지 않는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### windlayerStart()
+
+> 타일 흐름(Tile Flow) 레이어의 바람장 파티클 흐름 효과를 시작합니다.
+>
+> 타일 흐름 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.windlayerStart();
+```
+{% endtab %}
+{% endtabs %}
+
+### setWindLayerProperty(option) → boolean
+
+> 바람장(Wind Layer) 파티클 옵션을 설정합니다.
+>
+> 타일 흐름(Tile Flow) 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name           | Type               | Description                             |
+| -------------- | ------------------ | ------------------------------------------- |
+| option         | object              | 바람장 옵션.                                |
+| ↳ particleNum  | number (optional)   | 파티클 개수(최대 5000개로 제한됨).          |
+| ↳ velocity     | number (optional)   | 파티클 이동 속도 배율.                      |
+| ↳ height       | number (optional)   | 파티클 표시 높이.                           |
+| ↳ colorMode    | number (optional)   | 파티클 색상 모드.                           |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 타일 흐름(Tile Flow) 레이어가 아닌 경우.
+    * option이 없는 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setWindLayerProperty({
+    particleNum: 2000,
+    velocity: 1.0,
+    height: 10.0,
+    colorMode: 0
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### setBounderyBox(box)
+
+> 옥트리 레이어의 바운더리 박스를 설정합니다.
+>
+> 옥트리 구조 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type              | Description               |
+| ----- | ----------------- | ---------------------------- |
+| box   | object             | 바운더리 박스 옵션.          |
+| ↳ min | array(number)[2]   | 최소 좌표 [lon, lat].       |
+| ↳ max | array(number)[2]   | 최대 좌표 [lon, lat].       |
+
+* Note
+  * 옥트리 구조 레이어가 아닌 경우 아무 동작도 하지 않습니다.
+  * min/max가 모두 존재하는 경우에만 적용됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setBounderyBox({
+    min: [126.9, 37.5],
+    max: [127.0, 37.6]
+});
+```
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getAlpha(), setAlpha(alpha) → number
@@ -2327,6 +3690,104 @@ var success = API.JSLayer.SetPointCloudRenderModeIntensity(50.0, 200.0, true);
 if (!success) {
     console.error("설정 실패: 해당 레이어는 포인트 클라우드 타입이 아닙니다.");
 }
+```
+{% endtab %}
+{% endtabs %}
+
+### getTileLODMaxLevel(), setTileLODMaxLevel(level) → number
+
+> 드론 LOD(Tile LOD Model) 레이어에서 가시화할 최대 레벨을 설정합니다.
+>
+> 드론 LOD 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description        |
+| ----- | ------ | ---------------------- |
+| level | number | 최대 가시화 레벨.      |
+
+* Return(getTileLODMaxLevel)
+  * number : 설정된 최대 레벨.
+  * -999 : 반환 실패.
+  * 실패 조건
+    * 레이어가 없는 경우.
+    * 드론 LOD 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setTileLODMaxLevel(15);
+let maxLevel = layer.getTileLODMaxLevel();
+```
+{% endtab %}
+{% endtabs %}
+
+### getMaxGeometricError(), setMaxGeometricError(value) → number
+
+> 3D Tiles 레이어의 최대 기하 오차(Maximum Screen Space Error)를 설정합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------------ |
+| value | number | 최대 기하 오차값(1.0 미만 입력 시 기본값으로 초기화).  |
+
+* Return(getMaxGeometricError)
+  * number : 설정된 최대 기하 오차값.
+  * 0.0 : 3D Tiles 레이어가 아니거나 설정되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setMaxGeometricError(16.0);
+let error = layer.getMaxGeometricError();
+```
+{% endtab %}
+{% endtabs %}
+
+### getLayerStyle(), setLayerStyle(style) → object
+
+> 레이어의 POI 스타일(크기, 페이드 옵션)을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name                                                          | Type                | Description                                     |
+| --------------------------------------------------------------- | -------------------- | ---------------------------------------------------- |
+| style                                                           | object               | 레이어 스타일 옵션.                                    |
+| ↳ poi                                                           | object (optional)    | POI 스타일 옵션.                                       |
+| &nbsp;&nbsp;• poi.scaleable.activate                            | boolean (optional)   | 거리에 따른 크기 조절 사용 여부.                        |
+| &nbsp;&nbsp;• poi.scaleable.range.min/max                       | number (optional)    | 크기 조절 적용 거리 범위.                               |
+| &nbsp;&nbsp;• poi.scaleable.minPixel.x/y                        | number (optional)    | 최소 픽셀 크기.                                        |
+| &nbsp;&nbsp;• poi.scaleable.tiltRange.activate/minAngle/maxAngle | (optional)            | 카메라 tilt 각도에 따른 크기 조절 옵션.                 |
+| &nbsp;&nbsp;• poi.fadeable.activate                             | boolean (optional)   | 거리에 따른 페이드 사용 여부.                           |
+| &nbsp;&nbsp;• poi.fadeable.range.min/max                        | number (optional)    | 페이드 적용 거리 범위.                                 |
+| &nbsp;&nbsp;• poi.fadeable.minAlpha                             | number (optional)    | 페이드 최소 투명도.                                    |
+| &nbsp;&nbsp;• poi.fadeable.tiltRange.activate/minAngle/maxAngle | (optional)            | 카메라 tilt 각도에 따른 페이드 옵션.                    |
+
+* Return(getLayerStyle)
+  * object : 현재 설정된 레이어 스타일(위 poi 옵션 구조와 동일).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setLayerStyle({
+    poi: {
+        scaleable: {
+            activate: true,
+            range: { min: 100, max: 5000 }
+        },
+        fadeable: {
+            activate: true,
+            range: { min: 3000, max: 5000 },
+            minAlpha: 0.0
+        }
+    }
+});
+
+let style = layer.getLayerStyle();
+console.log(style.poi.scaleable.activate);
 ```
 {% endtab %}
 {% endtabs %}

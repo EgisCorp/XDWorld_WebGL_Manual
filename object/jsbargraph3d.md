@@ -298,6 +298,56 @@ graph.setColumnTextColor("Column0", outlineColor, fillColor);
 
 ## Getter / Setter
 
+### getLabelTextSize(), setLabelTextSize(size) → number
+
+> Column/Row 라벨 텍스트 크기를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description   |
+| :--- | :----- | :------------ |
+| size | number | 라벨 텍스트 크기. |
+
+-   Return
+    -   number: 설정된 라벨 텍스트 크기(객체가 없으면 0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+graph.labelTextSize = 12;
+var size = graph.labelTextSize;
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getLabelWide(), setLabelWide(width) → number
+
+> Column/Row 라벨 텍스트 표시 폭을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| :---- | :----- | :------------ |
+| width | number | 라벨 텍스트 표시 폭. |
+
+-   Return
+    -   number: 설정된 라벨 텍스트 표시 폭(객체가 없으면 0).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+graph.labelWide = 30;
+var wide = graph.labelWide;
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getDescription(), setDescription(desc) → string
 
 > 객체에 대한 설명을 설정합니다.

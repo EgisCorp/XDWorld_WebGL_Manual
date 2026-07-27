@@ -15,6 +15,11 @@ var object = Module.getControl();
 | Name     				| Type                                	| Description                   |
 | --------------------- | ------------------------------------- | ----------------------------- |
 | keyboard_sensitivity  | number                              	| 키보드 이동 민감도              |
+| touchPanEnable        | boolean                              	| 터치를 통한 카메라 이동 가능 유무. getTouchPanEnable() / setTouchPanEnable() 참조. |
+| touchRotateEnable     | boolean                              	| 터치를 통한 카메라 회전 가능 유무. getTouchRotateEnable() / setTouchRotateEnable() 참조. |
+| touchZoomEnable       | boolean                              	| 터치를 통한 카메라 확대, 축소 가능 유무. getTouchZoomEnable() / setTouchZoomEnable() 참조. |
+| mouseLeftButtonDown   | boolean                              	| 마우스 왼쪽 버튼 클릭 상태 여부. |
+| mouseRightButtonDown  | boolean                              	| 마우스 오른쪽 버튼 클릭 상태 여부. |
 
 
 ## Function
@@ -54,6 +59,28 @@ var object = Module.getControl();
 | Name | Type    | Description                                                    |
 | :--- | :------ | :------------------------------------------------------------- |
 | type | boolean | <p>true: 화면 중심으로 설정.<br>false: 마우스 위치로 설정.</p> |
+
+{% endtab %}
+
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMouseClickCenterMode(type)
+
+> 마우스 클릭을 통한 지도 확대, 축소 시 클릭 위치 기준 또는 화면 중심 기준으로 동작 유무를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                    |
+| :--- | :------ | :--------------------------------------------------------------- |
+| type | boolean | <p>true: 화면 중심으로 설정.<br>false: 클릭 위치로 설정.</p> |
 
 {% endtab %}
 
@@ -482,6 +509,37 @@ Module.getControl().setTouchRotateEnable(false);
 var vTouchZoomEnable = Module.getControl().getTouchZoomEnable();
 // ... or ...
 Module.getControl().setTouchZoomEnable(false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMouseControlEvent(type), setMouseControlEvent(type, button) → number / boolean
+
+> 마우스 버튼(좌/우/휠 클릭)에 카메라 동작(이동, 회전, 확대축소)을 매핑합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                                                       |
+| :----- | :----- | :------------------------------------------------------------------ |
+| type   | string | 매핑할 카메라 동작. "translate"(이동) \| "rotate"(회전) \| "zoom"(확대,축소) |
+| button | number | 매핑할 마우스 버튼 번호 (0 ~ 2).                                   |
+
+-   Return (get)
+    -   number: 해당 동작에 매핑된 마우스 버튼 번호.
+    -   -1: type이 "translate", "rotate", "zoom" 중 어디에도 해당하지 않는 경우.
+-   Return (set)
+    -   true: 설정 성공.
+    -   false: button이 0~2 범위를 벗어나거나 type이 유효하지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var button = Module.getControl().getMouseControlEvent("rotate");
+// ... or ...
+Module.getControl().setMouseControlEvent("rotate", 2);
 ```
 
 {% endtab %}

@@ -2,7 +2,7 @@
 description: 지도 내 선을 생성 관리하기 위한 API 입니다.
 ---
 
-# JSAABBox3D
+# JSLine3D
 
 > Module.JSLine3D() API를 생성합니다.
 
@@ -18,4 +18,4 @@ let lineWithStartEnd = new Module.JSLine3D(start, end);
 | Name  | Type                                | Description          |
 | :---- | :---------------------------------- | :------------------- |
 | start | [JSVector3D](../core/jsvector3d.md) | 선의 시작 위치 좌표. |
-| end   | [JSVector3D](../core/jsvector3d.md) | 선의 조욜 위치 좌표. |
+| end   | [JSVector3D](../core/jsvector3d.md) | 선의 종료 위치 좌표. |

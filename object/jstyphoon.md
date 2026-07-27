@@ -352,6 +352,117 @@ typhoon.setTextureURL("./image/Typhoon.png");
 {% endtab %}
 {% endtabs %}
 
+### getPosition() → [JSVector3D](../core/jsvector3d.md)
+
+> 태풍 객체의 현재 위치(경도, 위도, 고도)를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
+    -   [JSVector3D](../core/jsvector3d.md)(0, 0, 0): 객체가 없거나 태풍 타입이 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var position = typhoon.getPosition();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMoveFinishReturn(set) → boolean
+
+> 이동 이벤트([moveStart()](jstyphoon.md#movestart)) 종료 후 시작 위치로 복귀할지 여부를 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                          |
+| ---- | ------- | ------------------------------------------------------ |
+| set  | boolean | true: 이동 종료 후 시작 위치로 복귀, false: 복귀 안 함. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 없거나 태풍 타입이 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+typhoon.setMoveFinishReturn(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### currentMoveListIndex() → number
+
+> [moveList()](jstyphoon.md#movelist-list)로 설정된 이동 경로 중, 현재 진행 중인 구간의 시작점 인덱스를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 현재 이동 구간의 시작점 인덱스.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var index = typhoon.currentMoveListIndex();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMoveListIndex(index) → boolean
+
+> [moveList()](jstyphoon.md#movelist-list)로 설정된 이동 경로 중, 지정한 인덱스의 좌표로 위치를 이동시킵니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description  |
+| ----- | ------ | ------------- |
+| index | number | 이동할 목표 인덱스. |
+
+-   Return
+    -   true: 이동 성공.
+    -   false: 이동 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+typhoon.setMoveListIndex(2);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### movePauseResume()
+
+> 진행 중인 이동([moveStart()](jstyphoon.md#movestart))을 일시정지하거나 다시 재개합니다.
+>
+> 호출할 때마다 정지/재개 상태가 반전됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+typhoon.movePauseResume(); // 정지
+typhoon.movePauseResume(); // 재개
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getDescription(), setDescription(desc) → string

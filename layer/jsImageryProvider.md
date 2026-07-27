@@ -28,6 +28,7 @@ var wmts = Module.WMTS();
 | minLevel                                    | number                                    | 배경 영상 지도 최소 레벨.         			|
 | crackValue                                  | number                                    | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).         			|
 | apikey                                      | string                                    | 배경 영상 지도 apikey.         			|
+| language                                    | string                                    | 배경 영상 지도 언어 설정.         			|
 	
 ## Function
 

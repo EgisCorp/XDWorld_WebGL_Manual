@@ -2,7 +2,7 @@
 description: 지도 내 포인트 그래프 객체를 생성 및 설정하기 위한 API 입니다.
 ---
 
-# CJSPointGraph
+# JSPointGraph
 
 > Module.createPointGraph() API를 생성합니다.
 

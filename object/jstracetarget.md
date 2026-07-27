@@ -10,22 +10,32 @@ description: 지도 내 경로 기능을 관리하기 위한 API 입니다.
 let trace = Module.createTraceTarget("ID");
 ```
 
+## Properties
+
+| Name      | Type   | Description   |
+| --------- | ------ | -------------- |
+| direction | number | 방향값 (degrees 단위). |
+| tilt      | number | 기울기 값 (카메라 최소 기울기 각도 미만으로는 설정되지 않음). |
+| distance  | number | 대상과의 거리값. |
+
 ## Function
 
-### move(front, right, terrain)
+### move(front, right, up)
 
 > 객체를 이동합니다.
 >
 > 입력 변수값(front, right)으로 이동합니다.
+>
+> 입력 변수값(up)의 타입에 따라 동작이 달라집니다: boolean이면 상하 이동 없이 지형 곡면률 적용 유무만 결정하고, number이면 해당 값만큼 상하로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name    | Type    | Description                                        |
-| :------ | :------ | :------------------------------------------------- |
-| front   | number  | 전후 이동 값(in meters).                           |
-| right   | number  | 좌우 이동 값(in meters).                           |
-| terrain | boolean | <p>true: 지형 곡면률 적용.<br>flase: 일반 이동.<p> |
+| Name  | Type              | Description                                                                                        |
+| :---- | :---------------- | :--------------------------------------------------------------------------------------------------- |
+| front | number            | 전후 이동 값(in meters).                                                                            |
+| right | number            | 좌우 이동 값(in meters).                                                                            |
+| up    | boolean \| number | <p>boolean - true: 이동 후 지형 곡면률 적용, false: 미적용.<br>number: 상하 이동 값(in meters).</p> |
 
 {% endtab %}
 
@@ -34,6 +44,8 @@ let trace = Module.createTraceTarget("ID");
 ```javascript
 // Omission of traceTarget creation and connection process.
 traceTarget.move(1.0, 1.0, true);
+// ... or ...
+traceTarget.move(1.0, 1.0, 0.5); // 0.5m 상승 이동
 ```
 
 {% endtab %}
@@ -120,19 +132,19 @@ traceTarget.ReleaseObject();
 
 ### set(options)
 
-> 대상 객체와 카메라 상태를 재설정합니다.
+> 대상 객체와 카메라 상태(기울기, 방향, 거리)를 한 번에 재설정합니다.
 >
-> 해당 객체는 [JSGhostSymbol](jsghostsymbol.md) 및 [JSPoint](jspoint.md)만 지원합니다.
+> options.object는 [JSGhostSymbol](jsghostsymbol.md), [JSPoint](jspoint.md), [JSPolygon](jspolygon.md)만 지원합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name      | Type                      | Description |
-| :-------- | :------------------------ | :---------- |
-| object    | [JSObject](./jsobject.md) | 대상 객체.  |
-| tilt      | number                    | 기울기.     |
-| direction | number                    | 방향값.     |
-| distance  | number                    | 거리값.     |
+| Name      | Type                                                                          | Description        |
+| :-------- | :------------------------------------------------------------------------------ | :------------------- |
+| object    | [JSGhostSymbol](jsghostsymbol.md) \| [JSPoint](jspoint.md) \| [JSPolygon](jspolygon.md) | 대상 객체. (optional) |
+| tilt      | number                                                                        | 기울기. (optional)  |
+| direction | number                                                                        | 방향값. (optional)  |
+| distance  | number                                                                        | 거리값. (optional)  |
 
 {% endtab %}
 {% tab title="Template" %}
@@ -168,7 +180,7 @@ traceTarget.unionTargetToTerrain();
 
 > 연결된 객체를 입력 변수값(object) 객체로 변경합니다.
 >
-> 해당 객체는 [JSGhostSymbol](jsghostsymbol.md) 및 [JSPoint](jspoint.md)만 지원하니다..
+> setObject() 자체는 객체 타입을 제한하지 않으나(내부적으로 해당 객체의 오브젝트를 그대로 연결), 옵션 기반의 [set(options)](jstracetarget.md#set-options)에서는 JSGhostSymbol, JSPoint, JSPolygon만 지원합니다.
 >
 > 입력 변수값(object) 객체가 null이면 동작하지 않습니다.
 
