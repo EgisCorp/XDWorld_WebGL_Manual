@@ -66,7 +66,7 @@ vectorList.count();
 | index | number | 벡터 인덱스.. |
 
 -   Return
-    -   [JSVector3D](../core/jsvector3d.md)): 반환 성공.
+    -   [JSVector3D](../core/jsvector3d.md): 반환 성공.
 
 {% endtab %}
 {% tab title="Template" %}
