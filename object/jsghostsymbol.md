@@ -459,7 +459,7 @@ newGhostSymbol.setRotation(45.0, 90.0, 180.0);
 
 > 고스트 심볼 객체의 방향 각도를 설정합니다.
 >
-> [setRotation(0, angle, 0)](#setrotationx-y-z--boolean)과 같은 기능을 수행합니다.
+> [setRotation(0, angle, 0)](#setrotation-x-y-z-boolean)과 같은 기능을 수행합니다.
 
 
 {% tabs %}
@@ -681,7 +681,7 @@ object.setScreenFixedSize(null);
 
 > 고스트 심볼 객체의 방향 각도를 반환합니다.
 >
-> [getRotationY()](#getrotationy--number)와 같은 기능을 수행합니다.
+> [getRotationY()](#getrotationy-number)와 같은 기능을 수행합니다.
 
 {% tabs %}
 {% tab title="Information" %}

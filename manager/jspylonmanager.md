@@ -16,7 +16,7 @@ var pylonManager = new Module.JSPylonManager();
 
 ### refSetPos(x, y, z)
 
-> 이후 [pylonAddToList()](jspylonmanager.md#pylonaddtolistkey-volt-type-height-ajindex-pipe-label--boolean), [pylonAddStructure()](jspylonmanager.md#pylonaddstructurelayername-key-upper--boolean)로 생성할 철탑/구조물에 적용할 기준 좌표를 설정합니다.
+> 이후 [pylonAddToList()](jspylonmanager.md#pylonaddtolist-key-volt-type-height-ajindex-pipe-label-boolean), [pylonAddStructure()](jspylonmanager.md#pylonaddstructure-layername-key-upper-boolean)로 생성할 철탑/구조물에 적용할 기준 좌표를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -106,7 +106,7 @@ pylonManager.pylonListClear();
 
 > 철탑 생성 목록에 철탑 정보를 추가합니다.
 >
-> [refSetPos()](jspylonmanager.md#refsetposx-y-z), [refSetColor()](jspylonmanager.md#refsetcoloralpha-red-green-blue), [refSetSecondColor()](jspylonmanager.md#refsetsecondcoloralpha-red-green-blue)로 설정된 값을 기준으로 추가되며, 실제 생성은 [pylonBuildPylonList()](jspylonmanager.md#pylonbuildpylonlistlayername--boolean) 호출 시 이루어집니다.
+> [refSetPos()](jspylonmanager.md#refsetpos-x-y-z), [refSetColor()](jspylonmanager.md#refsetcolor-alpha-red-green-blue), [refSetSecondColor()](jspylonmanager.md#refsetsecondcolor-alpha-red-green-blue)로 설정된 값을 기준으로 추가되며, 실제 생성은 [pylonBuildPylonList()](jspylonmanager.md#pylonbuildpylonlist-layername-boolean) 호출 시 이루어집니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -139,7 +139,7 @@ pylonManager.pylonAddToList("Pylon_1", "154kV", "type1", 30.0, 0, false, "1호")
 
 ### pylonBuildPylonList(layerName) → boolean
 
-> [pylonAddToList()](jspylonmanager.md#pylonaddtolistkey-volt-type-height-ajindex-pipe-label--boolean)로 추가된 철탑 목록을 실제로 지정한 레이어에 생성합니다.
+> [pylonAddToList()](jspylonmanager.md#pylonaddtolist-key-volt-type-height-ajindex-pipe-label-boolean)로 추가된 철탑 목록을 실제로 지정한 레이어에 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -398,7 +398,7 @@ var pos = pylonManager.pylonGetAejaPos("PylonLayer", "Pylon_1", 0);
 
 ### pylonAddStructure(layerName, key, upper) → boolean
 
-> [refSetPos()](jspylonmanager.md#refsetposx-y-z), [refSetColor()](jspylonmanager.md#refsetcoloralpha-red-green-blue)로 설정된 위치/색상을 기준으로 철탑 부속 구조물을 추가합니다.
+> [refSetPos()](jspylonmanager.md#refsetpos-x-y-z), [refSetColor()](jspylonmanager.md#refsetcolor-alpha-red-green-blue)로 설정된 위치/색상을 기준으로 철탑 부속 구조물을 추가합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -508,7 +508,7 @@ pylonManager.setPylonVisible("PylonLayer", "Pylon_1", false);
 
 ### setPreBuildPylonAngle(key, angle) → boolean
 
-> [pylonBuildPylonList()](jspylonmanager.md#pylonbuildpylonlistlayername--boolean)로 생성되기 전 철탑의 회전 각도를 수동으로 지정합니다.
+> [pylonBuildPylonList()](jspylonmanager.md#pylonbuildpylonlist-layername-boolean)로 생성되기 전 철탑의 회전 각도를 수동으로 지정합니다.
 
 {% tabs %}
 {% tab title="Information" %}

@@ -4,7 +4,7 @@ description: 태양광 패널이 설치된 건물(구조물) 정보를 조회하
 
 # JSSolarStructure
 
-> [JSSolarManager.getRoofedStructure()](../manager/jssolarmanager.md#getroofedstructurestructureindex--cjssolarstructure)의 반환 객체로 생성됩니다.
+> [JSSolarManager.getRoofedStructure()](../manager/jssolarmanager.md#getroofedstructure-structureindex-cjssolarstructure)의 반환 객체로 생성됩니다.
 >
 > 직접 생성할 수 없으며, 태양광 패널이 설치된 건물 1개에 대한 정보를 조회하는 용도로 사용됩니다.
 
@@ -86,7 +86,7 @@ var roofCount = structure.getRoofCount();
 
 | Name      | Type   | Description       |
 | :-------- | :----- | :--------------------- |
-| roofIndex | number | 조회할 지붕 인덱스([getRoofCount()](jssolarstructure.md#getroofcount--number) 범위 내). |
+| roofIndex | number | 조회할 지붕 인덱스([getRoofCount()](jssolarstructure.md#getroofcount-number) 범위 내). |
 
 -   Return
     -   [JSVec3Array](../core/jsvec3array.md): 패널 중심 좌표(경도, 위도, 고도) 목록.

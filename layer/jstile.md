@@ -4,7 +4,7 @@ description: 타일 기반 레이어의 개별 타일을 조회 및 설정하기
 
 # JSTile
 
-> [JSLayer.addTileInObject()](jslayer.md#addtileinobjecttileinfo-object--boolean) 등에서 사용되는 타일 정보 객체로, 직접 생성하지 않으며 지구본 타일 기반 레이어의 내부 타일에 대응됩니다.
+> [JSLayer.addTileInObject()](jslayer.md#addtileinobject-tileinfo-object-boolean) 등에서 사용되는 타일 정보 객체로, 직접 생성하지 않으며 지구본 타일 기반 레이어의 내부 타일에 대응됩니다.
 
 ```javascript
 // 타일 정보 객체는 레이어 내부 타일 탐색 API를 통해 얻게 됩니다(예시).
@@ -31,7 +31,7 @@ var tile = layer.findTile(level, idx, idy);
 
 | Name   | Type                              | Description |
 | :----- | ---------------------------------- | ----------- |
-| object | [JSObject](../object/jsobject.md) | 삽입할 객체. |
+| object | [JSObject](../object/jsobject3d.md) | 삽입할 객체. |
 
 -   Return
     -   true: 삽입 성공.

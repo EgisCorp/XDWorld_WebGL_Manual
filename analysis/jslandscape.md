@@ -103,7 +103,7 @@ landscape.viewSpeed = 100;
 
 ### startViewPoints() → boolean
 
-> [eyePosition](jslandscape.md#eyeposition-property-seteyepositionposition--jsvector3d), [viewPoints](jslandscape.md#viewpoints-property-setviewpointspoints--jsvec3array)로 설정된 값을 기준으로 조망(둘러보기)을 시작합니다.
+> [eyePosition](jslandscape.md#eyeposition-property-seteyeposition-position-jsvector3d), [viewPoints](jslandscape.md#viewpoints-property-setviewpoints-points-jsvec3array)로 설정된 값을 기준으로 조망(둘러보기)을 시작합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -166,7 +166,7 @@ landscape.endViewPoints();
     -   true: 설정 성공.
     -   false: 월드가 초기화되지 않은 경우.
 -   Note
-    -   호출 시 기존 카메라 상태를 백업하며, [releaseEyeToViewPoint()](jslandscape.md#releaseeyetoviewpoint--boolean)로 복원할 수 있습니다.
+    -   호출 시 기존 카메라 상태를 백업하며, [releaseEyeToViewPoint()](jslandscape.md#releaseeyetoviewpoint-boolean)로 복원할 수 있습니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -183,7 +183,7 @@ landscape.setEyeToViewPoint(
 
 ### releaseEyeToViewPoint() → boolean
 
-> [setEyeToViewPoint()](jslandscape.md#seteyetoviewpointeye-view--boolean) 호출 이전의 카메라 상태로 복원합니다.
+> [setEyeToViewPoint()](jslandscape.md#seteyetoviewpoint-eye-view-boolean) 호출 이전의 카메라 상태로 복원합니다.
 
 {% tabs %}
 {% tab title="Information" %}

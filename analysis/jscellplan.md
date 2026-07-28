@@ -53,7 +53,7 @@ var count = cpCollection.getCount();
 
 | Name  | Type   | Description  |
 | :---- | :----- | :----------- |
-| index | number | 조회할 인덱스([getCount()](jscellplan.md#getcount--number) 범위 내). |
+| index | number | 조회할 인덱스([getCount()](jscellplan.md#getcount-number) 범위 내). |
 
 -   Return
     -   [JSCellPlan](jscellplan.md#jscellplan): 반환 성공.
@@ -393,7 +393,7 @@ cellPlan.setCoverMode(true);
 
 ### update()
 
-> [getPosition](jscellplan.md#getposition-setpositionposition--jsvector3d), [getOrient](jscellplan.md#getorient-setorientorient--number), [getTilt](jscellplan.md#gettilt-settilttilt--number), [getDist](jscellplan.md#getdist-setdistdistance--number), [getXAngle](jscellplan.md#getxangle-setxangleangle--number), [getYAngle](jscellplan.md#getyangle-setyangleangle--number)로 변경한 설정값을 반영하여 가시권 분석을 다시 계산합니다.
+> [getPosition](jscellplan.md#getposition-setposition-position-jsvector3d), [getOrient](jscellplan.md#getorient-setorient-orient-number), [getTilt](jscellplan.md#gettilt-settilt-tilt-number), [getDist](jscellplan.md#getdist-setdist-distance-number), [getXAngle](jscellplan.md#getxangle-setxangle-angle-number), [getYAngle](jscellplan.md#getyangle-setyangle-angle-number)로 변경한 설정값을 반영하여 가시권 분석을 다시 계산합니다.
 
 {% tabs %}
 {% tab title="Information" %}

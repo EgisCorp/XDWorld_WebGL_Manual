@@ -1079,7 +1079,7 @@ Module.getMap().setSelectColor(new Module.JSColor(255, 255, 0, 0));
 
 | Name   | Type                              | Description               |
 | ------ | ---------------------------------- | -------------------------- |
-| object | [JSObject](../object/jsobject.md) | 선택 상태로 추가할 오브젝트. |
+| object | [JSObject](../object/jsobject3d.md) | 선택 상태로 추가할 오브젝트. |
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1092,7 +1092,7 @@ Module.getMap().addSelectObject(object);
 {% endtab %}
 {% endtabs %}
 
-### getSelectObjectByIndex(index) → [JSObject](../object/jsobject.md)
+### getSelectObjectByIndex(index) → [JSObject](../object/jsobject3d.md)
 
 > 다중 선택된 오브젝트 목록 중, 입력한 인덱스에 해당하는 오브젝트를 반환합니다.
 
@@ -1796,7 +1796,7 @@ Module.getMap().ClearMap();
 {% endtab %}
 {% endtabs %}
 
-### getMapSelectObjectFromPosition(position) → [JSObject](../object/jsobject.md)
+### getMapSelectObjectFromPosition(position) → [JSObject](../object/jsobject3d.md)
 
 > 화면 좌표가 아닌 지도 좌표(경위도) 기준으로 오브젝트를 선택합니다.
 
@@ -2097,7 +2097,7 @@ Module.getMap().ClearMap();
 
 ## Getter / Setter
 
-### getSelectObject(), setSelectObject(object) → [JSObject](../object/jsobject.md)
+### getSelectObject(), setSelectObject(object) → [JSObject](../object/jsobject3d.md)
 
 > 객체의 선택 상태를 설정합니다.
 
@@ -2106,10 +2106,10 @@ Module.getMap().ClearMap();
 
 | Name   | Type                              | Description  |
 | ------ | --------------------------------- | ------------ |
-| object | [JSObject](../object/jsobject.md) | 시설물 객체. |
+| object | [JSObject](../object/jsobject3d.md) | 시설물 객체. |
 
 -   Return
-    -   [JSObject](../object/jsobject.md): 시설물 객체.
+    -   [JSObject](../object/jsobject3d.md): 시설물 객체.
 
 {% endtab %}
 {% tab title="Template" %}

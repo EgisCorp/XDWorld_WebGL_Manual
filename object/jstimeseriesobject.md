@@ -31,7 +31,7 @@ object.merge(/*parameter*/);
 >
 > 여러 개의 시계열 오브젝트를 한번에 그리지 않고, 하나의 오브젝트만 생성할 때 사용합니다.
 >
-> parameter.legend는 사용되지 않으며, parameter.shape는 내부적으로 항상 평면(plane)으로 강제 설정되어 무시됩니다. 범례(legend)가 필요하거나 폴리곤 형태(polygon)로 생성하려면 [createbyJson()](jstimeseriesobject.md#createbyjsonparameter--object)을 사용하십시오.
+> parameter.legend는 사용되지 않으며, parameter.shape는 내부적으로 항상 평면(plane)으로 강제 설정되어 무시됩니다. 범례(legend)가 필요하거나 폴리곤 형태(polygon)로 생성하려면 [createbyJson()](jstimeseriesobject.md#createbyjson-parameter-object)을 사용하십시오.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -65,7 +65,7 @@ object.merge(/*parameter*/);
 >
 > parameter.legend(범례 정보)가 필수이며, parameter.shape 값에 따라 폴리곤(polygon)/평면(plane) 형태를 선택할 수 있습니다.
 >
-> parameter.horizontal, parameter.vertical, parameter.area, parameter.color는 이 API에서는 사용되지 않습니다( [create()](jstimeseriesobject.md#createparameter--object) 전용 필드 ).
+> parameter.horizontal, parameter.vertical, parameter.area, parameter.color는 이 API에서는 사용되지 않습니다( [create()](jstimeseriesobject.md#create-parameter-object) 전용 필드 ).
 
 {% tabs %}
 {% tab title="Information" %}
@@ -97,7 +97,7 @@ object.merge(/*parameter*/);
 
 > 새로운 시계열 데이터를 추가합니다.
 >
-> 이후 [merge()](jstimeseriesobject.md#merge--object)를 호출하여 입력한 데이터를 기존 객체에 추가하는 작업 필요합니다.
+> 이후 [merge()](jstimeseriesobject.md#merge-object)를 호출하여 입력한 데이터를 기존 객체에 추가하는 작업 필요합니다.
 >
 > parameter 중 position 만 실제로 사용되며, segment/rotate/horizontal/vertical/shape/color/area/image 등 나머지 필드는 파싱만 되고 내부적으로 사용되지 않습니다.
 
@@ -129,7 +129,7 @@ object.merge(/*parameter*/);
 
 ### merge() → object
 
-> [insert()](jstimeseriesobject.md#insertparameter--object)로 입력한 데이터를 기존 시계열 객체에 추가합니다.
+> [insert()](jstimeseriesobject.md#insert-parameter-object)로 입력한 데이터를 기존 시계열 객체에 추가합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -140,7 +140,7 @@ object.merge(/*parameter*/);
     -   .return: API 반환 정보 ( 문자열 : 실패 에러 코드 ).
     -   실패 조건
         -   지도가 로드되지 않은 경우.
-        -   [insert()](jstimeseriesobject.md#insertparameter--object)로 추가된 데이터가 하나도 없는 경우.
+        -   [insert()](jstimeseriesobject.md#insert-parameter-object)로 추가된 데이터가 하나도 없는 경우.
         -   이미 병합되어 오브젝트가 생성되어 있는 경우(중복 실행 방지).
 
 {% endtab %}

@@ -106,7 +106,7 @@ var strKey = object.getId();
 
 > 태풍 객체 이동 이벤트를 동작 합니다.
 >
-> [moveList()](jstyphoon.md#movelistlist)를 통해 추가된 좌표로 태풍이 이동합니다.
+> [moveList()](jstyphoon.md#movelist-list)를 통해 추가된 좌표로 태풍이 이동합니다.
 >
 > 태풍 객체 이동 이벤트 종료 후 위치로 초기화합니다.
 
@@ -400,7 +400,7 @@ typhoon.setMoveFinishReturn(true);
 
 ### currentMoveListIndex() → number
 
-> [moveList()](jstyphoon.md#movelistlist)로 설정된 이동 경로 중, 현재 진행 중인 구간의 시작점 인덱스를 반환합니다.
+> [moveList()](jstyphoon.md#movelist-list)로 설정된 이동 경로 중, 현재 진행 중인 구간의 시작점 인덱스를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -420,7 +420,7 @@ var index = typhoon.currentMoveListIndex();
 
 ### setMoveListIndex(index) → boolean
 
-> [moveList()](jstyphoon.md#movelistlist)로 설정된 이동 경로 중, 지정한 인덱스의 좌표로 위치를 이동시킵니다.
+> [moveList()](jstyphoon.md#movelist-list)로 설정된 이동 경로 중, 지정한 인덱스의 좌표로 위치를 이동시킵니다.
 
 {% tabs %}
 {% tab title="Information" %}

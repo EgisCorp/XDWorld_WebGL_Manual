@@ -6,7 +6,7 @@ description: 도로 기하구조 분석의 횡단면(Cross Section) 결과를 �
 
 > 이 문서는 하나의 cpp 파일(JSRoadAnlCross.cpp)에 정의된 두 개의 JS 클래스, `JSRoadAnlCross`(횡단면 결과 개별 항목)와 `JSRoadAnlCrossContainer`(횡단면 결과 목록 컨테이너)를 함께 다룹니다.
 >
-> [JSRoadAnalysis.getCrossSection()](jsroadanalysis.md#getcrosssection--jsroadanlcrosscontainer)의 반환 객체(JSRoadAnlCrossContainer)를 통해 접근하며, 직접 생성해서 사용하지는 않습니다.
+> [JSRoadAnalysis.getCrossSection()](jsroadanalysis.md#getcrosssection-jsroadanlcrosscontainer)의 반환 객체(JSRoadAnlCrossContainer)를 통해 접근하며, 직접 생성해서 사용하지는 않습니다.
 
 ```javascript
 var roadAnalysis = new Module.JSRoadAnalysis();
@@ -48,11 +48,11 @@ var count = container.getCount();
 
 | Name  | Type   | Description  |
 | :---- | :----- | :----------- |
-| index | number | 조회할 인덱스([getCount()](jsroadanlcross.md#getcount--number) 범위 내). |
+| index | number | 조회할 인덱스([getCount()](jsroadanlcross.md#getcount-number) 범위 내). |
 
 -   Return
     -   [JSRoadAnlCross](jsroadanlcross.md#jsroadanlcross): 반환 성공.
-    -   null: index가 0보다 작거나 [getCount()](jsroadanlcross.md#getcount--number) 값 이상인 경우.
+    -   null: index가 0보다 작거나 [getCount()](jsroadanlcross.md#getcount-number) 값 이상인 경우.
 -   Note
     -   호출할 때마다 내부적으로 최신 분석 결과를 다시 동기화합니다.
 

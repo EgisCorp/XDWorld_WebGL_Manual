@@ -1513,20 +1513,20 @@ console.log(range.min, range.max);
 
 #### JSDataVisualizer.AddObject
 
-> [add()](jsdatavisualizer.md#addjson--boolean) / [addMultiObject()](jsdatavisualizer.md#addmultiobjectjson--boolean)의 `objects` 배열 항목 공통 구조입니다. `dataType`에 따라 실제로 사용되는 하위 속성이 달라집니다.
+> [add()](jsdatavisualizer.md#add-json-boolean) / [addMultiObject()](jsdatavisualizer.md#addmultiobject-json-boolean)의 `objects` 배열 항목 공통 구조입니다. `dataType`에 따라 실제로 사용되는 하위 속성이 달라집니다.
 
 | Name                | Type    | Attributes | Default | Description |
 | ------------------- | ------- | ---------- | ------- | ----------- |
 | key                 | string  | 필수       |         | 시각화 객체 고유 key. |
 | dataType            | string  | 필수       |         | `"position"`, `"line"`, `"grid"`, `"polygon"` 중 하나. |
-| shape               | string  | 필수       |         | 표현 형태. [setShape()](jsdatavisualizer.md#setshapekey-option--boolean) 문자열 목록 참고(dataType별로 유효한 값이 다름). |
+| shape               | string  | 필수       |         | 표현 형태. [setShape()](jsdatavisualizer.md#setshape-key-option-boolean) 문자열 목록 참고(dataType별로 유효한 값이 다름). |
 | type                | string  |            |         | 파싱만 되고 현재 로직에서는 사용되지 않는 보조 타입 문자열. |
 | animaion            | boolean |            | false   | (원문 그대로 `animation`이 아닌 `animaion`) 애니메이션 사용 여부. |
 | minDistance         | number  |            | 0       | 인스턴스 가시화 최소 거리(m). |
 | maxDistance         | number  |            | 9999999 | 인스턴스 가시화 최대 거리(m). |
 | callbackMinDistance | number  |            | 0       | `loadDataCallback` 호출 기준 거리(m). |
 | legend              | array   |            |         | [JSDataVisualizer.LegendItem](jsdatavisualizer.md#jsdatavisualizer.legenditem) 배열. |
-| autoFocus           | boolean |            | false   | true면 생성 직후 [focus()](jsdatavisualizer.md#focuskey--void)를 자동 호출. |
+| autoFocus           | boolean |            | false   | true면 생성 직후 [focus()](jsdatavisualizer.md#focus-key-void)를 자동 호출. |
 | child               | array   |            |         | 자식 객체 목록(재귀적으로 같은 구조). `add()`에서는 `dataType === "position"`인 항목만 자식으로 생성됩니다. |
 | data                | array   |            |         | `dataType === "position"` \| `"line"`인 경우 필요. 항목: `{ id, position:[lon,lat,alt], value(number\|number[]), path?:[lon,lat,alt], rotate?:[x,y,z], parts?(line 전용) }`. |
 | points, value       | array   |            |         | `dataType === "polygon"`인 경우 필요. `points`는 `[[[lon,lat], ...], ...]`(폴리곤별 링 좌표), `value`는 폴리곤별 값 배열. |
@@ -1537,7 +1537,7 @@ console.log(range.min, range.max);
 
 #### JSDataVisualizer.LegendItem
 
-> [setLegend()](jsdatavisualizer.md#setlegendkey-legend--boolean) 및 `add()`의 `legend` 배열 항목 구조입니다.
+> [setLegend()](jsdatavisualizer.md#setlegend-key-legend-boolean) 및 `add()`의 `legend` 배열 항목 구조입니다.
 
 | Name  | Type   | Attributes | Default | Description                          |
 | ----- | ------ | ---------- | ------- | -------------------------------------- |
@@ -1546,7 +1546,7 @@ console.log(range.min, range.max);
 
 #### JSDataVisualizer.ShapeOption
 
-> [setShape()](jsdatavisualizer.md#setshapekey-option--boolean)에 객체(object)를 전달할 때의 구조입니다.
+> [setShape()](jsdatavisualizer.md#setshape-key-option-boolean)에 객체(object)를 전달할 때의 구조입니다.
 
 | Name              | Type   | Attributes | Default | Description |
 | ------------------ | ------ | ---------- | ------- | ----------- |
@@ -1557,7 +1557,7 @@ console.log(range.min, range.max);
 
 #### JSDataVisualizer.LineSymbolOption
 
-> [setLineSymbol()](jsdatavisualizer.md#setlinesymbolkey-options--boolean)에 전달하는 옵션 객체 구조입니다.
+> [setLineSymbol()](jsdatavisualizer.md#setlinesymbol-key-options-boolean)에 전달하는 옵션 객체 구조입니다.
 
 | Name          | Type            | Attributes | Default | Description |
 | -------------- | --------------- | ---------- | ------- | ----------- |

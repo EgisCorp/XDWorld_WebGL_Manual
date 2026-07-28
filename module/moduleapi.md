@@ -38,7 +38,7 @@ Module.initialize({
 
 ## Function
 
-### initialize(object) -> object
+### initialize(object) → object
 
 > 지도를 생성합니다.
 >
@@ -3717,7 +3717,7 @@ var sightAnalysis = Module.getSightAnalysis();
 
 > 브이월드 DEM(지형 고도) 데이터의 난독화 여부를 설정합니다.
 >
-> [Module.initialize](moduleapi.md#initializeobject---object)의 terrain.dem.encoding 옵션과 동일한 전역 설정값을 제어합니다.
+> [Module.initialize](moduleapi.md#initialize-object-object)의 terrain.dem.encoding 옵션과 동일한 전역 설정값을 제어합니다.
 
 {% tabs %}
 {% tab title="Infomation" %}

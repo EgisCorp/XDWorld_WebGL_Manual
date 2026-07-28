@@ -413,7 +413,7 @@ Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 | Name  | Type    								  | Description                    					 		|
 | ----  | --------------------------------------  | ------------------------------------------------------- |
 | array | [JSVec3Array](../core/jsvec3array.md)   | 비교할 영역 좌표 배열.		    					 		|
-| object | [JSObject](../object/jsobject.md)  	  | 비교할 객체.		    							 		|
+| object | [JSObject](../object/jsobject3d.md)  	  | 비교할 객체.		    							 		|
 | type   | number  								  | <p>0: 완전 포함될 경우.<br>1: 일부라도 포함될 경우.</p>	  	|
 
 -   Return
@@ -442,7 +442,7 @@ Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 | ----  | --------------------------------------  | ------------------------------------------------------- |
 | array | [JSVec3Array](../core/jsvec3array.md)   | 비교할 영역 좌표 배열.		    					 		|
 | parts | [JSCollection](../core/collection.md)   | 비교할 영역 parts.		    							|
-| object | [JSObject](../object/jsobject.md)  	  | 비교할 객체.		    							 		|
+| object | [JSObject](../object/jsobject3d.md)  	  | 비교할 객체.		    							 		|
 | type   | number  								  | <p>0: 완전 포함될 경우.<br>1: 일부라도 포함될 경우.</p>	  	|
 
 -   Return

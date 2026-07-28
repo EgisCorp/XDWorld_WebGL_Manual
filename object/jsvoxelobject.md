@@ -6,7 +6,7 @@ description: 지도 내 볼륨(연기, 구름, 불꽃, 물 등) 시각화를 위
 
 > Module.createVoxelObject() API를 생성합니다.
 >
-> 레이 마칭(Ray Marching) 기반의 3D 텍스처를 사용해 구름, 불꽃, 물, 태풍 등의 볼륨 효과를 표현합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number) 설정에 따라 여러 속성 값이 프리셋으로 일괄 조정됩니다.
+> 레이 마칭(Ray Marching) 기반의 3D 텍스처를 사용해 구름, 불꽃, 물, 태풍 등의 볼륨 효과를 표현합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number) 설정에 따라 여러 속성 값이 프리셋으로 일괄 조정됩니다.
 
 ```javascript
 var voxel = Module.createVoxelObject("ID");
@@ -101,7 +101,7 @@ voxel.createGridVoxel({
 
 ### updateGridData(gridData) → string
 
-> [createGridVoxel()](jsvoxelobject.md#creategridvoxeloption--string)로 "grid" 타입으로 생성한 인스턴스들의 데이터를 갱신합니다.
+> [createGridVoxel()](jsvoxelobject.md#creategridvoxel-option-string)로 "grid" 타입으로 생성한 인스턴스들의 데이터를 갱신합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -126,7 +126,7 @@ voxel.updateGridData(newGridValueArray);
 
 ### updatePolygonData(gridData) → string
 
-> [createGridVoxel()](jsvoxelobject.md#creategridvoxeloption--string)로 "polygon" 타입으로 생성한 인스턴스들의 데이터를 갱신합니다.
+> [createGridVoxel()](jsvoxelobject.md#creategridvoxel-option-string)로 "polygon" 타입으로 생성한 인스턴스들의 데이터를 갱신합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -151,7 +151,7 @@ voxel.updatePolygonData(newValueArray);
 
 ### setColor(color) → boolean
 
-> 복셀 객체의 색상을 설정합니다. [red](jsvoxelobject.md#red-property-getred-setredred--number), [green](jsvoxelobject.md#green-property-getgreen-setgreengreen--number), [blue](jsvoxelobject.md#blue-property-getblue-setblueblue--number), [alpha](jsvoxelobject.md#alpha-property-getalpha-setalphaalpha--number) 프로퍼티를 통해 개별 채널만 변경할 수도 있습니다.
+> 복셀 객체의 색상을 설정합니다. [red](jsvoxelobject.md#red-property-getred-setred-red-number), [green](jsvoxelobject.md#green-property-getgreen-setgreen-green-number), [blue](jsvoxelobject.md#blue-property-getblue-setblue-blue-number), [alpha](jsvoxelobject.md#alpha-property-getalpha-setalpha-alpha-number) 프로퍼티를 통해 개별 채널만 변경할 수도 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -176,7 +176,7 @@ voxel.setColor(new Module.JSColor(150, 255, 255, 255));
 
 ### setTextureData(data, size) → void
 
-> 미리 계산된 3D 텍스처 픽셀 데이터를 직접 업로드합니다. 호출 시 [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 내부적으로 8(사용자 정의 텍스처)로 설정됩니다.
+> 미리 계산된 3D 텍스처 픽셀 데이터를 직접 업로드합니다. 호출 시 [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 내부적으로 8(사용자 정의 텍스처)로 설정됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -187,7 +187,7 @@ voxel.setColor(new Module.JSColor(150, 255, 255, 255));
 | size | number        | 텍스처 한 변의 크기(정육면체, size x size x size).        |
 
 -   Note
-    -   호출 후 [scale](jsvoxelobject.md#scale-property-getscale-setscalescale--number), [amount](jsvoxelobject.md#amount-property-getamount-setamountamount--number), [softness](jsvoxelobject.md#softness-property-getsoftness-setsoftnesssoftness--number), [width](jsvoxelobject.md#width-property-getwidth-setwidthwidth--number)/[height](jsvoxelobject.md#height-property-getheight-setheightheight--number)/[depth](jsvoxelobject.md#depth-property-getdepth-setdepthdepth--number) 프로퍼티는 `textureType`이 8인 동안 변경되지 않습니다(내부적으로 무시됨).
+    -   호출 후 [scale](jsvoxelobject.md#scale-property-getscale-setscale-scale-number), [amount](jsvoxelobject.md#amount-property-getamount-setamount-amount-number), [softness](jsvoxelobject.md#softness-property-getsoftness-setsoftness-softness-number), [width](jsvoxelobject.md#width-property-getwidth-setwidth-width-number)/[height](jsvoxelobject.md#height-property-getheight-setheight-height-number)/[depth](jsvoxelobject.md#depth-property-getdepth-setdepth-depth-number) 프로퍼티는 `textureType`이 8인 동안 변경되지 않습니다(내부적으로 무시됨).
 
 {% endtab %}
 {% tab title="Template" %}
@@ -203,14 +203,14 @@ voxel.setTextureData(texture3DPixelData, 64);
 
 ### textureType (property), getTextureType(), setTextureType(type) → number
 
-> 볼륨 효과 프리셋 타입을 설정합니다. 설정 시 [threshold](jsvoxelobject.md#threshold-property-getthreshold-setthresholdthreshold--number), [range](jsvoxelobject.md#range-property-getrange-setrangerange--number), [opacity](jsvoxelobject.md#opacity-property-getopacity-setopacityopacity--number), [steps](jsvoxelobject.md#steps-property-getsteps-setstepssteps--number), [width](jsvoxelobject.md#width-property-getwidth-setwidthwidth--number)/[height](jsvoxelobject.md#height-property-getheight-setheightheight--number)/[depth](jsvoxelobject.md#depth-property-getdepth-setdepthdepth--number), 색상 등 다수의 속성이 프리셋 값으로 일괄 재설정됩니다.
+> 볼륨 효과 프리셋 타입을 설정합니다. 설정 시 [threshold](jsvoxelobject.md#threshold-property-getthreshold-setthreshold-threshold-number), [range](jsvoxelobject.md#range-property-getrange-setrange-range-number), [opacity](jsvoxelobject.md#opacity-property-getopacity-setopacity-opacity-number), [steps](jsvoxelobject.md#steps-property-getsteps-setsteps-steps-number), [width](jsvoxelobject.md#width-property-getwidth-setwidth-width-number)/[height](jsvoxelobject.md#height-property-getheight-setheight-height-number)/[depth](jsvoxelobject.md#depth-property-getdepth-setdepth-depth-number), 색상 등 다수의 속성이 프리셋 값으로 일괄 재설정됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 | Name | Type   | Description                                                                                                    |
 | :--- | ------ | --------------------------------------------------------------------------------------------------------------------- |
-| type | number | <p>0: 세슘 구름<br>1: 일반 구름<br>2: 불꽃<br>3~5: 산불<br>6: 물<br>7: 태풍<br>8: 사용자 정의 텍스처([setTextureData()](jsvoxelobject.md#settexturedatadata-size--void) 사용 시 자동 설정)</p> |
+| type | number | <p>0: 세슘 구름<br>1: 일반 구름<br>2: 불꽃<br>3~5: 산불<br>6: 물<br>7: 태풍<br>8: 사용자 정의 텍스처([setTextureData()](jsvoxelobject.md#settexturedata-data-size-void) 사용 시 자동 설정)</p> |
 
 -   Note
     -   0 미만 값은 무시됩니다.
@@ -416,7 +416,7 @@ voxel.steps = 100;
 
 ### scale (property), getscale(), setscale(scale) → number
 
-> 볼륨 노이즈 스케일을 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 8(사용자 정의 텍스처)인 경우 무시됩니다.
+> 볼륨 노이즈 스케일을 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 8(사용자 정의 텍스처)인 경우 무시됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -440,7 +440,7 @@ voxel.scale = 2.0;
 
 ### amount (property), getamount(), setamount(amount) → number
 
-> 볼륨 노이즈 임계값(양)을 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 8인 경우 무시됩니다.
+> 볼륨 노이즈 임계값(양)을 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 8인 경우 무시됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -464,7 +464,7 @@ voxel.amount = 0.45;
 
 ### softness (property), getsoftness(), setsoftness(softness) → number
 
-> 볼륨 노이즈의 대비(Contrast, 경계 부드러움)를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 8인 경우 무시됩니다.
+> 볼륨 노이즈의 대비(Contrast, 경계 부드러움)를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 8인 경우 무시됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -488,7 +488,7 @@ voxel.softness = 2.5;
 
 ### width (property), getwidth(), setwidth(width) → number
 
-> 볼륨 3D 텍스처의 X축(너비) 해상도를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 8인 경우 무시됩니다.
+> 볼륨 3D 텍스처의 X축(너비) 해상도를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 8인 경우 무시됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -512,7 +512,7 @@ voxel.width = 100;
 
 ### height (property), getheight(), setheight(height) → number
 
-> 볼륨 3D 텍스처의 Y축(높이) 해상도를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 8인 경우 무시됩니다.
+> 볼륨 3D 텍스처의 Y축(높이) 해상도를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 8인 경우 무시됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -536,7 +536,7 @@ voxel.height = 100;
 
 ### depth (property), getdepth(), setdepth(depth) → number
 
-> 볼륨 3D 텍스처의 Z축(깊이) 해상도를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetypetype--number)이 8인 경우 무시됩니다.
+> 볼륨 3D 텍스처의 Z축(깊이) 해상도를 설정합니다. [textureType](jsvoxelobject.md#texturetype-property-gettexturetype-settexturetype-type-number)이 8인 경우 무시됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -560,7 +560,7 @@ voxel.depth = 100;
 
 ### union (property), getunion(), setunion(union) → boolean
 
-> 복셀 위치의 고도를 지형 고도에 결합할지 여부를 설정합니다. [createGridVoxel()](jsvoxelobject.md#creategridvoxeloption--string)의 `option.union`과 동일한 값입니다.
+> 복셀 위치의 고도를 지형 고도에 결합할지 여부를 설정합니다. [createGridVoxel()](jsvoxelobject.md#creategridvoxel-option-string)의 `option.union`과 동일한 값입니다.
 
 {% tabs %}
 {% tab title="Information" %}

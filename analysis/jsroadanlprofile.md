@@ -4,7 +4,7 @@ description: 도로 기하구조 분석의 종단면(Profile) 결과를 조회�
 
 # JSRoadAnlProfile
 
-> [JSRoadAnalysis.getProfile()](jsroadanalysis.md#getprofile--jsroadanlprofile)의 반환 객체로 생성됩니다.
+> [JSRoadAnalysis.getProfile()](jsroadanalysis.md#getprofile-jsroadanlprofile)의 반환 객체로 생성됩니다.
 >
 > 직접 생성해서 사용하지는 않으며, 도로 종단면(진행 방향 고도 변화) 분석 결과를 조회하는 용도로 사용됩니다.
 

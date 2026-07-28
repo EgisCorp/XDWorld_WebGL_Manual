@@ -48,7 +48,7 @@ Module.getIndoor().setIndoorMode(true);
 
 | Name   | Type                              | Description       |
 | :----- | ---------------------------------- | ---------------------- |
-| object | [JSObject](../object/jsobject.md) | 실내 이동 기준 객체.   |
+| object | [JSObject](../object/jsobject3d.md) | 실내 이동 기준 객체.   |
 
 -   Note
     -   월드가 초기화되지 않았거나 object가 null(또는 내부 객체가 없는 경우) 아무 동작도 하지 않습니다.

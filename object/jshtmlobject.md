@@ -21,7 +21,7 @@ let trace = Module.createHTMLObject("ID");
 
 ## Function
 
-### createbyJson(option) -> object
+### createbyJson(option) → object
 
 > HTML Element 객체를 생성합니다.
 

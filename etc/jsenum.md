@@ -103,7 +103,7 @@ description: JSEnum.cpp에 등록된 Module 전역 상수(Enum) 목록입니다.
 
 ## Frustum Face Type (FRUSTUM_FACE_TYPE_\*)
 
-> [JSViewFrustum.getPlaneEdge()](../object/jsviewfrustum.md#getplaneedgeplanetype--jsvec3array)의 `planeType` 인자에 사용되는 절두체 평면 종류 값입니다.
+> [JSViewFrustum.getPlaneEdge()](../object/jsviewfrustum.md#getplaneedge-planetype-jsvec3array)의 `planeType` 인자에 사용되는 절두체 평면 종류 값입니다.
 
 | Name                        | Description  |
 | ----------------------------- | ------------------ |
@@ -137,7 +137,7 @@ description: JSEnum.cpp에 등록된 Module 전역 상수(Enum) 목록입니다.
 
 ## Line Effect Type
 
-> [JSLineString.setLineType()](../object/jslinestring.md#setlinetypetype)에서 사용되는 라인 효과 타입 값입니다. 상세 설명은 해당 문서를 참고하십시오.
+> [JSLineString.setLineType()](../object/jslinestring.md#setlinetype-type)에서 사용되는 라인 효과 타입 값입니다. 상세 설명은 해당 문서를 참고하십시오.
 
 | Name    | Value | Description |
 | ------- | ----- | ------------ |

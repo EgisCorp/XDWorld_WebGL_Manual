@@ -32,7 +32,7 @@ var panel = Module.createSolarPanel("ID");
     -   true: 생성 성공.
     -   false: 객체가 없는 경우.
 -   Note
-    -   [setTexture()](jssolarpanel.md#settextureimagedata-imagewidth-imageheight--boolean)로 미리 텍스처를 설정한 경우 해당 텍스처가 패널에 적용됩니다.
+    -   [setTexture()](jssolarpanel.md#settexture-imagedata-imagewidth-imageheight-boolean)로 미리 텍스처를 설정한 경우 해당 텍스처가 패널에 적용됩니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -84,7 +84,7 @@ panel.createMergePanel(positions, 1.0, 1.6, 0.05, 30.0, 180.0);
 
 ### setTexture(imageData, imageWidth, imageHeight) → boolean
 
-> 패널 표면에 적용할 텍스처를 픽셀 데이터로 설정합니다. [create()](jssolarpanel.md#createposition-width-height-thickness-panelangle-direction--boolean) 또는 [createMergePanel()](jssolarpanel.md#createmergepanelpositions-width-height-thickness-panelangle-direction--boolean) 호출 이전에 설정해야 적용됩니다.
+> 패널 표면에 적용할 텍스처를 픽셀 데이터로 설정합니다. [create()](jssolarpanel.md#create-position-width-height-thickness-panelangle-direction-boolean) 또는 [createMergePanel()](jssolarpanel.md#createmergepanel-positions-width-height-thickness-panelangle-direction-boolean) 호출 이전에 설정해야 적용됩니다.
 
 {% tabs %}
 {% tab title="Information" %}

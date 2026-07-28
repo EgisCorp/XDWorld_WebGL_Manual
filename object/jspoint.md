@@ -820,7 +820,7 @@ point.setTextMargin(10, -10);
 
 > POI 객체의 가시 범위 및 텍스트 표시 범위를 설정합니다.
 >
-> [setVisibleRange()](jspoint.md#setvisiblerangeenable-min-max--boolean)의 확장판으로, 텍스트 표시 범위(textMin, textMax)를 별도로 지정할 수 있습니다.
+> [setVisibleRange()](jspoint.md#setvisiblerange-enable-min-max-boolean)의 확장판으로, 텍스트 표시 범위(textMin, textMax)를 별도로 지정할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
