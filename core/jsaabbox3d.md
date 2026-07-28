@@ -37,7 +37,7 @@ let boxWithMinMax = new Module.JSAABBox3D(min, max);
     -   밑면 좌표 4개 + 윗면 좌표 4개
 
 -   Sample  
-    -   [Sandbox_View Mode](https://sandbox.egiscloud.com/code/main.do?id=object_aabb)
+    -   [Sandbox_AABB](https://sandbox.egiscloud.com/code/main.do?id=object_aabb)
 
 {% endtab %}
 {% tab title="Template" %}

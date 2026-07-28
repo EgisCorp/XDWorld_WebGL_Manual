@@ -181,7 +181,7 @@ var strKey = object.getId();
 
 > 평면 객체에 사용할 이미지를 설정합니다.
 >
-> 입력 변수값(id)은 [setFaceTexture](jspolygon.md#setfacetexture-index-name-boolean) API로 텍스쳐를 적용할 때 텍스쳐를 구분하는 용도로 사용합니다.
+> 입력 변수값(id)은 [setFaceTexture](jspolygon.md#setfacetextureindex-id--boolean) API로 텍스쳐를 적용할 때 텍스쳐를 구분하는 용도로 사용합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -284,7 +284,7 @@ polygon.setSphere(param);
 
 > 평면 객체를 구성하는 face에 이미지를 설정합니다.
 >
-> 입력 변수값(id)은 [loadTexture](jspolygon.md#loadTexture-id-url-boolean) API에 입력된 고유명칭 입니다.
+> 입력 변수값(id)은 [loadTexture](jspolygon.md#loadtextureid-url--boolean) API에 입력된 고유명칭 입니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2350,7 +2350,7 @@ polygon.setGeoJSON2D({
     -   "url tag isn't exist.": `url`이 없는 경우.
     -   "streaming tag isn't exist.": `streaming`이 없는 경우.
 -   Description
-    -   설정된 비디오 재생/제어는 `element`, `canvas`, `context`, `hls`, `videoStreaming`, `isplayer` 프로퍼티([Getter/Setter](jspolygon.md#getter-setter) 참고)와 함께 사용됩니다.
+    -   설정된 비디오 재생/제어는 `element`, `canvas`, `context`, `hls`, `videoStreaming`, `isplayer` 프로퍼티([Getter/Setter](jspolygon.md#getter--setter) 참고)와 함께 사용됩니다.
 
 {% endtab %}
 {% tab title="Template" %}

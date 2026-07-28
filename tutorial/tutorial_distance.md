@@ -320,7 +320,7 @@ layer.setSelectable(false);
 
 콜백 함수는 [JSOption](../option/jsoption.md)을 통해 등록합니다.
 
-(자세한 API 설명은 [callBackAddPoint](../option/jsoption.md#callbackaddpoint-event-string), [callBackCompletePoint](../option/jsoption.md#callbackcompletepoint-event-string) 설명 부분을 참조하세요.)
+(자세한 API 설명은 [callBackAddPoint](../option/jsoption.md#callbackaddpointevent--string), [callBackCompletePoint](../option/jsoption.md#callbackcompletepointevent--string) 설명 부분을 참조하세요.)
 
 콜백 함수는 두 가지 함수를 등록합니다.
 

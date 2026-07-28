@@ -21,7 +21,7 @@ var object = Module.createLineString("ID");
 
 | Name   | Type                                                                    | Description |
 | ------ | ----------------------------------------------------------------------- | ----------- |
-| option | [JSLineString.CreateOptions](#jslinestringcreateoptions) | 속성 정보.  |
+| option | [JSLineString.CreateOptions](#jslinestring.createoptions) | 속성 정보.  |
 
 -   Return
     -   "success": 생성 성공.

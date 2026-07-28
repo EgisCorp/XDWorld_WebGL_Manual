@@ -6,9 +6,9 @@ description: 지도 내 객체를 관리하기 위한 API 입니다.
 
 > Module.createLayer() API를 생성합니다.
 >
-> [createObjectLayer](jslayerlist.md#createobjectlayer-option-jslayer) API로 사용자 레이어를 생성할 수 있습니다.
+> [createObjectLayer](jslayerlist.md#createobjectlayeroption--jslayer) API로 사용자 레이어를 생성할 수 있습니다.
 >
-> [createXDServerLayer](jslayerlist.md#createxdserverlayer-option-jslayer) API로 서비스 레이어를 생성할 수 있습니다.
+> [createXDServerLayer](jslayerlist.md#createxdserverlayeroption--jslayer) API로 서비스 레이어를 생성할 수 있습니다.
 
 ```javascript
 let layerList = new Module.JSLayerList(true);
@@ -1164,7 +1164,7 @@ layer.setTileSizeWMS(tileSize);
 
 > 서비스 레이어 HSV 색상 적용 유무를 설정합니다.
 >
-> [setRecoverHsvValue](jslayer.md#setRecoverHsvValue) 설정된 색상 채널을 가시화 유무를 설정합니다.
+> [setRecoverHsvValue](jslayer.md#setrecoverhsvvaluehue-saturation-value--boolean) 설정된 색상 채널을 가시화 유무를 설정합니다.
 >
 > 시설물, 드론 LOD 레이어만 적용 합니다.
 
@@ -1576,7 +1576,7 @@ layer.setObjectColorListByKey(true, color, ["obj_key_1", "obj_key_2"]);
 
 ### clearObjectColorList() → boolean
 
-> [setObjectColorListByKey](jslayer.md#setobjectcolorlistbykeysimplecolormode-color-objectkeylist-boolean) 로 설정된 객체 색상 목록을 초기화하고, 색상이 변경된 건물(Real3D) 객체를 원래 색상으로 되돌립니다.
+> [setObjectColorListByKey](jslayer.md#setobjectcolorlistbykeysimplecolormode-color-objectkeylist--boolean) 로 설정된 객체 색상 목록을 초기화하고, 색상이 변경된 건물(Real3D) 객체를 원래 색상으로 되돌립니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2107,7 +2107,7 @@ layer.reloadTiles();
 
 ### clearDefineTileObjectStyle() → boolean
 
-> [setDefineMeshColorByObjectKey](jslayer.md#setdefinemeshcolorbyobjectkeycheckstring-comparetype-color-issimplemode), [setDefineEdgeLineColorByObjectKey](jslayer.md#setdefineedgelinecolorbyobjectkeycheckstring-comparetype-color), [setDefineVisibleByFileName](jslayer.md#setdefinevisiblebyfilenamecheckstring-comparetype-visible) 로 정의된 스타일 조건을 모두 초기화합니다.
+> [setDefineMeshColorByObjectKey](jslayer.md#setdefinemeshcolorbyobjectkeycheckstring-comparetype-color-issimplemode--boolean), [setDefineEdgeLineColorByObjectKey](jslayer.md#setdefineedgelinecolorbyobjectkeycheckstring-comparetype-color--boolean), [setDefineVisibleByFileName](jslayer.md#setdefinevisiblebyfilenamecheckstring-comparetype-visible--boolean) 로 정의된 스타일 조건을 모두 초기화합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2639,7 +2639,7 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 | size | number | 포인트 크기.      |
 
 * Note
-  * [setPointCloudPointSize](jslayer.md#setpointcloudpointsizesize-boolean) 와 유사하나, 3D Tiles 레이어 전용으로 동작합니다.
+  * [setPointCloudPointSize](jslayer.md#setpointcloudpointsizesize--boolean) 와 유사하나, 3D Tiles 레이어 전용으로 동작합니다.
 {% endtab %}
 
 {% tab title="Template" %}

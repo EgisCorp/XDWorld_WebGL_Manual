@@ -122,7 +122,7 @@ vertex.push(128.675856, 35.215953);
 part.add(4);
 ```
 
-지정한 좌표와 파트를 [setPartCoordinates](../object/jspolygon.md#setpartcoordinates-coordinates-parts-boolean) API로 설정합니다.
+지정한 좌표와 파트를 [setPartCoordinates](../object/jspolygon.md#setpartcoordinatescoordinates-parts--boolean) API로 설정합니다.
 
 {% hint style="info" %}
 각 파트의 순서는 자유롭게 설정해 주어도 되나, 적어도 파트 중 하나는 폴리곤의 외곽을 형성할 수 있도록 시계 방향(CW)으로 구성되어 있어야 합니다.

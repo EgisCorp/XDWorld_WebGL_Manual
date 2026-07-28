@@ -255,7 +255,7 @@ object.cutObjectHeight(10);
 
 ### cutObjectHeightAlpha(alpha) → void
 
-> [cutObjectHeight()](jsreal3d.md#cutobjectheightheight-void)로 잘려진 단면 부분의 투명도(alpha)를 설정합니다.
+> [cutObjectHeight()](jsreal3d.md#cutobjectheightheight--void)로 잘려진 단면 부분의 투명도(alpha)를 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -467,7 +467,7 @@ object.setData(ptr, len, 1);
     -   false: 설정 실패.
     -   실패 조건
         -   지도가 로드되지 않은 경우.
-        -   객체가 [setData()](jsreal3d.md#setdataptr-len-version-boolean)로 생성된 데이터 기반 객체가 아닌 경우.
+        -   객체가 [setData()](jsreal3d.md#setdataptr-len-version--boolean)로 생성된 데이터 기반 객체가 아닌 경우.
         -   len이 1보다 작거나, ptr이 0이거나, width/height가 1보다 작은 경우.
 
 {% endtab %}
@@ -540,7 +540,7 @@ if (result) {
     -   null: 반환 실패.
     -   실패 조건
         -   지도가 로드되지 않은 경우.
-        -   객체가 null이거나, [setData()](jsreal3d.md#setdataptr-len-version-boolean)로 생성된 데이터 기반 객체가 아닌 경우.
+        -   객체가 null이거나, [setData()](jsreal3d.md#setdataptr-len-version--boolean)로 생성된 데이터 기반 객체가 아닌 경우.
         -   외벽과의 교차점을 찾지 못한 경우.
 
 {% endtab %}

@@ -377,7 +377,7 @@ let result = Module.JSMath.triangulatePolygonWithInnerPoints(polygon, inner);
 
 | Name   | Type                                                 | Attributes | Default | Description             |
 | ------ | ---------------------------------------------------- | ---------- | ------- | ----------------------- |
-| option | [coordinates Type](tag-list.md#coordinate-type-list) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
+| option | [coordinates Type](tag-list.md#coordinates-type) |            |         | 경위도 좌표 목록, 좌표 목록 타입 설정. |
 
 #### JSMath.BezierLine
 

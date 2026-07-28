@@ -66,7 +66,7 @@ vectorList.count();
 | index | number | 인덱스 번호. |
 
 -   Return
-    -   [JSVector2D](../core/jsvector2d.md)): 반환 성공.
+    -   [JSVector2D](../core/jsvector2d.md): 반환 성공.
 
 {% endtab %}
 {% tab title="Template" %}

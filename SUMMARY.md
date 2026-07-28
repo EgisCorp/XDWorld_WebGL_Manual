@@ -25,7 +25,7 @@
   * [높이 측정](tutorial/tutorial_altitude.md)
   * [반경 측정](tutorial/tutorial_radius.md)
 
-## API <a href="#introduce" id="introduce"></a>
+## API <a href="#api" id="api"></a>
 
 * [Module](module/moduleapi.md)
 * [Core](core/core.md)

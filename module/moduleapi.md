@@ -3248,15 +3248,15 @@ var panel = Module.createSolarPanel("panel01");
 {% endtab %}
 {% endtabs %}
 
-### GetSolarManager() → [JSSolarManager](../analysis/jssolarmanager.md)
+### GetSolarManager() → [JSSolarManager](../manager/jssolarmanager.md)
 
-> 태양광 패널 배치, 설정, 분석 기능을 제어하는 [JSSolarManager](../analysis/jssolarmanager.md) 객체를 반환합니다.
+> 태양광 패널 배치, 설정, 분석 기능을 제어하는 [JSSolarManager](../manager/jssolarmanager.md) 객체를 반환합니다.
 
 {% tabs %}
 {% tab title="Infomation" %}
 
 -   Return
-    -   [JSSolarManager](../analysis/jssolarmanager.md): 반환 성공.
+    -   [JSSolarManager](../manager/jssolarmanager.md): 반환 성공.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -3717,7 +3717,7 @@ var sightAnalysis = Module.getSightAnalysis();
 
 > 브이월드 DEM(지형 고도) 데이터의 난독화 여부를 설정합니다.
 >
-> [Module.initialize](moduleapi.md#initialize-object-object)의 terrain.dem.encoding 옵션과 동일한 전역 설정값을 제어합니다.
+> [Module.initialize](moduleapi.md#initializeobject---object)의 terrain.dem.encoding 옵션과 동일한 전역 설정값을 제어합니다.
 
 {% tabs %}
 {% tab title="Infomation" %}

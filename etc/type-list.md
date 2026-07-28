@@ -2,7 +2,7 @@
 
 ## Layer Type List
 
-> `Module.ELT_*` 형태로 접근하는 사용자(로컬) 레이어 생성 시 타입 상수입니다([JSLayerList.createLayer()](../layer/jslayerlist.md#createlayername-type-jslayer) 등에서 사용).
+> `Module.ELT_*` 형태로 접근하는 사용자(로컬) 레이어 생성 시 타입 상수입니다([JSLayerList.createLayer()](../layer/jslayerlist.md#createlayername-type--jslayer) 등에서 사용).
 
 | Index | Name               | Description        |
 | ----- | ------------------ | ------------------ |

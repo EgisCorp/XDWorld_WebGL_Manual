@@ -229,7 +229,7 @@ lodPoi.setText("표시 문구");
 
 ### setFontStyle(fontName, fontSize, fontWeight, fontColor, outlineColor) → boolean
 
-> [setText()](jslodpoi.md#settexttext-boolean)로 표시되는 문자열의 폰트 스타일을 설정합니다.
+> [setText()](jslodpoi.md#settexttext--boolean)로 표시되는 문자열의 폰트 스타일을 설정합니다.
 
 {% tabs %}
 {% tab title="Information" %}

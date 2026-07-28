@@ -71,7 +71,7 @@ function createGhostSymbol() {
 
 ### step 1. 고스트 심볼 맵에 모델 데이터 로드
 
-Module의 getGhostSymbolMap호출하여 [JSGhostSymbolMap](../object/jsghostsymbolmap.md) API 객체를 반환 받은 후 [insert](../object/jsghostsymbolmap.md#insert-option-string) API로 모델 데이터를 등록합니다.
+Module의 getGhostSymbolMap호출하여 [JSGhostSymbolMap](../object/jsghostsymbolmap.md) API 객체를 반환 받은 후 [insert](../object/jsghostsymbolmap.md#insertoption--string) API로 모델 데이터를 등록합니다.
 
 ```javascript
 // 1. 고스트 심볼 맵에 모델 데이터 로드

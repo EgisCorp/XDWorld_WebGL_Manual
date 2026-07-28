@@ -286,7 +286,7 @@ layer.setSelectable(false);
 
 콜백 함수는 [JSOption](../option/jsoption.md)을 통해 등록합니다.
 
-(자세한 API 설명은 [callBackAddPoint](../option/jsoption.md#callbackaddpoint-event-string), [callBackCompletePoint](../option/jsoption.md#callbackcompletepoint-event-string) 설명 부분을 참조하세요.)
+(자세한 API 설명은 [callBackAddPoint](../option/jsoption.md#callbackaddpointevent--string), [callBackCompletePoint](../option/jsoption.md#callbackcompletepointevent--string) 설명 부분을 참조하세요.)
 
 ```javascript
 Module.getOption().callBackAddPoint(addPoint);		// 마우스 입력시 발생하는 콜백 성공 시 success 반환 실패 시 실패 오류 반환

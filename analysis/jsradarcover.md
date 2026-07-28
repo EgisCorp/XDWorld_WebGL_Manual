@@ -53,7 +53,7 @@ var count = rcCollection.getCount();
 
 | Name  | Type   | Description  |
 | :---- | :----- | :----------- |
-| index | number | 조회할 인덱스([getCount()](jsradarcover.md#getcount-number) 범위 내). |
+| index | number | 조회할 인덱스([getCount()](jsradarcover.md#getcount--number) 범위 내). |
 
 -   Return
     -   [JSRadarCover](jsradarcover.md#jsradarcover): 반환 성공.
@@ -175,7 +175,7 @@ rcCollection.setColor(
 
 > 구형(sphere), 그리드형(grid), 사용자 지정 경로(custom) 세 가지 방식 중 하나로 가시권 분석을 수행하고, 분석된 각 시선(line) 정보를 배열로 반환합니다.
 >
-> 결과로 반환된 정보를 바탕으로 [create3DLayByJson()](jsradarcover.md#create3dlaybyjsonlays-boolean)를 호출하여 실제 3D 가시화를 생성할 수 있습니다.
+> 결과로 반환된 정보를 바탕으로 [create3DLayByJson()](jsradarcover.md#create3dlaybyjsonlays--boolean)를 호출하여 실제 3D 가시화를 생성할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -219,7 +219,7 @@ var result = rcCollection.analysisCover({
 
 ### create3DLayByJson(lays) → boolean
 
-> [analysisCover()](jsradarcover.md#analysiscoveroption-object)의 결과(각 시선별 `visible` 정보가 포함된 배열)를 입력받아, 가시/비가시 구간을 색상으로 구분한 3D 시각화 라인을 생성합니다.
+> [analysisCover()](jsradarcover.md#analysiscoveroption--object)의 결과(각 시선별 `visible` 정보가 포함된 배열)를 입력받아, 가시/비가시 구간을 색상으로 구분한 3D 시각화 라인을 생성합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -476,7 +476,7 @@ radarCover.create3DGrid({
 
 ### analysis3DGridCover(callback) → object
 
-> [create3DGrid()](jsradarcover.md#create3dgridoption-boolean)로 생성한 격자를 기준으로 각 셀의 가시권 분석을 수행하고 결과를 JSON 형태로 반환합니다.
+> [create3DGrid()](jsradarcover.md#create3dgridoption--boolean)로 생성한 격자를 기준으로 각 셀의 가시권 분석을 수행하고 결과를 JSON 형태로 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -487,7 +487,7 @@ radarCover.create3DGrid({
 
 -   Return
     -   object: 분석 결과 JSON.
-    -   null: 월드가 초기화되지 않았거나, [create3DGrid()](jsradarcover.md#create3dgridoption-boolean)로 격자가 생성되지 않은 경우.
+    -   null: 월드가 초기화되지 않았거나, [create3DGrid()](jsradarcover.md#create3dgridoption--boolean)로 격자가 생성되지 않은 경우.
 
 {% endtab %}
 {% tab title="Template" %}

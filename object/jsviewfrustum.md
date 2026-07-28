@@ -234,7 +234,7 @@ var edge = frustum.getPlaneEdge(0);
 
 > 절두체 객체의 중심(시점) 좌표를 설정합니다.
 >
-> [getEyepos()](jsviewfrustum.md#geteyepos-jsvector3d) 함수와 동일한 값을 프로퍼티(`object.eyePosition` 또는 `object.eye_position`) 형태로도 조회할 수 있으며, 이 프로퍼티를 통해서만 값을 설정(set)할 수 있습니다.
+> [getEyepos()](jsviewfrustum.md#geteyepos--jsvector3d) 함수와 동일한 값을 프로퍼티(`object.eyePosition` 또는 `object.eye_position`) 형태로도 조회할 수 있으며, 이 프로퍼티를 통해서만 값을 설정(set)할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}

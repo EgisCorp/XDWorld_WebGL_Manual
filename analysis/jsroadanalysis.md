@@ -100,7 +100,7 @@ roadAnalysis.chkAngle(2.0, 1.0, 5.0, 8.0);
 
 ### getProfile() → [JSRoadAnlProfile](jsroadanlprofile.md)
 
-> [setJsonData()](jsroadanalysis.md#setjsondatajson-boolean)로 분석된 결과 중, 종단면(Profile) 분석 결과 객체를 반환합니다.
+> [setJsonData()](jsroadanalysis.md#setjsondatajson--boolean)로 분석된 결과 중, 종단면(Profile) 분석 결과 객체를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -121,7 +121,7 @@ var json = profile.getProfileJSON();
 
 ### getCrossSection() → [JSRoadAnlCrossContainer](jsroadanlcross.md#jsroadanlcrosscontainer)
 
-> [setJsonData()](jsroadanalysis.md#setjsondatajson-boolean)로 분석된 결과 중, 횡단면(Cross Section) 분석 결과 목록 컨테이너를 반환합니다.
+> [setJsonData()](jsroadanalysis.md#setjsondatajson--boolean)로 분석된 결과 중, 횡단면(Cross Section) 분석 결과 목록 컨테이너를 반환합니다.
 
 {% tabs %}
 {% tab title="Information" %}

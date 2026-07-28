@@ -55,7 +55,7 @@ traceTarget.move(1.0, 1.0, 0.5); // 0.5m 상승 이동
 
 > 객체를 이동합니다.
 >
-> [move](jstracetarget.md#move-front-right-terrain)와 달리, 6방향(전,후,좌,우,상,하)으로 이동합니다.
+> [move](jstracetarget.md#movefront-right-up)와 달리, 6방향(전,후,좌,우,상,하)으로 이동합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -180,7 +180,7 @@ traceTarget.unionTargetToTerrain();
 
 > 연결된 객체를 입력 변수값(object) 객체로 변경합니다.
 >
-> setObject() 자체는 객체 타입을 제한하지 않으나(내부적으로 해당 객체의 오브젝트를 그대로 연결), 옵션 기반의 [set(options)](jstracetarget.md#set-options)에서는 JSGhostSymbol, JSPoint, JSPolygon만 지원합니다.
+> setObject() 자체는 객체 타입을 제한하지 않으나(내부적으로 해당 객체의 오브젝트를 그대로 연결), 옵션 기반의 [set(options)](jstracetarget.md#setoptions)에서는 JSGhostSymbol, JSPoint, JSPolygon만 지원합니다.
 >
 > 입력 변수값(object) 객체가 null이면 동작하지 않습니다.
 

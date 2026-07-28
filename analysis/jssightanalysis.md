@@ -91,7 +91,7 @@ let returnJSON = "{
 
 #### JSSightAnalysis.ObjectOnPathResult.Position
 
-> Unit object information of [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysisobjectonpathresult)
+> Unit object information of [JSSightAnalysis.ObjectOnPathResult](jssightanalysis.md#jssightanalysis.objectonpathresult)
 
 | Name      | Type   | Description                                                         |
 | --------- | ------ | ------------------------------------------------------------------- |
