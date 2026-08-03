@@ -2,6 +2,41 @@
 
 ## - 업데이트 내역 -
 
+### 2.29.0 (2026/08/03)
+#### 1. POI 텍스트 라벨링 및 아이콘 이미지 선명도 개선
+
+#### 2. JSPolygon blob 방식 처리 추가 
+   - JSPolygon::loadFile API에 data  속성을 통한 blob 처리 추가
+
+```
+async function load3DSa(_url, _position) {
+    const response = await fetch(_url);
+    if(response.ok == false) {
+       throw new Error(
+            `HTTP 오류: ${response.status} ${response.statusText}`
+        );
+    }
+   const arrayBuffer = await response.arrayBuffer();
+   let blob = new Uint8Array(arrayBuffer);
+   // Create polygon layer
+   var layerList = new Module.JSLayerList(true);
+   var layer = layerList.createLayer("POLYGON_3DS_LAYER", Module.ELT_POLYHEDRON);
+   var polygon = Module.createPolygon("POLYGON_3DS_LOAD");
+
+   polygon.loadFile({
+	type : "3ds",     // 3ds 포맷 명시
+	position : _position,
+	data : blob,      // fetch로 가져온 Uint8Array 버퍼
+	align : "bottom",
+	callback : function() {
+		// Texture 로딩이 필요하면 기존방식 추가 처리 
+		layer.addObject(polygon, 0);
+	}
+    });
+    return polygon;
+}
+```
+
 ### 2.28.3 (2026/07/23)
 #### 1. 지구본에서 RTT 렌더링시 간헐적 희게 번지는 현상을 수정하였습니다.
 
