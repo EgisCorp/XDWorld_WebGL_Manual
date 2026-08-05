@@ -527,7 +527,7 @@ let layer = layerList.nameAtLayer(“HybridLoad”);
 | Name  | Type                           | Description                                               |
 | :---- | :----------------------------- | :-------------------------------------------------------- |
 | layer | [JSLayer](../layer/jslayer.md) | 레이어.                                                   |
-| type  | boolean                        | <p>true: 인덱스 번호 증가.<br>false: 인덱스 번호 감소.<p> |
+| type  | boolean                        | <p>true: 인덱스 번호 감소.<br>false: 인덱스 번호 증가.<p> |
 
 -   Return
     -   true : 변경 성공.
