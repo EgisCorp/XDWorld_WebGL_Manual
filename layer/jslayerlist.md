@@ -564,7 +564,7 @@ let check =  layerList.setLayerMove(end, true);
 | Name  | Type                           | Description                                                                     |
 | :---- | :----------------------------- | :------------------------------------------------------------------------------ |
 | layer | [JSLayer](../layer/jslayer.md) | 레이어.                                                                         |
-| type  | boolean                        | <p>true: 인덱스 번호 최상단으로 변경.<br>false: 인덱스 번호 최하단으로 변경.<p> |
+| type  | boolean                        | <p>true: 가장 작은 인덱스로 변경.<br>false: 가장 큰 인덱스로 변경.<p> |
 
 -   Return
     -   true : 변경 성공.
