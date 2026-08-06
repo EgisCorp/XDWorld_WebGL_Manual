@@ -950,7 +950,7 @@ Module.getMap().setSimpleMode(true);
 | value | number | 지형 가시화 효과 (0: 일반, 10: 경사향, 11: 경사도) |
 
 -   Sample
-    -   function setUseRainEffect 참조.
+    -   function setAnalysisTerrain 참조.
     -   [Sandbox_BuildingSimpleMode](https://sandbox.egiscloud.com/code/main.do?id=terrain_rendermode)
 
 {% endtab %}
