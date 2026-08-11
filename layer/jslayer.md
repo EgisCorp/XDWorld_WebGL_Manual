@@ -3453,7 +3453,6 @@ layer.setPointCloudPointSize(0.05);
 | layerName | string                              | 피킹된 객체가 포함된 레이어 이름. |
 
 * Note
-  * ~~현재 타일 기반 레이어에서만 동작합니다.~~
   * 카메라의 뷰 영역 내부인 객체만 피킹합니다.
 {% endtab %}
 
@@ -3496,7 +3495,6 @@ if (pickInfo) {
 | layerName | string                              | 피킹된 객체가 포함된 레이어 이름. |
 
 * Note
-  * ~~현재 타일 기반 레이어에서만 동작합니다.~~
   * 카메라의 뷰 영역에 상관없이 피킹합니다.
 {% endtab %}
 
