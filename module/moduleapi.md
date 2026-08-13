@@ -775,7 +775,7 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
-### GoogleMap() / OpenStreetMap() / ArcMap() / WMTS() / BingMap() / KakaoMap() / NaverMap() / XDLMap() / SKYMap() / DawulMap()
+### GoogleMap() / OpenStreetMap() / ArcMap() / WMTS() / BingMap() / DawulMap()
 
 > 배경지도를 변경합니다.
 

@@ -8,6 +8,8 @@ nomal, terrain, vectorhybrid, satellitehybrid, satellite 레이어를 지원합�
 
 ```javascript
 var google = Module.GoogleMap();
+google.apikey = {API KEY};
+google.layername = "satellitehybrid";
 ```
 
 ### 옵션 설정하기
@@ -15,6 +17,9 @@ var google = Module.GoogleMap();
 ```javascript
 // 레이어 변경
 google.layername = "satellitehybrid";
+
+// API Key 입력
+google.apikey = {API KEY};
 
 // 이미지 품질 변경
 google.quality = "middle";
@@ -29,6 +34,8 @@ nomal, satellitehybrid, satellite 레이어를 지원합니다.
 
 ```javascript
 var bing = Module.BingMap();
+bing.apikey = {API KEY};
+bing.layername = "satellitehybrid";
 ```
 
 ### 옵션 설정하기
@@ -36,6 +43,9 @@ var bing = Module.BingMap();
 ```javascript
 // 레이어 변경
 bing.layername = "satellitehybrid";
+
+// API Key 입력
+bing.apikey = {API KEY};
 
 // 이미지 품질 변경
 bing.quality = "middle";
@@ -71,6 +81,7 @@ nomal, terrain, vectorhybrid, satellite 레이어를 지원합니다.
 
 ```javascript
 var arc = Module.ArcMap();
+arc.apikey = {API KEY};
 ```
 
 ### 옵션 설정하기
@@ -78,6 +89,9 @@ var arc = Module.ArcMap();
 ```javascript
 // 레이어 변경
 arc.layername = "vectorhybrid";
+
+// API Key 입력
+arc.apikey = {API KEY};
 
 // 이미지 품질 변경
 arc.quality = "middle";
@@ -92,6 +106,7 @@ satellite 레이어를 지원합니다.
 
 ```javascript
 var mapbox = Module.MapBox();
+mapbox.apikey = {API KEY};
 ```
 
 ### 옵션 설정하기
@@ -100,74 +115,14 @@ var mapbox = Module.MapBox();
 // 레이어 변경
 mapbox.layername = "satellite";
 
+// API Key 입력
+mapbox.apikey = {API KEY};
+
 // 이미지 품질 변경
 mapbox.quality = "middle";
 
 // 이미j지 LOD 변경
 mapbox.zerolevelOffset = 1;
-```
-
-## 6. 네이버지도 설정하기
-
-nomal, satellite 레이어를 지원합니다.
-
-```javascript
-var naver = Module.NaverMap();
-```
-
-### 옵션 설정하기
-
-```javascript
-// 레이어 변경
-naver.layername = "satellite";
-
-// 이미지 품질 변경
-naver.quality = "middle";
-
-// 이미지 LOD 변경
-naver.zerolevelOffset = 1;
-```
-
-## 7. 다음지도 설정하기
-
-nomal, satellite 레이어를 지원합니다.
-
-```javascript
-var daum = Module.DaumMap();
-```
-
-### 옵션 설정하기
-
-```javascript
-// 레이어 변경
-daum.layername = "satellite";
-
-// 이미지 품질 변경
-daum.quality = "middle";
-
-// 이미지 LOD 변경
-daum.zerolevelOffset = 1;
-```
-
-## 8. SKYMap 설정하기
-
-2012 \~ 2018, 2020 레이어를 지원합니다.
-
-```javascript
-var skymap = Module.SKYMap();
-```
-
-### 옵션 설정하기
-
-```javascript
-// 레이어 변경
-skymap.layername = "2020";
-
-// 이미지 품질 변경
-skymap.quality = "middle";
-
-// 이미지 LOD 변경
-skymap.zerolevelOffset = 1;
 ```
 
 ## 9. 레이어 타입 명칭
