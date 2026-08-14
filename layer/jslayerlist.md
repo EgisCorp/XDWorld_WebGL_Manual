@@ -697,6 +697,45 @@ let windLayer = layerList.createWorldTileWindLayer({
 {% endtab %}
 {% endtabs %}
 
+### createOSMTileayer(option) → [JSLayer](../layer/jslayer.md)
+
+> OSM(OpenStreetMap 타일 규격) 기반 타일 레이어를 생성합니다.
+>
+> 서비스 레이어 리스트(`new Module.JSLayerList(false)`)에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                                    | Description |
+| :----- | -------------------------------------------------------- | ----------- |
+| option | [CreateOSMTileayerOptions](jslayerlist.md#createosmtileayeroptions) | 속성 정보.  |
+
+* Return
+  * [JSLayer](../layer/jslayer.md) : 생성 성공.
+  * null : 생성 실패.
+  * 실패 조건
+    * 사용자 레이어 리스트(`new Module.JSLayerList(true)`)로 호출한 경우.
+    * option.name이 없는 경우.
+    * 동일한 이름의 레이어가 이미 존재하는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let layerList = new Module.JSLayerList(false);
+let osmLayer = layerList.createOSMTileayer({
+    name: "OSMLayer",
+    visible: true,
+    selectable: true,
+    minLevel: 2,
+    maxLevel: 19,
+    callback: function(tileInfo) { /* ... */ }
+});
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setVisible(name, type)
 
 > 레이어에 포함된 객체에 대한 가시화 유무를 설정합니다.
@@ -754,6 +793,20 @@ layerList.setVisible(“HybridLoad”, false);
 | selectable | boolean                                                 | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정. |
 | minLevel   | number                                                  | optional   | 0       | 레이어 최소 가시 레벨를 설정.          |
 | maxLevel   | number                                                  | optional   | 15      | 레이어 최대 가시 레벨를 설정.          |
+
+#### CreateOSMTileayerOptions
+
+> OSM 타일 레이어 생성 옵션.
+
+| Name               | Type     | Attributes | Default | Description                                              |
+| ------------------- | -------- | ---------- | ------- | --------------------------------------------------------- |
+| name                | String   |            |         | 레이어 명칭.                                              |
+| visible             | boolean  | optional   | true    | 레이어 가시화 옵션 설정.                                  |
+| selectable          | boolean  | optional   | true    | 레이어 포함된 오브젝트 선택 옵션 설정.                     |
+| minLevel            | number   | optional   | 2       | 레이어 최소 가시 레벨.                                    |
+| maxLevel            | number   | optional   | 19      | 레이어 최대 가시 레벨.                                    |
+| maxScreenSpaceError | number   | optional   | 16.0    | 레이어별 Screen Space Error 임계값(작을수록 더 세밀하게 세분화). |
+| callback            | function | optional   |         | 타일 로드 콜백 함수(인자: tileInfo).                      |
 
 #### CreateXDServerLayerOptions
 

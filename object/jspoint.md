@@ -679,6 +679,51 @@ point.setLonLat(129.1270931, 35.1713096);
 {% endtab %}
 {% endtabs %}
 
+### setLineAlign(from, to) → boolean
+
+> 두 지점(from, to)을 잇는 방향에 맞춰 POI 심볼(라벨)을 회전시킵니다. 도로명 표기처럼 라인을 따라 정렬된 라벨을 표시할 때 사용합니다.
+>
+> 회전되는 라벨은 텍스처 필터가 NEAREST가 아닌 LINEAR로 유지되어 회전 각도에서도 외곽선이 매끄럽게 보이며, 이 필터는 텍스처 업로드 시점에 한 번만 적용되므로 [setImage(data, width, height)](jspoint.md#setimage-data-width-height-boolean)보다 먼저 호출해야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type                                | Description        |
+| :--- | :---------------------------------- | :------------------ |
+| from | [JSVector3D](../core/jsvector3d.md) | 라인 시작 좌표(경도, 위도, 고도). |
+| to   | [JSVector3D](../core/jsvector3d.md) | 라인 끝 좌표(경도, 위도, 고도).   |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.setLineAlign(new Module.JSVector3D(127.0, 37.5, 30.0),
+                    new Module.JSVector3D(127.1, 37.6, 30.0));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearLineAlign()
+
+> [setLineAlign(from, to)](jspoint.md#setlinealign-from-to-boolean)로 설정된 라인 정렬을 해제하고, 회전 각도를 0으로 되돌립니다.
+
+{% tabs %}
+{% tab title="Information" %}
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+point.clearLineAlign();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setRenderToTerrainTexture(type) → boolean
 
 > POI 객체를 RTT 가시화 방법으로 설정합니다.

@@ -391,6 +391,145 @@ Module.getOption().setAtmosphericTime(16, 30);
 {% endtab %}
 {% endtabs %}
 
+### setTextureDrawLevel(level)
+
+> 카메라 기준 몇 단계 LOD까지의 텍스처를 상주(메모리에 유지)시킬지 설정합니다. 기본값은 3입니다.
+>
+> 값을 낮추면 상주 텍스처 양이 줄어 메모리를 절약하지만, 멀리 있는 지형 텍스처가 더 일찍 사라집니다(화질과 메모리 사용량의 트레이드오프).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                          |
+| ----- | ------ | ---------------------------------------- |
+| level | number | 상주 LOD 단계(0~5 범위로 clamp됨). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTextureDrawLevel() → number
+
+> [setTextureDrawLevel(level)](jsoption.md#settexturedrawlevel-level)로 설정된 상주 LOD 단계를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 현재 설정된 상주 LOD 단계.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTextureUsedSize() → number
+
+> 현재 GPU 텍스처 사용량을 반환합니다(진단용).
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 현재 텍스처 사용량(byte 단위).
+    -   0: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTexturePoolSize() → number
+
+> [setTexturePoolSize(size)](jsoption.md#settexturepoolsize-size-boolean)로 설정된 텍스처 예산(byte)을 반환합니다(진단용).
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 텍스처 예산(byte 단위).
+    -   0: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMaxTextureDecodePerFrame(size), getMaxTextureDecodePerFrame() → number
+
+> 한 프레임에 디코드할 수 있는 최대 텍스처 개수를 설정하여, 텍스처 디코드 부하를 여러 프레임에 걸쳐 분산시킵니다.
+>
+> 아이폰 등 일부 환경에서 텍스처/건물팩 디코드가 몰릴 때 발생하는 화면 프리징 대응 기능입니다. 기본값은 -1(기능 꺼짐, 기존과 동일하게 즉시 처리)입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                |
+| ---- | ------ | -------------------------------------------------------------- |
+| size | number | <p>-1: 기능 비활성화(기본값, 즉시 처리).<br>0 이상: 프레임당 처리할 최대 개수(부하 분산 활성화).</p> |
+
+-   Return(getMaxTextureDecodePerFrame)
+    -   number: 현재 설정된 프레임당 최대 디코드 개수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMaxTextureDecodePerFrame(2);
+var count = Module.getOption().getMaxTextureDecodePerFrame();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setMaxReal3DPackDecodePerFrame(size), getMaxReal3DPackDecodePerFrame() → number
+
+> 한 프레임에 디코드할 수 있는 최대 Real3D 건물팩 개수를 설정하여, 디코드 부하를 여러 프레임에 걸쳐 분산시킵니다.
+>
+> 기본값은 -1(기능 꺼짐, 기존과 동일하게 즉시 처리)입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                |
+| ---- | ------ | -------------------------------------------------------------- |
+| size | number | <p>-1: 기능 비활성화(기본값, 즉시 처리).<br>0 이상: 프레임당 처리할 최대 개수(부하 분산 활성화).</p> |
+
+-   Return(getMaxReal3DPackDecodePerFrame)
+    -   number: 현재 설정된 프레임당 최대 디코드 개수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMaxReal3DPackDecodePerFrame(2);
+var count = Module.getOption().getMaxReal3DPackDecodePerFrame();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setEventMouseMove(type)
 
 > 마우스 이동 위치 이벤트(Fire_EventMouseMove) 발생 여부를 설정합니다.

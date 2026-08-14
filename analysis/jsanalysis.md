@@ -896,6 +896,27 @@ console.log(sunshine); // [520, 430] 분 단위 일조량
 {% endtab %}
 {% endtabs %}
 
+### updateViewshed() → number
+
+> 등록된 모든 가시권 분석을 현재 카메라·지형 상태 기준으로 다시 계산합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 재계산된 가시권 분석 개수.
+    -   0: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### clearViewshed()
 
 > 가시권 분석 결과를 초기화합니다.

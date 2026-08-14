@@ -1690,6 +1690,28 @@ var object = Module.getControl();
 {% endtab %}
 {% endtabs %}
 
+### getProjection() → [JSProjection](../etc/jsprojection.md)
+
+> 좌표계 변환 기능을 제공하는 [JSProjection](../etc/jsprojection.md) 객체를 반환합니다.
+>
+> ⚠️ `new Module.JSProj()`로 생성하는 [JSProj](../etc/jsproj.md) 사용을 권장합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSProjection](../etc/jsprojection.md): 반환 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var projection = Module.getProjection();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### createFigure(id) → [JSFigure](../object/jsfigure.md)
 
 > 다각기둥 형태의 [JSFigure](../object/jsfigure.md) 객체를 생성합니다.
@@ -1740,9 +1762,11 @@ var object = Module.createVideoObject("newVideo");
 {% endtab %}
 {% endtabs %}
 
-### createVoxelObject(id) → [JSVoxelObject](../object/jsvoxelobject.md)
+### createVolumeObject(id) → [JSVolumeObject](../object/jsvolumeobject.md)
 
-> 볼륨(연기, 구름, 불꽃, 물 등) 시각화를 위한 복셀(Voxel) 객체([JSVoxelObject](../object/jsvoxelobject.md))를 생성합니다.
+> 구름·화염·산불·수면·태풍 등 부피감 있는 효과를 표현하는 볼륨(Volume) 객체([JSVolumeObject](../object/jsvolumeobject.md))를 생성합니다.
+>
+> 기존 `createVoxelObject`/`JSVoxelObject`를 대체하는 API입니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1752,14 +1776,14 @@ var object = Module.createVideoObject("newVideo");
 | id   | string | 객체 고유 명칭. |
 
 -   Return
-    -   [JSVoxelObject](../object/jsvoxelobject.md): 생성 성공.
+    -   [JSVolumeObject](../object/jsvolumeobject.md): 생성 성공.
     -   null: 생성 실패.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
-var voxel = Module.createVoxelObject("newVoxel");
+var volume = Module.createVolumeObject("newVolume");
 ```
 
 {% endtab %}
@@ -3070,6 +3094,20 @@ var maxVertexAttribs = Module.getRenderSpec(0x8869);
 {% endtab %}
 {% endtabs %}
 
+### ShutDown()
+
+> 엔진(월드) 인스턴스와 사용 중인 Web Worker를 모두 해제합니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.ShutDown();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### XDESetPlanetTransparecny(alpha)
 
 > 지구본 지형(터레인) 전체의 투명도를 설정합니다.
@@ -3835,6 +3873,29 @@ Module.setLimitObjectMax(50);
 {% endtab %}
 {% endtabs %}
 
+### deleterSyncLayer(layerName)
+
+> 지정한 이름의 레이어를 동기화(Sync) 삭제 대기열에 등록합니다. 즉시 삭제되지 않고, 다음 메인 루프 tick에서 사용자/서비스 레이어 양쪽을 대상으로 삭제가 처리됩니다.
+>
+> 동기화 관련 기능은 추후 개선 예정으로, 현재는 임시로 제공되는 API입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description              |
+| --------- | ------ | --------------------------- |
+| layerName | string | 삭제할 레이어 이름.       |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.deleterSyncLayer("myLayer");
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setOverlayMode(set) → boolean
 
 > 지도 화면을 정사영(직교 투영) 방식의 오버레이(Overlay) 텍스처로 렌더링하는 모드를 설정합니다.
@@ -3950,6 +4011,225 @@ Module.setGizmoMode(0);
 
 ```javascript
 var mode = Module.getGizmoMode();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### isDiscreteGPUUnused() → boolean
+
+> 시스템에 외장 GPU가 있음에도 내장(통합) GPU로 렌더링 중인지 확인합니다(안내 메시지 표시 여부 판단용).
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+if (Module.isDiscreteGPUUnused()) {
+    // 외장 그래픽카드 사용을 안내
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEClearOutsideMemory() → number
+
+> 화면 밖(프러스텀 밖) 텍스처를 유예 없이 즉시 해제합니다(진단/수동 정리용).
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 이번 호출로 실제 해제된 텍스처 바이트 수(해제 후 사용량이 아니라, 호출 전후 차이값).
+    -   0: 엔진 인스턴스가 초기화되지 않았거나, 해제된 텍스처가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var freedBytes = Module.XDEClearOutsideMemory();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetFrameInterval(interval), XDEGetFrameInterval() → number
+
+> 렌더링 프레임 간격을 설정합니다(배터리 소모 절감용). `requestAnimationFrame` 기준 몇 프레임마다 한 번씩 렌더링할지를 지정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                                          |
+| -------- | ------ | ------------------------------------------------------- |
+| interval | number | 렌더링 간격(1~8 범위로 clamp됨, 1이 매 프레임 렌더링). |
+
+-   Return(XDEGetFrameInterval)
+    -   number: 현재 설정된 프레임 간격.
+    -   0: RAF(requestAnimationFrame) 기반 타이밍이 아닌 경우(간격 개념 없음).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetFrameInterval(2); // 2프레임에 한 번씩 렌더링
+var interval = Module.XDEGetFrameInterval();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetAutoMemoryClear(on), XDEGetAutoMemoryClear() → boolean
+
+> 화면 밖 텍스처 자동 정리 기능의 사용 여부를 설정합니다(진단용).
+>
+> ⚠️ 끈 상태로 두면 화면 밖 텍스처가 계속 누적되므로, 진단 목적 외에는 끈 채로 두지 않아야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                          |
+| ---- | ------- | ------------------------------------------------------- |
+| on   | boolean | <p>true: 자동 정리 사용(기본값).<br>false: 자동 정리 사용 안 함.</p> |
+
+-   Return(XDEGetAutoMemoryClear)
+    -   boolean: 현재 자동 정리 사용 여부.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetAutoMemoryClear(false); // 진단 목적으로만 일시 사용
+var isOn = Module.XDEGetAutoMemoryClear();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEDumpTextures(unused)
+
+> 현재 살아있는 텍스처 목록을 이름별로 묶어 개수와 함께 콘솔에 출력합니다(진단용).
+>
+> 호출 시점의 스냅샷만 출력하며 객체를 역참조하지 않으므로, 누수/댕글링(dangling) 상태의 텍스처도 안전하게 확인할 수 있습니다. "레이어를 지웠는데 텍스처가 해제되지 않는다" 같은 문제에서 남아있는 텍스처의 이름(접두사)을 특정하는 용도입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description        |
+| ------ | ------ | --------------------- |
+| unused | number | 사용되지 않는 파라미터(전달값은 무시됨). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEDumpTextures(0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetLayerFrustumClear(on), XDEGetLayerFrustumClear() → boolean
+
+> 레이어(건물) 타일의 프러스텀(카메라 시야) 기반 해제 기능의 사용 여부를 설정합니다. 문제 발생 시 이전 동작(LOD 기준 해제만 사용)으로 되돌리는 용도입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                          |
+| ---- | ------- | ------------------------------------------------------------------------ |
+| on   | boolean | <p>true: 프러스텀 기반 해제 사용(기본값).<br>false: LOD 기준 해제만 사용.</p> |
+
+-   Return(XDEGetLayerFrustumClear)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetLayerFrustumClear(false);
+var isOn = Module.XDEGetLayerFrustumClear();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetLayerOffscreenGrace(n), XDEGetLayerOffscreenGrace() → number
+
+> 레이어(건물) 타일이 화면 밖으로 나간 뒤, 실제로 해제되기까지 유예할 정리 주기 횟수를 설정합니다.
+>
+> 정리 주기가 30프레임마다 한 번씩 돌기 때문에, 값 4는 약 2초의 유예 시간에 해당합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                              |
+| ---- | ------ | ------------------------------------------- |
+| n    | number | 유예할 정리 주기 횟수(0 미만은 0으로 보정). |
+
+-   Return(XDEGetLayerOffscreenGrace)
+    -   number: 현재 설정된 유예 주기 횟수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetLayerOffscreenGrace(4); // 약 2초 유예
+var grace = Module.XDEGetLayerOffscreenGrace();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetPoiTexture16Bit(on), XDEGetPoiTexture16Bit() → boolean
+
+> POI 라벨 텍스처를 16비트(RGBA4444) 포맷으로 생성할지 여부를 설정합니다(메모리 절약용).
+>
+> 설정을 켠 이후에 새로 만들어지는 라벨부터 적용되며, 이미 생성된 라벨에는 영향을 주지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                             |
+| ---- | ------- | ---------------------------------------------------------- |
+| on   | boolean | <p>true: 16비트(RGBA4444) 포맷 사용.<br>false: 기본 포맷 사용.</p> |
+
+-   Return(XDEGetPoiTexture16Bit)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPoiTexture16Bit(true);
+var is16Bit = Module.XDEGetPoiTexture16Bit();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetPhotoTexture16Bit(on), XDEGetPhotoTexture16Bit() → boolean
+
+> 사진 텍스처(JPEG 기반 지형 영상·건물 파사드 등)를 16비트(RGB565) 포맷으로 디코드할지 여부를 설정합니다(메모리 절약용).
+>
+> 설정을 켠 이후에 새로 받는 타일부터 적용되며, 이미 받은 타일에는 영향을 주지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                          |
+| ---- | ------- | -------------------------------------------------------- |
+| on   | boolean | <p>true: 16비트(RGB565) 포맷 사용.<br>false: 기본 포맷 사용.</p> |
+
+-   Return(XDEGetPhotoTexture16Bit)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPhotoTexture16Bit(true);
+var is16Bit = Module.XDEGetPhotoTexture16Bit();
 ```
 
 {% endtab %}

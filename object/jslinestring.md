@@ -555,7 +555,66 @@ var isInstanced = line.isInstancedRender();
 {% endtab %}
 {% endtabs %}
 
+### setGroundPolylineLodDistances(distances) → boolean
+
+> 지면 결합(Ground) 라인의 거리 기반 LOD(단순화) 단계를 설정합니다.
+>
+> 카메라와의 거리에 따라 라인 정점을 몇 단계로 단순화할지 지정하며, 배열의 각 항목은 거리별 단순화 허용 오차(simplify)를 나타냅니다. 거리가 멀어질수록 simplify 값이 작아지면(더 세밀해지면) 논리적으로 맞지 않으므로 실패합니다(콘솔 경고 출력).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                                                                            | Description             |
+| --------- | -------------------------------------------------------------------------------- | ------------------------ |
+| distances | array([JSLineString.GroundPolylineLodTier](jslinestring.md#jslinestring.groundpolylinelodtier)) | LOD 단계 목록(배열 순서는 무관, 내부적으로 distance 기준 정렬됨). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 객체가 없거나 라인 타입(S3dExline) 객체가 아닌 경우, distances가 배열이 아니거나 항목에 distance/simplify가 없는 경우, 또는 거리가 멀어질수록 simplify가 감소하는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+line.setGroundPolylineLodDistances([
+    { distance: 0,    simplify: 0.0 },
+    { distance: 100,  simplify: 0.5 },
+    { distance: 1000, simplify: 2.0 }
+]);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getGroundPolylineLodDistances() → array
+
+> [setGroundPolylineLodDistances(distances)](jslinestring.md#setgroundpolylineloddistances-distances-boolean)로 설정된 LOD 단계 목록을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   array([JSLineString.GroundPolylineLodTier](jslinestring.md#jslinestring.groundpolylinelodtier)): 현재 설정된 LOD 단계 목록.
+    -   빈 배열: 객체가 없거나 라인 타입(S3dExline) 객체가 아닌 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var tiers = line.getGroundPolylineLodDistances();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### Type Definitions
+
+#### JSLineString.GroundPolylineLodTier
+
+| Name     | Type   | Description                              |
+| -------- | ------ | ------------------------------------------ |
+| distance | number | 이 단계가 적용되기 시작하는 카메라 거리(m 단위). |
+| simplify | number | 단순화 허용 오차(클수록 더 단순화됨).      |
 
 #### JSLineString.CreateOptions
 

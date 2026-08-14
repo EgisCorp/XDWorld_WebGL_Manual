@@ -58,6 +58,33 @@ layer.addObject(object, 0);
 {% endtab %}
 {% endtabs %}
 
+### createGaussianSplat(objectKey) → [JSGaussianSplat](../object/jsgaussiansplat.md)
+
+> 3D Gaussian Splatting 객체([JSGaussianSplat](../object/jsgaussiansplat.md))를 생성하여 이 레이어에 등록합니다.
+>
+> 서비스 레이어에서 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description     |
+| :-------- | ------ | --------------- |
+| objectKey | string | 객체 고유 명칭. |
+
+-   Return
+    -   [JSGaussianSplat](../object/jsgaussiansplat.md): 생성 성공(동일한 키가 이미 있으면 기존 객체를 반환).
+    -   null: 레이어가 초기화되지 않았거나, 동일한 키의 객체가 다른 타입으로 이미 존재하는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var splat = layer.createGaussianSplat("splat_01");
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### clearWMSCache()
 
 > 로드된 WMS 레이어 이미지의 캐시를 지웁니다.

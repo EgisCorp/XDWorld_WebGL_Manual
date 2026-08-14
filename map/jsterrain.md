@@ -242,6 +242,33 @@ var map = Module.getTerrain();
 {% endtab %}
 {% endtabs %}
 
+### setImageServerEnable(enable) → boolean
+
+> 위성(영상) 서버 사용 여부를 실행 중에 변경합니다.
+>
+> 값이 실제로 바뀌는 경우에만 지형을 레벨 0부터 다시 생성합니다(위성 텍스처 유무가 이미 메쉬에 반영되어 있어, 플래그만 바꿔서는 화면이 갱신되지 않기 때문입니다).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                                    |
+| ------ | ------- | -------------------------------------------------- |
+| enable | boolean | <p>true: 위성 서버 사용.<br>false: 위성 서버 미사용.</p> |
+
+-   Return
+    -   true: 설정 성공(값이 동일하여 재생성을 건너뛴 경우 포함).
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setSkirtHeight(height)
 
 > 지형 타일 경계의 스커트(skirt, 이음새 가림용 수직 벽) 높이를 설정합니다.
