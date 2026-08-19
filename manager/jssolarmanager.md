@@ -363,7 +363,7 @@ let angle = Module.getSolar().getAlignAreaAngleOnTerrain();
 {% endtab %}
 {% endtabs %}
 
-### getCenterOfMassOnTerrain() → [CJSVector3D](../core/jsvector3d.md)
+### getCenterOfMassOnTerrain() → [JSVector3D](../core/jsvector3d.md)
 
 > 지형 위에 배치된 태양광 패널의 질량 중심 위치를 반환합니다.
 >
@@ -373,7 +373,7 @@ let angle = Module.getSolar().getAlignAreaAngleOnTerrain();
 {% tab title="Information" %}
 
 - Return
-  - [`CJSVector3D`](../core/jsvector3d.md): 질량 중심 위치 (longitude, latitude, altitude)
+  - [`JSVector3D`](../core/jsvector3d.md): 질량 중심 위치 (longitude, latitude, altitude)
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1181,7 +1181,7 @@ Module.getSolar().setSelectedRoofInfo(info);
 
 | Name   | Type                                        | Description                        |
 |--------|----------------------------------------------|-------------------------------------|
-| points | [CJSVec3Array](../core/jsvec3array.md)      | 선택 영역 경계 좌표 목록 (경도, 위도, 고도) |
+| points | [JSVec3Array](../core/jsvec3array.md)      | 선택 영역 경계 좌표 목록 (경도, 위도, 고도) |
 
 - Return
   - `boolean`: 항상 `true`를 반환합니다.
@@ -1200,7 +1200,7 @@ let result = Module.getSolar().selectRoofByArea(points);
 {% endtab %}
 {% endtabs %}
 
-### getSelectedRoofCenter() → [CJSVector3D](../core/jsvector3d.md)
+### getSelectedRoofCenter() → [JSVector3D](../core/jsvector3d.md)
 
 > 현재 선택된 지붕의 중심 좌표를 반환합니다.
 
@@ -1208,8 +1208,8 @@ let result = Module.getSolar().selectRoofByArea(points);
 {% tab title="Information" %}
 
 - Return
-  - [`CJSVector3D`](../core/jsvector3d.md): 지붕 중심 위치 (longitude, latitude, altitude)
-  - SolarManager가 없거나 활성 객체가 없으면 기본값(0,0,0) `CJSVector3D`를 반환합니다.
+  - [`JSVector3D`](../core/jsvector3d.md): 지붕 중심 위치 (longitude, latitude, altitude)
+  - SolarManager가 없거나 활성 객체가 없으면 기본값(0,0,0) `JSVector3D`를 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1277,7 +1277,7 @@ let count = Module.getSolar().getRoofedStructureCount();
 {% endtab %}
 {% endtabs %}
 
-### getRoofedStructure(structureIndex) → [CJSSolarStructure](../etc/jssolarstructure.md)
+### getRoofedStructure(structureIndex) → [JSSolarStructure](../etc/jssolarstructure.md)
 
 > 지붕에 패널이 설치된 건물 정보를 인덱스로 조회합니다.
 
@@ -1289,7 +1289,7 @@ let count = Module.getSolar().getRoofedStructureCount();
 | structureIndex | number | 조회할 구조물의 인덱스 (0 기반, unsigned int) |
 
 - Return
-  - [`CJSSolarStructure`](../etc/jssolarstructure.md): 구조물 정보 객체 (문서 없음, 추후 B그룹에서 작성 예정)
+  - [`JSSolarStructure`](../etc/jssolarstructure.md): 구조물 정보 객체 (문서 없음, 추후 B그룹에서 작성 예정)
   - `null`: 엔진 미초기화, SolarManager가 없거나, `structureIndex`가 구조물 개수 범위를 벗어난 경우
 
 {% endtab %}
@@ -1479,7 +1479,7 @@ let totalNPV = Module.getSolar().getTotalNPV();
 {% endtab %}
 {% endtabs %}
 
-### getModulesPosition() → [CJSVec3Array](../core/jsvec3array.md)
+### getModulesPosition() → [JSVec3Array](../core/jsvec3array.md)
 
 > 현재 활성화된 객체에 배치된 모든 태양광 모듈의 중심 좌표 목록을 반환합니다.
 
@@ -1487,7 +1487,7 @@ let totalNPV = Module.getSolar().getTotalNPV();
 {% tab title="Information" %}
 
 - Return
-  - [`CJSVec3Array`](../core/jsvec3array.md): 각 모듈의 중심 좌표 (경도, 위도, 고도) 목록. 활성 객체가 없으면 빈 배열
+  - [`JSVec3Array`](../core/jsvec3array.md): 각 모듈의 중심 좌표 (경도, 위도, 고도) 목록. 활성 객체가 없으면 빈 배열
 
 {% endtab %}
 {% tab title="Template" %}
@@ -2163,7 +2163,7 @@ Module.getSolar().setVisibleAreaOnTerrain(true);
 
 | Name      | Type                                    | Description                    |
 |-----------|-------------------------------------------|-----------------------------------|
-| points    | [CJSVec2Array](../core/jsvec2array.md)   | 영역 경계 좌표 목록 (경도, 위도)   |
+| points    | [JSVec2Array](../core/jsvec2array.md)   | 영역 경계 좌표 목록 (경도, 위도)   |
 | buffer    | number                                     | 영역 여백 버퍼 (meters)          |
 | fillColor | [JSColor](../core/jscolor.md)            | 영역 채우기 색상                 |
 | lineColor | [JSColor](../core/jscolor.md)            | 영역 외곽선 색상                 |
@@ -2206,7 +2206,7 @@ let area = Module.getSolar().getAreaOnTerrain();
 {% endtab %}
 {% endtabs %}
 
-### getModulesPositionOnTerrain() → [CJSVec3Array](../core/jsvec3array.md)
+### getModulesPositionOnTerrain() → [JSVec3Array](../core/jsvec3array.md)
 
 > 지형에 배치된 모든 태양광 모듈의 중심 좌표 목록을 반환합니다.
 
@@ -2214,7 +2214,7 @@ let area = Module.getSolar().getAreaOnTerrain();
 {% tab title="Information" %}
 
 - Return
-  - [`CJSVec3Array`](../core/jsvec3array.md): 각 모듈의 중심 좌표 (경도, 위도, 고도) 목록
+  - [`JSVec3Array`](../core/jsvec3array.md): 각 모듈의 중심 좌표 (경도, 위도, 고도) 목록
 
 {% endtab %}
 {% tab title="Template" %}
@@ -2254,7 +2254,7 @@ let gap = Module.getSolar().getArrayGapH();
 | layerName | string                                      | 오브젝트를 생성할 레이어 이름     |
 | objectKey | string                                      | 생성할 오브젝트의 고유 키         |
 | uri       | string                                      | 3DS 파일 경로(URI)                |
-| position  | [CJSVector3D](../core/jsvector3d.md)      | 배치 위치 (경도, 위도, 고도)       |
+| position  | [JSVector3D](../core/jsvector3d.md)      | 배치 위치 (경도, 위도, 고도)       |
 | scaleX    | number                                      | X축 스케일                        |
 | scaleY    | number                                      | Y축 스케일                        |
 | scaleZ    | number                                      | Z축 스케일                        |
@@ -2287,7 +2287,7 @@ let result = Module.getSolar().addObject3DS("3ds_layer", "obj_001", "models/pane
 |-------------|----------------------------------------------|----------------------------------------|
 | layerName   | string                                        | 오브젝트를 생성할 레이어 이름          |
 | objectKey   | string                                        | 생성할 오브젝트의 고유 키              |
-| coordinates | [CJSVec3Array](../core/jsvec3array.md)      | 건물 밑면 다각형 좌표 목록 (3개 이상)  |
+| coordinates | [JSVec3Array](../core/jsvec3array.md)      | 건물 밑면 다각형 좌표 목록 (3개 이상)  |
 | color       | [JSColor](../core/jscolor.md)               | 오브젝트 색상                          |
 | height      | number                                        | 건물 높이 (meters)                    |
 

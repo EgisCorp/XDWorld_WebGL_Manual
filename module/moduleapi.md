@@ -874,7 +874,7 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
-### getTileLayerList() → [CJSLayerList](../layer/jslayerlist.md)
+### getTileLayerList() → [JSLayerList](../layer/jslayerlist.md)
 
 > 타일 레이어 리스트를 반환합니다.
 
@@ -895,7 +895,7 @@ Module.XDRenderData();
 {% endtab %}
 {% endtabs %}
 
-### getObjectLayerList() → [CJSLayerList](../layer/jslayerlist.md)
+### getObjectLayerList() → [JSLayerList](../layer/jslayerlist.md)
 
 > 옥트리 레이어 리스트를 반환합니다.
 
@@ -1690,6 +1690,26 @@ var object = Module.getControl();
 {% endtab %}
 {% endtabs %}
 
+### getNavigation() → [JSNavigationControl](../option/jsnavigationcontrol.md)
+
+> 지도 내 네비게이션(나침반 UI) 기능을 제어하는 [JSNavigationControl](../option/jsnavigationcontrol.md) 객체를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSNavigationControl](../option/jsnavigationcontrol.md): 반환 성공.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var navigation = Module.getNavigation();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getProjection() → [JSProjection](../etc/jsprojection.md)
 
 > 좌표계 변환 기능을 제공하는 [JSProjection](../etc/jsprojection.md) 객체를 반환합니다.
@@ -2255,6 +2275,27 @@ Module.SetUseWebWorker(false);
 
 ```javascript
 Module.SetResourceServerAddr("//xdworld.vworld.kr");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### SetProxy(proxy)
+
+> WFS/WMS 등 서비스 레이어 요청 시 사용할 우회 프록시(bypass proxy) URL을 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description   |
+| ----- | ------ | ---------------- |
+| proxy | string | 프록시 URL.  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.SetProxy("http://.../(프록시 URL)...");
 ```
 
 {% endtab %}
@@ -3425,7 +3466,7 @@ Module.XDEClearTransparecnyObject();
 
 | Name      | Type                                   | Description                       |
 | --------- | ---------------------------------------- | ------------------------------------|
-| position  | [CJSVec2Array](../core/jsvec2array.md) | 터파기 이동 경로(경도, 위도) 좌표 목록. |
+| position  | [JSVec2Array](../core/jsvec2array.md) | 터파기 이동 경로(경도, 위도) 좌표 목록. |
 | waitFrame | number                                  | 경로 지점 간 이동에 걸리는 대기 프레임 수. |
 
 -   Return
