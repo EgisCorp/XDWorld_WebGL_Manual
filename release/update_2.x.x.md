@@ -2,6 +2,75 @@
 
 ## - 업데이트 내역 -
 
+### 2.31.0 (2026/10/06)
+#### 1. 기즈모 Scale 모드 추가
+- 스케일을 조절하는 기즈모 모드가 추가되었습니다.
+```javascript
+Module.setGizmoMode(2); // scale
+```
+
+#### 2. moveWithSlide API 추가
+- 1인칭 카메라 이동 시 벽면에 충돌했을 경우 자연스럽게 미끌어져 이동하는 API가 추가되었습니다. ([샘플](https://sandbox.egiscloud.com/code/main.do?id=camera_jump_Indoor))
+
+#### 3. Clipping Box 조작 방식 변경
+- Clipping Box를 기즈모를 통해 조작할 수 있도록 변경하였습니다. ([샘플](https://sandbox.egiscloud.com/code/main.do?id=object_clippingbox))
+```javascript
+Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX);
+Module.setGizmoMode(0); // translate
+// Module.setGizmoMode(1); // rotate(현재 미구현)
+// Module.setGizmoMode(2); // scale
+```
+
+#### 4. 3D 타일 레이어 로딩 성능 개선 ([이슈 #620](https://github.com/EgisCorp/XDWorld/issues/620))
+- 현재 화면에서 요청할 타일이 없는 3D 타일 레이어가 요청 처리 순서에 포함되어 다른 레이어의 타일 로딩이 지연되는 문제를 수정하였습니다.
+
+####  5. 피킹 수정
+- 자식 노드에 객체가 있으면 부모 객체를 통째로 후보에서 빼던 조건을 제거했습니다. 화면에 보이는 건물이 선택되지 않던 증상이 사라집니다. (API 변경 없음)
+
+#### 6. 자동 메모리 정리의 주기 조정 API 추가
+- XDESetMemoryClearInterval(ms) / XDEGetMemoryClearInterval() → number 
+- 엔진 자동 메모리 정리의 주기를 밀리초로 지정합니다. 기존에는 상수였던 값을 런타임에 바꿀 수 있게 한 것으로, 재빌드 없이 여러 값을 같은 세션에서 비교할 때 씁니다.
+#### Information
+
+| Name | Type   | Required | Description                                               |
+| ---- | ------ | -------- | --------------------------------------------------------- |
+| ms   | number | ✔        | 정리 주기(밀리초). 기본 5000. 0이면 매 프레임 정리합니다. 음수는 0으로 처리합니다.      |
+
+* Return
+  * `XDESetMemoryClearInterval` → 없음.
+  * `XDEGetMemoryClearInterval` → number. 현재 주기(ms).
+* 참고
+  * **0은 진단용입니다.** 매 프레임 정리는 비용이 커서 상시로 쓸 값이 아닙니다 — 누수가 정리 주기 때문인지 가릴 때만 씁니다.
+  * 주기를 늘리면 정리 호출은 줄지만 그동안 해제가 밀려 메모리 고점이 올라갑니다.
+
+#### Template
+
+```javascript
+// 2초마다 정리
+Module.XDESetMemoryClearInterval(2000);
+
+var ms = Module.XDEGetMemoryClearInterval();
+// ms → 2000
+
+// 진단: 매 프레임 정리해도 메모리가 계속 오르면 정리 주기가 원인이 아니다
+Module.XDESetMemoryClearInterval(0);
+```
+
+#### 7. 라벨 POI 아틀라스를 지원합니다.
+- XDECreateLabelAtlas(data, width, height) → number
+  - 라벨 여러 개를 담은 이미지 한 장을 GPU 텍스처로 올리고 아틀라스 ID를 돌려줍니다. 이후 `JSPoint.setImageAtlas()`로 각 포인트가 이 텍스처의 한 칸만 참조하므로, 라벨마다 텍스처를 만들고 업로드하던 비용이 사라집니다.
+- XDEReleaseLabelAtlas(atlasId) → boolean
+  - 아틀라스를 레지스트리에서 제거합니다. 이미 `setImageAtlas()`로 붙여 둔 포인트가 있으면 GPU 텍스처는 그대로 살아 있고, 마지막 포인트가 사라질 때 함께 해제됩니다(참조 계수).
+- JSPoint.setImageAtlas(atlasId, x, y, width, height) → boolean
+  - 아틀라스의 한 칸을 이 포인트의 심볼로 지정합니다. 픽셀 좌표는 아틀라스 이미지 기준입니다. 텍스처를 새로 만들지 않고 기존 아틀라스 텍스처를 참조만 하므로, 포인트가 늘어나도 텍스처 개수와 업로드 횟수는 그대로입니다.
+
+#### 8. 팔레트 256컬러 라벨을 지원합니다.
+- XDESetPoiTexture8Bit(on) / XDEGetPoiTexture8Bit() → boolean 
+  - POI 라벨 텍스처를 8비트 팔레트(PAL8)로 저장합니다. 픽셀당 1바이트 인덱스 + 공용 팔레트 아틀라스 행 구조라, 라벨 텍스처 메모리가 절반 이하로 줄어듭니다(실측 라벨당 7,893B → 3,947B). **기본 꺼짐**입니다.
+
+- XDEGetPoiTexture8BitStats() → object
+  - PAL8 변환의 왕복 검증 장부와 팔레트 아틀라스 상태를 돌려줍니다. **진단 전용**입니다 — 라벨이 깨져 보일 때 원인이 양자화인지 폴백인지 가릅니다.
+
 ### 2.30.3 (2026/09/28)
 #### 1. 3D Tiles 관련 안정화 작업을 진행하였습니다.
 
