@@ -412,6 +412,41 @@ polygon.setSphere(param);
 {% endtab %}
 {% endtabs %}
 
+### setHeightOpen(height) → boolean
+
+> 밑면이 없는(옆면 + 윗면만) 3d 객체를 생성합니다.
+>
+> [setHeight](jspolygon.md#setheight-height-boolean)와 달리 밑면 페이스를 만들지 않으므로, OSM 건물처럼 지면 위에 수천 개를 올릴 때 페이스 수를 줄일 수 있습니다. 아래에서 올려다보면 비어 보이므로 지하 시점이 필요한 객체에는 `setHeight()`를 사용하세요.
+>
+> 입력 변수값(height)은 0보다 큰값이 설정됩니다.
+> 이 API는 기존에 `setPartCoordinates()` 또는 `setCoordinates()`로 정의된 객체에만 적용 가능합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description          |
+| ------ | ------ | -------------------- |
+| height | number | 객체 높이(in meter). |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   입력 변수값(height)이 0 이하인 경우.
+        -   평면 객체의 좌표가 정의되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let polygon = Module.createPolygon("OPEN_PRISM");
+polygon.setPartCoordinates(coordinates, parts);
+polygon.setHeightOpen(30.0); // 밑면 없이 30m 압출
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setHeightByType(height, type) → boolean
 
 > 평면 객체 생성 시 높이값을 가진 3d 객체를 생성합니다.
@@ -1356,6 +1391,174 @@ var result = polygon.createByJson({
     style: { fill: { r: 255, g: 0, b: 0, a: 255 } }
 });
 console.log(result.result, result.return);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBatchCoordinates(coordinates, parts) → boolean
+
+> 여러 건물의 외곽 링을 파트로 한 번에 입력합니다. [setBatchHeights](jspolygon.md#setbatchheights-heights-boolean)와 함께 사용하여 다수의 건물을 하나의 객체(드로우콜 1회)로 병합할 때 사용합니다.
+>
+> [setPartCoordinates](jspolygon.md#setpartcoordinates-coordinates-parts-boolean)와 달리 평면 폴리곤을 만들지 않고 좌표만 저장하며, 링 방향(winding) 반전도 하지 않으므로 링별 방향은 호출자가 정규화해야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name        | Type                                  | Description                                                |
+| ----------- | ------------------------------------- | ---------------------------------------------------------- |
+| coordinates | [JSVec3Array](../core/jsvec3array.md) | 모든 파트의 정점 좌표 목록 (경도, 위도, 고도).             |
+| parts       | [Collection](../core/collection.md)   | 파트별 정점 개수 목록. 각 값은 3 이상이어야 합니다.        |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   월드 또는 객체가 없는 경우.
+        -   parts가 비어 있거나, 파트 값 중 3 미만이 있는 경우.
+        -   parts 값의 합계가 coordinates 개수와 다른 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// Omission of building ring creation process.
+polygon.setBatchCoordinates(allRings, partCounts);
+polygon.setBatchHeights([12.0, 30.5, 8.0]);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setBatchHeights(heights) → boolean
+
+> [setBatchCoordinates](jspolygon.md#setbatchcoordinates-coordinates-parts-boolean)로 입력한 파트별로 서로 다른 높이를 적용하여 전체를 하나의 페이스(드로우콜 1회)로 압출합니다.
+>
+> 밑면 없는 압출이며, 윗면은 파트별로 삼각분할됩니다. 외곽선 표시 여부, 색상, 두께는 객체의 스타일(JSPolygonStyle)을 따릅니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type          | Description                                                  |
+| ------- | ------------- | ------------------------------------------------------------ |
+| heights | array(number) | 파트별 높이 목록(in meter). 개수는 파트 개수와 같아야 합니다. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   객체가 없거나 `setBatchCoordinates()`로 좌표가 입력되지 않은 경우.
+        -   heights 개수가 파트 개수와 다른 경우.
+        -   압출 생성에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let polygon = Module.createPolygon("BATCH_BUILDINGS");
+polygon.setBatchCoordinates(allRings, partCounts);
+polygon.setBatchHeights([12.0, 30.5, 8.0]);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createIndexedMesh(options) → object
+
+> 호출자가 이미 계산한 삼각분할 인덱스를 이용하여 2D 폴리곤을 3D 각기둥 메시로 생성합니다.
+>
+> 엔진에서 삼각분할을 수행하지 않고, 입력한 인덱스를 윗면에 그대로, 밑면에는 역순으로 재사용합니다. 옆면용 외곽 링은 인덱스의 경계 엣지에서 자동으로 추출하므로 파트 배열이 필요 없습니다. 홀(hole)이 있는 폴리곤도 처리할 수 있습니다.
+>
+> 색상과 외곽선은 별도 인자 없이 객체의 스타일(JSPolygonStyle)을 따릅니다. 윗면은 각 정점의 위 방향(지구 중심에서 바깥)으로 `height`만큼 올라가므로, 정점의 고도(alt)가 그대로 밑면 높이가 됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                      |
+| ------- | ------ | ------------------------------------------------ |
+| options | object | 생성 파라미터(아래 구조 참고).                   |
+
+**options 구조**
+
+| Name        | Type          | Required | Description                                                                                          |
+| ----------- | ------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| coordinates | array(number) | ✔        | 정점 좌표를 평탄화한 배열 `[lon, lat, alt, lon, lat, alt, ...]`. 길이는 3의 배수이며 정점은 3개 이상. 모든 값은 유한한 숫자여야 함. |
+| indices     | array(number) | ✔        | 삼각형 인덱스 배열 `[i0, i1, i2, ...]`. 길이는 3의 배수이며, 각 값은 정점 개수 미만이어야 함.         |
+| height      | number        | ✔        | 연장 높이(in meter). 0보다 큰 유한한 값.                                                              |
+| bottom      | boolean       |          | 밑면 생성 여부. 기본값 true.                                                                          |
+
+-   Return (object)
+    -   성공 시
+
+        | Name          | Type   | Description                                          |
+        | ------------- | ------ | ---------------------------------------------------- |
+        | result        | number | 1.                                                   |
+        | name          | string | `"JSPolygon.createIndexedMesh"`                      |
+        | vertexCount   | number | 입력된 정점 개수.                                    |
+        | triangleCount | number | 생성된 전체 삼각형 수 (윗면 T + 옆면 2E + 밑면 T).   |
+        | ringCount     | number | 추출된 경계 링 개수 (외곽 + 홀).                     |
+
+    -   실패 시: `result`는 0, `name`은 `"JSPolygon.createIndexedMesh"`, `return`에 실패 사유 메시지.
+
+        | return                  | 원인                                                                                  |
+        | ----------------------- | ------------------------------------------------------------------------------------- |
+        | Map Did Not Load.       | 지도가 로드되지 않은 경우.                                                            |
+        | Unusual input.          | options가 null/undefined이거나 객체가 유효하지 않은 경우.                             |
+        | Invalid coordinates array | coordinates가 없거나, 길이가 9 미만이거나 3의 배수가 아니거나, NaN/Infinity가 포함된 경우. |
+        | Invalid indices array   | indices가 없거나, 길이가 3 미만이거나 3의 배수가 아닌 경우.                           |
+        | Index out of range      | indices에 정점 개수 이상의 값이 있는 경우.                                            |
+        | Invalid height          | height가 숫자가 아니거나, NaN/Infinity이거나, 0 이하인 경우.                          |
+        | Invalid bottom          | bottom이 지정되었으나 boolean이 아닌 경우.                                            |
+        | Failed to build boundary ring | 모든 삼각형이 퇴화(면적 0)이거나 경계 링을 구성할 수 없는 경우.                 |
+
+-   참고
+    -   삼각형 수의 T는 `indices.length / 3`, E는 경계 엣지(옆면 사각형) 개수입니다. 옆면 사각형 하나는 삼각형 2개입니다.
+    -   `indices`는 단일 폴리곤(홀 포함 가능)의 삼각분할 결과여야 합니다. 첫 번째 비퇴화 삼각형 하나로 전체 인덱스 방향(CW/CCW)을 판정하므로, 방향이 서로 다른 인덱스 버퍼를 이어붙이면 일부가 뒤집힌 채로 `result: 1`이 반환됩니다.
+    -   페이스는 0: 윗면, 1: 옆면, 2: 밑면(`bottom: true`일 때만) 순서이므로 [setFaceTexture](jspolygon.md#setfacetexture-index-id-boolean) 등 페이스 단위 API를 그대로 사용할 수 있습니다.
+    -   링 구조가 없는 삼각형 메시이므로 평면 좌표(`m_orgVertex`)가 만들어지지 않습니다. 따라서 이 API로 만든 객체에 `setHeight`, `setHeights` 등 setHeight 계열 API나 `getFormatData`를 이어서 호출하는 것은 지원되지 않으며 false 또는 빈 결과가 반환됩니다.
+    -   정점 수가 65,535개를 넘는 대량 메시도 처리할 수 있습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 1) 사각형 (정점 4개, 삼각형 2개) 을 25m 높이로 압출
+let polygon = Module.createPolygon("INDEXED_QUAD");
+let result = polygon.createIndexedMesh({
+    coordinates: [
+        127.0, 37.5, 0,
+        127.001, 37.5, 0,
+        127.001, 37.501, 0,
+        127.0, 37.501, 0,
+    ],
+    indices: [0, 1, 2, 0, 2, 3],
+    height: 25.0,
+});
+if (result.result === 1) {
+    console.log(result.vertexCount, result.triangleCount, result.ringCount); // 4, 2+8+2=12, 1
+} else {
+    console.log(result.return);
+}
+
+// 2) 밑면 없이 생성
+polygon.createIndexedMesh({
+    coordinates: coords,
+    indices: tris,
+    height: 10.0,
+    bottom: false,
+});
+
+// 3) 외곽선/색상은 스타일을 따름
+let style = polygon.getStyle();
+style.setFill(true);
+style.setFillColor(new Module.JSColor(255, 255, 160, 0));
+style.setOutLine(true);
+style.setOutLineColor(new Module.JSColor(255, 0, 0, 0));
+// style 설정 후 createIndexedMesh 호출
+
+// 4) 삼각분할 라이브러리(earcut 등)의 결과를 그대로 사용
+// const indices = earcut(flatXY, holeIndices, 2);
+// polygon.createIndexedMesh({ coordinates: flatLonLatAlt, indices: indices, height: 30.0 });
 ```
 
 {% endtab %}

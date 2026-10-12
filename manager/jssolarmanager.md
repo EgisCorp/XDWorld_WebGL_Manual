@@ -987,6 +987,131 @@ let result = Module.getSolar().setModuleArrayEX(5, 20, 2, 15.0);
 {% endtab %}
 {% endtabs %}
 
+### progressModuleArray(callback) → string
+
+> 비동기 모듈 배치([startModuleArrayAsync](#startmodulearrayasync-section-sectioncount-sectionset-string))의 진행률 콜백을 등록합니다.
+>
+> 대문자로 시작하는 `ProgressModuleArray()`도 동일하게 동작합니다 (cpp에서 같은 구현부에 바인딩된 별칭).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description                                                                 |
+|----------|----------|-----------------------------------------------------------------------------|
+| callback | function | 진행률 콜백. 인자로 진행률(`number`, 0 ~ 100, 정수 단위 %)이 전달됩니다. |
+
+- Return
+  - `string`: 항상 `"success"`
+  - 이미 등록된 콜백이 있으면 새 콜백으로 교체됩니다. 등록한 콜백은 배치가 끝나도 해제되지 않으므로 이후 배치에도 계속 호출됩니다.
+  - 진행률은 모듈 세트 단위로 1% 이상 변할 때마다 호출되며, 워커 내부 계산 구간에 대한 진행률입니다. 완료 시점의 패널 객체 생성은 이 값에 포함되지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().progressModuleArray(function (percent) {
+    console.log("배치 진행률: " + percent + "%");
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### completeModuleArray(callback) → string
+
+> 비동기 모듈 배치([startModuleArrayAsync](#startmodulearrayasync-section-sectioncount-sectionset-string))의 완료 콜백을 등록합니다.
+>
+> 대문자로 시작하는 `CompleteModuleArray()`도 동일하게 동작합니다 (cpp에서 같은 구현부에 바인딩된 별칭).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description                                                              |
+|----------|----------|--------------------------------------------------------------------------|
+| callback | function | 완료 콜백. 인자로 설치된 패널 수(`number`)가 전달됩니다. |
+
+- Return
+  - `string`: 항상 `"success"`
+  - 이미 등록된 콜백이 있으면 새 콜백으로 교체됩니다. 등록한 콜백은 배치가 끝나도 해제되지 않습니다.
+  - 콜백 인자는 [getModuleCount()](#getmodulecount-number)와 같은 기준의 설치된 패널 수입니다. 배치를 요청한 뒤 다른 옥상을 다시 선택한 경우 결과가 폐기되고 `0`이 전달됩니다.
+  - 콜백은 패널 객체 생성과 `EventSolarUpdate` 이벤트 발생이 끝난 뒤에 호출됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().completeModuleArray(function (panelCount) {
+    console.log("설치된 패널 수: " + panelCount);
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### startModuleArrayAsync(section, sectionCount, sectionSet) → string
+
+> 선택된 옥상에 태양광 모듈을 비동기(Web Worker)로 배치합니다. `setModuleArray()`와 같은 배치 조건을 사용하지만, 레이캐스트가 집중된 배치 계산을 워커에서 처리하므로 패널이 많아도 화면이 멈추지 않습니다.
+>
+> 대문자로 시작하는 `StartModuleArrayAsync()`도 동일하게 동작합니다 (cpp에서 같은 구현부에 바인딩된 별칭).
+
+{% tabs %}
+{% tab title="Information" %}
+
+**사용 흐름**
+
+1. `Module.initialize()`의 `worker` 옵션을 켭니다 (`worker.use: true`, `worker.path`). 워커가 꺼져 있으면 동기 폴백 없이 오류 문자열을 반환합니다.
+2. [selectRoofByObject()](#selectroofbyobject-layername-objectkey-boolean) 등으로 옥상을 선택합니다.
+3. [progressModuleArray()](#progressmodulearray-callback-string), [completeModuleArray()](#completemodulearray-callback-string)로 콜백을 등록합니다.
+4. `startModuleArrayAsync()`를 호출합니다. 반환값이 `"success"`이면 즉시 반환되고 계산은 워커에서 진행됩니다.
+5. 진행률 콜백이 반복 호출되고, 마지막에 완료 콜백이 설치된 패널 수와 함께 1회 호출됩니다.
+6. 완료 시점에 주변 지물(그림자를 만드는 건물 등)이 자동으로 일조분석용 저장소에 캡처되므로, 이어서 [startPanelSunshine()](#startpanelsunshine-starttime-endtime-interval-string)을 바로 실행할 수 있습니다.
+
+| Name         | Type   | Description             |
+|--------------|--------|--------------------------|
+| section      | number | 단일 배열당 섹션 수     |
+| sectionCount | number | 배열 전체의 섹션 개수   |
+| sectionSet   | number | 배열 세트 수            |
+
+- Return
+  - `string`: 시작 결과. 성공 시 `"success"`, 실패 시 아래 사유 문자열
+  
+  | 반환값 | 의미 |
+  |--------|------|
+  | `"success"` | 워커에 배치를 요청함 |
+  | `"error map load"` | 엔진 또는 SolarManager가 준비되지 않음 |
+  | `"already running"` | 이전 비동기 배치가 아직 진행 중 |
+  | `"web worker is disabled - set Module.initialize({worker:{use:true, path:...}})"` | web worker 미사용 또는 경로 미설정 |
+  | `"no selected roof"` | 선택된 옥상이 없음 |
+  | `"redeploy mode is not supported on the async path"` | 재배치(redeploy) 진행 중 |
+  | `"no pickable object - the selected building is not loaded now, move the camera back to it"` | 선택한 건물의 메쉬가 현재 로드/표시되어 있지 않음 (카메라를 건물로 되돌려야 함) |
+  | `"no roof to deploy"` | 배치할 수 있는 지붕이 없음 (비활성 지붕, 모듈 높이 조건 불충족, 배치 계획 없음 등) |
+  | `"failed to create web worker"` | 워커 생성 실패 |
+
+- 동작 참고
+  - 배치 각도 지정(`setModuleArrayEX()`의 `deployAngle`)은 지원하지 않으며, 항상 자동 각도로 배치합니다.
+  - `"no pickable object"`, `"no roof to deploy"` 반환 시점에는 배열 옵션(`section`, `sectionCount`, `sectionSet`)이 이미 반영되어 있고, 처리된 지붕의 기존 패널은 이미 제거된 상태일 수 있습니다.
+  - 요청에 성공하면 이전 일조분석 결과([getPanelSunshineResult()](#getpanelsunshineresult-string))가 초기화됩니다.
+  - 워커가 빈 응답을 돌려주는 오류가 발생하면 진행 상태만 해제되고 완료 콜백은 호출되지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var solar = Module.GetSolarManager();
+
+solar.progressModuleArray(function (percent) {
+    console.log("배치 진행률: " + percent + "%");
+});
+
+solar.completeModuleArray(function (panelCount) {
+    console.log("설치된 패널 수: " + panelCount);
+});
+
+// 옥상 선택 후 비동기 배치 시작 (각 배열당 5개 섹션, 섹션 총 20개, 세트 2개)
+solar.selectRoofByObject("building_layer", "object_001");
+var result = solar.startModuleArrayAsync(5, 20, 2);
+if (result !== "success") {
+    console.error("비동기 배치 시작 실패: " + result);
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ### setModuleSwitch(set) → void
 
 > 모듈 배치의 온/오프 스위치 상태를 설정하고, 즉시 모듈을 재배치합니다.
@@ -1168,6 +1293,29 @@ console.log(angleInfo);
 ```javascript
 let info = Module.getSolar().getSelectedRoofInfo();
 Module.getSolar().setSelectedRoofInfo(info);
+```
+{% endtab %}
+{% endtabs %}
+
+### clearSelectedRoof() → void
+
+> 선택된 옥상(지붕) 상태를 완전히 초기화합니다. 미리보기 모듈세트 해제, 선택된 지붕과 설치된 옥상 패널 삭제, 활성 객체 해제까지 수행합니다.
+>
+> `initialize()`와 달리 활성 객체까지 정리하므로, 호출 후 `getModuleCount()` 등이 이미 정리된 객체를 참조하지 않습니다. 대문자로 시작하는 `ClearSelectedRoof()`도 동일하게 동작합니다 (cpp에서 같은 구현부에 바인딩된 별칭).
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - 없음
+  - 엔진 또는 SolarManager가 준비되지 않았으면 아무 동작도 하지 않습니다.
+  - 선택된 옥상이 이미 없더라도 호출은 안전하며, 이 경우 옥상 선택/패널 정리는 생략됩니다.
+  - 일조분석 결과([getPanelSunshineResult()](#getpanelsunshineresult-string))의 패널 목록과 분석 구간 정보도 함께 초기화됩니다. 지형/벽면 패널에 이미 칠해진 일조 색은 되돌리지 않으므로, 색까지 되돌리려면 [clearPanelSunshine()](#clearpanelsunshine-void)을 사용합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().clearSelectedRoof();
 ```
 {% endtab %}
 {% endtabs %}
@@ -2383,6 +2531,418 @@ let margin = Module.getSolar().getModuleTopDownMargin();
 {% tab title="Template" %}
 ```javascript
 let result = Module.getSolar().addPlannelObject("BuildingLayer", 127.0, 37.5, 12.0, 1.0, 1.6, 0.04, 30.0, 180.0);
+```
+{% endtab %}
+{% endtabs %}
+
+## Panel Sunshine Analysis
+
+> 설치된 태양광 패널의 일조 시간을 분석하는 API 묶음입니다. 분석 계산은 Web Worker에서 비동기로 수행되므로 분석 중에도 지도를 조작할 수 있습니다.
+>
+> 아래 함수들은 모두 소문자로 시작하는 이름과 대문자로 시작하는 이름(예: `startPanelSunshine` / `StartPanelSunshine`)이 같은 기능으로 바인딩되어 있습니다.
+
+**분석 대상 패널**
+
+다음 패널이 모두 한 번에 분석 대상이 됩니다. 분석 대상이 하나도 없으면 시작할 수 없습니다.
+
+| kind | 대상 | id 형식 |
+|------|------|---------|
+| `roof` | 선택된 옥상에 설치된 패널 (활성 지붕, 사용 중인 모듈세트만) | `roof_{지붕}_{세트}_{모듈}` |
+| `terrain` | 지형에 설치된 패널 ([buildModuleOnTerrain()](#buildmoduleonterrain-section-sectioncount-sectionset-moduleangle-deployangle-boolean)) | `terrain_{세트}_{모듈}` |
+| `wall` | 벽면/베란다 패널 (레이어에 등록된 태양광 패널 객체) | `wall_{레이어명}_{객체키}` |
+
+**사용 흐름**
+
+1. `Module.initialize()`의 `worker` 옵션을 켭니다 (`worker.use: true`, `worker.path`). 워커가 꺼져 있으면 동기 폴백 없이 오류 문자열을 반환합니다.
+2. 패널을 설치합니다 ([startModuleArrayAsync()](#startmodulearrayasync-section-sectioncount-sectionset-string) 등). 옥상 패널은 비동기 배치가 끝나는 시점에 주변 지물이 자동으로 캡처됩니다.
+3. (선택) 옵션을 설정합니다: [setPanelSunshineStrict()](#setpanelsunshinestrict-mode-void), [setPanelSunshineSelfShadow()](#setpanelsunshineselfshadow-use-void), [setPanelSunshineColoring()](#setpanelsunshinecoloring-use-void).
+4. (선택) 건물이 로드되어 있는 상태에서 [capturePanelSunshineCasters()](#capturepanelsunshinecasters-string)를 호출해 그림자를 만드는 주변 지물을 저장해 둡니다. 카메라가 멀어져 건물 타일이 언로드되어도 저장된 지물은 계속 분석에 반영됩니다.
+5. [progressPanelSunshine()](#progresspanelsunshine-callback-string), [completePanelSunshine()](#completepanelsunshine-callback-string)로 콜백을 등록합니다.
+6. [startPanelSunshine()](#startpanelsunshine-starttime-endtime-interval-string)으로 분석을 시작합니다. `"success"`이면 즉시 반환됩니다.
+7. 진행률 콜백이 반복 호출되고, 마지막에 완료 콜백이 호출됩니다. 옵션이 켜져 있으면 이때 패널이 일조율에 따라 색칠됩니다.
+8. 완료 콜백에서 [getPanelSunshineResult()](#getpanelsunshineresult-string)로 결과 JSON을 읽습니다.
+9. 결과와 색을 지우려면 [clearPanelSunshine()](#clearpanelsunshine-void)을 호출합니다.
+
+### capturePanelSunshineCasters() → string
+
+> 현재 메모리에 로드되어 있는 주변 지물(그림자를 만드는 건물 등)의 삼각형을 일조분석용 저장소에 담습니다. 이미 저장된 지물은 최신 지오메트리로 갱신하고, 없는 지물은 추가합니다.
+>
+> 타일 레이어 건물은 카메라가 멀어지면 언로드되어 삼각형이 사라지므로, 건물이 로드되어 있는 동안 저장해 두어야 나중에 어디서 분석을 실행해도 같은 결과가 나옵니다. `startPanelSunshine()`을 호출할 때도 자동으로 한 번 캡처합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - `string`: 캡처 결과 `"captured {이번에 담은 지물 수}, stored {저장소 전체 지물 수}"`
+  - 설치된 패널이 하나도 없으면 `"no installed panel"`
+  - 지물은 `(레이어명|객체키)`로 관리되며, 객체 키가 없는 지물과 그림자 생성 대상이 아닌 지물은 제외됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var info = Module.GetSolarManager().capturePanelSunshineCasters();
+console.log(info); // 예: "captured 128, stored 128"
+```
+{% endtab %}
+{% endtabs %}
+
+### clearPanelSunshineCasters() → void
+
+> 일조분석용 주변 지물 저장소를 비웁니다.
+>
+> [clearPanelSunshine()](#clearpanelsunshine-void)은 저장소를 지우지 않으므로, 저장된 지물을 버리려면 이 함수를 호출해야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - 없음
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().clearPanelSunshineCasters();
+```
+{% endtab %}
+{% endtabs %}
+
+### getPanelSunshineCasterCount() → number
+
+> 일조분석용 저장소에 담긴 주변 지물의 개수를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - `number`: 저장소에 담긴 지물 수. 아무것도 저장하지 않았으면 `0`
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var count = Module.GetSolarManager().getPanelSunshineCasterCount();
+```
+{% endtab %}
+{% endtabs %}
+
+### setPanelSunshineStrict(mode) → void
+
+> 패널의 일조 판정 기준을 설정합니다. 기본값은 `301`(NORMAL)입니다.
+>
+> 각 패널은 중점 1개와 모서리 4개, 총 5개의 검사점으로 판정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description |
+|------|--------|-------------|
+| mode | number | 판정 기준. `300`: BRIEF (중점 1개만 검사), `301`: NORMAL (검사점 5개 중 절반 이상, 즉 3개 이상이 일조일 때 일조), `302`: DETAIL (검사점 5개 모두가 일조일 때만 일조) |
+
+- Return
+  - 없음
+  - `300`, `301`, `302` 이외의 값은 무시되며 기존 설정이 유지됩니다.
+  - 값 정의는 [Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)와 같습니다. 해당 표는 격자 기준 설명이고, 패널에서는 위와 같이 적용됩니다.
+  - 분석을 시작할 때의 설정이 사용됩니다. 진행 중인 분석에는 영향을 주지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().setPanelSunshineStrict(301);
+```
+{% endtab %}
+{% endtabs %}
+
+### setPanelSunshineSelfShadow(use) → void
+
+> 패널끼리 서로 만드는 그림자(앞줄 패널이 뒷줄 패널을 가리는 효과)를 분석에 포함할지 설정합니다. 기본값은 `true`입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description |
+|------|---------|-------------|
+| use  | boolean | `true`: 패널 상호 그림자 포함, `false`: 주변 지물의 그림자만 반영 |
+
+- Return
+  - 없음
+  - 분석을 시작할 때의 설정이 사용됩니다. 진행 중인 분석에는 영향을 주지 않습니다.
+  - 자기 자신이 만드는 그림자는 어느 경우에도 자신의 판정에 영향을 주지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().setPanelSunshineSelfShadow(true);
+```
+{% endtab %}
+{% endtabs %}
+
+### setPanelSunshineColoring(use) → void
+
+> 분석이 끝났을 때 결과를 패널 색으로 표시할지 설정합니다. 기본값은 `true`입니다.
+>
+> 색은 패널 텍스처에 곱해지며, 일조율(`ratio`)에 따라 아래 표와 같이 칠해집니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description |
+|------|---------|-------------|
+| use  | boolean | `true`: 완료 시 패널을 일조율 색으로 표시, `false`: 색을 바꾸지 않음 |
+
+| 일조율 (ratio) | 등급 | 색상 (R, G, B) |
+|----------------|------|----------------|
+| 0.8 이상 | 매우 양호 | 255, 214, 40 |
+| 0.6 이상 ~ 0.8 미만 | 양호 | 255, 170, 45 |
+| 0.4 이상 ~ 0.6 미만 | 보통 | 245, 120, 60 |
+| 0.2 이상 ~ 0.4 미만 | 불량 | 150, 110, 180 |
+| 0.2 미만 | 매우 불량 | 70, 95, 150 |
+
+- Return
+  - 없음
+  - 칠해진 색은 [clearPanelSunshine()](#clearpanelsunshine-void)으로 원래대로(흰색) 되돌립니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().setPanelSunshineColoring(true);
+```
+{% endtab %}
+{% endtabs %}
+
+### progressPanelSunshine(callback) → string
+
+> 패널 일조분석의 진행률 콜백을 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description                                                                 |
+|----------|----------|-----------------------------------------------------------------------------|
+| callback | function | 진행률 콜백. 인자로 진행률(`number`, %)이 전달됩니다. |
+
+- Return
+  - `string`: 항상 `"success"`
+  - 이미 등록된 콜백이 있으면 새 콜백으로 교체됩니다. 등록한 콜백은 분석이 끝나도 해제되지 않습니다.
+  - 진행률은 분석 종료 시각의 시/분/초 대비 현재 분석 시각의 시/분/초 비율(%)로 계산되므로, 분석 구간이 하루를 넘으면 단조 증가하지 않을 수 있고 마지막 단계에서 `100`을 넘을 수 있습니다. 대략적인 표시용으로 사용하십시오.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().progressPanelSunshine(function (percent) {
+    console.log("일조분석 진행률: " + Math.min(100, percent).toFixed(0) + "%");
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### completePanelSunshine(callback) → string
+
+> 패널 일조분석의 완료 콜백을 등록합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type     | Description                                                              |
+|----------|----------|--------------------------------------------------------------------------|
+| callback | function | 완료 콜백. 인자로 결과 패널 수(`number`)가 전달됩니다. |
+
+- Return
+  - `string`: 항상 `"success"`
+  - 이미 등록된 콜백이 있으면 새 콜백으로 교체됩니다. 등록한 콜백은 분석이 끝나도 해제되지 않습니다.
+  - 콜백은 결과 반영과 패널 색칠([setPanelSunshineColoring()](#setpanelsunshinecoloring-use-void))이 끝난 뒤에 호출되므로, 콜백 안에서 `getPanelSunshineResult()`로 완성된 결과를 읽을 수 있습니다.
+  - 분석 도중 `clearPanelSunshine()`이 호출되면 결과 목록이 비어 있으므로 인자로 `0`이 전달됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().completePanelSunshine(function (panelCount) {
+    console.log("분석 완료: 패널 " + panelCount + "개");
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### startPanelSunshine(startTime, endTime, interval) → string
+
+> 설치된 패널의 일조분석을 비동기(Web Worker)로 시작합니다. 지정한 시간 구간을 `interval`분 간격으로 나누어 각 시각에 태양이 패널을 비추는지 판정합니다.
+>
+> 시작 시점에 주변 지물이 자동으로 한 번 캡처되어 저장소에 합쳐지며, 분석은 항상 저장소의 지물을 기준으로 수행됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                                | Description                              |
+|-----------|-------------------------------------|------------------------------------------|
+| startTime | [JSDateTime](../core/jsdatetime.md) | 분석 시작 시각                           |
+| endTime   | [JSDateTime](../core/jsdatetime.md) | 분석 종료 시각. `startTime`보다 늦어야 함 |
+| interval  | number                              | 분석 시간 간격 (분 단위, 1 이상의 정수)  |
+
+- Return
+  - `string`: 시작 결과. 성공 시 `"success"`, 실패 시 아래 사유 문자열
+
+  | 반환값 | 의미 |
+  |--------|------|
+  | `"success"` | 워커에 분석을 요청함 |
+  | `"error map load"` | 엔진 또는 SolarManager가 준비되지 않음 |
+  | `"already running"` | 이전 일조분석이 아직 진행 중 |
+  | `"interval must be greater than 0"` | `interval`이 0 이하 |
+  | `"web worker is disabled - set Module.initialize({worker:{use:true, path:...}})"` | web worker 미사용 또는 경로 미설정 |
+  | `"no installed panel"` | 분석할 패널이 없음 |
+  | `"end time must be later than start time"` | `endTime`이 `startTime`보다 늦지 않음 |
+  | `"failed to create web worker"` | 워커 생성 실패 |
+
+- 동작 참고
+  - 시작 직후부터 `getPanelSunshineResult()`로 패널 목록과 위치를 조회할 수 있으며, 완료 전까지 일조 값은 `0`입니다. 이때 `running`은 `true`입니다.
+  - 태양 위치는 패널 자신의 위치 기준으로 계산하며, 야간이거나 태양 고도 제한([SetLimitSunAngle()](../analysis/jsanalysis.md#setlimitsunangle-enable-angle), 기본 꺼짐)에 걸리는 시각은 미일조로 처리됩니다.
+  - 워커가 빈 응답을 돌려주는 오류가 발생하면 진행 상태만 해제되고 완료 콜백은 호출되지 않습니다.
+  - 일조 판정 기준은 [setPanelSunshineStrict()](#setpanelsunshinestrict-mode-void), 패널 상호 그림자는 [setPanelSunshineSelfShadow()](#setpanelsunshineselfshadow-use-void)에 따릅니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var solar = Module.GetSolarManager();
+
+// 1. 옵션 (선택)
+solar.setPanelSunshineStrict(301);
+solar.setPanelSunshineSelfShadow(true);
+solar.setPanelSunshineColoring(true);
+
+// 2. 주변 건물이 로드되어 있을 때 지물 저장 (선택)
+console.log(solar.capturePanelSunshineCasters());
+
+// 3. 콜백 등록
+solar.progressPanelSunshine(function (percent) {
+    console.log("진행률: " + Math.min(100, percent).toFixed(0) + "%");
+});
+
+solar.completePanelSunshine(function (panelCount) {
+    // 5. 결과 조회
+    var result = JSON.parse(solar.getPanelSunshineResult());
+    console.log("패널 " + result.count + "개, 평균 일조 " + result.summary.averageSunMinutes + "분");
+});
+
+// 4. 분석 시작 (06:00 ~ 19:00, 30분 간격)
+var startTime = new Module.JSDateTime(2026, 6, 21, 6, 0, 0);
+var endTime = new Module.JSDateTime(2026, 6, 21, 19, 0, 0);
+var ret = solar.startPanelSunshine(startTime, endTime, 30);
+if (ret !== "success") {
+    console.error("일조분석 시작 실패: " + ret);
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### getPanelSunshineResult() → string
+
+> 패널 일조분석 결과를 JSON 문자열로 반환합니다. 분석 진행 중에도 호출할 수 있으며, 분석을 한 번도 하지 않았거나 `clearPanelSunshine()` 이후에는 패널 목록이 비어 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - `string`: 아래 구조의 JSON 문자열 (`JSON.parse()`로 변환하여 사용)
+
+**최상위 객체**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| running | boolean | 분석 진행 중 여부 |
+| interval | number | 마지막으로 요청한 분석 간격 (분). 분석을 시작한 적이 없으면 `30` |
+| totalMinutes | number | 분석 구간 전체 길이 (분) = (종료 시각 - 시작 시각). 결과가 없으면 `0` |
+| strict | number | 현재 설정된 판정 기준 (`300`, `301`, `302`) |
+| selfShadow | boolean | 현재 설정된 패널 상호 그림자 포함 여부 |
+| casterCount | number | 마지막 분석에서 실제로 사용한 그림자 객체 수 (주변 지물 + 패널 자신) |
+| casterSceneCount | number | 위 중 주변 지물(건물 등)의 수 |
+| casterStored | number | 현재 저장소에 캡처된 지물 수 |
+| count | number | 결과 패널 수 |
+| summary | object | 전체 요약 (아래 표) |
+| panels | array | 패널별 결과 (아래 표) |
+
+**summary**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| averageSunMinutes | number | 패널 평균 일조 시간 (분) |
+| averageDirectMinutes | number | 패널 평균 직달 가중 일조 시간 (분) |
+| minSunMinutes | number | 최소 일조 시간 (분) |
+| maxSunMinutes | number | 최대 일조 시간 (분) |
+
+**panels 항목**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | string | 패널 식별자 (`roof_...`, `terrain_...`, `wall_...`) |
+| kind | string | 패널 종류. `"roof"`, `"terrain"`, `"wall"` (벽면/베란다 공용) |
+| sunMinutes | number | 일조 시간 (분). 일조로 판정된 시각마다 `interval`을 누적한 값 |
+| continueMinutes | number | 최대 연속 일조 시간 (분) |
+| directMinutes | number | 직달 가중 일조 시간 (분). 일조 시각마다 (패널 상면 법선과 태양 방향의 코사인, 음수는 0) x `interval`을 누적한 값 |
+| ratio | number | 일조율 = `sunMinutes` / `totalMinutes`. 분석 구간이 `interval`로 나누어떨어지지 않으면 `1`을 넘을 수 있음 |
+| position | object | 패널 중점 위치 `{ lon, lat, alt }` (경도, 위도, 고도 meters) |
+| samples | array | 시각별 판정 목록 `[{ time, sunrise }]`. `time`은 `"HH:MM"` 형식의 현지 시각 문자열이고, `sunrise`는 해당 시각의 일조 여부(`true`/`false`)입니다. 필드 이름과 달리 일출이 아니라 일조 여부를 의미합니다. |
+
+```json
+{
+  "running": false,
+  "interval": 30,
+  "totalMinutes": 780,
+  "strict": 301,
+  "selfShadow": true,
+  "casterCount": 215,
+  "casterSceneCount": 128,
+  "casterStored": 128,
+  "count": 1,
+  "summary": {
+    "averageSunMinutes": 420.0,
+    "averageDirectMinutes": 310.5,
+    "minSunMinutes": 420,
+    "maxSunMinutes": 420
+  },
+  "panels": [
+    {
+      "id": "roof_0_0_0",
+      "kind": "roof",
+      "sunMinutes": 420,
+      "continueMinutes": 300,
+      "directMinutes": 310.5,
+      "ratio": 0.538,
+      "position": { "lon": 127.0012, "lat": 37.5003, "alt": 32.1 },
+      "samples": [
+        { "time": "06:00", "sunrise": false },
+        { "time": "06:30", "sunrise": true }
+      ]
+    }
+  ]
+}
+```
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+var result = JSON.parse(Module.GetSolarManager().getPanelSunshineResult());
+
+result.panels.forEach(function (panel) {
+    console.log(panel.id, panel.sunMinutes + "분", (panel.ratio * 100).toFixed(1) + "%");
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### clearPanelSunshine() → void
+
+> 패널 일조분석 결과를 지우고 패널 색을 원래(흰색)로 되돌립니다.
+>
+> 주변 지물 저장소는 지우지 않으므로 다시 분석할 때 재사용됩니다. 저장소를 비우려면 [clearPanelSunshineCasters()](#clearpanelsunshinecasters-void)를 호출합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+- Return
+  - 없음
+  - 분석 진행 중에 호출하면 진행 상태가 해제되고 결과가 지워지지만, 워커의 계산 자체를 취소하지는 않습니다. 이후 도착하는 응답은 결과에 반영되지 않으며 완료 콜백만 패널 수 `0`으로 호출될 수 있습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+```javascript
+Module.GetSolarManager().clearPanelSunshine();
 ```
 {% endtab %}
 {% endtabs %}

@@ -174,6 +174,31 @@ traceTarget.unionTargetToTerrain();
 {% endtab %}
 {% endtabs %}
 
+### setAutoRotate(autoRotate)
+
+> 시점 방향(direction)이 바뀔 때 연결된 객체의 회전을 자동으로 맞출지 설정합니다.
+>
+> 기본값은 true이며, true이면 연결된 객체의 방향(Z축 회전)이 시점 방향(`direction`) 값과 같도록 자동으로 갱신됩니다. false로 설정하면 객체의 회전을 변경하지 않으므로, 객체의 방향을 직접 제어하면서 카메라 시점만 추적할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type    | Description                                                                 |
+| ---------- | ------- | ----------------------------------------------------------------------------- |
+| autoRotate | boolean | <p>true: 객체 회전을 시점 방향에 맞춰 자동 갱신(기본값).<br>false: 객체 회전을 변경하지 않음.</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// Omission of traceTarget creation and connection process.
+// 객체의 방향은 직접 제어하고, 카메라만 추적하도록 설정
+traceTarget.setAutoRotate(false);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getObject(), setObject(object) → [JSObject](./jsobject3d.md)

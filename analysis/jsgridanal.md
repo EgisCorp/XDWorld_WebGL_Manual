@@ -14,7 +14,7 @@ var object = Module.getAnalysis().getGridAnal();
 
 | Name              | Type    | Description                                    |
 | ----------------- | ------- | ------------------------------------------------- |
-| view_underground  | boolean | 지형 아래에 렌더링되는 레이어 표시 여부.        |
+| view_underground  | boolean | 지형 아래에 렌더링되는 레이어 표시 여부. [createPlaneData](jsgridanal.md#createplanedata-name-boolean)로 만든 3D 평면 객체에도 적용되며, 이미 만들어진 객체에는 즉시 반영됩니다. |
 
 ## Function
 
@@ -257,6 +257,8 @@ var object = Module.getAnalysis().getGridAnal();
 ### setBaseAltitude(altitude)
 
 > 그리드 분석 결과의 기준 고도(오프셋)를 설정합니다.
+>
+> 이미 만들어진 3D 평면 객체에도 적용되며, 컬링 박스와 [깊이 가이드](jsgridanal.md#setdepthguide-options-boolean)의 기준 높이로도 사용됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -403,6 +405,8 @@ var object = Module.getAnalysis().getGridAnal();
 ### clear()
 
 > 모든 그리드 분석 결과를 초기화 합니다.
+>
+> [setDepthGuide](jsgridanal.md#setdepthguide-options-boolean)로 표시한 지하 깊이 가이드도 함께 제거됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -531,20 +535,23 @@ var object = Module.getAnalysis().getGridAnal();
 
 > 바이너리 격자 분석 결과 데이터를 3D 애니메이션 평면 객체로 생성합니다.
 >
-> 입력 변수값(name)은 이전 키 값과 중복이 불가능합니다.
+> 입력 변수값(name)은 객체의 키로 그대로 사용되므로, 대상 레이어([setLayerName](jsgridanal.md#setlayername-name), 생략 시 임시 레이어) 안에서 중복되면 안 됩니다.
+>
+> 같은 이름으로 다시 호출하면 두 번째 객체도 화면에는 그려지지만 이후 [setHRatio](jsgridanal.md#sethratio-ratio), [setTime](jsgridanal.md#settime-time), [setBaseAltitude](jsgridanal.md#setbasealtitude-altitude), view_underground 적용 대상에서는 빠지며, 콘솔에 경고만 출력됩니다.
+>
+> 서로 다른 이름으로 여러 번 호출하여 지층을 여러 장 쌓을 수 있으며, [setPlaneVisible](jsgridanal.md#setplanevisible-name-visible-boolean)로 각 평면을 개별로 켜고 끌 수 있습니다.
 >
 > 생성 시 기본적으로 시계열 인덱스가 0~최대 시계열수까지 진행으로 애니메이션 수행합니다..
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description     |
-| ---- | ------ | --------------- |
-| name | string | 객체 고유 명칭. |
+| Name | Type   | Description                                              |
+| ---- | ------ | -------------------------------------------------------- |
+| name | string | 객체 고유 명칭 (대상 레이어 안에서 유일해야 함). |
 
 -   Return
-    -   true : 생성 성공.
-    -   false : 생성 실패.
+    -   true : 생성 성공 (현재 구현에서는 항상 true).
 -   Sample
     -   function cbLoad 참조.
     -   [Sandbox_Time Series Polygon](https://sandbox.egiscloud.com/code/main.do?id=effect_time_visualization)
@@ -622,14 +629,18 @@ var object = Module.getAnalysis().getGridAnal();
 
 > 3D 애니메이션 평면 객체의 수치별 표현 되는 형상의 높이 배율을 조절합니다.
 >
-> 입력 변수값(ratio)은 평면 객체 생성 후 적용 가능하고 0 보다 큰 값을 가진다.
+> 입력 변수값(ratio)은 평면 객체 생성 후 적용 가능합니다.
+>
+> 음수로 설정하면 지하(지형 아래) 방향의 형상으로 표현되며, 컬링 박스와 [깊이 가이드](jsgridanal.md#setdepthguide-options-boolean)가 함께 갱신됩니다.
+>
+> 대상 레이어의 모든 3D 평면 객체에 일괄 적용됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name  | Type   | Description   |
-| ----- | ------ | ------------- |
-| ratio | number | 높이 배율 값. |
+| Name  | Type   | Description                                      |
+| ----- | ------ | ------------------------------------------------ |
+| ratio | number | 높이 배율 값. 음수이면 지하 표현(깊이 가이드 표시 조건). |
 
 -   Sample
     -   function loadloadtimeDetailspolygon 참조.
@@ -848,7 +859,138 @@ let json = {
 {% endtab %}
 {% endtabs %}
 
+### setPlaneVisible(name, visible) → boolean
+
+> [createPlaneData](jsgridanal.md#createplanedata-name-boolean)로 만든 3D 평면 객체 하나의 표시 여부를 설정합니다.
+>
+> 입력 변수값(name)은 createPlaneData에 넘긴 객체 이름이며, 지층을 여러 장 쌓은 경우 각 평면을 개별로 켜고 끌 때 사용합니다.
+>
+> [setLayerName](jsgridanal.md#setlayername-name)으로 지정한 레이어(생략 시 임시 레이어)에서 객체를 찾으며, 레이어를 새로 만들지는 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                              |
+| ------- | ------- | -------------------------------------------------------- |
+| name    | string  | createPlaneData에서 지정한 평면 객체 이름.               |
+| visible | boolean | <p>true: 표시.<br>false: 숨김.</p>                       |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패 (월드/레이어가 없거나, 해당 이름의 객체가 없거나, 격자 분석면이 아닌 객체인 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let gridAnal = Module.getAnalysis().getGridAnal();
+gridAnal.setLayerName("ASC_GRID_STRATA");
+gridAnal.createPlaneData("layer_03");
+
+// 특정 지층만 숨기기
+gridAnal.setPlaneVisible("layer_03", false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setDepthGuide(options) → boolean
+
+> 지하 격자 분석 결과(음수 [setHRatio](jsgridanal.md#sethratio-ratio))에 깊이 눈금 가이드를 표시하거나 숨깁니다.
+>
+> 가이드는 다음 조건을 모두 만족할 때 표시됩니다.
+>
+> -   `visible`이 true.
+> -   [setHRatio](jsgridanal.md#sethratio-ratio)에 음수 값이 설정되어 있음.
+> -   격자 데이터가 로딩되어 있음.
+> -   격자가 2×2 이상.
+> -   전체 깊이(원시 데이터 값 기준)가 1m 이상.
+>
+> `interval`, `unit`, `mode`는 생략하면 이전에 지정한 값이 유지됩니다(최초 기본값은 각각 자동 간격, `"m"`, `"value"`). 기준 고도([setBaseAltitude](jsgridanal.md#setbasealtitude-altitude))가 바뀌면 가이드도 다시 생성되며, [clear](jsgridanal.md#clear)를 호출하면 가이드도 제거됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                                                       | Description     |
+| ------- | -------------------------------------------------------------------------- | --------------- |
+| options | [JSGridAnal.DepthGuideOption](jsgridanal.md#jsgridanal.depthguideoption) | 깊이 가이드 설정 정보. |
+
+-   Return
+    -   true : 설정 성공.
+    -   false : 설정 실패 (월드가 없거나, options가 null/undefined이거나, `visible`이 boolean이 아니거나, `interval`/`unit`/`mode`의 타입 또는 `mode` 값이 올바르지 않은 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let gridAnal = Module.getAnalysis().getGridAnal();
+
+// 지하 표현 설정 (음수 배율 → 지하 방향, 기준 고도 지정)
+gridAnal.view_underground = true;
+gridAnal.setBaseAltitude(0);
+gridAnal.setHRatio(-1.0);
+
+// 깊이 가이드 표시 (눈금 간격은 자동, 데이터 값을 그대로 라벨로 사용)
+gridAnal.setDepthGuide({ visible: true });
+
+// 간격 10, 단위 "m", 기준면 대비 높이로 라벨 표시
+gridAnal.setDepthGuide({ visible: true, interval: 10, unit: "m", mode: "depth" });
+
+// 가이드 숨기기
+gridAnal.setDepthGuide({ visible: false });
+```
+
+{% endtab %}
+{% endtabs %}
+
+#### 지하 격자 분석 예제
+
+```javascript
+let gridAnal = Module.getAnalysis().getGridAnal();
+
+// 1. 대상 레이어 및 지하 표현 설정
+gridAnal.setLayerName("UNDERGROUND_STRATA");
+gridAnal.view_underground = true; // 지형 아래에도 렌더링
+
+// 2. 격자 데이터 설정 (로딩이 끝나면 callback 호출)
+gridAnal.openGridDataJSON({
+    kind: "Strata",
+    timeIndex: 0,
+    timeRange: 1,
+    callback: function () {
+        // 3. 지층 평면 생성 후 지하 방향 배율/기준 고도 설정
+        gridAnal.createPlaneData("layer_01");
+        gridAnal.setBaseAltitude(0);
+        gridAnal.setHRatio(-1.0);
+
+        // 4. 깊이 가이드 표시
+        gridAnal.setDepthGuide({ visible: true, mode: "depth", unit: "m" });
+    },
+    cols: cols,
+    rows: rows,
+    llcorner: { projNum: 13, pos: [[minX, minY], [maxX, maxY]] },
+    size: cellSize,
+    fMin: fMin,
+    fMax: fMax,
+    data: depthData,
+});
+
+// 5. 정리 (깊이 가이드도 함께 제거됨)
+// gridAnal.clear();
+```
+
 ### Type Definitions
+
+#### JSGridAnal.DepthGuideOption
+
+> 지하 깊이 가이드 설정 파라미터 목록.
+
+| Name     | Type    | Attributes | Default | Description                                                                                                                                                                                                                                                                                  |
+| -------- | ------- | ---------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible  | boolean |            |         | 깊이 가이드 표시 여부.                                                                                                                                                                                                                                                                       |
+| interval | number  | optional   | 0       | 눈금 간격 (실제 데이터 값 단위). 0, 음수, NaN이면 라벨 범위 기준 1/2/5×10ⁿ 값으로 자동 산출합니다. 지정값이 라벨 범위보다 크면 라벨 범위로 제한됩니다. 생략하면 이전 값을 유지합니다.                                                                                                              |
+| unit     | string  | optional   | "m"     | 라벨에 붙는 단위 문자열. 생략하면 이전 값을 유지합니다.                                                                                                                                                                                                                                       |
+| mode     | string  | optional   | "value" | <p>라벨 값 해석 방식. 생략하면 이전 값을 유지합니다.<br>"value": 원시 데이터 값 그대로.<br>"depth": 기준면(기준 고도)을 0으로 둔 부호 있는 높이(위 +, 아래 -).<br>"elevation": 해수면 기준 부호 있는 높이(위 +, 아래 -). 데이터 값이 기준면 기준 미터 깊이일 때만 의미가 있습니다.</p> |
 
 #### JSGridAnal.GridDataOption
 

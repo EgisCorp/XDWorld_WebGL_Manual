@@ -12,18 +12,28 @@ var object = Module.getGhostSymbolMap();
 
 ## Function
 
-### addGhostSymbolBy3DS(id, url, name) → boolean
+### addGhostSymbolBy3DS(id, url, name, options) → boolean
 
 > 3ds 포맷 파일을 고스트 심볼 모델로 등록합니다.
+>
+> 입력 변수값(options)으로 텍스처 기준 경로와 텍스처 자동 요청 여부를 지정할 수 있습니다. 4번째 인자는 바인딩상 필수이므로 옵션이 필요 없을 때는 `{}`(또는 `null`)를 전달하세요. 파일 요청은 비동기로 수행되며, 반환값은 요청 시작 여부일 뿐 파일 로드 결과가 아닙니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
-| Name | Type   | Description            |
-| ---- | ------ | ---------------------- |
-| id   | string | 고스트 심볼 고유 명칭. |
-| url  | string | 3ds 파일 위치 경로.    |
-| name | string | 3ds 파일 명칭.         |
+| Name    | Type   | Description                                                                 |
+| ------- | ------ | --------------------------------------------------------------------------- |
+| id      | string | 고스트 심볼 고유 명칭.                                                      |
+| url     | string | 3ds 파일 위치 경로.                                                         |
+| name    | string | 3ds 파일 명칭.                                                              |
+| options | object | 등록 옵션 (아래 표 참고).                                                   |
+
+**options 구조**
+
+| Name            | Type    | Required | Default                | Description                                                                                       |
+| --------------- | ------- | -------- | ---------------------- | ------------------------------------------------------------------------------------------------- |
+| textureBasePath | string  |          | 3ds 파일 위치 경로(url) | 텍스처 파일을 요청할 기준 경로. 끝에 `/`가 없으면 자동으로 붙습니다.                              |
+| autoLoadTexture | boolean |          | true                   | 모델 등록 시 텍스처를 자동으로 요청할지 여부. false이면 텍스처를 요청하지 않습니다.               |
 
 -   Return
     -   true: 등록 성공.
@@ -34,7 +44,13 @@ var object = Module.getGhostSymbolMap();
 
 ```javascript
 var ghostSymbolMap = Module.getGhostSymbolMap();
-ghostSymbolMap.addGhostSymbolBy3DS("STREET_LIGHT", "./data", "StreetLight");
+ghostSymbolMap.addGhostSymbolBy3DS("STREET_LIGHT", "./data", "StreetLight", {});
+
+// 텍스처를 별도 경로에서 받고, 자동 요청은 끄기
+ghostSymbolMap.addGhostSymbolBy3DS("STREET_LIGHT2", "./data", "StreetLight", {
+    textureBasePath: "./data/textures",
+    autoLoadTexture: false,
+});
 ```
 
 {% endtab %}
@@ -212,7 +228,7 @@ ghostSymbolMap.setGhostSymbolTexture(e.strGhostSymbolKey, "./data", "StreetLight
 | id        | string | 고스트 심볼 고유 명칭.                          |
 | data      | array  | 모델 파일 바이너리 데이터(byte 배열).           |
 | extension | string | 파일 확장자.                                    |
-| options   | object | 등록 옵션. `isAxisYUp`(boolean, 기본값 true): Y축 업벡터 여부. |
+| options   | object | <p>등록 옵션.<br>`isAxisYUp`(boolean, 기본값 true): Y축 업벡터 여부.<br>`textureBasePath`(string, 기본값 없음): 3ds 모델의 텍스처를 요청할 기준 경로(끝에 `/`가 없으면 자동으로 붙음). 지정하지 않으면 현재 페이지 폴더에서 찾습니다.<br>`autoLoadTexture`(boolean, 기본값 true): 모델 등록 시 텍스처를 자동으로 요청할지 여부.</p> |
 
 -   Return
     -   true: 등록 성공.
@@ -469,6 +485,46 @@ ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
 {% endtab %}
 {% endtabs %}
 
+### getModelMaterials(id) → array
+
+> 3DS 파일로 등록한 고스트 심볼 모델이 가진 재질(material) 목록을 반환합니다. 재질별 이름, 텍스처 파일명, 기본 색상, 그 재질을 사용하는 face 인덱스와 삼각형 수를 알 수 있어, [setModelFaceColor(id, index, color)](jsghostsymbolmap.md#setmodelfacecolor-id-index-color-boolean), [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string) 등 face 단위 편집의 대상 face를 재질 기준으로 고를 때 사용합니다.
+>
+> 재질 정보는 3DS 모델을 로드할 때만 채워지므로, 3DS가 아닌 모델(XDO, GLB 등)이나 재질 정보가 없는 모델은 빈 배열을 반환합니다. `faces`에 담기는 번호는 [getModelFaceCount(id)](jsghostsymbolmap.md#getmodelfacecount-id-number)가 세는 face 단위의 인덱스입니다(삼각형 번호가 아님).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description            |
+| ---- | ------ | ---------------------- |
+| id   | string | 고스트 심볼 고유 명칭. |
+
+-   Return
+    -   array([JSGhostSymbolMap.ModelMaterial](jsghostsymbolmap.md#jsghostsymbolmap.modelmaterial)): 재질 목록(재질 인덱스 순서).
+    -   빈 배열: 재질 정보가 없는 모델인 경우(3DS 이외의 모델, 또는 다면체(polyhedron) 타입이 아닌 모델).
+    -   null: 월드가 없거나, 해당 id의 모델이 등록되어 있지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var materials = Module.getGhostSymbolMap().getModelMaterials("model_01");
+if (materials) {
+    for (var i = 0; i < materials.length; i++) {
+        var m = materials[i];
+        console.log(m.index, m.name, m.texture, m.color, m.triangleCount, m.faces);
+    }
+
+    // 첫 번째 재질을 사용하는 모든 face의 색상 변경
+    var color = new Module.JSColor(255, 255, 0, 0);
+    materials[0].faces.forEach(function (faceIndex) {
+        Module.getGhostSymbolMap().setModelFaceColor("model_01", faceIndex, color);
+    });
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### isExistID(id) → boolean
 
 > 등록된 고스트 심볼 모델 존재 유무를 확인합니다.
@@ -603,3 +659,16 @@ var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
 | uv         | [JSVector2D](../core/jsvector2d.md)  | optional   | (1.0, 1.0)   | 텍스쳐 UV 반복(tiling) 배율.         |
 | reuse      | boolean                               | optional   | false        | 텍스처 이미지 재사용 여부(export용). |
 | callback   | function                              | optional   |              | 등록 완료 시 동작하는 CallBack       |
+
+#### JSGhostSymbolMap.ModelMaterial
+
+> [getModelMaterials(id)](jsghostsymbolmap.md#getmodelmaterials-id-array)가 반환하는 재질 정보 하나.
+
+| Name          | Type          | Description                                                                                  |
+| ------------- | ------------- | ---------------------------------------------------------------------------------------------- |
+| index         | number        | 재질 인덱스(0부터).                                                                          |
+| name          | string        | 재질 이름.                                                                                   |
+| texture       | string        | 재질에 지정된 텍스처 파일명(없으면 빈 문자열).                                               |
+| color         | array(number) | 재질의 기본(diffuse) 색상 `[r, g, b]`.                                                       |
+| faces         | array(number) | 이 재질을 사용하는 face 인덱스 목록.                                                         |
+| triangleCount | number        | 이 재질로 칠해지는 삼각형 수.                                                                |

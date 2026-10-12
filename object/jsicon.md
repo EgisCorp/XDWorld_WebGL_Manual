@@ -125,13 +125,15 @@ var size = icon.getHGSize();
 ### setNormalIconByImageData(imageData, width, height) → boolean
 
 > canvas의 getImageData 등으로 얻은 byte 배열 데이터를 기반으로 Normal 아이콘 텍스처를 생성합니다.
+>
+> 이 아이콘이 텍스처를 직접 소유하며, 이 아이콘을 [JSPoint.setIcon(icon)](jspoint.md#seticon-icon-boolean)으로 여러 POI에 설정하면 같은 텍스처를 공유합니다(함수를 다시 호출하면 이전에 만든 텍스처는 해제됨). 엔진의 POI 텍스처 16비트 모드가 켜져 있으면(iOS 환경에서 자동으로 켜짐) 메모리를 절반으로 줄이기 위해 RGBA4444로 변환하여 올립니다. 필터링 없이 텍셀:픽셀 1:1로 그려집니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 | Name      | Type          | Description                             |
 | --------- | ------------- | ---------------------------------------- |
-| imageData | Uint8Array    | 이미지 픽셀 byte 배열 데이터(A8R8G8B8). |
+| imageData | Uint8Array    | 이미지 픽셀 byte 배열 데이터(픽셀당 R, G, B, A 순서 4byte. canvas `getImageData().data` 형식). 길이가 `width x height x 4` 이상이어야 합니다. |
 | width     | number        | 이미지 가로 크기(px).                    |
 | height    | number        | 이미지 세로 크기(px).                    |
 
@@ -139,8 +141,9 @@ var size = icon.getHGSize();
     -   true: 텍스처 생성 성공.
     -   false: 텍스처 생성 실패.
     -   실패 조건
-        -   맵이 정상적으로 로드되지 않은 경우.
-        -   imageData의 길이가 1 이하인 경우(픽셀 데이터 없음).
+        -   맵이 정상적으로 로드되지 않은 경우, 또는 월드와 연결되지 않은 아이콘인 경우(`new Module.JSIcon()`으로 직접 만든 아이콘은 사용할 수 없으며, [JSSymbol.getIcon(id)](jssymbol.md#geticon-id-jsicon)로 얻거나 `Module.createIcon()`으로 만든 아이콘을 사용).
+        -   width 또는 height가 0 이하인 경우.
+        -   imageData의 길이가 1 미만이거나 `width x height x 4`보다 작은 경우(픽셀 데이터 부족).
         -   텍스처 생성에 실패한 경우.
 
 {% endtab %}
@@ -150,6 +153,67 @@ var size = icon.getHGSize();
 var ctx = canvas.getContext("2d");
 var imgData = ctx.getImageData(0, 0, width, height);
 icon.setNormalIconByImageData(imgData.data, width, height);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setNormalIconByCompressedData(data, format, width, height) → boolean
+
+> 압축 텍스처 데이터(BC3, ASTC 등)로 Normal 아이콘 텍스처를 생성합니다. [JSPoint.setImageCompressed(data, format, width, height)](jspoint.md#setimagecompressed-data-format-width-height-boolean)와 같은 검증과 업로드를 거치되, 텍스처를 이 아이콘이 소유하므로 [JSPoint.setIcon(icon)](jspoint.md#seticon-icon-boolean)으로 여러 POI에 설정하면 같은 텍스처를 공유합니다(같은 라벨을 수천 개 만들 때 텍스처와 메모리를 1개분으로 줄일 수 있음).
+>
+> 변환 없이 압축 블록을 그대로 GPU에 업로드합니다. 압축 인코딩은 호출자(예: 워커)가 미리 수행해야 합니다. 필터링 없이 텍셀:픽셀 1:1로 그려집니다. 함수를 다시 호출하면 이전에 만든 텍스처는 해제됩니다.
+>
+> 입력 변수값(format)은 숫자가 아닌 이름 문자열이며 대소문자를 구분하지 않습니다. 기기가 해당 포맷의 WebGL 확장을 지원하지 않으면 실패하므로, 실패 시 [setNormalIconByImageData(imageData, width, height)](jsicon.md#setnormaliconbyimagedata-imagedata-width-height-boolean)로 대체하십시오. 입력 변수값(data)의 크기는 `ceil(width/블록가로) × ceil(height/블록세로) × 블록당 바이트 수`와 정확히 같아야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type       | Description                                  |
+| :----- | :--------- | :------------------------------------------- |
+| data   | Uint8Array | 압축 텍스처 블록 데이터.                     |
+| format | string     | 압축 포맷 이름 (아래 표 참고).               |
+| width  | number     | 이미지 너비(px). 0보다 커야 합니다.          |
+| height | number     | 이미지 높이(px). 0보다 커야 합니다.          |
+
+**format 목록**
+
+| format                | 블록 크기 | 블록당 바이트 | 필요한 WebGL 확장                   |
+| :-------------------- | :-------- | :------------ | :---------------------------------- |
+| "bc3", "dxt5"         | 4×4       | 16            | WEBGL_compressed_texture_s3tc       |
+| "bc1", "dxt1"         | 4×4       | 8             | WEBGL_compressed_texture_s3tc       |
+| "bc7"                 | 4×4       | 16            | EXT_texture_compression_bptc        |
+| "etc2", "etc2rgba"    | 4×4       | 16            | WEBGL_compressed_texture_etc        |
+| "etc2rgb"             | 4×4       | 8             | WEBGL_compressed_texture_etc        |
+| "astc4x4"             | 4×4       | 16            | WEBGL_compressed_texture_astc       |
+| "astc6x6"             | 6×6       | 16            | WEBGL_compressed_texture_astc       |
+| "astc8x8"             | 8×8       | 16            | WEBGL_compressed_texture_astc       |
+
+-   Return
+    -   true: 텍스처 생성 성공.
+    -   false: 텍스처 생성 실패.
+    -   실패 조건
+        -   월드와 연결되지 않은 아이콘인 경우(`new Module.JSIcon()`으로 직접 만든 아이콘은 사용할 수 없으며, [JSSymbol.getIcon(id)](jssymbol.md#geticon-id-jsicon)로 얻거나 `Module.createIcon()`으로 만든 아이콘을 사용).
+        -   width 또는 height가 0 이하인 경우.
+        -   알 수 없는 format 이름인 경우.
+        -   기기가 해당 포맷의 WebGL 확장을 지원하지 않는 경우.
+        -   data 크기가 포맷과 이미지 크기로 계산한 크기와 다른 경우.
+        -   텍스처 생성/업로드에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 400x128 BC3 이미지: (400/4) * (128/4) * 16 = 51,200 bytes
+let icon = Module.createIcon();
+if (icon.setNormalIconByCompressedData(bc3Bytes, "bc3", 400, 128)) {
+    // 같은 아이콘(텍스처)을 여러 POI가 공유
+    poi1.setIcon(icon);
+    poi2.setIcon(icon);
+} else {
+    // 미지원 기기 등에서는 RGBA 데이터로 대체
+    icon.setNormalIconByImageData(rgbaBytes, 400, 128);
+}
 ```
 
 {% endtab %}

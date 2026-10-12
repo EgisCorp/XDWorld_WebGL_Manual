@@ -142,6 +142,7 @@ Module.getNavigation().setNaviVisible(Module.JS_VISIBLE_ON);
 | 27    | MML_INPUT_RECT_SCREEN        | 화면 방향을 기준으로 사각형 영역 입력                     |
 | 30    | MML_RETURN_ANALYSISPOS       | 분석에 사용할 선택 지점의 경위도 반환                     |
 | 50    | MML_EDIT_GIZMO               | Gizmo를 이용하여 객체 편집(이동, 회전)                   |
+| 51    | MML_EDIT_CLIPPINGBOX         | 클리핑 박스를 클릭하여 선택하고 Gizmo로 편집(이동, 스케일). |
 | 80    | MML_ANALYS_AREA              | 지정한 다각형 영역의 면적 계산                           |
 | 81    | MML_ANALYS_DISTANCE          | 여러 점을 지정하여 지형을 고려한 거리 계산                 |
 | 82    | MML_ANALYS_VIEWSHED          | 선택한 지점을 기준으로 부채꼴 형태의 2D 가시권 분석         |

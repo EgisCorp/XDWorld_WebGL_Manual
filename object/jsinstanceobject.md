@@ -238,6 +238,64 @@ instanceObject.setInstanceColor(0, new Module.JSColor(255, 255, 0, 0));
 {% endtab %}
 {% endtabs %}
 
+### setZbuffer(set)
+
+> 인스턴스 객체를 그릴 때 깊이 테스트(Z 버퍼)를 사용할지 설정합니다. 기본값은 false이며, 이 경우 깊이 테스트 없이 그려지므로 불투명 인스턴스(건물 박스 등)도 지형이나 다른 객체에 의한 가림을 무시하고 그려집니다. true로 설정하면 깊이 테스트를 거쳐 앞에 있는 객체에 가려집니다.
+>
+> 호출 시 화면 재렌더를 따로 요청하지 않으므로, 변경된 값은 다음 프레임 갱신 때 반영됩니다. 객체가 없으면 아무 동작도 하지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                              |
+| :--- | ------- | ----------------------------------------------------------------------------------------- |
+| set  | boolean | <p>true: 깊이 테스트 사용(가림 처리).<br>false: 깊이 테스트 미사용(기본값).</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let instanceObject = Module.createInstanceObject("object");
+instanceObject.loadFile({
+    listPosition: [[127.0, 37.5, 0], [127.001, 37.501, 0]]
+});
+instanceObject.setZbuffer(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setInstanceIdList(idArray)
+
+> 인스턴스별 ID(문자열) 목록을 설정합니다. 객체를 선택(피킹)했을 때 선택 이벤트의 `instanceId`로 전달되는 값이며, 인덱스(`instanceIndex`)는 그대로입니다.
+>
+> 반드시 [loadFile(options)](jsinstanceobject.md#loadfile-options-boolean)로 인스턴스를 생성한 **뒤에** 호출해야 합니다. 엔진은 인스턴스를 공간 순서로 재배열해 저장하는데, 이 함수가 ID 목록에도 같은 재배열을 적용하여 `loadFile`에 넘긴 `listPosition`의 순서를 기준으로 ID가 올바르게 대응되도록 합니다. `loadFile` 전에 호출하면 재배열 정보가 없어 원본 순서 그대로 저장되므로 ID가 어긋납니다. `url`을 지정해 비동기로 로드하는 경우에도 인스턴스 배치가 끝난 뒤에 호출하십시오.
+>
+> `idArray`가 null/undefined이거나 객체가 없으면 아무 동작도 하지 않습니다. ID 개수와 인스턴스 개수가 일치하는지는 검사하지 않으므로, `listPosition`과 같은 개수/순서로 전달하십시오.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type          | Description                                                                  |
+| :------ | ------------- | ------------------------------------------------------------------------------ |
+| idArray | array(string) | 인스턴스별 ID 문자열 배열. `loadFile`에 지정한 `listPosition`과 같은 순서/개수. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let instanceObject = Module.createInstanceObject("object");
+instanceObject.loadFile({
+    listPosition: [[127.0, 37.5, 0], [127.001, 37.501, 0]]
+});
+
+// loadFile 이후에 호출
+instanceObject.setInstanceIdList(["building_001", "building_002"]);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Getter / Setter
 
 ### getAlpha(), setAlpha(alpha) → number

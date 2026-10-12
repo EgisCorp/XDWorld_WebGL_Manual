@@ -557,9 +557,11 @@ var isInstanced = line.isInstancedRender();
 
 ### setGroundPolylineLodDistances(distances) → boolean
 
-> 지면 결합(Ground) 라인의 거리 기반 LOD(단순화) 단계를 설정합니다.
+> 라인의 거리 기반 LOD(단순화) 단계를 설정합니다. `setPolylineLodDistances(distances)`도 동일하게 동작합니다(cpp에서 같은 구현부에 바인딩된 별칭이며, `Ground`가 없는 이름을 신규로 노출한 것입니다). 이 항목의 이름은 하위호환을 위해 유지됩니다.
 >
-> 카메라와의 거리에 따라 라인 정점을 몇 단계로 단순화할지 지정하며, 배열의 각 항목은 거리별 단순화 허용 오차(simplify)를 나타냅니다. 거리가 멀어질수록 simplify 값이 작아지면(더 세밀해지면) 논리적으로 맞지 않으므로 실패합니다(콘솔 경고 출력).
+> 카메라와 라인 중심 사이의 거리에 따라 라인 정점을 몇 단계로 단순화할지 지정하며, 배열의 각 항목은 거리별 단순화 허용 오차(simplify)를 나타냅니다. 거리가 멀어질수록 simplify 값이 작아지면(더 세밀해지면) 논리적으로 맞지 않으므로 실패합니다(콘솔 경고 출력). 설정하면 이미 만들어진 인스턴스 버퍼는 폐기되고 새 단계 구성으로 다시 만들어집니다.
+>
+> 설정 자체는 지면 결합 라인에만 한정되지 않으며 라인 타입(S3dExline) 객체라면 모두 설정/조회할 수 있고, 별도로 설정하지 않으면 기본 단계(아래 `getGroundPolylineLodDistances()` 참고)가 적용됩니다. 다만 거리에 따른 LOD 전환은 엔진이 LOD 갱신을 수행하는 렌더링 경로(인스턴스 렌더링이 켜진 지면 결합 라인, 그리고 [JSDataVisualizer.setLineInstancedLod(key, distances)](../datavisualizer/jsdatavisualizer.md#setlineinstancedlod-key-distances-boolean)로 LOD를 켠 라인 레이어)에서만 이루어집니다. 그 외의 단독 일반 라인 객체는 설정값이 저장되더라도 원본 정점으로 그려집니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -570,13 +572,25 @@ var isInstanced = line.isInstancedRender();
 
 -   Return
     -   true: 설정 성공.
-    -   false: 객체가 없거나 라인 타입(S3dExline) 객체가 아닌 경우, distances가 배열이 아니거나 항목에 distance/simplify가 없는 경우, 또는 거리가 멀어질수록 simplify가 감소하는 경우.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   객체가 없거나 라인 타입(S3dExline) 객체가 아닌 경우.
+        -   distances가 배열이 아니거나 항목에 distance/simplify가 없는 경우.
+        -   distance 기준으로 정렬했을 때 거리가 멀어질수록 simplify가 감소하는 경우(콘솔 경고 출력).
+        -   distance 또는 simplify가 0 미만인 경우, 또는 서로 다른 단계의 distance가 같은 경우.
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 line.setGroundPolylineLodDistances([
+    { distance: 0,    simplify: 0.0 },
+    { distance: 100,  simplify: 0.5 },
+    { distance: 1000, simplify: 2.0 }
+]);
+
+// 동일한 동작을 하는 신규 이름
+line.setPolylineLodDistances([
     { distance: 0,    simplify: 0.0 },
     { distance: 100,  simplify: 0.5 },
     { distance: 1000, simplify: 2.0 }
@@ -588,20 +602,25 @@ line.setGroundPolylineLodDistances([
 
 ### getGroundPolylineLodDistances() → array
 
-> [setGroundPolylineLodDistances(distances)](jslinestring.md#setgroundpolylineloddistances-distances-boolean)로 설정된 LOD 단계 목록을 반환합니다.
+> [setGroundPolylineLodDistances(distances)](jslinestring.md#setgroundpolylineloddistances-distances-boolean)로 설정된 LOD 단계 목록을 반환합니다. `getPolylineLodDistances()`도 동일하게 동작합니다(cpp에서 같은 구현부에 바인딩된 별칭). 이 항목의 이름은 하위호환을 위해 유지됩니다.
+>
+> 설정한 적이 없으면 객체 생성 시 부여되는 기본 단계가 반환됩니다. 기본 단계는 distance 2000m / simplify 2, 10000m / 10, 50000m / 50, 200000m / 200, 600000m / 500 의 5개이며, 첫 단계 distance 미만에서는 원본 정점을 사용합니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
     -   array([JSLineString.GroundPolylineLodTier](jslinestring.md#jslinestring.groundpolylinelodtier)): 현재 설정된 LOD 단계 목록.
-    -   빈 배열: 객체가 없거나 라인 타입(S3dExline) 객체가 아닌 경우.
+    -   빈 배열: 객체가 없거나 라인 타입(S3dExline) 객체가 아닌 경우(설정 후 빈 단계 목록을 지정한 경우에도 빈 배열이 반환됨. 이 경우 항상 원본 정점을 사용).
 
 {% endtab %}
 {% tab title="Template" %}
 
 ```javascript
 var tiers = line.getGroundPolylineLodDistances();
+
+// 동일한 동작을 하는 신규 이름
+var tiers2 = line.getPolylineLodDistances();
 ```
 
 {% endtab %}
@@ -613,8 +632,8 @@ var tiers = line.getGroundPolylineLodDistances();
 
 | Name     | Type   | Description                              |
 | -------- | ------ | ------------------------------------------ |
-| distance | number | 이 단계가 적용되기 시작하는 카메라 거리(m 단위). |
-| simplify | number | 단순화 허용 오차(클수록 더 단순화됨).      |
+| distance | number | 이 단계가 적용되기 시작하는 카메라와 라인 중심 사이의 거리(m 단위). 0 이상이며 단계 간 중복될 수 없습니다. |
+| simplify | number | 단순화 허용 오차(클수록 더 단순화됨). 0 이상이며, distance가 클수록 같거나 커야 합니다. |
 
 #### JSLineString.CreateOptions
 

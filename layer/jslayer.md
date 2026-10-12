@@ -308,6 +308,45 @@ console.log(objects.id);
 {% endtab %}
 {% endtabs %}
 
+### getObjectTileInfo(objkey) → object
+
+> 객체 고유 명칭으로 해당 객체가 소속된 타일의 정보(레벨, 인덱스)를 반환합니다.
+>
+> 선택한 객체의 타일 정보를 표출할 때 사용합니다.
+>
+> 지구본 타일 기반 레이어(`ELST_PLANET_TILE`)에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description |
+| ------ | ------ | ----------- |
+| objkey | string | 객체 고유 명칭    |
+
+* Return
+  * object : 반환 성공.
+    * | Name  | Type   | Description |
+      | ----- | ------ | ----------- |
+      | level | number | 타일 레벨.     |
+      | idx   | number | 타일 인덱스(idx). |
+      | idy   | number | 타일 인덱스(idy). |
+  * null : 반환 실패.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 레이어가 없는 경우.
+    * 지구본 타일 기반 레이어가 아닌 경우.
+    * 입력값(objkey)을 갖는 객체가 레이어에 등록되어 있지 않은 경우(타일 로드 시점에 등록되므로 아직 로드되지 않은 타일의 객체는 조회되지 않음).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let info = layer.getObjectTileInfo("BUILDING_001");
+if (info) {
+    console.log(info.level, info.idx, info.idy);
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ### setCrsWMS(crs) → boolean
 
 > WMS 레이어의 지도 좌표계(Coordinate Reference System)를 설정합니다.
@@ -2018,6 +2057,135 @@ layer.reloadTiles();
 
 {% tab title="Template" %}
 ```javascript
+```
+{% endtab %}
+{% endtabs %}
+
+### getReal3dLightFlat(), setReal3dLightFlat(value) → number
+
+> Real3D(건물) 레이어 재질의 조명 반응 세기를 설정합니다.
+>
+> 0은 조명을 그대로 적용하고, 1은 조명을 전혀 적용하지 않습니다. 파사드 텍스처에는 이미 음영이 구워져 있어 조명을 그대로 곱하면 어두워지고, 조명을 완전히 끄면(`setLighting(false)`) 건물이 납작해 보이므로 그 사이 값을 고르기 위한 옵션입니다. 0.3 ~ 0.5에서 입체감은 유지하면서 파사드가 덜 어두워집니다.
+>
+> Real3D 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                                          |
+| ----- | ------ | -------------------------------------------------------------------- |
+| value | number | 조명 반응 세기(0.0 ~ 1.0, 기본값 0.0). 범위를 벗어난 값은 0.0 ~ 1.0으로 보정합니다. |
+
+* Return(getReal3dLightFlat)
+  * number : 설정된 값.
+  * 0.0 : 월드가 초기화되지 않았거나 레이어가 없거나 타일 구조 레이어가 아닌 경우.
+* Return(setReal3dLightFlat)
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 레이어가 없는 경우.
+    * 타일 구조 레이어가 아닌 경우.
+    * Real3D 레이어가 아닌 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setReal3dLightFlat(0.4);
+let flat = layer.getReal3dLightFlat();
+```
+{% endtab %}
+{% endtabs %}
+
+### setImpostorEnable(enable) → boolean
+
+> 레이어의 Impostor LOD를 켜거나 끕니다.
+>
+> Impostor LOD는 화면에서 작아진 원거리 건물을 실제 메시 대신 미리 구워 둔 스프라이트(빌보드)로 그려 렌더 부하를 줄이는 기능입니다. 건물의 화면 크기가 [setImpostorSwitchPixel](jslayer.md#setimpostorswitchpixel-pixel-boolean) 값보다 작아지면 임포스터로 전환됩니다.
+>
+> 기본값은 꺼짐이며, 꺼진 상태에서는 기존 렌더 경로와 완전히 동일하게 동작합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type    | Description                           |
+| ------ | ------- | ------------------------------------- |
+| enable | boolean | Impostor LOD 사용 여부(true: 켜기, false: 끄기). |
+
+* Return
+  * true : 설정 성공.
+  * false : 옥트리 구조 레이어가 아니거나 레이어가 없는 경우.
+* Note
+  * 이 함수는 두 가지를 설정합니다.
+    * 시설물(Real3D 타일 객체) 경로의 전역 Impostor 정책: 호출한 레이어 종류와 관계없이 항상 켜거나 끕니다. 따라서 Real3D 등 타일 레이어에서 호출하면 `false`를 반환하지만 전역 정책은 변경됩니다.
+    * 옥트리 구조 레이어(폴리헤드론 객체 등)의 레이어 단위 Impostor: 옥트리 구조 레이어에서만 켜거나 끕니다.
+  * 임포스터는 폴리헤드론과 Real3D 객체만 대상이며, 다음의 경우 전환하지 않고 메시로 그립니다.
+    * 카메라 시선이 수평에서 45° 이상 아래를 향하는 경우(내려다보는 뷰).
+    * 선택(하이라이트)된 객체.
+    * 정점 수가 [setImpostorMinVertex](jslayer.md#setimpostorminvertex-count-boolean) 값 미만인 단순한 형상.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setImpostorEnable(true);
+layer.setImpostorSwitchPixel(48);
+layer.setImpostorMinVertex(100);
+```
+{% endtab %}
+{% endtabs %}
+
+### setImpostorSwitchPixel(pixel) → boolean
+
+> Impostor로 전환할 화면 픽셀 크기를 설정합니다.
+>
+> 건물의 화면 투영 크기(가로·세로 중 큰 변)가 이 값보다 작아지면 임포스터로 바뀝니다. 거리(m)가 아니라 화면 픽셀 기준이라 화각, 해상도, 건물 높이에 자동으로 맞춰집니다.
+>
+> [setImpostorEnable](jslayer.md#setimpostorenable-enable-boolean)로 Impostor LOD를 켠 뒤 호출합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                                         |
+| ----- | ------ | ------------------------------------------------------------------- |
+| pixel | number | 전환 화면 픽셀 크기(16 ~ 128). 범위를 벗어난 값은 16 ~ 128로 보정합니다. |
+
+* Return
+  * true : 설정 성공.
+  * false : 옥트리 구조 레이어가 아니거나, 해당 레이어의 Impostor가 켜져 있지 않은 경우.
+* Note
+  * 기본값은 옥트리 구조 레이어 24, 시설물(Real3D 타일 객체) 전역 정책 64입니다.
+  * `false`를 반환해도 시설물 전역 정책(켜져 있는 경우)과 임포스터 아틀라스 설정에는 값이 반영됩니다. 레이어 단위 값은 옥트리 구조 레이어의 Impostor가 켜져 있을 때만 반영됩니다.
+  * 값이 64를 넘으면 아틀라스가 큰 건물용 셀(96/128px)을 포함하는 배분으로 전환되어 큰 건물이 64px 셀로 강등되지 않지만, 페이지당 수용 건물 수가 줄어듭니다(소스 주석 기준 202채 → 145채). 64 이하로 되돌리면 원래 배분으로 복귀하며, 양쪽 모두 임포스터를 전부 다시 굽습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setImpostorEnable(true);
+layer.setImpostorSwitchPixel(48);
+```
+{% endtab %}
+{% endtabs %}
+
+### setImpostorMinVertex(count) → boolean
+
+> Impostor로 대체할 최소 정점 수를 설정합니다.
+>
+> 이 값보다 정점이 적은 단순한 형상(큐브 등)은 메시로 그려도 삼각형이 몇 개뿐이라 이득이 없고 아틀라스 자리만 차지해 복잡한 건물이 밀리므로 임포스터로 바꾸지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                              |
+| ----- | ------ | -------------------------------------------------------- |
+| count | number | 최소 정점 수(기본값 100). 0이면 조건을 끔. 음수는 0으로, 소수는 버림 처리. |
+
+* Return
+  * true : 설정 성공.
+  * false : 옥트리 구조 레이어가 아니거나, 해당 레이어의 Impostor가 켜져 있지 않은 경우.
+* Note
+  * `false`를 반환해도 시설물(Real3D 타일 객체) 전역 정책이 켜져 있으면 값이 반영됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setImpostorEnable(true);
+layer.setImpostorMinVertex(200);
 ```
 {% endtab %}
 {% endtabs %}
@@ -3772,6 +3940,436 @@ let error = layer.getMaxGeometricError();
 {% endtab %}
 {% endtabs %}
 
+### getMinGeometricError(), setMinGeometricError(value) → number
+
+> 3D Tiles 레이어의 최소 기하 오차(geometricError)를 설정합니다.
+>
+> 설정한 값 이하의 geometricError를 가진 노드는 더 이상 정제(자식 요청)하지 않으므로 최대 상세도를 제한합니다.
+>
+> geometricError 기준이라 데이터셋이 바뀌어도 "이 정도 해상도까지만"이라는 의미가 유지됩니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| value | number | 최소 기하 오차값(m). 0 이하를 입력하면 제한을 해제합니다. |
+
+* Return(getMinGeometricError)
+  * number : 설정된 최소 기하 오차값.
+  * 0.0 : 제한이 설정되지 않았거나 3D Tiles 레이어가 아닌 경우.
+* Return(setMinGeometricError)
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+* Note
+  * 의미 있는 값은 데이터셋의 geometricError 분포에 따라 다릅니다. [get3DTilesDiagnostics](jslayer.md#get3dtilesdiagnostics-object)의 `geMin`, `geMax`, `geAvg`, `geHist`로 확인할 수 있습니다.
+  * 반대로 상세도를 올리는 최대 화면 오차는 [setMaxGeometricError](jslayer.md#getmaxgeometricerror-setmaxgeometricerror-value-number)로 설정합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+// geometricError 8 이하의 노드는 더 정제하지 않음
+layer.setMinGeometricError(8.0);
+let minError = layer.getMinGeometricError();
+
+// 제한 해제
+layer.setMinGeometricError(0);
+```
+{% endtab %}
+{% endtabs %}
+
+### getRefineHysteresisRatio(), setRefineHysteresisRatio(ratio) → number
+
+> 3D Tiles 정제 히스테리시스 비율을 설정합니다.
+>
+> 정제는 최대 화면 오차([setMaxGeometricError](jslayer.md#getmaxgeometricerror-setmaxgeometricerror-value-number))를 초과할 때 시작하고, 되돌리기는 그 값을 이 비율로 나눈 값 미만으로 내려갔을 때만 합니다. (예: 최대 화면 오차 16, 비율 1.5 → 16 초과에서 정제 시작, 약 10.7 미만에서 되돌림)
+>
+> 카메라 회전으로 타일까지의 거리가 오르내려도 임계값 근처 타일이 정제와 되돌림을 왕복하며 자식이 해제/재요청되는 현상을 줄입니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                              |
+| ----- | ------ | ---------------------------------------- |
+| ratio | number | 히스테리시스 비율(1.0 ~ 4.0, 기본값 1.5). |
+
+* Return(getRefineHysteresisRatio)
+  * number : 설정된 비율.
+  * 0.0 : 3D Tiles 레이어가 아닌 경우.
+* Return(setRefineHysteresisRatio)
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * ratio가 1.0 미만이거나 4.0 초과인 경우(값은 변경되지 않음).
+* Note
+  * 1.0으로 설정하면 되돌림 지연이 사라져 CesiumJS와 같은 판정이 되지만, 임계값 근처 타일이 회전 중 팝핑하고 재요청이 늘어납니다.
+  * 값이 클수록 되돌림이 늦어져 그려지는 삼각형이 늘어납니다(소스 주석 실측: 기본 1.5에서 CesiumJS 대비 약 +17%). 삼각형 예산이 빠듯하거나 CesiumJS와 수치를 맞춰 비교할 때만 낮추는 것을 권장합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let ok = layer.setRefineHysteresisRatio(1.5);
+let ratio = layer.getRefineHysteresisRatio();
+```
+{% endtab %}
+{% endtabs %}
+
+### setTileBoundary(minLon, minLat, maxLon, maxLat)
+
+> 3D Tiles 레이어를 경위도(degree) 사각 범위로 제한합니다.
+>
+> 범위 안에 **완전히 포함되는** 타일만 요청하고 그립니다. 범위에 걸치기만 하는 타일은 하위 타일로 내려가기 위해 순회는 하지만 자신의 콘텐츠는 받지도 그리지도 않습니다.
+>
+> 범위를 나중에 좁힌 경우 이미 받아 둔 타일도 그리지 않습니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description         |
+| ------ | ------ | ------------------- |
+| minLon | number | 최소 경도(degree).   |
+| minLat | number | 최소 위도(degree).   |
+| maxLon | number | 최대 경도(degree).   |
+| maxLat | number | 최대 위도(degree).   |
+
+* Return
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+* Note
+  * min 값이 max 값보다 큰 경우 자동으로 바꿔서 사용합니다.
+  * [clearTileBoundary](jslayer.md#cleartileboundary)로 해제합니다.
+  * [setTileExcludeArea](jslayer.md#settileexcludearea-option-boolean)와 서로 독립이며, 둘 다 설정하면 둘 다 적용됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+// 서울시청 일대(경도 126.97 ~ 126.99, 위도 37.55 ~ 37.57)만 표시
+layer.setTileBoundary(126.97, 37.55, 126.99, 37.57);
+```
+{% endtab %}
+{% endtabs %}
+
+### clearTileBoundary()
+
+> [setTileBoundary](jslayer.md#settileboundary-minlon-minlat-maxlon-maxlat)로 설정한 사각 범위 제한을 해제합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.clearTileBoundary();
+```
+{% endtab %}
+{% endtabs %}
+
+### setTileExcludeArea(option) → boolean
+
+> 3D Tiles 레이어에서 경위도 폴리곤 영역 안의 형상을 렌더/선택/그림자에서 제외합니다.
+>
+> 영역 안에 완전히 들어온 타일은 요청과 렌더를 하지 않고, 영역 경계에 걸친 타일은 셰이더 마스크로 영역 안쪽만 지웁니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type                                                          | Description                               |
+| ------ | ------------------------------------------------------------- | ----------------------------------------- |
+| option | [TileExcludeAreaOptions](jslayer.md#tileexcludeareaoptions)   | 제외 영역 옵션(`areas` 배열).                    |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패. 콘솔에 사유가 출력됩니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * `areas` 배열이 없는 경우.
+    * 정점이 3개 이상인 링이 하나도 없는 경우.
+    * 영역 생성에 실패한 경우(기존 제외 영역은 유지됨).
+    * 마스크 텍스처 생성에 실패한 경우(기존 제외 영역도 모두 해제됨).
+* Note
+  * 호출할 때마다 이전 제외 영역을 대체합니다. 일부만 해제하는 기능은 없으며 [clearTileExcludeArea](jslayer.md#cleartileexcludearea)로 전체를 해제합니다.
+  * 정점이 3개 미만인 `ring`/`holes` 항목은 경고만 출력하고 건너뜁니다.
+  * 평면 모드에서는 제외 영역 판정이 동작하지 않습니다. 설정은 저장되며 지구본 모드로 전환되면 적용됩니다(호출 시 경고 출력).
+  * [setTileBoundary](jslayer.md#settileboundary-minlon-minlat-maxlon-maxlat)와 서로 독립이며, 둘 다 설정하면 둘 다 적용됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let ok = layer.setTileExcludeArea({
+    areas: [
+        {
+            // 경위도(degree) [lon, lat], 3개 이상
+            ring: [
+                [126.970, 37.560],
+                [126.980, 37.560],
+                [126.980, 37.570],
+                [126.970, 37.570]
+            ],
+            // 선택: 영역 안의 구멍
+            holes: [
+                [
+                    [126.973, 37.563],
+                    [126.977, 37.563],
+                    [126.977, 37.567]
+                ]
+            ]
+        }
+    ]
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### clearTileExcludeArea()
+
+> [setTileExcludeArea](jslayer.md#settileexcludearea-option-boolean)로 설정한 제외 영역을 모두 해제합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.clearTileExcludeArea();
+```
+{% endtab %}
+{% endtabs %}
+
+### getTileHeightOffset(), setTileHeightOffset(meter) → number
+
+> 3D Tiles 전체를 지구 중심 기준으로 지정한 높이(m)만큼 띄웁니다.
+>
+> 엔진 지구본과 3D Tiles 지표면이 같은 깊이에 놓여 생기는 z-fighting을 없애기 위한 보정입니다. [import3DTiles](jslayer.md#import3dtiles-option-boolean)의 `offsetZ` 옵션과 같은 값을 런타임에 바꿉니다.
+>
+> 평행이동이 아니라 지구 중심 기준 균일 스케일로 적용되므로 인접 타일 이음매가 벌어지지 않습니다. 대신 형상 자체도 소폭 커집니다(소스 주석 기준 5m 보정 시 400m 건물이 약 0.3mm 커지는 수준).
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                         |
+| ----- | ------ | ----------------------------------- |
+| meter | number | 높이 오프셋(m, 기본값 0.0). 0이면 보정 없음. |
+
+* Return(getTileHeightOffset)
+  * number : 설정된 높이 오프셋(m).
+  * 0.0 : 3D Tiles 레이어가 아닌 경우.
+* Return(setTileHeightOffset)
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setTileHeightOffset(5.0);
+let offset = layer.getTileHeightOffset();
+```
+{% endtab %}
+{% endtabs %}
+
+### setTileCopyrightCallback(callback) → boolean
+
+> 3D Tiles 레이어의 저작자 표시(attribution) 콜백을 설정합니다.
+>
+> 화면에 그려진 타일의 데이터 제공자는 타일마다 다르고 카메라를 옮기면 바뀌므로, 매 프레임 "그려진 타일의 집합"에서 제공자를 모아 그 결과가 실제로 바뀐 프레임에만 콜백을 호출합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name     | Type     | Description                           |
+| -------- | -------- | ------------------------------------- |
+| callback | function | 저작자 목록이 바뀔 때 호출될 콜백 함수. |
+
+* Callback Parameter
+
+| Name      | Type          | Description                                                                          |
+| --------- | ------------- | ------------------------------------------------------------------------------------ |
+| layername | string        | 레이어 이름.                                                                           |
+| copyright | string        | 제공자를 세미콜론(`;`)으로 합친 문자열(예: `"Airbus;Google;Maxar Technologies"`).               |
+| list      | array(string) | 같은 내용의 제공자 배열.                                                                    |
+| counts    | array(number) | `list`와 같은 순서로 각 제공자가 그려진 타일에 나타난 횟수.                                         |
+
+* Return
+  * true : 설정 성공.
+  * false : 설정 실패.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+* Note
+  * 제공자는 그려진 타일의 glTF 저작권 문자열과 tileset.json의 `asset.copyright`를 세미콜론 기준으로 분해해 모읍니다.
+  * 출현 횟수가 많은 순으로 정렬되며, 횟수가 같으면 이름순입니다.
+  * 콜백은 목록이 바뀐 프레임에만 호출되므로, 콜백을 설정하기 전에 이미 표시된 값이나 초기 표시는 [getTileCopyright](jslayer.md#gettilecopyright-string)로 읽습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setTileCopyrightCallback(function(e) {
+    console.log(e.layername, e.copyright);
+    // e.list : ["Airbus", "Google", ...]
+    // e.counts : [120, 85, ...]
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### getTileCopyright() → string
+
+> 3D Tiles 레이어의 현재 화면 기준 저작자 표시 문자열을 반환합니다.
+>
+> [setTileCopyrightCallback](jslayer.md#settilecopyrightcallback-callback-boolean)을 놓쳤거나 초기 표시를 그릴 때 사용합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * string : 제공자를 세미콜론(`;`)으로 합친 문자열(출현 횟수가 많은 순).
+  * "" : 그려진 타일에 저작자 정보가 없거나, 3D Tiles 레이어가 아니거나, 월드가 초기화되지 않은 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let copyright = layer.getTileCopyright();
+```
+{% endtab %}
+{% endtabs %}
+
+### get3DTilesDiagnostics() → object
+
+> 3D Tiles 레이어의 진단 정보를 반환합니다. (진단용)
+>
+> 순회별 소요 시간, 그려진 노드/삼각형 수, 파싱 워커 상태, 타일 보유 메모리, geometricError 분포, 화면 구멍/배제 사유 등을 마지막 프레임 기준으로 반환합니다. CPU 고착이나 화면 공백이 재현된 시점에 원인 구간을 읽기 위한 상설 계측값입니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * object : 진단 정보. 필드는 [3DTilesDiagnostics](jslayer.md#3dtilesdiagnostics)를 참조합니다.
+  * null : 3D Tiles 레이어가 아니거나 월드가 초기화되지 않은 경우.
+* Note
+  * `nodes`, 파싱 누적 값, 메모리 값은 레이어 단위가 아니라 엔진 전역 값입니다.
+  * 매 호출마다 객체를 새로 만들므로 매 프레임이 아니라 필요할 때만 호출하는 것을 권장합니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let d = layer.get3DTilesDiagnostics();
+if (d) {
+    console.log("drawn", d.drawn, "triangles", d.triangles);
+    console.log("SSE", d.setDrawLevelMs, "draw", d.viewListMs, "load", d.moveLoadMs);
+    console.log("retained", d.retainedMB, "/", d.retainedCapMB, "MB");
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### get3DTilesLoadLeadFrames(), set3DTilesLoadLeadFrames(frames) → number
+
+> 3D Tiles 로딩 순회가 그리기 순회보다 앞서 갈 수 있는 신선도 창(프레임 수)을 설정합니다.
+>
+> 그리기 순회가 최근 이 프레임 수 안에 도달한 노드는 "렌더러가 여기까지 왔다"고 보고 로딩 순회가 그 아래로 내려갈 수 있습니다.
+>
+> 0이면 제한을 끄며, 이 경우 로딩 순회가 SSE만 보고 트리 끝까지 내려가 요청이 급증합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description                                         |
+| ------ | ------ | --------------------------------------------------- |
+| frames | number | 선행 허용 프레임 수(기본값 8). 음수는 0으로 처리. 0이면 제한 해제. |
+
+* Return(get3DTilesLoadLeadFrames)
+  * number : 설정된 프레임 수.
+  * 0 : 3D Tiles 레이어가 아닌 경우(제한 해제 상태와 구분되지 않음).
+* Return(set3DTilesLoadLeadFrames)
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.set3DTilesLoadLeadFrames(8);
+let frames = layer.get3DTilesLoadLeadFrames();
+```
+{% endtab %}
+{% endtabs %}
+
+### get3DTilesLoadLookahead(), set3DTilesLoadLookahead(levels) → number
+
+> 3D Tiles 로딩 순회가 그리기 순회가 아직 도달하지 않은 구간을 몇 레벨까지 앞질러 받을지 설정합니다.
+>
+> 값이 작으면 정제가 "한 레벨 내려감 → 네트워크 왕복 → 한 레벨 더" 사슬에 묶여, 카메라를 크게 움직인 뒤 화면이 선명해지는 데 오래 걸립니다. 0이면 선행 없이 렌더러가 도달한 곳까지만 받습니다.
+>
+> [set3DTilesLoadLeadFrames](jslayer.md#get3dtilesloadleadframes-set3dtilesloadleadframes-frames-number)는 "얼마나 오래된 방문까지 인정하나"만 정하고 깊이는 늘리지 않으므로, 깊이는 이 값으로 조절합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description                                      |
+| ------ | ------ | ------------------------------------------------ |
+| levels | number | 앞질러 받을 레벨 수(기본값 2). 음수는 0으로 처리. 0이면 선행 없음. |
+
+* Return(get3DTilesLoadLookahead)
+  * number : 설정된 레벨 수.
+  * 0 : 3D Tiles 레이어가 아닌 경우(선행 없음 상태와 구분되지 않음).
+* Return(set3DTilesLoadLookahead)
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.set3DTilesLoadLookahead(2);
+let levels = layer.get3DTilesLoadLookahead();
+```
+{% endtab %}
+{% endtabs %}
+
+### get3DTilesTilesetFreeFrames(), set3DTilesTilesetFreeFrames(frames) → number
+
+> 그리기 순회가 이 프레임 수 이상 도달하지 않은 중첩 타일셋을 통째로 해제하기까지 대기하는 프레임 수를 설정합니다.
+>
+> 노드 트리가 무한정 커지는 것을 막기 위한 값으로, 해제된 타일셋은 다시 필요해지면 json을 재요청해 복원됩니다. 값이 작을수록 해제가 빨라 메모리는 줄지만 재요청이 늘어납니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description                                                      |
+| ------ | ------ | ---------------------------------------------------------------- |
+| frames | number | 해제 대기 프레임 수(기본값 900, 약 15초). 음수는 0으로 처리. 0이면 해제하지 않음. |
+
+* Return(get3DTilesTilesetFreeFrames)
+  * number : 설정된 프레임 수.
+  * 0 : 3D Tiles 레이어가 아닌 경우(해제하지 않는 상태와 구분되지 않음).
+* Return(set3DTilesTilesetFreeFrames)
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+* Note
+  * 0으로 두면 노드 트리가 계속 커질 수 있습니다. 값을 올릴 때는 `get3DTilesDiagnostics().nodes`가 실제로 수렴하는지 함께 확인하세요.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.set3DTilesTilesetFreeFrames(900);
+let frames = layer.get3DTilesTilesetFreeFrames();
+```
+{% endtab %}
+{% endtabs %}
+
 ### getLayerStyle(), setLayerStyle(style) → object
 
 > 레이어의 POI 스타일(크기, 페이드 옵션)을 설정합니다.
@@ -3876,3 +4474,155 @@ console.log(style.poi.scaleable.activate);
 | quality    | string  | optional   | 256     | 이미지 해상도.                                    |
 | iscrack    | boolean | optional   | false   | 타일링시 크랙이 발생 할 경우(true).                     |
 | crackvalue | number  | optional   | 1000    | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).              |
+
+#### TileExcludeAreaOptions
+
+> 3D Tiles 레이어 제외 영역 설정 옵션([setTileExcludeArea](jslayer.md#settileexcludearea-option-boolean) 파라미터).
+
+| Name  | Type                                                  | Attributes | Default | Description                    |
+| ----- | ----------------------------------------------------- | ---------- | ------- | ------------------------------ |
+| areas | array([TileExcludeArea](jslayer.md#tileexcludearea)) |            |         | 제외할 영역 목록(배열이 아니면 설정 실패). |
+
+#### TileExcludeArea
+
+> 3D Tiles 제외 영역 하나(외곽 링과 선택적 홀).
+>
+> 좌표는 경위도(degree) `[lon, lat]`이며, `[lon, lat, alt]` 3요소 좌표(GeoJSON)를 그대로 넣어도 앞의 두 값만 사용합니다.
+>
+> 외곽 링과 홀 링은 구분 없이 짝수-홀수(even-odd) 규칙으로 판정하므로, 홀 안쪽은 제외 영역에서 빠집니다.
+
+| Name  | Type                                | Attributes | Default | Description                                                                |
+| ----- | ----------------------------------- | ---------- | ------- | -------------------------------------------------------------------------- |
+| ring  | array(array(number))                |            |         | 외곽 링 좌표 배열(각 원소 `[lon, lat]`, 3개 이상 필요). 마지막 점이 첫 점과 같으면 중복 점을 제거. 3개 미만이면 해당 영역은 건너뜀. |
+| holes | array(array(array(number)))         | optional   |         | 홀 링 배열(각 링은 ring과 같은 형식). 3개 미만인 홀은 건너뜀.                              |
+
+#### 3DTilesDiagnostics
+
+> [get3DTilesDiagnostics](jslayer.md#get3dtilesdiagnostics-object) 반환 객체의 필드(진단용).
+>
+> 별도 표기가 없으면 마지막 프레임 기준 값입니다. "누적"은 엔진 시작 이후의 누적값입니다.
+>
+> 이름이 `ms`로 끝나는 값은 밀리초(ms)입니다.
+
+**순회/렌더 비용**
+
+| Name           | Type   | Description                                                                 |
+| -------------- | ------ | --------------------------------------------------------------------------- |
+| nodes          | number | 살아 있는 노드 수(모든 3D Tiles 레이어의 합). 아래 세 순회 비용에 그대로 곱해집니다.                  |
+| tilesets       | number | 이 레이어가 보유한 중첩 타일셋 수.                                                  |
+| drawn          | number | 그리기 순회가 반환한 객체 수. 갑자기 떨어지면 LOD 붕괴/화면 공백을 의심합니다.                        |
+| refineHold     | number | 정제 유지(팝아웃 방지)가 발동한 노드 수. 0이 아니면 로딩 대기 중입니다.                           |
+| setDrawLevelMs | number | SSE 평가 순회 시간(트리 전체를 건너뛰기 없이 도는 유일한 순회).                                |
+| viewListMs     | number | 그리기 순회 시간.                                                              |
+| moveLoadMs     | number | 로딩 순회 시간.                                                               |
+| clearMs        | number | 정리 순회 + 중첩 타일셋 스윕 시간(스윕은 30프레임마다 한 번이라 그 프레임에만 갱신).                    |
+| renderMs       | number | 객체 드로우 루프 시간. 새 타일이 몰리면 VBO/텍스처 생성·업로드로 커집니다.                         |
+| drawCalls      | number | 이 레이어가 이번 프레임에 발생시킨 드로우콜 수.                                           |
+| triangles      | number | 이 레이어가 이번 프레임에 그린 삼각형 수.                                              |
+| renderFrame    | number | 렌더 프레임 번호(유휴 시 멈추는지 확인용).                                              |
+
+**파싱/워커**
+
+| Name            | Type   | Description                                                                         |
+| --------------- | ------ | ----------------------------------------------------------------------------------- |
+| parseMs         | number | 동기(폴백) 파싱에 쓴 시간(프레임 사이 누적분을 프레임 경계에서 확정한 값).                         |
+| parsed          | number | 동기(폴백) 파싱한 타일 수.                                                              |
+| applyMs         | number | 워커 응답 적용(버퍼 → 객체 변환, 텍스처 업로드)에 메인 스레드가 쓴 시간.                          |
+| applied         | number | 응답을 적용한 타일 수.                                                                 |
+| workerMs        | number | 응답 헤더가 보고한 워커 파싱 시간의 합.                                                  |
+| workerParsed    | number | 워커가 파싱한 타일 수.                                                                 |
+| parseFailed     | number | 응답 적용에 실패한 수(프로토콜 손상 등).                                                 |
+| parseInFlight   | number | 워커 파싱 진행 중인 요청 수.                                                            |
+| applyQueued     | number | 적용 대기 중인 응답 수.                                                               |
+| parseQueueMB    | number | 백프레셔 예산 사용량(MB) = 워커 응답 대기 + 적용 대기.                                      |
+| parseDeferred   | number | 백프레셔 예산 초과로 받지 않고 미요청 상태로 되돌린 수(누적).                                    |
+| parseDroppedStale | number | 응답이 왔을 때 노드/타일셋이 이미 삭제되어 버린 수(누적).                                    |
+| parseFallback   | number | 워커 대신 동기 파서로 처리하게 된 수(누적).                                              |
+| parseResponseBroken | number | 응답이 비었거나 헤더가 손상되어 강제로 닫은 수(누적).                                    |
+| parseTimedOut   | number | 워커 무응답(30초 초과)으로 동기 폴백 후 회수한 수(누적).                                     |
+| workerMsTotal   | number | 워커가 잰 파싱 전체 시간(누적, ms).                                                  |
+| gltfMsTotal     | number | `workerMsTotal` 중 glTF 파싱 구간(누적, ms).                                       |
+| imageMsTotal    | number | `workerMsTotal` 중 텍스처 디코딩 구간(누적, ms).                                    |
+| vertexMsTotal   | number | `workerMsTotal` 중 정점 변환 구간(누적, ms).                                       |
+| parsedTotal     | number | 워커가 파싱을 마친 타일 수(누적).                                                     |
+| imageFormats    | array  | 텍스처 포맷별 분해. `ktx2`, `jpeg`, `png`, `webp`, `other` 순서의 5개 원소이며 각 원소는 `{fmt, ms, count, inMB, outMB}`(포맷명, 디코딩 시간(누적 ms), 개수(누적), 입력 MB, 출력 MB). |
+| basisTarget     | number | KTX2(Basis) 트랜스코딩 타깃 포맷 코드(기본값 13: RGBA32).                                |
+| basisProbeCtx   | number | 트랜스코딩 타깃 판정 시 사용한 컨텍스트 핸들(기본값 -1, 0이면 확장 질의가 전부 실패해 13으로 떨어짐).       |
+| texOutFormats   | object | 실제로 수신한 텍스처 포맷 히스토그램. 포맷 코드(문자열 키, 압축 포맷은 99 이상) → 수신 수(누적). 수신 수가 0인 포맷은 포함되지 않음. |
+
+**메모리**
+
+| Name          | Type   | Description                                                                                  |
+| ------------- | ------ | -------------------------------------------------------------------------------------------- |
+| retainedMB    | number | 현재 보유 중인 타일 콘텐츠 크기(MB, 정점+인덱스+텍스처 원본).                                          |
+| retainedCapMB | number | 보유 크기 상한(MB, 기본값 512). 초과하면 오래 그려지지 않은 타일부터 콘텐츠를 해제합니다.                     |
+| tilesEvicted  | number | 상한 초과로 해제한 타일 수(누적).                                                              |
+
+**geometricError 분포**
+
+| Name   | Type          | Description                                                                                  |
+| ------ | ------------- | -------------------------------------------------------------------------------------------- |
+| geMin  | number        | 이번 프레임에 그린 노드의 geometricError 최솟값(m).                                                 |
+| geMax  | number        | 이번 프레임에 그린 노드의 geometricError 최댓값(m).                                                 |
+| geAvg  | number        | 이번 프레임에 그린 노드의 geometricError 평균(m). 그린 노드가 없으면 0.                                  |
+| geHist | array(number) | 구간별 노드 수(10개). 구간(m): [0,1) [1,2) [2,4) [4,8) [8,16) [16,32) [32,64) [64,128) [128,256) [256,~). |
+
+[setMinGeometricError](jslayer.md#getmingeometricerror-setmingeometricerror-value-number)에 줄 값을 정할 때 참고합니다.
+
+**부모로 폴백해 그린 사유별 노드 수**
+
+| Name              | Type   | Description                         |
+| ----------------- | ------ | ----------------------------------- |
+| fbLeaf            | number | 자식이 없는 진짜 리프.                      |
+| fbNoVisibleChild  | number | 프러스텀/바운더리 안에 있는 자식이 하나도 없음.        |
+| fbChildNotReady   | number | 자식이 있으나 로딩/텍스처가 끝나지 않음.            |
+| fbDrawLevel       | number | SSE가 여기서 멈추라고 판정(KEEP).              |
+
+**화면 구멍(그리기로 결정했으나 그릴 객체가 없는 노드)**
+
+| Name             | Type   | Description                                         |
+| ---------------- | ------ | --------------------------------------------------- |
+| holeTotal        | number | 그리기로 결정됐는데 객체가 없는 노드 수.                       |
+| holeUnrequested  | number | 요청 이력이 없음.                                       |
+| holeQueued       | number | 요청 큐에서 대기 중.                                    |
+| holeInFlight     | number | 전송 중.                                              |
+| holeLoadedEmpty  | number | 로딩은 끝났는데 객체가 없음(콘텐츠 없음/건너뜀).                  |
+| holeEmptyNoUrl   | number | `holeLoadedEmpty` 중 콘텐츠 URL 자체가 없음(구조용 중간 노드).    |
+| holeEmptyJson    | number | `holeLoadedEmpty` 중 중첩 타일셋(json)인데 셋이 없음.           |
+| holeEmptySkipped | number | `holeLoadedEmpty` 중 바운더리 때문에 콘텐츠를 건너뜀.            |
+| holeEmptyParsed  | number | `holeLoadedEmpty` 중 URL이 있고 받았는데 객체가 만들어지지 않음.   |
+
+**그리기 순회에서 배제된 노드 수**
+
+| Name          | Type   | Description                                                                 |
+| ------------- | ------ | --------------------------------------------------------------------------- |
+| exclFrustum   | number | 프러스텀 밖.                                                                  |
+| exclBoundary  | number | [setTileBoundary](jslayer.md#settileboundary-minlon-minlat-maxlon-maxlat) 범위 밖(교차 판정). |
+| exclHorizon   | number | 지평선 밖.                                                                   |
+| exclContained | number | 바운더리에 완전히 포함되지 않아 그리기 직전에 제외.                                 |
+| exclArea      | number | [setTileExcludeArea](jslayer.md#settileexcludearea-option-boolean) 영역으로 통째로 빠진 노드 수. |
+| maskPartial   | number | 제외 영역 경계에 걸쳐 셰이더 마스크를 켠 타일 수. 0이면 걸친 타일이 없다는 뜻입니다.            |
+
+**빈 하강/기타 진단**
+
+| Name               | Type    | Description                                                                         |
+| ------------------ | ------- | ----------------------------------------------------------------------------------- |
+| emptyDescendReady  | number  | 자식 준비 검사를 통과해 하강했는데 그 서브트리가 아무것도 그리지 못한 수.                      |
+| emptyDescendHold   | number  | 정제 유지로 하강했는데 그 서브트리가 아무것도 그리지 못한 수.                               |
+| emptyDump          | string  | 빈 하강 노드와 자식들의 상태 덤프(프레임당 앞쪽 몇 건만 기록).                                |
+| refineUnset        | number  | 정제 방식이 ADD/REPLACE 어느 분기에도 속하지 않은 노드 수.                                |
+| exclFrustumNoVol   | number  | 프러스텀 밖 판정 중 바운딩 볼륨이 없는 노드 수.                                         |
+| proxySkipDrawLevel | number  | 중첩 타일셋 프록시가 루트 KEEP 게이트에 막힌 수.                                         |
+| childEmptyPartial  | number  | 형제 중 일부만 그리지 못한 수(부분 구멍).                                              |
+| ancestorFill       | number  | 조상 채움 패스로 보낸 타일 수.                                                       |
+| jsonSkipHorizon    | number  | 지평선 밖이라 요청하지 않은 중첩 타일셋(json) 수.                                       |
+| nearPlane          | number  | 렌더에 쓰인 근평면 거리.                                                              |
+| farPlane           | number  | 렌더에 쓰인 원평면 거리.                                                              |
+| heightRelTerrain   | number  | 지형 기준 카메라 높이(진단용).                                                        |
+| loadBaseDist       | number  | 로딩 기준 거리(진단용).                                                              |
+| rootCulled         | number  | 이번 프레임에 루트가 프러스텀 밖으로 판정되었는지(0 또는 1).                                 |
+| rootDrawLevel      | number  | 루트의 드로우 레벨.                                                                   |
+| proxyDescend       | number  | 중첩 타일셋으로 정상 하강한 수.                                                        |
+| proxyNullRoot      | number  | 타일셋은 있으나 json이 아직 도착하지 않은(루트 없음) 수.                                   |
+| proxyToken         | number  | 토큰 요청 중인 수.                                                                    |
+| curTilt            | number  | 렌더에 쓰인 실제 틸트(목표 틸트와 비교용).                                                |

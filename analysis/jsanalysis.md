@@ -153,6 +153,71 @@ Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
 {% endtab %}
 {% endtabs %}
 
+### getVolumeVisibility(height) → string
+
+> 볼륨(불꽃 등) 객체의 가시율을 현재 카메라 위치 기준으로 반환합니다. 불꽃이 퍼질 수 있는 최대 영역이 산, 건물, 지형에 가려지지 않고 몇 % 보이는지를 계산합니다(가리는 것이 없으면 100, 영역의 절반이 가려지면 50).
+>
+> 대상은 표시 중인 레이어에 있는 [JSVolumeObject](../object/jsvolumeobject.md) 중 현재 시야에 들어오는 객체입니다. 지금 화면에 그려진 불꽃 픽셀을 세는 것이 아니라(불꽃은 매 순간 얇은 껍질 몇 개만 떠 있어 프레임마다 값이 변함), 불꽃이 도달할 수 있는 공간 전체를 불투명한 박스로 보고 가림이 없을 때의 화면 면적 대비 실제로 보이는 면적의 비율을 구합니다. 따라서 "이 자리에서 불꽃이 보이는가"를 판단하는 관람 위치 선정용이며, "지금 화면의 불꽃 중 몇 %가 가려졌는가"와는 다른 값입니다.
+>
+> 효과가 `Module.EVOL_FIREWORKS`(5)인 볼륨은 발사 지점 산포, 도달 높이 범위(`altMin` ~ `altMax`), 최대 폭발 반경(`radiusMax`)으로 영역을 정하며, 영역 바닥은 발사 지점 주변 지면 고도에서 잘라냅니다. 그 외 효과는 볼륨 박스 전체를 영역으로 봅니다.
+>
+> 조망 차폐율([getJomangRatio(height)](jsanalysis.md#getjomangratio-height-string))과 같이 현재 화면(카메라)을 기준으로 측정하므로, 호출 전에 카메라를 관람 위치로 이동해 두어야 합니다.
+
+{% tabs %}
+{% tab title="Name" %}
+
+| Name   | Type   | Description                                                                                  |
+| :----- | :----- | :--------------------------------------------------------------------------------------------- |
+| height | number | 지형, 산 기준 높이 (meter 단위). 영역을 가린 대상을 산과 지형으로 구분하는 데만 사용되며 가시율 값 자체에는 영향이 없습니다. |
+
+-   Return
+    -   `#`로 구분된 `이름#값` 쌍의 문자열. 순서는 다음과 같습니다.
+
+        `visible#..#blocked#..#build#..#mount#..#terrain#..#etc#..#screen#..#screenfull#..#nearbox#..#ground#..`
+
+        | Name       | Description                                                                                                  |
+        | :--------- | :------------------------------------------------------------------------------------------------------------- |
+        | visible    | 가려지지 않고 보이는 비율(%). 최대 영역을 100으로 봅니다.                                                    |
+        | blocked    | 가려진 비율(%). `100 - visible`.                                                                             |
+        | build      | 가려진 몫 중 건물이 가린 비율(%).                                                                            |
+        | mount      | 가려진 몫 중 산이 가린 비율(%).                                                                              |
+        | terrain    | 가려진 몫 중 지형이 가린 비율(%).                                                                            |
+        | etc        | 가려진 몫 중 위 셋으로 분류되지 않은 비율(%). `build + mount + terrain + etc = blocked`.                     |
+        | screen     | 보이는 영역이 화면에서 차지하는 비율(%).                                                                     |
+        | screenfull | 가림이 없었다면 영역이 화면에서 차지했을 비율(%). 100에 가까우면 영역이 화면을 넘쳤다는 뜻입니다.           |
+        | nearbox    | 1이면 카메라가 영역 안에 들어가 있어 면적이 제대로 계산되지 않은 것입니다. 카메라를 영역 밖으로 이동해야 합니다. |
+        | ground     | 영역 바닥을 자를 때 사용한 지면 고도(meter, 진단용). 사용되지 않았으면 -9999.0.                              |
+
+    -   화면에 영역이 없으면(`screenfull`이 0) `visible`, `blocked`는 -1.00으로 반환됩니다.
+    -   `""`(빈 문자열): 지도가 준비되지 않았거나 렌더링 버퍼를 만들지 못한 경우.
+
+-   Note
+    -   영역을 모서리가 둥근 박스가 아닌 각진 박스로 잡으므로, 가시율이 실제보다 조금 낮게(보수적으로) 계산됩니다.
+    -   화면 밖으로 나간 영역은 계산에서 제외되므로, 영역이 시야보다 크면 보이는 부분만을 기준으로 한 비율이 됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var result = Module.getAnalysis().getVolumeVisibility(100.0);
+
+// "visible#85.20#blocked#14.80#..." 형태의 문자열을 객체로 변환
+var tokens = result.split("#");
+var info = {};
+for (var i = 0; i + 1 < tokens.length; i += 2) {
+    info[tokens[i]] = parseFloat(tokens[i + 1]);
+}
+
+if (info.nearbox === 1) {
+    console.warn("카메라가 영역 안에 있습니다. 영역 밖으로 이동하세요.");
+} else if (info.visible >= 0) {
+    console.log("가시율: " + info.visible + "%");
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getJudong(angle) → string
 
 > 지동 길이를 측정하고 측정 정보를 반환합니다.

@@ -436,13 +436,15 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTextureUsedSize() → number
 
-> 현재 GPU 텍스처 사용량을 반환합니다(진단용).
+> 현재 GPU 텍스처 사용량을 반환합니다(진단용). 지형/건물 등 타일 텍스처와 POI 라벨 등 UI 텍스처를 합한 전체 사용량입니다(전체 = 타일 + UI).
+>
+> 텍스처 예산 판정에 쓰이는 타일 전용 사용량은 getTileTextureUsedSize(), UI 텍스처만의 사용량은 getUiTextureUsedSize()로 각각 확인할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
 
 -   Return
-    -   number: 현재 텍스처 사용량(byte 단위).
+    -   number: 현재 텍스처 전체 사용량(byte 단위, 타일 + UI).
     -   0: 지도가 초기화되지 않은 경우.
 
 {% endtab %}
@@ -450,6 +452,47 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ```javascript
 
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTileTextureUsedSize() → number
+
+> 타일 텍스처(지형, 건물 등)의 현재 GPU 사용량을 반환합니다(진단용). POI 라벨 등 UI 텍스처는 제외되며, 텍스처 예산([setTexturePoolSize(size)](jsoption.md#settexturepoolsize-size-boolean)) 초과 여부를 판정할 때 실제로 사용되는 값입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 타일 텍스처 사용량(byte 단위).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var tileSize = Module.getOption().getTileTextureUsedSize();
+var budget = Module.getOption().getTexturePoolSize();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getUiTextureUsedSize() → number
+
+> POI 라벨 등 UI 텍스처만의 현재 GPU 사용량을 반환합니다(진단용). 타일 텍스처는 제외됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: UI 텍스처 사용량(byte 단위).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var uiSize = Module.getOption().getUiTextureUsedSize();
 ```
 
 {% endtab %}
@@ -525,6 +568,331 @@ var count = Module.getOption().getMaxTextureDecodePerFrame();
 ```javascript
 Module.getOption().setMaxReal3DPackDecodePerFrame(2);
 var count = Module.getOption().getMaxReal3DPackDecodePerFrame();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMax3DTilesApplyPerFrame(), setMax3DTilesApplyPerFrame(count) → number
+
+> 웹 워커가 파싱을 마친 3D Tiles 타일을 한 프레임에 최대 몇 개까지 객체로 적용할지(건수 상한)를 설정합니다. 기본값은 64입니다.
+>
+> 실질적인 적용 예산은 시간 기준인 [setMax3DTilesApplyMsPerFrame(ms)](jsoption.md#getmax3dtilesapplymsperframe-setmax3dtilesapplymsperframe-ms-number)이며, 이 값은 안전 상한 역할을 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                        |
+| ----- | ------ | -------------------------------------------------- |
+| count | number | 프레임당 최대 적용 건수. 1 미만의 값은 1로 설정됩니다. |
+
+-   Return(getMax3DTilesApplyPerFrame)
+    -   number: 현재 설정된 프레임당 최대 적용 건수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMax3DTilesApplyPerFrame(32);
+var count = Module.getOption().getMax3DTilesApplyPerFrame();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMax3DTilesApplyMsPerFrame(), setMax3DTilesApplyMsPerFrame(ms) → number
+
+> 워커가 파싱을 마친 3D Tiles 타일을 한 프레임에 적용하는 데 쓸 수 있는 시간 예산(ms)을 설정합니다. 기본값은 6.0입니다.
+>
+> 한 프레임에서 이 시간을 넘기면 적용을 중단하고 남은 타일은 다음 프레임에 처리하며, 최소 1건은 반드시 적용합니다. 지도 이동 중에는 예산이 절반으로 줄고, 적용 대기 중인 타일이 32개를 넘으면 2배, 128개를 넘으면 다시 2배로 늘어납니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                        |
+| ---- | ------ | -------------------------------------------------- |
+| ms   | number | 프레임당 적용 시간 예산(ms). 0.5 미만의 값은 0.5로 설정됩니다. |
+
+-   Return(getMax3DTilesApplyMsPerFrame)
+    -   number: 현재 설정된 프레임당 적용 시간 예산(ms).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMax3DTilesApplyMsPerFrame(4.0);
+var ms = Module.getOption().getMax3DTilesApplyMsPerFrame();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxTileParseQueue(), setMaxTileParseQueue(count) → number
+
+> 3D Tiles 파싱 워커 대기열(워커에서 파싱 중이거나 적용 대기 중인 타일)의 최대 건수를 설정합니다. 기본값은 256입니다.
+>
+> 대기열이 상한에 도달하면 이후 도착한 타일은 워커로 보내지 않고 메인 스레드에서 동기 파싱합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                                                       |
+| ----- | ------ | --------------------------------------------------------------------------------- |
+| count | number | <p>대기열 최대 건수.<br>0: 건수 제한 없음.<br>음수: 무시되며 기존 값이 유지됩니다.</p> |
+
+-   Return(getMaxTileParseQueue)
+    -   number: 현재 설정된 대기열 최대 건수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMaxTileParseQueue(128);
+var count = Module.getOption().getMaxTileParseQueue();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxTileParseQueueMB(), setMaxTileParseQueueMB(size) → number
+
+> 3D Tiles 파싱 워커 응답을 기다리는 동안 메인 스레드가 보관 중인 원본 데이터의 최대 크기(MB)를 설정합니다. 기본값은 96입니다.
+>
+> 이 예산을 초과하는 타일은 워커로 보내지 않고 메인 스레드에서 동기 파싱합니다. [setMaxTileParseQueue(count)](jsoption.md#getmaxtileparsequeue-setmaxtileparsequeue-count-number)의 건수 상한과 별개로 동작하며, 둘 중 하나라도 초과하면 동기 파싱합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                                       |
+| ---- | ------ | --------------------------------------------------------------------------------- |
+| size | number | <p>보관 예산(MB).<br>0: 크기 제한 없음.<br>음수: 무시되며 기존 값이 유지됩니다.</p> |
+
+-   Return(getMaxTileParseQueueMB)
+    -   number: 현재 설정된 보관 예산(MB).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMaxTileParseQueueMB(64);
+var size = Module.getOption().getMaxTileParseQueueMB();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxTilesRetainedMB(), setMaxTilesRetainedMB(size) → number
+
+> 3D Tiles가 메모리에 보유하는 타일 콘텐츠(정점, 인덱스, 텍스처 원본)의 총 크기 상한(MB)을 설정합니다. 기본값은 512입니다.
+>
+> 보유량이 상한을 넘으면 최근에 그려지지 않은 타일부터 콘텐츠를 해제합니다. 해제된 타일은 다시 필요해질 때 재요청됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                                 |
+| ---- | ------ | --------------------------------------------------------------------------- |
+| size | number | <p>보유 상한(MB).<br>0: 상한 없음(해제하지 않음).<br>음수: 무시되며 기존 값이 유지됩니다.</p> |
+
+-   Return(getMaxTilesRetainedMB)
+    -   number: 현재 설정된 보유 상한(MB).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMaxTilesRetainedMB(256);
+var size = Module.getOption().getMaxTilesRetainedMB();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTextureTranscodeTarget(), setTextureTranscodeTarget(target) → number
+
+> KTX2 텍스처를 GPU 압축 포맷으로 트랜스코딩할 때의 타깃 포맷을 직접 지정합니다. 기본값은 브라우저/GPU가 지원하는 확장에 따라 엔진이 자동으로 선택한 값(BC7, ASTC, ETC2, BC3 순으로 우선, 모두 미지원 시 비압축 RGBA)입니다.
+>
+> 포맷에 따라 화질, 트랜스코딩 속도, 텍스처 메모리 사용량이 달라집니다. 화질/속도 우선 중 하나만 고르려면 [setTextureTranscodeMode(mode)](jsoption.md#gettexturetranscodemode-settexturetranscodemode-mode-string)를 사용하세요.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                                                                                                                                                                                                                                        |
+| ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target | number | <p>트랜스코딩 타깃 포맷 번호.<br>0: 자동 판정 값으로 복원.<br>1: ETC2 RGBA.<br>2: BC1(DXT1). 알파를 담지 못하므로 투명 텍스처의 투명도가 사라집니다(비교 측정용).<br>3: BC3(DXT5).<br>6: BC7.<br>10: ASTC 4x4.<br>13: 비압축 RGBA32.<br>그 외 값은 무시되며 기존 값이 유지됩니다.</p> |
+
+-   Return(getTextureTranscodeTarget)
+    -   number: 현재 적용 중인 타깃 포맷 번호.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// BC3로 트랜스코딩(화질을 일부 낮추고 속도를 높임)
+Module.getOption().setTextureTranscodeTarget(3);
+var target = Module.getOption().getTextureTranscodeTarget();
+
+// 자동 판정 값으로 복원
+Module.getOption().setTextureTranscodeTarget(0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTextureTranscodeMode(), setTextureTranscodeMode(mode) → string
+
+> KTX2 텍스처 트랜스코딩을 화질 우선 또는 속도 우선으로 선택합니다. 기기가 지원하는 포맷은 엔진이 이미 판정해 두었으므로 포맷 번호를 알 필요 없이 둘 중 하나만 고르면 됩니다.
+>
+> 반환값은 설정 후 실제로 적용된 모드입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                                                                                                                                       |
+| ---- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| mode | string | <p>트랜스코딩 모드.<br>"quality": 화질 우선(기본값). 자동 판정된 최적 포맷을 사용합니다.<br>"auto": "quality"와 동일.<br>"speed": 속도 우선. 트랜스코딩이 가장 저렴한 포맷(ETC2, BC3, ASTC, BC7 순)을 사용합니다.<br>그 외 문자열 또는 문자열이 아닌 값은 무시되며 현재 모드가 반환됩니다.</p> |
+
+-   Return(getTextureTranscodeMode, setTextureTranscodeMode)
+    -   "quality": 화질 우선 포맷이 적용 중인 경우.
+    -   "speed": 속도 우선 포맷이 적용 중인 경우.
+    -   "custom": [setTextureTranscodeTarget(target)](jsoption.md#gettexturetranscodetarget-settexturetranscodetarget-target-number)으로 포맷을 직접 지정한 경우.
+
+> 기기가 지원하는 속도 우선 포맷과 화질 우선 포맷이 같으면 "speed"를 설정해도 "quality"가 반환됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var mode = Module.getOption().setTextureTranscodeMode("speed");
+console.log(mode, Module.getOption().getTextureTranscodeMode());
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getTextureOpaqueOptimize(), setTextureOpaqueOptimize(use) → boolean
+
+> 알파(투명도)가 없는 텍스처를 절반 크기(4bpp)의 불투명 전용 포맷(BC1/DXT1)으로 트랜스코딩할지 설정합니다. 텍스처 메모리를 크게 줄일 수 있으며, 화질 저하는 소폭입니다.
+>
+> 불투명 전용 포맷을 지원하는 환경(S3TC를 지원하는 데스크탑 등)에서만 동작합니다. 지원하지 않는 환경에서는 true로 설정해도 적용되지 않으며 getTextureOpaqueOptimize()는 false를 반환합니다. 기본적으로는 지원 환경에서 켜져 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                                   |
+| ---- | ------- | --------------------------------------------------------------------------------------------- |
+| use  | boolean | <p>true: 알파 없는 텍스처를 불투명 전용 포맷으로 변환(지원 환경 기본값).<br>false: 모든 텍스처를 알파 지원 포맷으로 처리.</p> |
+
+-   Return(getTextureOpaqueOptimize)
+    -   true: 불투명 최적화가 적용 중인 경우.
+    -   false: 꺼져 있거나 지원하지 않는 환경인 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setTextureOpaqueOptimize(false);
+var use = Module.getOption().getTextureOpaqueOptimize();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getWebWorkerCount(), setWebWorkerCount(count) → number
+
+> 웹 워커 풀의 목표 워커 수를 런타임에 조절합니다. 기본값은 5이며, 적용된 목표 수를 반환합니다.
+>
+> 워커 수를 늘리면 즉시 생성하고, 줄이면 작업 큐가 빈 워커부터 파괴합니다. 작업 중인 워커는 큐가 빌 때까지 남아 있으므로 줄이는 동안에는 목표 수(getWebWorkerCount)와 실제 동작 중인 워커 수([getWebWorkerActiveCount()](jsoption.md#getwebworkeractivecount-number))가 잠시 다를 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type             | Description                                                                                                                                                                                                              |
+| ----- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| count | number \| string | <p>목표 워커 수.<br>숫자: 1 ~ 최대 워커 수([setWebWorkerMaxCount(max)](jsoption.md#getwebworkermaxcount-setwebworkermaxcount-max-number)) 범위로 조정됩니다.<br>"auto": 브라우저의 코어 수(hardwareConcurrency)에서 1을 뺀 값(최소 2)을 기준으로 하고, 장치 메모리(deviceMemory)를 알 수 있으면 GB당 2개(최소 2)를 넘지 않게 제한한 뒤 최대 워커 수 이하로 조정합니다.<br>그 외 문자열 또는 숫자가 아닌 값은 무시되며 현재 목표 수가 반환됩니다.</p> |
+
+-   Return(getWebWorkerCount, setWebWorkerCount)
+    -   number: 적용된(현재) 목표 워커 수.
+    -   0: 웹 워커를 사용하지 않도록 설정된 경우(setWebWorkerCount에서 숫자 또는 "auto"를 전달했을 때).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var applied = Module.getOption().setWebWorkerCount(4);
+var auto = Module.getOption().setWebWorkerCount("auto");
+var target = Module.getOption().getWebWorkerCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getWebWorkerActiveCount() → number
+
+> 현재 실제로 살아 있는 웹 워커 수를 반환합니다(진단용). 워커 수를 줄이는 중에는 목표 수([getWebWorkerCount()](jsoption.md#getwebworkercount-setwebworkercount-count-number))보다 클 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 현재 생성되어 있는 웹 워커 수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var active = Module.getOption().getWebWorkerActiveCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getWebWorkerMaxCount(), setWebWorkerMaxCount(max) → number
+
+> 웹 워커 풀의 최대 워커 수(상한)를 설정합니다. 기본값은 8입니다. [setWebWorkerCount(count)](jsoption.md#getwebworkercount-setwebworkercount-count-number)의 숫자 지정, "auto", 그리고 대용량(16MB 초과) 작업용 임시 워커 생성 모두 이 값을 넘지 않습니다.
+>
+> 현재 목표 워커 수가 새 상한보다 크면 즉시 상한에 맞게 줄입니다. 적용된 상한을 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                           |
+| ---- | ------ | ------------------------------------- |
+| max  | number | 최대 워커 수. 1 ~ 255 범위로 조정됩니다. |
+
+-   Return(getWebWorkerMaxCount, setWebWorkerMaxCount)
+    -   number: 적용된(현재) 최대 워커 수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setWebWorkerMaxCount(12);
+Module.getOption().setWebWorkerCount("auto");
+var max = Module.getOption().getWebWorkerMaxCount();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setEnableWBOIT(enable)
+
+> Weighted Blended OIT(순서 독립 투명도) 렌더링을 런타임에 켜거나 끕니다. 기본값은 false(기존 알파 블렌딩 방식)입니다.
+>
+> 하드웨어가 필요한 확장(EXT_color_buffer_float/half_float)을 지원하지 않으면 true로 설정해도 자동으로 기존 방식으로 대체됩니다. 현재 설정값을 조회하는 getter는 제공되지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type    | Description                                                                          |
+| ------ | ------- | ------------------------------------------------------------------------------------ |
+| enable | boolean | <p>true: Weighted Blended OIT 사용.<br>false: 기존 알파 블렌딩 사용(기본값).</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setEnableWBOIT(true);
 ```
 
 {% endtab %}

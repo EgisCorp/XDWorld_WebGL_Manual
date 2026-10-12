@@ -533,6 +533,113 @@ object.setIcon(icon);
 {% endtab %}
 {% endtabs %}
 
+### setImageCompressed(data, format, width, height) → boolean
+
+> POI 객체를 구성하는 이미지를 압축 텍스처 데이터로 설정합니다.
+>
+> 변환 없이 압축 블록을 그대로 GPU에 업로드하므로 RGBA4444(2B/px) 대비 메모리를 절반 이하로 줄일 수 있습니다. 압축 인코딩은 호출자(예: 워커)가 미리 수행해야 합니다.
+>
+> 입력 변수값(format)은 숫자가 아닌 이름 문자열이며 대소문자를 구분하지 않습니다. 기기가 해당 포맷의 WebGL 확장을 지원하지 않으면 실패합니다.
+>
+> 입력 변수값(data)의 크기는 `ceil(width/블록가로) × ceil(height/블록세로) × 블록당 바이트 수`와 정확히 같아야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type       | Description                                  |
+| :----- | :--------- | :------------------------------------------- |
+| data   | Uint8Array | 압축 텍스처 블록 데이터.                     |
+| format | string     | 압축 포맷 이름 (아래 표 참고).               |
+| width  | number     | 이미지 너비(px). 0보다 커야 합니다.          |
+| height | number     | 이미지 높이(px). 0보다 커야 합니다.          |
+
+**format 목록**
+
+| format                | 블록 크기 | 블록당 바이트 | 필요한 WebGL 확장                   |
+| :-------------------- | :-------- | :------------ | :---------------------------------- |
+| "bc3", "dxt5"         | 4×4       | 16            | WEBGL_compressed_texture_s3tc       |
+| "bc1", "dxt1"         | 4×4       | 8             | WEBGL_compressed_texture_s3tc       |
+| "bc7"                 | 4×4       | 16            | EXT_texture_compression_bptc        |
+| "etc2", "etc2rgba"    | 4×4       | 16            | WEBGL_compressed_texture_etc        |
+| "etc2rgb"             | 4×4       | 8             | WEBGL_compressed_texture_etc        |
+| "astc4x4"             | 4×4       | 16            | WEBGL_compressed_texture_astc       |
+| "astc6x6"             | 6×6       | 16            | WEBGL_compressed_texture_astc       |
+| "astc8x8"             | 8×8       | 16            | WEBGL_compressed_texture_astc       |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   POI 객체 또는 월드가 없는 경우.
+        -   입력 변수값(width, height)이 0인 경우.
+        -   알 수 없는 format 이름인 경우.
+        -   기기가 해당 포맷을 지원하지 않는 경우.
+        -   입력 변수값(data) 크기가 포맷과 이미지 크기로 계산한 크기와 다른 경우.
+        -   텍스처 업로드에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 400x128 BC3 이미지: (400/4) * (128/4) * 16 = 51,200 bytes
+let ok = poi.setImageCompressed(bc3Bytes, "bc3", 400, 128);
+if (!ok) {
+    // 미지원 기기 등에서는 setImage()로 대체
+    poi.setImage(rgbaBytes, 400, 128);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setImageAtlas(atlasId, x, y, width, height) → boolean
+
+> 아틀라스 텍스처의 한 칸을 POI 객체의 이미지로 설정합니다.
+>
+> 아틀라스는 [XDECreateLabelAtlas](../module/moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 미리 생성하며, 여러 라벨 이미지를 한 장에 모아 한 번만 업로드하므로 [setImage](jspoint.md#setimage-data-width-height-boolean)를 라벨마다 호출할 때 발생하는 GL 텍스처 생성/업로드 비용을 크게 줄일 수 있습니다.
+>
+> POI는 아틀라스 텍스처를 참조만 하며(참조 계수), 칸 위치는 UV로 정점에 반영됩니다. 따라서 아틀라스를 모두 붙인 직후 [XDEReleaseLabelAtlas](../module/moduleapi.md#xdereleaselabelatlas-atlasid-boolean)를 호출해도 해당 POI가 살아 있는 동안은 텍스처가 유지되며, 마지막 POI가 사라질 때 함께 해제됩니다.
+>
+> 칸 좌표는 아틀라스 이미지 기준 픽셀 단위이며 좌상단이 원점입니다. 인접 칸의 이미지가 번지지 않도록 아틀라스는 항상 NEAREST 필터로 샘플링되므로, 필요하면 칸 사이에 여백(padding)을 두세요.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                              |
+| :------ | :----- | :--------------------------------------- |
+| atlasId | number | XDECreateLabelAtlas가 반환한 아틀라스 ID. |
+| x       | number | 칸의 좌측 위치(px).                      |
+| y       | number | 칸의 상단 위치(px).                      |
+| width   | number | 칸의 너비(px). 0보다 커야 합니다.        |
+| height  | number | 칸의 높이(px). 0보다 커야 합니다.        |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+    -   실패 조건
+        -   POI 객체가 없는 경우.
+        -   입력 변수값(width, height)이 0인 경우.
+        -   atlasId가 등록되지 않았거나 이미 해제된 경우.
+        -   칸 영역(x+width, y+height)이 아틀라스 크기를 벗어나는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// atlasRGBA: 512x512 RGBA8 Uint8Array (라벨 이미지 여러 장을 격자로 배치)
+let atlasId = Module.XDECreateLabelAtlas(atlasRGBA, 512, 512);
+
+// 각 POI에 칸(x, y, w, h) 지정 — 라벨 크기는 128x32
+poi1.setImageAtlas(atlasId, 0, 0, 128, 32);
+poi2.setImageAtlas(atlasId, 128, 0, 128, 32);
+
+// 모든 POI에 붙인 뒤 레지스트리에서 해제 (POI가 참조 중이면 텍스처는 유지됨)
+Module.XDEReleaseLabelAtlas(atlasId);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setLatitude(lat) → boolean
 
 > POI 객체의 위도를 설정합니다.

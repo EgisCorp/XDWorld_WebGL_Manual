@@ -1611,6 +1611,49 @@ API.JSCamera.moveLeftRight(-10.0); // 왼쪽으로 이동
 {% endtab %}
 {% endtabs %}
 
+### moveWithSlide(frontBack, leftRight, radius) → boolean
+
+> 카메라를 앞뒤/좌우로 이동하되, 이동 경로에서 벽에 막히면 이동을 취소하지 않고 벽면을 따라 미끄러지듯 이동합니다. 건물 내부 탐색 등 1인칭 이동에서 벽 통과를 막는 용도로 사용합니다.
+>
+> 이동할 위치를 중심으로 `radius` 반경 안에 있는 모든 레이어(3DS, XDO 등 객체 레이어와 XDServer 건물 등 타일 레이어)의 면을 검사해 가장 가까운 충돌점을 찾고, 벽 쪽으로 향하는 이동 성분은 제거한 뒤 벽과 나란한 성분만 남겨 이동합니다. 모서리처럼 벽이 둘인 경우를 위해 최대 2회까지 보정합니다. 이미 벽에 `radius`보다 가깝게 파고든 경우에는 벽 밖으로 밀어냅니다(한 번에 최대 `radius`).
+>
+> 보정된 이동량은 [moveFrontBack(delta)](jscamera.md#movefrontback-delta), [moveLeftRight(delta)](jscamera.md#moveleftright-delta)로 적용되므로 해당 함수와 동일하게 동작합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description                                                                 |
+| --------- | ------ | ----------------------------------------------------------------------------- |
+| frontBack | number | 앞뒤 이동 거리. 양수면 앞으로, 음수면 뒤로 이동. |
+| leftRight | number | 좌우 이동 거리. 양수면 오른쪽, 음수면 왼쪽으로 이동. |
+| radius    | number | 벽과의 최소 간격(충돌 반경, meter 단위). 이 반경 안에 벽이 들어오면 충돌로 판단. |
+
+-   Return
+    -   true: 이동 성공(벽에 막히지 않았거나, 벽면을 따라 보정하여 이동한 경우).
+    -   false: 지도가 초기화되지 않았거나, `frontBack`과 `leftRight`가 모두 0(또는 0에 가까운 값)인 경우, 2회 보정으로도 충돌을 해소하지 못해 제자리에 머문 경우.
+-   Note
+    -   거의 수평인 면(바닥, 천장 등. 법선의 수평 성분이 0.3 미만)은 벽으로 취급하지 않으며, 벽 판정에서 제외됩니다.
+    -   표시 중(visible)인 레이어만 충돌 검사 대상입니다.
+
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+var camera = Module.getViewCamera();
+
+// 키 입력에 따른 1인칭 이동 (벽과 0.5m 간격 유지, 벽면을 따라 미끄러짐)
+var front = 0.0;
+var right = 0.0;
+if (GLOBAL["KEY_PRESS_w"]) front = 0.2;
+if (GLOBAL["KEY_PRESS_s"]) front = -0.2;
+if (GLOBAL["KEY_PRESS_d"]) right = 0.2;
+if (GLOBAL["KEY_PRESS_a"]) right = -0.2;
+
+camera.moveWithSlide(front, right, 0.5);
+```
+{% endtab %}
+{% endtabs %}
+
 ### moveFront()
 
 > 카메라를 현재 시점 방향으로 전진시킵니다.\

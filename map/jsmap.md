@@ -2007,6 +2007,60 @@ Module.getMap().ClearMap();
 {% endtab %}
 {% endtabs %}
 
+### setWaterFallSize(key, size)
+
+> 지정한 폭포 파티클의 최대 크기를 변경합니다.
+>
+> 파티클은 1.0에서 시작해 점점 커지다가 최대 크기에 도달하면 폭포 위치에서 다시 생성되며, 커질수록 투명해집니다. 따라서 최대 크기는 파티클의 크기뿐 아니라 수명과 투명도 변화에도 영향을 줍니다. 변경 값은 다음 프레임부터 반영됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                      |
+| ---- | ------ | ------------------------------------------------------------------ |
+| key  | string | 폭포 고유 키.                                                    |
+| size | number | 파티클 최대 크기. 0.01보다 작은 값은 0.01로 적용됩니다.          |
+
+-   Note
+    -   지도가 초기화되지 않았거나 `key`에 해당하는 폭포가 없으면 아무 동작도 하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setWaterFallSize("waterfall01", 30);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setWaterFallParticleCount(key, particleCount)
+
+> 지정한 폭포의 파티클 수(목표 개수)를 변경합니다.
+>
+> 늘리는 경우 프레임마다 목표 개수의 약 1/100씩 점진적으로 채워지고, 줄이는 경우 초과분이 즉시 제거됩니다(카메라에 가까운 파티클부터 제거).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name          | Type   | Description                                         |
+| ------------- | ------ | ----------------------------------------------------- |
+| key           | string | 폭포 고유 키.                                       |
+| particleCount | number | 목표 파티클 수. 음수는 0으로 적용됩니다.            |
+
+-   Note
+    -   지도가 초기화되지 않았거나 `key`에 해당하는 폭포가 없으면 아무 동작도 하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getMap().setWaterFallParticleCount("waterfall01", 1000);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### addHeatMap(position)
 
 > 히트맵에 좌표 1개를 추가합니다 (가중치 1.0 고정).

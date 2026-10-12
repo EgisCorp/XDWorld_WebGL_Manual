@@ -26,6 +26,8 @@ var map = Module.getTerrain();
 | imageServerRoot   | string | (읽기 전용) 지형 영상 서버 루트 경로 |
 | imageLayerName    | string | (읽기 전용) 지형 영상 서버 레이어 명칭 |
 | demBox            | object | (읽기 전용) 설정된 DEM Box 정보. `getDemBox()`와 동일한 형태. |
+| demLevelRange     | object | (읽기 전용) DEM 서비스 레벨 범위. `{ minLevel, maxLevel }` 형태이며 값이 -1이면 해당 방향은 제한 없음. 변경은 [setDemLevelRange(minLevel, maxLevel)](jsterrain.md#setdemlevelrange-minlevel-maxlevel-boolean)를 사용합니다. |
+| imageLevelRange   | object | (읽기 전용) 지형 영상 서비스 레벨 범위. `{ minLevel, maxLevel }` 형태이며 값이 -1이면 해당 방향은 제한 없음. 변경은 [setImageLevelRange(minLevel, maxLevel)](jsterrain.md#setimagelevelrange-minlevel-maxlevel-boolean)를 사용합니다. |
 
 ## Function
 
@@ -269,6 +271,88 @@ var map = Module.getTerrain();
 {% endtab %}
 {% endtabs %}
 
+### setDemLevelRange(minLevel, maxLevel) → boolean
+
+> DEM(고도) 데이터를 서버에 요청할 서비스 레벨 범위를 설정합니다.
+>
+> 지정한 범위 밖의 레벨에서는 DEM 타일을 요청하지 않으며, 설정 값이 실제로 바뀌는 경우에만 지형을 레벨 0부터 다시 생성합니다. 현재 설정은 `demLevelRange` 속성으로 조회할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                                                                 |
+| -------- | ------ | ----------------------------------------------------------------------------- |
+| minLevel | number | 요청 최소 레벨. 음수를 지정하면 하한 제한이 없습니다(-1로 저장). |
+| maxLevel | number | 요청 최대 레벨. 음수를 지정하면 상한 제한이 없습니다(-1로 저장). |
+
+-   Return
+    -   true: 설정 성공(값이 동일하여 재생성을 건너뛴 경우 포함).
+    -   false: 지도가 초기화되지 않은 경우.
+-   Note
+    -   `minLevel`과 `maxLevel`이 모두 0 이상이고 `minLevel`이 더 큰 경우 두 값을 서로 교환하여 적용합니다.
+    -   초기값은 최소/최대 모두 -1(제한 없음)이며, 지도 초기화 시 `dem`에 지정한 `minLevel`/`maxLevel`이 있으면 그 값으로 시작합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// DEM을 8 ~ 14 레벨에서만 서버에 요청
+Module.getTerrain().setDemLevelRange(8, 14);
+
+// 최소 레벨만 제한 (최대 레벨 제한 없음)
+Module.getTerrain().setDemLevelRange(8, -1);
+
+// 현재 설정 조회
+var range = Module.getTerrain().demLevelRange;
+console.log(range.minLevel, range.maxLevel);
+
+// 제한 해제
+Module.getTerrain().setDemLevelRange(-1, -1);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setImageLevelRange(minLevel, maxLevel) → boolean
+
+> 지형 영상(위성) 타일을 서버에 요청할 서비스 레벨 범위를 설정합니다.
+>
+> 지정한 범위 밖의 레벨에서는 영상 타일을 요청하지 않고 부모 레벨의 텍스처를 확대하여 사용하며, 설정 값이 실제로 바뀌는 경우에만 지형을 레벨 0부터 다시 생성합니다. 현재 설정은 `imageLevelRange` 속성으로 조회할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type   | Description                                                                 |
+| -------- | ------ | ----------------------------------------------------------------------------- |
+| minLevel | number | 요청 최소 레벨. 음수를 지정하면 하한 제한이 없습니다(-1로 저장). |
+| maxLevel | number | 요청 최대 레벨. 음수를 지정하면 상한 제한이 없습니다(-1로 저장). |
+
+-   Return
+    -   true: 설정 성공(값이 동일하여 재생성을 건너뛴 경우 포함).
+    -   false: 지도가 초기화되지 않은 경우.
+-   Note
+    -   `minLevel`과 `maxLevel`이 모두 0 이상이고 `minLevel`이 더 큰 경우 두 값을 서로 교환하여 적용합니다.
+    -   초기값은 최소/최대 모두 -1(제한 없음)이며, 지도 초기화 시 `image`에 지정한 `minLevel`/`maxLevel`이 있으면 그 값으로 시작합니다.
+    -   위성 서버 사용 여부([setImageServerEnable](jsterrain.md#setimageserverenable-enable-boolean))가 false이면 레벨 범위와 무관하게 영상을 요청하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 영상을 0 ~ 12 레벨에서만 서버에 요청 (그 이상은 12레벨 텍스처를 확대하여 표시)
+Module.getTerrain().setImageLevelRange(0, 12);
+
+// 현재 설정 조회
+var range = Module.getTerrain().imageLevelRange;
+console.log(range.minLevel, range.maxLevel);
+
+// 제한 해제
+Module.getTerrain().setImageLevelRange(-1, -1);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### setSkirtHeight(height)
 
 > 지형 타일 경계의 스커트(skirt, 이음새 가림용 수직 벽) 높이를 설정합니다.
@@ -455,6 +539,119 @@ Module.getTerrain().setImageMask({
     }
 });
 ```
+{% endtab %}
+{% endtabs %}
+
+### setEarthImageBASE64(base64Data) → boolean
+
+> 사용자가 지정한 이미지를 지구본(지구 전체) 표면 텍스처로 적용합니다.
+>
+> 이미지는 지구 전체에 한 장으로 입혀지며, 적용을 위해 지형을 레벨 0부터 다시 생성합니다. 적용된 이미지를 해제하려면 [resetEarthImage()](jsterrain.md#resetearthimage-boolean)를 사용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name       | Type   | Description                                                                 |
+| ---------- | ------ | ----------------------------------------------------------------------------- |
+| base64Data | string | 이미지 파일(PNG, JPEG 등)을 base64로 인코딩한 문자열. `data:image/png;base64,` 같은 접두어는 제외하고 base64 본문만 전달해야 합니다. |
+
+-   Return
+    -   true: 적용 성공.
+    -   false: 지도가 초기화되지 않았거나, base64 디코딩 결과가 비어있는 경우, 이미지를 텍스처로 읽지 못한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 이미지 파일을 base64 본문으로 변환 후 적용
+fetch("earth.jpg")
+    .then(function (res) { return res.blob(); })
+    .then(function (blob) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var base64 = reader.result.split(",")[1];
+            Module.getTerrain().setEarthImageBASE64(base64);
+        };
+        reader.readAsDataURL(blob);
+    });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### resetEarthImage() → boolean
+
+> [setEarthImageBASE64](jsterrain.md#setearthimagebase64-base64data-boolean) 또는 [setEarthVideoFrame](jsterrain.md#setearthvideoframe-ptr-width-height-boolean)으로 적용한 사용자 지구본 이미지를 해제하고, 원래의 이미지 레이어 표현으로 되돌립니다.
+>
+> 지형을 레벨 0부터 다시 생성합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   true: 해제 성공.
+    -   false: 지도가 초기화되지 않은 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getTerrain().resetEarthImage();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setEarthVideoFrame(ptr, width, height) → boolean
+
+> 비디오 등의 프레임 픽셀 데이터를 지구본 표면 텍스처로 적용합니다. 프레임마다 반복 호출하여 지구본에 동영상을 표출할 수 있습니다.
+>
+> 이전 프레임과 크기(width, height)가 같으면 렌더링 루프를 멈추지 않고 텍스처의 픽셀만 갱신하며, 크기가 달라지거나 처음 호출되는 경우에는 텍스처를 새로 만들고 지형을 레벨 0부터 다시 생성합니다. 따라서 프레임마다 크기를 바꾸지 않는 것이 좋습니다. 적용된 이미지는 [resetEarthImage()](jsterrain.md#resetearthimage-boolean)로 해제합니다.
+>
+> 전달한 버퍼의 해제(`Module._free`)는 호출한 쪽(JS)의 책임입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description                                                                                  |
+| ------ | ------ | ---------------------------------------------------------------------------------------------- |
+| ptr    | number | RGBA 픽셀 데이터가 담긴 wasm 힙 버퍼 포인터(`Module._malloc` 반환값). 픽셀당 4byte, 총 `width * height * 4` byte 크기여야 합니다. |
+| width  | number | 프레임 가로 크기(pixel). 0보다 커야 합니다.                                                          |
+| height | number | 프레임 세로 크기(pixel). 0보다 커야 합니다.                                                          |
+
+-   Return
+    -   true: 적용(또는 갱신) 성공.
+    -   false: 지도가 초기화되지 않았거나, `ptr`이 0이거나, `width`/`height`가 0 이하인 경우, 텍스처 갱신에 실패한 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var video = document.getElementById("video");
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+var width = video.videoWidth;
+var height = video.videoHeight;
+canvas.width = width;
+canvas.height = height;
+
+var ptr = Module._malloc(width * height * 4);
+
+function update() {
+    ctx.drawImage(video, 0, 0, width, height);
+    var frame = ctx.getImageData(0, 0, width, height);
+    Module.HEAPU8.set(frame.data, ptr);
+    Module.getTerrain().setEarthVideoFrame(ptr, width, height);
+    requestAnimationFrame(update);
+}
+update();
+
+// 종료 시: 지구본 이미지 해제 후 버퍼 해제
+// Module.getTerrain().resetEarthImage();
+// Module._free(ptr);
+```
+
 {% endtab %}
 {% endtabs %}
 

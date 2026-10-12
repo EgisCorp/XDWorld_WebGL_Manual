@@ -306,6 +306,33 @@ var count = visualizer.count();
 {% endtab %}
 {% endtabs %}
 
+### isExist(key) → boolean
+
+> key에 해당하는 데이터 시각화 객체가 존재하는지 확인합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description   |
+| ---- | ------ | -------------- |
+| key  | string | 확인할 객체 key. |
+
+-   Return
+    -   true: key에 해당하는 객체가 존재하는 경우.
+    -   false: 객체가 없거나, 지도가 준비되지 않았거나, 데이터 시각화 관리자가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+if (visualizer.isExist("LINE_1")) {
+    visualizer.setLineWidth("LINE_1", 3.0);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### focus(key) → void
 
 > key에 해당하는 객체의 공간 영역(경위도 범위)으로 카메라를 이동시킵니다.
@@ -872,6 +899,84 @@ visualizer.setLineSymbolRotate("LINE_1", new Module.JSVector3D(0, 0, 90));
 
 ```javascript
 visualizer.setLineSizeFixed("LINE_1", true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLineInstanced(key, instanced) → boolean
+
+> 라인 객체의 인스턴스(instanced) 렌더링 사용 여부를 설정합니다.
+>
+> 켜면 라인을 병합 배치로 묶어 한 번의 draw call로 그려 대량의 라인을 빠르게 렌더링하며, 끄면 라인별 개별 렌더링으로 돌아갑니다. 지형 결합([setUnionTerrain](jsdatavisualizer.md#setunionterrain-key-set-boolean))된 라인은 값이 바뀌면 라인 객체가 다시 생성됩니다. `add()`의 라인 객체 정의에서 `instanced`(boolean) 속성으로도 생성 시점에 지정할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type    | Description                                         |
+| --------- | ------- | ----------------------------------------------------- |
+| key       | string  | 대상 객체 key(라인 타입).                           |
+| instanced | boolean | true: 인스턴스 렌더링 사용, false: 개별 렌더링 사용. |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: `key`가 비어있거나, 지도가 준비되지 않았거나, key에 해당하는 라인 객체가 없는 경우.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+visualizer.setLineInstanced("LINE_1", true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setLineInstancedLod(key, distances) → boolean
+
+> 인스턴스 렌더링 중인 라인의 거리별 LOD(단순화) 사용 여부 또는 LOD 단계 구성을 설정합니다.
+>
+> 카메라와 라인 중심 사이의 거리가 멀어질수록 라인의 꼭짓점을 단순화하여 그려 렌더링 비용을 줄입니다. LOD는 인스턴스 렌더링이 켜진 라인([setLineInstanced](jsdatavisualizer.md#setlineinstanced-key-instanced-boolean))에만 적용됩니다. `add()`의 라인 객체 정의에서 `instanced_lod`(boolean) 속성으로도 생성 시점에 지정할 수 있습니다.
+>
+> `distances`에 boolean을 전달하면 LOD를 켜거나 끄고, 배열을 전달하면 해당 단계 구성으로 교체하며 LOD가 항상 켜집니다. 배열의 항목 순서는 상관없으며 `distance` 기준으로 정렬되어 적용됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type                                                                          | Description                                                                                                        |
+| --------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| key       | string                                                                        | 대상 객체 key(라인 타입).                                                                                          |
+| distances | boolean \| array([JSDataVisualizer.LineLodTier](jsdatavisualizer.md#jsdatavisualizer.linelodtier)) | <p>true: LOD 켬(라인에 단계가 없으면 기본 단계 적용, 있으면 기존 단계 유지).<br>false: LOD 끔(원본으로 복귀).<br>배열: 지정한 단계로 교체하고 LOD 켬.<br>undefined/null: false와 동일.</p> |
+
+-   Return
+    -   true: 설정 성공.
+    -   false: 설정 실패.
+        -   `key`가 비어있거나, 지도가 준비되지 않았거나, key에 해당하는 라인 객체가 없는 경우.
+        -   `distances`가 boolean, 배열, undefined, null 어느 것도 아닌 경우.
+        -   배열 항목에 `distance` 또는 `simplify`가 없는 경우.
+        -   `distance` 기준으로 정렬했을 때 멀수록 `simplify`가 작아지는 경우(더 먼 단계가 더 정밀한 구성).
+-   Note
+    -   기본 단계는 `{ distance: 2000, simplify: 2 }`, `{ distance: 10000, simplify: 10 }`, `{ distance: 50000, simplify: 50 }`, `{ distance: 200000, simplify: 200 }`, `{ distance: 600000, simplify: 500 }` 입니다.
+    -   `distance`가 음수이거나 `simplify`가 음수인 항목, `distance`가 중복된 항목이 있으면 단계 구성은 적용되지 않지만 반환값은 true일 수 있습니다.
+    -   단계 사이의 경계에서 LOD가 매 프레임 바뀌지 않도록 경계 근처에서 이전 단계가 유지되는 구간(히스테리시스)이 적용됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 인스턴스 렌더링 + 기본 LOD 사용
+visualizer.setLineInstanced("LINE_1", true);
+visualizer.setLineInstancedLod("LINE_1", true);
+
+// 단계 직접 지정: 1km 이상 5m, 20km 이상 30m, 100km 이상 100m 단순화
+visualizer.setLineInstancedLod("LINE_1", [
+    { distance: 1000, simplify: 5 },
+    { distance: 20000, simplify: 30 },
+    { distance: 100000, simplify: 100 }
+]);
+
+// LOD 끄기
+visualizer.setLineInstancedLod("LINE_1", false);
 ```
 
 {% endtab %}
@@ -1566,3 +1671,12 @@ console.log(range.min, range.max);
 | symbol.texture | string          |            |         | 심볼에 적용할 텍스처 url(선택). |
 | icon           | object          |            |         | 이미지 아이콘을 부착할 때 사용(`symbol`이 없을 때만 처리됨). |
 | icon.data      | string \| array |            |         | base64 문자열 또는 바이트(0~255) 배열 형태의 이미지 데이터. |
+
+#### JSDataVisualizer.LineLodTier
+
+> [setLineInstancedLod()](jsdatavisualizer.md#setlineinstancedlod-key-distances-boolean)에 배열로 전달하는 LOD 단계 하나의 구조입니다.
+
+| Name     | Type   | Attributes | Default | Description                                                                   |
+| -------- | ------ | ---------- | ------- | ------------------------------------------------------------------------------- |
+| distance | number | 필수       |         | 이 단계로 전환되는 카메라와 라인 중심 사이의 거리(m). 이 거리 이상에서 적용됩니다. 0 이상이어야 하며 단계 간 중복될 수 없습니다. |
+| simplify | number | 필수       |         | 이 단계에서 사용할 라인 단순화 허용 오차(m). 0 이상이어야 하며, `distance`가 클수록 같거나 커야 합니다. |

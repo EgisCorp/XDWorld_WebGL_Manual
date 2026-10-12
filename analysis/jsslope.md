@@ -135,6 +135,69 @@ Module.getSlope().analysisTerrainSlope({
 {% endtab %}
 {% endtabs %}
 
+### checkServerDemAnalysis(options) → object
+
+> 서버 DEM 기반 경사 분석(`analysis.server: true`)을 실행하기 전에, 분석에 필요한 DEM 타일 수와 분석 가능 여부를 미리 확인합니다. 분석은 실행하지 않으며 서버 요청도 보내지 않고 즉시(동기) 결과를 반환합니다.
+>
+> 입력 좌표의 경위도 범위(bbox)와 요청 레벨을 기준으로 타일 수를 계산하므로, 실제 분석 시 셀 격자 경계에 맞춰 영역이 한 셀 정도 커질 수 있어 타일 수는 추정값입니다(경계에서 한 행/열 차이가 날 수 있음).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                                            | Description              |
+| :------ | :--------------------------------------------------------------- | :------------------------- |
+| options | [JSSlope.CheckServerDemOption](jsslope.md#jsslope.checkserverdemoption) | 확인할 분석 영역과 서버 DEM 옵션 객체. |
+
+-   Return (object)
+    -   `result`: 1(분석 가능), 0(분석 불가).
+    -   `name`: `"JSSlope.checkServerDemAnalysis"`.
+    -   `level`: 분석에 사용될 DEM 레벨. `analysis.level`이 숫자이면 그 값, 미지정/`"max"`이면 지형 서비스 레벨이며 0 ~ 서비스 레벨 범위로 보정됩니다. 이전 분석에서 DEM 데이터가 실제로 존재하는 최대 레벨이 확인된 경우 그보다 높은 값은 확인된 레벨로 낮춰집니다.
+    -   `serviceLevel`: 지형 서비스 레벨(지도 초기화 시 설정한 `info.servicelevel`).
+    -   `resolved`: true이면 `level`이 DEM 데이터 레벨 탐색으로 확정된 값, false이면 요청 레벨 기준 추정값(한 번도 분석을 실행하지 않아 아직 탐색 전).
+    -   `tile`: 필요한 DEM 타일 수(추정값).
+    -   `tileBudget`: 타일 수 상한. `analysis.tileBudget`이 0보다 크면 그 값, 아니면 내부 최대값(65519).
+    -   `spacing`: DEM 샘플 간격(meter, 위도 방향 기준).
+    -   `allowedAreaSize`: 이 레벨에서 `tileBudget` 안에서 분석 가능한 정사각형 영역의 한 변 길이(meter).
+    -   `downloadSize`: 분석 시 내려받을 DEM 데이터 크기(MB, 타일당 65x65x4byte로 계산).
+    -   `return`: 안내/오류 메시지(해당하는 경우에만 포함).
+        -   `"Terrain DEM format can not be sampled as a grid ( .terrain )"`: DEM 서비스가 quantized mesh(.terrain) 형식이라 서버 기반 분석이 불가능한 경우(`result`: 0).
+        -   `"Analysis area is too large for the requested DEM level"`: 타일 수가 0이거나 `tileBudget`을 넘어 분석할 수 없는 경우(`result`: 0).
+        -   `"DEM data level is not probed yet. tile count is an estimate based on the requested level"`: `result`는 1이지만 `resolved`가 false라서 타일 수가 추정값인 경우.
+    -   실패(검사 이전 오류): `{ result: 0, name: "JSSlope.checkServerDemAnalysis", return: "에러 메시지" }`
+        -   지도 미로딩: `"Map Did Not Load."`
+        -   coordinates/analysis 태그 오류(좌표 3개 미만 포함) 시 각 항목에 대한 에러 메시지.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var check = Module.getSlope().checkServerDemAnalysis({
+    coordinates: {
+        style: "XYZ",
+        coordinate: [
+            [127.001, 37.001, 0],
+            [127.002, 37.001, 0],
+            [127.002, 37.002, 0],
+            [127.001, 37.002, 0],
+        ],
+    },
+    analysis: {
+        server: true,
+        level: "max",
+        tileBudget: 100,
+    },
+});
+
+if (check.result === 1) {
+    console.log("level:", check.level, "tile:", check.tile, "download(MB):", check.downloadSize);
+} else {
+    console.warn(check.return, "허용 영역 한 변(m):", check.allowedAreaSize);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### exportSlopeData(key) → string
 
 > 지정한 키에 해당하는 경사 분석 결과를 JSON 문자열로 내보냅니다(info, coordinates, analysis, shape(형상 분석인 경우), color, output 항목 포함).
@@ -476,3 +539,21 @@ let json = Module.getSlope().getLonLatSlopeData({
 | key  | string |            |         | 조회할 경사 분석 오브젝트 고유 명칭.     |
 | lon  | number |            |         | 조회할 경도.                             |
 | lat  | number |            |         | 조회할 위도.                             |
+
+#### JSSlope.CheckServerDemOption
+
+> checkServerDemAnalysis()에서 사용하는 옵션. info, callback 등 다른 분석 옵션은 필요하지 않습니다.
+
+| Name        | Type                                                                                | Attributes | Default | Description                                  |
+| ----------- | ------------------------------------------------------------------------------------- | ---------- | ------- | ---------------------------------------------- |
+| coordinates | [JSSlope.AnalysisOption.coordinates](jsslope.md#jsslope.analysisoption.coordinates) |            |         | 분석 영역 좌표 정보(3개 이상 필요).          |
+| analysis    | [JSSlope.CheckServerDemOption.analysis](jsslope.md#jsslope.checkserverdemoption.analysis) | optional   |         | 서버 DEM 요청 레벨/타일 상한 정보.           |
+
+#### JSSlope.CheckServerDemOption.analysis
+
+> 서버 DEM 기반 분석 옵션 중 확인 결과에 영향을 주는 속성입니다. `analysis.server`는 `analysisTerrainSlope()`에서 서버 DEM 분석을 켜는 속성이며, `checkServerDemAnalysis()`는 이 값과 무관하게 항상 서버 DEM 기준으로 확인합니다.
+
+| Name       | Type             | Attributes | Default  | Description                                                                                         |
+| ---------- | ---------------- | ---------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| level      | number \| string | optional   | `"max"`  | 요청 DEM 레벨. 숫자가 아닌 값(`"max"` 등)은 지형 서비스 레벨을 사용합니다.                          |
+| tileBudget | number           | optional   | 0        | 허용 타일 수 상한. 0 이하이면 내부 최대값(65519)을 사용합니다.                                     |

@@ -4249,6 +4249,153 @@ var is16Bit = Module.XDEGetPoiTexture16Bit();
 {% endtab %}
 {% endtabs %}
 
+### XDESetPoiTexture8Bit(on), XDEGetPoiTexture8Bit() → boolean
+
+> POI 라벨 텍스처를 PAL8(픽셀당 1바이트 인덱스 + 공용 팔레트) 포맷으로 생성할지 여부를 설정합니다(메모리 절약용).
+>
+> 기본값은 false(꺼짐)이며, 켠 이후에 새로 만들어지는 라벨([JSPoint.setImage](../object/jspoint.md#setimage-data-width-height-boolean))부터 적용되고 이미 생성된 라벨에는 영향을 주지 않습니다.
+>
+> [XDESetPoiTexture16Bit](moduleapi.md#xdesetpoitexture16bit-on-xdegetpoitexture16bit-boolean)보다 우선합니다.
+>
+> 라벨의 고유 RGBA 조합이 256개 이하이면 무손실이며, 256개를 초과하면 색(RGB)을 병합하고 알파 계조는 유지합니다(RGBA4444는 알파를 16단계로 접습니다). 공용 팔레트 행이 고갈되면 해당 라벨은 자동으로 RGBA4444로 대체됩니다. LINEAR 필터가 필요한 라벨(회전 라벨, `imageScale`이 1이 아닌 라벨)은 셰이더에서 색 공간 보간으로 처리합니다.
+>
+> [XDECreateLabelAtlas](moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 만든 아틀라스에는 적용되지 않으며, 아틀라스는 항상 RGBA4444로 생성됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                       |
+| ---- | ------- | ----------------------------------------------------------------- |
+| on   | boolean | <p>true: PAL8 포맷 사용.<br>false: 사용 안 함(기본값).</p>         |
+
+-   Return(XDEGetPoiTexture8Bit)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPoiTexture8Bit(true);
+var is8Bit = Module.XDEGetPoiTexture8Bit();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetPoiTexture8BitStats() → object
+
+> PAL8 라벨의 변환 결과 통계와 팔레트 상태를 반환합니다(진단용).
+>
+> [XDESetPoiTexture8Bit](moduleapi.md#xdesetpoitexture8bit-on-xdegetpoitexture8bit-boolean)를 켠 상태에서 `setImage`로 만든 라벨에 대해 누적됩니다. PAL8 적용률과 손실 여부를 확인할 때 사용하며, 일반 기능 동작에는 필요하지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return (object)
+
+    | Name                  | Type   | Description                                                                       |
+    | --------------------- | ------ | --------------------------------------------------------------------------------- |
+    | labels                | number | PAL8 경로로 만든 라벨 수.                                                         |
+    | lossless              | number | 고유색이 256개 이하여서 무손실로 변환된 라벨 수.                                  |
+    | losslessMismatch      | number | 무손실 라벨 중 왕복 결과가 원본과 비트 단위로 다른 수 (정상이면 0).               |
+    | lossy                 | number | 고유색이 256개를 초과하여 색을 병합한 라벨 수.                                    |
+    | rowExhausted          | number | 팔레트 행 고갈로 RGBA4444로 대체된 라벨 수.                                       |
+    | maxAlphaErrLossy      | number | 병합 라벨의 알파 최대 오차(0~255).                                                |
+    | maxRgbErrLossy        | number | 병합 라벨의 RGB 최대 오차(0~255).                                                 |
+    | maxAlphaErr4444       | number | 같은 원본을 RGBA4444로 변환했을 때의 알파 최대 오차(비교용).                      |
+    | avgUniqueLossy        | number | 병합 라벨의 평균 고유색 수.                                                       |
+    | avgAlphaLevelsBefore  | number | 병합 라벨 원본의 평균 알파 단계 수.                                               |
+    | avgAlphaLevelsAfter   | number | 병합 라벨의 변환 후 평균 알파 단계 수.                                            |
+    | bytesIdx              | number | PAL8로 업로드한 인덱스 바이트 합계(= 픽셀 수).                                    |
+    | palRows               | number | 공용 팔레트 텍스처의 행 수 (비디오 드라이버가 있을 때만 포함).                    |
+    | palLive               | number | 사용 중인 팔레트 행 수 (비디오 드라이버가 있을 때만 포함).                        |
+    | palTex                | number | 팔레트 텍스처 ID (비디오 드라이버가 있을 때만 포함).                              |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPoiTexture8Bit(true);
+// ... 라벨(POI) 생성 후 ...
+var stats = Module.XDEGetPoiTexture8BitStats();
+console.log(stats.labels, stats.lossless, stats.lossy, stats.rowExhausted);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDECreateLabelAtlas(data, width, height) → number
+
+> 여러 라벨 이미지를 한 장에 모은 RGBA8 이미지로 아틀라스 텍스처를 생성하고, 아틀라스 ID를 반환합니다.
+>
+> 라벨을 하나씩 [JSPoint.setImage](../object/jspoint.md#setimage-data-width-height-boolean)로 올리면 라벨마다 GL 텍스처 생성/업로드 비용이 들지만, 아틀라스는 한 번만 업로드하고 각 POI가 [JSPoint.setImageAtlas](../object/jspoint.md#setimageatlas-atlasid-x-y-width-height-boolean)로 칸을 참조하므로 호출 비용이 라벨 수만큼 줄어듭니다.
+>
+> 아틀라스 텍스처는 항상 NEAREST 필터를 사용하며, 포맷은 항상 RGBA4444(2B/px)입니다([XDESetPoiTexture8Bit](moduleapi.md#xdesetpoitexture8bit-on-xdegetpoitexture8bit-boolean) 설정과 무관). 반환된 ID는 재사용되지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type       | Description                                                          |
+| ------ | ---------- | -------------------------------------------------------------------- |
+| data   | Uint8Array | RGBA8 픽셀 데이터. 길이는 `width × height × 4` 이상이어야 합니다.    |
+| width  | number     | 아틀라스 이미지 너비(px). 0보다 커야 합니다.                         |
+| height | number     | 아틀라스 이미지 높이(px). 0보다 커야 합니다.                         |
+
+-   Return
+    -   number: 1 이상의 아틀라스 ID.
+    -   0: 생성 실패 (width/height가 0이거나, 월드가 없거나, data 길이가 부족하거나, 메모리 할당에 실패한 경우).
+-   참고
+    -   아틀라스 한 장에 라벨 하나만 살아 있어도 그 장 전체 메모리가 유지되므로, 수명이 비슷한 라벨끼리 묶는 것이 좋습니다.
+    -   라벨이 많을 때 `setImage` 호출 비용이 지배적인 경우(예: 라벨 1,771개 등록에 약 1.4초 중 98.8%가 `setImage`) 효과가 큽니다. 라벨 수가 적으면 이득이 거의 없습니다.
+    -   아틀라스 한 장당 라벨 약 256개, 한 변 2048px 이하로 나누고, 한 프레임에 올리는 아틀라스 수를 제한하며, 칸 사이에 1px 여백을 두는 것을 권장합니다.
+    -   RGBA4444로 변환되므로 채널당 최대 15/255 오차가 있습니다. 색이 의미를 갖는 라벨은 색 오차를 확인하세요.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 512x512 아틀라스에 128x32 라벨을 격자로 배치한 RGBA8 데이터
+let atlasId = Module.XDECreateLabelAtlas(atlasRGBA, 512, 512);
+if (atlasId === 0) {
+    // 생성 실패 → 개별 setImage로 대체
+}
+
+poi.setImageAtlas(atlasId, 0, 0, 128, 32);
+
+// 모든 POI에 붙인 뒤 해제 (POI가 참조 중이면 텍스처는 유지됨)
+Module.XDEReleaseLabelAtlas(atlasId);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEReleaseLabelAtlas(atlasId) → boolean
+
+> [XDECreateLabelAtlas](moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 만든 아틀라스를 레지스트리에서 해제합니다.
+>
+> 이 호출 이후에는 해당 ID로 [JSPoint.setImageAtlas](../object/jspoint.md#setimageatlas-atlasid-x-y-width-height-boolean)를 호출할 수 없습니다. 이미 아틀라스 칸을 참조 중인 POI가 있으면 GL 텍스처는 유지되고(참조 계수), 마지막 POI가 사라질 때 함께 해제됩니다. 따라서 아틀라스를 모든 POI에 붙인 직후 호출하면 됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                              |
+| ------- | ------ | ---------------------------------------- |
+| atlasId | number | XDECreateLabelAtlas가 반환한 아틀라스 ID. |
+
+-   Return
+    -   true: 해제 성공.
+    -   false: 해제 실패 (등록되지 않았거나 이미 해제된 ID).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEReleaseLabelAtlas(atlasId);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### XDESetPhotoTexture16Bit(on), XDEGetPhotoTexture16Bit() → boolean
 
 > 사진 텍스처(JPEG 기반 지형 영상·건물 파사드 등)를 16비트(RGB565) 포맷으로 디코드할지 여부를 설정합니다(메모리 절약용).
@@ -4276,6 +4423,981 @@ var is16Bit = Module.XDEGetPhotoTexture16Bit();
 {% endtab %}
 {% endtabs %}
 
+### getPostProcess() → [JSPostProcess](../option/jspostprocess.md)
+
+> 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 제어하는 [JSPostProcess](../option/jspostprocess.md) 객체를 반환합니다.
+>
+> 처음 호출할 때 객체를 생성하며, 이후에는 호출할 때마다 같은 객체를 반환합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSPostProcess](../option/jspostprocess.md): 포스트프로세싱 설정 객체.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var postProcess = Module.getPostProcess();
+postProcess.setEnableDoF(true);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createIcon() → [JSIcon](../object/jsicon.md)
+
+> 이미지가 비어 있는 [JSIcon](../object/jsicon.md) 객체를 생성합니다.
+>
+> 생성한 아이콘에 `setNormalIconByImageData` 등으로 이미지를 넣은 뒤 POI의 `setIcon`으로 지정하면, 같은 라벨 이미지를 여러 POI가 하나의 텍스처로 공유할 수 있습니다. POI마다 `setImage`를 호출하면 호출할 때마다 텍스처가 새로 생성되므로, 동일한 이미지를 쓰는 POI가 많을 때 메모리를 크게 줄일 수 있습니다.
+>
+> 이 함수로 만든 아이콘은 [JSSymbol](../object/jssymbol.md)의 아이콘 목록에 등록되지 않으며, 이미지를 넣기 전까지는 텍스처가 없어 POI의 `setIcon`이 실패(false)합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSIcon](../object/jsicon.md): 생성 성공.
+    -   null: 생성 실패(지도가 생성되지 않은 경우).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// 라벨 이미지를 canvas로 만든 뒤 하나의 아이콘으로 공유
+var ctx = canvas.getContext("2d");
+var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+var icon = Module.createIcon();
+icon.setNormalIconByImageData(imgData.data, canvas.width, canvas.height);
+
+for (var i = 0; i < 1000; i++) {
+    var poi = Module.createPoint("poi_" + i);
+    poi.setPosition(new Module.JSVector3D(127.0 + i * 0.0001, 37.5, 10));
+    poi.setIcon(icon); // 같은 텍스처를 공유
+    layer.addObject(poi, 0);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createDepthGuide(id) → [JSDepthGuide](../object/jsdepthguide.md)
+
+> 독립된 깊이 눈금 가이드([JSDepthGuide](../object/jsdepthguide.md)) 객체를 생성합니다.
+>
+> 깊이 눈금 상자는 박스와 눈금(그라데이션)을 모두 설정하고 레이어에 등록해야 화면에 나타납니다. 레이어의 거리 컬링 상한(기본 3000m)도 함께 올려야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| id   | string | 객체 고유 명칭. |
+
+-   Return
+    -   [JSDepthGuide](../object/jsdepthguide.md): 생성 성공.
+    -   null: 생성 실패.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var guide = Module.createDepthGuide("newGuide");
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getFlowLayerList() → [JSFlowLayerList](../layer/jsflowlayerlist.md)
+
+> 해류·조류 흐름 레이어를 생성하고 관리하는 [JSFlowLayerList](../layer/jsflowlayerlist.md) 객체를 반환합니다.
+>
+> 싱글톤이며 호출할 때마다 같은 객체를 반환합니다. [JSLayerList](../layer/jslayerlist.md)와는 독립적으로 동작합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSFlowLayerList](../layer/jsflowlayerlist.md): 흐름 레이어 목록 객체.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var flowList = Module.getFlowLayerList();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### createClippingBox(position, width, depth, height)
+
+> 클리핑 박스(Clipping Box)를 생성하고 화면에 표시합니다.
+>
+> 클리핑 박스는 지도에 하나만 존재합니다. 다시 호출하면 기존 박스의 위치와 크기가 새 값으로 바뀝니다. 박스는 중심 위치의 지표면 기준 동서/남북/상하 방향으로 놓이며, 반투명 흰색 면과 외곽선으로 그려집니다.
+>
+> 객체의 `setClipping(true)`을 호출하면([JSObject3D](../object/jsobject3d.md)) 그 객체는 박스 안쪽 부분만 불투명하게 렌더링되고, 박스 바깥 부분은 `setClippingAlpha`로 지정한 투명도로 표시됩니다(0이면 완전히 잘려 보이지 않음). 클리핑은 폴리곤 등 3D 도형 객체에 적용됩니다.
+>
+> `Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX)` 마우스 모드에서는 박스를 클릭해 선택한 뒤 기즈모로 이동/크기를 조절할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| position | [JSVector3D](../core/jsvector3d.md)        | 박스 중심 위치(경도, 위도, 고도(m)).                          |
+| width    | number                                     | 동서 방향 길이(m).                                           |
+| depth    | number                                     | 남북 방향 길이(m).                                           |
+| height   | number                                     | 상하 방향 길이(m).                                           |
+
+-   Return
+    -   없음.
+    -   지도가 생성되지 않은 경우 아무 동작도 하지 않습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.createClippingBox(new Module.JSVector3D(127.0, 37.5, 20), 100, 100, 40);
+
+var polygon = Module.createPolygon("clipPolygon");
+// ...
+polygon.setClipping(true);
+polygon.setClippingAlpha(0.3);
+
+// 기즈모로 박스 조작
+Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setClippingBoxVisible(visible)
+
+> 클리핑 박스의 표시 여부를 설정합니다.
+>
+> 박스를 숨겨도 이미 설정된 위치/크기 정보는 유지되며, 클리핑 박스 마우스 모드에서 숨겨진 박스는 선택되지 않습니다. 박스를 먼저 생성([createClippingBox](moduleapi.md#createclippingbox-position-width-depth-height))하지 않은 상태에서는 표시해도 그려질 박스가 없습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type    | Description                                        |
+| ------- | ------- | -------------------------------------------------- |
+| visible | boolean | <p>true: 박스 표시.<br>false: 박스 숨김.</p>        |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.setClippingBoxVisible(false);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setClippingBoxPosition(position)
+
+> 클리핑 박스의 중심 위치를 변경합니다. 크기는 유지됩니다.
+>
+> 박스를 먼저 생성([createClippingBox](moduleapi.md#createclippingbox-position-width-depth-height))하지 않았다면 박스가 만들어지지 않으므로 위치만 기록됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                                | Description                          |
+| -------- | ----------------------------------- | ------------------------------------ |
+| position | [JSVector3D](../core/jsvector3d.md) | 박스 중심 위치(경도, 위도, 고도(m)). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.setClippingBoxPosition(new Module.JSVector3D(127.0, 37.5, 30));
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setClippingBoxSize(width, depth, height)
+
+> 클리핑 박스의 크기를 변경합니다. 중심 위치는 유지됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type   | Description        |
+| ------ | ------ | ------------------ |
+| width  | number | 동서 방향 길이(m). |
+| depth  | number | 남북 방향 길이(m). |
+| height | number | 상하 방향 길이(m). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.setClippingBoxSize(200, 150, 60);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetMemoryClearInterval(ms), XDEGetMemoryClearInterval() → number
+
+> 화면 밖 텍스처 자동 정리가 실행되는 주기(ms)를 설정합니다.
+>
+> 자동 정리가 켜져 있을 때([XDESetAutoMemoryClear](moduleapi.md#xdesetautomemoryclear-on-xdegetautomemoryclear-boolean)) 이 주기마다 정리 패스가 실행되며, 텍스처 메모리 압박이 감지되면 주기와 무관하게 실행됩니다. 재빌드 없이 여러 값을 같은 세션에서 비교하기 위한 튜닝용 API입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                      |
+| ---- | ------ | ---------------------------------------------------------------- |
+| ms   | number | 정리 주기(ms). 기본값 5000. 0 미만은 0으로 보정되며, 0이면 매 프레임 정리합니다(진단용). |
+
+-   Return(XDEGetMemoryClearInterval)
+    -   number: 현재 정리 주기(ms).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetMemoryClearInterval(3000); // 3초에 한 번
+var interval = Module.XDEGetMemoryClearInterval();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetExtrudeGradient(on), XDEGetExtrudeGradient() → boolean
+
+> 압출(Polyhedron) 건물의 높이 그라데이션 렌더링 사용 여부를 설정합니다.
+>
+> 켜면 건물 벽면은 아래쪽이 약간 어둡고 위쪽이 밝은 세로 그라데이션과 면 방향 음영으로 표현되고, 지붕은 흰색으로 표현됩니다. 벽 밝기는 [XDESetExtrudeGradientFloor](moduleapi.md#xdesetextrudegradientfloor-value-xdegetextrudegradientfloor-number), [XDESetExtrudeGradientTop](moduleapi.md#xdesetextrudegradienttop-value-xdegetextrudegradienttop-number), [XDESetExtrudeFaceShade](moduleapi.md#xdesetextrudefaceshade-value-xdegetextrudefaceshade-number)로 조절합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                              |
+| ---- | ------- | -------------------------------------------------------- |
+| on   | boolean | <p>true: 높이 그라데이션 사용.<br>false: 사용 안 함(기본값).</p> |
+
+-   Return(XDEGetExtrudeGradient)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetExtrudeGradient(true);
+var isOn = Module.XDEGetExtrudeGradient();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetExtrudeGradientFloor(value), XDEGetExtrudeGradientFloor() → number
+
+> 압출 건물 벽 세로 그라데이션의 바닥(벽 최하단) 밝기 배율을 설정합니다.
+>
+> [XDESetExtrudeGradient](moduleapi.md#xdesetextrudegradient-on-xdegetextrudegradient-boolean)를 켠 상태에서만 적용되며, 값이 다음 프레임에 바로 반영됩니다. 면 방향 음영([XDESetExtrudeFaceShade](moduleapi.md#xdesetextrudefaceshade-value-xdegetextrudefaceshade-number))과 곱해져서 적용되므로 두 값을 모두 낮추면 벽이 어두워집니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                           |
+| ----- | ------ | ----------------------------------------------------- |
+| value | number | 바닥 밝기 배율(0~1 범위로 clamp됨). 기본값 0.88. |
+
+-   Return(XDEGetExtrudeGradientFloor)
+    -   number: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetExtrudeGradient(true);
+Module.XDESetExtrudeGradientFloor(0.8);
+var floor = Module.XDEGetExtrudeGradientFloor();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetExtrudeFaceShade(value), XDEGetExtrudeFaceShade() → number
+
+> 압출 건물에서 광원을 가장 등진 벽면의 밝기 배율을 설정합니다.
+>
+> 벽면마다 광원 방향에 따라 밝기가 달라지며(정면은 1.0에 가까움), 가장 등진 면이 이 값의 밝기가 됩니다. [XDESetExtrudeGradient](moduleapi.md#xdesetextrudegradient-on-xdegetextrudegradient-boolean)를 켠 상태에서만 적용되며 값이 다음 프레임에 바로 반영됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                              |
+| ----- | ------ | -------------------------------------------------------- |
+| value | number | 광원을 등진 벽면의 밝기 배율(0~1 범위로 clamp됨). 기본값 0.92. |
+
+-   Return(XDEGetExtrudeFaceShade)
+    -   number: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetExtrudeFaceShade(0.85);
+var shade = Module.XDEGetExtrudeFaceShade();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetExtrudeGradientTop(value), XDEGetExtrudeGradientTop() → number
+
+> 압출 건물 벽 세로 그라데이션의 꼭대기(벽 최상단) 밝기를 설정합니다.
+>
+> 지붕은 흰색(1.0)으로 표현되므로 값이 1.0이면 벽 꼭대기와 지붕의 경계가 사라집니다. [XDESetExtrudeGradient](moduleapi.md#xdesetextrudegradient-on-xdegetextrudegradient-boolean)를 켠 상태에서만 적용됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                         |
+| ----- | ------ | --------------------------------------------------- |
+| value | number | 꼭대기 밝기(0~1 범위로 clamp됨). 기본값 0.95. |
+
+-   Return(XDEGetExtrudeGradientTop)
+    -   number: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetExtrudeGradientTop(0.9);
+var top = Module.XDEGetExtrudeGradientTop();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetUniformCache(on)
+
+> 셰이더 유니폼 값 캐시 사용 여부를 설정합니다(진단용).
+>
+> 켜면 이전과 같은 유니폼 값은 GPU로 다시 올리지 않습니다. 끄면 같은 값도 매번 올리므로 GL 호출이 늘어납니다. 모바일 기기에서 렌더링 깨짐의 원인이 캐시인지 구분할 때 사용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                         |
+| ---- | ------- | --------------------------------------------------- |
+| on   | boolean | <p>true: 캐시 사용(기본값).<br>false: 캐시 사용 안 함.</p> |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetUniformCache(false); // 진단 목적으로만 일시 사용
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetImpostorPages(pages)
+
+> Impostor LOD가 사용하는 아틀라스 텍스처 페이지 수의 상한을 설정합니다.
+>
+> Impostor LOD([setImpostorEnable](../layer/jslayer.md#setimpostorenable-enable-boolean))는 원거리 건물을 미리 구워 둔 스프라이트로 그리며, 스프라이트는 아틀라스 페이지(페이지당 4096x4096 RGBA, 약 64MB)에 저장됩니다. 페이지는 자리가 모자랄 때 한 장씩 늘어나므로 상한을 올려도 즉시 메모리를 사용하지는 않습니다. 상한을 올리면 더 많은 건물이 Impostor를 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                                             |
+| ----- | ------ | ----------------------------------------------------------------------- |
+| pages | number | 페이지 수 상한(1~4 범위로 clamp됨). 기본값은 데스크톱 4, 모바일(iOS/Android) 2. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetImpostorPages(3);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEImpostorRebake()
+
+> Impostor LOD 스프라이트를 모두 폐기하고 현재 화면 크기 기준으로 다시 굽도록 합니다.
+>
+> 카메라를 오래 이동하면 스프라이트가 예전 화면 크기 기준의 해상도를 유지하는데, 이 함수를 호출하면 모든 건물이 현재 화면 크기에 맞는 해상도로 다시 만들어집니다. 다시 구워지는 동안에는 건물이 일반 메시로 그려집니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEImpostorRebake();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetThumbAsync(on), XDEGetThumbAsync() → boolean
+
+> 건물(xnd) 데이터에 내장된 썸네일(텍스처) 디코드를 워커로 넘겨 비동기로 적재할지 여부를 설정합니다.
+>
+> 켜면 파싱 중 누적 시간이 [XDESetThumbSyncBudgetMs](moduleapi.md#xdesetthumbsyncbudgetms-ms-xdegetthumbsyncbudgetms-number)로 지정한 시간 박스를 넘은 뒤의 썸네일(또는 크기가 큰 썸네일)이 워커에서 디코드되어 메인 스레드가 오래 점유되는 것을 줄입니다. 대신 적재가 끝나기 전까지 해당 면은 단색으로 보일 수 있습니다. 끄면 모두 동기로 처리합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                              |
+| ---- | ------- | ------------------------------------------------------------------------ |
+| on   | boolean | <p>true: 비동기 적재(엔진 초기화 후 기본값).<br>false: 모두 동기 처리.</p> |
+
+-   Return(XDEGetThumbAsync)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetThumbAsync(false);
+var isAsync = Module.XDEGetThumbAsync();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetThumbSyncBudgetMs(ms), XDEGetThumbSyncBudgetMs() → number
+
+> 썸네일 비동기 적재가 켜져 있을 때, 파싱 한 번 안에서 동기로 디코드할 수 있는 누적 시간(ms)을 설정합니다.
+>
+> 파싱 중 누적 경과가 이 값을 넘은 뒤의 썸네일만 워커로 넘어갑니다. 0이면 모든 썸네일을 워커로 넘깁니다([XDESetThumbAsync](moduleapi.md#xdesetthumbasync-on-xdegetthumbasync-boolean)가 켜져 있을 때).
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                            |
+| ---- | ------ | ---------------------------------------------------------------------- |
+| ms   | number | 동기 디코드 시간 박스(ms). 0 미만은 0으로 보정. 기본값 8, iOS 프로파일에서는 0. |
+
+-   Return(XDEGetThumbSyncBudgetMs)
+    -   number: 현재 설정 값(ms).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetThumbSyncBudgetMs(4);
+var budget = Module.XDEGetThumbSyncBudgetMs();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetTextureEncode(on), XDEGetTextureEncode() → boolean
+
+> 클라이언트 텍스처 인코딩 사용 여부를 설정합니다.
+>
+> 서버가 JPEG로 내려주는 지형 영상과 건물 내장 썸네일을 디코드한 뒤 워커에서 GPU 압축 텍스처(BC7 또는 ETC2)로 인코딩해 올립니다. 비압축(픽셀당 2바이트, RGB565) 대비 텍스처 메모리가 절반으로 줄어듭니다. 압축 인코딩이 가능한 기기([XDEGetEncodeTarget](moduleapi.md#xdegetencodetarget-number)가 0이 아닌 기기)에서만 동작하며, 켠 뒤 새로 들어오는 텍스처부터 적용됩니다. 가로·세로가 4의 배수가 아닌 이미지는 인코딩하지 않고 기존 방식으로 처리합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                         |
+| ---- | ------- | ----------------------------------------------------------------------------------- |
+| on   | boolean | <p>true: 인코딩 사용(iOS 프로파일에서는 기본값).<br>false: 사용 안 함(그 외 기본값).</p> |
+
+-   Return(XDEGetTextureEncode)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetTextureEncode(true);
+var isOn = Module.XDEGetTextureEncode();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetEncodeTarget() → number
+
+> 클라이언트 텍스처 인코딩이 사용할 압축 포맷 번호를 반환합니다.
+>
+> 지도 생성 시 기기가 지원하는 확장에 따라 결정되며, 인코딩 사용 여부([XDESetTextureEncode](moduleapi.md#xdesettextureencode-on-xdegettextureencode-boolean))와는 별개의 값입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 인코딩 대상 포맷.
+        -   102: BC7.
+        -   104: ETC2 RGBA.
+        -   0: 인코딩 불가(BC7, ETC2 모두 미지원).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var target = Module.XDEGetEncodeTarget();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetParseStats() → object
+
+> 건물(xnd) 데이터 파싱이 메인 스레드를 점유한 시간 분포와 썸네일 비동기 적재 현황을 반환합니다(진단용).
+>
+> 화면 끊김(메인 스레드 블록)의 원인을 확인하는 용도입니다. 값은 [XDEResetParseStats](moduleapi.md#xderesetparsestats)로 초기화하기 전까지 누적됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name          | Type   | Description                                                                         |
+| ------------- | ------ | ----------------------------------------------------------------------------------- |
+| count         | number | 파싱 블록(호출) 수.                                                                 |
+| totalMs       | number | 파싱 블록 누적 시간(ms).                                                            |
+| maxMs         | number | 가장 오래 걸린 블록의 시간(ms).                                                     |
+| avgMs         | number | 블록 평균 시간(ms).                                                                 |
+| faces         | number | 누적 face(내장 썸네일) 수.                                                          |
+| maxMsFaces    | number | 가장 오래 걸린 블록에서 처리한 face 수.                                             |
+| asyncOn       | boolean | 썸네일 비동기 적재 사용 여부.                                                      |
+| asyncBudgetMs | number | 동기 디코드 시간 박스(ms).                                                          |
+| deferred      | number | 워커로 넘긴 썸네일 수.                                                              |
+| applied       | number | 워커 결과를 적용한 수.                                                              |
+| droppedStale  | number | 응답이 왔지만 대상 face가 이미 사라져 버린 수.                                      |
+| failed        | number | 디코드 또는 업로드에 실패한 수.                                                     |
+| queued        | number | 현재 워커로 보내기 위해 대기 중인 수.                                               |
+| inflightBatch | number | 현재 워커 응답을 기다리는 배치 수.                                                  |
+| pendingFaces  | number | 현재 적재가 끝나지 않은 face 수.                                                    |
+| thumbTotalMs  | number | 블록 중 썸네일 디코드와 업로드가 차지한 누적 시간(ms).                              |
+| thumbMaxMs    | number | 썸네일 디코드와 업로드 최대 시간(ms).                                               |
+| thumbShare    | number | 파싱 누적 시간 중 썸네일이 차지한 비율(0~1).                                        |
+| gateSkip      | number | 썸네일 적재 대기 때문에 렌더링을 건너뛴 면의 누적 횟수. 지도가 정착한 뒤에는 증가가 멈춰야 합니다. |
+| hist          | object | 파싱 블록 시간 분포. `lt1`(1ms 미만), `lt2`, `lt4`, `lt8`, `lt16`, `lt33`, `lt100`, `ge100`(100ms 이상) 각각의 블록 수. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var stats = Module.XDEGetParseStats();
+console.log(stats.count, stats.avgMs, stats.maxMs, stats.hist.ge100);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEResetParseStats()
+
+> [XDEGetParseStats](moduleapi.md#xdegetparsestats-object)의 누적 통계를 초기화합니다(진단용).
+>
+> 파싱 블록 횟수·시간·face 수, 썸네일의 deferred/applied/droppedStale/failed, 썸네일 시간, 시간 분포(hist)가 0이 됩니다. `gateSkip`과 현재 대기 중인 수(queued, inflightBatch, pendingFaces)는 초기화되지 않습니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEResetParseStats();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetEncodeStats() → object
+
+> 클라이언트 텍스처 인코딩의 동작 통계를 반환합니다(진단용).
+>
+> 인코딩이 실제로 적용되는지, 워커가 어떤 포맷으로 응답하는지 확인하는 용도입니다. 아래 필드 중 `bindZero` 이하는 검정 타일 등 텍스처 오류를 추적하기 위한 내부 진단 카운터입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name             | Type    | Description                                                                          |
+| ---------------- | ------- | ------------------------------------------------------------------------------------ |
+| on               | boolean | 인코딩 사용 여부.                                                                    |
+| target           | number  | 인코딩 대상 포맷(102: BC7, 104: ETC2 RGBA, 0: 없음).                                 |
+| ok               | number  | 인코딩에 성공한 텍스처 수.                                                           |
+| skipDim          | number  | 가로·세로가 4의 배수가 아니어서 건너뛴 수.                                           |
+| skipFmt          | number  | 대상 포맷이 없거나 미지원이어서 건너뛴 수.                                           |
+| savedBytes       | number  | 비압축 대비 절감한 바이트 수.                                                        |
+| workerFmt        | object  | 워커가 돌려준 텍스처 포맷 통계. `tileMesh`(지형 영상), `tileImage`(타일 객체 면), `textureProc`(건물 파사드 레벨), `thumb`(건물 내장 썸네일) 각 항목이 `raw`(비압축 수), `comp`(압축 수), `last`(마지막으로 받은 포맷 값)를 가집니다. |
+| bindZero         | number  | GPU 텍스처 이름이 0인 상태로 바인딩한 프레임 누적 횟수.                              |
+| bindZeroUniq     | number  | 위 상황이 텍스처 이름이 바뀔 때마다 센 횟수.                                         |
+| bindZeroLast     | string  | 위 상황이 마지막으로 발생한 텍스처의 이름.                                           |
+| copyFailOrgName0 | number  | 텍스처 복사 실패 중 원본이 없거나 GPU 이름이 0인 경우의 수.                          |
+| copyFailRT       | number  | 텍스처 복사 실패 중 렌더 타깃 생성에 실패한 수.                                      |
+| copyFailSetRT    | number  | 텍스처 복사 실패 중 렌더 타깃 설정에 실패한 수.                                      |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var stats = Module.XDEGetEncodeStats();
+console.log(stats.on, stats.ok, stats.savedBytes, stats.workerFmt.thumb);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEResetEncodeStats()
+
+> [XDEGetEncodeStats](moduleapi.md#xdegetencodestats-object)의 인코딩 통계를 초기화합니다(진단용).
+>
+> `ok`, `skipDim`, `skipFmt`, `savedBytes`와 `workerFmt`의 모든 값이 0이 됩니다. `bindZero` 이하의 진단 카운터는 초기화되지 않습니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEResetEncodeStats();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetEdgeStats() → object
+
+> 건물 외곽선(심플 엣지 배치) 렌더링 통계를 반환합니다(진단용).
+>
+> 로딩 중 건물 외곽선이 사라졌다가 나타나는 현상(깜빡임)의 정도를 수치로 비교하기 위한 값입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name       | Type   | Description                                                              |
+| ---------- | ------ | ------------------------------------------------------------------------ |
+| invalidate | number | 외곽선 배치를 전부 폐기한 횟수.                                          |
+| upload     | number | 외곽선 배치를 업로드(재구축)한 횟수.                                     |
+| drawTile   | number | 외곽선 배치를 실제로 그린 타일·프레임 수.                                |
+| missTile   | number | 그릴 차례인데 배치가 없던 타일·프레임 수.                                |
+| flickTile  | number | 배치가 있다가 사라진 타일·프레임 수(실제로 보이는 깜빡임).               |
+| missRatio  | number | missTile / (drawTile + missTile). 합이 0이면 0.                          |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEResetEdgeStats();
+// ... 카메라 이동 ...
+var stats = Module.XDEGetEdgeStats();
+console.log(stats.flickTile, stats.missRatio);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEResetEdgeStats()
+
+> [XDEGetEdgeStats](moduleapi.md#xdegetedgestats-object)의 통계를 모두 0으로 초기화합니다(진단용).
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEResetEdgeStats();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetPoiDeclutterStats() → object
+
+> POI 화면 밀집 제거(declutter) 처리의 현재 프레임 통계를 반환합니다(진단용).
+>
+> 값은 매 프레임 0에서 다시 집계되며, declutter가 활성화된 POI만 집계 대상입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name       | Type   | Description                                         |
+| ---------- | ------ | --------------------------------------------------- |
+| candidates | number | declutter 대상으로 검토한 라벨 수.                  |
+| measured   | number | 화면 안·표시 거리 안이라 화면 영역을 측정한 라벨 수. |
+| rejected   | number | 화면 격자 경쟁에서 밀려난 라벨 수.                  |
+| fading     | number | 밀려났지만 아직 서서히 사라지는 중인 라벨 수.       |
+| drawn      | number | 실제로 그려진 라벨 수(남은 라벨 + 사라지는 중인 라벨). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var stats = Module.XDEGetPoiDeclutterStats();
+console.log(stats.candidates, stats.rejected, stats.drawn);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetTextureQueueStats() → object
+
+> 텍스처 요청 파이프라인과 텍스처 메모리 사용 현황을 반환합니다(진단용).
+>
+> 텍스처 요청 대기열, 메모리 예산 동작, 용도별 텍스처 메모리 분포를 확인하는 용도입니다. 지도가 생성되지 않았으면 빈 객체를 반환합니다. 메모리 크기(`...MB`)는 MB 단위로 내림한 정수입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name            | Type    | Description                                                                              |
+| --------------- | ------- | ---------------------------------------------------------------------------------------- |
+| queue           | number  | 요청 대기열에 있는(받아야 할) 텍스처 수.                                                 |
+| inflight        | number  | 요청을 보내고 응답을 기다리는 텍스처 수.                                                 |
+| container       | number  | 받아왔지만 아직 면에 적용되지 않은 텍스처 수.                                            |
+| panning         | boolean | 패닝(드래그 이동) 중 여부.                                                               |
+| moveCheck       | boolean | 카메라 이동 감지 상태(내부 플래그).                                                      |
+| budgetMB        | number  | 타일 텍스처 메모리 예산(MB).                                                             |
+| lowWaterMB      | number  | 예산 초과 상태에서 벗어나는 기준(저수위, MB).                                            |
+| usedMB          | number  | 예산 대상 텍스처 사용량(MB). POI 라벨 등 UI 텍스처는 제외.                               |
+| usedBytes       | number  | `usedMB`의 바이트 값.                                                                    |
+| uiTexMB         | number  | POI 라벨 등 UI 텍스처 사용량(MB). 예산 판정에서 제외됩니다.                              |
+| totalTexMB      | number  | 전체 텍스처 사용량(MB). 타일 + UI.                                                       |
+| byCategory      | object  | 용도별 사용량. 키는 `stream`(지형 영상·파사드 스트리밍), `facadeBase`(건물 내장 기본 텍스처), `facadeLevel`(파사드 스트리밍 레벨), `facadeCopy`(파사드 복제본), `tileface`(타일 객체 면), `rtt`(RTT·합성·투명), `ui`(POI 라벨 등), `etc`(그 밖). 각 값은 `{ mb, bytes, count, compBytes, compCount }`이며 `compBytes`/`compCount`는 그중 압축 텍스처의 바이트/개수입니다. |
+| dimHist         | object  | 텍스처 장축 크기별 개수. `le512`, `le1024`, `le2048`, `le4096`, `over4096`.              |
+| pressure        | boolean | 메모리 예산 초과(압력) 상태 여부.                                                        |
+| overflowEnter   | number  | 압력 상태에 진입한 횟수. 짧은 시간에 빠르게 늘면 진동하고 있다는 뜻입니다.               |
+| overflowRefuse  | number  | 예산 초과로 신규 텍스처 다운로드를 거부한 횟수.                                          |
+| overflowSuppress| number  | 압력 때문에 요청 큐 처리를 건너뛴 횟수.                                                  |
+| iosProfile      | boolean | iOS 프로파일 적용 여부.                                                                  |
+| thumbDim        | object  | 건물 내장 썸네일 크기 분포. `both4`(가로·세로 모두 4의 배수), `wOnly`(가로만), `hOnly`(세로만), `neither`(둘 다 아님), `minW`/`minH`/`maxW`/`maxH`(최소·최대 크기), `square`(정사각형 수), `pot`(2의 거듭제곱 크기 수), `uvMin`/`uvMax`(파사드 정점 UV 범위). |
+| facadeJpgBytes  | number  | 건물 내장 파사드 JPEG의 압축 바이트 총량.                                                |
+| facadeJpgCount  | number  | 건물 내장 파사드 JPEG 개수.                                                              |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var stats = Module.XDEGetTextureQueueStats();
+console.log(stats.usedMB + " / " + stats.budgetMB, stats.byCategory.stream.mb);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetTextureBudget(defaultMB, iosMB, lowPct)
+
+> 타일 텍스처 메모리 예산(MB)과 저수위 비율을 런타임에 조정합니다.
+>
+> 예산은 정상 사용 중에 걸리는 제한이 아니라 메모리 폭주를 막는 상한(백스톱)입니다. 사용량이 예산을 넘으면 신규 텍스처 다운로드가 거부되어 지도 갱신이 멈출 수 있으므로 너무 낮게 설정하지 않아야 합니다. 현재 기기에 적용되는 값(iOS 프로파일이면 `iosMB`, 아니면 `defaultMB`)이 즉시 반영되며 압력 상태가 해제됩니다. POI 라벨 등 UI 텍스처는 예산에서 제외됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name      | Type   | Description                                                                                  |
+| --------- | ------ | -------------------------------------------------------------------------------------------- |
+| defaultMB | number | 데스크톱·안드로이드 예산(MB). 기본값 1024. 0 이하이면 변경하지 않습니다.                     |
+| iosMB     | number | iOS 프로파일 예산(MB). 기본값 384. 0 이하이면 변경하지 않습니다.                             |
+| lowPct    | number | 저수위 비율(예산 대비 %). 기본값 85. 0 이하이면 변경하지 않으며, 10~100 범위로 clamp됩니다. 100이면 히스테리시스 없이 단일 임계로 동작합니다. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+// iOS 예산만 512MB로 조정(나머지는 유지)
+Module.XDESetTextureBudget(0, 512, 0);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetPanAnchorTerrainOnly(on), XDEGetPanAnchorTerrainOnly() → boolean
+
+> 마우스/터치 이동(패닝) 시작 시 기준점을 지형만으로 구할지 여부를 설정합니다.
+>
+> 끄면 기준점을 구할 때 적재된 건물·객체까지 피킹하므로 객체가 많이 쌓일수록 터치 시작 시 지연이 커질 수 있습니다. 켜면 지형만 피킹해 지연이 줄어들며, 지형이 기준이므로 손끝 아래 지면이 따라옵니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                          |
+| ---- | ------- | ------------------------------------------------------------------------------------ |
+| on   | boolean | <p>true: 지형만으로 기준점 계산(iOS 프로파일에서는 기본값).<br>false: 객체 포함(그 외 기본값).</p> |
+
+-   Return(XDEGetPanAnchorTerrainOnly)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPanAnchorTerrainOnly(true);
+var isOn = Module.XDEGetPanAnchorTerrainOnly();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetIOSProfile(on), XDEGetIOSProfile() → boolean
+
+> iOS(iPhone/iPad) 전용 동작 분기의 적용 여부를 강제로 설정합니다.
+>
+> 엔진 초기화 시 User-Agent로 iPhone·iPad·iPod(또는 멀티터치가 있는 Mac Safari)를 자동 판별해 값을 정하며, 이 API로 개발·QA 중 강제로 켜거나 끌 수 있습니다. 이 API는 플래그 값만 바꾸고, 초기화 시점에 이 플래그에 맞춰 정해진 기본값들(텍스처 인코딩, 썸네일 동기 시간 박스, 패닝 기준점, POI 업로드 분산, POI 라벨 16비트 등)을 다시 적용하지는 않습니다. 해당 항목은 각각의 API로 설정하십시오. 플래그를 읽는 동작은 즉시 영향을 받으며, 켜면 지형 피킹이 깊이맵(color map) 방식으로 수행되고, 텍스처 예산은 [XDESetTextureBudget](moduleapi.md#xdesettexturebudget-defaultmb-iosmb-lowpct)이 호출될 때 iOS 값을 사용합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                       |
+| ---- | ------- | --------------------------------------------------------------------------------- |
+| on   | boolean | <p>true: iOS 프로파일 적용.<br>false: 적용 안 함(iOS가 아니면 기본값).</p>           |
+
+-   Return(XDEGetIOSProfile)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetIOSProfile(true); // QA 비교용
+var isIOS = Module.XDEGetIOSProfile();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetPoiImageStats() → object
+
+> POI 이미지(`setImage`) 등록 단계별 소요 시간과 라벨 업로드 분산 현황을 반환합니다(진단용).
+>
+> 값은 [XDEResetPoiImageStats](moduleapi.md#xderesetpoiimagestats)로 초기화하기 전까지 누적됩니다. 업로드 분산이 켜져 있을 때는 `pendingBytes`로 힙에 대기 중인 이미지 크기를 확인할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name         | Type    | Description                                                                |
+| ------------ | ------- | -------------------------------------------------------------------------- |
+| count        | number  | `setImage`로 이미지를 등록한 횟수.                                         |
+| copyMs       | number  | JS 배열을 엔진 메모리로 복사하는 데 쓴 누적 시간(ms).                      |
+| convMs       | number  | 픽셀 포맷 변환(RGBA8 → RGBA4444 등)에 쓴 누적 시간(ms).                    |
+| uploadMs     | number  | GPU 업로드에 쓴 누적 시간(ms).                                             |
+| totalMs      | number  | copyMs + convMs + uploadMs.                                                |
+| deferOn      | boolean | 업로드 분산 사용 여부.                                                     |
+| budgetMs     | number  | 프레임당 업로드 시간 예산(ms).                                             |
+| maxPendingMB | number  | 대기 이미지 크기 상한(MB).                                                 |
+| pendingCount | number  | 현재 업로드 대기 중인 이미지 수.                                           |
+| pendingBytes | number  | 현재 업로드 대기 중인 이미지의 바이트 수.                                  |
+| deferred     | number  | 누적 업로드를 미룬 이미지 수.                                              |
+| flushed      | number  | 누적 업로드를 완료한 이미지 수.                                            |
+| refused      | number  | 대기 상한 초과로 미루지 않고 즉시 업로드한 이미지 수.                      |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var stats = Module.XDEGetPoiImageStats();
+console.log(stats.count, stats.totalMs, stats.pendingBytes);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEResetPoiImageStats()
+
+> [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 누적 통계를 초기화합니다(진단용).
+>
+> `count`, `copyMs`, `convMs`, `uploadMs`, `deferred`, `flushed`, `refused`가 0이 됩니다. 현재 대기 중인 이미지(`pendingCount`, `pendingBytes`)는 초기화되지 않습니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEResetPoiImageStats();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetPoiUploadDefer(on), XDEGetPoiUploadDefer() → boolean
+
+> POI 이미지의 GPU 업로드를 여러 프레임에 나눠 처리할지 여부를 설정합니다.
+>
+> 켜면 `setImage`로 등록한 이미지의 GPU 업로드를 큐에 넣고 프레임마다 시간 예산([XDESetPoiUploadBudgetMs](moduleapi.md#xdesetpoiuploadbudgetms-ms))만큼씩 처리해 많은 POI를 한꺼번에 등록할 때의 끊김을 줄입니다. 대기 중인 이미지 크기가 상한([XDESetPoiUploadMaxPendingMB](moduleapi.md#xdesetpoiuploadmaxpendingmb-mb))을 넘으면 미루지 않고 즉시 업로드합니다. 끄면 등록 시점에 바로 업로드합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                                         |
+| ---- | ------- | ----------------------------------------------------------------------------------- |
+| on   | boolean | <p>true: 분산 업로드(iOS 프로파일에서는 기본값).<br>false: 즉시 업로드(그 외 기본값).</p> |
+
+-   Return(XDEGetPoiUploadDefer)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPoiUploadDefer(true);
+var isOn = Module.XDEGetPoiUploadDefer();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetPoiUploadBudgetMs(ms)
+
+> POI 이미지 분산 업로드가 프레임마다 사용할 수 있는 시간 예산(ms)을 설정합니다.
+>
+> [XDESetPoiUploadDefer](moduleapi.md#xdesetpoiuploaddefer-on-xdegetpoiuploaddefer-boolean)가 켜져 있을 때만 의미가 있습니다. 현재 값은 [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 `budgetMs`로 확인합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                    |
+| ---- | ------ | ---------------------------------------------- |
+| ms   | number | 프레임당 업로드 예산(ms). 기본값 4. 0 미만은 0으로 보정. |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPoiUploadBudgetMs(6);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetPoiUploadMaxPendingMB(mb)
+
+> POI 이미지 분산 업로드에서 업로드를 기다리는 이미지 크기의 상한(MB)을 설정합니다.
+>
+> 상한을 키우면 더 많은 이미지를 나눠 업로드할 수 있지만, 대기 중인 이미지가 메모리에 남아 있으므로 메모리 사용량이 그만큼 늘어납니다. 현재 값은 [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 `maxPendingMB`로 확인합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                      |
+| ---- | ------ | ------------------------------------------------ |
+| mb   | number | 대기 크기 상한(MB). 기본값 32. 0 미만은 0으로 보정(0이면 항상 즉시 업로드). |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetPoiUploadMaxPendingMB(64);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Type Definitions
 
 ### Module.CreateTerrainOptions
@@ -4287,11 +5409,13 @@ var is16Bit = Module.XDEGetPhotoTexture16Bit();
 
 ### Module.CreateWorkerOptions
 
-| Name  | Type    | Description           |
-| ----- | ------- | --------------------- |
-| use   | boolean | web worker 사용 유무. |
-| path  | string  | web worker 요청 url.  |
-| count | number  | web worker 사용 개수. |
+| Name      | Type             | Description                                                                                                                                                                                                                 |
+| --------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| use       | boolean          | web worker 사용 유무.                                                                                                                                                                                                       |
+| path      | string           | web worker 요청 url.                                                                                                                                                                                                        |
+| count     | number \| "auto" | web worker 사용 개수. 생략하거나 숫자가 아니면 5이며, 1 미만은 1로 보정됩니다. `"auto"`를 지정하면 브라우저 정보로 자동 결정합니다(`navigator.hardwareConcurrency - 1`, 최소 2. 장치 메모리를 알 수 있으면 GB당 2개를 넘지 않음. `maxCount` 이하). |
+| maxCount  | number           | web worker 개수 상한(기본 8). 1 미만은 1로 보정됩니다. `count`가 상한보다 크면 `maxCount`를 지정한 경우에만 상한으로 제한되고, 지정하지 않은 경우에는 `count` 값까지 상한이 늘어납니다. |
+| tileParse | boolean          | 3D Tiles 콘텐츠 파싱을 web worker에서 수행할지 여부. 기본값 true. false로 해도 이미지 등 다른 worker 작업에는 영향이 없습니다.                                                                                                |
 
 ### Module.CreateTerrainOptions.DEM
 
