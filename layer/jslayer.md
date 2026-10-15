@@ -1731,6 +1731,7 @@ layer.clearObjectColorList();
 | ↳ autoMove            | boolean (optional, 기본값 false)  | 로드 후 카메라 자동 이동 여부.                        |
 | ↳ offsetZ             | number (optional, 기본값 0.0)     | 높이(Z) 오프셋(meters 단위).                         |
 | ↳ discardVertexData   | boolean (optional, 기본값 false) | 정점 데이터 보관 여부(true: 미보관, 메모리 절약).      |
+| ↳ autoTerrainFit      | boolean (optional, 기본값 false) | 지형 자동 맞춤 사용 여부. [setTileAutoTerrainFit](jslayer.md#settileautoterrainfit-enable)와 같은 스위치입니다. |
 | ↳ Authorization       | boolean (optional, 기본값 false) | 인증 헤더 사용 여부.                                  |
 
 * Return
@@ -1740,6 +1741,10 @@ layer.clearObjectColorList();
     * 3D Tiles 레이어가 아닌 경우.
     * option이 null/undefined인 경우.
     * url이 없는 경우.
+* Note
+  * `autoTerrainFit`의 기본값이 false이므로 기존 호출의 동작은 바뀌지 않습니다. 로드 직후 측정을 처음부터 시작합니다.
+  * 정점→batchId 대응(`_BATCHID`)이 있는 배치 테이블을 가진 타일(b3dm)은 `discardVertexData`가 true여도 정점을 남깁니다(속성만 있고 대응이 없는 표는 해당하지 않음). 정점이 GPU로 올라간 뒤 지워지면 피킹과 feature 선택이 불가능해지기 때문입니다([getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object)의 `batchId`, [extractTileFeature](jslayer.md#extracttilefeature-parameter-jspolygon)). 이렇게 사용자 설정을 덮어쓴 타일 수는 [get3DTilesDiagnostics](jslayer.md#get3dtilesdiagnostics-object)의 `discardKeptForBatch`로 확인할 수 있습니다.
+  * 루트 URL의 호스트가 `tile.googleapis.com`이면 구글 레이어로 판별되어 [setFillOnlyHorizonFactor](jslayer.md#getfillonlyhorizonfactor-setfillonlyhorizonfactor-factor-number-boolean)와 [setFillSkirtCut](jslayer.md#getfillskirtcut-setfillskirtcut-cut-boolean)의 기본값이 켜집니다.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -2834,7 +2839,7 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 | size | number | 포인트 크기.      |
 
 * Note
-  * [setPointCloudPointSize](jslayer.md#setpointcloudpointsize-size-boolean) 와 유사하나, 3D Tiles 레이어 전용으로 동작합니다.
+  * [setPointCloudPointSize](jslayer.md#getpointcloudpointsize-setpointcloudpointsize-size-number-boolean) 와 유사하나, 3D Tiles 레이어 전용으로 동작합니다.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -3601,9 +3606,11 @@ layer.setPointCloudRenderModeAltitude(0.0, 100.0, true);
 {% endtab %}
 {% endtabs %}
 
-### setPointCloudPointSize(size) → boolean
+### getPointCloudPointSize(), setPointCloudPointSize(size) → number, boolean
 
-> 포인트 클라우드 객체의 점 크기를 설정합니다.
+> 포인트 클라우드 객체의 점 크기를 조회하거나 설정합니다.
+>
+> 포인트 클라우드 레이어와 3D Tiles 레이어에서 사용할 수 있습니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3611,9 +3618,14 @@ layer.setPointCloudRenderModeAltitude(0.0, 100.0, true);
 | ---- | ------ | ------------------------- |
 | size | number | 점 크기(0.001 이상, meter 단위). |
 
-* Return
+* Return(getPointCloudPointSize)
+  * number : 레이어에 설정된 점 크기(`setPointCloudPointSize`로 마지막에 설정한 값. 설정한 적이 없으면 기본값 3.0).
+  * 0.0 : 레이어가 없거나 포인트 클라우드 레이어/3D Tiles 레이어가 아닌 경우(값 0과 구분되지 않음).
+* Return(setPointCloudPointSize)
   * true: 설정 성공
-  * false: 잘못된 값이거나 포인트 클라우드 레이어가 아닌 경우
+  * false: 잘못된 값(0.001 미만)이거나 포인트 클라우드 레이어/3D Tiles 레이어가 아닌 경우
+* Note
+  * `getPointCloudPointSize`는 레이어의 점 크기 옵션 값을 읽습니다. 3D Tiles 레이어 전용 [setPointCloudeSize](jslayer.md#setpointcloudesize-size)는 이 값을 바꾸지 않으므로 그 함수로 설정한 크기는 이 getter에 반영되지 않습니다.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -3621,6 +3633,7 @@ layer.setPointCloudRenderModeAltitude(0.0, 100.0, true);
 let layerList = new Module.JSLayerList(false);
 let layer = layerList.nameAtLayer("PointCloudLayer");
 layer.setPointCloudPointSize(0.05);
+console.log(layer.getPointCloudPointSize()); // 0.05
 ```
 {% endtab %}
 {% endtabs %}
@@ -3646,9 +3659,13 @@ layer.setPointCloudPointSize(0.05);
 | position  | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.          |
 | objectKey | string                              | 피킹된 객체의 고유 키.       |
 | layerName | string                              | 피킹된 객체가 포함된 레이어 이름. |
+| tileKey   | string                              | (3D Tiles 레이어 전용) 맞힌 타일의 콘텐츠 URL. [extractTileFeature](jslayer.md#extracttilefeature-parameter-jspolygon)가 타일을 다시 찾는 핸들입니다. |
+| batchId   | number \| null                      | (3D Tiles 레이어 전용) 맞힌 feature의 배치 테이블 행 번호. 타일에 배치 테이블(b3dm)이 없거나 맞힌 삼각형이 어느 feature 범위에도 들지 않으면 null. |
+| properties | object                             | (3D Tiles 레이어 전용) `batchId`가 정수일 때만 포함. 배치 테이블 속성 이름 → 문자열 값. |
 
 * Note
   * 카메라의 뷰 영역 내부인 객체만 피킹합니다.
+  * 3D Tiles 레이어에서 glTF 타일(`s3dGltf`) 객체를 맞혔을 때만 `tileKey`, `batchId`, `properties`가 추가됩니다. 다른 레이어 타입의 반환 형식은 그대로입니다. `properties.batchId`처럼 데이터 속성에 같은 이름이 있어도 행 번호는 최상위 `batchId`입니다.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -3688,9 +3705,13 @@ if (pickInfo) {
 | position  | [JSVector3D](../core/jsvector3d.md) | 피킹된 좌표 위치.          |
 | objectKey | string                              | 피킹된 객체의 고유 키.       |
 | layerName | string                              | 피킹된 객체가 포함된 레이어 이름. |
+| tileKey   | string                              | (3D Tiles 레이어 전용) 맞힌 타일의 콘텐츠 URL. [extractTileFeature](jslayer.md#extracttilefeature-parameter-jspolygon)가 타일을 다시 찾는 핸들입니다. |
+| batchId   | number \| null                      | (3D Tiles 레이어 전용) 맞힌 feature의 배치 테이블 행 번호. 타일에 배치 테이블(b3dm)이 없거나 맞힌 삼각형이 어느 feature 범위에도 들지 않으면 null. |
+| properties | object                             | (3D Tiles 레이어 전용) `batchId`가 정수일 때만 포함. 배치 테이블 속성 이름 → 문자열 값. |
 
 * Note
   * 카메라의 뷰 영역에 상관없이 피킹합니다.
+  * 3D Tiles 레이어에서 glTF 타일(`s3dGltf`) 객체를 맞혔을 때만 `tileKey`, `batchId`, `properties`가 추가됩니다. 다른 레이어 타입의 반환 형식은 그대로입니다. `properties.batchId`처럼 데이터 속성에 같은 이름이 있어도 행 번호는 최상위 `batchId`입니다.
 {% endtab %}
 
 {% tab title="Template" %}
@@ -3705,6 +3726,137 @@ if (pickInfo) {
     console.log("Object Key:", pickInfo.objectKey);
     console.log("Layer Name:", pickInfo.layerName);
 }
+```
+{% endtab %}
+{% endtabs %}
+
+### extractTileFeature(parameter) → [JSPolygon](../object/jspolygon.md)
+
+> 3D Tiles(b3dm) 레이어에서 feature 하나의 기하만 떼어 독립 폴리곤 객체로 추출합니다.
+>
+> [getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object) / [getPickInfoAtView](jslayer.md#getpickinfoatview-linefrom-lineto-object)의 `tileKey`, `batchId`를 그대로 넘깁니다. 복사이지 이동이 아니므로 원본 타일은 그대로입니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name      | Type   | Description                                                                 |
+| --------- | ------ | --------------------------------------------------------------------------- |
+| parameter | object | 추출 대상. `{ tileKey: string, batchId: number }` 객체.                      |
+| ↳ tileKey | string | 피킹 결과의 `tileKey`(맞힌 타일의 콘텐츠 URL).                                |
+| ↳ batchId | number | 피킹 결과의 최상위 `batchId`. 0 이상 4294967295 미만의 정수. `properties.batchId`(속성 컬럼)가 아닙니다. |
+
+* Return
+  * [JSPolygon](../object/jspolygon.md) : 추출된 객체. 어느 레이어에도 들어 있지 않으므로 원하는 사용자 레이어에 [addObject](jslayer.md#addobject-object-level)로 추가해 사용합니다. 레이어에 넣지 않으면 해제되지 않습니다.
+  * `null` : 실패. 콘솔에 사유가 출력됩니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * `parameter`가 객체가 아니거나 `tileKey`(문자열), `batchId`(숫자)가 없거나 형식이 틀린 경우(피킹 결과의 `batchId`가 null이면 맞힌 타일에 배치 테이블이 없는 것입니다).
+    * `batchId`가 NaN, 음수, 소수, 4294967295 이상인 경우.
+    * `tileKey`에 해당하는 타일이 없는 경우(아직 받지 못했거나 이미 해제됨. 피킹 직후에 호출하십시오).
+    * 타일에 배치 테이블이 없는 경우.
+    * 그 `batchId`의 삼각형이 하나도 없는 경우.
+    * 그 `batchId`의 정점이 이미 지워진 경우(`discardVertexData`로 정점이 지워진 타일. 일부만 추출하지 않고 통째로 거부합니다).
+    * 배치 테이블의 정점 구간이 면의 정점 수를 넘어 표와 기하가 어긋난 경우.
+* Note
+  * 한 feature가 여러 (메시, 면)에 걸치면 전부 모읍니다. 세 정점이 모두 그 feature의 정점인 삼각형만 가져갑니다.
+  * 정점은 월드(ECEF) 좌표로 구워지고 객체 중심 기준 상대 좌표 + 경계 상자로 만들어집니다. 렌더 위치는 호출 시점에 원본 타일이 그려진 자리와 같으며, 이후 타일이 다시 적재돼도 추출 객체는 따라가지 않습니다.
+  * 텍스처는 복사하지 않습니다(색, 알파, 조명 속성만 복사). [setTileHeightOffset](jslayer.md#gettileheightoffset-settileheightoffset-meter-number)과 지형 자동 맞춤의 보정도 적용하지 않으며 데이터의 실제 위치로 만들어집니다.
+  * 같은 `tileKey`를 가진 타일이 여럿이면(서로 다른 중첩 타일셋이 같은 상대경로를 쓴 경우) 경고를 출력하고 먼저 찾은 타일을 사용합니다.
+  * 객체 키는 `tileKey + "#" + batchId` 형식이며, 100자 이상이면 `tile_<타일키 해시>#batchId`로 줄어듭니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let layerList = new Module.JSLayerList(false);
+let layer = layerList.nameAtLayer("3dtiles_layer");
+
+// 1) 피킹으로 feature 정보 얻기
+let info = layer.getPickInfo(from, to);
+if (info && info.batchId !== null && info.batchId !== undefined) {
+    console.log(info.tileKey, info.batchId, info.properties);
+
+    // 2) feature 추출
+    let polygon = layer.extractTileFeature({
+        tileKey: info.tileKey,
+        batchId: info.batchId
+    });
+
+    // 3) 원하는 사용자 레이어에 추가
+    if (polygon) {
+        let userLayerList = new Module.JSLayerList(true);
+        let userLayer = userLayerList.createLayer("extracted");
+        userLayer.addObject(polygon, 0);
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### getSelectedTileFeature() → [TileFeature](jslayer.md#tilefeature)
+
+> 엔진이 지금 이 3D Tiles 레이어에서 선택하고 있는 feature를 반환합니다. (읽기 전용)
+>
+> [getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object)로 따로 피킹하면 광선이 달라 클릭한 건물과 다른 건물이 나올 수 있으므로, "엔진이 실제로 고른 것"을 보여 줄 때 사용합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * [TileFeature](jslayer.md#tilefeature) : 선택된 feature(`tileKey`, `batchId`, `properties`). `batchId`는 항상 정수입니다.
+  * `null` : 아래 경우.
+    * 월드가 초기화되지 않았거나 3D Tiles 레이어가 아닌 경우.
+    * 이 레이어에서 선택된 타일이 없는 경우.
+    * 선택은 있지만 feature 선택이 아닌 경우(배치 테이블이 없는 타일, 광선이 빗나감, JS `setSelectObject`로 한 선택 - 그 타일은 통째로 선택된 것).
+    * 선택을 들던 타일이 해제됐고(LOD 축출, 보유 용량 상한) 그 건물을 담은 타일이 아직 그려지지 않은 경우. 그 타일이 그려지면 선택을 넘겨받아 다시 값을 돌려줍니다.
+* Note
+  * 여러 타일이 선택돼 있으면(shift+클릭) 가장 나중에 선택된 feature를 반환합니다.
+  * **`tileKey`와 `batchId`는 "선택을 들고 있는 타일" 기준입니다.** 선택은 LOD가 바뀌어도 같은 건물에 유지되지만(자세한 내용은 [setTileFeatureIdentityKey](jslayer.md#gettilefeatureidentitykey-settilefeatureidentitykey-key-string)), 선택을 들고 있는 타일은 클릭한 때의 타일 그대로라 지금 그려지지 않는 부모나 거친 조상일 수 있습니다. 그래서 같은 건물에 `getPickInfo`를 걸어 얻은 `tileKey`/`batchId`와 다를 수 있습니다. 건물의 정체성은 행 번호(`batchId`, 타일 레벨마다 바뀝니다)가 아니라 `properties`의 정체성 속성(기본 `name`)으로 판단하십시오.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let feature = layer.getSelectedTileFeature();
+if (feature) {
+    console.log("선택된 건물:", feature.properties.name, "tile:", feature.tileKey, "batchId:", feature.batchId);
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### getTileFeatureIdentityKey(), setTileFeatureIdentityKey(key) → string
+
+> 3D Tiles 건물 정체성 키(배치 테이블 속성 이름)를 조회하거나 설정합니다.
+>
+> 엔진은 줌으로 LOD(타일 레벨)가 바뀌어도 같은 건물의 선택을 유지하려고 건물을 배치 테이블 속성 하나의 값으로 알아봅니다(기본 `"name"`). 그 값이 같은 행은 전부 한 건물로 취급되어 함께 칠해집니다. 레이어마다 따로 가집니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description                                                                                  |
+| ---- | ------ | -------------------------------------------------------------------------------------------- |
+| key  | string | 정체성 속성 이름(대소문자 구분, 기본값 `"name"`). **빈 문자열이면 기능을 끕니다.**             |
+
+* Return(getTileFeatureIdentityKey)
+  * string : 현재 키(기본 `"name"`, 꺼져 있으면 `""`).
+  * "" : 끈 상태이거나 3D Tiles 레이어가 아닌 경우.
+* Return(setTileFeatureIdentityKey)
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+* Note
+  * **끄는 경우**: 그 속성이 건물 하나를 가리키는 값이 아니라 분류(용도, 구역 이름 등)인 데이터셋에서는 건물 하나를 고르면 화면의 같은 값을 가진 건물이 전부 칠해집니다. 그런 데이터셋에서는 `""`로 끕니다. 끄면 선택은 선택을 든 타일 안에서만 유지됩니다(LOD로 다른 타일이 그려지면 하이라이트가 사라지고, 선택을 든 타일이 해제되면 선택도 사라짐).
+  * 데이터에 없는 속성 이름을 주면 끈 것과 같습니다(그 속성이 없는 feature의 선택은 타일 안에서만 유지).
+  * 선택이 있는 중에 바꿔도 되며 다음 프레임부터 새 키로 칠할 행을 다시 정합니다. 옛 키로 남아 있던 이름(선택을 들던 타일이 해제돼 이름만 남은 것)은 버려집니다. 같은 키를 다시 주면 아무 일도 하지 않습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+console.log(layer.getTileFeatureIdentityKey()); // "name"
+
+layer.setTileFeatureIdentityKey("bldg_id"); // 건물 식별 속성으로 변경
+layer.setTileFeatureIdentityKey("");        // 끄기
 ```
 {% endtab %}
 {% endtabs %}
@@ -4017,6 +4169,195 @@ let ratio = layer.getRefineHysteresisRatio();
 {% endtab %}
 {% endtabs %}
 
+### getRefineHoldTime(), setRefineHoldTime(ms) → number, boolean
+
+> 3D Tiles 정제 유지(팝아웃 방지) 창(ms)을 조회하거나 설정합니다.
+>
+> REPLACE 정제에서 이미 자식으로 정제해 그리던 노드는, 새로 보이게 된 자식이 아직 오지 않았다는 이유로 거친 부모로 되돌아가지 않습니다(빠진 자리는 조상 채움이 덮습니다). 이 값은 "마지막으로 자식이 전부 준비됐던 시점"부터의 실제 경과 시간입니다.
+>
+> 창이 지나 만료돼도 되돌림이 화면을 더 덮을 때만 부모로 되돌립니다(그 노드가 자기를 그릴 수 있는데 조상 채움으로는 못 그리는 경우, 예: 가우시안 스플랫 타일). 그 밖에는 만료 뒤에도 지금 화면을 유지합니다. 레이어 알파가 250 미만이어도 더 이상 되돌림 사유가 아닙니다(알파 패스의 조상 채움이 빠진 자리를 덮습니다).
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type   | Description                                                   |
+| ---- | ------ | ------------------------------------------------------------- |
+| ms   | number | 정제 유지 창(ms, 기본값 10000). 0 ~ 600000. 유한한 수여야 합니다.   |
+
+* Return(getRefineHoldTime)
+  * number : 설정된 창(ms).
+  * 0.0 : 3D Tiles 레이어가 아닌 경우(창 0과 구분되지 않음).
+* Return(setRefineHoldTime)
+  * true : 설정 성공.
+  * false : 설정 실패. 값은 변경되지 않으며 콘솔에 사유가 출력됩니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * ms가 0 미만이거나 600000 초과이거나 유한한 수가 아닌 경우(NaN, Infinity).
+* Note
+  * 기본값 10000ms는 종전의 600프레임(60fps 기준 약 10초)을 시간으로 옮긴 값입니다.
+  * [get3DTilesDiagnostics](jslayer.md#get3dtilesdiagnostics-object)의 `refineHoldMs`(설정값), `holdKept`(창이 지났지만 유지를 계속한 노드 수), `holdReverted`(창이 지나 되돌린 노드 수)로 확인할 수 있습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let ok = layer.setRefineHoldTime(10000);
+let ms = layer.getRefineHoldTime();
+```
+{% endtab %}
+{% endtabs %}
+
+### getTileUnloadDistance(), setTileUnloadDistance(meter) → number, boolean
+
+> 3D Tiles 모델 데이터의 거리 기반 해제 거리를 조회하거나 설정합니다.
+>
+> 카메라가 멀어져 더는 필요 없는 타일의 모델 데이터(정점/텍스처)와 중첩 타일셋(노드 트리)을 풀어 메모리를 돌려줍니다. 종전에는 보유 용량 상한([setMaxTilesRetainedMB](../option/jsoption.md#getmaxtilesretainedmb-setmaxtilesretainedmb-size-number), 기본 512MB)을 넘을 때만 풀렸고 상한 안쪽인 데이터셋은 카메라가 아무리 멀어져도 처음 받은 것이 그대로 남았습니다. 이 해제는 상한과 무관하게 돌고, 풀린 데이터는 다시 필요해지면(가까이 돌아오면) 다시 받습니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                                                                        |
+| ----- | ------ | -------------------------------------------------------------------------------------------------- |
+| meter | number | 해제 거리(m). 0: 자동(기본값), 0 초과: 고정 거리(m), 0 미만: 거리 기반 해제 끔. 유한한 수여야 합니다. |
+
+* Return(getTileUnloadDistance)
+  * number : 설정된 값(0 자동 / > 0 고정 m / < 0 끔).
+  * 0.0 : 3D Tiles 레이어가 아닌 경우(자동 모드와 구분되지 않음).
+* Return(setTileUnloadDistance)
+  * true : 설정 성공.
+  * false : 설정 실패. 값은 변경되지 않으며 콘솔에 사유가 출력됩니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * meter가 유한한 수가 아닌 경우(NaN, Infinity).
+* Note
+  * **0(자동)**: SSE에서 거리를 파생합니다. 어떤 타일의 데이터는 그 부모가 정제를 시작할 때만 다시 필요하므로, 부모가 정제를 멈추는 거리(부모 geometricError × 화면 상수 / (최대 SSE / 히스테리시스 비율))의 1.5배보다 멀면 풉니다. [setMaxGeometricError](jslayer.md#getmaxgeometricerror-setmaxgeometricerror-value-number)와 [setRefineHysteresisRatio](jslayer.md#getrefinehysteresisratio-setrefinehysteresisratio-ratio-number)를 바꾸면 이 거리도 따라 바뀝니다. 해제 거리가 다시 받기 시작하는 거리의 2.25배라서 그 경계 근처에서 카메라를 앞뒤로 움직여도 풀었다 받기를 되풀이하지 않습니다.
+  * **0 초과(고정)**: 카메라와 부모 타일 경계 볼륨 사이가 이 값을 넘고 SSE가 정제를 요구하지 않는 타일만 풉니다. 자동의 1.5 여유 배수는 얹지 않으므로(숫자가 곧 해제 거리) 해제/재요청 간격이 자동보다 좁을 수 있습니다(판정에 쓰는 히스테리시스에 최소 1.5를 둡니다). 넉넉한 간격이 필요하면 `get3DTilesDiagnostics().unloadRootDist`(자동 거리)의 1.5배 이상으로 정하십시오.
+  * **화면이 필요로 하는 타일(그려지는 타일, SSE가 정제를 요구하는 부모의 자식)은 이 값이 작아도 풀리지 않습니다.** SSE 렌더링 수준이 우선입니다.
+  * 풀리지 않는 것: 지금 그려지는 타일, 최근 1초 안에 그려진 타일, 응답 대기 중인 json이 있는 중첩 타일셋(안쪽 중첩 타일셋 포함), 자동 모드에서 루트 타일 자신의 콘텐츠(고정 거리 모드에서만 그 거리 밖이고 지금 그려지지 않을 때 풂). 선택을 든 타일이 풀리면 그 건물의 이름이 남아 다시 그려질 때 선택이 돌아옵니다([setTileFeatureIdentityKey](jslayer.md#gettilefeatureidentitykey-settilefeatureidentitykey-key-string) 참고).
+  * 판정은 0.5초 간격으로 하고 카메라가 멈추고 새 콘텐츠도 없으면 곧 멈춥니다(카메라가 멈춘 채 새 콘텐츠만 들어오는 동안은 2초 간격). 한 번의 순회는 해제 예산(2ms)을 넘으면 남은 것을 다음 순회로 미룹니다.
+  * 시간과 해제 수는 [get3DTilesDiagnostics](jslayer.md#get3dtilesdiagnostics-object)의 `unload*` 필드로 읽습니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setTileUnloadDistance(0);      // 자동(기본)
+layer.setTileUnloadDistance(3000);   // 3km 밖 타일 데이터 해제
+layer.setTileUnloadDistance(-1);     // 끔(보유 용량 상한으로만 해제)
+
+let distance = layer.getTileUnloadDistance();
+```
+{% endtab %}
+{% endtabs %}
+
+### getFillOnlyHorizonFactor(), setFillOnlyHorizonFactor(factor) → number, boolean
+
+> 3D Tiles 지평선 규모를 넘는 타일의 "채움 전용" 처리 배수를 조회하거나 설정합니다.
+>
+> 카메라를 크게 돌리거나 내린 직후에는 자식이 아직 없어 부모(더 거친 타일)가 대신 그려집니다. 그 부모가 지구 규모면 메시 오차가 카메라 높이를 훨씬 넘어, 정밀 타일을 가로막는 가짜 벽과 카메라 앞을 가로지르는 띠(바다 텍스처의 파란 띠)로 보입니다.
+>
+> 카메라 높이 h(200m 하한)에서 지평선까지의 거리 `sqrt(2*R*h + h*h)`의 factor배보다 큰 타일 중 **자식 대신 서 있는 REPLACE 타일**(자식 미준비/미요청/하강 공백으로 부모가 대신 그려진 것)만 정밀 목록에서 빼 조상 채움 패스(어떤 정밀 타일도 덮지 못한 화소에만 그림)로 내립니다. 그리지 않는 것이 아니라 정밀 타일이 있는 화소에서만 물러나므로 화면이 비지 않습니다. ADD 노드, SSE가 정답이라 그린 타일, 리프는 크기와 무관하게 옮기지 않으며, 한계 이하 타일이 화면에 하나도 없으면(시작 직후 큰 타일만 받은 상태) 아무것도 옮기지 않습니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type   | Description                                                                                      |
+| ------ | ------ | ------------------------------------------------------------------------------------------------ |
+| factor | number | 지평선 거리 대비 배수. 0: 끔(종전 동작). 클수록 더 큰 타일까지 정밀 목록에 둡니다. 0 이상의 유한한 값만 받습니다(카메라 250m에서 3.0 = 약 169km 초과 타일). |
+
+* Return(getFillOnlyHorizonFactor)
+  * number : 유효값(명시한 값이 있으면 그 값, 없으면 기본값).
+  * 0.0 : 3D Tiles 레이어가 아니거나 끈 경우(구분되지 않음).
+* Return(setFillOnlyHorizonFactor)
+  * true : 설정 성공.
+  * false : 설정 실패. 값은 변경되지 않으며 콘솔에 사유가 출력됩니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * factor가 음수이거나 유한한 수가 아닌 경우.
+* Note
+  * **기본값(명시하지 않았을 때): 구글 레이어 3.0, 그 밖의 레이어 0(끔).** 구글 판별은 import한 루트 URL의 호스트가 `tile.googleapis.com`인 것 하나뿐입니다. 사내 프록시, Cesium ion의 구글 자산, CDN 재배포처럼 다른 호스트를 거치면 구글 데이터여도 기본은 꺼져 있으며, 그런 경우 `setFillOnlyHorizonFactor(3)` / [setFillSkirtCut(true)](jslayer.md#getfillskirtcut-setfillskirtcut-cut-boolean)를 직접 호출하십시오. (`get3DTilesDiagnostics().googleTiles`로 판별 결과를 확인할 수 있습니다.)
+  * 명시한 값은 구글 판별보다 우선하고 레이어를 다시 import해도 유지됩니다. 명시한 값을 지우고 기본(자동)으로 되돌리려면 [resetFillDefaults](jslayer.md#resetfilldefaults-boolean)를 부릅니다(`-1` 같은 음수는 거부됩니다).
+  * **주의**: 불투명 레이어(알파 250 이상)에서 알파 재질(투명 메시)을 가진 타일이 대신 서는 타일로 내려가면 그 투명 부분이 그려지지 않습니다(그 레이어의 조상 채움 패스는 불투명 부분만 그림). 가우시안 스플랫 타일은 레이어 알파와 무관하게 채움에서 통째로 건너뜁니다. 불투명하지 않은 REPLACE 타일셋에는 켜지 마십시오. 레이어 알파가 250 미만이면 내린 타일의 메시도 전부 알파 패스의 조상 채움으로 그려집니다.
+  * 이번 프레임에 내린 타일 수는 `get3DTilesDiagnostics().fillOnlyDemoted`입니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+// 구글 3D Tiles를 사내 프록시로 받는 경우 직접 켠다
+layer.setFillOnlyHorizonFactor(3);
+layer.setFillSkirtCut(true);
+
+console.log(layer.getFillOnlyHorizonFactor()); // 3
+```
+{% endtab %}
+{% endtabs %}
+
+### getFillSkirtCut(), setFillSkirtCut(cut) → boolean
+
+> 3D Tiles 조상 채움 타일의 치마(skirt) 제거 여부를 조회하거나 설정합니다.
+>
+> 정밀 타일이 덮지 못한 자리를 거친 조상으로 메우는 채움 패스에서만, 구글 타일 가장자리의 치마(텍스처가 세로로 늘어난 면) 조각을 버려 계단 사이의 벽을 없앱니다. 정밀 타일은 건드리지 않아 타일 사이 이음매는 그대로입니다. 그림자가 켜져 있으면(그림자 전용 프로그램) 적용되지 않습니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name | Type    | Description                                |
+| ---- | ------- | ------------------------------------------ |
+| cut  | boolean | true: 치마 제거, false: 제거 안 함.        |
+
+* Return(getFillSkirtCut)
+  * boolean : 유효값(명시한 값이 있으면 그 값, 없으면 기본값).
+  * false : 3D Tiles 레이어가 아닌 경우.
+* Return(setFillSkirtCut)
+  * true : 설정 성공.
+  * false : 설정 실패. 콘솔에 사유가 출력됩니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+* Note
+  * **기본값(명시하지 않았을 때): 구글 레이어 true, 그 밖의 레이어 false.** 구글 판별 기준은 [setFillOnlyHorizonFactor](jslayer.md#getfillonlyhorizonfactor-setfillonlyhorizonfactor-factor-number-boolean)와 같습니다. 비구글 REPLACE 데이터에서는 정상 면이 버려질 수 있습니다(소스 주석 실측: 한 데이터셋의 루트 면적 2.7%).
+  * 명시한 값은 판별보다 우선하며 [resetFillDefaults](jslayer.md#resetfilldefaults-boolean)로 지웁니다.
+  * 치마 제거 유니폼을 실제로 건 조상 채움 타일 수는 `get3DTilesDiagnostics().skirtCutTiles`입니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setFillSkirtCut(true);
+console.log(layer.getFillSkirtCut()); // true
+```
+{% endtab %}
+{% endtabs %}
+
+### resetFillDefaults() → boolean
+
+> [setFillOnlyHorizonFactor](jslayer.md#getfillonlyhorizonfactor-setfillonlyhorizonfactor-factor-number-boolean)와 [setFillSkirtCut](jslayer.md#getfillskirtcut-setfillskirtcut-cut-boolean)로 명시한 값을 지우고 기본(자동)으로 되돌립니다.
+>
+> 자동 기본값은 구글 레이어 3.0 / true, 그 밖의 레이어 0 / false입니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * true : 두 기능의 명시한 값을 모두 지움.
+  * false : 실패(월드가 초기화되지 않았거나 3D Tiles 레이어가 아닌 경우. 콘솔에 사유 출력).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setFillOnlyHorizonFactor(0);
+layer.setFillSkirtCut(false);
+
+layer.resetFillDefaults(); // 다시 자동(구글 레이어만 켜짐)
+```
+{% endtab %}
+{% endtabs %}
+
 ### setTileBoundary(minLon, minLat, maxLon, maxLat)
 
 > 3D Tiles 레이어를 경위도(degree) 사각 범위로 제한합니다.
@@ -4169,12 +4510,149 @@ layer.clearTileExcludeArea();
   * 0.0 : 3D Tiles 레이어가 아닌 경우.
 * Return(setTileHeightOffset)
   * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+* Note
+  * 이 값은 수동 보정값만 나타냅니다. [지형 자동 맞춤](jslayer.md#settileautoterrainfit-enable)을 켠 경우 렌더에는 "수동 보정 + 자동 보정"의 합이 적용되며, 자동 보정값은 [getTileTerrainFit](jslayer.md#gettileterrainfit-tileterrainfit)의 `offsetZ`로 읽습니다.
 {% endtab %}
 
 {% tab title="Template" %}
 ```javascript
 layer.setTileHeightOffset(5.0);
 let offset = layer.getTileHeightOffset();
+```
+{% endtab %}
+{% endtabs %}
+
+### setTileAutoTerrainFit(enable)
+
+> 3D Tiles 레이어의 지형 자동 맞춤을 켜거나 끕니다.
+>
+> 포인트클라우드·메시·가우시안 스플랫이 지형 위에 떠 있거나 파묻힌 것을 자동으로 보정합니다. 데이터의 높이 기준(타원체고/표고)은 파일에 적혀 있지 않으므로 추정하지 않고 엔진 지형을 실제로 조회해 보정값을 구합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다. [import3DTiles](jslayer.md#import3dtiles-option-boolean)의 `autoTerrainFit` 옵션과 같은 스위치입니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name   | Type    | Description                                                           |
+| ------ | ------- | --------------------------------------------------------------------- |
+| enable | boolean | true: 켜고 측정을 처음부터 다시 시작. false: 끄고 자동 보정값을 0으로 되돌림. |
+
+* Return
+  * 반환값 없음. 3D Tiles 레이어가 아니면 아무 동작도 하지 않습니다.
+* Note
+  * **측정 방식**: 표본은 점 객체(PNTS/glTF POINTS, 루트부터 깊이 4까지의 첫 점 객체)가 있으면 그 점을 쓰고, 없으면 로드된 메시 정점을, 그것도 없으면 스플랫 중심점을 씁니다(`getTileTerrainFit().source`). 표본을 10m 격자로 나눠 셀마다 가장 낮은 점(지면 반사)을 고르고, 그 자리의 엔진 지형 고도(DEM 비율 반영)와의 차를 모아 **30 백분위**를 구해 그 음수를 자동 보정(`offsetZ`)으로 씁니다. 중앙값이 아닌 이유는 수관만 잡힌 셀이 차를 양수 쪽으로 치우치게 하기 때문입니다.
+  * 지형이 아직 올라오지 않은 시점의 조회는 거친 레벨 값을 주므로, 한 번 재고 끝내지 않고 매 프레임 다시 재면서 표본이 읽은 지형 레벨의 최솟값이 120프레임 동안 더 오르지 않으면(또는 1800프레임이 되면) 확정합니다(`state` 1 → 2). 측정 중에도 현재 값을 바로 적용하므로 수렴 과정이 화면에 보입니다.
+  * 메시·스플랫은 측정 중인 동안 새로 로드된 노드(루트부터 깊이 4)를 계속 표본에 합칩니다(정점 예산 200만 개, 스플랫은 타일당 최대 2만 점). 점·메시·스플랫 정점이 3600프레임이 지나도록 전혀 없으면 포기합니다(`state` 3).
+  * 새 타일셋을 import하면 이전 보정과 표본을 버립니다(옵션은 import 직후 다시 적용됩니다).
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+// 로드 시 켜기
+layer.import3DTiles({ url: "http://.../tileset.json", autoTerrainFit: true });
+
+// 런타임에 켜기/끄기
+layer.setTileAutoTerrainFit(true);
+layer.setTileAutoTerrainFit(false);
+```
+{% endtab %}
+{% endtabs %}
+
+### getTileTerrainFit() → [TileTerrainFit](jslayer.md#tileterrainfit)
+
+> 3D Tiles 레이어의 지형 자동 맞춤 상태, 보정값, 루트 바운딩 정보를 반환합니다.
+>
+> 측정 진행 확인과 카메라 프레이밍(루트 위치로 이동)에 사용합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+* Return
+  * [TileTerrainFit](jslayer.md#tileterrainfit) : 상태 객체.
+  * `{}` (속성이 없는 빈 객체) : 3D Tiles 레이어가 아닌 경우.
+* Note
+  * `rootLon`, `rootLat`, `rootAlt`, `rootRadius`는 타일셋 루트가 로드된 뒤에만 포함됩니다.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+let fit = layer.getTileTerrainFit();
+console.log("enabled:", fit.enabled, "state:", fit.state, "보정:", fit.offsetZ, "m");
+
+if (fit.rootLon !== undefined) {
+    // 루트 위치 확인 (경도, 위도, 높이, 반경)
+    console.log(fit.rootLon, fit.rootLat, fit.rootAlt, fit.rootRadius);
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### getSplatAlphaScale(), setSplatAlphaScale(scale) → number, boolean
+
+> 3D Tiles 레이어에 포함된 가우시안 스플랫의 진하기(불투명도 배수)를 조회하거나 설정합니다.
+>
+> 1.0이 자료 그대로입니다. 올리면 SPZ 불투명도가 그만큼 곱해져 지형이 비쳐 보이던 것이 줄어듭니다. 1을 넘는 값은 셰이더에서 1.0으로 포화하므로 "완전 불투명"이 상한입니다.
+>
+> 스플랫은 타일마다 별개 객체이고 타일이 계속 흘러들어오므로 값을 레이어가 들고 렌더 루프가 매 프레임 타일에 밀어 줍니다(나중에 온 타일도 같은 진하기로 그려집니다).
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| scale | number | 진하기 배수(기본값 1.0). 0 초과 8 이하.             |
+
+* Return(getSplatAlphaScale)
+  * number : 설정된 배수.
+  * 0.0 : 레이어가 없거나 3D Tiles 레이어가 아닌 경우.
+* Return(setSplatAlphaScale)
+  * true : 설정 성공.
+  * false : 설정 실패. 값은 변경되지 않습니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * scale이 0 이하이거나 8을 초과하거나 NaN인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setSplatAlphaScale(2.0); // 진하게
+console.log(layer.getSplatAlphaScale()); // 2
+```
+{% endtab %}
+{% endtabs %}
+
+### getSplatScale(), setSplatScale(scale) → number, boolean
+
+> 3D Tiles 레이어에 포함된 가우시안 스플랫의 크기 배수를 조회하거나 설정합니다.
+>
+> 1.0이 자료 그대로이며 배수는 스플랫 공분산에 곱해집니다. 값은 [setSplatAlphaScale](jslayer.md#getsplatalphascale-setsplatalphascale-scale-number-boolean)과 같이 레이어가 들고 매 프레임 타일에 적용합니다.
+>
+> 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+| Name  | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| scale | number | 크기 배수(기본값 1.0). 0 초과 8 이하.               |
+
+* Return(getSplatScale)
+  * number : 설정된 배수.
+  * 0.0 : 레이어가 없거나 3D Tiles 레이어가 아닌 경우.
+* Return(setSplatScale)
+  * true : 설정 성공.
+  * false : 설정 실패. 값은 변경되지 않습니다.
+  * 실패 조건
+    * 월드가 초기화되지 않은 경우.
+    * 3D Tiles 레이어가 아닌 경우.
+    * scale이 0 이하이거나 8을 초과하거나 NaN인 경우.
+{% endtab %}
+
+{% tab title="Template" %}
+```javascript
+layer.setSplatScale(1.5);
+console.log(layer.getSplatScale()); // 1.5
 ```
 {% endtab %}
 {% endtabs %}
@@ -4496,6 +4974,39 @@ console.log(style.poi.scaleable.activate);
 | ring  | array(array(number))                |            |         | 외곽 링 좌표 배열(각 원소 `[lon, lat]`, 3개 이상 필요). 마지막 점이 첫 점과 같으면 중복 점을 제거. 3개 미만이면 해당 영역은 건너뜀. |
 | holes | array(array(array(number)))         | optional   |         | 홀 링 배열(각 링은 ring과 같은 형식). 3개 미만인 홀은 건너뜀.                              |
 
+#### TileFeature
+
+> 3D Tiles feature 한 건 정보. [getSelectedTileFeature](jslayer.md#getselectedtilefeature-tilefeature)의 반환 객체이며, [getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object) / [getPickInfoAtView](jslayer.md#getpickinfoatview-linefrom-lineto-object) 결과의 같은 이름 필드와 같은 모양입니다.
+
+| Name       | Type   | Description                                                                                      |
+| ---------- | ------ | ------------------------------------------------------------------------------------------------ |
+| tileKey    | string | 타일의 콘텐츠 URL. [extractTileFeature](jslayer.md#extracttilefeature-parameter-jspolygon)의 입력.        |
+| batchId    | number | 배치 테이블 행 번호(0 이상의 정수). 타일 레벨마다 같은 건물이라도 달라집니다.                          |
+| properties | object | 배치 테이블 속성 이름 → 문자열 값. 해당 행이 배치 테이블 범위 밖이면 포함되지 않습니다.                |
+
+#### TileTerrainFit
+
+> [getTileTerrainFit](jslayer.md#gettileterrainfit-tileterrainfit) 반환 객체의 필드.
+
+| Name         | Type    | Description                                                                                                       |
+| ------------ | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| enabled      | boolean | 지형 자동 맞춤 사용 여부.                                                                                         |
+| state        | number  | 측정 상태. 0 = 꺼짐, 1 = 측정 중, 2 = 확정, 3 = 포기(점·메시 정점·스플랫을 찾지 못함).                              |
+| offsetZ      | number  | 적용 중인 자동 보정(m, 위쪽이 +). 측정 중에는 현재 추정값입니다.                                                  |
+| heightOffset | number  | 수동 높이 보정(m, [setTileHeightOffset](jslayer.md#gettileheightoffset-settileheightoffset-meter-number) / import `offsetZ`). 렌더에는 `heightOffset + offsetZ`가 적용됩니다. |
+| level        | number  | 표본이 읽은 지형 레벨의 최솟값(-1 = 아직 없음).                                                                   |
+| samples      | number  | 보정값 계산에 쓴 10m 격자 셀 수.                                                                                  |
+| frames       | number  | 측정에 쓴 프레임 수.                                                                                              |
+| p30          | number  | (표본 높이 - 지형 높이)의 30 백분위(m). `offsetZ = -p30`.                                                          |
+| median       | number  | 같은 차의 중앙값(m, 진단용).                                                                                      |
+| source       | number  | 표본 출처. 0 = 없음, 1 = 점 객체, 2 = 메시 정점, 3 = 스플랫(표본이 전부 스플랫에서 나온 경우).                      |
+| vertices     | number  | 훑은 표본 정점 수(점: 객체의 점 수, 메시·스플랫: 예산 2,000,000까지 누적).                                         |
+| nodes        | number  | 메시·스플랫: 표본을 보탠 노드 수.                                                                                 |
+| rootLon      | number  | (루트 로드 후에만) 루트 경계 상자 중심의 경도(degree).                                                            |
+| rootLat      | number  | (루트 로드 후에만) 루트 경계 상자 중심의 위도(degree).                                                            |
+| rootAlt      | number  | (루트 로드 후에만) 루트 경계 상자 중심의 지구 반경 기준 높이(m). 높이 보정은 반영되지 않습니다.                     |
+| rootRadius   | number  | (루트 로드 후에만) 루트 경계 상자 대각선 길이의 절반(m). 카메라 프레이밍용.                                         |
+
 #### 3DTilesDiagnostics
 
 > [get3DTilesDiagnostics](jslayer.md#get3dtilesdiagnostics-object) 반환 객체의 필드(진단용).
@@ -4510,15 +5021,24 @@ console.log(style.poi.scaleable.activate);
 | -------------- | ------ | --------------------------------------------------------------------------- |
 | nodes          | number | 살아 있는 노드 수(모든 3D Tiles 레이어의 합). 아래 세 순회 비용에 그대로 곱해집니다.                  |
 | tilesets       | number | 이 레이어가 보유한 중첩 타일셋 수.                                                  |
-| drawn          | number | 그리기 순회가 반환한 객체 수. 갑자기 떨어지면 LOD 붕괴/화면 공백을 의심합니다.                        |
+| drawn          | number | 그리기 순회가 반환한 객체 수(채움 전용 처리로 내리기 **전**의 수). 갑자기 떨어지면 LOD 붕괴/화면 공백을 의심합니다. 내린 뒤의 목록 크기는 `drawnFine`/`fillDrawn`입니다. |
+| drawnFine      | number | 내린 뒤 정밀 목록에 남은 객체 수.                                                       |
+| fillDrawn      | number | 내린 뒤 조상 채움 목록의 객체 수.                                                       |
 | refineHold     | number | 정제 유지(팝아웃 방지)가 발동한 노드 수. 0이 아니면 로딩 대기 중입니다.                           |
+| refineHoldMs   | number | 정제 유지 창 설정값(ms, [setRefineHoldTime](jslayer.md#getrefineholdtime-setrefineholdtime-ms-number-boolean)). |
+| holdKept       | number | 이번 프레임에 창이 지났지만 되돌려도 더 덮을 것이 없어 유지를 계속한 노드 수(`refineHold`에 포함).      |
+| holdReverted   | number | 창이 지났고 되돌림이 더 덮어서(자기는 그릴 수 있는데 조상 채움으로는 못 그림 - 스플랫 등) 자기로 되돌린 노드 수. |
 | setDrawLevelMs | number | SSE 평가 순회 시간(트리 전체를 건너뛰기 없이 도는 유일한 순회).                                |
 | viewListMs     | number | 그리기 순회 시간.                                                              |
 | moveLoadMs     | number | 로딩 순회 시간.                                                               |
 | clearMs        | number | 정리 순회 + 중첩 타일셋 스윕 시간(스윕은 30프레임마다 한 번이라 그 프레임에만 갱신).                    |
 | renderMs       | number | 객체 드로우 루프 시간. 새 타일이 몰리면 VBO/텍스처 생성·업로드로 커집니다.                         |
 | drawCalls      | number | 이 레이어가 이번 프레임에 발생시킨 드로우콜 수.                                           |
-| triangles      | number | 이 레이어가 이번 프레임에 그린 삼각형 수.                                              |
+| triangles      | number | 이 레이어가 이번 프레임에 그린 삼각형 수(점·스플랫은 포함되지 않음).                     |
+| points         | number | 이번 프레임에 그린 점군(glTF mode 0 / pnts)의 점 수 합. 드로우콜은 따로 셉니다.           |
+| splats         | number | 이번 프레임에 그린 가우시안 스플랫 수. 알파 패스에서 그려져 `drawCalls`/`triangles`에 잡히지 않습니다. |
+| splatDraws     | number | 스플랫 드로우 수.                                                                      |
+| splatTiles     | number | 스플랫을 그린 타일 수.                                                                 |
 | renderFrame    | number | 렌더 프레임 번호(유휴 시 멈추는지 확인용).                                              |
 
 **파싱/워커**
@@ -4537,7 +5057,16 @@ console.log(style.poi.scaleable.activate);
 | parseQueueMB    | number | 백프레셔 예산 사용량(MB) = 워커 응답 대기 + 적용 대기.                                      |
 | parseDeferred   | number | 백프레셔 예산 초과로 받지 않고 미요청 상태로 되돌린 수(누적).                                    |
 | parseDroppedStale | number | 응답이 왔을 때 노드/타일셋이 이미 삭제되어 버린 수(누적).                                    |
-| parseFallback   | number | 워커 대신 동기 파서로 처리하게 된 수(누적).                                              |
+| parseFallback   | number | 워커 대신 동기 파서로 처리하게 된 수(누적). `tileset.json` 폴백까지 섞인 합입니다.          |
+| tileParseWorker | boolean | 워커 파싱 경로가 켜져 있는가(`initialize`에 `worker: { use: true }`가 있고 `tileParse`를 끄지 않았으며 워커가 만들어진 경우). |
+| fallbackNoWorker | number | 콘텐츠가 워커 없음 때문에 동기 로더로 간 수(누적, 전체 레이어 합).                       |
+| fallbackUnsupported | number | 콘텐츠가 워커 미지원 포맷 때문에 동기 로더로 간 수(누적).                             |
+| fallbackOther   | number | 그 밖의 사유로 동기 로더로 간 수(누적).                                                  |
+| syncParsed      | number | 동기 로더가 만들기를 시도한 콘텐츠 수(파싱 실패 포함, 누적). `parsedTotal`은 워커 적용 수입니다. |
+| syncParsedBy    | object  | `syncParsed`의 포맷별 분해. `{ glb, b3dm, pnts, i3dm }`(누적).                          |
+| splatMsTotal    | number | 워커가 가우시안 스플랫을 푼 시간(SPZ 복호 + 공분산 조립, 누적 ms).                        |
+| splatWorkerTiles | number | 워커가 푼 스플랫 타일 수(누적).                                                         |
+| texResponseDropped | number | 요청한 glTF가 응답 전에 해제돼 버린 텍스처(imageProcess) 응답 수(누적, 전체 합). 동기 로더로 간 타일이 텍스처를 받기 전에 풀리면 오르며 정상 동작입니다. |
 | parseResponseBroken | number | 응답이 비었거나 헤더가 손상되어 강제로 닫은 수(누적).                                    |
 | parseTimedOut   | number | 워커 무응답(30초 초과)으로 동기 폴백 후 회수한 수(누적).                                     |
 | workerMsTotal   | number | 워커가 잰 파싱 전체 시간(누적, ms).                                                  |
@@ -4554,9 +5083,52 @@ console.log(style.poi.scaleable.activate);
 
 | Name          | Type   | Description                                                                                  |
 | ------------- | ------ | -------------------------------------------------------------------------------------------- |
-| retainedMB    | number | 현재 보유 중인 타일 콘텐츠 크기(MB, 정점+인덱스+텍스처 원본).                                          |
+| retainedMB    | number | 현재 보유 중인 타일 콘텐츠 크기(MB, 정점+인덱스+텍스처). 워커 적용과 동기 로더가 같은 정의로 셉니다(텍스처는 GL에 올린 바이트). 점(PNTS)·스플랫은 어느 경로든 세지 않습니다. |
 | retainedCapMB | number | 보유 크기 상한(MB, 기본값 512). 초과하면 오래 그려지지 않은 타일부터 콘텐츠를 해제합니다.                     |
 | tilesEvicted  | number | 상한 초과로 해제한 타일 수(누적).                                                              |
+| evictReloaded | number | 상한으로 푼 뒤 10초 안에 다시 만든 수(누적, 전체 레이어 합). 버렸는데 곧 다시 필요했던 것(thrash)입니다. |
+| evictedUnvisited | number | 상한으로 푼 것 가운데 도착한 뒤 한 번도 그려지지 않은 수(누적). 형제를 기다리던 막 받은 콘텐츠입니다. |
+| evictGraceHeld | number | 상한을 넘은 마지막 스윕에서 도착 유예(5초)로 해제 후보에서 뺀 수(마지막 값).                  |
+| arrivalVisitHist | array(number) | 콘텐츠가 도착한 뒤 그리기 순회가 처음 오기까지 걸린 시간 분포(7개, 누적). 구간(초): [0,0.5) [0.5,1) [1,2) [2,3) [3,5) [5,10) [10,~). |
+
+**거리 기반 모델 데이터 해제** ([setTileUnloadDistance](jslayer.md#gettileunloaddistance-settileunloaddistance-meter-number-boolean))
+
+> `tilesEvicted`와 별개입니다. 그쪽은 보유 상한 초과로 푼 수만 셉니다. 아래 값 중 `unloadDistance`, `unloadRootDist`, `unload*`로 시작하는 값은 이 레이어의 값이고 `tilesetJsonDropped`, `jsonRetried`, `jsonFailed`는 전체 레이어 합입니다.
+
+| Name               | Type   | Description                                                                                     |
+| ------------------ | ------ | ----------------------------------------------------------------------------------------------- |
+| unloadDistance     | number | 설정값(0 자동 / > 0 고정 m / < 0 끔).                                                            |
+| unloadRootDist     | number | 자동 모드에서 루트 아래 데이터가 풀리기 시작하는 거리(m, 카메라와 루트 경계 볼륨 사이). 마지막 순회 때의 값이며 참고용입니다. |
+| unloadSweeps       | number | 트리를 훑은 횟수(누적).                                                                          |
+| unloadSkipped      | number | 판정 간격은 채웠지만 바뀐 것이 없어 건너뛴 횟수(누적).                                            |
+| unloadBudgetStops  | number | 한 번의 순회가 해제 예산(2ms)을 넘겨 남은 것을 다음 순회로 미룬 횟수(누적).                        |
+| unloadedTiles      | number | 거리로 콘텐츠를 푼 타일 수(누적).                                                                |
+| unloadedTilesets   | number | 푼 중첩 타일셋 수(누적).                                                                         |
+| unloadedNodes      | number | 푼 타일셋과 함께 사라진 노드 수(누적).                                                           |
+| unloadedMB         | number | 푼 콘텐츠 크기(MB, 누적, 타일셋 안의 콘텐츠 포함. 보유 바이트로 잰다).                            |
+| unloadReloaded     | number | 거리로 풀린 뒤 다시 받은 콘텐츠 수(누적). 풀었다 받기가 되풀이되면(thrash) 오릅니다.              |
+| unloadReloadedSets | number | 거리로 풀린 뒤 다시 받은 중첩 타일셋 수(누적).                                                   |
+| unloadSweepMs      | number | 마지막 순회 시간(ms).                                                                            |
+| unloadSweepMsMax   | number | 가장 오래 걸린 순회 시간(ms).                                                                    |
+| unloadVisited      | number | 마지막 순회가 방문한 노드 수.                                                                    |
+| unloadLastTiles    | number | 마지막 순회에서 푼 타일 수.                                                                      |
+| unloadLastTilesets | number | 마지막 순회에서 푼 중첩 타일셋 수.                                                               |
+| tilesetJsonDropped | number | 죽은 타일셋으로 온 json 응답을 버린 횟수(누적).                                                  |
+| jsonRetried        | number | 파싱 대기열 예산에 걸려 버려졌거나 요청이 실패한 `tileset.json`을 다시 보낸 횟수(누적).          |
+| jsonFailed         | number | `tileset.json` 요청이 실패한 횟수(누적). 실패한 json은 1초부터 두 배씩(최대 30초) 간격을 두고 다시 보냅니다. |
+
+**채움 전용 / 치마 제거** ([setFillOnlyHorizonFactor](jslayer.md#getfillonlyhorizonfactor-setfillonlyhorizonfactor-factor-number-boolean), [setFillSkirtCut](jslayer.md#getfillskirtcut-setfillskirtcut-cut-boolean))
+
+| Name            | Type    | Description                                                                                   |
+| --------------- | ------- | --------------------------------------------------------------------------------------------- |
+| fillOnlyFactor  | number  | 유효 배수(명시한 값 > 구글 판별 기본).                                                         |
+| googleTiles     | boolean | 루트 URL의 호스트가 `tile.googleapis.com`인가.                                                 |
+| fillOnlyDemoted | number  | 이번 프레임에 정밀 목록에서 채움 전용으로 옮긴 타일 수.                                         |
+| fillSkirtCut    | boolean | 유효 치마 제거 설정.                                                                           |
+| skirtCutTiles   | number  | 치마 제거 유니폼을 실제로 건 조상 채움 타일 수(그림자가 켜져 그림자 전용 프로그램으로 그린 타일은 세지 않음). |
+| fillAlpha       | number  | 레이어 알파(< 250)의 조상 채움: 알파 패스에서 그린 채움 타일 수.                                |
+| fillAlphaCover  | number  | 그 프레임에 색과 함께 스텐실 덮개를 남긴 정밀 타일 수.                                          |
+| fillAlphaRecover | number | 지형 아래 패스라 스텐실만 다시 그린 정밀 타일 수(추가 드로우).                                  |
 
 **geometricError 분포**
 
@@ -4591,6 +5163,8 @@ console.log(style.poi.scaleable.activate);
 | holeEmptyJson    | number | `holeLoadedEmpty` 중 중첩 타일셋(json)인데 셋이 없음.           |
 | holeEmptySkipped | number | `holeLoadedEmpty` 중 바운더리 때문에 콘텐츠를 건너뜀.            |
 | holeEmptyParsed  | number | `holeLoadedEmpty` 중 URL이 있고 받았는데 객체가 만들어지지 않음.   |
+| holeFailed       | number | 콘텐츠 요청이 실패해 재시도 간격(1초부터 두 배씩, 최대 30초)을 기다리는 구멍. 종전에는 `holeUnrequested`로 셌습니다. |
+| holeNoTexture    | number | 객체는 있는데 텍스처가 준비되지 않아 구멍으로 올린 REPLACE 타일 수(`holeTotal`에는 들지 않음). |
 
 **그리기 순회에서 배제된 노드 수**
 
@@ -4614,7 +5188,13 @@ console.log(style.poi.scaleable.activate);
 | exclFrustumNoVol   | number  | 프러스텀 밖 판정 중 바운딩 볼륨이 없는 노드 수.                                         |
 | proxySkipDrawLevel | number  | 중첩 타일셋 프록시가 루트 KEEP 게이트에 막힌 수.                                         |
 | childEmptyPartial  | number  | 형제 중 일부만 그리지 못한 수(부분 구멍).                                              |
-| ancestorFill       | number  | 조상 채움 패스로 보낸 타일 수.                                                       |
+| ancestorFill       | number  | 순회가 조상 채움으로 넣은 타일 수(채움 전용 처리로 내려간 타일은 포함되지 않음).        |
+| fillBubbled        | number  | `ancestorFill` 가운데 직속 자식이 아니라 손자 이하에서 올라온 구멍(콘텐츠 없는 노드 아래에서 데이터를 기다리는 자리) 때문에 넣은 채움 수. |
+| holeTop            | number  | 1이면 루트까지 올라가도 콘텐츠를 가진 조상이 없어 못 덮은 구멍이 남았다는 뜻입니다(그 자리는 검게 보임). |
+| priorityMarked     | number  | 이번 프레임에 요청을 앞당기도록 표시한 노드 수(정제 유지 중인 조상 아래에서 데이터를 기다리는 보이는 노드).  |
+| prioritySent       | number  | 우선 요청으로 보낸 수(누적).                                                         |
+| priorityOverCap    | number  | `prioritySent` 가운데 동시 요청 상한 위 예약분으로 보낸 수(누적).                      |
+| requestFailed      | number  | 콘텐츠(b3dm / glb / i3dm / pnts) 요청 실패 수(누적, 전체 레이어 합). 실패한 요청은 1초부터 두 배씩(최대 30초) 간격을 두고 다시 보냅니다. |
 | jsonSkipHorizon    | number  | 지평선 밖이라 요청하지 않은 중첩 타일셋(json) 수.                                       |
 | nearPlane          | number  | 렌더에 쓰인 근평면 거리.                                                              |
 | farPlane           | number  | 렌더에 쓰인 원평면 거리.                                                              |
@@ -4626,3 +5206,27 @@ console.log(style.poi.scaleable.activate);
 | proxyNullRoot      | number  | 타일셋은 있으나 json이 아직 도착하지 않은(루트 없음) 수.                                   |
 | proxyToken         | number  | 토큰 요청 중인 수.                                                                    |
 | curTilt            | number  | 렌더에 쓰인 실제 틸트(목표 틸트와 비교용).                                                |
+
+**b3dm 배치 테이블 (feature 피킹/추출)**
+
+> 모두 누적값이며 전체 레이어 합입니다. 워커 경로는 파싱 결과를 응답 헤더로 받아 세고, 동기 경로(`tileParse` off / 워커 폴백)는 동기 로더가 셉니다.
+
+| Name              | Type   | Description                                                                                       |
+| ----------------- | ------ | ------------------------------------------------------------------------------------------------- |
+| batchTiles        | number | 배치 테이블 속성을 읽은 b3dm 수.                                                                    |
+| batchFaces        | number | `_BATCHID`에서 정점 대응을 만든 (메시, 면) 수. 면이 둘 이상인 타일이 있으면 `batchTiles`보다 큽니다.  |
+| batchRanges       | number | `_BATCHID`에서 만든 정점 범위(= feature) 수.                                                        |
+| batchIndexRanges  | number | feature별 삼각형 인덱스 구간 수(하이라이트가 부분 그리기로 그릴 구간). 폴백 면 등 때문에 `batchRanges`와 같다는 보장이 없어, 같은 데이터셋의 기준선으로만 쓰십시오. |
+| batchSpanChecked  | number | 엔진이 타일을 적용할 때 (메시, 면) 대응을 엔진 기하와 대조한 면 수. 정상이면 `batchFaces`와 같습니다. 0이면 `batchSpanMismatch == 0`은 아무것도 증명하지 못합니다(검증이 안 돈 것). |
+| batchSpanMismatch | number | 위 대조에서 어긋나 버린 면 수. 정상 데이터에서는 0이며 0이 아니면 정점 키가 어긋난 것입니다.         |
+| discardKeptForBatch | number | 정점→batchId 대응이 있는 배치 테이블 때문에 `discardVertexData`를 무시하고 정점을 남긴 타일 수. `discardVertexData`를 켰는데 0이면 아직 표를 가진 타일이 적용되지 않았거나 표 없는 타일만 받은 것입니다. |
+
+**feature 선택 유지 (LOD가 바뀌어도 같은 건물 유지)** ([setTileFeatureIdentityKey](jslayer.md#gettilefeatureidentitykey-settilefeatureidentitykey-key-string))
+
+| Name              | Type   | Description                                                                                   |
+| ----------------- | ------ | --------------------------------------------------------------------------------------------- |
+| featureNames      | number | 지금 이 레이어에서 선택된 건물 이름 수(선택 목록에서 파생한 것 + 고아). 선택이 없으면 0.            |
+| featureOrphans    | number | 그 가운데 고아 이름 수. 선택을 들던 타일이 해제됐고 그 건물을 가진 타일이 아직 그려지지 않은 상태입니다. |
+| featureReanchored | number | 타일이 고아 이름을 넘겨받아 선택 목록에 다시 올린 횟수(누적).                                    |
+| featureGeneration | number | 선택 이름 집합이 바뀐 횟수(누적). 타일은 이 값이 바뀔 때만 하이라이트를 다시 만듭니다.             |
+| highlightRebuilds | number | 타일이 하이라이트를 다시 만든 횟수(누적). 선택이 안 바뀌는 동안에는 오르지 않아야 합니다.          |

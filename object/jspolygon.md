@@ -26,6 +26,8 @@ var object = Module.createPolygon("ID");
 -   Return
     -   number > 0: 반환 성공.
     -   number == 0: 반환 실패.
+-   참고
+    -   정점 수가 많아 web worker에서 삼각분할 중인 폴리곤은 면이 아직 없어 0을 반환합니다. [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean) 호출 뒤에 사용하세요.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -401,6 +403,8 @@ polygon.setSphere(param);
 -   Sample
     -   the createPolygon function 참조.
     -   [Sandbox_Polygon Height](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_height)
+-   참고
+    -   윗면·밑면은 정점 수가 많으면(기본 512 이상) web worker에서 삼각분할하므로, 호출이 반환된 직후에는 면이 아직 만들어지지 않았을 수 있습니다. 면이 만들어진 시점은 [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean)으로 확인합니다. 그 전에는 화면에 그려지거나 피킹되지 않고 `getArea()`는 0을 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -434,6 +438,8 @@ polygon.setSphere(param);
     -   실패 조건
         -   입력 변수값(height)이 0 이하인 경우.
         -   평면 객체의 좌표가 정의되지 않은 경우.
+-   참고
+    -   윗면은 정점 수가 많으면(기본 512 이상) web worker에서 삼각분할하므로, 호출이 반환된 직후에는 면이 아직 만들어지지 않았을 수 있습니다. 면이 만들어진 시점은 [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean)으로 확인합니다. 그 전에는 화면에 그려지거나 피킹되지 않고 `getArea()`는 0을 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -739,6 +745,9 @@ polygon.setExtraPosition(0.5, -1.5, 10.0);
 | lat  | number | 이동할 위도 좌표 |
 | alt  | number | 이동할 고도 값   |
 
+-   참고
+    -   워커에서 삼각분할 중인 면이 있으면 이동 전에 그 자리에서 동기로 확정합니다.
+
 {% endtab %}
 {% tab title="Template" %}
 
@@ -761,6 +770,9 @@ polygon.move(129.127, 35.17, 160.0);
 | ---- | ------- | ------------ |
 | alt  | number  | 이동할 고도 값 |
 | type | boolean | <p>true: 목표 위치로 이동(절대 이동)<br>false: 입력 위치만큼 추가로 이동(상대 이동)</p> |
+
+-   참고
+    -   워커에서 삼각분할 중인 면과 외곽선이 있으면 이동 전에 그 자리에서 동기로 확정합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -895,6 +907,8 @@ let alt = polygon.getAltitude();
 -   Sample
     -   the createPolygon function 참조.
     -   [Sandbox_Polygon Height](https://sandbox.egiscloud.com/code/main.do?id=object_polygon_height)
+-   참고
+    -   정점 수가 많으면(기본 512 이상) web worker에서 삼각분할하므로, 호출이 반환된 직후에는 면이 아직 만들어지지 않았을 수 있습니다. 면이 만들어진 시점은 [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean)으로 확인합니다. 그 전에는 화면에 그려지거나 피킹되지 않고 `getArea()`는 0을 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -918,6 +932,9 @@ let alt = polygon.getAltitude();
 | ----------- | ------------------------------------- | -------------------------------------- |
 | coordinates | [JSVec2Array](../core/jsvec2array.md) | 정점 좌표 목록 (경도, 위도).              |
 | altitude    | number                                | 고도                                    |
+
+-   참고
+    -   정점 수가 많으면(기본 512 이상) web worker에서 삼각분할하므로, 호출이 반환된 직후에는 면이 아직 만들어지지 않았을 수 있습니다. 면이 만들어진 시점은 [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean)으로 확인합니다. 그 전에는 화면에 그려지거나 피킹되지 않고 `getArea()`는 0을 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1234,6 +1251,8 @@ console.log(result);
 - 제약 조건
   - 객체에 `setPartCoordinates()` 또는 `setCoordinates()`로 정점 정보가 먼저 설정되어 있어야 합니다.
   - `uv.get(i)` 는 `i`번째 정점에 대응됩니다.
+- 참고
+  - 워커에서 삼각분할 중인 면이 있으면 UV를 읽기 전에 그 자리에서 동기로 확정합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1450,6 +1469,8 @@ polygon.setBatchHeights([12.0, 30.5, 8.0]);
         -   객체가 없거나 `setBatchCoordinates()`로 좌표가 입력되지 않은 경우.
         -   heights 개수가 파트 개수와 다른 경우.
         -   압출 생성에 실패한 경우.
+-   참고
+    -   파트별 윗면은 전체 정점 수가 많으면(기본 512 이상) web worker에서 삼각분할하므로, 호출이 반환된 직후에는 윗면이 아직 없을 수 있습니다(옆면은 즉시 만들어집니다). 윗면이 만들어진 시점은 [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean)으로 확인합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -1559,6 +1580,75 @@ style.setOutLineColor(new Module.JSColor(255, 0, 0, 0));
 // 4) 삼각분할 라이브러리(earcut 등)의 결과를 그대로 사용
 // const indices = earcut(flatXY, holeIndices, 2);
 // polygon.createIndexedMesh({ coordinates: flatLonLatAlt, indices: indices, height: 30.0 });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setFaceReadyCallback(callback) → boolean
+
+> 폴리곤의 면(face) 생성이 끝났을 때 호출되는 콜백을 등록합니다. 큰 폴리곤은 삼각분할을 web worker에서 처리하므로 `setCoordinates()`, `setHeight()` 등을 호출한 직후에는 면이 아직 없을 수 있는데, 이 콜백으로 면이 만들어진 시점을 알 수 있습니다.
+>
+> 콜백은 면을 만드는 호출 하나가 끝난 뒤 엔진의 다음 프레임에 한 번 호출됩니다. `null`(또는 `undefined`)을 전달하면 등록한 콜백이 해제됩니다. 폴리곤 하나에 콜백은 하나만 등록되며, 다시 등록하면 이전 콜백을 대체합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name     | Type                | Description                                                            |
+| -------- | ------------------- | ---------------------------------------------------------------------- |
+| callback | function \| null    | 면 생성 완료 시 호출할 함수. 인자는 아래 구조의 객체. `null`/`undefined`이면 해제. |
+
+**콜백 인자 구조**
+
+| Name          | Type    | Description                                                                                                  |
+| ------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
+| result        | boolean | true: 면 생성 성공. false: 삼각분할 실패(워커와 동기 재시도 모두 실패. 이 경우 면이 없습니다).                  |
+| name          | string  | `"JSPolygon.setFaceReadyCallback"`                                                                           |
+| vertexCount   | number  | 이번에 만들어진 면의 정점 수. `setHeight()`는 윗면과 밑면의 합, `setHeightOpen()`은 윗면, `setBatchHeights()`는 옆면을 포함한 전체. |
+| triangleCount | number  | 생성된 면의 삼각형 수.                                                                                       |
+| worker        | boolean | true: web worker에서 삼각분할함. false: 메인 스레드에서 즉시 처리함.                                           |
+| workerMs      | number  | 워커의 삼각분할 소요 시간(ms). `worker`가 false이면 0.                                                        |
+
+-   Return
+    -   true: 등록(또는 해제) 성공. 콜백 인자의 타입은 검사하지 않으므로 함수가 아닌 값을 넘겨도 true이며, 호출 시점에 콘솔 오류만 출력됩니다.
+    -   false: 등록 실패.
+    -   실패 조건
+        -   지도가 로드되지 않은 경우.
+        -   객체가 없는 경우.
+        -   glTF 기반 폴리곤(`createGLTF()` 등)인 경우.
+
+-   콜백이 호출되는 시점
+    -   면을 만드는 API: `setCoordinates()`, `setPartCoordinates()`, `setPartCoordinatesCW()`, `setPartCoordinatesUV()`, `setPlaneCoordinates()`, `SetTexturePlane()`, `create()`, `createByJson()`, `setGeoJSON2D()`, `setHeight()`, `setHeightOpen()`, `setHeightUV()`, `setPartCoordinatesHeightUV()`, `setBatchHeights()` 등. `createIndexedMesh()`, `setHeights()`, `setHeightByType(height, 1)`은 항상 동기로 처리되며 이 콜백을 호출하지 않습니다.
+    -   정점 수가 [setPolyTriangulateMinVertex(count)](../option/jsoption.md#getpolytriangulateminvertex-setpolytriangulateminvertex-count-number) 이상(기본 512)이고 web worker를 사용할 수 있으면 삼각분할을 워커에 요청하고 바로 반환합니다. 응답은 한 프레임에 [setMaxPolyApplyPerFrame(count)](../option/jsoption.md#getmaxpolyapplyperframe-setmaxpolyapplyperframe-count-number)건씩(패닝 중에는 2건) 면에 적용되며, 적용 직후 콜백이 호출됩니다(`worker: true`).
+    -   정점 수가 임계값 미만이거나, 워커를 쓸 수 없거나(`worker.use` 또는 `worker.polyTriangulate`가 false 등), 처리 중·적용 대기 요청이 64건 이상이면 호출 안에서 즉시 삼각분할하고, 콜백은 다음 프레임에 호출됩니다(`worker: false`, `workerMs: 0`). 그래서 콜백은 처리 방식과 관계없이 항상 비동기로 호출됩니다.
+    -   워커 처리를 기다리는 중에 `move()`, `moveAltitude()`, `setHeightUV()`, 텍스처 UV 지정 API처럼 정점을 직접 읽거나 바꾸는 API를 호출하면 그 자리에서 동기로 분할이 끝나고, 콜백은 다음 프레임에 `worker: false`로 호출됩니다.
+    -   등록은 생성 API 호출 전후 어느 쪽이든 상관없습니다. 콜백은 호출되는 순간에 등록되어 있는 함수를 사용합니다.
+    -   생성 API 한 번당 한 번 호출됩니다. 윗면·밑면을 함께 만들거나 `setBatchHeights()`처럼 여러 분할이 필요한 경우도 모두 적용된 뒤 한 번만 호출됩니다. 동기로 끝나는 생성 API를 같은 프레임에 여러 번 호출하면 그 횟수만큼 호출되지만, 워커 처리를 기다리는 중에 같은 폴리곤의 면을 다시 만들면 이전 요청은 폐기되고 마지막 요청의 결과만 통지됩니다.
+    -   콜백이 호출되기 전에 폴리곤이 삭제되면 콜백은 호출되지 않습니다.
+    -   콜백에서 발생한 예외는 엔진이 잡아 콘솔(`[JSPolygon.setFaceReadyCallback] 콜백에서 예외`)에 출력하며 렌더 루프에는 영향을 주지 않습니다. 콜백 안에서 새로 만든 폴리곤의 콜백은 다음 프레임에 호출됩니다.
+
+-   참고
+    -   워커 처리 대기 중인 폴리곤은 면이 없으므로 화면에 그려지지 않고 피킹되지 않으며, `getArea()`는 0을 반환합니다. 면적이나 피킹이 필요하면 이 콜백이 호출된 뒤에 사용하세요. `getBoundary()`, `getCenter()`는 호출 직후에도 사용할 수 있습니다.
+    -   지형에 결합(RTT)되어 그려지는 폴리곤은 면이 적용되는 시점에 지형 텍스처를 자동으로 다시 그립니다.
+    -   처리 현황은 [XDEGetPolyTriangulateStats()](../module/moduleapi.md#xdegetpolytriangulatestats-object)로 확인합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+let polygon = Module.createPolygon("BIG_POLYGON");
+polygon.setFaceReadyCallback(function (info) {
+    if (info.result) {
+        console.log("면 생성 완료", info.vertexCount, info.triangleCount, info.worker, info.workerMs);
+        console.log("면적:", polygon.getArea());
+    } else {
+        console.log("삼각분할 실패");
+    }
+});
+polygon.setCoordinates(vertexList); // 정점 수가 많으면 워커에서 삼각분할, 완료 후 콜백 호출
+
+// 콜백 해제
+polygon.setFaceReadyCallback(null);
 ```
 
 {% endtab %}
@@ -1983,8 +2073,10 @@ var key = gltfObject.getNodeKeyByIndex(0);
 -   Return
     -   true: 설정 성공.
     -   false: ptr이 NULL이거나, memSize/width/height 중 1 미만인 값이 있는 경우.
+    -   false: memSize가 `width * height * 4`(RGBA 4바이트)보다 작은 경우.
 -   Description
     -   기존에 설정되어 있던 텍스처는 제거되고 새 텍스처로 교체됩니다.
+    -   지형 결합(RTT) 폴리곤은 모양이 아니라 텍스처만 바뀌므로, 이 폴리곤이 걸친 지형 타일만 다시 합성합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -2613,6 +2705,8 @@ polygon.loadGLBWithOriginalVertex({
 
 -   Return
     -   [Collection](../core/collection.md): 반환 성공.
+-   참고
+    -   정점 수가 많으면(기본 512 이상) web worker에서 삼각분할하므로, 호출이 반환된 직후에는 면이 아직 만들어지지 않았을 수 있습니다. 면이 만들어진 시점은 [setFaceReadyCallback(callback)](jspolygon.md#setfacereadycallback-callback-boolean)으로 확인합니다. 그 전에는 화면에 그려지거나 피킹되지 않고 `getArea()`는 0을 반환합니다.
 
 {% endtab %}
 {% tab title="Template" %}
@@ -2724,6 +2818,8 @@ object.setVisible(true);
 
 -   Return
     -   [JSPolygonStyle](jspolygonstyle.md): 반환 성공.
+-   참고
+    -   면이 워커에서 삼각분할 중인 폴리곤의 외곽선은 면이 적용되는 시점에 만들어지는데, 그 전에 `setStyle()`을 호출하면 이때 지정한 외곽선 색상과 두께가 사용됩니다.
 
 {% endtab %}
 {% tab title="Template" %}

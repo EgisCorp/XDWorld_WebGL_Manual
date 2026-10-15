@@ -1087,6 +1087,7 @@ Module.GetSolarManager().completeModuleArray(function (panelCount) {
   - 배치 각도 지정(`setModuleArrayEX()`의 `deployAngle`)은 지원하지 않으며, 항상 자동 각도로 배치합니다.
   - `"no pickable object"`, `"no roof to deploy"` 반환 시점에는 배열 옵션(`section`, `sectionCount`, `sectionSet`)이 이미 반영되어 있고, 처리된 지붕의 기존 패널은 이미 제거된 상태일 수 있습니다.
   - 요청에 성공하면 이전 일조분석 결과([getPanelSunshineResult()](#getpanelsunshineresult-string))가 초기화됩니다.
+  - 패널을 올릴 대상 객체의 삼각형은 객체 유형(다면체, 3DS, 3D 피규어, glTF, 고스트 심볼 등)에 맞게 변환해 워커로 전달합니다. 예전에는 glTF(GLB) 객체의 삼각형이 비어 있어 지붕에 패널이 배치되지 않았는데, 이제 glTF 지붕에도 배치됩니다.
   - 워커가 빈 응답을 돌려주는 오류가 발생하면 진행 상태만 해제되고 완료 콜백은 호출되지 않습니다.
 
 {% endtab %}

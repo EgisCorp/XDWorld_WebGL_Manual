@@ -155,6 +155,8 @@ Module.getMap().clearInputPoint();
 ### clearSelectObj()
 
 > 지도 내 선택된 모든 오브젝트를 선택 해제 상태로 변환합니다.
+>
+> 호출하면 화면을 다시 그리도록 요청하므로, 이전 선택의 표시(하이라이트/틴트)가 화면에 남지 않습니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1073,6 +1075,8 @@ Module.getMap().setSelectColor(new Module.JSColor(255, 255, 0, 0));
 ### addSelectObject(object)
 
 > 지정한 오브젝트를 선택 상태로 추가합니다 (기존 선택은 유지되고 다중 선택 상태에 추가).
+>
+> 호출하면 화면을 다시 그리도록 요청하므로, 별도의 갱신 호출 없이 선택 표시(하이라이트/틴트)가 바로 반영됩니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2154,6 +2158,8 @@ Module.getMap().setWaterFallParticleCount("waterfall01", 1000);
 ### getSelectObject(), setSelectObject(object) → [JSObject](../object/jsobject3d.md)
 
 > 객체의 선택 상태를 설정합니다.
+>
+> 설정하면 화면을 다시 그리도록 요청하므로, 별도의 갱신 호출 없이 이전 선택의 표시(하이라이트/틴트)가 사라지고 새 선택이 바로 반영됩니다.
 
 {% tabs %}
 {% tab title="Infomation" %}

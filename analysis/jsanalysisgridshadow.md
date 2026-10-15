@@ -195,6 +195,8 @@ gridShadow.setAnalysis("id", false);
     -   success : 설정 성공.
     -   실패 조건
         -   callback function을 설정하지 않을 경우.
+-   참고
+    -   분석이 끝나면 마지막으로 100이 한 번 더 전달됩니다. 분석 도중 분석 객체가 삭제되면 이 콜백은 더 이상 호출되지 않습니다.
 -   Sample
     -   function setEarthquakeMesh 참조.
     -   [Sandbox_Grid Shadow](https://sandbox.egiscloud.com/code/main.do?id=analysis_grid_shadow)
@@ -269,6 +271,11 @@ gridShadow.setColor("id", new Module.JSColor(150, 0, 255, 0));
         -   생성 격자가 없는 경우.
         -   수인한도 분석에 사용할 레이어가 없는 경우.
         -   수인한도 분석에 필요한 선택된 시설물이 없는 경우.
+
+-   동작
+    -   분석은 web worker에서 비동기로 수행됩니다. `true`는 분석을 요청했다는 뜻이며, 진행률은 [prograss(object)](jsanalysisgridshadow.md#prograss-object-string)에 등록한 콜백으로 전달되고 분석이 끝나면 마지막에 100이 한 번 더 전달됩니다.
+    -   분석 요청은 취소할 수 없습니다. 분석 도중 이 분석 객체가 삭제되면(`Module.getAnalysisGridShadow()`가 돌려준 객체의 `delete()`) 워커의 남은 응답은 무시되며, 지워진 분석에 대해 진행률 콜백이나 완료(100) 콜백이 호출되지 않습니다. 이렇게 무시한 응답의 수는 [getResponseDropped()](jsanalysisgridshadow.md#getresponsedropped-number)로 확인할 수 있습니다.
+    -   삭제한 뒤 `Module.getAnalysisGridShadow()`를 다시 호출하면 새 분석 객체가 만들어집니다. 새 객체에는 이전 분석의 격자와 결과가 없습니다.
 
 -   Sample
     -   function setEarthquakeMesh 참조.
@@ -383,6 +390,41 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ```javascript
 
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getResponseDropped() → number
+
+> (진단용) 이미 지워진 분석 객체로 도착해서 무시한 web worker 응답의 누적 개수를 반환합니다.
+>
+> 정적 함수이므로 `Module.getAnalysisGridShadow()`가 돌려준 객체가 아니라 클래스에서 `Module.JSAnalysisGridShadow.getResponseDropped()`로 호출해야 합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   number: 무시한 응답의 누적 개수. 페이지를 불러온 뒤로 계속 누적되며 초기화하는 API는 없습니다.
+-   참고
+    -   수인한도 분석은 요청 한 건에 진행률 응답이 여러 번 오고 마지막에 결과 응답이 한 번 옵니다. 응답 하나하나를 1로 세므로, 분석 한 번이 중간에 지워지면 값이 한 번에 여러 개 늘 수 있습니다.
+    -   분석 객체가 지워진 뒤 같은 메모리 주소에 새 분석 객체가 만들어진 경우에도, 이전 객체를 위한 응답이라면 새 객체에 적용하지 않고 무시하며 이 값에 포함됩니다.
+    -   분석을 끝까지 두거나 객체를 삭제하지 않으면 값은 늘지 않습니다. 분석을 취소(객체 삭제)한 뒤 후속 콜백이 호출되지 않는지 점검할 때 사용합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var before = Module.JSAnalysisGridShadow.getResponseDropped();
+
+var gridShadow = Module.getAnalysisGridShadow();
+gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Module.JSDateTime(2023, 4, 17, 15, 30, 0), 10);
+gridShadow.delete(); // 분석 도중 객체를 지움 - 남은 워커 응답은 무시됨
+
+// 워커 응답이 도착한 뒤 확인
+setTimeout(function () {
+    console.log("무시한 응답 수:", Module.JSAnalysisGridShadow.getResponseDropped() - before);
+}, 3000);
 ```
 
 {% endtab %}

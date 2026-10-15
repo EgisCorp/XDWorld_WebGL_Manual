@@ -618,6 +618,8 @@ Module.XDEMapCreateLayer("facility_build", "server.url", 0, true, true, false, 9
 ### XDEPlanetRefresh()
 
 > 지형,영상 서버 변경 후 화면의 재 갱신을 요청합니다.
+>
+> 지형(DEM) 설정이 이전과 같고 지형이 최초 로딩을 마친 상태이면, 지형은 그대로 두고 영상만 새 설정으로 교체합니다. 새 영상이 도착할 때까지 이전 영상이 유지되므로 화면이 비지 않습니다. 지형(DEM) 설정이 바뀌었거나, 최초 로딩이 끝나지 않았거나, 평면 모드이거나, 사용자 지정 지형/영상(지구본 영상 포함)을 사용 중이면 종전처럼 지형 트리를 처음부터 다시 만듭니다.
 
 {% tabs %}
 {% tab title="Template" %}
@@ -4423,6 +4425,62 @@ var is16Bit = Module.XDEGetPhotoTexture16Bit();
 {% endtab %}
 {% endtabs %}
 
+### XDESetImageryColorBits(bits), XDEGetImageryColorBits() → number
+
+> 위성 영상(JPG, KTX2 등 팔레트 방식이 아닌 소스) 지형 영상을 합성할 때 쓰는 텍스처의 색 깊이를 설정합니다. 기본값은 16(RGB565, 메모리 절약)이며, 24(RGBA8888)로 올리면 화질이 좋아지는 대신 메모리를 더 사용합니다.
+>
+> 벡터타일 레이어의 색 깊이는 [XDESetVectorTileColorBits](moduleapi.md#xdesetvectortilecolorbits-bits-xdegetvectortilecolorbits-number)로 따로 설정하며, 두 설정은 서로 영향을 주지 않습니다. 이미 합성된 텍스처는 바뀌지 않고 새로 합성되는 타일부터 적용되므로, 설정 후 화면에 즉시 반영하려면 [XDEPlanetRefresh](moduleapi.md#xdeplanetrefresh)를 호출하십시오.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                                                  |
+| ---- | ------ | -------------------------------------------------------------------------------------------- |
+| bits | number | <p>24: RGBA8888 사용(고화질).<br>16: RGB565 사용(기본값).<br>그 외의 값: 클램프하지 않고 무시하며, 콘솔에 로그를 남기고 기존 값을 유지합니다.</p> |
+
+-   Return(XDEGetImageryColorBits)
+    -   number: 현재 설정된 색 깊이(24 또는 16).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetImageryColorBits(24); // 위성 영상 고화질
+Module.XDEPlanetRefresh();
+var bits = Module.XDEGetImageryColorBits();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetVectorTileColorBits(bits), XDEGetVectorTileColorBits() → number
+
+> 벡터타일(팔레트 8비트 소스) 레이어의 색 깊이를 설정합니다. 기본값은 8(팔레트 인덱스, 메모리 최소)이며, 16(RGB565)으로 바꾸면 메모리를 더 쓰는 대신 도로 경계 등의 계단 현상이 줄어듭니다.
+>
+> 8은 타일 디코드 단계까지 영향을 주므로, 이미 받은 타일 텍스처도 포맷이 달라집니다. 설정을 바꾼 뒤에는 [XDEPlanetRefresh](moduleapi.md#xdeplanetrefresh)로 타일을 다시 받는 것을 권장합니다. 다시 받지 않으면 이전 포맷의 타일과 새 포맷의 타일이 한 합성에 섞일 수 있으며, 이미 8비트 인덱스로 디코드된 타일은 설정과 관계없이 8비트로 합성됩니다. 위성 영상의 색 깊이는 [XDESetImageryColorBits](moduleapi.md#xdesetimagerycolorbits-bits-xdegetimagerycolorbits-number)로 따로 설정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type   | Description                                                                                  |
+| ---- | ------ | -------------------------------------------------------------------------------------------- |
+| bits | number | <p>8: 팔레트 인덱스(R8) 사용(기본값).<br>16: RGB565 사용(화질 우선).<br>그 외의 값: 클램프하지 않고 무시하며, 콘솔에 로그를 남기고 기존 값을 유지합니다.</p> |
+
+-   Return(XDEGetVectorTileColorBits)
+    -   number: 현재 설정된 색 깊이(16 또는 8).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetVectorTileColorBits(16); // 벡터타일 화질 우선
+Module.XDEPlanetRefresh();
+var bits = Module.XDEGetVectorTileColorBits();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getPostProcess() → [JSPostProcess](../option/jspostprocess.md)
 
 > 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 제어하는 [JSPostProcess](../option/jspostprocess.md) 객체를 반환합니다.
@@ -5398,6 +5456,234 @@ Module.XDESetPoiUploadMaxPendingMB(64);
 {% endtab %}
 {% endtabs %}
 
+### XDEGetPolyTriangulateStats() → object
+
+> 폴리곤 삼각분할 워커 처리 현황을 반환합니다(진단용).
+>
+> 정점 수가 [setPolyTriangulateMinVertex(count)](../option/jsoption.md#getpolytriangulateminvertex-setpolytriangulateminvertex-count-number) 이상인 폴리곤은 삼각분할을 web worker로 보내 처리하며, 이 함수로 요청·적용·폴백 건수와 소요 시간을 확인할 수 있습니다. 값은 [XDEResetPolyTriangulateStats](moduleapi.md#xderesetpolytriangulatestats)로 초기화하기 전까지 누적됩니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name            | Type   | Description                                                                                                  |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| requested       | number | web worker로 삼각분할을 요청한 누적 건수.                                                                      |
+| workerDone      | number | worker 결과를 면에 정상 적용한 누적 건수.                                                                      |
+| syncSmall       | number | 정점 수가 기준 미만이라 메인 스레드에서 바로 동기 처리한 누적 건수.                                              |
+| syncFallback    | number | worker로 보내지 못했거나 worker 처리에 실패해 동기로 대체한 누적 건수(대기 요청 상한 초과, 응답 손상·worker 오류, 무응답 시간 초과). |
+| droppedStale    | number | 요청이 이미 취소·교체되어 늦게 도착한 응답을 버린 누적 건수.                                                     |
+| responseBroken  | number | 응답이 손상되었거나 worker가 오류를 돌려주어 동기로 대체한 누적 건수.                                            |
+| timedOut        | number | worker가 제한 시간 안에 응답하지 않아 동기로 대체한 누적 건수.                                                  |
+| failed          | number | 삼각분할 또는 면 적용에 최종 실패한 누적 건수.                                                                  |
+| inFlight        | number | 현재 worker에서 처리 중인 요청 수.                                                                              |
+| applyQueued     | number | 현재 적용을 기다리는 worker 응답 수.                                                                            |
+| flushed         | number | 정점을 직접 읽거나 바꾸는 작업(이동, UV 지정 등) 직전에 대기 요청을 즉시 동기로 끝낸 누적 건수.                    |
+| maxApplyMs      | number | 메인 스레드에서 결과 1건을 적용하는 데 걸린 최대 시간(ms).                                                       |
+| sumApplyMs      | number | 결과 적용에 쓴 누적 시간(ms).                                                                                   |
+| maxWorkerMs     | number | worker가 1건을 처리하는 데 걸린 최대 시간(ms).                                                                  |
+| sumWorkerMs     | number | worker 처리 누적 시간(ms).                                                                                      |
+| maxSyncMs       | number | 기준 미만으로 동기 처리한 건의 최대 소요 시간(ms).                                                              |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var stats = Module.XDEGetPolyTriangulateStats();
+console.log(stats.requested, stats.workerDone, stats.syncFallback);
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEResetPolyTriangulateStats()
+
+> [XDEGetPolyTriangulateStats](moduleapi.md#xdegetpolytriangulatestats-object)의 누적 통계를 초기화합니다(진단용).
+>
+> 건수와 시간 필드가 모두 0이 되지만, 현재 worker에서 처리 중인 요청 수(`inFlight`)는 유지됩니다. `applyQueued`는 누적값이 아니라 조회 시점의 대기 응답 수라 초기화와 무관합니다.
+
+{% tabs %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDEResetPolyTriangulateStats();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetSplatShadowReceive(on), XDEGetSplatShadowReceive() → boolean
+
+> 3D Gaussian Splatting([JSGaussianSplat](../object/jsgaussiansplat.md)) 객체가 그림자를 받을지 여부를 설정합니다. 기본값은 true입니다.
+>
+> 스플랫이 다른 스플랫 위에 드리우는 그림자가 스플랫 표면에 표시됩니다. 그림자맵이 활성화된 동안([createShadow](../analysis/jsanalysis.md#createshadow-year-month-day-hour-minute-boolean), [setShadowSimulation](../analysis/jsanalysis.md#setshadowsimulation-type) 등)에만 보이며, 끄면 그림자를 받는 쪽만 멈추고 스플랫이 그림자맵에 기록되는(드리우는) 동작은 그대로입니다. 이 설정은 지도에 있는 모든 스플랫에 공통으로 적용됩니다.
+>
+> 3DGS 색에는 촬영 당시의 그림자가 이미 포함되어 있어 여기서 더하는 그림자는 그 위에 겹치는 두 번째 그림자입니다. 농도는 [XDESetSplatShadowDarken](moduleapi.md#xdesetsplatshadowdarken-value-xdegetsplatshadowdarken-number)으로 조절하십시오.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name | Type    | Description                                                      |
+| ---- | ------- | ---------------------------------------------------------------- |
+| on   | boolean | <p>true: 스플랫이 그림자를 받음(기본값).<br>false: 받지 않음.</p> |
+
+-   Return(XDEGetSplatShadowReceive)
+    -   boolean: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetSplatShadowReceive(false);
+var isOn = Module.XDEGetSplatShadowReceive();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetSplatShadowDarken(value), XDEGetSplatShadowDarken() → number
+
+> 스플랫이 그림자 안에 있을 때의 밝기 배수를 설정합니다. 기본값은 0.6입니다.
+>
+> 스플랫 색에 이 값을 곱해 어둡게 합니다(알파는 바꾸지 않으므로 그림자 안에서도 스플랫이 투명해지지 않습니다). 1이면 그림자가 표시되지 않고, 0에 가까울수록 어두워집니다. 그림자를 받는 설정([XDESetSplatShadowReceive](moduleapi.md#xdesetsplatshadowreceive-on-xdegetsplatshadowreceive-boolean))이 켜져 있을 때만 의미가 있습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                                    |
+| ----- | ------ | -------------------------------------------------------------- |
+| value | number | 그림자 안의 밝기 배수. 0 ~ 1 범위로 보정됩니다(0 미만은 0, 1 초과는 1). |
+
+-   Return(XDEGetSplatShadowDarken)
+    -   number: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetSplatShadowDarken(0.7);
+var darken = Module.XDEGetSplatShadowDarken();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetSplatShadowBias(meter), XDEGetSplatShadowBias() → number
+
+> 스플랫이 자기 자신 또는 같은 면의 이웃 스플랫에 가려진 것으로 오판되는 것을 막는 여유 거리(m)를 설정합니다. 기본값은 0.3입니다.
+>
+> 스플랫 구름의 두께에 맞추는 값입니다. 너무 작으면 같은 면을 이루는 이웃 스플랫끼리 서로를 가려 표면이 얼룩지고, 너무 크면 얇은 물체가 드리우는 그림자가 사라집니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                                      |
+| ----- | ------ | ---------------------------------------------------------------- |
+| meter | number | 여유 거리(m). 0 ~ 50 범위로 보정됩니다(0 미만은 0, 50 초과는 50). |
+
+-   Return(XDEGetSplatShadowBias)
+    -   number: 현재 설정 값(m).
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetSplatShadowBias(0.5);
+var bias = Module.XDEGetSplatShadowBias();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetSplatShadowCastScale(scale), XDEGetSplatShadowCastScale() → number
+
+> 스플랫이 그림자를 드리울 때 그림자맵에 찍는 점(캐스터)의 크기 배수를 설정합니다. 기본값은 1.0입니다.
+>
+> 점 지름은 고정 미터가 아니라 `배수 × 캐스터 사이의 평균 간격`을 그림자맵 해상도로 환산해 정하므로 데이터 밀도가 달라도 같은 값으로 동작합니다. 1.0이면 이웃 점이 겨우 맞닿는 크기입니다. 그림자가 점점이 끊겨 보이면 올리고, 뭉개져 보이면 내리십시오. 최종 점 크기는 1~16 px로 제한됩니다. 이 설정은 태양 그림자에만 적용되며 피킹에는 영향을 주지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                                          |
+| ----- | ------ | -------------------------------------------------------------------- |
+| scale | number | 점 크기 배수. 0.1 ~ 10 범위로 보정됩니다(0.1 미만은 0.1, 10 초과는 10). |
+
+-   Return(XDEGetSplatShadowCastScale)
+    -   number: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetSplatShadowCastScale(1.5);
+var scale = Module.XDEGetSplatShadowCastScale();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDESetSplatShadowCastOpacity(opacity), XDEGetSplatShadowCastOpacity() → number
+
+> 스플랫이 그림자를 드리우는 것으로 취급할 불투명도의 하한을 설정합니다. 기본값은 0.12입니다.
+>
+> 이 값 이상의 불투명도를 가진 스플랫의 중심점이 그림자맵에 기록됩니다. 옅은 스플랫도 여럿 겹치면 빛을 막기 때문에, 클릭 피킹에 쓰는 하한(0.35)보다 낮게 잡혀 있습니다. 값을 바꾸면 다음 그림자 렌더링 때 스플랫별 캐스터 목록을 다시 만들며, 피킹 결과에는 영향을 주지 않습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type   | Description                                                    |
+| ------- | ------ | -------------------------------------------------------------- |
+| opacity | number | 불투명도 하한. 0 ~ 1 범위로 보정됩니다(0 미만은 0, 1 초과는 1). |
+
+-   Return(XDEGetSplatShadowCastOpacity)
+    -   number: 현재 설정 값.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.XDESetSplatShadowCastOpacity(0.2);
+var opacity = Module.XDEGetSplatShadowCastOpacity();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### XDEGetSplatShadowCast() → object
+
+> 스플랫이 그림자맵에 점(캐스터)을 실제로 찍은 현황을 반환합니다(진단용).
+>
+> "스플랫 위에 그림자가 생기지 않는다"는 증상이 받는 쪽 문제인지 드리우는 쪽 문제인지 화면만으로는 구분하기 어려울 때 사용합니다. 값은 누적되므로 두 번 읽어 차이를 확인하면 지금 그림자맵에 찍고 있는지 알 수 있습니다. 초기화 함수는 없습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   object: 아래 필드를 가진 객체.
+
+| Name   | Type   | Description                                                                                                  |
+| ------ | ------ | ------------------------------------------------------------------------------------------------------------ |
+| draws  | number | 스플랫 캐스터를 그림자맵에 실제로 그린 누적 횟수.                                                              |
+| points | number | 그때 찍은 점 수의 누적 합.                                                                                    |
+| skip   | number | 그리지 않고 건너뛴 누적 횟수(스플랫 없음, 피킹 비활성, 캐스터 점 없음 등).                                      |
+| flag   | number | 마지막으로 그릴 때의 그림자맵 종류. 1: 태양 그림자, 2: 컬러맵 피킹(그 외 값은 다른 그림자맵 종류의 내부 번호). 한 번도 그리지 않았으면 -1.                  |
+| px     | number | 마지막으로 그릴 때 쓴 점 크기(px). 캐스터 간격 기준 계산이 맞는지 확인하는 값.                                  |
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var a = Module.XDEGetSplatShadowCast();
+// 잠시 후 다시 읽어 draws/points가 늘었는지 확인
+var b = Module.XDEGetSplatShadowCast();
+console.log(b.draws - a.draws, b.points - a.points, b.px);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ## Type Definitions
 
 ### Module.CreateTerrainOptions
@@ -5416,6 +5702,7 @@ Module.XDESetPoiUploadMaxPendingMB(64);
 | count     | number \| "auto" | web worker 사용 개수. 생략하거나 숫자가 아니면 5이며, 1 미만은 1로 보정됩니다. `"auto"`를 지정하면 브라우저 정보로 자동 결정합니다(`navigator.hardwareConcurrency - 1`, 최소 2. 장치 메모리를 알 수 있으면 GB당 2개를 넘지 않음. `maxCount` 이하). |
 | maxCount  | number           | web worker 개수 상한(기본 8). 1 미만은 1로 보정됩니다. `count`가 상한보다 크면 `maxCount`를 지정한 경우에만 상한으로 제한되고, 지정하지 않은 경우에는 `count` 값까지 상한이 늘어납니다. |
 | tileParse | boolean          | 3D Tiles 콘텐츠 파싱을 web worker에서 수행할지 여부. 기본값 true. false로 해도 이미지 등 다른 worker 작업에는 영향이 없습니다.                                                                                                |
+| polyTriangulate | boolean    | 정점 수가 많은 폴리곤의 삼각분할을 web worker에서 수행할지 여부. 기본값 true. false로 하면 항상 메인 스레드에서 동기로 분할합니다. 기준 정점 수는 [setPolyTriangulateMinVertex(count)](../option/jsoption.md#getpolytriangulateminvertex-setpolytriangulateminvertex-count-number)로 조정합니다. |
 
 ### Module.CreateTerrainOptions.DEM
 

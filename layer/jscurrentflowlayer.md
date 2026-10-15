@@ -27,7 +27,7 @@ let sameFlow = Module.getFlowLayerList().getLayer("current_flow");
 1.  **서버 준비** : 시각마다 격자 PNG(RGBA) 한 장을 제공합니다. `bbox` 전체를 덮는 프레임을 `frameUrl`로, (선택) 확대용 고해상도 타일을 `tiles.urlTemplate`로 제공합니다. 엔진이 브라우저 `fetch`로 요청하므로 다른 도메인이면 CORS 허용이 필요합니다.
 2.  **레이어 생성** : [createCurrentFlowLayer](jsflowlayerlist.md#createcurrentflowlayer-options-jscurrentflowlayer)는 데이터 로드를 기다리지 않고 즉시 반환합니다. 첫 렌더링 시점부터 엔진이 프레임을 요청합니다.
 3.  **프레임 로드** : 현재 시각이 속한 구간 `[times[k], times[k+1]]`의 두 장이 모두 로드되어야 화면에 표시되고 [getValueAt](jscurrentflowlayer.md#getvalueat-lon-lat-jscurrentflowlayer.flowvalue)이 값을 돌려줍니다. 그 전에는 아무것도 그려지지 않으며 `getValueAt`은 null입니다. 두 장의 유속은 시각에 따라 선형 보간됩니다.
-4.  **미리 받기·교체** : 앞(`prefetch.ahead`)·뒤(`prefetch.behind`) 프레임을 미리 받아 두며, 시각이 새 구간으로 넘어가도 새 구간의 두 장이 모두 도착하기 전까지는 이전 구간을 계속 사용합니다. 재생 중 다음 구간이 아직 로드되지 않았으면 구간 끝에서 기다렸다가 이어서 재생합니다(건너뛰지 않음).
+4.  **미리 받기·교체** : 앞(`prefetch.ahead`)·뒤(`prefetch.behind`) 프레임을 미리 받아 두며, 시각이 새 구간으로 넘어가도 새 구간의 두 장이 모두 도착하기 전까지는 이전 구간을 계속 사용합니다. 재생 중 다음 구간이 아직 로드되지 않았으면 구간 끝에서 기다렸다가 이어서 재생합니다(건너뛰지 않음). `tiles`를 쓰는 경우 지금 화면에 쓰는 타일이 새 구간의 두 시각에도 모두 로드될 때까지(최대 1.5초) 이전 구간을 유지하며, 재생 중(또는 최근 1.5초 안에 [setTime](jscurrentflowlayer.md#gettime-settime-time-number-boolean)으로 시각을 앞으로 넘기는 중)에는 다음 두 시각의 타일도 미리 받아 둡니다.
 5.  **타일(선택)** : `tiles`를 지정하면 카메라 확대 정도에 맞는 타일을 추가로 요청하고, 파티클은 두 시각이 모두 로드된 가장 세밀한 타일에서 유속을 샘플링합니다.
 6.  **비동기 상태 확인** : [on](jscurrentflowlayer.md#on-event-callback-boolean)의 `frameLoad`/`tileLoad`/`tileUnload`/`error` 이벤트, 또는 [getStatus()](jscurrentflowlayer.md#getstatus-jscurrentflowlayer.flowstatus)의 `pending`(요청 중인 프레임·타일 수), `framesLoaded`, `activeTime` 등으로 로딩 진행 상황을 확인할 수 있습니다.
 7.  **실패 처리** : 요청이 실패해도 이전에 로드한 프레임을 계속 표시하고, 프레임은 3초 뒤, 타일은 5초 뒤에 다시 요청합니다. 실패할 때마다 `error` 이벤트가 발생합니다.
@@ -36,6 +36,7 @@ let sameFlow = Module.getFlowLayerList().getLayer("current_flow");
   * 레이어 표시가 꺼져 있으면([setVisible(false)](jscurrentflowlayer.md#getvisible-setvisible-visible-boolean-boolean)) 그리기뿐 아니라 시간 진행과 데이터 요청도 멈춥니다.
   * 평면(2D) 지도 모드에서는 그려지지 않습니다.
   * 지형·건물이 그려진 뒤에 그려지므로 깊이 버퍼로 가려짐을 판정합니다([setDepthTest](jscurrentflowlayer.md#setdepthtest-on-boolean)).
+  * 흐름선은 기본적으로 수면 높이(`altitude`)에 그려집니다. 수면보다 높은 지형에서도 흐름선이 보이게 하려면 지형 결합([setUnionTerrain](jscurrentflowlayer.md#getunionterrain-setunionterrain-options-boolean-boolean))을 켜십시오. 지구 뒷면 판정은 눈과 점을 잇는 선분이 수면 구(수면 높이 - 50m)를 지나는지로 하므로, 카메라보다 높은 산 위의 흐름선도 틸트를 낮췄을 때 사라지지 않습니다.
   * `times`와 `hoursPerSecond`의 시간 단위는 시간(hour)입니다. 격자 데이터의 유속 단위는 m/s입니다.
 
 ### 데이터 형식
@@ -49,6 +50,7 @@ let sameFlow = Module.getFlowLayerList().getLayer("current_flow");
 | A       | 255 = 바다, 0 = 육지·격자 밖·해당 시각에 건조한 칸. 육지로는 입자가 흐르지 않습니다.                                              |
 
 * 전체 범위 프레임은 `bbox` 전체를, 타일은 엔진 타일 격자(레벨 L의 한 변 36°/2^L, `x`는 경도 -180°에서 동쪽으로, `y`는 위도 -90°에서 북쪽으로 증가)의 해당 영역을 같은 규격으로 덮습니다.
+* **원시 RGBA 응답(선택)** : 응답의 `Content-Type`이 `application/x-xdcf-rgba`로 시작하면 PNG 디코딩을 건너뛰고 본문을 그대로 격자로 읽습니다. 본문 = 너비·높이(uint32 little-endian 2개, 8바이트) + RGBA 픽셀(`너비 × 높이 × 4`바이트)이며 채널 규격은 위 표와 같습니다. 본문이 `8 + 너비 × 높이 × 4`바이트보다 짧으면 요청 실패로 처리합니다. `fetch`를 가로채 앱이 유속장을 직접 만들어 주는 경우(재생 중 초당 수십~수백 장) PNG 압축·해제 비용을 없애기 위한 경로입니다.
 
 ## Function
 
@@ -440,7 +442,7 @@ console.log(flow.isValid()); // false
 
 > 레이어의 현재 시각을 조회하거나 설정합니다.
 >
-> 시각은 `times`의 최소~최대 범위로 제한됩니다. 설정해도 재생 상태는 바뀌지 않으며, 새 시각이 속한 구간의 두 프레임이 로드되기 전까지는 화면이 이전 구간 그대로 유지됩니다.
+> 시각은 `times`의 최소~최대 범위로 제한됩니다. 설정해도 재생 상태는 바뀌지 않으며, 새 시각이 속한 구간의 두 프레임(`tiles`를 쓰면 지금 화면에 쓰는 타일의 두 시각분도, 최대 1.5초까지)이 로드되기 전까지는 화면이 이전 구간 그대로 유지됩니다. 시각을 현재보다 앞으로 설정하면 그 뒤 1.5초 동안은 엔진 재생과 같이 다음 두 시각의 타일을 미리 받아 두므로, `setTime`을 반복 호출해 직접 재생하는 앱도 별도 처리 없이 타일 지연이 줄어듭니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -513,6 +515,44 @@ console.log(flow.getVisible()); // false
 ```javascript
 flow.setOpacity(0.7);
 console.log(flow.getOpacity()); // 0.7
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getUnionTerrain(), setUnionTerrain(options) → boolean, boolean
+
+> 지형 결합(흐름선을 그 자리 지형 높이에 얹기) 사용 여부를 조회하거나 설정합니다.
+>
+> 꺼져 있으면(기본) 파티클이 수면 높이(`altitude`)에 그려져, 수면보다 높은 섬·산·해안 DEM 구간에서는 흐름선이 지형 속으로 들어가 가려집니다. 켜면 파티클의 높이가 **현재 화면에 그려진 지형 면의 높이 + 띄우는 높이(`terrainOffset`)** 로 바뀌되, 그 값이 수면 높이보다 높을 때만 적용되고 지형이 수면보다 낮거나 DEM이 아직 없는 곳은 수면 높이 그대로입니다. 지형 면이 카메라를 등진 비탈의 선분은 흐려집니다. 값이 실제로 바뀌면 파티클을 새로 뿌립니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name    | Type                                                                                              | Description                                                                                                                                                                              |
+| :------ | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options | boolean \| [JSCurrentFlowLayer.UnionTerrainOptions](jscurrentflowlayer.md#jscurrentflowlayer.unionterrainoptions) | `true`/`false`: 지형 결합 켜기/끄기(띄우는 높이는 그대로). 객체: `enabled`로 켜기/끄기(생략하면 true), `offset`으로 띄우는 높이(m, 0~1000으로 제한) 변경(생략하면 그대로). |
+
+-   Return
+    -   `getUnionTerrain()`: boolean - 현재 지형 결합 여부. 제거된 레이어는 false.
+    -   `setUnionTerrain(options)`: boolean
+        -   true: 적용됨.
+        -   false: 제거된 레이어, 또는 `options`가 boolean도 객체도 아닌 경우(숫자, 문자열, null, undefined 등. 값은 바뀌지 않습니다).
+
+* Note
+  * 생성 옵션 `unionTerrain` / `terrainOffset`([createCurrentFlowLayer](jsflowlayerlist.md#createcurrentflowlayer-options-jscurrentflowlayer))으로 처음부터 켤 수 있습니다. 띄우는 높이 기본값은 2.0m입니다.
+  * 현재 띄우는 높이와 켜짐 여부는 [getStatus()](jscurrentflowlayer.md#getstatus-jscurrentflowlayer.flowstatus)의 `unionTerrain`, `terrainOffset`으로도 읽을 수 있습니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+flow.setUnionTerrain(true); // 지형 결합 켜기
+flow.setUnionTerrain({ enabled: true, offset: 5 }); // 지형 위 5m에 띄워 켜기
+flow.setUnionTerrain({ offset: 10 }); // enabled 생략 = 켜기, 띄우는 높이만 10m로
+console.log(flow.getUnionTerrain()); // true
+
+flow.setUnionTerrain(false); // 끄기 (띄우는 높이는 보존)
 ```
 
 {% endtab %}
@@ -655,6 +695,15 @@ setTimeout(function () {
 | visible | boolean | optional   | 배경 표시 여부. 생략하면 현재 값을 유지합니다.                                           |
 | opacity | number  | optional   | 배경 불투명도. 1을 넘으면 1로 제한되며, 생략하거나 음수이면 현재 값을 유지합니다.         |
 
+#### JSCurrentFlowLayer.UnionTerrainOptions
+
+> [setUnionTerrain(options)](jscurrentflowlayer.md#getunionterrain-setunionterrain-options-boolean-boolean) 의 객체 형식 옵션. 생성 옵션 `unionTerrain`도 같은 형식(`true`/`false` 또는 이 객체)을 받습니다.
+
+| Name    | Type    | Attributes | Default      | Description                                                                                   |
+| :------ | :------ | :--------- | :----------- | :-------------------------------------------------------------------------------------------- |
+| enabled | boolean | optional   | true         | 지형 결합 켜기/끄기. 생략하면 켭니다.                                                         |
+| offset  | number  | optional   | 현재 값 (초기 2.0) | 지형 위로 띄우는 높이(m). 0~1000으로 제한됩니다. 생략하면 현재 값을 유지합니다.         |
+
 #### JSCurrentFlowLayer.FlowValue
 
 > [getValueAt(lon, lat)](jscurrentflowlayer.md#getvalueat-lon-lat-jscurrentflowlayer.flowvalue)가 반환하는 유속 정보.
@@ -679,6 +728,8 @@ setTimeout(function () {
 | :----------- | :-------------- | :----------------------------------------------------------------------------------------------------------------------- |
 | framesLoaded | number          | 메모리에 로드되어 있는 전체 범위 프레임 수.                                                                              |
 | framesOnGpu  | number          | 배경 색상용으로 GPU 텍스처로 올라간 프레임 수(배경을 켠 경우에 사용됨).                                                  |
+| unionTerrain | boolean         | 현재 지형 결합 여부([getUnionTerrain()](jscurrentflowlayer.md#getunionterrain-setunionterrain-options-boolean-boolean)).                                         |
+| terrainOffset | number         | 지형 결합 시 지형 위로 띄우는 높이(m).                                                                                   |
 | tilesLoaded  | number          | 로드된 타일 수.                                                                                                          |
 | tilesWanted  | number          | 현재 화면에서 요청 대상으로 선택된 타일 수(시각 제외).                                                                   |
 | pending      | number          | 요청 중인 프레임·타일 수.                                                                                                |

@@ -681,6 +681,62 @@ var size = Module.getOption().getMaxTileParseQueueMB();
 {% endtab %}
 {% endtabs %}
 
+### getPolyTriangulateMinVertex(), setPolyTriangulateMinVertex(count) → number
+
+> 폴리곤 삼각분할을 web worker로 보낼 최소 정점 수를 설정합니다. 기본값은 512입니다.
+>
+> [JSPolygon](../object/jspolygon.md)으로 평면·각기둥 등을 만들 때 정점 수(여러 파트를 한 번에 만드는 경우는 정점 합계)가 이 값 이상이면 삼각분할을 web worker에서 비동기로 처리하고, 미만이면 종전처럼 그 자리에서 동기로 처리합니다. 비동기로 처리하는 동안 해당 폴리곤의 면은 아직 만들어지지 않아 렌더링과 피킹에서 제외되며, 결과가 적용되면 나타납니다. 이동·UV 지정처럼 정점을 직접 읽거나 바꾸는 작업을 하면 대기 중인 요청을 그 자리에서 동기로 끝낸 뒤 진행합니다.
+>
+> web worker를 쓰지 않는 경우(`worker.use`가 false이거나 `worker.polyTriangulate`가 false이거나 worker가 없는 경우), 처리 중·적용 대기 요청이 64건 이상인 경우, worker가 30초 안에 응답하지 않은 경우에는 정점 수와 관계없이 동기로 처리합니다. 변경한 값은 이후에 만드는 폴리곤부터 적용됩니다. 처리 현황은 [XDEGetPolyTriangulateStats](../module/moduleapi.md#xdegetpolytriangulatestats-object)로 확인합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                                  |
+| ----- | ------ | ------------------------------------------------------------ |
+| count | number | 워커로 보낼 최소 정점 수. 3 미만의 값은 3으로 설정됩니다. |
+
+-   Return(getPolyTriangulateMinVertex)
+    -   number: 현재 설정된 최소 정점 수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setPolyTriangulateMinVertex(1000);
+var count = Module.getOption().getPolyTriangulateMinVertex();
+```
+
+{% endtab %}
+{% endtabs %}
+
+### getMaxPolyApplyPerFrame(), setMaxPolyApplyPerFrame(count) → number
+
+> 웹 워커가 삼각분할을 마친 폴리곤 결과를 한 프레임에 최대 몇 건까지 면에 적용할지 설정합니다. 기본값은 8입니다.
+>
+> 한 프레임에 적용하는 건수를 제한해 폴리곤이 한꺼번에 나타나면서 프레임이 끊기는 것을 막습니다. 남은 결과는 다음 프레임에 처리합니다. 지도를 이동(패닝) 중일 때는 이 값이 2보다 커도 프레임당 2건으로 제한됩니다. [setPolyTriangulateMinVertex(count)](jsoption.md#getpolytriangulateminvertex-setpolytriangulateminvertex-count-number)에 따라 워커로 보낸 폴리곤에만 해당합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name  | Type   | Description                                        |
+| ----- | ------ | -------------------------------------------------- |
+| count | number | 프레임당 최대 적용 건수. 1 미만의 값은 1로 설정됩니다. |
+
+-   Return(getMaxPolyApplyPerFrame)
+    -   number: 현재 설정된 프레임당 최대 적용 건수.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+Module.getOption().setMaxPolyApplyPerFrame(4);
+var count = Module.getOption().getMaxPolyApplyPerFrame();
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getMaxTilesRetainedMB(), setMaxTilesRetainedMB(size) → number
 
 > 3D Tiles가 메모리에 보유하는 타일 콘텐츠(정점, 인덱스, 텍스처 원본)의 총 크기 상한(MB)을 설정합니다. 기본값은 512입니다.

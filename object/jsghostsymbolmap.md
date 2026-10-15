@@ -312,7 +312,9 @@ ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
 
 ### setModelTexture(option) → string
 
-> 등록된 고스트 심볼 모델를 구성하는 face 별 이미지를 설정합니다.
+> 등록된 고스트 심볼 모델를 구성하는 face 하나에 이미지를 텍스처로 적용합니다. 이미지는 URL로 요청하거나, 이미 가지고 있는 파일 바이트(`Uint8Array`)를 `data`로 직접 전달할 수 있습니다.
+>
+> 3DS 재질 단위로 여러 face에 한 번에 적용하려면 [setModelMaterialTexture(option)](jsghostsymbolmap.md#setmodelmaterialtexture-option-string), 적용한 텍스처를 없애려면 [clearModelTexture(option)](jsghostsymbolmap.md#clearmodeltexture-option-string)를 사용합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -322,9 +324,17 @@ ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
 | option | [JSGhostSymbolMap.LoadTexture](jsghostsymbolmap.md#jsghostsymbolmap.loadtexture) | 속성 정보.  |
 
 -   Return
-    -   "success": 설정 성공.
-    -   "failed load texture": 이미지 파일 네트워크 요청 실패.
-    -   이외 예외처리에 대한 문자열 메시지 반환.
+    -   "success": 설정 성공. `url`로 요청한 경우 이미지 다운로드가 끝나기 전에 반환되며, 실제 적용은 다운로드 완료 후에 이루어집니다. `data`를 전달한 경우에는 반환 전에 적용이 끝납니다.
+    -   "failed find model": 해당 id의 모델이 등록되어 있지 않은 경우.
+    -   "failed load texture": `face_index`가 모델의 face 개수 이상인 경우. 이미지 다운로드 자체의 실패는 반환값으로 알 수 없고 콘솔에만 출력됩니다.
+    -   "error  { id }  Undefined" 등: 필수 속성(`id`, 그리고 `data`가 없을 때의 `url`)이 없거나(`Undefined`/`NULL`) 타입이 다른 경우(`Type Mismatch`)의 오류 문자열. 속성 이름이 `{ }` 안에 들어갑니다.
+    -   빈 문자열(""): 지도가 로드되지 않은 경우.
+-   동작
+    -   텍스처가 적용된 face의 색상은 흰색(255, 255, 255)으로 바뀝니다(재질 색과 곱해져 어둡게 보이지 않도록). 투명도(알파)는 유지됩니다. 적용 전 색상으로 되돌리려면 [clearModelTexture(option)](jsghostsymbolmap.md#clearmodeltexture-option-string)를 사용합니다.
+    -   `face_index`가 음수이면 0으로 처리하고, 숫자가 아니면 지정하지 않은 것으로 봅니다(face 0).
+    -   `data`는 `Uint8Array`일 때만 사용됩니다. 비어 있지 않은 `Uint8Array`이면 `url`은 무시하고 다운로드 없이 적용하며, 그 외의 값(길이 0 포함)이면 `url`을 사용합니다.
+    -   `callback`은 모든 대상 face에 텍스처를 적용한 뒤 한 번 호출되며, 인자로 option에 넣은 속성이 모두 복사된 객체가 전달됩니다. `data`를 사용한 경우에는 이 함수가 반환되기 전에 동기로 호출됩니다. `url` 다운로드가 실패하면 콜백은 호출되지 않습니다. 이미지 디코딩에 실패해도 별도의 오류는 반환되지 않고(콘솔 로그만 출력) 콜백이 호출됩니다.
+    -   다면체(3DS 등) 모델에만 사용합니다. GLB 등 다른 유형의 모델에는 적용되지 않으며, 특히 `data`는 사용하지 마세요.
 -   Sample
     -   function init 참조.
     -   [Sandbox_Ghost Symbol Editing](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_edit)
@@ -333,7 +343,128 @@ ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
 {% tab title="Template" %}
 
 ```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
 
+// 1) URL로 face 0에 적용
+ghostSymbolMap.setModelTexture({
+    id: "model_01",
+    face_index: 0,
+    url: "./texture/wall.jpg",
+    callback: function (param) {
+        console.log("적용 완료", param.id);
+    },
+});
+
+// 2) 이미 받아 둔 이미지 파일 바이트로 face 2에 적용(다운로드 없이 즉시 적용)
+fetch("./texture/roof.png")
+    .then((res) => res.arrayBuffer())
+    .then((buf) => {
+        var result = ghostSymbolMap.setModelTexture({
+            id: "model_01",
+            face_index: 2,
+            data: new Uint8Array(buf),
+        });
+        console.log(result); // "success"
+    });
+```
+
+{% endtab %}
+{% endtabs %}
+
+### setModelMaterialTexture(option) → string
+
+> 3DS 모델의 재질(material) 하나를 사용하는 face 전부에 같은 이미지를 텍스처로 적용합니다.
+>
+> 대상 재질은 [getModelMaterials(id)](jsghostsymbolmap.md#getmodelmaterials-id-array)가 돌려주는 재질 목록의 `index`로 지정합니다. 재질이 쓰는 face를 일일이 골라 [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string)를 반복 호출하는 것과 같은 결과를, 이미지를 한 번만 만들어 모든 face가 공유하면서 얻습니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                                                                             | Description |
+| ------ | ------------------------------------------------------------------------------------------------ | ----------- |
+| option | [JSGhostSymbolMap.MaterialTexture](jsghostsymbolmap.md#jsghostsymbolmap.materialtexture)         | 속성 정보.  |
+
+-   Return
+    -   "success": 설정 성공. `url`로 요청한 경우 이미지 다운로드 후 적용되고, `data`를 전달한 경우에는 반환 전에 적용이 끝납니다.
+    -   "failed find model": 해당 id의 모델이 등록되어 있지 않은 경우.
+    -   "failed find material": 다면체 모델이 아니거나(재질 정보가 있는 것은 3DS 모델뿐), `material`이 0 미만이거나 모델의 재질 개수 이상인 경우.
+    -   "failed find material face": 그 재질을 사용하는 face가 하나도 없는 경우.
+    -   "failed load texture": 이미지 적용 요청에 실패한 경우(정상 입력에서는 발생하지 않습니다). 이미지 다운로드 자체의 실패는 반환값으로 알 수 없고 콘솔에만 출력됩니다.
+    -   "error  { material }  Undefined" 등: 필수 속성(`id`, `material`, 그리고 `data`가 없을 때의 `url`)이 없거나 타입이 다른 경우의 오류 문자열. 속성 이름이 `{ }` 안에 들어갑니다.
+    -   빈 문자열(""): 지도가 로드되지 않은 경우.
+-   동작
+    -   `data`, `url`, `reuse`, `callback`의 규칙과 적용된 face가 흰색으로 바뀌는 동작은 [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string)와 같습니다. 콜백은 재질의 모든 face에 적용한 뒤 한 번만 호출됩니다.
+    -   `face_index`, `uv` 속성은 없습니다.
+    -   오류는 id, 모델, 재질, face, 이미지(`url`/`data`) 순서로 검사하므로, 여러 입력이 잘못되면 앞 단계의 오류가 먼저 반환됩니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+
+// 재질 목록에서 이름으로 대상 재질을 찾아, 그 재질의 모든 face에 텍스처 적용
+var materials = ghostSymbolMap.getModelMaterials("model_01");
+var wall = materials.find(function (m) { return m.name === "WALL"; });
+if (wall) {
+    var result = ghostSymbolMap.setModelMaterialTexture({
+        id: "model_01",
+        material: wall.index,
+        url: "./texture/wall.jpg",
+        callback: function (param) {
+            console.log("재질 텍스처 적용 완료", param.material);
+        },
+    });
+    console.log(result);
+}
+```
+
+{% endtab %}
+{% endtabs %}
+
+### clearModelTexture(option) → string
+
+> 고스트 심볼 모델의 face에 적용된 텍스처를 해제하고 face 색상을 재질 색으로 되돌립니다.
+>
+> 해제할 대상은 `material`(재질이 쓰는 face 전부), `face_index`(face 하나), 둘 다 없으면 모델 전체 face 순으로 결정합니다.
+
+{% tabs %}
+{% tab title="Information" %}
+
+| Name   | Type                                                                                       | Description |
+| ------ | ------------------------------------------------------------------------------------------ | ----------- |
+| option | [JSGhostSymbolMap.ClearTexture](jsghostsymbolmap.md#jsghostsymbolmap.cleartexture)         | 속성 정보.  |
+
+-   Return
+    -   "success": 해제 성공.
+    -   "failed find model": 해당 id의 모델이 등록되어 있지 않은 경우.
+    -   "failed find face": 다면체 모델이 아니거나, `face_index`가 0 미만이거나 모델의 face 개수 이상인 경우.
+    -   "failed find material": `material`이 0 미만이거나 모델의 재질 개수 이상인 경우.
+    -   "failed find material face": 그 재질을 사용하는 face가 하나도 없는 경우.
+    -   "failed clear texture": 해제할 face가 없는 경우(face가 0개인 모델).
+    -   "error  { material }  Undefined" 등: `id`가 없거나, 지정한 `material`/`face_index`가 숫자가 아닌 경우의 오류 문자열. 속성 이름이 `{ }` 안에 들어갑니다.
+    -   빈 문자열(""): 지도가 로드되지 않은 경우.
+-   동작
+    -   대상 face의 텍스처 참조를 해제합니다. 다른 face가 같은 텍스처를 쓰고 있으면 그 face에는 영향이 없고, 마지막 사용자가 해제되면 텍스처가 삭제됩니다.
+    -   대상 face의 색상을 그 face의 재질(3DS) 기본 색상으로 되돌립니다. 투명도(알파)는 유지합니다. 재질 정보가 없는 모델의 face는 색상을 바꾸지 않습니다(텍스처 적용 때 흰색이 된 색이 그대로 남습니다).
+    -   텍스처가 없던 face도 색상이 재질 색으로 되돌아가므로, [setModelFaceColor(id, index, color)](jsghostsymbolmap.md#setmodelfacecolor-id-index-color-boolean)로 바꿔 둔 색상도 함께 초기화됩니다.
+    -   아직 다운로드 중인 텍스처 요청은 취소하지 않습니다. 해제 이후에 다운로드가 끝나면 그 텍스처가 다시 적용됩니다.
+    -   `material`이 지정되어 있으면(`undefined`/`null`이 아니면) `face_index`는 무시합니다.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var ghostSymbolMap = Module.getGhostSymbolMap();
+
+// 재질 하나의 텍스처 해제
+ghostSymbolMap.clearModelTexture({ id: "model_01", material: 2 });
+
+// face 하나의 텍스처 해제
+ghostSymbolMap.clearModelTexture({ id: "model_01", face_index: 5 });
+
+// 모델 전체 해제
+ghostSymbolMap.clearModelTexture({ id: "model_01" });
 ```
 
 {% endtab %}
@@ -487,7 +618,7 @@ ghostSymbolMap.setGhostSymbolPositionOffset(e.strGhostSymbolKey, 1.0, 2.0, 3.0);
 
 ### getModelMaterials(id) → array
 
-> 3DS 파일로 등록한 고스트 심볼 모델이 가진 재질(material) 목록을 반환합니다. 재질별 이름, 텍스처 파일명, 기본 색상, 그 재질을 사용하는 face 인덱스와 삼각형 수를 알 수 있어, [setModelFaceColor(id, index, color)](jsghostsymbolmap.md#setmodelfacecolor-id-index-color-boolean), [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string) 등 face 단위 편집의 대상 face를 재질 기준으로 고를 때 사용합니다.
+> 3DS 파일로 등록한 고스트 심볼 모델이 가진 재질(material) 목록을 반환합니다. 재질별 이름, 텍스처 파일명, 기본 색상, 그 재질을 사용하는 face 인덱스와 삼각형 수를 알 수 있어, [setModelFaceColor(id, index, color)](jsghostsymbolmap.md#setmodelfacecolor-id-index-color-boolean), [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string) 등 face 단위 편집의 대상 face를 재질 기준으로 고를 때 사용합니다. 재질 전체에 텍스처를 적용하려면 [setModelMaterialTexture(option)](jsghostsymbolmap.md#setmodelmaterialtexture-option-string)에 이 목록의 `index`를 전달합니다.
 >
 > 재질 정보는 3DS 모델을 로드할 때만 채워지므로, 3DS가 아닌 모델(XDO, GLB 등)이나 재질 정보가 없는 모델은 빈 배열을 반환합니다. `faces`에 담기는 번호는 [getModelFaceCount(id)](jsghostsymbolmap.md#getmodelfacecount-id-number)가 세는 face 단위의 인덱스입니다(삼각형 번호가 아님).
 
@@ -654,11 +785,35 @@ var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
 | Name       | Type                                 | Attributes | Default      | Description                          |
 | ---------- | ------------------------------------- | ---------- | ------------ | -------------------------------------- |
 | id         | string                                |            |              | 고스트 심볼 고유 명칭.               |
-| url        | string                                |            |              | 고스트 심볼 모델 이미지 요청 URL.    |
+| url        | string                                | optional*  |              | 고스트 심볼 모델 이미지 요청 URL. `data`가 없을 때 필수. |
+| data       | Uint8Array                            | optional*  |              | 이미지 파일 내용(png, jpg 등 파일 바이트 그대로). 비어 있지 않은 `Uint8Array`이면 `url` 대신 사용하며 다운로드 없이 즉시 적용. |
 | face_index | number                                | optional   | 0            | 텍스쳐를 적용할 face Index.          |
-| uv         | [JSVector2D](../core/jsvector2d.md)  | optional   | (1.0, 1.0)   | 텍스쳐 UV 반복(tiling) 배율.         |
+| uv         | [JSVector2D](../core/jsvector2d.md)  | optional   | (1.0, 1.0)   | 텍스쳐 UV 반복(tiling) 배율. 현재 구현에서는 값을 읽기만 하고 적용하지 않으므로 효과가 없음. |
 | reuse      | boolean                               | optional   | false        | 텍스처 이미지 재사용 여부(export용). |
-| callback   | function                              | optional   |              | 등록 완료 시 동작하는 CallBack       |
+| callback   | function                              | optional   |              | 텍스처 적용이 끝나면 한 번 호출되는 CallBack. 인자는 option의 속성이 복사된 객체. |
+
+#### JSGhostSymbolMap.MaterialTexture
+
+> [setModelMaterialTexture(option)](jsghostsymbolmap.md#setmodelmaterialtexture-option-string)에 전달하는 속성. 재질이 쓰는 face 전부에 같은 텍스처를 적용합니다.
+
+| Name       | Type        | Attributes | Default | Description                                                                 |
+| ---------- | ----------- | ---------- | ------- | --------------------------------------------------------------------------- |
+| id         | string      |            |         | 고스트 심볼 고유 명칭.                                                      |
+| material   | number      |            |         | 대상 재질 인덱스([getModelMaterials(id)](jsghostsymbolmap.md#getmodelmaterials-id-array)의 `index`). |
+| url        | string      | optional*  |         | 이미지 요청 URL. `data`가 없을 때 필수.                                     |
+| data       | Uint8Array  | optional*  |         | 이미지 파일 바이트. 비어 있지 않은 `Uint8Array`이면 `url` 대신 사용.        |
+| reuse      | boolean     | optional   | false   | 텍스처 이미지 재사용 여부(export용).                                         |
+| callback   | function    | optional   |         | 재질의 모든 face에 적용한 뒤 한 번 호출되는 CallBack. 인자는 option의 속성이 복사된 객체. |
+
+#### JSGhostSymbolMap.ClearTexture
+
+> [clearModelTexture(option)](jsghostsymbolmap.md#clearmodeltexture-option-string)에 전달하는 속성. `material`, `face_index`가 모두 없으면 모델 전체를 대상으로 합니다.
+
+| Name       | Type    | Attributes | Default | Description                                                         |
+| ---------- | ------- | ---------- | ------- | ------------------------------------------------------------------- |
+| id         | string  |            |         | 고스트 심볼 고유 명칭.                                              |
+| material   | number  | optional   |         | 이 재질을 사용하는 face 전부를 대상으로 함. 지정하면 `face_index`는 무시. |
+| face_index | number  | optional   |         | 이 face 하나를 대상으로 함.                                         |
 
 #### JSGhostSymbolMap.ModelMaterial
 

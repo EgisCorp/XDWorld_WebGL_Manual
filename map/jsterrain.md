@@ -43,7 +43,11 @@ var map = Module.getTerrain();
 | areaPositions | [JSVec2Array](../core/jsvec2array.md)   | 홀 영역을 구성하는 좌표 목록 (2개 이상). |
 
 -   Return
-    -   항상 false (구현상 성공 여부와 무관하게 false 반환).
+    -   true: 홀 영역 추가 성공.
+    -   false: 지도가 로드되지 않았거나 areaPositions가 2개 미만인 경우.
+-   참고
+    -   홀 영역의 면은 정점 수와 관계없이 호출 안에서 즉시 만들어집니다(폴리곤처럼 web worker에서 삼각분할하지 않고 동기로 확정).
+    -   등록 순서가 [setTerrainHoleAreaVisible(index, visible)](jsterrain.md#setterrainholeareavisible-index-visible-boolean)의 index가 됩니다.
 
 {% endtab %}
 {% tab title="Template" %}

@@ -277,6 +277,8 @@ for (let i = 0; i < names.length; i++) {
 | altitude       | number   | optional   | 0.0                | 수면 높이(m). 파티클과 배경이 그려지는 해수면 고도입니다.                                                                                    |
 | depthTest      | boolean  | optional   | true               | 지형·건물에 의한 가려짐 판정 사용 여부.                                                                                                      |
 | depthBias      | number   | optional   | 0.002              | 해수면과 지형이 겹쳐 깜빡이는 현상(z-fighting)을 막기 위해 깊이를 시선 방향으로 당기는 비율(카메라 거리 대비). 0~0.05로 제한됩니다.         |
+| unionTerrain   | boolean \| object | optional | false        | 지형 결합. 켜면 파티클 높이를 **현재 화면에 그려진 지형 면의 높이 + `terrainOffset`** 으로 둡니다(수면 높이보다 높을 때만. 지형이 낮거나 DEM이 없으면 수면 그대로). 꺼 두면 수면보다 높은 섬·산·해안 DEM에서 흐름선이 지형 속에 가려집니다. `true`/`false` 또는 `{ enabled, offset }` 객체(`enabled` 생략 시 true, `offset`은 `terrainOffset`과 같음). 객체가 아닌 다른 타입이면 무시됩니다. 생성 후에는 [setUnionTerrain(options)](jscurrentflowlayer.md#getunionterrain-setunionterrain-options-boolean-boolean)로 바꿉니다. |
+| terrainOffset  | number   | optional   | 2.0                | 지형 결합 시 지형 위로 띄우는 높이(m). 0~1000으로 제한됩니다. `unionTerrain.offset`과 함께 지정하면 이 값이 우선합니다. 지형 결합이 꺼져 있어도 값은 보관되어 나중에 켤 때 쓰입니다. |
 | opacity        | number   | optional   | 1.0                | 레이어 전체 불투명도. 0~1로 제한됩니다.                                                                                                      |
 | visible        | boolean  | optional   | true               | 레이어 표시 여부. false이면 그리기, 시간 진행, 데이터 요청이 모두 멈춥니다.                                                                  |
 | loop           | boolean  | optional   | true               | 재생이 마지막 시각에 도달했을 때 처음으로 되돌아가 반복할지 여부. false이면 마지막 시각에서 재생이 멈춥니다.                                 |
