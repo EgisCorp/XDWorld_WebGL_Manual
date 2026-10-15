@@ -2,6 +2,97 @@
 
 ## - 업데이트 내역 -
 
+### 2.31.1 (2026/10/15)
+#### 1. 워커 WASM 캐시 갱신 ([이슈 #624](https://github.com/EgisCorp/XDWorld/issues/624))
+* 엔진 업데이트 시 아래 위치에 `?v=` 쿼리를 추가하거나 갱신하는 방식을 통해 워커의 캐시 갱신 기능을 지원합니다.
+
+```javascript
+var VER = "2.32.0"; // 엔진 업데이트마다 변경
+
+var Module = {
+    locateFile : function(s) { return "./" + s + "?v=" + VER; }, // XDWorldEM.wasm 등
+    postRun: function() {
+        Module.initialize({
+            // ...
+            worker : { use : true, path : "./worker/XDWorldWorker.js?v=" + VER, count : 5 }, // 워커 JS, WASM
+        });
+    }
+};
+script.src = "./XDWorldEM.js?v=" + VER; // 엔진 JS
+```
+
+#### 2. 흐름 가시화 기법 추가
+* 조류의 흐름, 바람길 등 값의 흐름을 가시화할 수 있는 기법을 추가하였습니다.
+
+#### 3. GoogleMap, ArcMap 배경지도 API Key 필수 적용
+* GoogleMap 및 ArcMap 배경지도 사용 시 API Key가 없으면 사용할 수 없도록 변경하였습니다.
+
+#### 4. 배경지도 전환 시 깜빡이는 현상 개선
+* 모든 텍스처 생성이 완료된 후 배경지도를 교체하도록 수정하였습니다.
+
+#### 5. GhostSymbol, glTF 타입 객체의 태양광 패널 설치 오류 수정
+* GhostSymbol 및 glTF 타입 객체에 태양광 패널 설치 시 발생하는 오류를 수정하였습니다.
+
+#### 6. 3DS 고스트 심볼 다중 텍스처 지원 ([이슈 #619](https://github.com/EgisCorp/XDWorld/issues/619))
+- 텍스처 요청 경로를 수정하고 자동 요청 옵션을 추가하였습니다.
+
+```javascript
+options = {
+    textureBasePath : "./texture/", // 텍스처 경로 (생략 시 모델 파일 경로)
+    autoLoadTexture : true // 텍스처 자동 요청 여부 (기본값 true)
+};
+Module.getGhostSymbolMap().addGhostSymbolBy3DS("{id}", "{모델파일경로}", "{모델파일명}", options);
+Module.getGhostSymbolMap().addGhostSymbolByBinary("{id}", new Uint8Array(buf), "3ds", options);
+```
+
+- 재질 조회 API `getModelMaterials`를 추가하였습니다.
+
+```javascript
+var materials = Module.getGhostSymbolMap().getModelMaterials("{id}");
+// [
+//   { index: 17, name: "Material #6314", texture: "TEXTURE.JPG",
+//     color: [255, 255, 255], triangleCount: 1234, faces: [17] },
+//   ...
+// ]
+```
+
+- 이미지 데이터(`Uint8Array`) 기반 텍스처 적용을 지원합니다.
+
+```javascript
+Module.getGhostSymbolMap().setModelTexture({ id: "{id}", face_index: 0, data: new Uint8Array(buf) });
+
+// Blob을 사용하는 경우
+var bytes = new Uint8Array(await blob.arrayBuffer());
+Module.getGhostSymbolMap().setModelTexture({ id: "{id}", face_index: 0, data: bytes });
+```
+
+- 재질 단위 텍스처 적용 API `setModelMaterialTexture`를 추가하였습니다.
+
+```javascript
+Module.getGhostSymbolMap().setModelMaterialTexture({ id : "{id}", material : index, url: "{텍스처경로}" });
+Module.getGhostSymbolMap().setModelMaterialTexture({ id : "{id}", material : index, data : new Uint8Array(buf) });
+```
+
+- 텍스처 해제 API `clearModelTexture`를 추가하였습니다.
+
+```javascript
+Module.getGhostSymbolMap().clearModelTexture({ id: "{id}", material: index });   // 재질 단위
+Module.getGhostSymbolMap().clearModelTexture({ id: "{id}", face_index: index });  // Face 단위
+Module.getGhostSymbolMap().clearModelTexture({ id: "{id}" });                     // 모델 전체
+```
+
+- [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=object_ghost_symbol_texture&engine=2.31.1)
+
+#### 7. 3DTiles 레이어의 영역 내 객체 숨김 기능 추가 ([이슈 #601](https://github.com/EgisCorp/XDWorld/issues/601), [이슈 #617](https://github.com/EgisCorp/XDWorld/issues/617))
+- 지정한 영역 내의 3DTiles 객체를 숨기는 기능을 추가하였습니다.
+- 영역 숨김 기능 관련 [샌드박스 샘플](https://sandbox.egiscloud.com/code/main.do?id=layer_3dtiles_excludearea)
+
+#### 8. 3DTiles 데이터 로딩 및 처리 성능 개선 ([이슈 #617](https://github.com/EgisCorp/XDWorld/issues/617))
+
+#### 9. 지하 지층 관련 고도 및 심도 가이드 추가
+- 지하 지층의 고도 및 심도를 확인할 수 있는 가이드를 추가하였습니다.
+- 심도 관련 샌드박스 샘플: [샌드박스 1](https://sandbox.egiscloud.com/code/main.do?id=strata_depth), [샌드박스 2](https://sandbox.egiscloud.com/code/main.do?id=wind_underground)
+
 ### 2.31.0 (2026/10/06)
 #### 1. 기즈모 Scale 모드 추가
 - 스케일을 조절하는 기즈모 모드가 추가되었습니다.
