@@ -22,7 +22,7 @@ var math = Module.getOption();
 |limitFPS|number|프레임 제한 값 (FPS)|
 |ping|any|엔진 ping 정보|
 
-## Funtion
+## Function
 
 ### callBackAddPoint(event) → string
 
