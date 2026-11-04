@@ -4,7 +4,7 @@ description: 해류·조류 등 시간별 유속 격자 데이터를 파티클�
 
 # JSCurrentFlowLayer
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > [JSFlowLayerList.createCurrentFlowLayer(options)](jsflowlayerlist.md#createcurrentflowlayer-options-jscurrentflowlayer) 또는 [JSFlowLayerList.getLayer(name)](jsflowlayerlist.md#getlayer-name-jscurrentflowlayer)로 얻는 레이어 핸들입니다.
 >

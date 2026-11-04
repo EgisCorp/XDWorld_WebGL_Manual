@@ -14,7 +14,7 @@ var map = Module.getIndexMap();
 
 ### createLayer(layerName, layerType)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+`v1.53.2+`
 
 > 인덱스 맵에 새로운 레이어를 생성합니다.
 
@@ -39,7 +39,7 @@ indexMap3D.createLayer("layer1", 0);
 
 ### addObject(layerName, object) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+`v1.53.2+`
 
 > 인덱스 맵의 특정 레이어에 객체를 추가합니다.
 
@@ -67,7 +67,7 @@ indexMap3D.createLayer("layer1", 0);
 
 ### removeObject(layerName, objectKey) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+`v1.53.2+`
 
 > 인덱스 맵의 특정 레이어에서 객체를 제거합니다.
 
@@ -95,7 +95,7 @@ indexMap3D.createLayer("layer1", 0);
 
 ### keyAtObject(layerName, objectKey) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+`v1.53.2+`
 
 > 인덱스 맵의 특정 레이어에서 고유 키에 해당하는 객체를 조회합니다.
 
@@ -123,7 +123,7 @@ indexMap3D.createLayer("layer1", 0);
 
 ### setDistanceMinMax(min, max)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵에서 사용할 카메라 옵션을 설정합니다.
 >
@@ -152,7 +152,7 @@ indexMap3D.setVisible(true);
 
 ### setDistance(min, max)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > setDistanceMinMax(min, max)와 동일한 기능입니다 (cpp에서 같은 구현부에 바인딩된 별칭 함수).
 
@@ -176,7 +176,7 @@ indexMap3D.setVisible(true);
 
 ### getDistanceMin() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+`v1.53.2+`
 
 > 설정된 시야 최소 거리를 반환합니다.
 
@@ -198,7 +198,7 @@ indexMap3D.setVisible(true);
 
 ### getDistanceMax() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+`v1.53.2+`
 
 > 설정된 시야 최대 거리를 반환합니다.
 
@@ -220,7 +220,7 @@ indexMap3D.setVisible(true);
 
 ### setCameraMode(mode)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 인덱스 맵 카메라 모드를 설정합니다.
 
@@ -243,7 +243,7 @@ indexMap3D.setVisible(true);
 
 ### setVisibleLayer(layerName, visible)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 인덱스 맵(메인뷰) 내 특정 레이어의 가시화 유무를 설정합니다.
 
@@ -269,7 +269,7 @@ indexMap3D.setVisible(true);
 
 ### getCameraTilt(), setCameraTilt(tilt) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵에서 사용할 카메라 기울기(degrees 단위)를 설정하거나 반환합니다.
 
@@ -299,7 +299,7 @@ indexMap3D.setVisible(true);
 
 ### getViewMode(), setViewMode(mode) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵 뷰 모드를 설정하거나 반환합니다.
 
@@ -325,7 +325,7 @@ indexMap3D.setVisible(true);
 
 ### getVisible(), setVisible(visible) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵 가시화 유무를 설정하거나 반환합니다.
 
@@ -355,7 +355,7 @@ var visible = indexMap3D.getVisible();
 
 ### getRatio(), setRatio(ratio) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵 축척 비율을 설정하거나 반환합니다.
 >
@@ -383,7 +383,7 @@ var visible = indexMap3D.getVisible();
 
 ### getSize(), setSize(width, height) → JSSize2D
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵 가로 세로 크기를 설정하거나 반환합니다.
 
@@ -414,7 +414,7 @@ indexMap3D.setVisible(true);
 
 ### getPosition(), setPosition(x, y) → JSVector2D
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵의 화면상 위치를 설정하거나 반환합니다.
 
@@ -445,7 +445,7 @@ indexMap3D.setVisible(true);
 
 ### getVisionColor(), setVisionColor(red, green, blue, alpha) → JSColor
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.1+</mark>
+`v1.53.1+`
 
 > 인덱스 맵 시야 영역(vision) 색상을 설정하거나 반환합니다.
 
@@ -474,7 +474,7 @@ indexMap3D.setVisible(true);
 
 ### getCameraPosition(), setCameraPosition(position) → JSVector3D
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 인덱스 맵 카메라 위치를 설정하거나 반환합니다.
 
@@ -500,7 +500,7 @@ indexMap3D.setVisible(true);
 
 ### getTilt(), setTilt(tilt) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > getCameraTilt() / setCameraTilt(tilt)와 동일한 기능입니다 (cpp 내부적으로 서로를 호출하는 별칭 함수).
 
@@ -526,7 +526,7 @@ indexMap3D.setVisible(true);
 
 ### getDirection(), setDirection(direction) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 인덱스 맵 카메라 방향(회전각, degrees 단위)을 설정하거나 반환합니다.
 
@@ -552,7 +552,7 @@ indexMap3D.setVisible(true);
 
 ### getFOV(), setFOV(fov) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 인덱스 맵 카메라 시야각(FOV, degrees 단위)을 설정하거나 반환합니다.
 

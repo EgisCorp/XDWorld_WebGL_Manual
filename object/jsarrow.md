@@ -166,7 +166,7 @@ object.setVisible(true);
 
 ### getPosition(), setPosition(pos) → JSVector3D
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 화살표 객체의 시작점을 설정 및 반환합니다.
 
@@ -194,7 +194,7 @@ object.setPosition(pos);
 
 ### getOrient(), setOrient(orient) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 화살표 객체의 방향을 설정 및 반환합니다.
 
@@ -222,7 +222,7 @@ object.setOrient(orient);
 
 ### getTilt(), setTilt(tilt) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 화살표 객체의 틸트를 설정 및 반환합니다.
 
@@ -250,7 +250,7 @@ object.setTilt(tilt);
 
 ### getDist(), setDist(dist) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 객체의 길이를 설정 및 반환합니다.
 
@@ -278,7 +278,7 @@ object.setDist(dist);
 
 ### getColor(), setColor(color) → JSColor
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 객체의 색상을 설정 및 반환합니다.
 

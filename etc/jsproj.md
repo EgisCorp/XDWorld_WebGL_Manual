@@ -4,7 +4,7 @@ description: 지도 내 좌표계 변환과 관련된 기능을 관리하기 위
 
 # JSProj
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.58.0+</mark>
+`v1.58.0+`
 
 > Module.JSProj() API를 생성합니다.
 >

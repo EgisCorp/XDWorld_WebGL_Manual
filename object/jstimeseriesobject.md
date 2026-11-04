@@ -27,7 +27,7 @@ object.merge(/*parameter*/);
 
 ### create(parameter) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
+`v1.37.8+`
 
 > 시계열 객체를 생성합니다.
 >
@@ -97,7 +97,7 @@ object.merge(/*parameter*/);
 
 ### insert(parameter) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
+`v1.37.8+`
 
 > 새로운 시계열 데이터를 추가합니다.
 >
@@ -133,7 +133,7 @@ object.merge(/*parameter*/);
 
 ### merge() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
+`v1.37.8+`
 
 > [insert()](jstimeseriesobject.md#insert-parameter-object)로 입력한 데이터를 기존 시계열 객체에 추가합니다.
 

@@ -14,7 +14,7 @@ var map = Module.getMap();
 
 | Name           | Type   | Description                                                                        |
 | -------------- | ------ | ------------------------------------------------------------------------------------ |
-| lastRenderTime<sup>v1.56.3+</sup> | object | 마지막 렌더링 시각. `{ year, month, day, hour, minute, second }` 형태 (읽기 전용). |
+| lastRenderTime `v1.56.3+` | object | 마지막 렌더링 시각. `{ year, month, day, hour, minute, second }` 형태 (읽기 전용). |
 
 ## Function
 
@@ -1074,7 +1074,7 @@ Module.getMap().setSelectColor(new Module.JSColor(255, 255, 0, 0));
 
 ### addSelectObject(object)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.6+</mark>
+`v1.37.6+`
 
 > 지정한 오브젝트를 선택 상태로 추가합니다 (기존 선택은 유지되고 다중 선택 상태에 추가).
 >
@@ -1125,7 +1125,7 @@ Module.getMap().addSelectObject(object);
 
 ### getSelectObjectList() → array
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.21.0+</mark>
+`v2.21.0+`
 
 > 현재 선택된 오브젝트 목록을 반환합니다.
 
@@ -1147,7 +1147,7 @@ var list = Module.getMap().getSelectObjectList();
 
 ### setSelectObjectFromPolygon(polygon) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
+`v1.55.2+`
 
 > 지정한 폴리곤 좌표 영역 내에 존재하는 오브젝트를 선택 상태로 추가합니다.
 
@@ -1452,7 +1452,7 @@ Module.getMap().setColorEffect(1);
 
 ### getHeatMapSize() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.2+</mark>
+`v2.2.2+`
 
 > 등록된 히트맵 포인트 수를 반환합니다.
 
@@ -1499,7 +1499,7 @@ Module.getMap().setColorEffect(1);
 
 ### fixedTextureLevel(level)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.2+</mark>
+`v2.9.2+`
 
 > 고정 텍스처를 적용할 레벨을 설정합니다.
 
@@ -1522,7 +1522,7 @@ Module.getMap().setColorEffect(1);
 
 ### setFixedTextureByLevel(level)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.3+</mark>
+`v2.9.3+`
 
 > 레벨별 고정 텍스처 사용 방식을 설정합니다.
 
@@ -1567,7 +1567,7 @@ Module.getMap().setColorEffect(1);
 
 ### GetPointsVolume(coordinates) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.49.0+</mark>
+`v1.49.0+`
 
 > 입력한 좌표 목록으로 구성된 폴리곤의 면적(부피)을 계산하여 반환합니다.
 
@@ -1766,7 +1766,7 @@ Module.getMap().ClearMap();
 
 ### requestObjectLoadCallback(callback) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.10+</mark>
+`v1.37.10+`
 
 > 오브젝트 로딩 시 호출되는 콜백 함수를 등록합니다.
 
@@ -1793,7 +1793,7 @@ Module.getMap().ClearMap();
 
 ### changeTileMatrix(info) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.42.0+</mark>
+`v1.42.0+`
 
 > 베이스맵 타일 구조(타일 행렬 구성, 인덱싱 순서 등)를 변경합니다.
 
@@ -1820,7 +1820,7 @@ Module.getMap().ClearMap();
 
 ### getMapSelectObjectFromPosition(position) → [JSObject](../object/jsobject3d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
+`v1.55.2+`
 
 > 화면 좌표가 아닌 지도 좌표(경위도) 기준으로 오브젝트를 선택합니다.
 
@@ -1847,7 +1847,7 @@ Module.getMap().ClearMap();
 
 ### mapToScreenPoint(position) → [JSVector2D](../core/jsvector2d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 >
 > 지도 좌표를 화면 좌표로 변환합니다.
 
@@ -1905,7 +1905,7 @@ Module.getMap().ClearMap();
 
 ### removeWaterFall(key) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 지정한 폭포를 제거합니다.
 
@@ -1993,7 +1993,7 @@ Module.getMap().ClearMap();
 
 ### setWaterFallGravityRatio(key, ratio)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.57.1+</mark>
+`v1.57.1+`
 
 > 지정한 폭포의 중력 비율을 설정합니다.
 
@@ -2039,7 +2039,7 @@ Module.getMap().ClearMap();
 
 ### setWaterFallSize(key, size)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 지정한 폭포 파티클의 최대 크기를 변경합니다.
 >
@@ -2068,7 +2068,7 @@ Module.getMap().setWaterFallSize("waterfall01", 30);
 
 ### setWaterFallParticleCount(key, particleCount)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 지정한 폭포의 파티클 수(목표 개수)를 변경합니다.
 >
@@ -2118,7 +2118,7 @@ Module.getMap().setWaterFallParticleCount("waterfall01", 1000);
 
 ### addHeatMapEX(position)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.2+</mark>
+`v2.2.2+`
 
 > 히트맵에 좌표 1개를 가중치(고도값 사용)와 함께 추가합니다.
 >
@@ -2143,7 +2143,7 @@ Module.getMap().setWaterFallParticleCount("waterfall01", 1000);
 
 ### addHeatMapsEX(coordinates)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.2+</mark>
+`v2.2.2+`
 
 > 히트맵 좌표 목록을 가중치(고도값 사용)와 함께 추가합니다.
 >

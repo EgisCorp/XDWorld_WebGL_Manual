@@ -4,7 +4,7 @@ description: 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 위한 
 
 # JSPostProcess
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > Module.getPostProcess() API를 생성합니다.
 >

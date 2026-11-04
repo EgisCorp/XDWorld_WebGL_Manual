@@ -4,7 +4,7 @@ description: JSON 데이터를 기반으로 포인트/라인/그리드/폴리곤
 
 # JSDataVisualizer
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.0+</mark>
+`v2.14.0+`
 
 > Module.getDataVisualizer() API를 통해 획득하는 데이터 시각화 관리 객체입니다.
 >
@@ -95,7 +95,7 @@ visualizer.add(json);
 
 ### addMultiObject(json) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > `add()`와 동일한 JSON 구조를 사용하지만, 동일한 `data`/색상 범례를 공유하는 다중 오브젝트(멀티 인스턴스) 생성 전용 API입니다. 현재는 `dataType === "position"`만 지원합니다.
 
@@ -157,7 +157,7 @@ visualizer.removeAll();
 
 ### remove(id) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
+`v2.15.1+`
 
 > key(`id`)와 일치하는 데이터 시각화 객체 하나를 삭제합니다.
 
@@ -314,7 +314,7 @@ var count = visualizer.count();
 
 ### isExist(key) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.0+</mark>
+`v2.30.0+`
 
 > key에 해당하는 데이터 시각화 객체가 존재하는지 확인합니다.
 
@@ -369,7 +369,7 @@ visualizer.focus("POINT_1");
 
 ### getInstancePosition(key, instanceId) → [JSVector3D](../core/jsvector3d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
+`v2.15.1+`
 
 > key로 지정된 객체 내에서 instanceId에 해당하는 개별 인스턴스(점/심볼 등)의 현재 좌표를 반환합니다.
 
@@ -397,7 +397,7 @@ var pos = visualizer.getInstancePosition("POINT_1", "p1");
 
 ### setUnionTerrain(key, set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
+`v2.15.1+`
 
 > key에 해당하는 객체의 지형 결합(Union Terrain) 가시화 여부를 설정합니다.
 
@@ -425,7 +425,7 @@ visualizer.setUnionTerrain("POINT_1", true);
 
 ### setZbuffer(key, set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > key에 해당하는 객체의 Z-buffer(깊이 테스트) 사용 여부를 설정합니다.
 
@@ -453,7 +453,7 @@ visualizer.setZbuffer("POINT_1", false);
 
 ### setUnionTerrainAltitude(key, altitude) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key에 해당하는 객체의 지형 결합 고도(오프셋)를 설정합니다.
 
@@ -481,7 +481,7 @@ visualizer.setUnionTerrainAltitude("POINT_1", 5.0);
 
 ### setUnderground(key, underground) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
+`v2.15.1+`
 
 > key에 해당하는 객체를 지하(underground) 상태로 표시할지 여부를 설정합니다.
 
@@ -509,7 +509,7 @@ visualizer.setUnderground("POINT_1", true);
 
 ### getMapPositionByScreenPosition(key, screenX, screenY) → [JSVector3D](../core/jsvector3d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 화면 좌표(픽셀)에 대응하는, key 객체가 표현하는 지도상의 좌표를 반환합니다.
 
@@ -538,7 +538,7 @@ var pos = visualizer.getMapPositionByScreenPosition("POINT_1", 400, 300);
 
 ### getIntersectWithLine(key, from, to) → [JSVector3D](../core/jsvector3d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
+`v2.15.1+`
 
 > key 객체와 두 좌표(`from`, `to`)로 이루어진 선분의 교차점을 반환합니다.
 
@@ -569,7 +569,7 @@ var hit = visualizer.getIntersectWithLine("POINT_1", from, to);
 
 ### setLegend(key, legend) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.16.0+</mark>
+`v2.16.0+`
 
 > key 객체에 값(value)-색상(color) 구간으로 이루어진 색상 범례를 설정합니다.
 
@@ -605,7 +605,7 @@ visualizer.setLegend("POINT_1", [
 
 ### clearLegend(key) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체에 설정된 색상 범례를 제거합니다.
 
@@ -632,7 +632,7 @@ visualizer.clearLegend("POINT_1");
 
 ### setShape(key, option) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.16.0+</mark>
+`v2.16.0+`
 
 > 포인트(Position) 객체의 표현 형태(shape)를 문자열 또는 옵션 객체로 설정합니다.
 
@@ -668,7 +668,7 @@ visualizer.setShape("POINT_1", "sphere");
 
 ### setLineAnimationSpeed(key, speed) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 라인 객체의 흐름 애니메이션 속도를 설정합니다.
 
@@ -696,7 +696,7 @@ visualizer.setLineAnimationSpeed("LINE_1", 20.0);
 
 ### setLineWidth(key, width) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 라인 객체의 두께(폭)를 설정합니다.
 
@@ -724,7 +724,7 @@ visualizer.setLineWidth("LINE_1", 15.0);
 
 ### setLineStrokeWidth(key, strokewidth) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 라인 객체의 외곽선(스트로크) 두께를 설정합니다.
 
@@ -752,7 +752,7 @@ visualizer.setLineStrokeWidth("LINE_1", 5.0);
 
 ### setLineDensity(key, density) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
+`v2.19.0+`
 
 > 라인 객체의 패턴(대시/화살표 등) 밀도를 설정합니다.
 
@@ -780,7 +780,7 @@ visualizer.setLineDensity("LINE_1", 2.0);
 
 ### setLineAnimation(key, animation) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 라인 객체의 흐름 애니메이션 사용 여부를 설정합니다.
 
@@ -808,7 +808,7 @@ visualizer.setLineAnimation("LINE_1", true);
 
 ### setLineSymbolAnimation(key, animation) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.25.0+</mark>
+`v2.25.0+`
 
 > 라인에 부착된 심볼(3D 메쉬)의 애니메이션(이동) 사용 여부를 설정합니다.
 
@@ -836,7 +836,7 @@ visualizer.setLineSymbolAnimation("LINE_1", true);
 
 ### setLineSymbol(key, options) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.1+</mark>
+`v2.17.1+`
 
 > 라인 위에 표시할 심볼(3D 메쉬) 또는 아이콘(이미지)을 설정합니다.
 
@@ -870,7 +870,7 @@ visualizer.setLineSymbol("LINE_1", {
 
 ### setLineSymbolAnimationSpeed(key, speed) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+`v2.26.0+`
 
 > 라인에 부착된 심볼의 애니메이션(이동) 속도를 설정합니다.
 
@@ -898,7 +898,7 @@ visualizer.setLineSymbolAnimationSpeed("LINE_1", 10.0);
 
 ### setLineSymbolRotate(key, rotate) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.25.0+</mark>
+`v2.25.0+`
 
 > 라인에 부착된 심볼(3D 메쉬)의 회전값을 설정합니다.
 
@@ -926,7 +926,7 @@ visualizer.setLineSymbolRotate("LINE_1", new Module.JSVector3D(0, 0, 90));
 
 ### setLineSizeFixed(key, sizefix) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 라인 두께(또는 심볼 크기)가 화면상에서 고정된 크기로 표시될지 여부를 설정합니다.
 
@@ -954,7 +954,7 @@ visualizer.setLineSizeFixed("LINE_1", true);
 
 ### setLineInstanced(key, instanced) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.0+</mark>
+`v2.30.0+`
 
 > 라인 객체의 인스턴스(instanced) 렌더링 사용 여부를 설정합니다.
 >
@@ -984,7 +984,7 @@ visualizer.setLineInstanced("LINE_1", true);
 
 ### setLineInstancedLod(key, distances) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.0+</mark>
+`v2.30.0+`
 
 > 인스턴스 렌더링 중인 라인의 거리별 LOD(단순화) 사용 여부 또는 LOD 단계 구성을 설정합니다.
 >
@@ -1036,7 +1036,7 @@ visualizer.setLineInstancedLod("LINE_1", false);
 
 ### setInstanceEffect(key, instanceId, set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체 내 특정 instanceId의 강조 효과(실루엣 타입 2)를 켜거나 끕니다.
 
@@ -1065,7 +1065,7 @@ visualizer.setInstanceEffect("POINT_1", "p1", true);
 
 ### setInstanceSilhouette(key, instanceId, type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.16.1+</mark>
+`v2.16.1+`
 
 > key 객체 내 특정 instanceId의 실루엣(윤곽선) 표현 타입을 설정합니다.
 
@@ -1094,7 +1094,7 @@ visualizer.setInstanceSilhouette("POINT_1", "p1", 2);
 
 ### setPositionValues(key, values) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 포인트(Position) 객체의 값(value)을 갱신합니다. 배열의 첫 요소 타입에 따라 두 가지 방식으로 동작합니다.
 
@@ -1131,7 +1131,7 @@ visualizer.setPositionValues("POINT_1", [30, 60]);
 
 ### setPositionColor(key, color) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > 포인트(Position) 객체 전체의 색상을 설정합니다.
 
@@ -1161,7 +1161,7 @@ visualizer.setPositionColor("POINT_1", [255, 0, 0, 255]);
 
 ### setEffectSilhouetteThickness(key, thickness) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체의 실루엣(윤곽선) 효과 두께를 설정합니다.
 
@@ -1189,7 +1189,7 @@ visualizer.setEffectSilhouetteThickness("POINT_1", 2.0);
 
 ### setEffectSpinSpeed(key, speed) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체의 회전(spin) 효과 속도를 설정합니다.
 
@@ -1217,7 +1217,7 @@ visualizer.setEffectSpinSpeed("POINT_1", 1.5);
 
 ### setSilhouette(key, set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체의 실루엣(윤곽선) 표시 여부를 설정합니다.
 
@@ -1245,7 +1245,7 @@ visualizer.setSilhouette("POINT_1", true);
 
 ### getGridCell(key, instanceId) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 그리드(Grid) 객체 내 특정 셀(instanceId)의 값/방향/기울기/좌표 정보를 반환합니다.
 
@@ -1278,7 +1278,7 @@ console.log(cell.value, cell.longitude, cell.latitude);
 
 ### setPositionSizeModeValueWeight(key, weight) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 포인트(Position) 객체의 크기 모드를 "값(value) 가중치 기반"으로 설정합니다. 값에 (weight.x, weight.y, weight.z)를 곱한 크기로 표현됩니다.
 
@@ -1306,7 +1306,7 @@ visualizer.setPositionSizeModeValueWeight("POINT_1", new Module.JSVector3D(1, 1,
 
 ### setPositionSizeModeFixedScreen(key, size) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 포인트 객체의 크기 모드를 "화면 고정 크기"로 설정합니다.
 
@@ -1334,7 +1334,7 @@ visualizer.setPositionSizeModeFixedScreen("POINT_1", 20);
 
 ### setPositionSizeModeFixedWorld(key, size) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 포인트 객체의 크기 모드를 "월드(실제 좌표계) 고정 크기"로 설정합니다.
 
@@ -1364,7 +1364,7 @@ visualizer.setPositionSizeModeFixedWorld("POINT_1", [10, 10, 10]);
 
 ### setVisibleDistance(key, min, max) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > key 객체의 가시화 거리 범위(최소/최대)를 설정합니다.
 
@@ -1393,7 +1393,7 @@ visualizer.setVisibleDistance("POINT_1", 0, 50000);
 
 ### setTimestep(key, timestep) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 포인트 객체가 다중 시계열 값(`data[].value`가 배열인 경우)을 가질 때, 표시할 시점(timestep) 인덱스를 설정합니다.
 
@@ -1421,7 +1421,7 @@ visualizer.setTimestep("POINT_1", 3);
 
 ### setPointCloudSize(key, size, is3d) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 포인트 클라우드(`pointcloud2d`/`pointcloud3d`) shape의 점 크기를 설정합니다.
 
@@ -1450,7 +1450,7 @@ visualizer.setPointCloudSize("CLOUD_1", 3.0, true);
 
 ### setPointCloudRadius(key, radius, is3d) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 포인트 클라우드 shape의 점 반경(radius)을 설정합니다.
 
@@ -1479,7 +1479,7 @@ visualizer.setPointCloudRadius("CLOUD_1", 0.5, true);
 
 ### setPointCloudCount(key, count, is3d) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 포인트 클라우드 shape을 구성하는 점 개수를 설정합니다.
 
@@ -1508,7 +1508,7 @@ visualizer.setPointCloudCount("CLOUD_1", 100, true);
 
 ### setPositionThickness(key, thickness) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 포인트 객체(예: `vertical_line`)의 두께를 설정합니다.
 
@@ -1536,7 +1536,7 @@ visualizer.setPositionThickness("POINT_1", 2.0);
 
 ### defaultByWeight(key, value, height) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 특정 value 값을 기준으로 한 기본 높이(weight) 보정값을 설정합니다.
 
@@ -1565,7 +1565,7 @@ visualizer.defaultByWeight("POINT_1", 50, 100.0);
 
 ### setPointAnimation(key, play) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+`v2.23.0+`
 
 > 포인트 객체의 애니메이션(예: path 이동) 재생 여부를 설정합니다.
 
@@ -1595,7 +1595,7 @@ visualizer.setPointAnimation("POINT_1", true);
 
 ### getOpacity(key), setOpacity(key, opacity) → number, boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체의 투명도(0.0 ~ 1.0)를 반환/설정합니다.
 
@@ -1624,7 +1624,7 @@ var opacity = visualizer.getOpacity("POINT_1");
 
 ### getUnionTerrainOffset(key), setUnionTerrainOffset(key, offset) → number, boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.0+</mark>
+`v2.17.0+`
 
 > key 객체의 지형 결합(Union Terrain) 렌더링 오프셋을 반환/설정합니다.
 
@@ -1653,7 +1653,7 @@ var offset = visualizer.getUnionTerrainOffset("POINT_1");
 
 ### getVisible(key), setVisible(key, set) → boolean, boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.17.1+</mark>
+`v2.17.1+`
 
 > key 객체의 가시화 여부를 반환/설정합니다.
 
@@ -1682,7 +1682,7 @@ var visible = visualizer.getVisible("POINT_1");
 
 ### getValueRange(key), setValueRange(key, min, max, timestep) → object, boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > key 객체의 값(value) 범위(최소/최대)를 반환/설정합니다.
 

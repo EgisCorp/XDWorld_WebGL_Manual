@@ -14,13 +14,13 @@ var math = Module.getOption();
 
 | Name         | Type   | Description                                                                                                                                                    |
 | ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object_ahead<sup>v2.4.0+</sup> | number | <p>화면 시야 기준 [JSPoint](../object/jspoint.md), HTMLObject 객체 앞 장해물(지형, 시설물) 존재 시 가시화 유무 설정.<br>0: 기본 가시화.<br>1: 장해물 판별.</p> |
+| object_ahead `v2.4.0+` | number | <p>화면 시야 기준 [JSPoint](../object/jspoint.md), HTMLObject 객체 앞 장해물(지형, 시설물) 존재 시 가시화 유무 설정.<br>0: 기본 가시화.<br>1: 장해물 판별.</p> |
 |reflect|number|오브젝트 반사 효과 맵 생성 여부|
-|backgroundColor<sup>v1.58.0+</sup>|JSColor|지도 기본 배경 색상|
-|atmosphereRender<sup>v1.37.40+</sup>|boolean|대기 렌더링 효과 사용 여부|
-|selectColor<sup>v1.44.0+</sup>|[JSColor](../core/jscolor.md)|오브젝트 선택 색상|
-|limitFPS<sup>v2.19.0.1+</sup>|number|프레임 제한 값 (FPS)|
-|ping<sup>v2.22.0+</sup>|any|엔진 ping 정보|
+|backgroundColor `v1.58.0+`|JSColor|지도 기본 배경 색상|
+|atmosphereRender `v1.37.40+`|boolean|대기 렌더링 효과 사용 여부|
+|selectColor `v1.44.0+`|[JSColor](../core/jscolor.md)|오브젝트 선택 색상|
+|limitFPS `v2.19.0.1+`|number|프레임 제한 값 (FPS)|
+|ping `v2.22.0+`|any|엔진 ping 정보|
 
 ## Function
 
@@ -289,7 +289,7 @@ Module.getOption().setTextureCapacityLimit(false);
 
 ### setAtmosphericSunriseTime(hour, minute)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.54.0+</mark>
+`v1.54.0+`
 
 > 대기 효과 적용 시 일출 시간을 설정합니다.
 >
@@ -317,7 +317,7 @@ Module.getOption().setAtmosphericSunriseTime(6, 30);
 
 ### setAtmosphericSunsetTime(hour, minute)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.54.0+</mark>
+`v1.54.0+`
 
 > 대기 효과 적용 시 일몰 시간을 설정합니다.
 >
@@ -345,7 +345,7 @@ Module.getOption().setAtmosphericSunsetTime(19, 15);
 
 ### setAtmosphericTime(hour, minute)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.54.0+</mark>
+`v1.54.0+`
 
 > 대기 효과 적용 시 현재 시간을 설정하여 하늘 색상 변화를 조정합니다.
 >
@@ -399,7 +399,7 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### setTextureDrawLevel(level)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 카메라 기준 몇 단계 LOD까지의 텍스처를 상주(메모리에 유지)시킬지 설정합니다. 기본값은 3입니다.
 >
@@ -424,7 +424,7 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTextureDrawLevel() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > [setTextureDrawLevel(level)](jsoption.md#settexturedrawlevel-level)로 설정된 상주 LOD 단계를 반환합니다.
 
@@ -446,7 +446,7 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTextureUsedSize() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 현재 GPU 텍스처 사용량을 반환합니다(진단용). 지형/건물 등 타일 텍스처와 POI 라벨 등 UI 텍스처를 합한 전체 사용량입니다(전체 = 타일 + UI).
 >
@@ -471,7 +471,7 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTileTextureUsedSize() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 타일 텍스처(지형, 건물 등)의 현재 GPU 사용량을 반환합니다(진단용). POI 라벨 등 UI 텍스처는 제외되며, 텍스처 예산([setTexturePoolSize(size)](jsoption.md#settexturepoolsize-size-boolean)) 초과 여부를 판정할 때 실제로 사용되는 값입니다.
 
@@ -494,7 +494,7 @@ var budget = Module.getOption().getTexturePoolSize();
 
 ### getUiTextureUsedSize() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > POI 라벨 등 UI 텍스처만의 현재 GPU 사용량을 반환합니다(진단용). 타일 텍스처는 제외됩니다.
 
@@ -516,7 +516,7 @@ var uiSize = Module.getOption().getUiTextureUsedSize();
 
 ### getTexturePoolSize() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > [setTexturePoolSize(size)](jsoption.md#settexturepoolsize-size-boolean)로 설정된 텍스처 예산(byte)을 반환합니다(진단용).
 
@@ -539,7 +539,7 @@ var uiSize = Module.getOption().getUiTextureUsedSize();
 
 ### setMaxTextureDecodePerFrame(size), getMaxTextureDecodePerFrame() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.2+</mark>
+`v2.29.2+`
 
 > 한 프레임에 디코드할 수 있는 최대 텍스처 개수를 설정하여, 텍스처 디코드 부하를 여러 프레임에 걸쳐 분산시킵니다.
 >
@@ -568,7 +568,7 @@ var count = Module.getOption().getMaxTextureDecodePerFrame();
 
 ### setMaxReal3DPackDecodePerFrame(size), getMaxReal3DPackDecodePerFrame() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.2+</mark>
+`v2.29.2+`
 
 > 한 프레임에 디코드할 수 있는 최대 Real3D 건물팩 개수를 설정하여, 디코드 부하를 여러 프레임에 걸쳐 분산시킵니다.
 >
@@ -597,7 +597,7 @@ var count = Module.getOption().getMaxReal3DPackDecodePerFrame();
 
 ### getMax3DTilesApplyPerFrame(), setMax3DTilesApplyPerFrame(count) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 웹 워커가 파싱을 마친 3D Tiles 타일을 한 프레임에 최대 몇 개까지 객체로 적용할지(건수 상한)를 설정합니다. 기본값은 64입니다.
 >
@@ -626,7 +626,7 @@ var count = Module.getOption().getMax3DTilesApplyPerFrame();
 
 ### getMax3DTilesApplyMsPerFrame(), setMax3DTilesApplyMsPerFrame(ms) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 워커가 파싱을 마친 3D Tiles 타일을 한 프레임에 적용하는 데 쓸 수 있는 시간 예산(ms)을 설정합니다. 기본값은 6.0입니다.
 >
@@ -655,7 +655,7 @@ var ms = Module.getOption().getMax3DTilesApplyMsPerFrame();
 
 ### getMaxTileParseQueue(), setMaxTileParseQueue(count) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 3D Tiles 파싱 워커 대기열(워커에서 파싱 중이거나 적용 대기 중인 타일)의 최대 건수를 설정합니다. 기본값은 256입니다.
 >
@@ -684,7 +684,7 @@ var count = Module.getOption().getMaxTileParseQueue();
 
 ### getMaxTileParseQueueMB(), setMaxTileParseQueueMB(size) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 3D Tiles 파싱 워커 응답을 기다리는 동안 메인 스레드가 보관 중인 원본 데이터의 최대 크기(MB)를 설정합니다. 기본값은 96입니다.
 >
@@ -713,7 +713,7 @@ var size = Module.getOption().getMaxTileParseQueueMB();
 
 ### getPolyTriangulateMinVertex(), setPolyTriangulateMinVertex(count) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 폴리곤 삼각분할을 web worker로 보낼 최소 정점 수를 설정합니다. 기본값은 512입니다.
 >
@@ -744,7 +744,7 @@ var count = Module.getOption().getPolyTriangulateMinVertex();
 
 ### getMaxPolyApplyPerFrame(), setMaxPolyApplyPerFrame(count) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 웹 워커가 삼각분할을 마친 폴리곤 결과를 한 프레임에 최대 몇 건까지 면에 적용할지 설정합니다. 기본값은 8입니다.
 >
@@ -773,7 +773,7 @@ var count = Module.getOption().getMaxPolyApplyPerFrame();
 
 ### getMaxTilesRetainedMB(), setMaxTilesRetainedMB(size) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 3D Tiles가 메모리에 보유하는 타일 콘텐츠(정점, 인덱스, 텍스처 원본)의 총 크기 상한(MB)을 설정합니다. 기본값은 512입니다.
 >
@@ -802,7 +802,7 @@ var size = Module.getOption().getMaxTilesRetainedMB();
 
 ### getTextureTranscodeTarget(), setTextureTranscodeTarget(target) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > KTX2 텍스처를 GPU 압축 포맷으로 트랜스코딩할 때의 타깃 포맷을 직접 지정합니다. 기본값은 브라우저/GPU가 지원하는 확장에 따라 엔진이 자동으로 선택한 값(BC7, ASTC, ETC2, BC3 순으로 우선, 모두 미지원 시 비압축 RGBA)입니다.
 >
@@ -835,7 +835,7 @@ Module.getOption().setTextureTranscodeTarget(0);
 
 ### getTextureTranscodeMode(), setTextureTranscodeMode(mode) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > KTX2 텍스처 트랜스코딩을 화질 우선 또는 속도 우선으로 선택합니다. 기기가 지원하는 포맷은 엔진이 이미 판정해 두었으므로 포맷 번호를 알 필요 없이 둘 중 하나만 고르면 됩니다.
 >
@@ -868,7 +868,7 @@ console.log(mode, Module.getOption().getTextureTranscodeMode());
 
 ### getTextureOpaqueOptimize(), setTextureOpaqueOptimize(use) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 알파(투명도)가 없는 텍스처를 절반 크기(4bpp)의 불투명 전용 포맷(BC1/DXT1)으로 트랜스코딩할지 설정합니다. 텍스처 메모리를 크게 줄일 수 있으며, 화질 저하는 소폭입니다.
 >
@@ -898,7 +898,7 @@ var use = Module.getOption().getTextureOpaqueOptimize();
 
 ### getWebWorkerCount(), setWebWorkerCount(count) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 웹 워커 풀의 목표 워커 수를 런타임에 조절합니다. 기본값은 5이며, 적용된 목표 수를 반환합니다.
 >
@@ -929,7 +929,7 @@ var target = Module.getOption().getWebWorkerCount();
 
 ### getWebWorkerActiveCount() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 현재 실제로 살아 있는 웹 워커 수를 반환합니다(진단용). 워커 수를 줄이는 중에는 목표 수([getWebWorkerCount()](jsoption.md#getwebworkercount-setwebworkercount-count-number))보다 클 수 있습니다.
 
@@ -951,7 +951,7 @@ var active = Module.getOption().getWebWorkerActiveCount();
 
 ### getWebWorkerMaxCount(), setWebWorkerMaxCount(max) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 웹 워커 풀의 최대 워커 수(상한)를 설정합니다. 기본값은 8입니다. [setWebWorkerCount(count)](jsoption.md#getwebworkercount-setwebworkercount-count-number)의 숫자 지정, "auto", 그리고 대용량(16MB 초과) 작업용 임시 워커 생성 모두 이 값을 넘지 않습니다.
 >
@@ -981,7 +981,7 @@ var max = Module.getOption().getWebWorkerMaxCount();
 
 ### setEnableWBOIT(enable)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > Weighted Blended OIT(순서 독립 투명도) 렌더링을 런타임에 켜거나 끕니다. 기본값은 false(기존 알파 블렌딩 방식)입니다.
 >
@@ -1006,7 +1006,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setEventMouseMove(type)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 마우스 이동 위치 이벤트(Fire_EventMouseMove) 발생 여부를 설정합니다.
 >
@@ -1031,7 +1031,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setFixedRenderPOI(type)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > POI 객체의 고정 렌더링(LOD 무관 항상 렌더링) 여부를 설정합니다.
 
@@ -1054,7 +1054,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setClickPointVisible(type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 마우스 클릭 지점(하얀색 구) 표시 여부를 설정합니다.
 
@@ -1081,7 +1081,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMeasureDistancePointUnionTerrain(type)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.2+</mark>
+`v2.14.2+`
 
 > 거리 측정 시, 측정선이 지형 고도와 결합되도록 설정합니다.
 
@@ -1104,7 +1104,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setPointsDepthBuffer(type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 포인트(점) 객체의 depth 사용 여부를 설정합니다.
 >
@@ -1203,7 +1203,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setDisplayOptionOfTerrain(option)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.6+</mark>
+`v1.37.6+`
 
 > 지형 표현 옵션을 설정합니다.
 
@@ -1226,7 +1226,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setDisplayOptionOfBuilding(option)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.6+</mark>
+`v1.37.6+`
 
 > 시설물(건물) 표현 옵션을 설정합니다.
 
@@ -1249,7 +1249,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setDisplayOptionOfDebug(option)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
+`v1.37.8+`
 
 > 디버그 표현 옵션을 설정합니다 (지형 RTT 갱신 및 타일 메쉬 재생성을 트리거함).
 
@@ -1272,7 +1272,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### applyShaderCode(options) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+`v1.37.40+`
 
 > 지정한 셰이더 프로그램의 Vertex/Fragment 셰이더 코드를 런타임에 교체합니다.
 
@@ -1300,7 +1300,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setIndexedDB(use)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.47.0+</mark>
+`v1.47.0+`
 
 > IndexedDB 캐시 사용 여부를 설정합니다.
 
@@ -1323,7 +1323,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMaxIndexedDB(level)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.47.0+</mark>
+`v1.47.0+`
 
 > IndexedDB에 캐시할 최대 타일 레벨을 설정합니다 (최대 15).
 
@@ -1346,7 +1346,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setAnisotropy(use)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.1+</mark>
+`v1.50.1+`
 
 > 비등방성 필터링(Anisotropic Filtering) 적용 여부를 설정합니다.
 
@@ -1369,7 +1369,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setStereoView(set)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.1+</mark>
+`v1.51.1+`
 
 > 스테레오(양안) 뷰 모드를 설정합니다.
 
@@ -1392,7 +1392,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMaxRequestTextureQueueSize(size)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.2+</mark>
+`v2.9.2+`
 
 > 텍스처(타일맵) 요청 시 동시에 처리할 최대 요청 개수를 설정합니다 (최대 20).
 
@@ -1415,7 +1415,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### callBackAltDistance(event) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.3+</mark>
+`v1.59.3+`
 
 > 높이/거리/직선거리 측정 관련 콜백 함수를 등록합니다.
 
@@ -1442,7 +1442,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMaxGeometricError(value)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 3D Tiles 등 지형/타일의 최대 허용 기하 오차(Screen Space Error)를 설정합니다 (최소값 1.0).
 
@@ -1465,7 +1465,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setRequestOrderType(type)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.3+</mark>
+`v2.9.3+`
 
 > 타일/데이터 요청 순서 방식을 설정합니다 (0 또는 1, 범위를 벗어나면 0/1로 보정).
 
@@ -1488,7 +1488,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### _setDebugView(set)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.3+</mark>
+`v2.9.3+`
 
 > 디버그 뷰 표시 여부를 설정합니다.
 
@@ -1511,7 +1511,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setUserInputPointAltitudeOffset(offset)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.2+</mark>
+`v2.14.2+`
 
 > 사용자 입력 지점(측정 등)의 고도 표시 오프셋 값을 설정합니다.
 
@@ -1534,7 +1534,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setRenderSelectSilhouette(set)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.16.0+</mark>
+`v2.16.0+`
 
 > 오브젝트 선택 시 실루엣(외곽선) 렌더링 효과 사용 여부를 설정합니다.
 
@@ -1557,7 +1557,7 @@ Module.getOption().setEnableWBOIT(true);
 
 ### getCurrentBrowser() → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.28.3+</mark>
+`v2.28.3+`
 
 > 현재 실행 중인 브라우저 종류를 반환합니다.
 
@@ -1613,7 +1613,7 @@ var type = Module.getOption().getPickingCalculateType();
 
 ### getMaxRequestTileMeshSize(), setMaxRequestTileMeshSize(size) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.0+</mark>
+`v1.55.0+`
 
 > 타일 메시 요청 시 동시에 처리할 최대 요청 개수를 설정하거나 반환합니다.
 >
@@ -1642,7 +1642,7 @@ var size = Module.getOption().getMaxRequestTileMeshSize();
 
 ### getHybridRenderType(), setHybridRenderType(type) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.56.0+</mark>
+`v1.56.0+`
 
 > 하이브리드 렌더링 타입을 설정하거나 반환합니다 (0~3 범위를 벗어나면 0으로 보정되며, 레이어들의 하이브리드 상태가 초기화됩니다).
 
@@ -1669,7 +1669,7 @@ var type = Module.getOption().getHybridRenderType();
 
 ### getColorPolygonOffset(), setColorPolygonOffset(set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.28.0+</mark>
+`v2.28.0+`
 
 > ColorPolygon 객체의 폴리곤 오프셋 사용 여부를 설정하거나 반환합니다.
 

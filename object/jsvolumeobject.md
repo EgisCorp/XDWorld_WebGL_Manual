@@ -4,7 +4,7 @@ description: 지도 내 볼륨(연기, 화염, 산불, 수면, 태풍 등) 효�
 
 # JSVolumeObject
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.2+</mark>
+`v2.29.2+`
 
 > Module.createVolumeObject() API를 생성합니다.
 >
@@ -82,7 +82,7 @@ volume.setPolygonBounds({
 
 ### setPosition(position) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > 박스 크기는 그대로 두고 박스 중심 위치만 옮깁니다(태풍 이동 경로 추적 등). [setBounds(info)](jsvolumeobject.md#setbounds-info-string)로 박스를 먼저 만든 뒤에만 의미가 있습니다. 지형 결합([conformTerrain(resolution)](jsvolumeobject.md#conformterrain-resolution-boolean))이 설정되어 있으면 옮긴 위치에 맞게 지형 높이를 다시 샘플링합니다.
 
@@ -361,7 +361,7 @@ volume.setParams({ radiusMin: 20, radiusMax: 150, altMin: 100, altMax: 300, coun
 
 ### setInfluenceCircle(info) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > 효과와 별개로 지면 근처에 항상 채워진 원판을 얹어 영향 범위(태풍 강풍/폭풍 반경 등)를 표시합니다. 원의 중심은 박스 중심의 수평 위치이며, 밀도 그리드 유무와 무관하게 항상 보입니다. 원이 박스보다 크면 박스 밖으로 나간 부분은 잘려 보입니다.
 >
@@ -402,7 +402,7 @@ volume.setInfluenceCircle({ enable: false });
 
 ### setInfluenceCircleColorStops(stops) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > 영향권 원판을 태풍 눈(중심)으로부터의 거리에 따라 색이 바뀌는 색상범례로 채웁니다. 스톱 사이는 선형 보간되고, 가장 안쪽 스톱보다 안쪽은 첫 스톱의 색, 가장 바깥 스톱보다 바깥은 영향권 밖으로 보고 그리지 않습니다(경계는 부드럽게 페이드아웃).
 >
@@ -441,7 +441,7 @@ volume.setInfluenceCircleColorStops([
 
 ### clearInfluenceCircleColorStops()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > [setInfluenceCircleColorStops(stops)](jsvolumeobject.md#setinfluencecirclecolorstops-stops-string)로 설정한 색상범례를 지웁니다. 이후 원판은 [setInfluenceCircle(info)](jsvolumeobject.md#setinfluencecircle-info-string)의 단색으로 되돌아갑니다.
 
@@ -552,7 +552,7 @@ volume.animationSpeed = 1.0;
 
 ### thickness (property), getThickness(), setThickness(thickness) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > 지면 위 효과 두께(meter 단위)를 설정합니다(0 미만은 0으로 보정됨). [opacity](jsvolumeobject.md#opacity-property-getopacity-setopacity-opacity-number)가 "이 두께를 수직으로 통과했을 때의 불투명도"라는 뜻을 갖게 되는 기준 길이이며, 효과의 높이 정규화에도 같은 값이 쓰입니다.
 >

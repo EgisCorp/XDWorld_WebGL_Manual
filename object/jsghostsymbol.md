@@ -15,8 +15,8 @@ var object = Module.createGhostSymbol("ID");
 | ----------------- | ------------------------------------- | ----------------------------- |
 | opacity 			| number                             	| 객체 투명값 (0.0 ~ 1.0).		|
 | color      		| [JSColor](../core/jscolor.md)        	| 객체 색상값.                   	|
-| lightColor<sup>v1.50.0+</sup>     	| [JSColor](../core/jscolor.md)        	| 객체 조명 색상값.              	|
-| zBufferOff<sup>v1.37.20+</sup>     	| boolean                              	| depthBuffer 사용 유무.        	|
+| lightColor `v1.50.0+`     	| [JSColor](../core/jscolor.md)        	| 객체 조명 색상값.              	|
+| zBufferOff `v1.37.20+`     	| boolean                              	| depthBuffer 사용 유무.        	|
 
 ## Function
 
@@ -486,7 +486,7 @@ newGhostSymbol.setDirection(90.0);
 
 ### getPitch() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+`v2.26.0+`
 
 > 고스트 심볼 객체의 Pitch 회전 값(degree 단위)을 반환합니다.
 
@@ -509,7 +509,7 @@ var pitch = object.getPitch();
 
 ### getYaw() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+`v2.26.0+`
 
 > 고스트 심볼 객체의 Yaw 회전 값(degree 단위)을 반환합니다.
 
@@ -532,7 +532,7 @@ var yaw = object.getYaw();
 
 ### getRoll() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+`v2.26.0+`
 
 > 고스트 심볼 객체의 Roll 회전 값(degree 단위)을 반환합니다.
 
@@ -555,7 +555,7 @@ var roll = object.getRoll();
 
 ### setRotationPYR(pitch, yaw, roll) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+`v2.26.0+`
 
 > Pitch, Yaw, Roll 값으로 고스트 심볼 객체의 회전을 설정합니다.
 
@@ -584,7 +584,7 @@ object.setRotationPYR(0.0, 90.0, 0.0);
 
 ### exportFileFormat(options) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.10+</mark>
+`v1.37.10+`
 
 > 고스트 심볼 객체를 지정한 파일 포맷의 바이너리 데이터로 내보냅니다.
 
@@ -624,7 +624,7 @@ var data = object.exportFileFormat({ format: "xdo", worldPosition: true });
 
 ### exportTexture(options) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+`v1.60.1+`
 
 > 고스트 심볼 객체의 특정 면(face)에 적용된 텍스쳐를 이미지 파일 형식의 바이너리 데이터로 내보냅니다.
 
@@ -662,7 +662,7 @@ var data = object.exportTexture({ format: "png", faceID: 0 });
 
 ### setScreenFixedSize(size) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+`v2.4.2+`
 
 > 고스트 심볼 객체의 화면 고정 크기를 설정합니다.
 

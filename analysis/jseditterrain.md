@@ -35,7 +35,7 @@ var editTerrain = Module.getEditTerrain();
 
 ### removeAtIndex(index) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.1+</mark>
+`v2.14.1+`
 
 > 지정한 인덱스에 해당하는 성절토 편집 내용을 원복(삭제)합니다.
 
@@ -228,7 +228,7 @@ var editTerrain = Module.getEditTerrain();
 
 ### setBottomTextureTilingScale(u, v) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
+`v2.10.2+`
 
 > 성절토 바닥면 텍스처의 반복 출력(타일링) 배율을 설정합니다.
 >
@@ -260,7 +260,7 @@ Module.getEditTerrain().setBottomTextureTilingScale(10.0, 10.0);
 
 ### setSlopeTextureTilingScale(u, v) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.11.0+</mark>
+`v2.11.0+`
 
 > 성절토 사면(옆면) 텍스처의 반복 출력(타일링) 배율을 설정합니다.
 >

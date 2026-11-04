@@ -87,7 +87,7 @@ ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", fals
 
 ### addGhostSymbolByGLB(id, url, name) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+`v2.26.0+`
 
 > glb 포맷 파일을 고스트 심볼 모델로 등록합니다.
 
@@ -375,7 +375,7 @@ fetch("./texture/roof.png")
 
 ### setModelMaterialTexture(option) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 3DS 모델의 재질(material) 하나를 사용하는 face 전부에 같은 이미지를 텍스처로 적용합니다.
 >
@@ -428,7 +428,7 @@ if (wall) {
 
 ### clearModelTexture(option) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 고스트 심볼 모델의 face에 적용된 텍스처를 해제하고 face 색상을 재질 색으로 되돌립니다.
 >
@@ -624,7 +624,7 @@ ghostSymbolMap.clearModelTexture({ id: "model_01" });
 
 ### getModelMaterials(id) → array
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 3DS 파일로 등록한 고스트 심볼 모델이 가진 재질(material) 목록을 반환합니다. 재질별 이름, 텍스처 파일명, 기본 색상, 그 재질을 사용하는 face 인덱스와 삼각형 수를 알 수 있어, [setModelFaceColor(id, index, color)](jsghostsymbolmap.md#setmodelfacecolor-id-index-color-boolean), [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string) 등 face 단위 편집의 대상 face를 재질 기준으로 고를 때 사용합니다. 재질 전체에 텍스처를 적용하려면 [setModelMaterialTexture(option)](jsghostsymbolmap.md#setmodelmaterialtexture-option-string)에 이 목록의 `index`를 전달합니다.
 >
@@ -693,7 +693,7 @@ if (materials) {
 
 ### getReferenceCount(id) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+`v2.4.2+`
 
 > 입력 변수값(id)과 동일한 명칭을 가진 고스트 심볼 모델을 참조하는 객체의 개수를 반환합니다.
 
@@ -717,7 +717,7 @@ var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
 
 ### removeModel(id) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+`v2.4.2+`
 
 > 입력 변수값(id)과 동일한 명칭을 가진 고스트 심볼 모델을 삭제합니다.
 

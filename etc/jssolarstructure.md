@@ -17,7 +17,7 @@ var structure = solarManager.getRoofedStructure(0);
 
 ### getStructureContainLayerName() → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 태양광 패널을 포함하는 건물이 소속된 레이어의 명칭을 반환합니다.
 
@@ -39,7 +39,7 @@ var layerName = structure.getStructureContainLayerName();
 
 ### getStructureKey() → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 태양광 패널이 설치된 건물 객체의 고유 명칭(오브젝트 키)을 반환합니다.
 
@@ -62,7 +62,7 @@ var objectKey = structure.getStructureKey();
 
 ### getRoofCount() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 건물에 포함된(태양광 패널이 설치된) 지붕의 개수를 반환합니다.
 
@@ -85,7 +85,7 @@ var roofCount = structure.getRoofCount();
 
 ### getSolarPanelPosition(roofIndex) → [JSVec3Array](../core/jsvec3array.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 지정한 지붕 인덱스에 설치된 태양광 패널들의 중심 좌표 목록을 반환합니다.
 

@@ -26,7 +26,7 @@ var position = new Module.JSVector3D();
 
 ### getDistance(position) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+`v1.50.0+`
 
 > 입력 변수값(position) 사이의 거리를 반환합니다.
 

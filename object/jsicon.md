@@ -160,7 +160,7 @@ icon.setNormalIconByImageData(imgData.data, width, height);
 
 ### setNormalIconByCompressedData(data, format, width, height) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 압축 텍스처 데이터(BC3, ASTC 등)로 Normal 아이콘 텍스처를 생성합니다. [JSPoint.setImageCompressed(data, format, width, height)](jspoint.md#setimagecompressed-data-format-width-height-boolean)와 같은 검증과 업로드를 거치되, 텍스처를 이 아이콘이 소유하므로 [JSPoint.setIcon(icon)](jspoint.md#seticon-icon-boolean)으로 여러 POI에 설정하면 같은 텍스처를 공유합니다(같은 라벨을 수천 개 만들 때 텍스처와 메모리를 1개분으로 줄일 수 있음).
 >

@@ -16,9 +16,9 @@ var tile = layer.findTile(level, idx, idy);
 | Name  | Type                                 | Description                          |
 | ----- | --------------------------------------- | ---------------------------------------- |
 | center | [JSVector2D](../core/jsvector2d.md)  | 타일 중심 좌표(경도, 위도, 읽기 전용). |
-| idx<sup>v1.39.0+</sup>    | number                               | 타일 X 인덱스(읽기 전용). 타일이 없으면 -1. |
-| idy<sup>v1.39.0+</sup>    | number                               | 타일 Y 인덱스(읽기 전용). 타일이 없으면 -1. |
-| level<sup>v1.39.0+</sup>  | number                               | 타일 레벨(읽기 전용). 타일이 없으면 -1.     |
+| idx `v1.39.0+`    | number                               | 타일 X 인덱스(읽기 전용). 타일이 없으면 -1. |
+| idy `v1.39.0+`    | number                               | 타일 Y 인덱스(읽기 전용). 타일이 없으면 -1. |
+| level `v1.39.0+`  | number                               | 타일 레벨(읽기 전용). 타일이 없으면 -1.     |
 
 ## Function
 

@@ -41,7 +41,7 @@ Module.getIndoor().setIndoorMode(true);
 
 ### setIndoorObject(object)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+`v1.37.40+`
 
 > 실내 이동(벽 충돌 검사 등) 기준이 되는 건물/실내 객체를 설정합니다.
 
@@ -95,7 +95,7 @@ var isChecking = Module.getIndoor().getCheckWallCollision();
 
 ### setFixCameraHighFromFloor(set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 실내 이동 시 바닥으로부터의 카메라 높이를 고정할지 여부를 설정합니다.
 

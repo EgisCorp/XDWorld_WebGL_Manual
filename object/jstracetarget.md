@@ -53,7 +53,7 @@ traceTarget.move(1.0, 1.0, 0.5); // 0.5m 상승 이동
 
 ### moveTarget(options)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.39.0+</mark>
+`v1.39.0+`
 
 > 객체를 이동합니다.
 >
@@ -160,7 +160,7 @@ traceTarget.ReleaseObject();
 
 ### unionTargetToTerrain()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.39.0+</mark>
+`v1.39.0+`
 
 > 객체 이동시 지형 곡면률 적용 합니다.
 
@@ -180,7 +180,7 @@ traceTarget.unionTargetToTerrain();
 
 ### setAutoRotate(autoRotate)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.0+</mark>
+`v2.30.0+`
 
 > 시점 방향(direction)이 바뀔 때 연결된 객체의 회전을 자동으로 맞출지 설정합니다.
 >

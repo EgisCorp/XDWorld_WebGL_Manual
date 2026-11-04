@@ -4,7 +4,7 @@ description: 지하 지층, GLB, 3D Tiles 등 어떤 데이터 위에도 붙일 
 
 # JSDepthGuide
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > Module.createDepthGuide() API를 통해 생성합니다.
 >

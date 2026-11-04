@@ -4,7 +4,7 @@ description: 송전탑(철탑)과 전선(Wire)을 생성 및 관리하기 위한
 
 # JSPylonManager
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+`v1.50.0+`
 
 > Module.JSPylonManager() API를 생성합니다.
 >
@@ -18,7 +18,7 @@ var pylonManager = new Module.JSPylonManager();
 
 ### refSetPos(x, y, z)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 이후 [pylonAddToList()](jspylonmanager.md#pylonaddtolist-key-volt-type-height-ajindex-pipe-label-boolean), [pylonAddStructure()](jspylonmanager.md#pylonaddstructure-layername-key-upper-boolean)로 생성할 철탑/구조물에 적용할 기준 좌표를 설정합니다.
 
@@ -43,7 +43,7 @@ pylonManager.refSetPos(127.0, 37.5, 50.0);
 
 ### refSetColor(alpha, red, green, blue)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 이후 생성할 철탑/전선/울타리에 적용할 기준(주) 색상을 설정합니다.
 
@@ -69,7 +69,7 @@ pylonManager.refSetColor(255, 200, 200, 200);
 
 ### refSetSecondColor(alpha, red, green, blue)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 이후 생성할 철탑/전선/울타리에 적용할 보조(2차) 색상을 설정합니다.
 
@@ -95,7 +95,7 @@ pylonManager.refSetSecondColor(255, 150, 150, 150);
 
 ### pylonListClear()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑 생성 목록(대기열)을 초기화합니다.
 
@@ -114,7 +114,7 @@ pylonManager.pylonListClear();
 
 ### pylonAddToList(key, volt, type, height, ajIndex, pipe, label) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑 생성 목록에 철탑 정보를 추가합니다.
 >
@@ -151,7 +151,7 @@ pylonManager.pylonAddToList("Pylon_1", "154kV", "type1", 30.0, 0, false, "1호")
 
 ### pylonBuildPylonList(layerName) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > [pylonAddToList()](jspylonmanager.md#pylonaddtolist-key-volt-type-height-ajindex-pipe-label-boolean)로 추가된 철탑 목록을 실제로 지정한 레이어에 생성합니다.
 
@@ -178,7 +178,7 @@ pylonManager.pylonBuildPylonList("PylonLayer");
 
 ### pylonBuildWire(layerName, wireKey, pylonKey1, pylonKey2, param, option) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 두 철탑 사이를 연결하는 전선(Wire) 객체를 편집 레이어에 생성합니다.
 
@@ -213,7 +213,7 @@ pylonManager.pylonBuildWire("PylonLayer", "Wire_1", "Pylon_1", "Pylon_2", 0, 0);
 
 ### pylonCreateOneWire(layerName, wireKey, pylonKey1, left1, part1, seq1, pylonKey2, left2, part2, seq2, param) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑의 특정 애자(절연체) 위치를 지정하여 두 철탑 사이에 전선 한 가닥을 생성합니다.
 
@@ -250,7 +250,7 @@ pylonManager.pylonCreateOneWire("PylonLayer", "Wire_1a", "Pylon_1", 1, 0, "A1", 
 
 ### pylonCreateFence(objectKey, pointInfo, height) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 다각형 좌표 정보를 기반으로 울타리(펜스) 객체를 생성합니다.
 
@@ -283,7 +283,7 @@ pylonManager.pylonCreateFence("Fence_1", "127.0,37.5,0,127.001,37.5,0,127.001,37
 
 ### pylonGetWirePointNum(layerName, pylonKey) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑에 배치된 애자(절연체) 개수를 반환합니다.
 
@@ -311,7 +311,7 @@ var count = pylonManager.pylonGetWirePointNum("PylonLayer", "Pylon_1");
 
 ### pylonGetHeight(layerName, pylonKey) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑의 높이를 반환합니다.
 
@@ -339,7 +339,7 @@ var height = pylonManager.pylonGetHeight("PylonLayer", "Pylon_1");
 
 ### pylonGetWirePoints(layerName, pylonKeyA, indexA, pylonKeyB, indexB, param) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 두 철탑의 지정한 애자 인덱스 사이를 잇는 전선의 좌표 목록을 계산하여 문자열로 반환합니다.
 
@@ -371,7 +371,7 @@ var points = pylonManager.pylonGetWirePoints("PylonLayer", "Pylon_1", 0, "Pylon_
 
 ### pylonGetAejaCount(layerName, objectKey) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑에 배치된 애자(절연체) 개수를 반환합니다.
 
@@ -399,7 +399,7 @@ var count = pylonManager.pylonGetAejaCount("PylonLayer", "Pylon_1");
 
 ### pylonGetAejaPos(layerName, objectKey, index) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 철탑의 지정한 애자(절연체) 위치 좌표를 문자열로 반환합니다.
 
@@ -428,7 +428,7 @@ var pos = pylonManager.pylonGetAejaPos("PylonLayer", "Pylon_1", 0);
 
 ### pylonAddStructure(layerName, key, upper) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > [refSetPos()](jspylonmanager.md#refsetpos-x-y-z), [refSetColor()](jspylonmanager.md#refsetcolor-alpha-red-green-blue)로 설정된 위치/색상을 기준으로 철탑 부속 구조물을 추가합니다.
 
@@ -459,7 +459,7 @@ pylonManager.pylonAddStructure("PylonLayer", "Structure_1", true);
 
 ### getLineBufferPoints(pointCount, pointArray, segment, radius) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 입력 좌표(경로)를 기준으로 지정한 반경만큼 버퍼링(폭 확장)된 폴리곤 좌표를 계산하여 반환합니다. 계산된 좌표의 고도는 지형 고도로 자동 보정됩니다.
 
@@ -489,7 +489,7 @@ var buffered = pylonManager.getLineBufferPoints(3, "127.0,37.5,0,127.001,37.5,0,
 
 ### getTowerBox(layerName, objectKey) → array
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 철탑 객체의 바운딩 박스를 구성하는 8개 꼭짓점 좌표 배열을 반환합니다.
 
@@ -517,7 +517,7 @@ var box = pylonManager.getTowerBox("PylonLayer", "Pylon_1");
 
 ### setPylonVisible(layerName, objectKey, visible) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
+`v2.10.2+`
 
 > 철탑 객체 개별 가시화 여부를 설정합니다.
 
@@ -546,7 +546,7 @@ pylonManager.setPylonVisible("PylonLayer", "Pylon_1", false);
 
 ### setPreBuildPylonAngle(key, angle) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
+`v2.10.2+`
 
 > [pylonBuildPylonList()](jspylonmanager.md#pylonbuildpylonlist-layername-boolean)로 생성되기 전 철탑의 회전 각도를 수동으로 지정합니다.
 

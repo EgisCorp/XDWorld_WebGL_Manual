@@ -253,7 +253,7 @@ var lastVector = vectorList.shift();
 
 ### getBoundary() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.3+</mark>
+`v1.51.3+`
 
 > 입력된 좌표 리스트의 Boundary를 반환합니다.
 
@@ -277,7 +277,7 @@ var lastVector = vectorList.shift();
 
 ### toJSVec3Array() → [JSVec3Array](../core/jsvec3array.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.52.0+</mark>
+`v1.52.0+`
 
 > 입력된 좌표리스트의 jsvec3array를 반환합니다.
 

@@ -4,7 +4,7 @@ description: 지도 내 수인한도 분석 기능 설정을 위한 API 입니�
 
 # JSAnalysisGridShadow
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+`v1.50.0+`
 
 > Module.getAnalysisGridShadow API를 생성합니다.
 
@@ -16,7 +16,7 @@ var gridShadow = Module.getAnalysisGridShadow();
 
 | Name     			| Type                                	| Description                   |
 | ----------------- | ------------------------------------- | ----------------------------- |
-| strictCalculate<sup>v2.2.2+</sup> 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)). 			|
+| strictCalculate `v2.2.2+` 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)). 			|
 
 ## Function
 
@@ -184,7 +184,7 @@ gridShadow.setAnalysis("id", false);
 
 ### prograss(object) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.0+</mark>
+`v2.3.0+`
 
 > 분석 진행률을 반환합니다.
 
@@ -298,7 +298,7 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### createWindow(layerName) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.2+</mark>
+`v1.50.2+`
 
 > 일조량 분석을 위한 창문 객체를 생성합니다.
 >
@@ -335,7 +335,7 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### copyPasteWindow() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.2+</mark>
+`v1.50.2+`
 
 > 생성된 창문을 복사 후 붙여넣기 합니다.
 >
@@ -371,7 +371,7 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### copyPasteFloor() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.2+</mark>
+`v1.50.2+`
 
 > 생성된 한 층에 존재하는 모든 창문을 다른층으로 복사후 붙여넣기 합니다.
 >
@@ -407,7 +407,7 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### getResponseDropped() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > (진단용) 이미 지워진 분석 객체로 도착해서 무시한 web worker 응답의 누적 개수를 반환합니다.
 >

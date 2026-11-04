@@ -312,7 +312,7 @@ object.setVisible(true);
 
 ### setVerticalLine(options)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+`v2.4.2+`
 
 > 빌보드 객체에 수직선(altitude 방향)을 표시합니다.
 >

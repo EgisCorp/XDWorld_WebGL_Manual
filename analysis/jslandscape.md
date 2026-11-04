@@ -152,7 +152,7 @@ landscape.endViewPoints();
 
 ### setEyeToViewPoint(eye, view) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > 재생(애니메이션) 없이, 카메라를 즉시 지정한 시점과 바라보는 방향으로 이동시킵니다.
 
@@ -185,7 +185,7 @@ landscape.setEyeToViewPoint(
 
 ### releaseEyeToViewPoint() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+`v2.2.3+`
 
 > [setEyeToViewPoint()](jslandscape.md#seteyetoviewpoint-eye-view-boolean) 호출 이전의 카메라 상태로 복원합니다.
 

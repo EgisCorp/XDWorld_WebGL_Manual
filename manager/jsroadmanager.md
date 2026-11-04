@@ -4,7 +4,7 @@ description: 도로 객체에서 사용할 텍스처를 등록하기 위한 API 
 
 # JSRoadManager
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+`v1.60.1+`
 
 > Module.JSRoadManager() API를 생성합니다.
 

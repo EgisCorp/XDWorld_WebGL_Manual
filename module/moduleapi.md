@@ -40,7 +40,7 @@ Module.initialize({
 
 ### initialize(object) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.43.0+</mark>
+`v1.43.0+`
 
 > 지도를 생성합니다.
 >
@@ -95,7 +95,7 @@ Module.initialize({
 
 ### getVersion() → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.1+</mark>
+`v1.51.1+`
 
 > 현재 엔진의 버전을 반환합니다.
 
@@ -783,7 +783,7 @@ Module.XDRenderData();
 
 ### GoogleMap() / OpenStreetMap() / ArcMap() / WMTS() / BingMap() / DawulMap()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.36.6+</mark>
+`v1.36.6+`
 
 > 배경지도를 변경합니다.
 
@@ -805,7 +805,7 @@ Module.XDRenderData();
 
 ### setInspector(mode)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.6+</mark>
+`v1.37.6+`
 
 > 엔진 모니터링 사용 여부를 설정합니다.
 
@@ -829,7 +829,7 @@ Module.XDRenderData();
 
 ### getInspector() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.5+</mark>
+`v1.37.5+`
 
 > 엔진 모니터링 결과값을 반환합니다.
 
@@ -867,7 +867,7 @@ Module.XDRenderData();
 
 ### refreshInspector()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.5+</mark>
+`v1.37.5+`
 
 > 엔진 모니터링을 초기화 합니다.
 
@@ -890,7 +890,7 @@ Module.XDRenderData();
 
 ### getTileLayerList() → [JSLayerList](../layer/jslayerlist.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.41.0+</mark>
+`v1.41.0+`
 
 > 타일 레이어 리스트를 반환합니다.
 
@@ -913,7 +913,7 @@ Module.XDRenderData();
 
 ### getObjectLayerList() → [JSLayerList](../layer/jslayerlist.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.41.0+</mark>
+`v1.41.0+`
 
 > 옥트리 레이어 리스트를 반환합니다.
 
@@ -1364,7 +1364,7 @@ let object = Module.createReal3D("newReal3D");
 
 ### createInstanceObject(id) → [JSInstanceObject](../object/jsinstanceobject.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.35+</mark>
+`v1.37.35+`
 
 > 인스턴스 객체를 생성합니다.
 
@@ -1452,7 +1452,7 @@ let position = Module.GetClickPosition(); // ex) "129.128265_35.171834_50.000000
 
 ### getClickPointColor() → [JSColor](../core/jscolor.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.6.2+</mark>
+`v2.6.2+`
 
 > 클릭 지점에 표시되는 포인트의 색상을 반환합니다.
 >
@@ -1476,7 +1476,7 @@ let color = Module.getClickPointColor();
 
 ### setClickPointColor(color)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.6.2+</mark>
+`v2.6.2+`
 
 > 클릭 지점에 표시되는 포인트의 색상을 설정합니다.
 >
@@ -1502,7 +1502,7 @@ Module.setClickPointColor(color);
 
 ### getClickPointScale() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.6.2+</mark>
+`v2.6.2+`
 
 > 클릭 지점에 표시되는 포인트의 크기(scale) 값을 반환합니다.
 >
@@ -1526,7 +1526,7 @@ let scale = Module.getClickPointScale();
 
 ### setClickPointScale(scale)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.6.2+</mark>
+`v2.6.2+`
 
 > 클릭 지점에 표시되는 포인트의 크기(scale) 값을 설정합니다.
 
@@ -1599,7 +1599,7 @@ let lodPoi = Module.createLODPOI("newLODPOI");
 
 ### createGLTF(id) → [JSPolygon](../object/jspolygon.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.31+</mark>
+`v1.37.31+`
 
 > glTF 포맷 객체를 생성합니다.
 >
@@ -1627,7 +1627,7 @@ let object = Module.createGLTF("newGLTF");
 
 ### createOverlayObject(id) → [JSPolygon](../object/jspolygon.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.0+</mark>
+`v1.59.0+`
 
 > 오버레이 객체를 생성합니다.
 >
@@ -1655,7 +1655,7 @@ let object = Module.createOverlayObject("newOverlay");
 
 ### createRoadObject(id, type) → [JSPolygon](../object/jspolygon.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.2+</mark>
+`v1.59.2+`
 
 > 도로 객체를 생성합니다.
 >
@@ -1684,7 +1684,7 @@ let object = Module.createRoadObject("newRoad", Module.ROAD_BRIDGE);
 
 ### getDataVisualizer() → [JSDataVisualizer](../datavisualizer/jsdatavisualizer.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.0+</mark>
+`v2.14.0+`
 
 > JSON 데이터를 기반으로 포인트/라인/그리드/폴리곤 형태의 대량 데이터를 시각화하는 [JSDataVisualizer](../datavisualizer/jsdatavisualizer.md) 객체를 반환합니다.
 
@@ -1795,7 +1795,7 @@ let figure = Module.createFigure("newFigure");
 
 ### createVideoObject(id) → [JSVideoObject](../object/jsvideoobject.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.17+</mark>
+`v1.37.17+`
 
 > 멀티 비디오 텍스쳐 객체([JSVideoObject](../object/jsvideoobject.md))를 생성합니다.
 
@@ -1822,7 +1822,7 @@ var object = Module.createVideoObject("newVideo");
 
 ### createVolumeObject(id) → [JSVolumeObject](../object/jsvolumeobject.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.2+</mark>
+`v2.29.2+`
 
 > 구름·화염·산불·수면·태풍 등 부피감 있는 효과를 표현하는 볼륨(Volume) 객체([JSVolumeObject](../object/jsvolumeobject.md))를 생성합니다.
 >
@@ -1851,7 +1851,7 @@ var volume = Module.createVolumeObject("newVolume");
 
 ### getAnalysisGridShadow() → [JSAnalysisGridShadow](../analysis/jsanalysisgridshadow.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+`v1.50.0+`
 
 > 수인한도(일영) 분석 기능을 제어하는 [JSAnalysisGridShadow](../analysis/jsanalysisgridshadow.md) 객체를 반환합니다.
 
@@ -2026,7 +2026,7 @@ Module.XDClearDistanceMeasurement();
 
 ### XDClearAltDistanceMeasurement()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.3+</mark>
+`v1.59.3+`
 
 > 고도차(수직) 거리 측정 객체와 지형 절개(단면) 표시, 입력 점 리스트를 초기화합니다.
 
@@ -2220,7 +2220,7 @@ Module.XDSetViewPointHeight(100.0);
 
 ### start(options) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.35+</mark>
+`v1.37.35+`
 
 > 지정한 canvas 엘리먼트에 지도를 생성합니다.
 >
@@ -2261,7 +2261,7 @@ Module.start({
 
 ### preventDefault(event)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.43.0+</mark>
+`v1.43.0+`
 
 > addEventListener로 등록된 이벤트(예: 마우스 오른쪽 클릭 시 컨텍스트 메뉴)의 기본 동작을 막습니다.
 
@@ -2696,7 +2696,7 @@ Module.SetMobileMode(1);
 
 ### SetSimpleModeLineRender(mode)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.16+</mark>
+`v1.37.16+`
 
 > [SetSimpleMode](moduleapi.md) 적용 시, 오브젝트의 엣지 라인 렌더링 여부를 설정합니다.
 
@@ -3249,7 +3249,7 @@ Module.XDEMashupFile(0, "server.url/data.kml", 0, 0, 0);
 
 ### createTyphoon(id) → [JSTyphoon](../object/jstyphoon.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+`v1.60.1+`
 
 > 태풍 객체를 생성합니다.
 
@@ -3276,7 +3276,7 @@ var typhoon = Module.createTyphoon("typhoon01");
 
 ### getPylonManager() → [JSPylonManager](../manager/jspylonmanager.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+`v1.50.0+`
 
 > 송전탑(철탑)/전선(Wire) 등 전력 설비 생성 및 관리 기능을 제어하는 [JSPylonManager](../manager/jspylonmanager.md) 객체를 반환합니다.
 
@@ -3970,7 +3970,7 @@ Module.setLimitObjectMax(50);
 
 ### deleterSyncLayer(layerName)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+`v1.37.40+`
 
 > 지정한 이름의 레이어를 동기화(Sync) 삭제 대기열에 등록합니다. 즉시 삭제되지 않고, 다음 메인 루프 tick에서 사용자/서비스 레이어 양쪽을 대상으로 삭제가 처리됩니다.
 >
@@ -3995,7 +3995,7 @@ Module.deleterSyncLayer("myLayer");
 
 ### setOverlayMode(set) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.0+</mark>
+`v1.59.0+`
 
 > 지도 화면을 정사영(직교 투영) 방식의 오버레이(Overlay) 텍스처로 렌더링하는 모드를 설정합니다.
 >
@@ -4024,7 +4024,7 @@ Module.setOverlayMode(true);
 
 ### getRoadManager() → [JSRoadManager](../manager/jsroadmanager.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+`v1.60.1+`
 
 > 도로 객체에서 사용할 텍스처를 등록하기 위한 [JSRoadManager](../manager/jsroadmanager.md) 객체를 반환합니다.
 
@@ -4046,7 +4046,7 @@ var roadManager = Module.getRoadManager();
 
 ### getCallback(key) → function
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.22.0+</mark>
+`v2.22.0+`
 
 > 지정한 key로 등록되어 있는 콜백 함수를 조회합니다.
 >
@@ -4075,7 +4075,7 @@ var callback = Module.getCallback("cameramovecomplete");
 
 ### setGizmoMode(mode)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.25.0+</mark>
+`v2.25.0+`
 
 > 3차원 기즈모(Gizmo, 이동/회전/크기조절 조작 핸들)의 동작 모드를 설정합니다.
 >
@@ -4102,7 +4102,7 @@ Module.setGizmoMode(0);
 
 ### getGizmoMode() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.25.0+</mark>
+`v2.25.0+`
 
 > 현재 설정된 기즈모(Gizmo)의 동작 모드를 반환합니다.
 
@@ -4125,7 +4125,7 @@ var mode = Module.getGizmoMode();
 
 ### isDiscreteGPUUnused() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 시스템에 외장 GPU가 있음에도 내장(통합) GPU로 렌더링 중인지 확인합니다(안내 메시지 표시 여부 판단용).
 
@@ -4143,7 +4143,7 @@ if (Module.isDiscreteGPUUnused()) {
 
 ### XDEClearOutsideMemory() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 화면 밖(프러스텀 밖) 텍스처를 유예 없이 즉시 해제합니다(진단/수동 정리용).
 
@@ -4166,7 +4166,7 @@ var freedBytes = Module.XDEClearOutsideMemory();
 
 ### XDESetFrameInterval(interval), XDEGetFrameInterval() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 렌더링 프레임 간격을 설정합니다(배터리 소모 절감용). `requestAnimationFrame` 기준 몇 프레임마다 한 번씩 렌더링할지를 지정합니다.
 
@@ -4194,7 +4194,7 @@ var interval = Module.XDEGetFrameInterval();
 
 ### XDESetAutoMemoryClear(on), XDEGetAutoMemoryClear() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 화면 밖 텍스처 자동 정리 기능의 사용 여부를 설정합니다(진단용).
 >
@@ -4223,7 +4223,7 @@ var isOn = Module.XDEGetAutoMemoryClear();
 
 ### XDEDumpTextures(unused)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 현재 살아있는 텍스처 목록을 이름별로 묶어 개수와 함께 콘솔에 출력합니다(진단용).
 >
@@ -4248,7 +4248,7 @@ Module.XDEDumpTextures(0);
 
 ### XDESetLayerFrustumClear(on), XDEGetLayerFrustumClear() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 레이어(건물) 타일의 프러스텀(카메라 시야) 기반 해제 기능의 사용 여부를 설정합니다. 문제 발생 시 이전 동작(LOD 기준 해제만 사용)으로 되돌리는 용도입니다.
 
@@ -4275,7 +4275,7 @@ var isOn = Module.XDEGetLayerFrustumClear();
 
 ### XDESetLayerOffscreenGrace(n), XDEGetLayerOffscreenGrace() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 레이어(건물) 타일이 화면 밖으로 나간 뒤, 실제로 해제되기까지 유예할 정리 주기 횟수를 설정합니다.
 >
@@ -4304,7 +4304,7 @@ var grace = Module.XDEGetLayerOffscreenGrace();
 
 ### XDESetPoiTexture16Bit(on), XDEGetPoiTexture16Bit() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > POI 라벨 텍스처를 16비트(RGBA4444) 포맷으로 생성할지 여부를 설정합니다(메모리 절약용).
 >
@@ -4333,7 +4333,7 @@ var is16Bit = Module.XDEGetPoiTexture16Bit();
 
 ### XDESetPoiTexture8Bit(on), XDEGetPoiTexture8Bit() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > POI 라벨 텍스처를 PAL8(픽셀당 1바이트 인덱스 + 공용 팔레트) 포맷으로 생성할지 여부를 설정합니다(메모리 절약용).
 >
@@ -4368,7 +4368,7 @@ var is8Bit = Module.XDEGetPoiTexture8Bit();
 
 ### XDEGetPoiTexture8BitStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > PAL8 라벨의 변환 결과 통계와 팔레트 상태를 반환합니다(진단용).
 >
@@ -4412,7 +4412,7 @@ console.log(stats.labels, stats.lossless, stats.lossy, stats.rowExhausted);
 
 ### XDECreateLabelAtlas(data, width, height) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > 여러 라벨 이미지를 한 장에 모은 RGBA8 이미지로 아틀라스 텍스처를 생성하고, 아틀라스 ID를 반환합니다.
 >
@@ -4459,7 +4459,7 @@ Module.XDEReleaseLabelAtlas(atlasId);
 
 ### XDEReleaseLabelAtlas(atlasId) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > [XDECreateLabelAtlas](moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 만든 아틀라스를 레지스트리에서 해제합니다.
 >
@@ -4488,7 +4488,7 @@ Module.XDEReleaseLabelAtlas(atlasId);
 
 ### XDESetPhotoTexture16Bit(on), XDEGetPhotoTexture16Bit() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+`v2.29.1+`
 
 > 사진 텍스처(JPEG 기반 지형 영상·건물 파사드 등)를 16비트(RGB565) 포맷으로 디코드할지 여부를 설정합니다(메모리 절약용).
 >
@@ -4517,7 +4517,7 @@ var is16Bit = Module.XDEGetPhotoTexture16Bit();
 
 ### XDESetImageryColorBits(bits), XDEGetImageryColorBits() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 위성 영상(JPG, KTX2 등 팔레트 방식이 아닌 소스) 지형 영상을 합성할 때 쓰는 텍스처의 색 깊이를 설정합니다. 기본값은 16(RGB565, 메모리 절약)이며, 24(RGBA8888)로 올리면 화질이 좋아지는 대신 메모리를 더 사용합니다.
 >
@@ -4547,7 +4547,7 @@ var bits = Module.XDEGetImageryColorBits();
 
 ### XDESetVectorTileColorBits(bits), XDEGetVectorTileColorBits() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 벡터타일(팔레트 8비트 소스) 레이어의 색 깊이를 설정합니다. 기본값은 8(팔레트 인덱스, 메모리 최소)이며, 16(RGB565)으로 바꾸면 메모리를 더 쓰는 대신 도로 경계 등의 계단 현상이 줄어듭니다.
 >
@@ -4577,7 +4577,7 @@ var bits = Module.XDEGetVectorTileColorBits();
 
 ### getPostProcess() → [JSPostProcess](../option/jspostprocess.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 제어하는 [JSPostProcess](../option/jspostprocess.md) 객체를 반환합니다.
 >
@@ -4602,7 +4602,7 @@ postProcess.setEnableDoF(true);
 
 ### createIcon() → [JSIcon](../object/jsicon.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 이미지가 비어 있는 [JSIcon](../object/jsicon.md) 객체를 생성합니다.
 >
@@ -4641,7 +4641,7 @@ for (var i = 0; i < 1000; i++) {
 
 ### createDepthGuide(id) → [JSDepthGuide](../object/jsdepthguide.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 독립된 깊이 눈금 가이드([JSDepthGuide](../object/jsdepthguide.md)) 객체를 생성합니다.
 >
@@ -4670,7 +4670,7 @@ var guide = Module.createDepthGuide("newGuide");
 
 ### getFlowLayerList() → [JSFlowLayerList](../layer/jsflowlayerlist.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 해류·조류 흐름 레이어를 생성하고 관리하는 [JSFlowLayerList](../layer/jsflowlayerlist.md) 객체를 반환합니다.
 >
@@ -4694,7 +4694,7 @@ var flowList = Module.getFlowLayerList();
 
 ### createClippingBox(position, width, depth, height)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 클리핑 박스(Clipping Box)를 생성하고 화면에 표시합니다.
 >
@@ -4738,7 +4738,7 @@ Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX);
 
 ### setClippingBoxVisible(visible)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 클리핑 박스의 표시 여부를 설정합니다.
 >
@@ -4763,7 +4763,7 @@ Module.setClippingBoxVisible(false);
 
 ### setClippingBoxPosition(position)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 클리핑 박스의 중심 위치를 변경합니다. 크기는 유지됩니다.
 >
@@ -4788,7 +4788,7 @@ Module.setClippingBoxPosition(new Module.JSVector3D(127.0, 37.5, 30));
 
 ### setClippingBoxSize(width, depth, height)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 클리핑 박스의 크기를 변경합니다. 중심 위치는 유지됩니다.
 
@@ -4813,7 +4813,7 @@ Module.setClippingBoxSize(200, 150, 60);
 
 ### XDESetMemoryClearInterval(ms), XDEGetMemoryClearInterval() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > 화면 밖 텍스처 자동 정리가 실행되는 주기(ms)를 설정합니다.
 >
@@ -4842,7 +4842,7 @@ var interval = Module.XDEGetMemoryClearInterval();
 
 ### XDESetExtrudeGradient(on), XDEGetExtrudeGradient() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > 압출(Polyhedron) 건물의 높이 그라데이션 렌더링 사용 여부를 설정합니다.
 >
@@ -4871,7 +4871,7 @@ var isOn = Module.XDEGetExtrudeGradient();
 
 ### XDESetExtrudeGradientFloor(value), XDEGetExtrudeGradientFloor() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > 압출 건물 벽 세로 그라데이션의 바닥(벽 최하단) 밝기 배율을 설정합니다.
 >
@@ -4901,7 +4901,7 @@ var floor = Module.XDEGetExtrudeGradientFloor();
 
 ### XDESetExtrudeFaceShade(value), XDEGetExtrudeFaceShade() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > 압출 건물에서 광원을 가장 등진 벽면의 밝기 배율을 설정합니다.
 >
@@ -4930,7 +4930,7 @@ var shade = Module.XDEGetExtrudeFaceShade();
 
 ### XDESetExtrudeGradientTop(value), XDEGetExtrudeGradientTop() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+`v2.30.3+`
 
 > 압출 건물 벽 세로 그라데이션의 꼭대기(벽 최상단) 밝기를 설정합니다.
 >
@@ -4959,7 +4959,7 @@ var top = Module.XDEGetExtrudeGradientTop();
 
 ### XDESetUniformCache(on)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+`v2.29.4+`
 
 > 셰이더 유니폼 값 캐시 사용 여부를 설정합니다(진단용).
 >
@@ -4984,7 +4984,7 @@ Module.XDESetUniformCache(false); // 진단 목적으로만 일시 사용
 
 ### XDESetImpostorPages(pages)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > Impostor LOD가 사용하는 아틀라스 텍스처 페이지 수의 상한을 설정합니다.
 >
@@ -5009,7 +5009,7 @@ Module.XDESetImpostorPages(3);
 
 ### XDEImpostorRebake()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > Impostor LOD 스프라이트를 모두 폐기하고 현재 화면 크기 기준으로 다시 굽도록 합니다.
 >
@@ -5027,7 +5027,7 @@ Module.XDEImpostorRebake();
 
 ### XDESetThumbAsync(on), XDEGetThumbAsync() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 건물(xnd) 데이터에 내장된 썸네일(텍스처) 디코드를 워커로 넘겨 비동기로 적재할지 여부를 설정합니다.
 >
@@ -5056,7 +5056,7 @@ var isAsync = Module.XDEGetThumbAsync();
 
 ### XDESetThumbSyncBudgetMs(ms), XDEGetThumbSyncBudgetMs() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 썸네일 비동기 적재가 켜져 있을 때, 파싱 한 번 안에서 동기로 디코드할 수 있는 누적 시간(ms)을 설정합니다.
 >
@@ -5085,7 +5085,7 @@ var budget = Module.XDEGetThumbSyncBudgetMs();
 
 ### XDESetTextureEncode(on), XDEGetTextureEncode() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 클라이언트 텍스처 인코딩 사용 여부를 설정합니다.
 >
@@ -5114,7 +5114,7 @@ var isOn = Module.XDEGetTextureEncode();
 
 ### XDEGetEncodeTarget() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 클라이언트 텍스처 인코딩이 사용할 압축 포맷 번호를 반환합니다.
 >
@@ -5141,7 +5141,7 @@ var target = Module.XDEGetEncodeTarget();
 
 ### XDEGetParseStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 건물(xnd) 데이터 파싱이 메인 스레드를 점유한 시간 분포와 썸네일 비동기 적재 현황을 반환합니다(진단용).
 >
@@ -5189,7 +5189,7 @@ console.log(stats.count, stats.avgMs, stats.maxMs, stats.hist.ge100);
 
 ### XDEResetParseStats()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > [XDEGetParseStats](moduleapi.md#xdegetparsestats-object)의 누적 통계를 초기화합니다(진단용).
 >
@@ -5207,7 +5207,7 @@ Module.XDEResetParseStats();
 
 ### XDEGetEncodeStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 클라이언트 텍스처 인코딩의 동작 통계를 반환합니다(진단용).
 >
@@ -5248,7 +5248,7 @@ console.log(stats.on, stats.ok, stats.savedBytes, stats.workerFmt.thumb);
 
 ### XDEResetEncodeStats()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > [XDEGetEncodeStats](moduleapi.md#xdegetencodestats-object)의 인코딩 통계를 초기화합니다(진단용).
 >
@@ -5266,7 +5266,7 @@ Module.XDEResetEncodeStats();
 
 ### XDEGetEdgeStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > 건물 외곽선(심플 엣지 배치) 렌더링 통계를 반환합니다(진단용).
 >
@@ -5302,7 +5302,7 @@ console.log(stats.flickTile, stats.missRatio);
 
 ### XDEResetEdgeStats()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > [XDEGetEdgeStats](moduleapi.md#xdegetedgestats-object)의 통계를 모두 0으로 초기화합니다(진단용).
 
@@ -5318,7 +5318,7 @@ Module.XDEResetEdgeStats();
 
 ### XDEGetPoiDeclutterStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > POI 화면 밀집 제거(declutter) 처리의 현재 프레임 통계를 반환합니다(진단용).
 >
@@ -5351,7 +5351,7 @@ console.log(stats.candidates, stats.rejected, stats.drawn);
 
 ### XDEGetTextureQueueStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 텍스처 요청 파이프라인과 텍스처 메모리 사용 현황을 반환합니다(진단용).
 >
@@ -5400,7 +5400,7 @@ console.log(stats.usedMB + " / " + stats.budgetMB, stats.byCategory.stream.mb);
 
 ### XDESetTextureBudget(defaultMB, iosMB, lowPct)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 타일 텍스처 메모리 예산(MB)과 저수위 비율을 런타임에 조정합니다.
 >
@@ -5428,7 +5428,7 @@ Module.XDESetTextureBudget(0, 512, 0);
 
 ### XDESetPanAnchorTerrainOnly(on), XDEGetPanAnchorTerrainOnly() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 마우스/터치 이동(패닝) 시작 시 기준점을 지형만으로 구할지 여부를 설정합니다.
 >
@@ -5457,7 +5457,7 @@ var isOn = Module.XDEGetPanAnchorTerrainOnly();
 
 ### XDESetIOSProfile(on), XDEGetIOSProfile() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > iOS(iPhone/iPad) 전용 동작 분기의 적용 여부를 강제로 설정합니다.
 >
@@ -5486,7 +5486,7 @@ var isIOS = Module.XDEGetIOSProfile();
 
 ### XDEGetPoiImageStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > POI 이미지(`setImage`) 등록 단계별 소요 시간과 라벨 업로드 분산 현황을 반환합니다(진단용).
 >
@@ -5527,7 +5527,7 @@ console.log(stats.count, stats.totalMs, stats.pendingBytes);
 
 ### XDEResetPoiImageStats()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 누적 통계를 초기화합니다(진단용).
 >
@@ -5545,7 +5545,7 @@ Module.XDEResetPoiImageStats();
 
 ### XDESetPoiUploadDefer(on), XDEGetPoiUploadDefer() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > POI 이미지의 GPU 업로드를 여러 프레임에 나눠 처리할지 여부를 설정합니다.
 >
@@ -5574,7 +5574,7 @@ var isOn = Module.XDEGetPoiUploadDefer();
 
 ### XDESetPoiUploadBudgetMs(ms)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > POI 이미지 분산 업로드가 프레임마다 사용할 수 있는 시간 예산(ms)을 설정합니다.
 >
@@ -5599,7 +5599,7 @@ Module.XDESetPoiUploadBudgetMs(6);
 
 ### XDESetPoiUploadMaxPendingMB(mb)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+`v2.30.2+`
 
 > POI 이미지 분산 업로드에서 업로드를 기다리는 이미지 크기의 상한(MB)을 설정합니다.
 >
@@ -5624,7 +5624,7 @@ Module.XDESetPoiUploadMaxPendingMB(64);
 
 ### XDEGetPolyTriangulateStats() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 폴리곤 삼각분할 워커 처리 현황을 반환합니다(진단용).
 >
@@ -5668,7 +5668,7 @@ console.log(stats.requested, stats.workerDone, stats.syncFallback);
 
 ### XDEResetPolyTriangulateStats()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > [XDEGetPolyTriangulateStats](moduleapi.md#xdegetpolytriangulatestats-object)의 누적 통계를 초기화합니다(진단용).
 >
@@ -5686,7 +5686,7 @@ Module.XDEResetPolyTriangulateStats();
 
 ### XDESetSplatShadowReceive(on), XDEGetSplatShadowReceive() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 3D Gaussian Splatting([JSGaussianSplat](../object/jsgaussiansplat.md)) 객체가 그림자를 받을지 여부를 설정합니다. 기본값은 true입니다.
 >
@@ -5717,7 +5717,7 @@ var isOn = Module.XDEGetSplatShadowReceive();
 
 ### XDESetSplatShadowDarken(value), XDEGetSplatShadowDarken() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 스플랫이 그림자 안에 있을 때의 밝기 배수를 설정합니다. 기본값은 0.6입니다.
 >
@@ -5746,7 +5746,7 @@ var darken = Module.XDEGetSplatShadowDarken();
 
 ### XDESetSplatShadowBias(meter), XDEGetSplatShadowBias() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 스플랫이 자기 자신 또는 같은 면의 이웃 스플랫에 가려진 것으로 오판되는 것을 막는 여유 거리(m)를 설정합니다. 기본값은 0.3입니다.
 >
@@ -5775,7 +5775,7 @@ var bias = Module.XDEGetSplatShadowBias();
 
 ### XDESetSplatShadowCastScale(scale), XDEGetSplatShadowCastScale() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 스플랫이 그림자를 드리울 때 그림자맵에 찍는 점(캐스터)의 크기 배수를 설정합니다. 기본값은 1.0입니다.
 >
@@ -5804,7 +5804,7 @@ var scale = Module.XDEGetSplatShadowCastScale();
 
 ### XDESetSplatShadowCastOpacity(opacity), XDEGetSplatShadowCastOpacity() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 스플랫이 그림자를 드리우는 것으로 취급할 불투명도의 하한을 설정합니다. 기본값은 0.12입니다.
 >
@@ -5833,7 +5833,7 @@ var opacity = Module.XDEGetSplatShadowCastOpacity();
 
 ### XDEGetSplatShadowCast() → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > 스플랫이 그림자맵에 점(캐스터)을 실제로 찍은 현황을 반환합니다(진단용).
 >

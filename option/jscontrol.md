@@ -15,11 +15,11 @@ var object = Module.getControl();
 | Name     				| Type                                	| Description                   |
 | --------------------- | ------------------------------------- | ----------------------------- |
 | keyboard_sensitivity  | number                              	| 키보드 이동 민감도              |
-| touchPanEnable<sup>v1.37.22+</sup>        | boolean                              	| 터치를 통한 카메라 이동 가능 유무. getTouchPanEnable() / setTouchPanEnable() 참조. |
-| touchRotateEnable<sup>v1.37.22+</sup>     | boolean                              	| 터치를 통한 카메라 회전 가능 유무. getTouchRotateEnable() / setTouchRotateEnable() 참조. |
-| touchZoomEnable<sup>v1.37.22+</sup>       | boolean                              	| 터치를 통한 카메라 확대, 축소 가능 유무. getTouchZoomEnable() / setTouchZoomEnable() 참조. |
-| mouseLeftButtonDown<sup>v1.52.0+</sup>   | boolean                              	| 마우스 왼쪽 버튼 클릭 상태 여부. |
-| mouseRightButtonDown<sup>v1.52.0+</sup>  | boolean                              	| 마우스 오른쪽 버튼 클릭 상태 여부. |
+| touchPanEnable `v1.37.22+`        | boolean                              	| 터치를 통한 카메라 이동 가능 유무. getTouchPanEnable() / setTouchPanEnable() 참조. |
+| touchRotateEnable `v1.37.22+`     | boolean                              	| 터치를 통한 카메라 회전 가능 유무. getTouchRotateEnable() / setTouchRotateEnable() 참조. |
+| touchZoomEnable `v1.37.22+`       | boolean                              	| 터치를 통한 카메라 확대, 축소 가능 유무. getTouchZoomEnable() / setTouchZoomEnable() 참조. |
+| mouseLeftButtonDown `v1.52.0+`   | boolean                              	| 마우스 왼쪽 버튼 클릭 상태 여부. |
+| mouseRightButtonDown `v1.52.0+`  | boolean                              	| 마우스 오른쪽 버튼 클릭 상태 여부. |
 
 
 ## Function
@@ -73,7 +73,7 @@ var object = Module.getControl();
 
 ### setMouseClickCenterMode(type)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
+`v2.19.0+`
 
 > 마우스 클릭을 통한 지도 확대, 축소 시 클릭 위치 기준 또는 화면 중심 기준으로 동작 유무를 설정합니다.
 
@@ -437,7 +437,7 @@ Module.getControl().setMouseZoomMode(true);
 
 ### getTouchPanEnable(), setTouchPanEnable(type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.22+</mark>
+`v1.37.22+`
 
 > 터치를 통한 카메라 이동 가능 유무를 설정합니다.
 
@@ -466,7 +466,7 @@ Module.getControl().setTouchPanEnable(false);
 
 ### getTouchRotateEnable(), setTouchRotateEnable(type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.22+</mark>
+`v1.37.22+`
 
 > 터치를 통한 카메라 회전 가능 유무를 설정합니다.
 
@@ -495,7 +495,7 @@ Module.getControl().setTouchRotateEnable(false);
 
 ### getTouchZoomEnable(), setTouchZoomEnable(type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.22+</mark>
+`v1.37.22+`
 
 > 터치를 통한 카메라 확대, 축소 가능 유무를 설정합니다.
 
@@ -524,7 +524,7 @@ Module.getControl().setTouchZoomEnable(false);
 
 ### getMouseControlEvent(type), setMouseControlEvent(type, button) → number / boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.13.0+</mark>
+`v2.13.0+`
 
 > 마우스 버튼(좌/우/휠 클릭)에 카메라 동작(이동, 회전, 확대축소)을 매핑합니다.
 

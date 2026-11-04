@@ -160,7 +160,7 @@ Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
 
 ### getVolumeVisibility(height) → string
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+`v2.30.1+`
 
 > 볼륨(불꽃 등) 객체의 가시율을 현재 카메라 위치 기준으로 반환합니다. 불꽃이 퍼질 수 있는 최대 영역이 산, 건물, 지형에 가려지지 않고 몇 % 보이는지를 계산합니다(가리는 것이 없으면 100, 영역의 절반이 가려지면 50).
 >
@@ -477,7 +477,7 @@ Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 
 ### checkInsideArea(array, object, type) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.11+</mark>
+`v1.37.11+`
 
 > 입력된 영역과 객체의 포함여부를 반환합니다.
 
@@ -507,7 +507,7 @@ Module.getAnalysis.setShadowSimulTime(2018, 05, 28, 9, 0, 14, 30);
 
 ### checkInsideAreas(array, parts, object, type) → array
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.0+</mark>
+`v2.8.0+`
 >
 > 여러개의 입력된 영역과 객체의 포함여부를 확인하고, 포함되는 영역의 인덱스 목록을 반환합니다.
 
@@ -974,7 +974,7 @@ console.log(sunshine); // [520, 430] 분 단위 일조량
 
 ### updateViewshed() → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.2+</mark>
+`v2.29.2+`
 
 > 등록된 모든 가시권 분석을 현재 카메라·지형 상태 기준으로 다시 계산합니다.
 
@@ -1370,7 +1370,7 @@ console.log(sunshine); // [520, 430] 분 단위 일조량
 
 ### getSunPosition(year, month, day, hour, minute, second) → [JSVector2D](../core/jsvector2d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.12.0+</mark>
+`v2.12.0+`
 
 > 지정한 일시 기준 태양의 위치(방위각, 고도각)를 반환합니다.
 
@@ -1646,7 +1646,7 @@ console.log(sunshine); // [520, 430] 분 단위 일조량
 
 ### getGridAnalysis() → [JSGridAnal](jsgridanal.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.7.1.147+</mark>
+`v2.7.1.147+`
 
 > getGridAnal()과 동일한 기능입니다 (cpp에서 같은 구현부에 바인딩된 별칭).
 
@@ -1809,7 +1809,7 @@ console.log(sunshine); // [520, 430] 분 단위 일조량
 
 ### getRCCollection() → [JSRCCollection](jsrccollection.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
+`v1.55.2+`
 
 > 레이더 커버 컬렉션 객체를 반환합니다 (최초 호출 시 생성).
 
@@ -1832,7 +1832,7 @@ console.log(sunshine); // [520, 430] 분 단위 일조량
 
 ### exportDistanceGeoJSON()
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.24.1+</mark>
+`v2.24.1+`
 
 > 등록된 거리 측정 결과를 GeoJSON 형식으로 내보냅니다.
 

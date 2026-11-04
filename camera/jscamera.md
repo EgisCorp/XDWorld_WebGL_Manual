@@ -15,9 +15,9 @@ var camera = Module.getViewCamera();
 | Name               | Type    | Description  |
 | ------------------ | ------- | ------------ |
 | limit              | object  | 카메라 이동/고도/틸트 제한 정보. `{ bound: {min, max, enable}, altitude: {min, max, enable}, tilt: {min, max} }` 형태. |
-| autoMoveRoundSegment<sup>v1.38.0+</sup> | number | 카메라 원형 자동 이동 시 구간을 나누는 세그먼트 수. |
-| collision_type<sup>v1.58.0+</sup>      | boolean | 카메라 충돌 감지 모드 사용 여부. |
-| collision_distance<sup>v1.58.0+</sup>  | number  | 카메라 충돌 감지 거리. |
+| autoMoveRoundSegment `v1.38.0+` | number | 카메라 원형 자동 이동 시 구간을 나누는 세그먼트 수. |
+| collision_type `v1.58.0+`      | boolean | 카메라 충돌 감지 모드 사용 여부. |
+| collision_distance `v1.58.0+`  | number  | 카메라 충돌 감지 거리. |
 
 ## Function
 
@@ -248,7 +248,7 @@ var lookPosition = Module.getViewCamera().getLookPosition();
 
 ### setSmoothMove(type) → void
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 카메라의 부드러운 움직임을 설정합니다.
 
@@ -1210,7 +1210,7 @@ var location = API.JSCamera.getLocation();
 
 ### getPanMoveLocation(moveType, distance) → [JSVector3D](../core/jsvector3d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.22.0+</mark>
+`v2.22.0+`
 
 > 현재 카메라 위치에서 지정한 방향(전/후/좌/우)으로 일정 거리만큼 이동했을 때의 좌표를 계산하여 반환합니다 (카메라 자체는 이동하지 않음).
 
@@ -1276,7 +1276,7 @@ Module.getViewCamera().SetAutoMoveSpeed(0.5);
 
 ### setPersonHeight(height)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.22.0+</mark>
+`v2.22.0+`
 
 > 1인칭(플레이어) 모드에서 사용자의 눈높이(신장)를 설정합니다.
 
@@ -1296,7 +1296,7 @@ Module.getViewCamera().setPersonHeight(1.7);
 
 ### setCeiling(altitude)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.22.0+</mark>
+`v2.22.0+`
 
 > 1인칭 플레이어 모드에서 카메라가 위로 올라갈 수 있는 최대 고도(천장)를 설정합니다. 인자 없이 호출하면 천장 제한을 해제합니다.
 
@@ -1317,7 +1317,7 @@ Module.getViewCamera().setCeiling(); // 천장 제한 해제
 
 ### getTargetLocation() → [JSVector3D](../core/jsvector3d.md)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 카메라 타겟 좌표를 반환합니다.
 
@@ -1501,7 +1501,7 @@ API.JSCamera.setLimitTilt(80);
 
 ### getLimitminTilt(), setLimitminTilt(tilt) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.13.2+</mark>
+`v2.13.2+`
 
 > 카메라 제한 기울기 최소 각도를 설정 및 반환합니다.
 
@@ -1528,7 +1528,7 @@ var minTilt = API.JSCamera.getLimitminTilt();
 
 ### getLimitmaxTilt(), setLimitmaxTilt(tilt) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.13.2+</mark>
+`v2.13.2+`
 
 > 카메라 제한 기울기 최대 각도를 설정 및 반환합니다.
 
@@ -1605,7 +1605,7 @@ API.JSCamera.moveFrontBack(-5.0); // 뒤로 5 이동
 
 ### moveLeftRight(delta)
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+`v2.4.0+`
 
 > 카메라를 현재 시점 기준으로 좌우로 이동합니다.
 
@@ -1629,7 +1629,7 @@ API.JSCamera.moveLeftRight(-10.0); // 왼쪽으로 이동
 
 ### moveWithSlide(frontBack, leftRight, radius) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.0+</mark>
+`v2.31.0+`
 
 > 카메라를 앞뒤/좌우로 이동하되, 이동 경로에서 벽에 막히면 이동을 취소하지 않고 벽면을 따라 미끄러지듯 이동합니다. 건물 내부 탐색 등 1인칭 이동에서 벽 통과를 막는 용도로 사용합니다.
 >
@@ -1979,7 +1979,7 @@ API.JSCamera.bankRight();
 
 ### setPlayerMode(mode) → void
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 1인칭 카메라 모드에서 플레이어 모드(물리 기반)를 활성화/비활성화 합니다.
 
@@ -2008,7 +2008,7 @@ API.JSCamera.setPlayerMode(false); // 플레이어 모드 비활성화
 
 ### isGround() → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 1인칭 카메라 모드에서 카메라가 현재 지면에 닿아 있는지 여부를 반환합니다.
 
@@ -2036,7 +2036,7 @@ API.JSCamera.isGround();
 
 ### jump() → void
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 1인칭 카메라 지형결합 모드, 플레이어 모드에서 카메라가 자연스럽게 공중으로 올라갔다가 떨어집니다.
 
@@ -2063,7 +2063,7 @@ API.JSCamera.jump();
 
 ### getJumpForce(), setJumpForce(jumpForce) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 초기 점프 속도(점프 세기)를 설정 및 반환합니다.
 
@@ -2090,7 +2090,7 @@ var jumpForce = API.JSCamera.getJumpForce();
 
 ### getGravity(), setGravity(gravity) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 카메라 중력을 설정 및 반환합니다.
 
@@ -2117,7 +2117,7 @@ var gravity = API.JSCamera.getGravity();
 
 ### getTimeStep(), setTimeStep(timeStep) → number
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > 카메라 점프/낙하 동작의 시간 간격을 설정 및 반환합니다.
 
@@ -2147,7 +2147,7 @@ var timeStep = API.JSCamera.getTimeStep();
 
 ### setLandingElevation(elevation) → void
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > [플레이어 모드](jscamera.md#setplayermode-mode-void)에서 카메라의 착지 고도를 설정합니다.
 
@@ -2176,7 +2176,7 @@ API.JSCamera.setLandingElevation(20.0);
 
 ### setLandingElevationToTerrain() → void
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+`v2.19.0.1+`
 
 > [플레이어 모드](jscamera.md#setplayermode-mode-void)에서 카메라의 착지 고도를 현재 지형 고도로 설정합니다.
 
@@ -2228,7 +2228,7 @@ API.JSCamera.setUnionMode(false); // 해제
 
 ### setAutoMovePath(pathList) → boolean
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+`v1.37.40+`
 
 > 카메라 자동 이동 경로를 설정합니다.
 
@@ -2262,7 +2262,7 @@ API.JSCamera.setAutoMovePath(pathList);
 
 ### setLockOrientationAutoMove(type) → void
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.12.0+</mark>
+`v2.12.0+`
 
 > 카메라 방향/틸트 고정 여부를 설정합니다.
 

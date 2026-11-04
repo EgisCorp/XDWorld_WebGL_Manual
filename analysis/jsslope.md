@@ -137,7 +137,7 @@ Module.getSlope().analysisTerrainSlope({
 
 ### checkServerDemAnalysis(options) → object
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+`v2.29.3+`
 
 > 서버 DEM 기반 경사 분석(`analysis.server: true`)을 실행하기 전에, 분석에 필요한 DEM 타일 수와 분석 가능 여부를 미리 확인합니다. 분석은 실행하지 않으며 서버 요청도 보내지 않고 즉시(동기) 결과를 반환합니다.
 >

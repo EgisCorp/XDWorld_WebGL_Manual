@@ -4,7 +4,7 @@ description: 해류·조류 흐름 레이어(JSCurrentFlowLayer)를 생성하고
 
 # JSFlowLayerList
 
-<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+`v2.31.1+`
 
 > `Module.getFlowLayerList()`로 흐름 레이어 목록 객체를 얻습니다. (싱글톤이며 호출할 때마다 같은 객체를 반환합니다.)
 >
