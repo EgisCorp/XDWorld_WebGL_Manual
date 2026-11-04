@@ -14,7 +14,7 @@ let trace = Module.createHTMLObject("ID");
 
 | Name            | Type                                | Description                                               |
 | --------------- | ----------------------------------- | --------------------------------------------------------- |
-| element `v2.8.4+` 		  | HTML element                        | JSHTMLObject element. 								|
+| element `2.8.4+` 		  | HTML element                        | JSHTMLObject element. 								|
 | verticalAlign   | string                              | JSHTMLObject 가시화 수평 정렬 설정 (left, center, right). |
 | horizontalAlign | string                              | JSHTMLObject 가시화 수직 정렬 설정 (top, middle, bottom). |
 | position        | [JSVector3D](../core/jsvector3d.md) | 중심 좌표 설정 (경도, 위도, 고도).                        |
@@ -61,11 +61,11 @@ object.createbyJson(parameter);
 
 ### refresh()
 
-`v1.37.40+`
-
 > 객체 가시화를 갱신합니다.
 >
 > 객체 옵션 변경에 따른 가시화 변경 사항을 즉시 적용합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}

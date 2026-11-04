@@ -236,9 +236,9 @@ obj.setPickable(true); // 마우스 피킹 가능 설정
 
 ### getUnderground(underground), setUnderground(value) → void
 
-`v2.14.1.2+`
-
 > 객체가 지형 높이와의 관계를 설정 및 반환합니다.
+
+* 지원버전 : `2.14.1.2+`
 
 {% tabs %}
 {% tab title="Information" %}

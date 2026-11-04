@@ -14,9 +14,9 @@ var map = Module.getIndexMap();
 
 ### createLayer(layerName, layerType)
 
-`v1.53.2+`
-
 > 인덱스 맵에 새로운 레이어를 생성합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -39,9 +39,9 @@ indexMap3D.createLayer("layer1", 0);
 
 ### addObject(layerName, object) → boolean
 
-`v1.53.2+`
-
 > 인덱스 맵의 특정 레이어에 객체를 추가합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -67,9 +67,9 @@ indexMap3D.createLayer("layer1", 0);
 
 ### removeObject(layerName, objectKey) → boolean
 
-`v1.53.2+`
-
 > 인덱스 맵의 특정 레이어에서 객체를 제거합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -95,9 +95,9 @@ indexMap3D.createLayer("layer1", 0);
 
 ### keyAtObject(layerName, objectKey) → object
 
-`v1.53.2+`
-
 > 인덱스 맵의 특정 레이어에서 고유 키에 해당하는 객체를 조회합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -123,11 +123,11 @@ indexMap3D.createLayer("layer1", 0);
 
 ### setDistanceMinMax(min, max)
 
-`v1.53.1+`
-
 > 인덱스 맵에서 사용할 카메라 옵션을 설정합니다.
 >
 > 인덱스 맵과 카메라의 시야 최소, 최대 거리를 설정합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -152,9 +152,9 @@ indexMap3D.setVisible(true);
 
 ### setDistance(min, max)
 
-`v1.53.1+`
-
 > setDistanceMinMax(min, max)와 동일한 기능입니다 (cpp에서 같은 구현부에 바인딩된 별칭 함수).
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -176,9 +176,9 @@ indexMap3D.setVisible(true);
 
 ### getDistanceMin() → number
 
-`v1.53.2+`
-
 > 설정된 시야 최소 거리를 반환합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -198,9 +198,9 @@ indexMap3D.setVisible(true);
 
 ### getDistanceMax() → number
 
-`v1.53.2+`
-
 > 설정된 시야 최대 거리를 반환합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -220,9 +220,9 @@ indexMap3D.setVisible(true);
 
 ### setCameraMode(mode)
 
-`v2.4.0+`
-
 > 인덱스 맵 카메라 모드를 설정합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -243,9 +243,9 @@ indexMap3D.setVisible(true);
 
 ### setVisibleLayer(layerName, visible)
 
-`v2.4.0+`
-
 > 인덱스 맵(메인뷰) 내 특정 레이어의 가시화 유무를 설정합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -269,9 +269,9 @@ indexMap3D.setVisible(true);
 
 ### getCameraTilt(), setCameraTilt(tilt) → number
 
-`v1.53.1+`
-
 > 인덱스 맵에서 사용할 카메라 기울기(degrees 단위)를 설정하거나 반환합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -299,9 +299,9 @@ indexMap3D.setVisible(true);
 
 ### getViewMode(), setViewMode(mode) → number
 
-`v1.53.1+`
-
 > 인덱스 맵 뷰 모드를 설정하거나 반환합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -325,9 +325,9 @@ indexMap3D.setVisible(true);
 
 ### getVisible(), setVisible(visible) → boolean
 
-`v1.53.1+`
-
 > 인덱스 맵 가시화 유무를 설정하거나 반환합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -355,11 +355,11 @@ var visible = indexMap3D.getVisible();
 
 ### getRatio(), setRatio(ratio) → number
 
-`v1.53.1+`
-
 > 인덱스 맵 축척 비율을 설정하거나 반환합니다.
 >
 > 입력 변수값(ratio)이 1.0 미만인 경우 1.0으로 보정됩니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -383,9 +383,9 @@ var visible = indexMap3D.getVisible();
 
 ### getSize(), setSize(width, height) → JSSize2D
 
-`v1.53.1+`
-
 > 인덱스 맵 가로 세로 크기를 설정하거나 반환합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -414,9 +414,9 @@ indexMap3D.setVisible(true);
 
 ### getPosition(), setPosition(x, y) → JSVector2D
 
-`v1.53.1+`
-
 > 인덱스 맵의 화면상 위치를 설정하거나 반환합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -445,9 +445,9 @@ indexMap3D.setVisible(true);
 
 ### getVisionColor(), setVisionColor(red, green, blue, alpha) → JSColor
 
-`v1.53.1+`
-
 > 인덱스 맵 시야 영역(vision) 색상을 설정하거나 반환합니다.
+
+* 지원버전 : `1.53.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -474,9 +474,9 @@ indexMap3D.setVisible(true);
 
 ### getCameraPosition(), setCameraPosition(position) → JSVector3D
 
-`v2.4.0+`
-
 > 인덱스 맵 카메라 위치를 설정하거나 반환합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -500,9 +500,9 @@ indexMap3D.setVisible(true);
 
 ### getTilt(), setTilt(tilt) → number
 
-`v2.4.0+`
-
 > getCameraTilt() / setCameraTilt(tilt)와 동일한 기능입니다 (cpp 내부적으로 서로를 호출하는 별칭 함수).
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -526,9 +526,9 @@ indexMap3D.setVisible(true);
 
 ### getDirection(), setDirection(direction) → number
 
-`v2.4.0+`
-
 > 인덱스 맵 카메라 방향(회전각, degrees 단위)을 설정하거나 반환합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -552,9 +552,9 @@ indexMap3D.setVisible(true);
 
 ### getFOV(), setFOV(fov) → number
 
-`v2.4.0+`
-
 > 인덱스 맵 카메라 시야각(FOV, degrees 단위)을 설정하거나 반환합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}

@@ -239,11 +239,11 @@ line.setUnionMode(true);
 
 ### setLineType(type)
 
-`v2.2.3+`
-
 > 선의 타입을 설정합니다.
 >
 > 실선, 점선 등과 같은 타입을 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -294,9 +294,9 @@ line.setDepthbufferTest(false); // 비활성화
 
 ### setRenderToTexture(set) → boolean
 
-`v2.2.3+`
-
 > 선 객체의 타입을 지형 결합(3DLINE) 또는 하늘선(SKY_LINE) 타입으로 전환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -366,9 +366,9 @@ line.createGridArrowLine({
 
 ### getAxisMovePosition(pickPoint, mapPoint) → [JSVector3D](../core/jsvector3d.md)
 
-`v2.27.2+`
-
 > 축(Axis) 편집 기즈모(정점 2개, 파트 1개로 구성된 라인)에서, 축 위의 피킹 좌표(pickPoint)와 현재 마우스 위치에 대응하는 지도 좌표(mapPoint)를 이용해 축 방향으로 제한된 이동 위치를 계산합니다.
+
+* 지원버전 : `2.27.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -537,9 +537,9 @@ var objectStyle = polyLine.getStyle();
 
 ### isInstancedRender(), setInstancedRender(set) → boolean
 
-`v2.28.3+`
-
 > 선 객체의 인스턴싱(Instanced) 렌더링 사용 여부를 설정합니다.
+
+* 지원버전 : `2.28.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -565,13 +565,13 @@ var isInstanced = line.isInstancedRender();
 
 ### setGroundPolylineLodDistances(distances) → boolean
 
-`v2.29.1+`
-
 > 라인의 거리 기반 LOD(단순화) 단계를 설정합니다. `setPolylineLodDistances(distances)`도 동일하게 동작합니다(cpp에서 같은 구현부에 바인딩된 별칭이며, `Ground`가 없는 이름을 신규로 노출한 것입니다). 이 항목의 이름은 하위호환을 위해 유지됩니다.
 >
 > 카메라와 라인 중심 사이의 거리에 따라 라인 정점을 몇 단계로 단순화할지 지정하며, 배열의 각 항목은 거리별 단순화 허용 오차(simplify)를 나타냅니다. 거리가 멀어질수록 simplify 값이 작아지면(더 세밀해지면) 논리적으로 맞지 않으므로 실패합니다(콘솔 경고 출력). 설정하면 이미 만들어진 인스턴스 버퍼는 폐기되고 새 단계 구성으로 다시 만들어집니다.
 >
 > 설정 자체는 지면 결합 라인에만 한정되지 않으며 라인 타입(S3dExline) 객체라면 모두 설정/조회할 수 있고, 별도로 설정하지 않으면 기본 단계(아래 `getGroundPolylineLodDistances()` 참고)가 적용됩니다. 다만 거리에 따른 LOD 전환은 엔진이 LOD 갱신을 수행하는 렌더링 경로(인스턴스 렌더링이 켜진 지면 결합 라인, 그리고 [JSDataVisualizer.setLineInstancedLod(key, distances)](../datavisualizer/jsdatavisualizer.md#setlineinstancedlod-key-distances-boolean)로 LOD를 켠 라인 레이어)에서만 이루어집니다. 그 외의 단독 일반 라인 객체는 설정값이 저장되더라도 원본 정점으로 그려집니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -612,11 +612,11 @@ line.setPolylineLodDistances([
 
 ### getGroundPolylineLodDistances() → array
 
-`v2.29.1+`
-
 > [setGroundPolylineLodDistances(distances)](jslinestring.md#setgroundpolylineloddistances-distances-boolean)로 설정된 LOD 단계 목록을 반환합니다. `getPolylineLodDistances()`도 동일하게 동작합니다(cpp에서 같은 구현부에 바인딩된 별칭). 이 항목의 이름은 하위호환을 위해 유지됩니다.
 >
 > 설정한 적이 없으면 객체 생성 시 부여되는 기본 단계가 반환됩니다. 기본 단계는 distance 2000m / simplify 2, 10000m / 10, 50000m / 50, 200000m / 200, 600000m / 500 의 5개이며, 첫 단계 distance 미만에서는 원본 정점을 사용합니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}

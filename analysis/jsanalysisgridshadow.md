@@ -4,9 +4,9 @@ description: 지도 내 수인한도 분석 기능 설정을 위한 API 입니�
 
 # JSAnalysisGridShadow
 
-`v1.50.0+`
-
 > Module.getAnalysisGridShadow API를 생성합니다.
+
+* 지원버전 : `1.50.0+`
 
 ```javascript
 var gridShadow = Module.getAnalysisGridShadow();
@@ -16,7 +16,7 @@ var gridShadow = Module.getAnalysisGridShadow();
 
 | Name     			| Type                                	| Description                   |
 | ----------------- | ------------------------------------- | ----------------------------- |
-| strictCalculate `v2.2.2+` 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)). 			|
+| strictCalculate `2.2.2+` 	| number                             	| 분석 옵션([Shadow Analysis Type List](../etc/type-list.md#shadow-analysis-type-list)). 			|
 
 ## Function
 
@@ -184,9 +184,9 @@ gridShadow.setAnalysis("id", false);
 
 ### prograss(object) → string
 
-`v2.3.0+`
-
 > 분석 진행률을 반환합니다.
+
+* 지원버전 : `2.3.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -298,11 +298,11 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### createWindow(layerName) → boolean
 
-`v1.50.2+`
-
 > 일조량 분석을 위한 창문 객체를 생성합니다.
 >
 > 마우스 클릭 이벤트(Module.MML_ANALYS_WINDOWSHADOW)를 통해 입력점 2개로 창문을 생성합니다.
+
+* 지원버전 : `1.50.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -335,13 +335,13 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### copyPasteWindow() → boolean
 
-`v1.50.2+`
-
 > 생성된 창문을 복사 후 붙여넣기 합니다.
 >
 > 가장 최근에 생성한 창문을 복사합니다.
 >
 > 마우스 클릭 이벤트(Module.MML_ANALYS_WINDOWSHADOW)를 통해 입력된 좌표를 창문의 좌상단으로 복사합니다.
+
+* 지원버전 : `1.50.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -371,13 +371,13 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### copyPasteFloor() → boolean
 
-`v1.50.2+`
-
 > 생성된 한 층에 존재하는 모든 창문을 다른층으로 복사후 붙여넣기 합니다.
 >
 > 가장 최근에 생성한 한 층에 존재하는 모든 창문을 복사합니다.
 >
 > 마우스 클릭 이벤트(Module.MML_ANALYS_WINDOWSHADOW)를 통해 입력된 좌표를 창문의 좌상단으로 복사합니다.
+
+* 지원버전 : `1.50.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -407,11 +407,11 @@ gridShadow.startAnalysis(new Module.JSDateTime(2023, 4, 17, 9, 30, 0), new Modul
 
 ### getResponseDropped() → number
 
-`v2.31.1+`
-
 > (진단용) 이미 지워진 분석 객체로 도착해서 무시한 web worker 응답의 누적 개수를 반환합니다.
 >
 > 정적 함수이므로 `Module.getAnalysisGridShadow()`가 돌려준 객체가 아니라 클래스에서 `Module.JSAnalysisGridShadow.getResponseDropped()`로 호출해야 합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}

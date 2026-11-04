@@ -24,9 +24,9 @@ let boxWithMinMax = new Module.JSAABBox3D(min, max);
 
 ### getBox() → [JSVec3Array](../core/jsvec3array.md)
 
-`v2.17.1+`
-
 > ECEF 좌표계에서의 AABB의 좌표를 반환합니다.
+
+* 지원버전 : `2.17.1+`
 
 {% tabs %}
 {% tab title="Information" %}

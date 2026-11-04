@@ -706,9 +706,9 @@ colorGrid2D.Create();
 
 ### setOpacity(opacity) → void
 
-`v1.38.0+`
-
 > 2차원 격자 객체의 불투명도를 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -727,9 +727,9 @@ colorGrid2D.setOpacity(0.5);
 
 ### createHexagonGrid(options) → boolean
 
-`v1.37.42+`
-
 > 지정된 영역에 육각형 셀 그리드를 생성합니다.
+
+* 지원버전 : `1.37.42+`
 
 {% tabs %}
 {% tab title="Information" %}

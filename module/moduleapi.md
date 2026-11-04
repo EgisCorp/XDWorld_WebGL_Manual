@@ -40,11 +40,11 @@ Module.initialize({
 
 ### initialize(object) → object
 
-`v1.43.0+`
-
 > 지도를 생성합니다.
 >
 > worker 항목 옵션을 통해 web worker 기능을 활성화 합니다.
+
+* 지원버전 : `1.43.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -95,9 +95,9 @@ Module.initialize({
 
 ### getVersion() → string
 
-`v1.51.1+`
-
 > 현재 엔진의 버전을 반환합니다.
+
+* 지원버전 : `1.51.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -783,9 +783,9 @@ Module.XDRenderData();
 
 ### GoogleMap() / OpenStreetMap() / ArcMap() / WMTS() / BingMap() / DawulMap()
 
-`v1.36.6+`
-
 > 배경지도를 변경합니다.
+
+* 지원버전 : `1.36.6+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -805,9 +805,9 @@ Module.XDRenderData();
 
 ### setInspector(mode)
 
-`v1.37.6+`
-
 > 엔진 모니터링 사용 여부를 설정합니다.
+
+* 지원버전 : `1.37.6+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -829,9 +829,9 @@ Module.XDRenderData();
 
 ### getInspector() → object
 
-`v1.37.5+`
-
 > 엔진 모니터링 결과값을 반환합니다.
+
+* 지원버전 : `1.37.5+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -867,9 +867,9 @@ Module.XDRenderData();
 
 ### refreshInspector()
 
-`v1.37.5+`
-
 > 엔진 모니터링을 초기화 합니다.
+
+* 지원버전 : `1.37.5+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -890,9 +890,9 @@ Module.XDRenderData();
 
 ### getTileLayerList() → [JSLayerList](../layer/jslayerlist.md)
 
-`v1.41.0+`
-
 > 타일 레이어 리스트를 반환합니다.
+
+* 지원버전 : `1.41.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -913,9 +913,9 @@ Module.XDRenderData();
 
 ### getObjectLayerList() → [JSLayerList](../layer/jslayerlist.md)
 
-`v1.41.0+`
-
 > 옥트리 레이어 리스트를 반환합니다.
+
+* 지원버전 : `1.41.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -1364,9 +1364,9 @@ let object = Module.createReal3D("newReal3D");
 
 ### createInstanceObject(id) → [JSInstanceObject](../object/jsinstanceobject.md)
 
-`v1.37.35+`
-
 > 인스턴스 객체를 생성합니다.
+
+* 지원버전 : `1.37.35+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1452,11 +1452,11 @@ let position = Module.GetClickPosition(); // ex) "129.128265_35.171834_50.000000
 
 ### getClickPointColor() → [JSColor](../core/jscolor.md)
 
-`v2.6.2+`
-
 > 클릭 지점에 표시되는 포인트의 색상을 반환합니다.
 >
 > 기본값은 ARGB(255, 255, 255, 255) 입니다.
+
+* 지원버전 : `2.6.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1476,11 +1476,11 @@ let color = Module.getClickPointColor();
 
 ### setClickPointColor(color)
 
-`v2.6.2+`
-
 > 클릭 지점에 표시되는 포인트의 색상을 설정합니다.
 >
 > 투명도(alpha) 값은 255로 고정 적용됩니다.
+
+* 지원버전 : `2.6.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1502,11 +1502,11 @@ Module.setClickPointColor(color);
 
 ### getClickPointScale() → number
 
-`v2.6.2+`
-
 > 클릭 지점에 표시되는 포인트의 크기(scale) 값을 반환합니다.
 >
 > 기본값은 1.0 입니다.
+
+* 지원버전 : `2.6.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1526,9 +1526,9 @@ let scale = Module.getClickPointScale();
 
 ### setClickPointScale(scale)
 
-`v2.6.2+`
-
 > 클릭 지점에 표시되는 포인트의 크기(scale) 값을 설정합니다.
+
+* 지원버전 : `2.6.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1599,11 +1599,11 @@ let lodPoi = Module.createLODPOI("newLODPOI");
 
 ### createGLTF(id) → [JSPolygon](../object/jspolygon.md)
 
-`v1.37.31+`
-
 > glTF 포맷 객체를 생성합니다.
 >
 > [JSPolygon](../object/jspolygon.md) 타입으로 반환되며, JSPolygon의 API를 통해 제어합니다.
+
+* 지원버전 : `1.37.31+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1627,11 +1627,11 @@ let object = Module.createGLTF("newGLTF");
 
 ### createOverlayObject(id) → [JSPolygon](../object/jspolygon.md)
 
-`v1.59.0+`
-
 > 오버레이 객체를 생성합니다.
 >
 > [JSPolygon](../object/jspolygon.md) 타입으로 반환되며, JSPolygon의 API를 통해 제어합니다.
+
+* 지원버전 : `1.59.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1655,11 +1655,11 @@ let object = Module.createOverlayObject("newOverlay");
 
 ### createRoadObject(id, type) → [JSPolygon](../object/jspolygon.md)
 
-`v1.59.2+`
-
 > 도로 객체를 생성합니다.
 >
 > [JSPolygon](../object/jspolygon.md) 타입으로 반환되며, JSPolygon의 API를 통해 제어합니다.
+
+* 지원버전 : `1.59.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1684,9 +1684,9 @@ let object = Module.createRoadObject("newRoad", Module.ROAD_BRIDGE);
 
 ### getDataVisualizer() → [JSDataVisualizer](../datavisualizer/jsdatavisualizer.md)
 
-`v2.14.0+`
-
 > JSON 데이터를 기반으로 포인트/라인/그리드/폴리곤 형태의 대량 데이터를 시각화하는 [JSDataVisualizer](../datavisualizer/jsdatavisualizer.md) 객체를 반환합니다.
+
+* 지원버전 : `2.14.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1795,9 +1795,9 @@ let figure = Module.createFigure("newFigure");
 
 ### createVideoObject(id) → [JSVideoObject](../object/jsvideoobject.md)
 
-`v1.37.17+`
-
 > 멀티 비디오 텍스쳐 객체([JSVideoObject](../object/jsvideoobject.md))를 생성합니다.
+
+* 지원버전 : `1.37.17+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1822,11 +1822,11 @@ var object = Module.createVideoObject("newVideo");
 
 ### createVolumeObject(id) → [JSVolumeObject](../object/jsvolumeobject.md)
 
-`v2.29.2+`
-
 > 구름·화염·산불·수면·태풍 등 부피감 있는 효과를 표현하는 볼륨(Volume) 객체([JSVolumeObject](../object/jsvolumeobject.md))를 생성합니다.
 >
 > 기존 `createVoxelObject`/`JSVoxelObject`를 대체하는 API입니다.
+
+* 지원버전 : `2.29.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1851,9 +1851,9 @@ var volume = Module.createVolumeObject("newVolume");
 
 ### getAnalysisGridShadow() → [JSAnalysisGridShadow](../analysis/jsanalysisgridshadow.md)
 
-`v1.50.0+`
-
 > 수인한도(일영) 분석 기능을 제어하는 [JSAnalysisGridShadow](../analysis/jsanalysisgridshadow.md) 객체를 반환합니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2026,9 +2026,9 @@ Module.XDClearDistanceMeasurement();
 
 ### XDClearAltDistanceMeasurement()
 
-`v1.59.3+`
-
 > 고도차(수직) 거리 측정 객체와 지형 절개(단면) 표시, 입력 점 리스트를 초기화합니다.
+
+* 지원버전 : `1.59.3+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -2220,11 +2220,11 @@ Module.XDSetViewPointHeight(100.0);
 
 ### start(options) → number
 
-`v1.37.35+`
-
 > 지정한 canvas 엘리먼트에 지도를 생성합니다.
 >
 > [initialize](moduleapi.md) 이전부터 사용되던 초기화 API로, canvas ID 문자열 기반의 단순한 옵션 객체를 사용합니다.
+
+* 지원버전 : `1.37.35+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -2261,9 +2261,9 @@ Module.start({
 
 ### preventDefault(event)
 
-`v1.43.0+`
-
 > addEventListener로 등록된 이벤트(예: 마우스 오른쪽 클릭 시 컨텍스트 메뉴)의 기본 동작을 막습니다.
+
+* 지원버전 : `1.43.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -2696,9 +2696,9 @@ Module.SetMobileMode(1);
 
 ### SetSimpleModeLineRender(mode)
 
-`v1.37.16+`
-
 > [SetSimpleMode](moduleapi.md) 적용 시, 오브젝트의 엣지 라인 렌더링 여부를 설정합니다.
+
+* 지원버전 : `1.37.16+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -3249,9 +3249,9 @@ Module.XDEMashupFile(0, "server.url/data.kml", 0, 0, 0);
 
 ### createTyphoon(id) → [JSTyphoon](../object/jstyphoon.md)
 
-`v1.60.1+`
-
 > 태풍 객체를 생성합니다.
+
+* 지원버전 : `1.60.1+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -3276,9 +3276,9 @@ var typhoon = Module.createTyphoon("typhoon01");
 
 ### getPylonManager() → [JSPylonManager](../manager/jspylonmanager.md)
 
-`v1.50.0+`
-
 > 송전탑(철탑)/전선(Wire) 등 전력 설비 생성 및 관리 기능을 제어하는 [JSPylonManager](../manager/jspylonmanager.md) 객체를 반환합니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -3970,11 +3970,11 @@ Module.setLimitObjectMax(50);
 
 ### deleterSyncLayer(layerName)
 
-`v1.37.40+`
-
 > 지정한 이름의 레이어를 동기화(Sync) 삭제 대기열에 등록합니다. 즉시 삭제되지 않고, 다음 메인 루프 tick에서 사용자/서비스 레이어 양쪽을 대상으로 삭제가 처리됩니다.
 >
 > 동기화 관련 기능은 추후 개선 예정으로, 현재는 임시로 제공되는 API입니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3995,11 +3995,11 @@ Module.deleterSyncLayer("myLayer");
 
 ### setOverlayMode(set) → boolean
 
-`v1.59.0+`
-
 > 지도 화면을 정사영(직교 투영) 방식의 오버레이(Overlay) 텍스처로 렌더링하는 모드를 설정합니다.
 >
 > true로 설정하면 그림자맵(ShadowMap) 갱신 시 카메라 시점 대신 지표면 수직 방향에서 내려다보는 투영으로 전환되며, 이 모드가 활성화된 동안에는 GLTF, 파이프 단면 분석 그래프 등 일부 부가 3D 객체는 렌더링에서 제외됩니다. false로 설정하면 오버레이 모드를 해제합니다.
+
+* 지원버전 : `1.59.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -4024,9 +4024,9 @@ Module.setOverlayMode(true);
 
 ### getRoadManager() → [JSRoadManager](../manager/jsroadmanager.md)
 
-`v1.60.1+`
-
 > 도로 객체에서 사용할 텍스처를 등록하기 위한 [JSRoadManager](../manager/jsroadmanager.md) 객체를 반환합니다.
+
+* 지원버전 : `1.60.1+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -4046,11 +4046,11 @@ var roadManager = Module.getRoadManager();
 
 ### getCallback(key) → function
 
-`v2.22.0+`
-
 > 지정한 key로 등록되어 있는 콜백 함수를 조회합니다.
 >
 > "completepoint", "addpoint", "mousechange", "altdistance", "cameramovecomplete", "objectLoadCallback", "loadDataCallback", "3dscomplete", "timeupdate", "gridprograss" 등 엔진 내부에서 각 API가 콜백을 등록할 때 사용하는 key 문자열과 동일한 값을 전달합니다.
+
+* 지원버전 : `2.22.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -4075,13 +4075,13 @@ var callback = Module.getCallback("cameramovecomplete");
 
 ### setGizmoMode(mode)
 
-`v2.25.0+`
-
 > 3차원 기즈모(Gizmo, 이동/회전/크기조절 조작 핸들)의 동작 모드를 설정합니다.
 >
 > mode 값이 -1(NONE)~2(SCALE) 범위를 벗어나면 아무 동작도 하지 않습니다.
 >
 > 현재 SCALE 모드는 동작하지 않습니다.
+
+* 지원버전 : `2.25.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -4102,9 +4102,9 @@ Module.setGizmoMode(0);
 
 ### getGizmoMode() → number
 
-`v2.25.0+`
-
 > 현재 설정된 기즈모(Gizmo)의 동작 모드를 반환합니다.
+
+* 지원버전 : `2.25.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -4125,9 +4125,9 @@ var mode = Module.getGizmoMode();
 
 ### isDiscreteGPUUnused() → boolean
 
-`v2.29.1+`
-
 > 시스템에 외장 GPU가 있음에도 내장(통합) GPU로 렌더링 중인지 확인합니다(안내 메시지 표시 여부 판단용).
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -4143,9 +4143,9 @@ if (Module.isDiscreteGPUUnused()) {
 
 ### XDEClearOutsideMemory() → number
 
-`v2.29.1+`
-
 > 화면 밖(프러스텀 밖) 텍스처를 유예 없이 즉시 해제합니다(진단/수동 정리용).
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4166,9 +4166,9 @@ var freedBytes = Module.XDEClearOutsideMemory();
 
 ### XDESetFrameInterval(interval), XDEGetFrameInterval() → number
 
-`v2.29.1+`
-
 > 렌더링 프레임 간격을 설정합니다(배터리 소모 절감용). `requestAnimationFrame` 기준 몇 프레임마다 한 번씩 렌더링할지를 지정합니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4194,11 +4194,11 @@ var interval = Module.XDEGetFrameInterval();
 
 ### XDESetAutoMemoryClear(on), XDEGetAutoMemoryClear() → boolean
 
-`v2.29.1+`
-
 > 화면 밖 텍스처 자동 정리 기능의 사용 여부를 설정합니다(진단용).
 >
 > ⚠️ 끈 상태로 두면 화면 밖 텍스처가 계속 누적되므로, 진단 목적 외에는 끈 채로 두지 않아야 합니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4223,11 +4223,11 @@ var isOn = Module.XDEGetAutoMemoryClear();
 
 ### XDEDumpTextures(unused)
 
-`v2.29.1+`
-
 > 현재 살아있는 텍스처 목록을 이름별로 묶어 개수와 함께 콘솔에 출력합니다(진단용).
 >
 > 호출 시점의 스냅샷만 출력하며 객체를 역참조하지 않으므로, 누수/댕글링(dangling) 상태의 텍스처도 안전하게 확인할 수 있습니다. "레이어를 지웠는데 텍스처가 해제되지 않는다" 같은 문제에서 남아있는 텍스처의 이름(접두사)을 특정하는 용도입니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4248,9 +4248,9 @@ Module.XDEDumpTextures(0);
 
 ### XDESetLayerFrustumClear(on), XDEGetLayerFrustumClear() → boolean
 
-`v2.29.1+`
-
 > 레이어(건물) 타일의 프러스텀(카메라 시야) 기반 해제 기능의 사용 여부를 설정합니다. 문제 발생 시 이전 동작(LOD 기준 해제만 사용)으로 되돌리는 용도입니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4275,11 +4275,11 @@ var isOn = Module.XDEGetLayerFrustumClear();
 
 ### XDESetLayerOffscreenGrace(n), XDEGetLayerOffscreenGrace() → number
 
-`v2.29.1+`
-
 > 레이어(건물) 타일이 화면 밖으로 나간 뒤, 실제로 해제되기까지 유예할 정리 주기 횟수를 설정합니다.
 >
 > 정리 주기가 30프레임마다 한 번씩 돌기 때문에, 값 4는 약 2초의 유예 시간에 해당합니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4304,11 +4304,11 @@ var grace = Module.XDEGetLayerOffscreenGrace();
 
 ### XDESetPoiTexture16Bit(on), XDEGetPoiTexture16Bit() → boolean
 
-`v2.29.1+`
-
 > POI 라벨 텍스처를 16비트(RGBA4444) 포맷으로 생성할지 여부를 설정합니다(메모리 절약용).
 >
 > 설정을 켠 이후에 새로 만들어지는 라벨부터 적용되며, 이미 생성된 라벨에는 영향을 주지 않습니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4333,8 +4333,6 @@ var is16Bit = Module.XDEGetPoiTexture16Bit();
 
 ### XDESetPoiTexture8Bit(on), XDEGetPoiTexture8Bit() → boolean
 
-`v2.30.3+`
-
 > POI 라벨 텍스처를 PAL8(픽셀당 1바이트 인덱스 + 공용 팔레트) 포맷으로 생성할지 여부를 설정합니다(메모리 절약용).
 >
 > 기본값은 false(꺼짐)이며, 켠 이후에 새로 만들어지는 라벨([JSPoint.setImage](../object/jspoint.md#setimage-data-width-height-boolean))부터 적용되고 이미 생성된 라벨에는 영향을 주지 않습니다.
@@ -4344,6 +4342,8 @@ var is16Bit = Module.XDEGetPoiTexture16Bit();
 > 라벨의 고유 RGBA 조합이 256개 이하이면 무손실이며, 256개를 초과하면 색(RGB)을 병합하고 알파 계조는 유지합니다(RGBA4444는 알파를 16단계로 접습니다). 공용 팔레트 행이 고갈되면 해당 라벨은 자동으로 RGBA4444로 대체됩니다. LINEAR 필터가 필요한 라벨(회전 라벨, `imageScale`이 1이 아닌 라벨)은 셰이더에서 색 공간 보간으로 처리합니다.
 >
 > [XDECreateLabelAtlas](moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 만든 아틀라스에는 적용되지 않으며, 아틀라스는 항상 RGBA4444로 생성됩니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4368,11 +4368,11 @@ var is8Bit = Module.XDEGetPoiTexture8Bit();
 
 ### XDEGetPoiTexture8BitStats() → object
 
-`v2.30.3+`
-
 > PAL8 라벨의 변환 결과 통계와 팔레트 상태를 반환합니다(진단용).
 >
 > [XDESetPoiTexture8Bit](moduleapi.md#xdesetpoitexture8bit-on-xdegetpoitexture8bit-boolean)를 켠 상태에서 `setImage`로 만든 라벨에 대해 누적됩니다. PAL8 적용률과 손실 여부를 확인할 때 사용하며, 일반 기능 동작에는 필요하지 않습니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4412,13 +4412,13 @@ console.log(stats.labels, stats.lossless, stats.lossy, stats.rowExhausted);
 
 ### XDECreateLabelAtlas(data, width, height) → number
 
-`v2.30.3+`
-
 > 여러 라벨 이미지를 한 장에 모은 RGBA8 이미지로 아틀라스 텍스처를 생성하고, 아틀라스 ID를 반환합니다.
 >
 > 라벨을 하나씩 [JSPoint.setImage](../object/jspoint.md#setimage-data-width-height-boolean)로 올리면 라벨마다 GL 텍스처 생성/업로드 비용이 들지만, 아틀라스는 한 번만 업로드하고 각 POI가 [JSPoint.setImageAtlas](../object/jspoint.md#setimageatlas-atlasid-x-y-width-height-boolean)로 칸을 참조하므로 호출 비용이 라벨 수만큼 줄어듭니다.
 >
 > 아틀라스 텍스처는 항상 NEAREST 필터를 사용하며, 포맷은 항상 RGBA4444(2B/px)입니다([XDESetPoiTexture8Bit](moduleapi.md#xdesetpoitexture8bit-on-xdegetpoitexture8bit-boolean) 설정과 무관). 반환된 ID는 재사용되지 않습니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4459,11 +4459,11 @@ Module.XDEReleaseLabelAtlas(atlasId);
 
 ### XDEReleaseLabelAtlas(atlasId) → boolean
 
-`v2.30.3+`
-
 > [XDECreateLabelAtlas](moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 만든 아틀라스를 레지스트리에서 해제합니다.
 >
 > 이 호출 이후에는 해당 ID로 [JSPoint.setImageAtlas](../object/jspoint.md#setimageatlas-atlasid-x-y-width-height-boolean)를 호출할 수 없습니다. 이미 아틀라스 칸을 참조 중인 POI가 있으면 GL 텍스처는 유지되고(참조 계수), 마지막 POI가 사라질 때 함께 해제됩니다. 따라서 아틀라스를 모든 POI에 붙인 직후 호출하면 됩니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4488,11 +4488,11 @@ Module.XDEReleaseLabelAtlas(atlasId);
 
 ### XDESetPhotoTexture16Bit(on), XDEGetPhotoTexture16Bit() → boolean
 
-`v2.29.1+`
-
 > 사진 텍스처(JPEG 기반 지형 영상·건물 파사드 등)를 16비트(RGB565) 포맷으로 디코드할지 여부를 설정합니다(메모리 절약용).
 >
 > 설정을 켠 이후에 새로 받는 타일부터 적용되며, 이미 받은 타일에는 영향을 주지 않습니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4517,11 +4517,11 @@ var is16Bit = Module.XDEGetPhotoTexture16Bit();
 
 ### XDESetImageryColorBits(bits), XDEGetImageryColorBits() → number
 
-`v2.31.1+`
-
 > 위성 영상(JPG, KTX2 등 팔레트 방식이 아닌 소스) 지형 영상을 합성할 때 쓰는 텍스처의 색 깊이를 설정합니다. 기본값은 16(RGB565, 메모리 절약)이며, 24(RGBA8888)로 올리면 화질이 좋아지는 대신 메모리를 더 사용합니다.
 >
 > 벡터타일 레이어의 색 깊이는 [XDESetVectorTileColorBits](moduleapi.md#xdesetvectortilecolorbits-bits-xdegetvectortilecolorbits-number)로 따로 설정하며, 두 설정은 서로 영향을 주지 않습니다. 이미 합성된 텍스처는 바뀌지 않고 새로 합성되는 타일부터 적용되므로, 설정 후 화면에 즉시 반영하려면 [XDEPlanetRefresh](moduleapi.md#xdeplanetrefresh)를 호출하십시오.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4547,11 +4547,11 @@ var bits = Module.XDEGetImageryColorBits();
 
 ### XDESetVectorTileColorBits(bits), XDEGetVectorTileColorBits() → number
 
-`v2.31.1+`
-
 > 벡터타일(팔레트 8비트 소스) 레이어의 색 깊이를 설정합니다. 기본값은 8(팔레트 인덱스, 메모리 최소)이며, 16(RGB565)으로 바꾸면 메모리를 더 쓰는 대신 도로 경계 등의 계단 현상이 줄어듭니다.
 >
 > 8은 타일 디코드 단계까지 영향을 주므로, 이미 받은 타일 텍스처도 포맷이 달라집니다. 설정을 바꾼 뒤에는 [XDEPlanetRefresh](moduleapi.md#xdeplanetrefresh)로 타일을 다시 받는 것을 권장합니다. 다시 받지 않으면 이전 포맷의 타일과 새 포맷의 타일이 한 합성에 섞일 수 있으며, 이미 8비트 인덱스로 디코드된 타일은 설정과 관계없이 8비트로 합성됩니다. 위성 영상의 색 깊이는 [XDESetImageryColorBits](moduleapi.md#xdesetimagerycolorbits-bits-xdegetimagerycolorbits-number)로 따로 설정합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4577,11 +4577,11 @@ var bits = Module.XDEGetVectorTileColorBits();
 
 ### getPostProcess() → [JSPostProcess](../option/jspostprocess.md)
 
-`v2.29.3+`
-
 > 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 제어하는 [JSPostProcess](../option/jspostprocess.md) 객체를 반환합니다.
 >
 > 처음 호출할 때 객체를 생성하며, 이후에는 호출할 때마다 같은 객체를 반환합니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4602,13 +4602,13 @@ postProcess.setEnableDoF(true);
 
 ### createIcon() → [JSIcon](../object/jsicon.md)
 
-`v2.30.1+`
-
 > 이미지가 비어 있는 [JSIcon](../object/jsicon.md) 객체를 생성합니다.
 >
 > 생성한 아이콘에 `setNormalIconByImageData` 등으로 이미지를 넣은 뒤 POI의 `setIcon`으로 지정하면, 같은 라벨 이미지를 여러 POI가 하나의 텍스처로 공유할 수 있습니다. POI마다 `setImage`를 호출하면 호출할 때마다 텍스처가 새로 생성되므로, 동일한 이미지를 쓰는 POI가 많을 때 메모리를 크게 줄일 수 있습니다.
 >
 > 이 함수로 만든 아이콘은 [JSSymbol](../object/jssymbol.md)의 아이콘 목록에 등록되지 않으며, 이미지를 넣기 전까지는 텍스처가 없어 POI의 `setIcon`이 실패(false)합니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4641,11 +4641,11 @@ for (var i = 0; i < 1000; i++) {
 
 ### createDepthGuide(id) → [JSDepthGuide](../object/jsdepthguide.md)
 
-`v2.30.1+`
-
 > 독립된 깊이 눈금 가이드([JSDepthGuide](../object/jsdepthguide.md)) 객체를 생성합니다.
 >
 > 깊이 눈금 상자는 박스와 눈금(그라데이션)을 모두 설정하고 레이어에 등록해야 화면에 나타납니다. 레이어의 거리 컬링 상한(기본 3000m)도 함께 올려야 합니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4670,11 +4670,11 @@ var guide = Module.createDepthGuide("newGuide");
 
 ### getFlowLayerList() → [JSFlowLayerList](../layer/jsflowlayerlist.md)
 
-`v2.31.1+`
-
 > 해류·조류 흐름 레이어를 생성하고 관리하는 [JSFlowLayerList](../layer/jsflowlayerlist.md) 객체를 반환합니다.
 >
 > 싱글톤이며 호출할 때마다 같은 객체를 반환합니다. [JSLayerList](../layer/jslayerlist.md)와는 독립적으로 동작합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4694,8 +4694,6 @@ var flowList = Module.getFlowLayerList();
 
 ### createClippingBox(position, width, depth, height)
 
-`v2.30.2+`
-
 > 클리핑 박스(Clipping Box)를 생성하고 화면에 표시합니다.
 >
 > 클리핑 박스는 지도에 하나만 존재합니다. 다시 호출하면 기존 박스의 위치와 크기가 새 값으로 바뀝니다. 박스는 중심 위치의 지표면 기준 동서/남북/상하 방향으로 놓이며, 반투명 흰색 면과 외곽선으로 그려집니다.
@@ -4703,6 +4701,8 @@ var flowList = Module.getFlowLayerList();
 > 객체의 `setClipping(true)`을 호출하면([JSObject3D](../object/jsobject3d.md)) 그 객체는 박스 안쪽 부분만 불투명하게 렌더링되고, 박스 바깥 부분은 `setClippingAlpha`로 지정한 투명도로 표시됩니다(0이면 완전히 잘려 보이지 않음). 클리핑은 폴리곤 등 3D 도형 객체에 적용됩니다.
 >
 > `Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX)` 마우스 모드에서는 박스를 클릭해 선택한 뒤 기즈모로 이동/크기를 조절할 수 있습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4738,11 +4738,11 @@ Module.XDSetMouseState(Module.MML_EDIT_CLIPPINGBOX);
 
 ### setClippingBoxVisible(visible)
 
-`v2.30.1+`
-
 > 클리핑 박스의 표시 여부를 설정합니다.
 >
 > 박스를 숨겨도 이미 설정된 위치/크기 정보는 유지되며, 클리핑 박스 마우스 모드에서 숨겨진 박스는 선택되지 않습니다. 박스를 먼저 생성([createClippingBox](moduleapi.md#createclippingbox-position-width-depth-height))하지 않은 상태에서는 표시해도 그려질 박스가 없습니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4763,11 +4763,11 @@ Module.setClippingBoxVisible(false);
 
 ### setClippingBoxPosition(position)
 
-`v2.30.1+`
-
 > 클리핑 박스의 중심 위치를 변경합니다. 크기는 유지됩니다.
 >
 > 박스를 먼저 생성([createClippingBox](moduleapi.md#createclippingbox-position-width-depth-height))하지 않았다면 박스가 만들어지지 않으므로 위치만 기록됩니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4788,9 +4788,9 @@ Module.setClippingBoxPosition(new Module.JSVector3D(127.0, 37.5, 30));
 
 ### setClippingBoxSize(width, depth, height)
 
-`v2.30.1+`
-
 > 클리핑 박스의 크기를 변경합니다. 중심 위치는 유지됩니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4813,11 +4813,11 @@ Module.setClippingBoxSize(200, 150, 60);
 
 ### XDESetMemoryClearInterval(ms), XDEGetMemoryClearInterval() → number
 
-`v2.30.3+`
-
 > 화면 밖 텍스처 자동 정리가 실행되는 주기(ms)를 설정합니다.
 >
 > 자동 정리가 켜져 있을 때([XDESetAutoMemoryClear](moduleapi.md#xdesetautomemoryclear-on-xdegetautomemoryclear-boolean)) 이 주기마다 정리 패스가 실행되며, 텍스처 메모리 압박이 감지되면 주기와 무관하게 실행됩니다. 재빌드 없이 여러 값을 같은 세션에서 비교하기 위한 튜닝용 API입니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4842,11 +4842,11 @@ var interval = Module.XDEGetMemoryClearInterval();
 
 ### XDESetExtrudeGradient(on), XDEGetExtrudeGradient() → boolean
 
-`v2.30.3+`
-
 > 압출(Polyhedron) 건물의 높이 그라데이션 렌더링 사용 여부를 설정합니다.
 >
 > 켜면 건물 벽면은 아래쪽이 약간 어둡고 위쪽이 밝은 세로 그라데이션과 면 방향 음영으로 표현되고, 지붕은 흰색으로 표현됩니다. 벽 밝기는 [XDESetExtrudeGradientFloor](moduleapi.md#xdesetextrudegradientfloor-value-xdegetextrudegradientfloor-number), [XDESetExtrudeGradientTop](moduleapi.md#xdesetextrudegradienttop-value-xdegetextrudegradienttop-number), [XDESetExtrudeFaceShade](moduleapi.md#xdesetextrudefaceshade-value-xdegetextrudefaceshade-number)로 조절합니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4871,11 +4871,11 @@ var isOn = Module.XDEGetExtrudeGradient();
 
 ### XDESetExtrudeGradientFloor(value), XDEGetExtrudeGradientFloor() → number
 
-`v2.30.3+`
-
 > 압출 건물 벽 세로 그라데이션의 바닥(벽 최하단) 밝기 배율을 설정합니다.
 >
 > [XDESetExtrudeGradient](moduleapi.md#xdesetextrudegradient-on-xdegetextrudegradient-boolean)를 켠 상태에서만 적용되며, 값이 다음 프레임에 바로 반영됩니다. 면 방향 음영([XDESetExtrudeFaceShade](moduleapi.md#xdesetextrudefaceshade-value-xdegetextrudefaceshade-number))과 곱해져서 적용되므로 두 값을 모두 낮추면 벽이 어두워집니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4901,11 +4901,11 @@ var floor = Module.XDEGetExtrudeGradientFloor();
 
 ### XDESetExtrudeFaceShade(value), XDEGetExtrudeFaceShade() → number
 
-`v2.30.3+`
-
 > 압출 건물에서 광원을 가장 등진 벽면의 밝기 배율을 설정합니다.
 >
 > 벽면마다 광원 방향에 따라 밝기가 달라지며(정면은 1.0에 가까움), 가장 등진 면이 이 값의 밝기가 됩니다. [XDESetExtrudeGradient](moduleapi.md#xdesetextrudegradient-on-xdegetextrudegradient-boolean)를 켠 상태에서만 적용되며 값이 다음 프레임에 바로 반영됩니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4930,11 +4930,11 @@ var shade = Module.XDEGetExtrudeFaceShade();
 
 ### XDESetExtrudeGradientTop(value), XDEGetExtrudeGradientTop() → number
 
-`v2.30.3+`
-
 > 압출 건물 벽 세로 그라데이션의 꼭대기(벽 최상단) 밝기를 설정합니다.
 >
 > 지붕은 흰색(1.0)으로 표현되므로 값이 1.0이면 벽 꼭대기와 지붕의 경계가 사라집니다. [XDESetExtrudeGradient](moduleapi.md#xdesetextrudegradient-on-xdegetextrudegradient-boolean)를 켠 상태에서만 적용됩니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4959,11 +4959,11 @@ var top = Module.XDEGetExtrudeGradientTop();
 
 ### XDESetUniformCache(on)
 
-`v2.29.4+`
-
 > 셰이더 유니폼 값 캐시 사용 여부를 설정합니다(진단용).
 >
 > 켜면 이전과 같은 유니폼 값은 GPU로 다시 올리지 않습니다. 끄면 같은 값도 매번 올리므로 GL 호출이 늘어납니다. 모바일 기기에서 렌더링 깨짐의 원인이 캐시인지 구분할 때 사용합니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4984,11 +4984,11 @@ Module.XDESetUniformCache(false); // 진단 목적으로만 일시 사용
 
 ### XDESetImpostorPages(pages)
 
-`v2.29.3+`
-
 > Impostor LOD가 사용하는 아틀라스 텍스처 페이지 수의 상한을 설정합니다.
 >
 > Impostor LOD([setImpostorEnable](../layer/jslayer.md#setimpostorenable-enable-boolean))는 원거리 건물을 미리 구워 둔 스프라이트로 그리며, 스프라이트는 아틀라스 페이지(페이지당 4096x4096 RGBA, 약 64MB)에 저장됩니다. 페이지는 자리가 모자랄 때 한 장씩 늘어나므로 상한을 올려도 즉시 메모리를 사용하지는 않습니다. 상한을 올리면 더 많은 건물이 Impostor를 사용할 수 있습니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5009,11 +5009,11 @@ Module.XDESetImpostorPages(3);
 
 ### XDEImpostorRebake()
 
-`v2.29.3+`
-
 > Impostor LOD 스프라이트를 모두 폐기하고 현재 화면 크기 기준으로 다시 굽도록 합니다.
 >
 > 카메라를 오래 이동하면 스프라이트가 예전 화면 크기 기준의 해상도를 유지하는데, 이 함수를 호출하면 모든 건물이 현재 화면 크기에 맞는 해상도로 다시 만들어집니다. 다시 구워지는 동안에는 건물이 일반 메시로 그려집니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -5027,11 +5027,11 @@ Module.XDEImpostorRebake();
 
 ### XDESetThumbAsync(on), XDEGetThumbAsync() → boolean
 
-`v2.30.1+`
-
 > 건물(xnd) 데이터에 내장된 썸네일(텍스처) 디코드를 워커로 넘겨 비동기로 적재할지 여부를 설정합니다.
 >
 > 켜면 파싱 중 누적 시간이 [XDESetThumbSyncBudgetMs](moduleapi.md#xdesetthumbsyncbudgetms-ms-xdegetthumbsyncbudgetms-number)로 지정한 시간 박스를 넘은 뒤의 썸네일(또는 크기가 큰 썸네일)이 워커에서 디코드되어 메인 스레드가 오래 점유되는 것을 줄입니다. 대신 적재가 끝나기 전까지 해당 면은 단색으로 보일 수 있습니다. 끄면 모두 동기로 처리합니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5056,11 +5056,11 @@ var isAsync = Module.XDEGetThumbAsync();
 
 ### XDESetThumbSyncBudgetMs(ms), XDEGetThumbSyncBudgetMs() → number
 
-`v2.30.1+`
-
 > 썸네일 비동기 적재가 켜져 있을 때, 파싱 한 번 안에서 동기로 디코드할 수 있는 누적 시간(ms)을 설정합니다.
 >
 > 파싱 중 누적 경과가 이 값을 넘은 뒤의 썸네일만 워커로 넘어갑니다. 0이면 모든 썸네일을 워커로 넘깁니다([XDESetThumbAsync](moduleapi.md#xdesetthumbasync-on-xdegetthumbasync-boolean)가 켜져 있을 때).
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5085,11 +5085,11 @@ var budget = Module.XDEGetThumbSyncBudgetMs();
 
 ### XDESetTextureEncode(on), XDEGetTextureEncode() → boolean
 
-`v2.30.1+`
-
 > 클라이언트 텍스처 인코딩 사용 여부를 설정합니다.
 >
 > 서버가 JPEG로 내려주는 지형 영상과 건물 내장 썸네일을 디코드한 뒤 워커에서 GPU 압축 텍스처(BC7 또는 ETC2)로 인코딩해 올립니다. 비압축(픽셀당 2바이트, RGB565) 대비 텍스처 메모리가 절반으로 줄어듭니다. 압축 인코딩이 가능한 기기([XDEGetEncodeTarget](moduleapi.md#xdegetencodetarget-number)가 0이 아닌 기기)에서만 동작하며, 켠 뒤 새로 들어오는 텍스처부터 적용됩니다. 가로·세로가 4의 배수가 아닌 이미지는 인코딩하지 않고 기존 방식으로 처리합니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5114,11 +5114,11 @@ var isOn = Module.XDEGetTextureEncode();
 
 ### XDEGetEncodeTarget() → number
 
-`v2.30.1+`
-
 > 클라이언트 텍스처 인코딩이 사용할 압축 포맷 번호를 반환합니다.
 >
 > 지도 생성 시 기기가 지원하는 확장에 따라 결정되며, 인코딩 사용 여부([XDESetTextureEncode](moduleapi.md#xdesettextureencode-on-xdegettextureencode-boolean))와는 별개의 값입니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5141,11 +5141,11 @@ var target = Module.XDEGetEncodeTarget();
 
 ### XDEGetParseStats() → object
 
-`v2.30.1+`
-
 > 건물(xnd) 데이터 파싱이 메인 스레드를 점유한 시간 분포와 썸네일 비동기 적재 현황을 반환합니다(진단용).
 >
 > 화면 끊김(메인 스레드 블록)의 원인을 확인하는 용도입니다. 값은 [XDEResetParseStats](moduleapi.md#xderesetparsestats)로 초기화하기 전까지 누적됩니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5189,11 +5189,11 @@ console.log(stats.count, stats.avgMs, stats.maxMs, stats.hist.ge100);
 
 ### XDEResetParseStats()
 
-`v2.30.1+`
-
 > [XDEGetParseStats](moduleapi.md#xdegetparsestats-object)의 누적 통계를 초기화합니다(진단용).
 >
 > 파싱 블록 횟수·시간·face 수, 썸네일의 deferred/applied/droppedStale/failed, 썸네일 시간, 시간 분포(hist)가 0이 됩니다. `gateSkip`과 현재 대기 중인 수(queued, inflightBatch, pendingFaces)는 초기화되지 않습니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -5207,11 +5207,11 @@ Module.XDEResetParseStats();
 
 ### XDEGetEncodeStats() → object
 
-`v2.30.1+`
-
 > 클라이언트 텍스처 인코딩의 동작 통계를 반환합니다(진단용).
 >
 > 인코딩이 실제로 적용되는지, 워커가 어떤 포맷으로 응답하는지 확인하는 용도입니다. 아래 필드 중 `bindZero` 이하는 검정 타일 등 텍스처 오류를 추적하기 위한 내부 진단 카운터입니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5248,11 +5248,11 @@ console.log(stats.on, stats.ok, stats.savedBytes, stats.workerFmt.thumb);
 
 ### XDEResetEncodeStats()
 
-`v2.30.1+`
-
 > [XDEGetEncodeStats](moduleapi.md#xdegetencodestats-object)의 인코딩 통계를 초기화합니다(진단용).
 >
 > `ok`, `skipDim`, `skipFmt`, `savedBytes`와 `workerFmt`의 모든 값이 0이 됩니다. `bindZero` 이하의 진단 카운터는 초기화되지 않습니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -5266,11 +5266,11 @@ Module.XDEResetEncodeStats();
 
 ### XDEGetEdgeStats() → object
 
-`v2.30.2+`
-
 > 건물 외곽선(심플 엣지 배치) 렌더링 통계를 반환합니다(진단용).
 >
 > 로딩 중 건물 외곽선이 사라졌다가 나타나는 현상(깜빡임)의 정도를 수치로 비교하기 위한 값입니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5302,9 +5302,9 @@ console.log(stats.flickTile, stats.missRatio);
 
 ### XDEResetEdgeStats()
 
-`v2.30.2+`
-
 > [XDEGetEdgeStats](moduleapi.md#xdegetedgestats-object)의 통계를 모두 0으로 초기화합니다(진단용).
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -5318,11 +5318,11 @@ Module.XDEResetEdgeStats();
 
 ### XDEGetPoiDeclutterStats() → object
 
-`v2.29.3+`
-
 > POI 화면 밀집 제거(declutter) 처리의 현재 프레임 통계를 반환합니다(진단용).
 >
 > 값은 매 프레임 0에서 다시 집계되며, declutter가 활성화된 POI만 집계 대상입니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5351,11 +5351,11 @@ console.log(stats.candidates, stats.rejected, stats.drawn);
 
 ### XDEGetTextureQueueStats() → object
 
-`v2.30.1+`
-
 > 텍스처 요청 파이프라인과 텍스처 메모리 사용 현황을 반환합니다(진단용).
 >
 > 텍스처 요청 대기열, 메모리 예산 동작, 용도별 텍스처 메모리 분포를 확인하는 용도입니다. 지도가 생성되지 않았으면 빈 객체를 반환합니다. 메모리 크기(`...MB`)는 MB 단위로 내림한 정수입니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5400,11 +5400,11 @@ console.log(stats.usedMB + " / " + stats.budgetMB, stats.byCategory.stream.mb);
 
 ### XDESetTextureBudget(defaultMB, iosMB, lowPct)
 
-`v2.30.1+`
-
 > 타일 텍스처 메모리 예산(MB)과 저수위 비율을 런타임에 조정합니다.
 >
 > 예산은 정상 사용 중에 걸리는 제한이 아니라 메모리 폭주를 막는 상한(백스톱)입니다. 사용량이 예산을 넘으면 신규 텍스처 다운로드가 거부되어 지도 갱신이 멈출 수 있으므로 너무 낮게 설정하지 않아야 합니다. 현재 기기에 적용되는 값(iOS 프로파일이면 `iosMB`, 아니면 `defaultMB`)이 즉시 반영되며 압력 상태가 해제됩니다. POI 라벨 등 UI 텍스처는 예산에서 제외됩니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5428,11 +5428,11 @@ Module.XDESetTextureBudget(0, 512, 0);
 
 ### XDESetPanAnchorTerrainOnly(on), XDEGetPanAnchorTerrainOnly() → boolean
 
-`v2.30.1+`
-
 > 마우스/터치 이동(패닝) 시작 시 기준점을 지형만으로 구할지 여부를 설정합니다.
 >
 > 끄면 기준점을 구할 때 적재된 건물·객체까지 피킹하므로 객체가 많이 쌓일수록 터치 시작 시 지연이 커질 수 있습니다. 켜면 지형만 피킹해 지연이 줄어들며, 지형이 기준이므로 손끝 아래 지면이 따라옵니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5457,11 +5457,11 @@ var isOn = Module.XDEGetPanAnchorTerrainOnly();
 
 ### XDESetIOSProfile(on), XDEGetIOSProfile() → boolean
 
-`v2.30.1+`
-
 > iOS(iPhone/iPad) 전용 동작 분기의 적용 여부를 강제로 설정합니다.
 >
 > 엔진 초기화 시 User-Agent로 iPhone·iPad·iPod(또는 멀티터치가 있는 Mac Safari)를 자동 판별해 값을 정하며, 이 API로 개발·QA 중 강제로 켜거나 끌 수 있습니다. 이 API는 플래그 값만 바꾸고, 초기화 시점에 이 플래그에 맞춰 정해진 기본값들(텍스처 인코딩, 썸네일 동기 시간 박스, 패닝 기준점, POI 업로드 분산, POI 라벨 16비트 등)을 다시 적용하지는 않습니다. 해당 항목은 각각의 API로 설정하십시오. 플래그를 읽는 동작은 즉시 영향을 받으며, 켜면 지형 피킹이 깊이맵(color map) 방식으로 수행되고, 텍스처 예산은 [XDESetTextureBudget](moduleapi.md#xdesettexturebudget-defaultmb-iosmb-lowpct)이 호출될 때 iOS 값을 사용합니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5486,11 +5486,11 @@ var isIOS = Module.XDEGetIOSProfile();
 
 ### XDEGetPoiImageStats() → object
 
-`v2.30.2+`
-
 > POI 이미지(`setImage`) 등록 단계별 소요 시간과 라벨 업로드 분산 현황을 반환합니다(진단용).
 >
 > 값은 [XDEResetPoiImageStats](moduleapi.md#xderesetpoiimagestats)로 초기화하기 전까지 누적됩니다. 업로드 분산이 켜져 있을 때는 `pendingBytes`로 힙에 대기 중인 이미지 크기를 확인할 수 있습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5527,11 +5527,11 @@ console.log(stats.count, stats.totalMs, stats.pendingBytes);
 
 ### XDEResetPoiImageStats()
 
-`v2.30.2+`
-
 > [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 누적 통계를 초기화합니다(진단용).
 >
 > `count`, `copyMs`, `convMs`, `uploadMs`, `deferred`, `flushed`, `refused`가 0이 됩니다. 현재 대기 중인 이미지(`pendingCount`, `pendingBytes`)는 초기화되지 않습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -5545,11 +5545,11 @@ Module.XDEResetPoiImageStats();
 
 ### XDESetPoiUploadDefer(on), XDEGetPoiUploadDefer() → boolean
 
-`v2.30.2+`
-
 > POI 이미지의 GPU 업로드를 여러 프레임에 나눠 처리할지 여부를 설정합니다.
 >
 > 켜면 `setImage`로 등록한 이미지의 GPU 업로드를 큐에 넣고 프레임마다 시간 예산([XDESetPoiUploadBudgetMs](moduleapi.md#xdesetpoiuploadbudgetms-ms))만큼씩 처리해 많은 POI를 한꺼번에 등록할 때의 끊김을 줄입니다. 대기 중인 이미지 크기가 상한([XDESetPoiUploadMaxPendingMB](moduleapi.md#xdesetpoiuploadmaxpendingmb-mb))을 넘으면 미루지 않고 즉시 업로드합니다. 끄면 등록 시점에 바로 업로드합니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5574,11 +5574,11 @@ var isOn = Module.XDEGetPoiUploadDefer();
 
 ### XDESetPoiUploadBudgetMs(ms)
 
-`v2.30.2+`
-
 > POI 이미지 분산 업로드가 프레임마다 사용할 수 있는 시간 예산(ms)을 설정합니다.
 >
 > [XDESetPoiUploadDefer](moduleapi.md#xdesetpoiuploaddefer-on-xdegetpoiuploaddefer-boolean)가 켜져 있을 때만 의미가 있습니다. 현재 값은 [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 `budgetMs`로 확인합니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5599,11 +5599,11 @@ Module.XDESetPoiUploadBudgetMs(6);
 
 ### XDESetPoiUploadMaxPendingMB(mb)
 
-`v2.30.2+`
-
 > POI 이미지 분산 업로드에서 업로드를 기다리는 이미지 크기의 상한(MB)을 설정합니다.
 >
 > 상한을 키우면 더 많은 이미지를 나눠 업로드할 수 있지만, 대기 중인 이미지가 메모리에 남아 있으므로 메모리 사용량이 그만큼 늘어납니다. 현재 값은 [XDEGetPoiImageStats](moduleapi.md#xdegetpoiimagestats-object)의 `maxPendingMB`로 확인합니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5624,11 +5624,11 @@ Module.XDESetPoiUploadMaxPendingMB(64);
 
 ### XDEGetPolyTriangulateStats() → object
 
-`v2.31.1+`
-
 > 폴리곤 삼각분할 워커 처리 현황을 반환합니다(진단용).
 >
 > 정점 수가 [setPolyTriangulateMinVertex(count)](../option/jsoption.md#getpolytriangulateminvertex-setpolytriangulateminvertex-count-number) 이상인 폴리곤은 삼각분할을 web worker로 보내 처리하며, 이 함수로 요청·적용·폴백 건수와 소요 시간을 확인할 수 있습니다. 값은 [XDEResetPolyTriangulateStats](moduleapi.md#xderesetpolytriangulatestats)로 초기화하기 전까지 누적됩니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5668,11 +5668,11 @@ console.log(stats.requested, stats.workerDone, stats.syncFallback);
 
 ### XDEResetPolyTriangulateStats()
 
-`v2.31.1+`
-
 > [XDEGetPolyTriangulateStats](moduleapi.md#xdegetpolytriangulatestats-object)의 누적 통계를 초기화합니다(진단용).
 >
 > 건수와 시간 필드가 모두 0이 되지만, 현재 worker에서 처리 중인 요청 수(`inFlight`)는 유지됩니다. `applyQueued`는 누적값이 아니라 조회 시점의 대기 응답 수라 초기화와 무관합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Template" %}
@@ -5686,13 +5686,13 @@ Module.XDEResetPolyTriangulateStats();
 
 ### XDESetSplatShadowReceive(on), XDEGetSplatShadowReceive() → boolean
 
-`v2.31.1+`
-
 > 3D Gaussian Splatting([JSGaussianSplat](../object/jsgaussiansplat.md)) 객체가 그림자를 받을지 여부를 설정합니다. 기본값은 true입니다.
 >
 > 스플랫이 다른 스플랫 위에 드리우는 그림자가 스플랫 표면에 표시됩니다. 그림자맵이 활성화된 동안([createShadow](../analysis/jsanalysis.md#createshadow-year-month-day-hour-minute-boolean), [setShadowSimulation](../analysis/jsanalysis.md#setshadowsimulation-type) 등)에만 보이며, 끄면 그림자를 받는 쪽만 멈추고 스플랫이 그림자맵에 기록되는(드리우는) 동작은 그대로입니다. 이 설정은 지도에 있는 모든 스플랫에 공통으로 적용됩니다.
 >
 > 3DGS 색에는 촬영 당시의 그림자가 이미 포함되어 있어 여기서 더하는 그림자는 그 위에 겹치는 두 번째 그림자입니다. 농도는 [XDESetSplatShadowDarken](moduleapi.md#xdesetsplatshadowdarken-value-xdegetsplatshadowdarken-number)으로 조절하십시오.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5717,11 +5717,11 @@ var isOn = Module.XDEGetSplatShadowReceive();
 
 ### XDESetSplatShadowDarken(value), XDEGetSplatShadowDarken() → number
 
-`v2.31.1+`
-
 > 스플랫이 그림자 안에 있을 때의 밝기 배수를 설정합니다. 기본값은 0.6입니다.
 >
 > 스플랫 색에 이 값을 곱해 어둡게 합니다(알파는 바꾸지 않으므로 그림자 안에서도 스플랫이 투명해지지 않습니다). 1이면 그림자가 표시되지 않고, 0에 가까울수록 어두워집니다. 그림자를 받는 설정([XDESetSplatShadowReceive](moduleapi.md#xdesetsplatshadowreceive-on-xdegetsplatshadowreceive-boolean))이 켜져 있을 때만 의미가 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5746,11 +5746,11 @@ var darken = Module.XDEGetSplatShadowDarken();
 
 ### XDESetSplatShadowBias(meter), XDEGetSplatShadowBias() → number
 
-`v2.31.1+`
-
 > 스플랫이 자기 자신 또는 같은 면의 이웃 스플랫에 가려진 것으로 오판되는 것을 막는 여유 거리(m)를 설정합니다. 기본값은 0.3입니다.
 >
 > 스플랫 구름의 두께에 맞추는 값입니다. 너무 작으면 같은 면을 이루는 이웃 스플랫끼리 서로를 가려 표면이 얼룩지고, 너무 크면 얇은 물체가 드리우는 그림자가 사라집니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5775,11 +5775,11 @@ var bias = Module.XDEGetSplatShadowBias();
 
 ### XDESetSplatShadowCastScale(scale), XDEGetSplatShadowCastScale() → number
 
-`v2.31.1+`
-
 > 스플랫이 그림자를 드리울 때 그림자맵에 찍는 점(캐스터)의 크기 배수를 설정합니다. 기본값은 1.0입니다.
 >
 > 점 지름은 고정 미터가 아니라 `배수 × 캐스터 사이의 평균 간격`을 그림자맵 해상도로 환산해 정하므로 데이터 밀도가 달라도 같은 값으로 동작합니다. 1.0이면 이웃 점이 겨우 맞닿는 크기입니다. 그림자가 점점이 끊겨 보이면 올리고, 뭉개져 보이면 내리십시오. 최종 점 크기는 1~16 px로 제한됩니다. 이 설정은 태양 그림자에만 적용되며 피킹에는 영향을 주지 않습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5804,11 +5804,11 @@ var scale = Module.XDEGetSplatShadowCastScale();
 
 ### XDESetSplatShadowCastOpacity(opacity), XDEGetSplatShadowCastOpacity() → number
 
-`v2.31.1+`
-
 > 스플랫이 그림자를 드리우는 것으로 취급할 불투명도의 하한을 설정합니다. 기본값은 0.12입니다.
 >
 > 이 값 이상의 불투명도를 가진 스플랫의 중심점이 그림자맵에 기록됩니다. 옅은 스플랫도 여럿 겹치면 빛을 막기 때문에, 클릭 피킹에 쓰는 하한(0.35)보다 낮게 잡혀 있습니다. 값을 바꾸면 다음 그림자 렌더링 때 스플랫별 캐스터 목록을 다시 만들며, 피킹 결과에는 영향을 주지 않습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5833,11 +5833,11 @@ var opacity = Module.XDEGetSplatShadowCastOpacity();
 
 ### XDEGetSplatShadowCast() → object
 
-`v2.31.1+`
-
 > 스플랫이 그림자맵에 점(캐스터)을 실제로 찍은 현황을 반환합니다(진단용).
 >
 > "스플랫 위에 그림자가 생기지 않는다"는 증상이 받는 쪽 문제인지 드리우는 쪽 문제인지 화면만으로는 구분하기 어려울 때 사용합니다. 값은 누적되므로 두 번 읽어 차이를 확인하면 지금 그림자맵에 찍고 있는지 알 수 있습니다. 초기화 함수는 없습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}

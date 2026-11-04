@@ -69,11 +69,11 @@ let layer = layerList.createLayer(“NewLayer”, Module.ELT_POLYHEDRON);
 
 ### createObjectLayer(option) → [JSLayer](../layer/jslayer.md)
 
-`v1.41.0+`
-
 > 입력 변수값으로 사용자 레이어를 생성합니다.
 >
 > 사용자 레이어를 반환합니다.
+
+* 지원버전 : `1.41.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -166,11 +166,11 @@ let wmslayer = layerList.createWMSLayer( “WMS” );
 
 ### createUserLayer(option) → [JSLayer](../layer/jslayer.md)
 
-`v1.51.0+`
-
 > 입력 변수값으로 사용자 타일 레이어를 생성합니다.
 >
 > 사용자 레이어를 반환합니다.
+
+* 지원버전 : `1.51.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -203,11 +203,11 @@ let layer = Module.getTileLayerList().createUserLayer({
 
 ### createXDServerLayer(option) → [JSLayer](../layer/jslayer.md)
 
-`v1.41.0+`
-
 > 입력 변수값으로 사용자/서비스 레이어를 생성합니다.
 >
 > 사용자/서비스 레이어를 반환합니다.
+
+* 지원버전 : `1.41.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -626,11 +626,11 @@ let visible = layerList.getVisible(“HybridLoad”);
 
 ### createWindLayer(name, callback) → [JSLayer](../layer/jslayer.md)
 
-`v2.19.0.1+`
-
 > 타일 기반 바람장(Wind) 레이어를 생성합니다.
 >
 > 서비스 레이어 리스트(`new Module.JSLayerList(false)`)에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.19.0.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -663,11 +663,11 @@ let windLayer = layerList.createWindLayer("WindLayer", function(tileInfo) {
 
 ### createWorldTileWindLayer(option) → [JSLayer](../layer/jslayer.md)
 
-`v2.22.0+`
-
 > 전 지구(World) 타일 기반 바람장(Wind) 레이어를 생성합니다.
 >
 > 서비스 레이어 리스트(`new Module.JSLayerList(false)`)에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.22.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -709,11 +709,11 @@ let windLayer = layerList.createWorldTileWindLayer({
 
 ### createOSMTileayer(option) → [JSLayer](../layer/jslayer.md)
 
-`v2.29.2+`
-
 > OSM(OpenStreetMap 타일 규격) 기반 타일 레이어를 생성합니다.
 >
 > 서비스 레이어 리스트(`new Module.JSLayerList(false)`)에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.2+`
 
 {% tabs %}
 {% tab title="Information" %}

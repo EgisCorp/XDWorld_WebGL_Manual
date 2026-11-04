@@ -14,15 +14,15 @@ var object = Module.getAnalysis().getGridAnal();
 
 | Name              | Type    | Description                                    |
 | ----------------- | ------- | ------------------------------------------------- |
-| view_underground `v2.22.0+`  | boolean | 지형 아래에 렌더링되는 레이어 표시 여부. [createPlaneData](jsgridanal.md#createplanedata-name-boolean)로 만든 3D 평면 객체에도 적용되며, 이미 만들어진 객체에는 즉시 반영됩니다. |
+| view_underground `2.22.0+`  | boolean | 지형 아래에 렌더링되는 레이어 표시 여부. [createPlaneData](jsgridanal.md#createplanedata-name-boolean)로 만든 3D 평면 객체에도 적용되며, 이미 만들어진 객체에는 즉시 반영됩니다. |
 
 ## Function
 
 ### objectClear()
 
-`v1.38.0+`
-
 > 그리드 분석의 가시화 객체만 삭제합니다 (분석 데이터 자체는 유지).
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -38,9 +38,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### openMultipleGridDataURL(url, time, size, start, end, type, multipleCount, multipleIndex)
 
-`v1.38.0+`
-
 > openGridDataURL()의 다중 격자 병합 버전입니다. 여러 데이터를 하나의 격자로 병합해서 사용할 때 사용합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -68,9 +68,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### getAreaByAltitude(resolution, minLon, minLat, maxLon, maxLat, checkAltitude) → number
 
-`v1.53.2+`
-
 > 지정한 영역 내에서, 지형 고도가 기준 고도 이하인(바다 제외) 영역의 면적을 계산합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -99,9 +99,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### getEditAreaWindTerrainData(resolution) → string
 
-`v1.37.10+`
-
 > 현재 편집 영역의 지형 고도 데이터를 ESRI ASCII Grid(.asc) 형식 문자열로 반환합니다.
+
+* 지원버전 : `1.37.10+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -126,9 +126,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### getEditAreaWindBuildingData(resolution, minLon, minLat, maxLon, maxLat) → string
 
-`v1.37.10+`
-
 > 지정한 영역 내 시설물(건물) 높이 데이터를 ESRI ASCII Grid(.asc) 형식 문자열로 반환합니다.
+
+* 지원버전 : `1.37.10+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -157,9 +157,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### getEditAreaWindLandCoverMapData(resolution) → string
 
-`v1.37.33+`
-
 > 현재 편집 영역의 토지피복도 데이터를 ESRI ASCII Grid(.asc) 형식 문자열로 반환합니다.
+
+* 지원버전 : `1.37.33+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -184,9 +184,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setMouseCallback(callback)
 
-`v1.38.0+`
-
 > 그리드 분석 관련 마우스 업(mouse up) 이벤트 콜백을 등록합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -207,9 +207,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setGridLineVisible(visible)
 
-`v1.38.0+`
-
 > 그리드 라인 표시 여부를 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -230,9 +230,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setGridLineBaseAlt(altitude)
 
-`v1.38.0+`
-
 > 그리드 라인 표시 기준 고도(여백)를 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -253,9 +253,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setGridLineMaxDistance(distance)
 
-`v1.38.0+`
-
 > 그리드 라인이 표시되는 최대 거리를 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -276,11 +276,11 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setBaseAltitude(altitude)
 
-`v1.38.0+`
-
 > 그리드 분석 결과의 기준 고도(오프셋)를 설정합니다.
 >
 > 이미 만들어진 3D 평면 객체에도 적용되며, 컬링 박스와 [깊이 가이드](jsgridanal.md#setdepthguide-options-boolean)의 기준 높이로도 사용됩니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -301,9 +301,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setLegendJSON(options) → boolean
 
-`v1.38.0+`
-
 > 그리드 분석 결과에 적용할 범례 색상을 JSON 옵션으로 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -328,9 +328,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setLegendMode(mode)
 
-`v1.38.0+`
-
 > 그리드 분석 범례 표현 모드를 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -351,9 +351,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### createRasterImgData(name, ptr, memSize, width, height, time) → boolean
 
-`v1.50.0+`
-
 > 메모리에 로드된 이미지 데이터를 사용해 2D Raster 객체를 생성합니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -382,9 +382,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### createPIGridDataJSON(options) → boolean
 
-`v1.50.0+`
-
 > Point/Image 기반 그리드(PIGrid) 데이터를 설정합니다. DEM 결합, 값 범위 등을 포함한 확장된 격자 생성 방식입니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -409,9 +409,9 @@ var object = Module.getAnalysis().getGridAnal();
 
 ### setPIGridValue(options) → boolean
 
-`v1.50.0+`
-
 > createPIGridDataJSON()으로 생성된 PIGrid의 현재/다음 시점 텍스처 데이터를 설정합니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -893,13 +893,13 @@ let json = {
 
 ### setPlaneVisible(name, visible) → boolean
 
-`v2.30.1+`
-
 > [createPlaneData](jsgridanal.md#createplanedata-name-boolean)로 만든 3D 평면 객체 하나의 표시 여부를 설정합니다.
 >
 > 입력 변수값(name)은 createPlaneData에 넘긴 객체 이름이며, 지층을 여러 장 쌓은 경우 각 평면을 개별로 켜고 끌 때 사용합니다.
 >
 > [setLayerName](jsgridanal.md#setlayername-name)으로 지정한 레이어(생략 시 임시 레이어)에서 객체를 찾으며, 레이어를 새로 만들지는 않습니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -930,8 +930,6 @@ gridAnal.setPlaneVisible("layer_03", false);
 
 ### setDepthGuide(options) → boolean
 
-`v2.30.0+`
-
 > 지하 격자 분석 결과(음수 [setHRatio](jsgridanal.md#sethratio-ratio))에 깊이 눈금 가이드를 표시하거나 숨깁니다.
 >
 > 가이드는 다음 조건을 모두 만족할 때 표시됩니다.
@@ -943,6 +941,8 @@ gridAnal.setPlaneVisible("layer_03", false);
 > -   전체 깊이(원시 데이터 값 기준)가 1m 이상.
 >
 > `interval`, `unit`, `mode`는 생략하면 이전에 지정한 값이 유지됩니다(최초 기본값은 각각 자동 간격, `"m"`, `"value"`). 기준 고도([setBaseAltitude](jsgridanal.md#setbasealtitude-altitude))가 바뀌면 가이드도 다시 생성되며, [clear](jsgridanal.md#clear)를 호출하면 가이드도 제거됩니다.
+
+* 지원버전 : `2.30.0+`
 
 {% tabs %}
 {% tab title="Information" %}

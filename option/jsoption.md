@@ -14,13 +14,13 @@ var math = Module.getOption();
 
 | Name         | Type   | Description                                                                                                                                                    |
 | ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object_ahead `v2.4.0+` | number | <p>화면 시야 기준 [JSPoint](../object/jspoint.md), HTMLObject 객체 앞 장해물(지형, 시설물) 존재 시 가시화 유무 설정.<br>0: 기본 가시화.<br>1: 장해물 판별.</p> |
+| object_ahead `2.4.0+` | number | <p>화면 시야 기준 [JSPoint](../object/jspoint.md), HTMLObject 객체 앞 장해물(지형, 시설물) 존재 시 가시화 유무 설정.<br>0: 기본 가시화.<br>1: 장해물 판별.</p> |
 |reflect|number|오브젝트 반사 효과 맵 생성 여부|
-|backgroundColor `v1.58.0+`|JSColor|지도 기본 배경 색상|
-|atmosphereRender `v1.37.40+`|boolean|대기 렌더링 효과 사용 여부|
-|selectColor `v1.44.0+`|[JSColor](../core/jscolor.md)|오브젝트 선택 색상|
-|limitFPS `v2.19.0.1+`|number|프레임 제한 값 (FPS)|
-|ping `v2.22.0+`|any|엔진 ping 정보|
+|backgroundColor `1.58.0+`|JSColor|지도 기본 배경 색상|
+|atmosphereRender `1.37.40+`|boolean|대기 렌더링 효과 사용 여부|
+|selectColor `1.44.0+`|[JSColor](../core/jscolor.md)|오브젝트 선택 색상|
+|limitFPS `2.19.0.1+`|number|프레임 제한 값 (FPS)|
+|ping `2.22.0+`|any|엔진 ping 정보|
 
 ## Function
 
@@ -289,11 +289,11 @@ Module.getOption().setTextureCapacityLimit(false);
 
 ### setAtmosphericSunriseTime(hour, minute)
 
-`v1.54.0+`
-
 > 대기 효과 적용 시 일출 시간을 설정합니다.
 >
 > 태양 위치 연산에 사용되며, 시각은 24시간제로 입력합니다.
+
+* 지원버전 : `1.54.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -317,11 +317,11 @@ Module.getOption().setAtmosphericSunriseTime(6, 30);
 
 ### setAtmosphericSunsetTime(hour, minute)
 
-`v1.54.0+`
-
 > 대기 효과 적용 시 일몰 시간을 설정합니다.
 >
 > 태양 위치 연산에 사용되며, 시각은 24시간제로 입력합니다.
+
+* 지원버전 : `1.54.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -345,11 +345,11 @@ Module.getOption().setAtmosphericSunsetTime(19, 15);
 
 ### setAtmosphericTime(hour, minute)
 
-`v1.54.0+`
-
 > 대기 효과 적용 시 현재 시간을 설정하여 하늘 색상 변화를 조정합니다.
 >
 > 설정된 시간은 일출/일몰 및 하늘 색상 변화에 영향을 줍니다.
+
+* 지원버전 : `1.54.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -399,11 +399,11 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### setTextureDrawLevel(level)
 
-`v2.29.1+`
-
 > 카메라 기준 몇 단계 LOD까지의 텍스처를 상주(메모리에 유지)시킬지 설정합니다. 기본값은 3입니다.
 >
 > 값을 낮추면 상주 텍스처 양이 줄어 메모리를 절약하지만, 멀리 있는 지형 텍스처가 더 일찍 사라집니다(화질과 메모리 사용량의 트레이드오프).
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -424,9 +424,9 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTextureDrawLevel() → number
 
-`v2.29.1+`
-
 > [setTextureDrawLevel(level)](jsoption.md#settexturedrawlevel-level)로 설정된 상주 LOD 단계를 반환합니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -446,11 +446,11 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTextureUsedSize() → number
 
-`v2.29.1+`
-
 > 현재 GPU 텍스처 사용량을 반환합니다(진단용). 지형/건물 등 타일 텍스처와 POI 라벨 등 UI 텍스처를 합한 전체 사용량입니다(전체 = 타일 + UI).
 >
 > 텍스처 예산 판정에 쓰이는 타일 전용 사용량은 getTileTextureUsedSize(), UI 텍스처만의 사용량은 getUiTextureUsedSize()로 각각 확인할 수 있습니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -471,9 +471,9 @@ Module.getOption().setAtmosphericTime(16, 30);
 
 ### getTileTextureUsedSize() → number
 
-`v2.30.1+`
-
 > 타일 텍스처(지형, 건물 등)의 현재 GPU 사용량을 반환합니다(진단용). POI 라벨 등 UI 텍스처는 제외되며, 텍스처 예산([setTexturePoolSize(size)](jsoption.md#settexturepoolsize-size-boolean)) 초과 여부를 판정할 때 실제로 사용되는 값입니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -494,9 +494,9 @@ var budget = Module.getOption().getTexturePoolSize();
 
 ### getUiTextureUsedSize() → number
 
-`v2.30.1+`
-
 > POI 라벨 등 UI 텍스처만의 현재 GPU 사용량을 반환합니다(진단용). 타일 텍스처는 제외됩니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -516,9 +516,9 @@ var uiSize = Module.getOption().getUiTextureUsedSize();
 
 ### getTexturePoolSize() → number
 
-`v2.29.1+`
-
 > [setTexturePoolSize(size)](jsoption.md#settexturepoolsize-size-boolean)로 설정된 텍스처 예산(byte)을 반환합니다(진단용).
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -539,11 +539,11 @@ var uiSize = Module.getOption().getUiTextureUsedSize();
 
 ### setMaxTextureDecodePerFrame(size), getMaxTextureDecodePerFrame() → number
 
-`v2.29.2+`
-
 > 한 프레임에 디코드할 수 있는 최대 텍스처 개수를 설정하여, 텍스처 디코드 부하를 여러 프레임에 걸쳐 분산시킵니다.
 >
 > 아이폰 등 일부 환경에서 텍스처/건물팩 디코드가 몰릴 때 발생하는 화면 프리징 대응 기능입니다. 기본값은 -1(기능 꺼짐, 기존과 동일하게 즉시 처리)입니다.
+
+* 지원버전 : `2.29.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -568,11 +568,11 @@ var count = Module.getOption().getMaxTextureDecodePerFrame();
 
 ### setMaxReal3DPackDecodePerFrame(size), getMaxReal3DPackDecodePerFrame() → number
 
-`v2.29.2+`
-
 > 한 프레임에 디코드할 수 있는 최대 Real3D 건물팩 개수를 설정하여, 디코드 부하를 여러 프레임에 걸쳐 분산시킵니다.
 >
 > 기본값은 -1(기능 꺼짐, 기존과 동일하게 즉시 처리)입니다.
+
+* 지원버전 : `2.29.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -597,11 +597,11 @@ var count = Module.getOption().getMaxReal3DPackDecodePerFrame();
 
 ### getMax3DTilesApplyPerFrame(), setMax3DTilesApplyPerFrame(count) → number
 
-`v2.30.2+`
-
 > 웹 워커가 파싱을 마친 3D Tiles 타일을 한 프레임에 최대 몇 개까지 객체로 적용할지(건수 상한)를 설정합니다. 기본값은 64입니다.
 >
 > 실질적인 적용 예산은 시간 기준인 [setMax3DTilesApplyMsPerFrame(ms)](jsoption.md#getmax3dtilesapplymsperframe-setmax3dtilesapplymsperframe-ms-number)이며, 이 값은 안전 상한 역할을 합니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -626,11 +626,11 @@ var count = Module.getOption().getMax3DTilesApplyPerFrame();
 
 ### getMax3DTilesApplyMsPerFrame(), setMax3DTilesApplyMsPerFrame(ms) → number
 
-`v2.31.1+`
-
 > 워커가 파싱을 마친 3D Tiles 타일을 한 프레임에 적용하는 데 쓸 수 있는 시간 예산(ms)을 설정합니다. 기본값은 6.0입니다.
 >
 > 한 프레임에서 이 시간을 넘기면 적용을 중단하고 남은 타일은 다음 프레임에 처리하며, 최소 1건은 반드시 적용합니다. 지도 이동 중에는 예산이 절반으로 줄고, 적용 대기 중인 타일이 32개를 넘으면 2배, 128개를 넘으면 다시 2배로 늘어납니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -655,11 +655,11 @@ var ms = Module.getOption().getMax3DTilesApplyMsPerFrame();
 
 ### getMaxTileParseQueue(), setMaxTileParseQueue(count) → number
 
-`v2.31.1+`
-
 > 3D Tiles 파싱 워커 대기열(워커에서 파싱 중이거나 적용 대기 중인 타일)의 최대 건수를 설정합니다. 기본값은 256입니다.
 >
 > 대기열이 상한에 도달하면 이후 도착한 타일은 워커로 보내지 않고 메인 스레드에서 동기 파싱합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -684,11 +684,11 @@ var count = Module.getOption().getMaxTileParseQueue();
 
 ### getMaxTileParseQueueMB(), setMaxTileParseQueueMB(size) → number
 
-`v2.31.1+`
-
 > 3D Tiles 파싱 워커 응답을 기다리는 동안 메인 스레드가 보관 중인 원본 데이터의 최대 크기(MB)를 설정합니다. 기본값은 96입니다.
 >
 > 이 예산을 초과하는 타일은 워커로 보내지 않고 메인 스레드에서 동기 파싱합니다. [setMaxTileParseQueue(count)](jsoption.md#getmaxtileparsequeue-setmaxtileparsequeue-count-number)의 건수 상한과 별개로 동작하며, 둘 중 하나라도 초과하면 동기 파싱합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -713,13 +713,13 @@ var size = Module.getOption().getMaxTileParseQueueMB();
 
 ### getPolyTriangulateMinVertex(), setPolyTriangulateMinVertex(count) → number
 
-`v2.31.1+`
-
 > 폴리곤 삼각분할을 web worker로 보낼 최소 정점 수를 설정합니다. 기본값은 512입니다.
 >
 > [JSPolygon](../object/jspolygon.md)으로 평면·각기둥 등을 만들 때 정점 수(여러 파트를 한 번에 만드는 경우는 정점 합계)가 이 값 이상이면 삼각분할을 web worker에서 비동기로 처리하고, 미만이면 종전처럼 그 자리에서 동기로 처리합니다. 비동기로 처리하는 동안 해당 폴리곤의 면은 아직 만들어지지 않아 렌더링과 피킹에서 제외되며, 결과가 적용되면 나타납니다. 이동·UV 지정처럼 정점을 직접 읽거나 바꾸는 작업을 하면 대기 중인 요청을 그 자리에서 동기로 끝낸 뒤 진행합니다.
 >
 > web worker를 쓰지 않는 경우(`worker.use`가 false이거나 `worker.polyTriangulate`가 false이거나 worker가 없는 경우), 처리 중·적용 대기 요청이 64건 이상인 경우, worker가 30초 안에 응답하지 않은 경우에는 정점 수와 관계없이 동기로 처리합니다. 변경한 값은 이후에 만드는 폴리곤부터 적용됩니다. 처리 현황은 [XDEGetPolyTriangulateStats](../module/moduleapi.md#xdegetpolytriangulatestats-object)로 확인합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -744,11 +744,11 @@ var count = Module.getOption().getPolyTriangulateMinVertex();
 
 ### getMaxPolyApplyPerFrame(), setMaxPolyApplyPerFrame(count) → number
 
-`v2.31.1+`
-
 > 웹 워커가 삼각분할을 마친 폴리곤 결과를 한 프레임에 최대 몇 건까지 면에 적용할지 설정합니다. 기본값은 8입니다.
 >
 > 한 프레임에 적용하는 건수를 제한해 폴리곤이 한꺼번에 나타나면서 프레임이 끊기는 것을 막습니다. 남은 결과는 다음 프레임에 처리합니다. 지도를 이동(패닝) 중일 때는 이 값이 2보다 커도 프레임당 2건으로 제한됩니다. [setPolyTriangulateMinVertex(count)](jsoption.md#getpolytriangulateminvertex-setpolytriangulateminvertex-count-number)에 따라 워커로 보낸 폴리곤에만 해당합니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -773,11 +773,11 @@ var count = Module.getOption().getMaxPolyApplyPerFrame();
 
 ### getMaxTilesRetainedMB(), setMaxTilesRetainedMB(size) → number
 
-`v2.31.1+`
-
 > 3D Tiles가 메모리에 보유하는 타일 콘텐츠(정점, 인덱스, 텍스처 원본)의 총 크기 상한(MB)을 설정합니다. 기본값은 512입니다.
 >
 > 보유량이 상한을 넘으면 최근에 그려지지 않은 타일부터 콘텐츠를 해제합니다. 해제된 타일은 다시 필요해질 때 재요청됩니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -802,11 +802,11 @@ var size = Module.getOption().getMaxTilesRetainedMB();
 
 ### getTextureTranscodeTarget(), setTextureTranscodeTarget(target) → number
 
-`v2.31.1+`
-
 > KTX2 텍스처를 GPU 압축 포맷으로 트랜스코딩할 때의 타깃 포맷을 직접 지정합니다. 기본값은 브라우저/GPU가 지원하는 확장에 따라 엔진이 자동으로 선택한 값(BC7, ASTC, ETC2, BC3 순으로 우선, 모두 미지원 시 비압축 RGBA)입니다.
 >
 > 포맷에 따라 화질, 트랜스코딩 속도, 텍스처 메모리 사용량이 달라집니다. 화질/속도 우선 중 하나만 고르려면 [setTextureTranscodeMode(mode)](jsoption.md#gettexturetranscodemode-settexturetranscodemode-mode-string)를 사용하세요.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -835,11 +835,11 @@ Module.getOption().setTextureTranscodeTarget(0);
 
 ### getTextureTranscodeMode(), setTextureTranscodeMode(mode) → string
 
-`v2.31.1+`
-
 > KTX2 텍스처 트랜스코딩을 화질 우선 또는 속도 우선으로 선택합니다. 기기가 지원하는 포맷은 엔진이 이미 판정해 두었으므로 포맷 번호를 알 필요 없이 둘 중 하나만 고르면 됩니다.
 >
 > 반환값은 설정 후 실제로 적용된 모드입니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -868,11 +868,11 @@ console.log(mode, Module.getOption().getTextureTranscodeMode());
 
 ### getTextureOpaqueOptimize(), setTextureOpaqueOptimize(use) → boolean
 
-`v2.31.1+`
-
 > 알파(투명도)가 없는 텍스처를 절반 크기(4bpp)의 불투명 전용 포맷(BC1/DXT1)으로 트랜스코딩할지 설정합니다. 텍스처 메모리를 크게 줄일 수 있으며, 화질 저하는 소폭입니다.
 >
 > 불투명 전용 포맷을 지원하는 환경(S3TC를 지원하는 데스크탑 등)에서만 동작합니다. 지원하지 않는 환경에서는 true로 설정해도 적용되지 않으며 getTextureOpaqueOptimize()는 false를 반환합니다. 기본적으로는 지원 환경에서 켜져 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -898,11 +898,11 @@ var use = Module.getOption().getTextureOpaqueOptimize();
 
 ### getWebWorkerCount(), setWebWorkerCount(count) → number
 
-`v2.30.2+`
-
 > 웹 워커 풀의 목표 워커 수를 런타임에 조절합니다. 기본값은 5이며, 적용된 목표 수를 반환합니다.
 >
 > 워커 수를 늘리면 즉시 생성하고, 줄이면 작업 큐가 빈 워커부터 파괴합니다. 작업 중인 워커는 큐가 빌 때까지 남아 있으므로 줄이는 동안에는 목표 수(getWebWorkerCount)와 실제 동작 중인 워커 수([getWebWorkerActiveCount()](jsoption.md#getwebworkeractivecount-number))가 잠시 다를 수 있습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -929,9 +929,9 @@ var target = Module.getOption().getWebWorkerCount();
 
 ### getWebWorkerActiveCount() → number
 
-`v2.30.2+`
-
 > 현재 실제로 살아 있는 웹 워커 수를 반환합니다(진단용). 워커 수를 줄이는 중에는 목표 수([getWebWorkerCount()](jsoption.md#getwebworkercount-setwebworkercount-count-number))보다 클 수 있습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -951,11 +951,11 @@ var active = Module.getOption().getWebWorkerActiveCount();
 
 ### getWebWorkerMaxCount(), setWebWorkerMaxCount(max) → number
 
-`v2.30.2+`
-
 > 웹 워커 풀의 최대 워커 수(상한)를 설정합니다. 기본값은 8입니다. [setWebWorkerCount(count)](jsoption.md#getwebworkercount-setwebworkercount-count-number)의 숫자 지정, "auto", 그리고 대용량(16MB 초과) 작업용 임시 워커 생성 모두 이 값을 넘지 않습니다.
 >
 > 현재 목표 워커 수가 새 상한보다 크면 즉시 상한에 맞게 줄입니다. 적용된 상한을 반환합니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -981,11 +981,11 @@ var max = Module.getOption().getWebWorkerMaxCount();
 
 ### setEnableWBOIT(enable)
 
-`v2.29.3+`
-
 > Weighted Blended OIT(순서 독립 투명도) 렌더링을 런타임에 켜거나 끕니다. 기본값은 false(기존 알파 블렌딩 방식)입니다.
 >
 > 하드웨어가 필요한 확장(EXT_color_buffer_float/half_float)을 지원하지 않으면 true로 설정해도 자동으로 기존 방식으로 대체됩니다. 현재 설정값을 조회하는 getter는 제공되지 않습니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1006,11 +1006,11 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setEventMouseMove(type)
 
-`v2.2.3+`
-
 > 마우스 이동 위치 이벤트(Fire_EventMouseMove) 발생 여부를 설정합니다.
 >
 > ※ 엔진 빌드 옵션 `_EVENT_MOUSE_CONTROL_`가 활성화된 경우에만 바인딩됩니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1031,9 +1031,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setFixedRenderPOI(type)
 
-`v2.2.3+`
-
 > POI 객체의 고정 렌더링(LOD 무관 항상 렌더링) 여부를 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1054,9 +1054,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setClickPointVisible(type) → boolean
 
-`v2.2.3+`
-
 > 마우스 클릭 지점(하얀색 구) 표시 여부를 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1081,9 +1081,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMeasureDistancePointUnionTerrain(type)
 
-`v2.14.2+`
-
 > 거리 측정 시, 측정선이 지형 고도와 결합되도록 설정합니다.
+
+* 지원버전 : `2.14.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1104,11 +1104,11 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setPointsDepthBuffer(type) → boolean
 
-`v2.2.3+`
-
 > 포인트(점) 객체의 depth 사용 여부를 설정합니다.
 >
 > depth 미 설정 시 객체 겹침 시 z-fighting 현상이 발생합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1203,9 +1203,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setDisplayOptionOfTerrain(option)
 
-`v1.37.6+`
-
 > 지형 표현 옵션을 설정합니다.
+
+* 지원버전 : `1.37.6+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1226,9 +1226,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setDisplayOptionOfBuilding(option)
 
-`v1.37.6+`
-
 > 시설물(건물) 표현 옵션을 설정합니다.
+
+* 지원버전 : `1.37.6+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1249,9 +1249,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setDisplayOptionOfDebug(option)
 
-`v1.37.8+`
-
 > 디버그 표현 옵션을 설정합니다 (지형 RTT 갱신 및 타일 메쉬 재생성을 트리거함).
+
+* 지원버전 : `1.37.8+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1272,9 +1272,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### applyShaderCode(options) → object
 
-`v1.37.40+`
-
 > 지정한 셰이더 프로그램의 Vertex/Fragment 셰이더 코드를 런타임에 교체합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1300,9 +1300,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setIndexedDB(use)
 
-`v1.47.0+`
-
 > IndexedDB 캐시 사용 여부를 설정합니다.
+
+* 지원버전 : `1.47.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1323,9 +1323,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMaxIndexedDB(level)
 
-`v1.47.0+`
-
 > IndexedDB에 캐시할 최대 타일 레벨을 설정합니다 (최대 15).
+
+* 지원버전 : `1.47.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1346,9 +1346,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setAnisotropy(use)
 
-`v1.50.1+`
-
 > 비등방성 필터링(Anisotropic Filtering) 적용 여부를 설정합니다.
+
+* 지원버전 : `1.50.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1369,9 +1369,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setStereoView(set)
 
-`v1.51.1+`
-
 > 스테레오(양안) 뷰 모드를 설정합니다.
+
+* 지원버전 : `1.51.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1392,9 +1392,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMaxRequestTextureQueueSize(size)
 
-`v2.9.2+`
-
 > 텍스처(타일맵) 요청 시 동시에 처리할 최대 요청 개수를 설정합니다 (최대 20).
+
+* 지원버전 : `2.9.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1415,9 +1415,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### callBackAltDistance(event) → string
 
-`v1.59.3+`
-
 > 높이/거리/직선거리 측정 관련 콜백 함수를 등록합니다.
+
+* 지원버전 : `1.59.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1442,9 +1442,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setMaxGeometricError(value)
 
-`v2.4.0+`
-
 > 3D Tiles 등 지형/타일의 최대 허용 기하 오차(Screen Space Error)를 설정합니다 (최소값 1.0).
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1465,9 +1465,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setRequestOrderType(type)
 
-`v2.9.3+`
-
 > 타일/데이터 요청 순서 방식을 설정합니다 (0 또는 1, 범위를 벗어나면 0/1로 보정).
+
+* 지원버전 : `2.9.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1488,9 +1488,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### _setDebugView(set)
 
-`v2.9.3+`
-
 > 디버그 뷰 표시 여부를 설정합니다.
+
+* 지원버전 : `2.9.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1511,9 +1511,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setUserInputPointAltitudeOffset(offset)
 
-`v2.14.2+`
-
 > 사용자 입력 지점(측정 등)의 고도 표시 오프셋 값을 설정합니다.
+
+* 지원버전 : `2.14.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1534,9 +1534,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### setRenderSelectSilhouette(set)
 
-`v2.16.0+`
-
 > 오브젝트 선택 시 실루엣(외곽선) 렌더링 효과 사용 여부를 설정합니다.
+
+* 지원버전 : `2.16.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1557,9 +1557,9 @@ Module.getOption().setEnableWBOIT(true);
 
 ### getCurrentBrowser() → string
 
-`v2.28.3+`
-
 > 현재 실행 중인 브라우저 종류를 반환합니다.
+
+* 지원버전 : `2.28.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1613,11 +1613,11 @@ var type = Module.getOption().getPickingCalculateType();
 
 ### getMaxRequestTileMeshSize(), setMaxRequestTileMeshSize(size) → number
 
-`v1.55.0+`
-
 > 타일 메시 요청 시 동시에 처리할 최대 요청 개수를 설정하거나 반환합니다.
 >
 > 값이 0보다 작으면 0으로, 50보다 크면 50으로 자동 조정됩니다.
+
+* 지원버전 : `1.55.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1642,9 +1642,9 @@ var size = Module.getOption().getMaxRequestTileMeshSize();
 
 ### getHybridRenderType(), setHybridRenderType(type) → number
 
-`v1.56.0+`
-
 > 하이브리드 렌더링 타입을 설정하거나 반환합니다 (0~3 범위를 벗어나면 0으로 보정되며, 레이어들의 하이브리드 상태가 초기화됩니다).
+
+* 지원버전 : `1.56.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1669,9 +1669,9 @@ var type = Module.getOption().getHybridRenderType();
 
 ### getColorPolygonOffset(), setColorPolygonOffset(set) → boolean
 
-`v2.28.0+`
-
 > ColorPolygon 객체의 폴리곤 오프셋 사용 여부를 설정하거나 반환합니다.
+
+* 지원버전 : `2.28.0+`
 
 {% tabs %}
 {% tab title="Information" %}

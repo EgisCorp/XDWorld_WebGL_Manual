@@ -53,11 +53,11 @@ traceTarget.move(1.0, 1.0, 0.5); // 0.5m 상승 이동
 
 ### moveTarget(options)
 
-`v1.39.0+`
-
 > 객체를 이동합니다.
 >
 > [move](jstracetarget.md#move-front-right-up)와 달리, 6방향(전,후,좌,우,상,하)으로 이동합니다.
+
+* 지원버전 : `1.39.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -160,9 +160,9 @@ traceTarget.ReleaseObject();
 
 ### unionTargetToTerrain()
 
-`v1.39.0+`
-
 > 객체 이동시 지형 곡면률 적용 합니다.
+
+* 지원버전 : `1.39.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -180,11 +180,11 @@ traceTarget.unionTargetToTerrain();
 
 ### setAutoRotate(autoRotate)
 
-`v2.30.0+`
-
 > 시점 방향(direction)이 바뀔 때 연결된 객체의 회전을 자동으로 맞출지 설정합니다.
 >
 > 기본값은 true이며, true이면 연결된 객체의 방향(Z축 회전)이 시점 방향(`direction`) 값과 같도록 자동으로 갱신됩니다. false로 설정하면 객체의 회전을 변경하지 않으므로, 객체의 방향을 직접 제어하면서 카메라 시점만 추적할 수 있습니다.
+
+* 지원버전 : `2.30.0+`
 
 {% tabs %}
 {% tab title="Information" %}

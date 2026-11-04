@@ -28,7 +28,7 @@ let layer = layerList.createLayer("Layer Name");
 | tile\_load\_ratio          | number  | 서비스 레이어 가시화 거리 비율 설정.         |
 | view\_underground          | boolean | 지형 아래에 렌더링 되는 레이어 설정.         |
 | object\_ahead              | boolean | 지형 또는 시설물이 앞에 존재할 경우 비가시화 설정. |
-| boundaryLimit `v2.11.2+`              | boolean | 오브젝트 요청 범위 제한 설정.             |
+| boundaryLimit `2.11.2+`              | boolean | 오브젝트 요청 범위 제한 설정.             |
 
 ## Function
 
@@ -60,11 +60,11 @@ layer.addObject(object, 0);
 
 ### createGaussianSplat(objectKey) → [JSGaussianSplat](../object/jsgaussiansplat.md)
 
-`v2.29.2+`
-
 > 3D Gaussian Splatting 객체([JSGaussianSplat](../object/jsgaussiansplat.md))를 생성하여 이 레이어에 등록합니다.
 >
 > 서비스 레이어에서 사용할 수 있습니다.
+
+* 지원버전 : `2.29.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -193,9 +193,9 @@ layer.clearWMSCache();
 
 ### getObjectsInBoundary(boundary) → object
 
-`v2.21.0+`
-
 > 폴리곤 범위 내에 속하는 오브젝트를 반환합니다.
+
+* 지원버전 : `2.21.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -286,11 +286,11 @@ console.log(objects.id);
 
 ### getTileObjectCenterPosition(objkey) → [JSVector3D](../core/jsvector3d.md)
 
-`v1.57.2+`
-
 > 타일 레이어 오브젝트의 중점을 반환합니다.
 >
 > 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.57.2+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -316,13 +316,13 @@ console.log(objects.id);
 
 ### getObjectTileInfo(objkey) → object
 
-`v2.29.3+`
-
 > 객체 고유 명칭으로 해당 객체가 소속된 타일의 정보(레벨, 인덱스)를 반환합니다.
 >
 > 선택한 객체의 타일 정보를 표출할 때 사용합니다.
 >
 > 지구본 타일 기반 레이어(`ELST_PLANET_TILE`)에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -697,11 +697,11 @@ var bVisible = layer.getType();
 
 ### containsKey(name) → string
 
-`v2.10.1+`
-
 > 사용자 레이어에 포함된 객체 중 객체 고유 명칭 입력 변수 name인 객체의 존재 여부를 반환합니다.
 >
 > 객체 고유 명칭에 입력 변수 name이 일부만 포함이 되어 있어도 성공적으로 반환합니다.
+
+* 지원버전 : `2.10.1+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -1593,11 +1593,11 @@ layer.setWMSVersion(“1.1.0”);
 
 ### addObjects(objects)
 
-`v2.23.0+`
-
 > 여러 객체를 사용자 레이어에 한 번에 추가합니다.
 >
 > 이미 동일한 고유 명칭의 객체가 존재하는 경우 해당 객체는 건너뜁니다.
+
+* 지원버전 : `2.23.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1730,11 +1730,11 @@ layer.clearObjectColorList();
 
 ### import3DTiles(option) → boolean
 
-`v1.49.0+`
-
 > 3D Tiles 포맷 데이터를 레이어에 로드합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.49.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1776,11 +1776,11 @@ layer.import3DTiles({
 
 ### setDebugMode(debug) → boolean
 
-`v2.2.3+`
-
 > 3D Tiles 레이어의 디버그 모드(바운딩 볼륨 등 시각화)를 설정합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1803,11 +1803,11 @@ layer.import3DTiles({
 
 ### reloadTiles() → boolean
 
-`v2.2.3+`
-
 > 타일 기반 레이어의 로드된 타일을 모두 지우고 다시 로드합니다.
 >
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1827,11 +1827,11 @@ layer.reloadTiles();
 
 ### setRenderReal3dEdgeLine(set) → boolean
 
-`v2.2.3+`
-
 > Real3D(건물) 레이어 심플 모드의 외곽 라인 렌더링 여부를 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1856,11 +1856,11 @@ layer.reloadTiles();
 
 ### setReal3dEdgeLineColor(color) → boolean
 
-`v2.2.3+`
-
 > Real3D(건물) 레이어 심플 모드 외곽 라인 색상을 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1883,11 +1883,11 @@ layer.reloadTiles();
 
 ### setReal3dEdgeLineWidth(width) → boolean
 
-`v2.2.3+`
-
 > Real3D(건물) 레이어 외곽 라인 두께를 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1910,11 +1910,11 @@ layer.reloadTiles();
 
 ### setRenderReal3dWireFrame(set) → boolean
 
-`v2.2.3+`
-
 > Real3D(건물) 레이어의 와이어프레임 렌더링 여부를 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1937,11 +1937,11 @@ layer.reloadTiles();
 
 ### setReal3dWireFrameColor(color) → boolean
 
-`v2.2.3+`
-
 > Real3D(건물) 레이어 와이어프레임 색상을 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1964,11 +1964,11 @@ layer.reloadTiles();
 
 ### getReal3DFormatData(objectKey, format) → ArrayBuffer
 
-`v2.2.3+`
-
 > Real3D(건물) 객체 데이터를 지정한 포맷(3DS 또는 XDO)의 바이너리 데이터로 반환합니다.
 >
 > VWorld 건물 서비스 레이어인 경우 보안상 사용할 수 없습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1995,9 +1995,9 @@ layer.reloadTiles();
 
 ### getReal3dTexture(objectKey, textureLevel) → [JSIcon](../object/jsicon.md)
 
-`v2.2.3+`
-
 > Real3D(건물) 객체의 텍스처를 JSIcon 형태로 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2024,9 +2024,9 @@ layer.reloadTiles();
 
 ### getReal3dTextureFileName(objectKey) → string
 
-`v2.2.3+`
-
 > Real3D(건물) 객체의 텍스처 파일 이름을 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2050,9 +2050,9 @@ layer.reloadTiles();
 
 ### getReal3dTextureData(objectKey, textureLevel) → ArrayBuffer
 
-`v2.2.3+`
-
 > Real3D(건물) 객체 텍스처의 픽셀 데이터를 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2104,13 +2104,13 @@ layer.reloadTiles();
 
 ### getReal3dLightFlat(), setReal3dLightFlat(value) → number
 
-`v2.30.3+`
-
 > Real3D(건물) 레이어 재질의 조명 반응 세기를 설정합니다.
 >
 > 0은 조명을 그대로 적용하고, 1은 조명을 전혀 적용하지 않습니다. 파사드 텍스처에는 이미 음영이 구워져 있어 조명을 그대로 곱하면 어두워지고, 조명을 완전히 끄면(`setLighting(false)`) 건물이 납작해 보이므로 그 사이 값을 고르기 위한 옵션입니다. 0.3 ~ 0.5에서 입체감은 유지하면서 파사드가 덜 어두워집니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2141,13 +2141,13 @@ let flat = layer.getReal3dLightFlat();
 
 ### setImpostorEnable(enable) → boolean
 
-`v2.29.3+`
-
 > 레이어의 Impostor LOD를 켜거나 끕니다.
 >
 > Impostor LOD는 화면에서 작아진 원거리 건물을 실제 메시 대신 미리 구워 둔 스프라이트(빌보드)로 그려 렌더 부하를 줄이는 기능입니다. 건물의 화면 크기가 [setImpostorSwitchPixel](jslayer.md#setimpostorswitchpixel-pixel-boolean) 값보다 작아지면 임포스터로 전환됩니다.
 >
 > 기본값은 꺼짐이며, 꺼진 상태에서는 기존 렌더 경로와 완전히 동일하게 동작합니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2179,13 +2179,13 @@ layer.setImpostorMinVertex(100);
 
 ### setImpostorSwitchPixel(pixel) → boolean
 
-`v2.29.3+`
-
 > Impostor로 전환할 화면 픽셀 크기를 설정합니다.
 >
 > 건물의 화면 투영 크기(가로·세로 중 큰 변)가 이 값보다 작아지면 임포스터로 바뀝니다. 거리(m)가 아니라 화면 픽셀 기준이라 화각, 해상도, 건물 높이에 자동으로 맞춰집니다.
 >
 > [setImpostorEnable](jslayer.md#setimpostorenable-enable-boolean)로 Impostor LOD를 켠 뒤 호출합니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2212,11 +2212,11 @@ layer.setImpostorSwitchPixel(48);
 
 ### setImpostorMinVertex(count) → boolean
 
-`v2.29.3+`
-
 > Impostor로 대체할 최소 정점 수를 설정합니다.
 >
 > 이 값보다 정점이 적은 단순한 형상(큐브 등)은 메시로 그려도 삼각형이 몇 개뿐이라 이득이 없고 아틀라스 자리만 차지해 복잡한 건물이 밀리므로 임포스터로 바꾸지 않습니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2241,9 +2241,9 @@ layer.setImpostorMinVertex(200);
 
 ### setDefineMeshColorByObjectKey(checkString, compareType, color, isSimpleMode) → boolean
 
-`v2.2.3+`
-
 > 객체 고유 명칭 조건에 따라 Real3D 타일 객체의 메쉬 색상을 정의합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2271,9 +2271,9 @@ layer.setImpostorMinVertex(200);
 
 ### setDefineMeshColorByObjectKeyList(objectKeyList, compareType, color, isSimpleMode) → boolean
 
-`v2.2.3+`
-
 > 객체 고유 명칭 목록에 대해 Real3D 타일 객체의 메쉬 색상을 정의합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2301,9 +2301,9 @@ layer.setImpostorMinVertex(200);
 
 ### setDefineEdgeLineColorByObjectKey(checkString, compareType, color) → boolean
 
-`v2.2.3+`
-
 > 객체 고유 명칭 조건에 따라 Real3D 타일 객체의 외곽 라인 색상을 정의합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2330,9 +2330,9 @@ layer.setImpostorMinVertex(200);
 
 ### setDefineVisibleByFileName(checkString, compareType, visible) → boolean
 
-`v2.2.3+`
-
 > 파일 이름 조건에 따라 Real3D 타일 객체의 가시화 여부를 정의합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2359,9 +2359,9 @@ layer.setImpostorMinVertex(200);
 
 ### clearDefineTileObjectStyle() → boolean
 
-`v2.2.3+`
-
 > [setDefineMeshColorByObjectKey](jslayer.md#setdefinemeshcolorbyobjectkey-checkstring-comparetype-color-issimplemode-boolean), [setDefineEdgeLineColorByObjectKey](jslayer.md#setdefineedgelinecolorbyobjectkey-checkstring-comparetype-color-boolean), [setDefineVisibleByFileName](jslayer.md#setdefinevisiblebyfilename-checkstring-comparetype-visible-boolean) 로 정의된 스타일 조건을 모두 초기화합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2377,9 +2377,9 @@ layer.setImpostorMinVertex(200);
 
 ### setReal3dCutHeight(objectKey, height) → boolean
 
-`v1.37.35+`
-
 > Real3D(건물) 객체의 수평 단면 절단 높이를 설정합니다.
+
+* 지원버전 : `1.37.35+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2405,9 +2405,9 @@ layer.setImpostorMinVertex(200);
 
 ### setReal3dCutUse(objectKey, use) → boolean
 
-`v1.37.35+`
-
 > Real3D(건물) 객체의 수평 단면 절단 효과 사용 여부를 설정합니다.
+
+* 지원버전 : `1.37.35+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2433,9 +2433,9 @@ layer.setImpostorMinVertex(200);
 
 ### cutReal3d(objectKey, option) → boolean
 
-`v1.37.41+`
-
 > Real3D(건물) 객체의 횡단면(절단) 가시화를 설정합니다.
+
+* 지원버전 : `1.37.41+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2474,11 +2474,11 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffect(startColor, endColor, interval, speed) → boolean
 
-`v2.2.3+`
-
 > 벡터 파이프 레이어의 흐름 방향 효과 색상, 간격, 속도를 설정합니다.
 >
 > 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2504,11 +2504,11 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffectVisible(visible) → boolean
 
-`v2.2.3+`
-
 > 벡터 파이프 레이어의 흐름 방향 효과 표시 여부를 설정합니다.
 >
 > 벡터 파이프 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2531,9 +2531,9 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffectAltitude(altitude) → boolean
 
-`v2.2.3+`
-
 > 벡터 파이프 레이어의 흐름 방향 효과 표시 고도를 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2553,9 +2553,9 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffectMinimumRadius(minimumRadius) → boolean
 
-`v2.2.3+`
-
 > 벡터 파이프 레이어의 흐름 방향 효과가 표시되는 최소 반경을 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2579,9 +2579,9 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeMinimumRadius(minimumRadius) → boolean
 
-`v2.2.3+`
-
 > 벡터 파이프 오브젝트가 렌더링되는 최소 반경을 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2605,9 +2605,9 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeSimplyRange(simplyRange) → boolean
 
-`v2.2.3+`
-
 > 벡터 파이프 오브젝트의 단순화(Simplify) 범위를 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2633,9 +2633,9 @@ layer.cutReal3d("obj_key_1", {
 
 ### getPipeIntersection(path) → array
 
-`v1.50.1+`
-
 > 지정한 경로(path)와 옥트리 레이어 내 벡터 파이프 오브젝트가 교차하는 지점들을 반환합니다.
+
+* 지원버전 : `1.50.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2665,11 +2665,11 @@ let intersections = layer.getPipeIntersection(path);
 
 ### setOctreeLoadCallback(callback) → boolean
 
-`v2.7.1.34+`
-
 > 옥트리 레이어 타일 로드 완료 시 호출될 콜백 함수를 설정합니다.
 >
 > 옥트리 구조 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.7.1.34+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2753,9 +2753,9 @@ layer.setGhostSymbolTilePosition({
 
 ### pick(screenX, screenY) → object
 
-`v1.38.0+`
-
 > 화면 좌표를 기준으로 레이어 내 오브젝트를 피킹합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2785,11 +2785,11 @@ if (pickInfo) {
 
 ### rebuildObjectLayer() → boolean
 
-`v1.49.0+`
-
 > 옥트리 레이어의 오브젝트를 다시 배치(트리 재구성)합니다.
 >
 > 옥트리 구조 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.49.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2807,9 +2807,9 @@ layer.rebuildObjectLayer();
 
 ### setMouseHover(hover)
 
-`v1.51.1+`
-
 > 레이어의 마우스 호버 모드 사용 여부를 설정합니다.
+
+* 지원버전 : `1.51.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2827,11 +2827,11 @@ layer.setMouseHover(true);
 
 ### setUserTileJsonParsing(set) → boolean
 
-`v1.55.2+`
-
 > 사용자 레이어 타일 로드 시 JSON 파싱 사용 여부를 설정합니다.
 >
 > 사용자 레이어(지구본 타일 기반)에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.55.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2854,11 +2854,11 @@ layer.setMouseHover(true);
 
 ### setMaxLevelOverlap(overlap) → boolean
 
-`v2.2.3+`
-
 > 하이브리드 레이어의 최대 레벨 초과 시 부모 타일 참조 여부를 설정합니다.
 >
 > 하이브리드 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2882,9 +2882,9 @@ layer.setMouseHover(true);
 
 ### getObjectInScreenRect(startX, startY, endX, endY) → array
 
-`v2.4.2+`
-
 > 화면 영역(사각형) 내에 보이는 레이어 객체 목록을 반환합니다.
+
+* 지원버전 : `2.4.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2916,11 +2916,11 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 
 ### setPointCloudeSize(size)
 
-`v2.10.1+`
-
 > 포인트 클라우드(3D Tiles 기반) 레이어의 포인트 크기를 설정합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.10.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2940,11 +2940,11 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 
 ### setPointCloudInterpolateMode(mode) → boolean
 
-`v2.15.1+`
-
 > 포인트 클라우드 레이어의 보간 모드를 설정합니다.
 >
 > 포인트 클라우드 또는 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.15.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -2967,9 +2967,9 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 
 ### setLimitBoundary(option) → boolean
 
-`v2.11.2+`
-
 > 타일 레이어의 요청 범위를 다각형 경계로 제한합니다.
+
+* 지원버전 : `2.11.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3006,9 +3006,9 @@ layer.setLimitBoundary({
 
 ### getViewInTransparency() → boolean
 
-`v2.12.3+`
-
 > 레이어가 투명 상태에서도 보이도록 설정되었는지 여부를 반환합니다.
+
+* 지원버전 : `2.12.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3025,9 +3025,9 @@ layer.setLimitBoundary({
 
 ### getPickInfoWithinRadius(center, radius) → object
 
-`v2.23.0+`
-
 > 중심 좌표(center)로부터 일정 반경(radius) 이내에서 카메라 뷰와 상관없이 피킹된 객체 정보를 반환합니다.
+
+* 지원버전 : `2.23.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3063,11 +3063,11 @@ if (pickInfo) {
 
 ### addTileInData(tileInfo) → boolean
 
-`v2.19.0.1+`
-
 > 바람장(Wind Layer/Tile Flow) 레이어의 타일에 UV 흐름 데이터를 삽입합니다.
 >
 > 타일 흐름(Tile Flow) 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.19.0.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3097,11 +3097,11 @@ if (pickInfo) {
 
 ### windlayerStart()
 
-`v2.19.0.1+`
-
 > 타일 흐름(Tile Flow) 레이어의 바람장 파티클 흐름 효과를 시작합니다.
 >
 > 타일 흐름 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.19.0.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3117,11 +3117,11 @@ layer.windlayerStart();
 
 ### setWindLayerProperty(option) → boolean
 
-`v2.19.0.1+`
-
 > 바람장(Wind Layer) 파티클 옵션을 설정합니다.
 >
 > 타일 흐름(Tile Flow) 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.19.0.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3155,11 +3155,11 @@ layer.setWindLayerProperty({
 
 ### setBounderyBox(box)
 
-`v2.24.1+`
-
 > 옥트리 레이어의 바운더리 박스를 설정합니다.
 >
 > 옥트리 구조 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.24.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3345,11 +3345,11 @@ layer.setBounderyBox({
 
 ### getMinLevel(), setMinLevel(level) → number
 
-`v2.19.0+`
-
 > 서비스 레이어 최소 가시 레벨을 설정합니다.
 >
 > 서비스 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.19.0+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -3446,9 +3446,9 @@ layer.setName(“WMSLayer2”);
 
 ### setObjectVisibleWithBoundary(minLon, maxLon, minLat, maxLat) → number
 
-`v2.11.2+`
-
 > 경위도 범위 내의 오브젝트 가시화를 설정합니다.
+
+* 지원버전 : `2.11.2+`
 
 {% tabs %}
 {% tab title="Infomation" %}
@@ -3638,9 +3638,9 @@ layer.setName(“WMSLayer2”);
 
 ### setPointCloudRenderModeRGB(offsetR, offsetG, offsetB) → boolean
 
-`v2.2.3+`
-
 > 포인트 클라우드 레이어의 RGB 색상 오프셋을 설정하고, 렌더링 모드를 RGB 모드로 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3668,9 +3668,9 @@ layer.setPointCloudRenderModeRGB(255, 100, 100);
 
 ### setPointCloudRenderModeIntensity(min, max, useColor) → boolean
 
-`v2.2.3+`
-
 > 포인트 클라우드 레이어의 Intensity 기반 렌더링 모드를 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3696,9 +3696,9 @@ layer.setPointCloudRenderModeIntensity(0.0, 255.0, true);
 
 ### setPointCloudRenderModeAltitude(min, max, useColor) → boolean
 
-`v2.2.3+`
-
 > 포인트 클라우드 레이어의 고도 기반 렌더링 모드를 설정합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3802,9 +3802,9 @@ if (pickInfo) {
 
 ### getPickInfo(lineFrom, lineTo) → object
 
-`v2.21.0+`
-
 > 주어진 뷰 라인(lineFrom → lineTo)을 기준으로 해당 레이어 내 피킹된 객체 정보를 반환합니다.
+
+* 지원버전 : `2.21.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3850,13 +3850,13 @@ if (pickInfo) {
 
 ### extractTileFeature(parameter) → [JSPolygon](../object/jspolygon.md)
 
-`v2.31.1+`
-
 > 3D Tiles(b3dm) 레이어에서 feature 하나의 기하만 떼어 독립 폴리곤 객체로 추출합니다.
 >
 > [getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object) / [getPickInfoAtView](jslayer.md#getpickinfoatview-linefrom-lineto-object)의 `tileKey`, `batchId`를 그대로 넘깁니다. 복사이지 이동이 아니므로 원본 타일은 그대로입니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3916,13 +3916,13 @@ if (info && info.batchId !== null && info.batchId !== undefined) {
 
 ### getSelectedTileFeature() → [TileFeature](jslayer.md#tilefeature)
 
-`v2.31.1+`
-
 > 엔진이 지금 이 3D Tiles 레이어에서 선택하고 있는 feature를 반환합니다. (읽기 전용)
 >
 > [getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object)로 따로 피킹하면 광선이 달라 클릭한 건물과 다른 건물이 나올 수 있으므로, "엔진이 실제로 고른 것"을 보여 줄 때 사용합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3950,13 +3950,13 @@ if (feature) {
 
 ### getTileFeatureIdentityKey(), setTileFeatureIdentityKey(key) → string
 
-`v2.31.1+`
-
 > 3D Tiles 건물 정체성 키(배치 테이블 속성 이름)를 조회하거나 설정합니다.
 >
 > 엔진은 줌으로 LOD(타일 레벨)가 바뀌어도 같은 건물의 선택을 유지하려고 건물을 배치 테이블 속성 하나의 값으로 알아봅니다(기본 `"name"`). 그 값이 같은 행은 전부 한 건물로 취급되어 함께 칠해집니다. 레이어마다 따로 가집니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -3987,10 +3987,10 @@ layer.setTileFeatureIdentityKey("");        // 끄기
 
 ### setTileLoadCallback(callback) → boolean
 
-`v1.55.0+`
-
 > 타일 로딩 완료 시 호출될 콜백 함수를 설정합니다.\
 > 타일 기반 레이어(`ELST_PLANET_TILE`)에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.55.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4020,10 +4020,10 @@ layer.setTileLoadCallback(function() {
 
 ### addTileInObject(tileInfo, object) → boolean
 
-`v1.55.2+`
-
 > 지정한 타일 위치에 객체를 수동으로 삽입합니다.\
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.55.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4054,11 +4054,11 @@ layer.addTileInObject(tileInfo, obj);
 
 ### setTileInObjectEnd(tileInfo) → boolean
 
-`v1.55.2+`
-
 > 지정한 타일의 객체 수동 삽입 종료를 명시적으로 설정합니다.\
 > 객체 수동 삽입 이후 타일의 요청 플래그를 비활성화합니다.\
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.55.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4171,11 +4171,11 @@ if (!success) {
 
 ### getTileLODMaxLevel(), setTileLODMaxLevel(level) → number
 
-`v1.59.1+`
-
 > 드론 LOD(Tile LOD Model) 레이어에서 가시화할 최대 레벨을 설정합니다.
 >
 > 드론 LOD 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `1.59.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4201,11 +4201,11 @@ let maxLevel = layer.getTileLODMaxLevel();
 
 ### getMaxGeometricError(), setMaxGeometricError(value) → number
 
-`v2.27.2+`
-
 > 3D Tiles 레이어의 최대 기하 오차(Maximum Screen Space Error)를 설정합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.27.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4228,8 +4228,6 @@ let error = layer.getMaxGeometricError();
 
 ### getMinGeometricError(), setMinGeometricError(value) → number
 
-`v2.29.4+`
-
 > 3D Tiles 레이어의 최소 기하 오차(geometricError)를 설정합니다.
 >
 > 설정한 값 이하의 geometricError를 가진 노드는 더 이상 정제(자식 요청)하지 않으므로 최대 상세도를 제한합니다.
@@ -4237,6 +4235,8 @@ let error = layer.getMaxGeometricError();
 > geometricError 기준이라 데이터셋이 바뀌어도 "이 정도 해상도까지만"이라는 의미가 유지됩니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4268,8 +4268,6 @@ layer.setMinGeometricError(0);
 
 ### getRefineHysteresisRatio(), setRefineHysteresisRatio(ratio) → number
 
-`v2.31.1+`
-
 > 3D Tiles 정제 히스테리시스 비율을 설정합니다.
 >
 > 정제는 최대 화면 오차([setMaxGeometricError](jslayer.md#getmaxgeometricerror-setmaxgeometricerror-value-number))를 초과할 때 시작하고, 되돌리기는 그 값을 이 비율로 나눈 값 미만으로 내려갔을 때만 합니다. (예: 최대 화면 오차 16, 비율 1.5 → 16 초과에서 정제 시작, 약 10.7 미만에서 되돌림)
@@ -4277,6 +4275,8 @@ layer.setMinGeometricError(0);
 > 카메라 회전으로 타일까지의 거리가 오르내려도 임계값 근처 타일이 정제와 되돌림을 왕복하며 자식이 해제/재요청되는 현상을 줄입니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4309,8 +4309,6 @@ let ratio = layer.getRefineHysteresisRatio();
 
 ### getRefineHoldTime(), setRefineHoldTime(ms) → number, boolean
 
-`v2.31.1+`
-
 > 3D Tiles 정제 유지(팝아웃 방지) 창(ms)을 조회하거나 설정합니다.
 >
 > REPLACE 정제에서 이미 자식으로 정제해 그리던 노드는, 새로 보이게 된 자식이 아직 오지 않았다는 이유로 거친 부모로 되돌아가지 않습니다(빠진 자리는 조상 채움이 덮습니다). 이 값은 "마지막으로 자식이 전부 준비됐던 시점"부터의 실제 경과 시간입니다.
@@ -4318,6 +4316,8 @@ let ratio = layer.getRefineHysteresisRatio();
 > 창이 지나 만료돼도 되돌림이 화면을 더 덮을 때만 부모로 되돌립니다(그 노드가 자기를 그릴 수 있는데 조상 채움으로는 못 그리는 경우, 예: 가우시안 스플랫 타일). 그 밖에는 만료 뒤에도 지금 화면을 유지합니다. 레이어 알파가 250 미만이어도 더 이상 되돌림 사유가 아닙니다(알파 패스의 조상 채움이 빠진 자리를 덮습니다).
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4350,13 +4350,13 @@ let ms = layer.getRefineHoldTime();
 
 ### getTileUnloadDistance(), setTileUnloadDistance(meter) → number, boolean
 
-`v2.31.1+`
-
 > 3D Tiles 모델 데이터의 거리 기반 해제 거리를 조회하거나 설정합니다.
 >
 > 카메라가 멀어져 더는 필요 없는 타일의 모델 데이터(정점/텍스처)와 중첩 타일셋(노드 트리)을 풀어 메모리를 돌려줍니다. 종전에는 보유 용량 상한([setMaxTilesRetainedMB](../option/jsoption.md#getmaxtilesretainedmb-setmaxtilesretainedmb-size-number), 기본 512MB)을 넘을 때만 풀렸고 상한 안쪽인 데이터셋은 카메라가 아무리 멀어져도 처음 받은 것이 그대로 남았습니다. 이 해제는 상한과 무관하게 돌고, 풀린 데이터는 다시 필요해지면(가까이 돌아오면) 다시 받습니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4396,8 +4396,6 @@ let distance = layer.getTileUnloadDistance();
 
 ### getFillOnlyHorizonFactor(), setFillOnlyHorizonFactor(factor) → number, boolean
 
-`v2.31.1+`
-
 > 3D Tiles 지평선 규모를 넘는 타일의 "채움 전용" 처리 배수를 조회하거나 설정합니다.
 >
 > 카메라를 크게 돌리거나 내린 직후에는 자식이 아직 없어 부모(더 거친 타일)가 대신 그려집니다. 그 부모가 지구 규모면 메시 오차가 카메라 높이를 훨씬 넘어, 정밀 타일을 가로막는 가짜 벽과 카메라 앞을 가로지르는 띠(바다 텍스처의 파란 띠)로 보입니다.
@@ -4405,6 +4403,8 @@ let distance = layer.getTileUnloadDistance();
 > 카메라 높이 h(200m 하한)에서 지평선까지의 거리 `sqrt(2*R*h + h*h)`의 factor배보다 큰 타일 중 **자식 대신 서 있는 REPLACE 타일**(자식 미준비/미요청/하강 공백으로 부모가 대신 그려진 것)만 정밀 목록에서 빼 조상 채움 패스(어떤 정밀 타일도 덮지 못한 화소에만 그림)로 내립니다. 그리지 않는 것이 아니라 정밀 타일이 있는 화소에서만 물러나므로 화면이 비지 않습니다. ADD 노드, SSE가 정답이라 그린 타일, 리프는 크기와 무관하게 옮기지 않으며, 한계 이하 타일이 화면에 하나도 없으면(시작 직후 큰 타일만 받은 상태) 아무것도 옮기지 않습니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4442,13 +4442,13 @@ console.log(layer.getFillOnlyHorizonFactor()); // 3
 
 ### getFillSkirtCut(), setFillSkirtCut(cut) → boolean
 
-`v2.31.1+`
-
 > 3D Tiles 조상 채움 타일의 치마(skirt) 제거 여부를 조회하거나 설정합니다.
 >
 > 정밀 타일이 덮지 못한 자리를 거친 조상으로 메우는 채움 패스에서만, 구글 타일 가장자리의 치마(텍스처가 세로로 늘어난 면) 조각을 버려 계단 사이의 벽을 없앱니다. 정밀 타일은 건드리지 않아 타일 사이 이음매는 그대로입니다. 그림자가 켜져 있으면(그림자 전용 프로그램) 적용되지 않습니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4481,13 +4481,13 @@ console.log(layer.getFillSkirtCut()); // true
 
 ### resetFillDefaults() → boolean
 
-`v2.31.1+`
-
 > [setFillOnlyHorizonFactor](jslayer.md#getfillonlyhorizonfactor-setfillonlyhorizonfactor-factor-number-boolean)와 [setFillSkirtCut](jslayer.md#getfillskirtcut-setfillskirtcut-cut-boolean)로 명시한 값을 지우고 기본(자동)으로 되돌립니다.
 >
 > 자동 기본값은 구글 레이어 3.0 / true, 그 밖의 레이어 0 / false입니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4508,8 +4508,6 @@ layer.resetFillDefaults(); // 다시 자동(구글 레이어만 켜짐)
 
 ### setTileBoundary(minLon, minLat, maxLon, maxLat)
 
-`v2.29.4+`
-
 > 3D Tiles 레이어를 경위도(degree) 사각 범위로 제한합니다.
 >
 > 범위 안에 **완전히 포함되는** 타일만 요청하고 그립니다. 범위에 걸치기만 하는 타일은 하위 타일로 내려가기 위해 순회는 하지만 자신의 콘텐츠는 받지도 그리지도 않습니다.
@@ -4517,6 +4515,8 @@ layer.resetFillDefaults(); // 다시 자동(구글 레이어만 켜짐)
 > 범위를 나중에 좁힌 경우 이미 받아 둔 타일도 그리지 않습니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4545,11 +4545,11 @@ layer.setTileBoundary(126.97, 37.55, 126.99, 37.57);
 
 ### clearTileBoundary()
 
-`v2.29.4+`
-
 > [setTileBoundary](jslayer.md#settileboundary-minlon-minlat-maxlon-maxlat)로 설정한 사각 범위 제한을 해제합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4566,13 +4566,13 @@ layer.clearTileBoundary();
 
 ### setTileExcludeArea(option) → boolean
 
-`v2.31.1+`
-
 > 3D Tiles 레이어에서 경위도 폴리곤 영역 안의 형상을 렌더/선택/그림자에서 제외합니다.
 >
 > 영역 안에 완전히 들어온 타일은 요청과 렌더를 하지 않고, 영역 경계에 걸친 타일은 셰이더 마스크로 영역 안쪽만 지웁니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4626,11 +4626,11 @@ let ok = layer.setTileExcludeArea({
 
 ### clearTileExcludeArea()
 
-`v2.31.1+`
-
 > [setTileExcludeArea](jslayer.md#settileexcludearea-option-boolean)로 설정한 제외 영역을 모두 해제합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4647,8 +4647,6 @@ layer.clearTileExcludeArea();
 
 ### getTileHeightOffset(), setTileHeightOffset(meter) → number
 
-`v2.29.4+`
-
 > 3D Tiles 전체를 지구 중심 기준으로 지정한 높이(m)만큼 띄웁니다.
 >
 > 엔진 지구본과 3D Tiles 지표면이 같은 깊이에 놓여 생기는 z-fighting을 없애기 위한 보정입니다. [import3DTiles](jslayer.md#import3dtiles-option-boolean)의 `offsetZ` 옵션과 같은 값을 런타임에 바꿉니다.
@@ -4656,6 +4654,8 @@ layer.clearTileExcludeArea();
 > 평행이동이 아니라 지구 중심 기준 균일 스케일로 적용되므로 인접 타일 이음매가 벌어지지 않습니다. 대신 형상 자체도 소폭 커집니다(소스 주석 기준 5m 보정 시 400m 건물이 약 0.3mm 커지는 수준).
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4682,13 +4682,13 @@ let offset = layer.getTileHeightOffset();
 
 ### setTileAutoTerrainFit(enable)
 
-`v2.31.1+`
-
 > 3D Tiles 레이어의 지형 자동 맞춤을 켜거나 끕니다.
 >
 > 포인트클라우드·메시·가우시안 스플랫이 지형 위에 떠 있거나 파묻힌 것을 자동으로 보정합니다. 데이터의 높이 기준(타원체고/표고)은 파일에 적혀 있지 않으므로 추정하지 않고 엔진 지형을 실제로 조회해 보정값을 구합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다. [import3DTiles](jslayer.md#import3dtiles-option-boolean)의 `autoTerrainFit` 옵션과 같은 스위치입니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4719,13 +4719,13 @@ layer.setTileAutoTerrainFit(false);
 
 ### getTileTerrainFit() → [TileTerrainFit](jslayer.md#tileterrainfit)
 
-`v2.31.1+`
-
 > 3D Tiles 레이어의 지형 자동 맞춤 상태, 보정값, 루트 바운딩 정보를 반환합니다.
 >
 > 측정 진행 확인과 카메라 프레이밍(루트 위치로 이동)에 사용합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4751,8 +4751,6 @@ if (fit.rootLon !== undefined) {
 
 ### getSplatAlphaScale(), setSplatAlphaScale(scale) → number, boolean
 
-`v2.31.1+`
-
 > 3D Tiles 레이어에 포함된 가우시안 스플랫의 진하기(불투명도 배수)를 조회하거나 설정합니다.
 >
 > 1.0이 자료 그대로입니다. 올리면 SPZ 불투명도가 그만큼 곱해져 지형이 비쳐 보이던 것이 줄어듭니다. 1을 넘는 값은 셰이더에서 1.0으로 포화하므로 "완전 불투명"이 상한입니다.
@@ -4760,6 +4758,8 @@ if (fit.rootLon !== undefined) {
 > 스플랫은 타일마다 별개 객체이고 타일이 계속 흘러들어오므로 값을 레이어가 들고 렌더 루프가 매 프레임 타일에 밀어 줍니다(나중에 온 타일도 같은 진하기로 그려집니다).
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4789,13 +4789,13 @@ console.log(layer.getSplatAlphaScale()); // 2
 
 ### getSplatScale(), setSplatScale(scale) → number, boolean
 
-`v2.31.1+`
-
 > 3D Tiles 레이어에 포함된 가우시안 스플랫의 크기 배수를 조회하거나 설정합니다.
 >
 > 1.0이 자료 그대로이며 배수는 스플랫 공분산에 곱해집니다. 값은 [setSplatAlphaScale](jslayer.md#getsplatalphascale-setsplatalphascale-scale-number-boolean)과 같이 레이어가 들고 매 프레임 타일에 적용합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4825,13 +4825,13 @@ console.log(layer.getSplatScale()); // 1.5
 
 ### setTileCopyrightCallback(callback) → boolean
 
-`v2.30.2+`
-
 > 3D Tiles 레이어의 저작자 표시(attribution) 콜백을 설정합니다.
 >
 > 화면에 그려진 타일의 데이터 제공자는 타일마다 다르고 카메라를 옮기면 바뀌므로, 매 프레임 "그려진 타일의 집합"에서 제공자를 모아 그 결과가 실제로 바뀐 프레임에만 콜백을 호출합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4873,13 +4873,13 @@ layer.setTileCopyrightCallback(function(e) {
 
 ### getTileCopyright() → string
 
-`v2.30.2+`
-
 > 3D Tiles 레이어의 현재 화면 기준 저작자 표시 문자열을 반환합니다.
 >
 > [setTileCopyrightCallback](jslayer.md#settilecopyrightcallback-callback-boolean)을 놓쳤거나 초기 표시를 그릴 때 사용합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.30.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4897,13 +4897,13 @@ let copyright = layer.getTileCopyright();
 
 ### get3DTilesDiagnostics() → object
 
-`v2.29.4+`
-
 > 3D Tiles 레이어의 진단 정보를 반환합니다. (진단용)
 >
 > 순회별 소요 시간, 그려진 노드/삼각형 수, 파싱 워커 상태, 타일 보유 메모리, geometricError 분포, 화면 구멍/배제 사유 등을 마지막 프레임 기준으로 반환합니다. CPU 고착이나 화면 공백이 재현된 시점에 원인 구간을 읽기 위한 상설 계측값입니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4929,8 +4929,6 @@ if (d) {
 
 ### get3DTilesLoadLeadFrames(), set3DTilesLoadLeadFrames(frames) → number
 
-`v2.29.4+`
-
 > 3D Tiles 로딩 순회가 그리기 순회보다 앞서 갈 수 있는 신선도 창(프레임 수)을 설정합니다.
 >
 > 그리기 순회가 최근 이 프레임 수 안에 도달한 노드는 "렌더러가 여기까지 왔다"고 보고 로딩 순회가 그 아래로 내려갈 수 있습니다.
@@ -4938,6 +4936,8 @@ if (d) {
 > 0이면 제한을 끄며, 이 경우 로딩 순회가 SSE만 보고 트리 끝까지 내려가 요청이 급증합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4962,8 +4962,6 @@ let frames = layer.get3DTilesLoadLeadFrames();
 
 ### get3DTilesLoadLookahead(), set3DTilesLoadLookahead(levels) → number
 
-`v2.29.4+`
-
 > 3D Tiles 로딩 순회가 그리기 순회가 아직 도달하지 않은 구간을 몇 레벨까지 앞질러 받을지 설정합니다.
 >
 > 값이 작으면 정제가 "한 레벨 내려감 → 네트워크 왕복 → 한 레벨 더" 사슬에 묶여, 카메라를 크게 움직인 뒤 화면이 선명해지는 데 오래 걸립니다. 0이면 선행 없이 렌더러가 도달한 곳까지만 받습니다.
@@ -4971,6 +4969,8 @@ let frames = layer.get3DTilesLoadLeadFrames();
 > [set3DTilesLoadLeadFrames](jslayer.md#get3dtilesloadleadframes-set3dtilesloadleadframes-frames-number)는 "얼마나 오래된 방문까지 인정하나"만 정하고 깊이는 늘리지 않으므로, 깊이는 이 값으로 조절합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -4995,13 +4995,13 @@ let levels = layer.get3DTilesLoadLookahead();
 
 ### get3DTilesTilesetFreeFrames(), set3DTilesTilesetFreeFrames(frames) → number
 
-`v2.29.4+`
-
 > 그리기 순회가 이 프레임 수 이상 도달하지 않은 중첩 타일셋을 통째로 해제하기까지 대기하는 프레임 수를 설정합니다.
 >
 > 노드 트리가 무한정 커지는 것을 막기 위한 값으로, 해제된 타일셋은 다시 필요해지면 json을 재요청해 복원됩니다. 값이 작을수록 해제가 빨라 메모리는 줄지만 재요청이 늘어납니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있으며, 값은 레이어 단위로 설정됩니다.
+
+* 지원버전 : `2.29.4+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -5028,9 +5028,9 @@ let frames = layer.get3DTilesTilesetFreeFrames();
 
 ### getLayerStyle(), setLayerStyle(style) → object
 
-`v2.23.0+`
-
 > 레이어의 POI 스타일(크기, 페이드 옵션)을 설정합니다.
+
+* 지원버전 : `2.23.0+`
 
 {% tabs %}
 {% tab title="Information" %}

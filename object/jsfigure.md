@@ -16,17 +16,17 @@ let figure = Module.createFigure("ID");
 
 | Name     			| Type                                	| Description           |
 | ----------------- | ------------------------------------- | --------------------- |
-| isplayer `v1.37.24+` 			| boolean                             	| 비디오 실행 여부. 			|
-| videoStreaming `v2.4.0+` 	| boolean                             	| 비디오 스트리밍 여부. 		|
-| axisX `v2.4.0+` 			| boolean                             	| 좌우 반전. 				|
-| axisY `v2.4.0+` 			| boolean                             	| 상하 반전. 				|
-| scaleUI `v2.17.1+` 			| boolean                             	| 크기조절 UI 				|
-| rotateUI `v2.17.1+` 			| boolean                             	| 회전 UI 				|
-| moveUI `v2.17.1+` 			| boolean                             	| 이동 UI 				|
-| element `v2.4.0+` 			| object                             	| 전광판/영상 오버랩 재생용 HTML5 video 엘리먼트 참조. |
-| canvas `v2.4.0+` 			| object                             	| 전광판/영상 오버랩 재생용 canvas 엘리먼트 참조. |
-| context `v2.4.0+` 			| object                             	| canvas의 렌더링 context 참조. |
-| hls `v2.10.2+` 				| object                             	| HLS 스트리밍 재생 객체(hls.js 등) 참조. |
+| isplayer `1.37.24+` 			| boolean                             	| 비디오 실행 여부. 			|
+| videoStreaming `2.4.0+` 	| boolean                             	| 비디오 스트리밍 여부. 		|
+| axisX `2.4.0+` 			| boolean                             	| 좌우 반전. 				|
+| axisY `2.4.0+` 			| boolean                             	| 상하 반전. 				|
+| scaleUI `2.17.1+` 			| boolean                             	| 크기조절 UI 				|
+| rotateUI `2.17.1+` 			| boolean                             	| 회전 UI 				|
+| moveUI `2.17.1+` 			| boolean                             	| 이동 UI 				|
+| element `2.4.0+` 			| object                             	| 전광판/영상 오버랩 재생용 HTML5 video 엘리먼트 참조. |
+| canvas `2.4.0+` 			| object                             	| 전광판/영상 오버랩 재생용 canvas 엘리먼트 참조. |
+| context `2.4.0+` 			| object                             	| canvas의 렌더링 context 참조. |
+| hls `2.10.2+` 				| object                             	| HLS 스트리밍 재생 객체(hls.js 등) 참조. |
 
 ## Function
 
@@ -442,9 +442,9 @@ figure.setSize(50.0, 100.0, 150.0);
 
 ### createOverlapRTT(option) → boolean
 
-`v1.45.0+`
-
 > 이미지 오버랩을 생성합니다.
+
+* 지원버전 : `1.45.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -501,9 +501,9 @@ figure.setSize(50.0, 100.0, 150.0);
 
 ### createImageOverLap(vertex, option) → boolean
 
-`v1.45.0+`
-
 > 이미지 오버랩을 생성합니다.
+
+* 지원버전 : `1.45.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -531,9 +531,9 @@ figure.setSize(50.0, 100.0, 150.0);
 
 ### undoEditTerrain() → boolean
 
-`v2.27.0+`
-
 > 객체와 겹치는 영역의 지형 성절토 편집을 원복합니다.
+
+* 지원버전 : `2.27.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -658,9 +658,9 @@ fig.createFigure(new Module.JSVector3D(127.0, 37.5, 30.0), new Module.JSVector3D
 
 ### getRectInfo() → object
 
-`v2.7.2.1+`
-
 > 객체의 좌표정보를 반환합니다.
+
+* 지원버전 : `2.7.2.1+`
 
 {% tabs %}
 {% tab title="Information" %}

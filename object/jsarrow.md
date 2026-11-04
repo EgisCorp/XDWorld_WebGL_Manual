@@ -166,9 +166,9 @@ object.setVisible(true);
 
 ### getPosition(), setPosition(pos) → JSVector3D
 
-`v2.2.3+`
-
 > 화살표 객체의 시작점을 설정 및 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -194,9 +194,9 @@ object.setPosition(pos);
 
 ### getOrient(), setOrient(orient) → number
 
-`v2.2.3+`
-
 > 화살표 객체의 방향을 설정 및 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -222,9 +222,9 @@ object.setOrient(orient);
 
 ### getTilt(), setTilt(tilt) → number
 
-`v2.2.3+`
-
 > 화살표 객체의 틸트를 설정 및 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -250,9 +250,9 @@ object.setTilt(tilt);
 
 ### getDist(), setDist(dist) → number
 
-`v2.2.3+`
-
 > 객체의 길이를 설정 및 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -278,9 +278,9 @@ object.setDist(dist);
 
 ### getColor(), setColor(color) → JSColor
 
-`v2.2.3+`
-
 > 객체의 색상을 설정 및 반환합니다.
+
+* 지원버전 : `2.2.3+`
 
 {% tabs %}
 {% tab title="Information" %}

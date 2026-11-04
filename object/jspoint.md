@@ -14,7 +14,7 @@ var object = Module.createPoint("ID");
 
 | Name            | Type                                  | Description                                |
 | --------------- | ------------------------------------- | ----------------------------------------- |
-| image_scale `v1.43.0+`     | 이미지 스케일                          | 1.0을 기본으로 이미지의 스케일을 조정        |
+| image_scale `1.43.0+`     | 이미지 스케일                          | 1.0을 기본으로 이미지의 스케일을 조정        |
 
 ## Function
 
@@ -535,8 +535,6 @@ object.setIcon(icon);
 
 ### setImageCompressed(data, format, width, height) → boolean
 
-`v2.30.1+`
-
 > POI 객체를 구성하는 이미지를 압축 텍스처 데이터로 설정합니다.
 >
 > 변환 없이 압축 블록을 그대로 GPU에 업로드하므로 RGBA4444(2B/px) 대비 메모리를 절반 이하로 줄일 수 있습니다. 압축 인코딩은 호출자(예: 워커)가 미리 수행해야 합니다.
@@ -544,6 +542,8 @@ object.setIcon(icon);
 > 입력 변수값(format)은 숫자가 아닌 이름 문자열이며 대소문자를 구분하지 않습니다. 기기가 해당 포맷의 WebGL 확장을 지원하지 않으면 실패합니다.
 >
 > 입력 변수값(data)의 크기는 `ceil(width/블록가로) × ceil(height/블록세로) × 블록당 바이트 수`와 정확히 같아야 합니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -596,8 +596,6 @@ if (!ok) {
 
 ### setImageAtlas(atlasId, x, y, width, height) → boolean
 
-`v2.30.3+`
-
 > 아틀라스 텍스처의 한 칸을 POI 객체의 이미지로 설정합니다.
 >
 > 아틀라스는 [XDECreateLabelAtlas](../module/moduleapi.md#xdecreatelabelatlas-data-width-height-number)로 미리 생성하며, 여러 라벨 이미지를 한 장에 모아 한 번만 업로드하므로 [setImage](jspoint.md#setimage-data-width-height-boolean)를 라벨마다 호출할 때 발생하는 GL 텍스처 생성/업로드 비용을 크게 줄일 수 있습니다.
@@ -605,6 +603,8 @@ if (!ok) {
 > POI는 아틀라스 텍스처를 참조만 하며(참조 계수), 칸 위치는 UV로 정점에 반영됩니다. 따라서 아틀라스를 모두 붙인 직후 [XDEReleaseLabelAtlas](../module/moduleapi.md#xdereleaselabelatlas-atlasid-boolean)를 호출해도 해당 POI가 살아 있는 동안은 텍스처가 유지되며, 마지막 POI가 사라질 때 함께 해제됩니다.
 >
 > 칸 좌표는 아틀라스 이미지 기준 픽셀 단위이며 좌상단이 원점입니다. 인접 칸의 이미지가 번지지 않도록 아틀라스는 항상 NEAREST 필터로 샘플링되므로, 필요하면 칸 사이에 여백(padding)을 두세요.
+
+* 지원버전 : `2.30.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -792,11 +792,11 @@ point.setLonLat(129.1270931, 35.1713096);
 
 ### setLineAlign(from, to) → boolean
 
-`v2.29.1+`
-
 > 두 지점(from, to)을 잇는 방향에 맞춰 POI 심볼(라벨)을 회전시킵니다. 도로명 표기처럼 라인을 따라 정렬된 라벨을 표시할 때 사용합니다.
 >
 > 회전되는 라벨은 텍스처 필터가 NEAREST가 아닌 LINEAR로 유지되어 회전 각도에서도 외곽선이 매끄럽게 보이며, 이 필터는 텍스처 업로드 시점에 한 번만 적용되므로 [setImage(data, width, height)](jspoint.md#setimage-data-width-height-boolean)보다 먼저 호출해야 합니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -823,9 +823,9 @@ point.setLineAlign(new Module.JSVector3D(127.0, 37.5, 30.0),
 
 ### clearLineAlign()
 
-`v2.29.1+`
-
 > [setLineAlign(from, to)](jspoint.md#setlinealign-from-to-boolean)로 설정된 라인 정렬을 해제하고, 회전 각도를 0으로 되돌립니다.
+
+* 지원버전 : `2.29.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -978,11 +978,11 @@ point.setTextMargin(10, -10);
 
 ### setRange(option) → boolean
 
-`v2.5.1+`
-
 > POI 객체의 가시 범위 및 텍스트 표시 범위를 설정합니다.
 >
 > [setVisibleRange()](jspoint.md#setvisiblerange-enable-min-max-boolean)의 확장판으로, 텍스트 표시 범위(textMin, textMax)를 별도로 지정할 수 있습니다.
+
+* 지원버전 : `2.5.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1199,9 +1199,9 @@ point.setRenderOrder(2);
 
 ### color (property), setColor(color) → [JSColor](../core/jscolor.md)
 
-`v1.37.41+`
-
 > POI 이미지에 적용할 색상(틴트)을 설정합니다.
+
+* 지원버전 : `1.37.41+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1222,9 +1222,9 @@ point.color = new Module.JSColor(255, 255, 0, 0);
 
 ### imageScale, image_scale (property), setImageScale(scale) → number
 
-`v1.43.0+`
-
 > POI 이미지의 배율을 설정합니다. 기본값 1.0.
+
+* 지원버전 : `1.43.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1248,9 +1248,9 @@ point.imageScale = 1.5;
 
 ### zIndex, z_index (property), setZIndex(index) → number
 
-`v1.46.0+`
-
 > POI 객체의 Z-Index(렌더링 우선순위 값)를 설정합니다.
+
+* 지원버전 : `1.46.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -1274,9 +1274,9 @@ point.zIndex = 1.0;
 
 ### autoHeight (property), setautoHeight(set) → boolean
 
-`v2.23.0+`
-
 > POI 객체의 높이 자동 조절(지형 고도 자동 반영) 기능 사용 여부를 설정합니다.
+
+* 지원버전 : `2.23.0+`
 
 {% tabs %}
 {% tab title="Information" %}

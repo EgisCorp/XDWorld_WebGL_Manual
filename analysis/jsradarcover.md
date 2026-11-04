@@ -4,11 +4,11 @@ description: 레이더/시선 기반 가시권(전파 도달 범위) 분석(Rada
 
 # JSRadarCover / JSRCCollection
 
-`v1.55.2+`
-
 > 이 문서는 하나의 짝을 이루는 두 cpp 파일에 정의된 클래스, `JSRadarCover`(JSRadarCover.cpp, 개별 분석 결과)와 `JSRCCollection`(JSRCCollection.cpp, 분석 결과 목록 컨테이너)을 함께 다룹니다.
 >
 > `JSRCCollection`은 [JSAnalysis](jsanalysis.md)를 통해 접근하는 전역 레이더 가시권 분석 결과 목록 컨테이너이며, `JSRCCollection.createRadarCover()` 또는 `indexAt()`을 통해 개별 `JSRadarCover` 객체를 얻습니다.
+
+* 지원버전 : `1.55.2+`
 
 ```javascript
 var rcCollection = Module.getAnalysis().getRadarCoverCollection();
@@ -175,11 +175,11 @@ rcCollection.setColor(
 
 ### analysisCover(option) → object
 
-`v2.2.2+`
-
 > 구형(sphere), 그리드형(grid), 사용자 지정 경로(custom) 세 가지 방식 중 하나로 가시권 분석을 수행하고, 분석된 각 시선(line) 정보를 배열로 반환합니다.
 >
 > 결과로 반환된 정보를 바탕으로 [create3DLayByJson()](jsradarcover.md#create3dlaybyjson-lays-boolean)를 호출하여 실제 3D 가시화를 생성할 수 있습니다.
+
+* 지원버전 : `2.2.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -223,9 +223,9 @@ var result = rcCollection.analysisCover({
 
 ### create3DLayByJson(lays) → boolean
 
-`v2.2.2+`
-
 > [analysisCover()](jsradarcover.md#analysiscover-option-object)의 결과(각 시선별 `visible` 정보가 포함된 배열)를 입력받아, 가시/비가시 구간을 색상으로 구분한 3D 시각화 라인을 생성합니다.
+
+* 지원버전 : `2.2.2+`
 
 {% tabs %}
 {% tab title="Information" %}

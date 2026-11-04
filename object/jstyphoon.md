@@ -4,9 +4,9 @@ description: 지도 내 태풍을 표현하는 객체를 생성 및 설정하기
 
 # JSTyphoon
 
-`v1.60.1+`
-
 > Module.createTyphoon() API를 생성합니다.
+
+* 지원버전 : `1.60.1+`
 
 ```javascript
 var object = Module.createTyphoon("id");

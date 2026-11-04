@@ -4,9 +4,9 @@ description: 지도 내 인스턴스 객체를 생성 및 설정하기 위한 AP
 
 # JSInstanceObject
 
-`v1.37.35+`
-
 > Module.createInstanceObject API를 생성합니다.
+
+* 지원버전 : `1.37.35+`
 
 ```javascript
 let instanceObject = Module.createInstanceObject("object");
@@ -37,9 +37,9 @@ var strKey = object.getId();
 
 ### getIntersectObjects(parameter) → error
 
-`v1.37.40+`
-
 > 등록된 인스턴스 객체와 입력 변수값(parameter)에서 설정된 직선과 겹치는 항목을 반환합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -101,13 +101,13 @@ instanceObject.loadFile({
 
 ### create(parameter) → object
 
-`v1.37.40+`
-
 > 인스턴스 객체를 생성합니다.
 >
 > `parameter.type`이 지정된 경우, `startPosition`/`info`에 정의된 값 목록을 기준으로 박스 형태의 인스턴스를 생성합니다.
 >
 > `parameter.type`이 없는 경우, `parameter.object`(JSPolygon 타입 오브젝트)를 원본 메쉬로 하여 `array`에 정의된 위치/회전/크기/색상 목록만큼 인스턴스를 생성합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -140,9 +140,9 @@ let result = instanceObject.create({
 
 ### createObjectInArea(options) → number
 
-`v2.9.1+`
-
 > 지정된 영역(폴리곤) 내부에 일정 간격으로 박스 형태의 인스턴스 객체를 격자 배치로 생성합니다.
+
+* 지원버전 : `2.9.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -171,9 +171,9 @@ let count = instanceObject.createObjectInArea({
 
 ### applyViewObject(parameter) → object
 
-`v1.37.40+`
-
 > 입력한 인덱스 목록에 해당하는 인스턴스만 화면에 표시되도록 적용합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -202,9 +202,9 @@ instanceObject.applyViewObject({ array: [0, 2, 5] });
 
 ### clearViewObject() → object
 
-`v1.37.40+`
-
 > `applyViewObject`로 적용된 화면 표시 인스턴스 목록을 초기화(해제)합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -229,9 +229,9 @@ instanceObject.clearViewObject();
 
 ### setInstanceColor(index, color)
 
-`v2.13.0+`
-
 > 지정한 인덱스의 인스턴스 색상을 설정합니다.
+
+* 지원버전 : `2.13.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -254,11 +254,11 @@ instanceObject.setInstanceColor(0, new Module.JSColor(255, 255, 0, 0));
 
 ### setZbuffer(set)
 
-`v2.29.3+`
-
 > 인스턴스 객체를 그릴 때 깊이 테스트(Z 버퍼)를 사용할지 설정합니다. 기본값은 false이며, 이 경우 깊이 테스트 없이 그려지므로 불투명 인스턴스(건물 박스 등)도 지형이나 다른 객체에 의한 가림을 무시하고 그려집니다. true로 설정하면 깊이 테스트를 거쳐 앞에 있는 객체에 가려집니다.
 >
 > 호출 시 화면 재렌더를 따로 요청하지 않으므로, 변경된 값은 다음 프레임 갱신 때 반영됩니다. 객체가 없으면 아무 동작도 하지 않습니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -283,13 +283,13 @@ instanceObject.setZbuffer(true);
 
 ### setInstanceIdList(idArray)
 
-`v2.29.3+`
-
 > 인스턴스별 ID(문자열) 목록을 설정합니다. 객체를 선택(피킹)했을 때 선택 이벤트의 `instanceId`로 전달되는 값이며, 인덱스(`instanceIndex`)는 그대로입니다.
 >
 > 반드시 [loadFile(options)](jsinstanceobject.md#loadfile-options-boolean)로 인스턴스를 생성한 **뒤에** 호출해야 합니다. 엔진은 인스턴스를 공간 순서로 재배열해 저장하는데, 이 함수가 ID 목록에도 같은 재배열을 적용하여 `loadFile`에 넘긴 `listPosition`의 순서를 기준으로 ID가 올바르게 대응되도록 합니다. `loadFile` 전에 호출하면 재배열 정보가 없어 원본 순서 그대로 저장되므로 ID가 어긋납니다. `url`을 지정해 비동기로 로드하는 경우에도 인스턴스 배치가 끝난 뒤에 호출하십시오.
 >
 > `idArray`가 null/undefined이거나 객체가 없으면 아무 동작도 하지 않습니다. ID 개수와 인스턴스 개수가 일치하는지는 검사하지 않으므로, `listPosition`과 같은 개수/순서로 전달하십시오.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -318,9 +318,9 @@ instanceObject.setInstanceIdList(["building_001", "building_002"]);
 
 ### getAlpha(), setAlpha(alpha) → number
 
-`v1.54.0+`
-
 > 인스턴스 객체 투명도를 반환합니다.
+
+* 지원버전 : `1.54.0+`
 
 {% tabs %}
 {% tab title="Information" %}

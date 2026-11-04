@@ -4,11 +4,11 @@ description: 지도 내 볼륨(연기, 화염, 산불, 수면, 태풍 등) 효�
 
 # JSVolumeObject
 
-`v2.29.2+`
-
 > Module.createVolumeObject() API를 생성합니다.
 >
 > 레이 마칭(Ray Marching) 기반으로, 박스 하나에 3D 밀도 데이터를 올려 한 번에 그리는 방식으로 구름·화염·산불·수면·태풍·불꽃축제 같은 부피감 있는 효과를 표현합니다. [effect](jsvolumeobject.md#effect-property-geteffect-seteffect-effect-number) 프로퍼티로 효과 종류를 선택하며, 효과별로 [setParams(info)](jsvolumeobject.md#setparams-info-string)에 전달하는 세부 옵션 이름이 다릅니다.
+
+* 지원버전 : `2.29.2+`
 
 ```javascript
 var volume = Module.createVolumeObject("ID");
@@ -82,9 +82,9 @@ volume.setPolygonBounds({
 
 ### setPosition(position) → string
 
-`v2.29.3+`
-
 > 박스 크기는 그대로 두고 박스 중심 위치만 옮깁니다(태풍 이동 경로 추적 등). [setBounds(info)](jsvolumeobject.md#setbounds-info-string)로 박스를 먼저 만든 뒤에만 의미가 있습니다. 지형 결합([conformTerrain(resolution)](jsvolumeobject.md#conformterrain-resolution-boolean))이 설정되어 있으면 옮긴 위치에 맞게 지형 높이를 다시 샘플링합니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -361,11 +361,11 @@ volume.setParams({ radiusMin: 20, radiusMax: 150, altMin: 100, altMax: 300, coun
 
 ### setInfluenceCircle(info) → string
 
-`v2.29.3+`
-
 > 효과와 별개로 지면 근처에 항상 채워진 원판을 얹어 영향 범위(태풍 강풍/폭풍 반경 등)를 표시합니다. 원의 중심은 박스 중심의 수평 위치이며, 밀도 그리드 유무와 무관하게 항상 보입니다. 원이 박스보다 크면 박스 밖으로 나간 부분은 잘려 보입니다.
 >
 > 지형 결합([conformTerrain(resolution)](jsvolumeobject.md#conformterrain-resolution-boolean))이 설정되어 있으면 `altitude`는 지면 위 높이, 아니면 박스 바닥 위 높이입니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -402,11 +402,11 @@ volume.setInfluenceCircle({ enable: false });
 
 ### setInfluenceCircleColorStops(stops) → string
 
-`v2.29.3+`
-
 > 영향권 원판을 태풍 눈(중심)으로부터의 거리에 따라 색이 바뀌는 색상범례로 채웁니다. 스톱 사이는 선형 보간되고, 가장 안쪽 스톱보다 안쪽은 첫 스톱의 색, 가장 바깥 스톱보다 바깥은 영향권 밖으로 보고 그리지 않습니다(경계는 부드럽게 페이드아웃).
 >
 > 색상범례는 [setInfluenceCircle(info)](jsvolumeobject.md#setinfluencecircle-info-string)로 영향권을 켜 둔 상태에서만 보입니다. 범례를 사용하면 `setInfluenceCircle`의 `radius`와 `color`는 사용되지 않고(각 스톱의 `color.a`가 알파가 됨), 전체 투명도는 `setInfluenceCircle`의 `opacity`로만 조절합니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -441,9 +441,9 @@ volume.setInfluenceCircleColorStops([
 
 ### clearInfluenceCircleColorStops()
 
-`v2.29.3+`
-
 > [setInfluenceCircleColorStops(stops)](jsvolumeobject.md#setinfluencecirclecolorstops-stops-string)로 설정한 색상범례를 지웁니다. 이후 원판은 [setInfluenceCircle(info)](jsvolumeobject.md#setinfluencecircle-info-string)의 단색으로 되돌아갑니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -552,13 +552,13 @@ volume.animationSpeed = 1.0;
 
 ### thickness (property), getThickness(), setThickness(thickness) → number
 
-`v2.29.3+`
-
 > 지면 위 효과 두께(meter 단위)를 설정합니다(0 미만은 0으로 보정됨). [opacity](jsvolumeobject.md#opacity-property-getopacity-setopacity-opacity-number)가 "이 두께를 수직으로 통과했을 때의 불투명도"라는 뜻을 갖게 되는 기준 길이이며, 효과의 높이 정규화에도 같은 값이 쓰입니다.
 >
 > 0이면 박스 세 변의 평균을 대신 사용합니다. 박스가 세 축 모두 비슷한 크기일 때는 무난하지만, 태풍처럼 박스가 납작하고 넓은 경우(가로세로 수백~수천 km, 높이는 그보다 훨씬 얇음)에는 평균값이 실제 두께보다 훨씬 커져 전체가 흐릿해 보입니다. 이때 박스 높이 정도로 직접 지정하면 의도한 농도로 돌아옵니다.
 >
 > [setPointSources(info)](jsvolumeobject.md#setpointsources-info-string)를 호출하면 그 `thickness` 값(0 이하이면 100)으로 덮어써집니다.
+
+* 지원버전 : `2.29.3+`
 
 {% tabs %}
 {% tab title="Information" %}

@@ -4,11 +4,11 @@ description: 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 위한 
 
 # JSPostProcess
 
-`v2.29.3+`
-
 > Module.getPostProcess() API를 생성합니다.
 >
 > DoF/Bloom/Sharpen 세 효과는 각각 독립적인 활성화 플래그를 가지며, 서로 다른 효과의 on/off와 무관하게 개별적으로 켜고 끌 수 있습니다. 특히 Sharpen은 DoF/Bloom이 모두 꺼져 있어도 단독으로 동작합니다.
+
+* 지원버전 : `2.29.3+`
 
 ```javascript
 var postProcess = Module.getPostProcess();

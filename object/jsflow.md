@@ -16,17 +16,17 @@ let flow = Module.getFlow();
 
 | Name         | Type   | Description                       |
 | ------------ | ------ | ------------------------------------ |
-| velocity `v1.50.0+`     | number | 바람장 파티클 이동속도 스케일.     |
-| offsetHeight `v1.50.0+` | number | 바람장 파티클 높이.                |
-| particleNum `v1.50.0+`  | number | 화면에 표출되는 파티클 수.         |
+| velocity `1.50.0+`     | number | 바람장 파티클 이동속도 스케일.     |
+| offsetHeight `1.50.0+` | number | 바람장 파티클 높이.                |
+| particleNum `1.50.0+`  | number | 화면에 표출되는 파티클 수.         |
 
 ## Function
 
 ### createFlow(options) → boolean
 
-`v1.53.2+`
-
 > 고유 ID를 가진 새로운 바람장(Flow) 객체를 비동기로 생성합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -51,9 +51,9 @@ let flow = Module.getFlow();
 
 ### deleteFlow(id) → boolean
 
-`v1.53.2+`
-
 > 지정한 ID의 바람장 객체를 제거합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -78,9 +78,9 @@ let flow = Module.getFlow();
 
 ### isExist(id) → boolean
 
-`v1.53.2+`
-
 > 지정한 ID의 바람장 객체가 존재하는지 확인합니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -130,9 +130,9 @@ let flow = Module.getFlow();
 
 ### GetWaterDepthData(url, type, scale)
 
-`v1.52.1+`
-
 > (레거시) 해수심도 데이터 파일을 요청하여 가시화 객체를 생성합니다.
+
+* 지원버전 : `1.52.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -251,11 +251,11 @@ flow.ClearFlowData();
 
 ### setJSON(options) → boolean
 
-`v1.50.0+`
-
 > [JSFlow.FlowDataOption](jsflow.md#jsflow.flowdataoption) 형식의 통합 옵션으로 바람장을 생성합니다.
 >
 > `data.url`(바람장 파일) 또는 `data.grid`(격자 데이터 직접 입력) 중 하나를 사용해 데이터를 구성하며, `data.dem`으로 DEM 결합, `legend`로 색상 표현 방식을 설정할 수 있습니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -280,9 +280,9 @@ flow.ClearFlowData();
 
 ### setUnionTerrain(unionTerrain) → boolean
 
-`v2.12.1+`
-
 > 바람장 파티클의 지형 결합(지표면 높이 반영) 여부를 설정합니다.
+
+* 지원버전 : `2.12.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -309,11 +309,11 @@ flow.ClearFlowData();
 
 ### getVisible(id), setVisible(id, visible) → boolean
 
-`v1.53.2+`
-
 > 지정한 ID의 바람장 가시화 유무를 설정하거나 반환합니다.
 >
 > setVisible()의 첫 번째 인자가 문자열이 아닌 경우, ID로 구분되지 않는 기본(전역) 바람장 객체에 적용됩니다.
+
+* 지원버전 : `1.53.2+`
 
 {% tabs %}
 {% tab title="Information" %}

@@ -253,9 +253,9 @@ var lastVector = vectorList.shift();
 
 ### getBoundary() → object
 
-`v1.51.3+`
-
 > 입력된 좌표 리스트의 Boundary를 반환합니다.
+
+* 지원버전 : `1.51.3+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -277,9 +277,9 @@ var lastVector = vectorList.shift();
 
 ### toJSVec3Array() → [JSVec3Array](../core/jsvec3array.md)
 
-`v1.52.0+`
-
 > 입력된 좌표리스트의 jsvec3array를 반환합니다.
+
+* 지원버전 : `1.52.0+`
 
 {% tabs %}
 {% tab title="Information" %}

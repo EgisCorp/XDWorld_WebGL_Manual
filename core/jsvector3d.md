@@ -26,9 +26,9 @@ var position = new Module.JSVector3D();
 
 ### getDistance(position) → number
 
-`v1.50.0+`
-
 > 입력 변수값(position) 사이의 거리를 반환합니다.
+
+* 지원버전 : `1.50.0+`
 
 {% tabs %}
 {% tab title="Information" %}

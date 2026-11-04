@@ -20,15 +20,15 @@ let flowPolygon = Module.createFlowPolygon("ID");
 | image_type      | number                                | <p>이미지 표현 타입.<br>0: 지정 이미지 표현.<br>1: 물 흐름 방향 범례를 색상으로 표현.<br>3: 지형 텍스쳐와 물 흐름으로 표현.<br>그외: color 색상으로 표현.<p> |
 | position_offset | [JSVector3D](../core/jsvector3d.md)   | 위치 추가 offset.                                                                                                                                            |
 | color           | [JSColor](../core/jscolor.md)         | 범례 색상 표시 모드일 경우, 색상 설정.                                                                                                                       |
-| coordinates `v1.37.33+`     | [JSVec3Array](../core/jsvec3array.md) | 객체의 위치 좌표(경도, 위도, 고도).                                                                                                                          |
+| coordinates `1.37.33+`     | [JSVec3Array](../core/jsvec3array.md) | 객체의 위치 좌표(경도, 위도, 고도).                                                                                                                          |
 
 ## Function
 
 ### createGrid(options) → object
 
-`v1.37.21+`
-
 > 격자 객체 생성
+
+* 지원버전 : `1.37.21+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -192,9 +192,9 @@ flowPolygon.setHeight(5.0);
 
 ### setVertex(index, position) → boolean
 
-`v1.37.21+`
-
 > 지정한 인덱스의 정점 좌표를 설정합니다.
+
+* 지원버전 : `1.37.21+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -223,9 +223,9 @@ flowPolygon.setVertex(0, new Module.JSVector3D(129.1, 35.1, 0));
 
 ### setWallHeight(height) → boolean
 
-`v2.4.0+`
-
 > `createWall`로 생성된 수직 벽 객체의 높이를 재설정합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}

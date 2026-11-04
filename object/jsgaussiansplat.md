@@ -4,11 +4,11 @@ description: 3D Gaussian Splatting 데이터를 지도에 표시하기 위한 AP
 
 # JSGaussianSplat
 
-`v2.29.2+`
-
 > `Module.createXXX()` 계열 API가 아니라, 등록할 서비스 레이어의 [JSLayer.createGaussianSplat(objectKey)](../layer/jslayer.md#creategaussiansplat-objectkey-jsgaussiansplat)를 통해 생성됩니다(레이어에 등록되는 시점의 위치 확정이 중요하기 때문입니다).
 >
 > `.ply` / `.splat` 포맷의 3D Gaussian Splatting 데이터를 로드하여 지도 위에 표시합니다.
+
+* 지원버전 : `2.29.2+`
 
 ```javascript
 var layerList = new Module.JSLayerList(false);

@@ -4,9 +4,9 @@ description: 도로 객체에서 사용할 텍스처를 등록하기 위한 API 
 
 # JSRoadManager
 
-`v1.60.1+`
-
 > Module.JSRoadManager() API를 생성합니다.
+
+* 지원버전 : `1.60.1+`
 
 ```javascript
 var roadManager = new Module.JSRoadManager();

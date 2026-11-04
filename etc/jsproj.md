@@ -4,13 +4,13 @@ description: 지도 내 좌표계 변환과 관련된 기능을 관리하기 위
 
 # JSProj
 
-`v1.58.0+`
-
 > Module.JSProj() API를 생성합니다.
 >
 > 입력 값이 제공되지 않으면 기본값은 EPSG:4326입니다.
 >
 > [EPSG list](jsproj.md#epsg-coordinate-type-list) 이외도 PROJ4 코드 입력 시 전 세계 모든 좌표계를 사용할 수 있습니다. ([epsg.io 참조](https://epsg.io/)).
+
+* 지원버전 : `1.58.0+`
 
 ```javascript
 let projection = new Module.JSProj(); // Defaults to epsg:4326

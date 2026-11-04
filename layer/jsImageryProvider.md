@@ -4,9 +4,9 @@ description: 지도 내 배경지도를 관리하기 위한 api 입니다.
 
 # JSImageryProvider
 
-`v1.36.6+`
-
 > Module.[Type](jsImageryProvider.md#type)() API를 생성합니다.
+
+* 지원버전 : `1.36.6+`
 
 ```javascript
 var google = Module.GoogleMap();    ( supports: normal, terrain, vectorhybrid, satellitehybrid, satellite )
@@ -22,15 +22,15 @@ var wmts = Module.WMTS();
 | ------------------------------------------- | ----------------------------------------- | ----------------------------------- |
 | [layername](jsImageryProvider.md#layername) | string                                    | 배경 영상 지도 레이어명.          			|
 | provider                                    | [Provider](jsImageryProvider.md#provider) | 배경 영상 지도 타일링 정보설정.   				|
-| layerName `v2.2.3+`                                   | string                                    | 배경 영상 지도 레이어명.         			|
+| layerName `2.2.3+`                                   | string                                    | 배경 영상 지도 레이어명.         			|
 | quality                                     | [Quality](jsImageryProvider.md#quality)   | 배경 영상 지도 이미지 품질.       			|
 | zeroLevel                                   | number									  | 서로 다른 타일구조의 매칭을 위한 보간 값(높은값일 수록 요청수가 많아진다).        			|
 | zerolevelOffset                             | string                                    | 배경 영상 지도 이미지 LOD offset. 			|
-| maxLevel `v1.52.0+`                                    | number                                    | 배경 영상 지도 최대 레벨.         			|
-| minLevel `v1.52.0+`                                    | number                                    | 배경 영상 지도 최소 레벨.         			|
-| crackValue `v1.54.0+`                                  | number                                    | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).         			|
-| apikey `v2.6.0+`                                      | string                                    | 배경 영상 지도 apikey. **GoogleMap()·ArcMap()은 필수**이며, 키가 비어 있으면 [refresh()](jsImageryProvider.md#refresh)가 적용하지 않습니다.         			|
-| language `v2.23.0+`                                    | string                                    | 배경 영상 지도 언어 설정.         			|
+| maxLevel `1.52.0+`                                    | number                                    | 배경 영상 지도 최대 레벨.         			|
+| minLevel `1.52.0+`                                    | number                                    | 배경 영상 지도 최소 레벨.         			|
+| crackValue `1.54.0+`                                  | number                                    | 크랙발생시 보간값(보간값 만큼 이미지를 더 생성한다).         			|
+| apikey `2.6.0+`                                      | string                                    | 배경 영상 지도 apikey. **GoogleMap()·ArcMap()은 필수**이며, 키가 비어 있으면 [refresh()](jsImageryProvider.md#refresh)가 적용하지 않습니다.         			|
+| language `2.23.0+`                                    | string                                    | 배경 영상 지도 언어 설정.         			|
 | [directSampling](jsImageryProvider.md#directsampling-property-boolean) | boolean      | 배경 영상 직접 샘플링 사용 여부(기본 true).         			|
 	
 ## Function
@@ -63,11 +63,11 @@ Module.WMTS().clear();
 
 ### refresh()
 
-`v1.37.6+`
-
 > 배경 영상을 새로 고침 합니다.
 >
 > 지형이 이미 만들어져 있으면 지형 트리는 그대로 두고 영상만 교체합니다. 화면에 잡히는 메쉬부터 새 영상을 받고, 받는 동안에는 이전 영상으로 그리므로 지구본이 하얗게 비지 않습니다. 지형이 아직 없거나 첫 로딩이 끝나지 않은 경우, 평면 모드, 사용자 DEM·사용자 영상·사용자 지구본 이미지를 쓰는 경우에는 이전처럼 지형을 처음부터 다시 만듭니다.
+
+* 지원버전 : `1.37.6+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -92,13 +92,13 @@ Module.WMTS().refresh();
 
 ### setblank()
 
-`v1.37.2+`
-
 > 배경 영상에서 빈 타일 공백 이미지를 설정합니다.
 >
 > 256 \* 256 검은색 이미지로 지정합니다.
 >
 > 적용 후 refresh() 실행해 주시기 바랍니다.
+
+* 지원버전 : `1.37.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -121,11 +121,11 @@ Module.WMTS().setblank();
 
 ### directSampling (property) → boolean
 
-`v2.31.1+`
-
 > 배경 영상 직접 샘플링 사용 여부를 조회하거나 설정합니다. (기본값 true)
 >
 > 켜면 메르카토르 타일의 원본 화소를 확대·축소·워프 없이 1:1로 이어 붙여 지형 셰이더가 화소마다 경위도를 메르카토르 좌표로 변환해 읽습니다(경위도로 다시 그리는 단계가 없어 더 선명합니다). 끄면 예전 방식(경위도 텍스처로 다시 그리기)으로 되돌아갑니다.
+
+* 지원버전 : `2.31.1+`
 
 {% tabs %}
 {% tab title="Information" %}

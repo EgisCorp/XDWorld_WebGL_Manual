@@ -4,13 +4,13 @@ description: 지하 지층, GLB, 3D Tiles 등 어떤 데이터 위에도 붙일 
 
 # JSDepthGuide
 
-`v2.30.1+`
-
 > Module.createDepthGuide() API를 통해 생성합니다.
 >
 > 지하 데이터의 깊이를 읽을 수 있도록 수직벽 4면과 기준면(수평 격자) 1면으로 이루어진 눈금 상자를 세웁니다. 레이어에 등록하는 일반 객체이므로 폴리곤 지층, GLB, 3D Tiles 등 어떤 데이터 위에도 붙일 수 있습니다.
 >
 > [JSObject3D](jsobject3d.md)를 상속하므로 `setVisible(visible)`, `setMinDistance(distance)`, `setMaxDistance(distance)` 등 [JSObject3D](jsobject3d.md)의 함수와 프로퍼티를 그대로 사용할 수 있습니다(표출 여부 역시 [setVisible(visible)](jsobject3d.md#getvisible-setvisible-visible-boolean)로 제어합니다).
+
+* 지원버전 : `2.30.1+`
 
 ```javascript
 var guide = Module.createDepthGuide("ID");

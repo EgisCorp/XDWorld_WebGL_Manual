@@ -4,11 +4,11 @@ description: 해류·조류 흐름 레이어(JSCurrentFlowLayer)를 생성하고
 
 # JSFlowLayerList
 
-`v2.31.1+`
-
 > `Module.getFlowLayerList()`로 흐름 레이어 목록 객체를 얻습니다. (싱글톤이며 호출할 때마다 같은 객체를 반환합니다.)
 >
 > 해류·조류처럼 시각별로 제공되는 유속 격자(PNG) 데이터를 파티클로 흘려 표현하는 [JSCurrentFlowLayer](jscurrentflowlayer.md)를 생성하고 관리합니다. [JSLayerList](jslayerlist.md)의 레이어와는 독립적으로 동작하므로 기존 레이어 API(`getLayerNames` 등)에는 나타나지 않습니다.
+
+* 지원버전 : `2.31.1+`
 
 ```javascript
 let flowList = Module.getFlowLayerList();

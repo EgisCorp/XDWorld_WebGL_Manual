@@ -35,9 +35,9 @@ let parameter = object.getId();
 
 ### createbyJson(parameter) → object
 
-`v1.52.0+`
-
 > JSON 형태의 옵션 정보로 벽(Wall) 형태의 컬러 폴리곤 객체를 생성합니다.
+
+* 지원버전 : `1.52.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -199,9 +199,9 @@ colorPolygon.SetVerticalPlane(coordinates, parts, -50.0, new Module.JSColor(0, 2
 
 ### setOpacity(opacity) → void
 
-`v1.38.0+`
-
 > 객체의 투명도(0.0 ~ 1.0)를 설정합니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -222,9 +222,9 @@ object.setOpacity(0.5);
 
 ### toLonlatArray() → object
 
-`v1.52.0+`
-
 > 구성된 좌표 목록을 경위도, 고도로 반환합니다.
+
+* 지원버전 : `1.52.0+`
 
 {% tabs %}
 {% tab title="Information" %}

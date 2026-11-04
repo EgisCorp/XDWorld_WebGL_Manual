@@ -82,9 +82,9 @@ let parameters = {
 
 ### convertCatmullRom(options) → object
 
-`v2.27.2+`
-
 > 좌표 목록으로 Catmull-Rom 곡선을 생성합니다. RDP 알고리즘 기반 좌표 간소화, 지형 결합 옵션을 지원합니다.
+
+* 지원버전 : `2.27.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -114,11 +114,11 @@ let result = Module.getMath().convertCatmullRom(option);
 
 ### calculationSlopeAnalysis(options) → object
 
-`v1.37.29+`
-
 > 3\*3(0 배열 좌상단 9 배열 우하단) 배열값을 통한 경사 분석 결과 반환.
 >
 > argument 변수로 좌표 변환 옵션을 설정합니다.
+
+* 지원버전 : `1.37.29+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -147,11 +147,11 @@ let result = Module.getMath().calculationSlopeAnalysis(slop);
 
 ### splitLine(options) → object
 
-`v1.37.40+`
-
 > 이 함수는 `Module.JSMath.splitLine(...)`로 호출해야 합니다.
 >
 > 경위도 좌표 목록을 일정 간격으로 분할한 결과를 반환합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -197,9 +197,9 @@ let result = Module.JSMath.splitLine(option);
 
 ### getDistance2D(point0, point1) → number
 
-`v2.10.2+`
-
 > 두 지점 간의 지형(고도) 결합 거리를 반환합니다 (입력 좌표 자체의 고도값은 사용하지 않고, 각 지점의 지형 고도를 조회하여 계산).
+
+* 지원버전 : `2.10.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -221,9 +221,9 @@ let d = Module.getMath().getDistance2D(new Module.JSVector2D(127.0, 37.5), new M
 
 ### getDistance3D(point0, point1) → number
 
-`v2.10.2+`
-
 > 두 지점(경도, 위도, 고도) 간의 직선 거리를 반환합니다.
+
+* 지원버전 : `2.10.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -245,9 +245,9 @@ let d = Module.getMath().getDistance3D(new Module.JSVector3D(127.0, 37.5, 10), n
 
 ### getCubeBuffer(options) → array
 
-`v2.4.0+`
-
 > 시작-끝 두 지점을 잇는 선을 기준으로, xRadius/yRadius 만큼 떨어진 8개의 정점 좌표(경도, 위도, 고도가 반복된 flat 배열)를 반환합니다.
+
+* 지원버전 : `2.4.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -275,11 +275,11 @@ let buffer = Module.getMath().getCubeBuffer(option);
 
 ### transformBeZierCurve(options) → object
 
-`v1.37.40+`
-
 > 이 함수는 `Module.JSMath.transformBeZierCurve(...)`로 호출해야 합니다.
 >
 > 다각형 좌표 목록을 베지어 곡선으로 변환하고, 변환된 곡선의 전체 길이와 좌표 목록을 반환합니다.
+
+* 지원버전 : `1.37.40+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -307,11 +307,11 @@ let result = Module.JSMath.transformBeZierCurve(option);
 
 ### triangulatePointsToConvexHull(positions) → array
 
-`v2.6.2+`
-
 > 이 함수는 `Module.JSMath.triangulatePointsToConvexHull(...)`로 호출해야 합니다.
 >
 > 입력한 좌표 목록을 삼각분할하여 인덱스 목록을 반환합니다.
+
+* 지원버전 : `2.6.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -339,11 +339,11 @@ let indices = Module.JSMath.triangulatePointsToConvexHull(positions);
 
 ### triangulatePolygonWithInnerPoints(polygonPoints, innerPoints) → object
 
-`v2.6.2+`
-
 > 이 함수는 `Module.JSMath.triangulatePolygonWithInnerPoints(...)`로 호출해야 합니다.
 >
 > 폴리곤 외곽 좌표와 내부 좌표를 함께 사용하여 삼각분할을 수행합니다 (Constrained Delaunay Triangulation).
+
+* 지원버전 : `2.6.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -369,11 +369,11 @@ let result = Module.JSMath.triangulatePolygonWithInnerPoints(polygon, inner);
 
 ### testParse(parameter)
 
-`v1.37.41+`
-
 > 이 함수는 `Module.JSMath.testParse(...)`로 호출해야 합니다.
 >
 > 내부 파라미터 파싱(ConvertVal) 기능 검증을 위한 디버그/테스트 전용 함수입니다. 반환값 없이 각 파싱 결과를 콘솔(printf)에 출력합니다. 프로덕션 API 용도가 아닙니다.
+
+* 지원버전 : `1.37.41+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -413,9 +413,9 @@ let result = Module.JSMath.triangulatePolygonWithInnerPoints(polygon, inner);
 
 ### GetIntervalPositionInRect(min, max, vertical, horizontal) → object
 
-`v1.37.21+`
-
 > 경위도 기준의 사각 영역 내에서 일정 간격마다 좌표를 균등 분포로 반환합니다.
+
+* 지원버전 : `1.37.21+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -444,9 +444,9 @@ let result = Module.getMath().GetIntervalPositionInRect(min, max, 10, 10);
 
 ### isPointInPolygon(polygon, points) → Array
 
-`v1.37.21+`
-
 > 주어진 2D 포인트들이 폴리곤 내부에 포함되는지를 판별합니다.
+
+* 지원버전 : `1.37.21+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -480,9 +480,9 @@ let result = Module.getMath().isPointInPolygon(polygon, points);
 
 ### getClosestPositionOnPath(point, path) → object
 
-`v1.37.33+`
-
 > 한 점에서부터 path 까지의 거리 중 가장 가까운 위치의 정보를 반환합니다.
+
+* 지원버전 : `1.37.33+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -520,9 +520,9 @@ let closestPosition = Module.getMath().getClosestPositionOnPath(point, path);
 
 ### getScreenEdgeIndicator(position) → object | null
 
-`v2.7.0+`
-
 > 화면 밖에 있는 객체의 위치를 화면 경계 기준으로 보정하여 반환합니다.
+
+* 지원버전 : `2.7.0+`
 
 {% tabs %}
 {% tab title="Information" %}

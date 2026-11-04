@@ -16,7 +16,7 @@ var object = new Module.JSObject3D();
 | :----------- | -------------------------------------- | ------------------------------------------------------ |
 | position     | [JSVector3D](../core/jsvector3d.md) | 객체 중심 좌표(경도, 위도, 고도).                       |
 | layer        | string                                  | 객체가 속한 부모 레이어 이름(읽기 전용).                |
-| object_ahead `v2.8.2+` | boolean                                 | 지형 또는 시설물이 앞에 존재할 경우 비가시화 옵션.      |
+| object_ahead `2.8.2+` | boolean                                 | 지형 또는 시설물이 앞에 존재할 경우 비가시화 옵션.      |
 
 ## Function
 
@@ -154,13 +154,13 @@ object.setMaxDistance(5000.0);
 
 ### setClipping(set) → boolean
 
-`v2.30.1+`
-
 > 객체에 클리핑 박스 적용 여부를 설정합니다. true로 설정하면 전역 클리핑 박스(월드에 하나뿐인 박스)의 **내부에 있는 부분만** 그려지고 박스 밖 부분은 잘려나갑니다. 잘려나간 부분을 반투명한 잔상으로 남길지는 [setClippingAlpha(alpha)](jsobject3d.md#setclippingalpha-alpha-boolean)로 정합니다.
 >
 > 클리핑 박스는 전역 객체이며, 박스의 생성, 위치, 크기, 표시 여부는 별도의 전역 클리핑 박스 API로 설정합니다. 박스를 생성하기 전에는 기본값(10m x 10m x 10m, 중심 좌표 미설정)의 박스가 기준이 되므로 의도한 영역이 잘리지 않을 수 있습니다. 클리핑 영역 판정은 박스의 표시 여부와 무관하게 적용됩니다.
 >
 > 다면체(polyhedron) 기반 3D 객체의 렌더링에서만 반영되며, 그 외 객체는 호출이 성공해도 화면에 영향이 없습니다. 기본값은 false입니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -187,8 +187,6 @@ object.setClipping(true);
 
 ### setClippingAlpha(alpha) → boolean
 
-`v2.30.1+`
-
 > [setClipping(set)](jsobject3d.md#setclipping-set-boolean)로 클리핑이 켜진 객체에서, 클리핑 박스 밖으로 잘려나간 부분(잔상)의 투명도를 설정합니다. 기본값은 0입니다.
 >
 > -   `alpha <= 0`: 잘려나간 부분을 그리지 않습니다(완전히 잘라냄).
@@ -196,6 +194,8 @@ object.setClipping(true);
 > -   `alpha >= 1`: 클리핑 셰이더를 사용하지 않고 객체 전체를 원본처럼 불투명하게 그립니다(사실상 클리핑 해제와 같은 결과).
 >
 > 값은 별도로 보정(clamp)되지 않고 그대로 저장됩니다.
+
+* 지원버전 : `2.30.1+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -223,11 +223,11 @@ object.setClippingAlpha(0.3);
 
 ### create(json) → boolean
 
-`v2.13.2+`
-
 > JSON 문자열을 파싱하여 객체를 구성합니다.
 >
 > `type` 값이 `"group"`인 경우(그룹 객체 생성)만 실제로 처리하며, 그 외의 타입 값에 대해서는 파싱만 하고 별도 처리 없이 `true`를 반환합니다.
+
+* 지원버전 : `2.13.2+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -361,11 +361,11 @@ object.setPickable(true);
 
 ### getProperty(name), setProperty(name, value) → val
 
-`v1.38.0+`
-
 > 객체에 사용자 정의 속성(문자열 또는 숫자 값)을 key-value 형태로 설정합니다.
 >
 > 이미 등록된 이름으로는 재설정할 수 없습니다.
+
+* 지원버전 : `1.38.0+`
 
 {% tabs %}
 {% tab title="Information" %}
@@ -399,9 +399,9 @@ var value = object.getProperty("customId");
 
 ### getUnderground(), setUnderground(underground) → boolean
 
-`v2.14.1.2+`
-
 > 객체가 지형 아래(지하)에 위치하는 것으로 처리할지 여부를 설정합니다.
+
+* 지원버전 : `2.14.1.2+`
 
 {% tabs %}
 {% tab title="Information" %}
