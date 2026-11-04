@@ -16,7 +16,7 @@ var object = new Module.JSObject3D();
 | :----------- | -------------------------------------- | ------------------------------------------------------ |
 | position     | [JSVector3D](../core/jsvector3d.md) | 객체 중심 좌표(경도, 위도, 고도).                       |
 | layer        | string                                  | 객체가 속한 부모 레이어 이름(읽기 전용).                |
-| object_ahead | boolean                                 | 지형 또는 시설물이 앞에 존재할 경우 비가시화 옵션.      |
+| object_ahead<sup>v2.8.2+</sup> | boolean                                 | 지형 또는 시설물이 앞에 존재할 경우 비가시화 옵션.      |
 
 ## Function
 
@@ -154,6 +154,8 @@ object.setMaxDistance(5000.0);
 
 ### setClipping(set) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+
 > 객체에 클리핑 박스 적용 여부를 설정합니다. true로 설정하면 전역 클리핑 박스(월드에 하나뿐인 박스)의 **내부에 있는 부분만** 그려지고 박스 밖 부분은 잘려나갑니다. 잘려나간 부분을 반투명한 잔상으로 남길지는 [setClippingAlpha(alpha)](jsobject3d.md#setclippingalpha-alpha-boolean)로 정합니다.
 >
 > 클리핑 박스는 전역 객체이며, 박스의 생성, 위치, 크기, 표시 여부는 별도의 전역 클리핑 박스 API로 설정합니다. 박스를 생성하기 전에는 기본값(10m x 10m x 10m, 중심 좌표 미설정)의 박스가 기준이 되므로 의도한 영역이 잘리지 않을 수 있습니다. 클리핑 영역 판정은 박스의 표시 여부와 무관하게 적용됩니다.
@@ -184,6 +186,8 @@ object.setClipping(true);
 {% endtabs %}
 
 ### setClippingAlpha(alpha) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
 
 > [setClipping(set)](jsobject3d.md#setclipping-set-boolean)로 클리핑이 켜진 객체에서, 클리핑 박스 밖으로 잘려나간 부분(잔상)의 투명도를 설정합니다. 기본값은 0입니다.
 >
@@ -218,6 +222,8 @@ object.setClippingAlpha(0.3);
 {% endtabs %}
 
 ### create(json) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.13.2+</mark>
 
 > JSON 문자열을 파싱하여 객체를 구성합니다.
 >
@@ -355,6 +361,8 @@ object.setPickable(true);
 
 ### getProperty(name), setProperty(name, value) → val
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.38.0+</mark>
+
 > 객체에 사용자 정의 속성(문자열 또는 숫자 값)을 key-value 형태로 설정합니다.
 >
 > 이미 등록된 이름으로는 재설정할 수 없습니다.
@@ -390,6 +398,8 @@ var value = object.getProperty("customId");
 {% endtabs %}
 
 ### getUnderground(), setUnderground(underground) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.1.2+</mark>
 
 > 객체가 지형 아래(지하)에 위치하는 것으로 처리할지 여부를 설정합니다.
 

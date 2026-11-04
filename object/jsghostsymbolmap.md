@@ -87,6 +87,8 @@ ghostSymbolMap.addGhostSymbolByXDO("STREET_LIGHT", "./data", "StreetLight", fals
 
 ### addGhostSymbolByGLB(id, url, name) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.26.0+</mark>
+
 > glb 포맷 파일을 고스트 심볼 모델로 등록합니다.
 
 {% tabs %}
@@ -373,6 +375,8 @@ fetch("./texture/roof.png")
 
 ### setModelMaterialTexture(option) → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3DS 모델의 재질(material) 하나를 사용하는 face 전부에 같은 이미지를 텍스처로 적용합니다.
 >
 > 대상 재질은 [getModelMaterials(id)](jsghostsymbolmap.md#getmodelmaterials-id-array)가 돌려주는 재질 목록의 `index`로 지정합니다. 재질이 쓰는 face를 일일이 골라 [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string)를 반복 호출하는 것과 같은 결과를, 이미지를 한 번만 만들어 모든 face가 공유하면서 얻습니다.
@@ -423,6 +427,8 @@ if (wall) {
 {% endtabs %}
 
 ### clearModelTexture(option) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 고스트 심볼 모델의 face에 적용된 텍스처를 해제하고 face 색상을 재질 색으로 되돌립니다.
 >
@@ -618,6 +624,8 @@ ghostSymbolMap.clearModelTexture({ id: "model_01" });
 
 ### getModelMaterials(id) → array
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3DS 파일로 등록한 고스트 심볼 모델이 가진 재질(material) 목록을 반환합니다. 재질별 이름, 텍스처 파일명, 기본 색상, 그 재질을 사용하는 face 인덱스와 삼각형 수를 알 수 있어, [setModelFaceColor(id, index, color)](jsghostsymbolmap.md#setmodelfacecolor-id-index-color-boolean), [setModelTexture(option)](jsghostsymbolmap.md#setmodeltexture-option-string) 등 face 단위 편집의 대상 face를 재질 기준으로 고를 때 사용합니다. 재질 전체에 텍스처를 적용하려면 [setModelMaterialTexture(option)](jsghostsymbolmap.md#setmodelmaterialtexture-option-string)에 이 목록의 `index`를 전달합니다.
 >
 > 재질 정보는 3DS 모델을 로드할 때만 채워지므로, 3DS가 아닌 모델(XDO, GLB 등)이나 재질 정보가 없는 모델은 빈 배열을 반환합니다. `faces`에 담기는 번호는 [getModelFaceCount(id)](jsghostsymbolmap.md#getmodelfacecount-id-number)가 세는 face 단위의 인덱스입니다(삼각형 번호가 아님).
@@ -685,6 +693,8 @@ if (materials) {
 
 ### getReferenceCount(id) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+
 > 입력 변수값(id)과 동일한 명칭을 가진 고스트 심볼 모델을 참조하는 객체의 개수를 반환합니다.
 
 {% tabs %}
@@ -706,6 +716,8 @@ var count = ghostSymbolMap.getReferenceCount(e.strGhostSymbolKey);
 {% endtabs %}
 
 ### removeModel(id) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
 
 > 입력 변수값(id)과 동일한 명칭을 가진 고스트 심볼 모델을 삭제합니다.
 

@@ -10,6 +10,8 @@ description: 태양광 패널 배치 및 분석을 위한 JSSolarManager API 문
 
 ### setActive(isActive) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 모듈 편집을 활성화 또는 비활성화합니다.
 
 {% tabs %}
@@ -25,6 +27,8 @@ Module.getSolar().setActive(true);
 {% endtabs %}
 
 ### setModuleAngle(useDefault, angle) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 패널의 각도를 설정합니다.
 
@@ -42,6 +46,8 @@ Module.getSolar().setModuleAngle(true, 30.0);
 {% endtabs %}
 
 ### setModuleImage(imageData, width, height) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 사용자 정의 이미지를 태양광 패널 텍스처로 설정합니다.
 
@@ -77,6 +83,8 @@ let result = Module.getSolar().setModuleImage(image, 2, 2);
 
 ### setProviderMode(isProvider) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 Provider Mode를 설정합니다.
 
 {% tabs %}
@@ -98,6 +106,8 @@ Module.getSolar().setProviderMode(true);
 {% endtabs %}
 
 ### setModuleMargin(include, exclude, moduleSide, moduleTopDown, arraySide, arrayTopDown) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 모듈 및 어레이 배치 간격을 설정합니다.  
 > 음수 값은 자동으로 0으로 처리됩니다.
@@ -127,6 +137,8 @@ Module.getSolar().setModuleMargin(1.0, 0.5, 0.1, 0.1, 0.2, 0.2);
 
 ### setDownScale(enable, length) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 모듈 배치 시 일정 길이 간격으로 스케일 조정 기능을 설정합니다.
 
 {% tabs %}
@@ -150,6 +162,8 @@ Module.getSolar().setDownScale(true, 3.0);
 
 ### getModuleCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 객체 내에 배치된 태양광 모듈의 총 개수를 반환합니다.
 
 {% tabs %}
@@ -169,6 +183,8 @@ let count = Module.getSolar().getModuleCount();
 
 ### setSouthDeploy(enable) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 남향 일괄 배치를 설정합니다. 해당 설정이 활성화되면 하나의 섹션으로 모든 모듈이 남향으로 배치됩니다.
 
 {% tabs %}
@@ -187,6 +203,8 @@ Module.getSolar().setSouthDeploy(true);
 
 ### clearPreview() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 모든 태양광 패널의 미리보기 상태를 초기화합니다.  
 > `m_bPreview` 값이 false로 설정되어, 화면에서 미리보기 모듈이 제거됩니다.
 
@@ -199,6 +217,8 @@ Module.getSolar().clearPreview();
 {% endtabs %}
 
 ### selectRoofByObject(layerName, objectKey) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지정한 레이어와 객체 키를 기반으로 해당 지붕을 선택합니다.  
 > 선택된 지붕 정보는 이후 태양광 패널 배치 등의 작업에 사용됩니다.
@@ -224,6 +244,8 @@ Module.getSolar().selectRoofByObject("building_layer", "object_001");
 
 ### getAreaPointsOnTerrain() → JSVec3Array
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 설정된 태양광 설치 영역의 경계 좌표들을 반환합니다.
 
 {% tabs %}
@@ -241,6 +263,8 @@ let areaPoints = Module.getSolar().getAreaPointsOnTerrain();
 {% endtabs %}
 
 ### getModuleSetWidthGapOnTerrain() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형에 배치된 태양광 모듈 배열 간의 가로 간격(m)을 반환합니다.
 
@@ -260,6 +284,8 @@ let widthGap = Module.getSolar().getModuleSetWidthGapOnTerrain();
 
 ### getModuleSetHeightGapOnTerrain() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 배치된 태양광 모듈 배열 간의 세로 간격(m)을 반환합니다.
 
 {% tabs %}
@@ -277,6 +303,8 @@ let heightGap = Module.getSolar().getModuleSetHeightGapOnTerrain();
 {% endtabs %}
 
 ### setDirectionOfModuleOnTerrain(isSpecific, direction) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형에 배치된 태양광 모듈의 방향 각도를 설정합니다.  
 > `_isSpecific`이 true인 경우 입력한 각도(`direction`)를 적용하며, false인 경우 자동 방향을 사용합니다.
@@ -298,6 +326,8 @@ Module.getSolar().setDirectionOfModuleOnTerrain(true, 180.0);
 
 ### rebuildModuleOnTerrain() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 배치된 태양광 모듈을 현재 설정값에 따라 다시 배치합니다.  
 > 방향, 간격, 여백 등의 변경사항이 반영됩니다.
 
@@ -310,6 +340,8 @@ Module.getSolar().rebuildModuleOnTerrain();
 {% endtabs %}
 
 ### setModuleSetWidthGapOnTerrain(gap) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형에 배치되는 태양광 모듈 세트 간의 가로 간격을 설정합니다.
 
@@ -329,6 +361,8 @@ Module.getSolar().setModuleSetWidthGapOnTerrain(1.5);
 
 ### setModuleSetHeightGapOnTerrain(gap) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 배치되는 태양광 모듈 세트 간의 세로 간격을 설정합니다.
 
 {% tabs %}
@@ -347,6 +381,8 @@ Module.getSolar().setModuleSetHeightGapOnTerrain(1.0);
 
 ### getAlignAreaAngleOnTerrain() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 설정된 배치 영역의 정렬 각도를 반환합니다.
 
 {% tabs %}
@@ -364,6 +400,8 @@ let angle = Module.getSolar().getAlignAreaAngleOnTerrain();
 {% endtabs %}
 
 ### getCenterOfMassOnTerrain() → [JSVector3D](../core/jsvector3d.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형 위에 배치된 태양광 패널의 질량 중심 위치를 반환합니다.
 >
@@ -386,6 +424,8 @@ console.log(center.lon, center.lat, center.alt);
 
 ### getTerrainModuleCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 설치된 태양광 모듈의 개수를 반환합니다.
 
 {% tabs %}
@@ -405,6 +445,8 @@ console.log("Terrain Module Count:", count);
 
 ### clearModuleOnTerrain() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 설치된 모든 태양광 모듈을 제거합니다.
 
 {% tabs %}
@@ -422,6 +464,8 @@ Module.getSolar().clearModuleOnTerrain();
 {% endtabs %}
 
 ### getLayerPannelInfo(layerName) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.1+</mark>
 
 > 지정한 레이어 내 태양광 패널 객체들의 정보를 JSON 문자열 형태로 반환합니다.  
 > 패널 위치(위도/경도/고도), 크기, 방향, 각도 등의 상세 정보가 포함됩니다.
@@ -498,6 +542,8 @@ if (!result) {
 
 ### saveEditModule(save) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지붕 모듈 편집 결과를 저장할지 여부를 설정합니다.
 
 {% tabs %}
@@ -519,6 +565,8 @@ Module.getSolar().saveEditModule(true);
 {% endtabs %}
 
 ### setEditMode(set) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 지붕 편집 모드를 설정합니다. `setActive(true)`로 활성화된 상태에서만 적용되며, 마우스 상태를 이동/드래그(`MML_MOVE_GRAB`) 모드로 전환합니다.
 
@@ -543,6 +591,8 @@ Module.getSolar().setEditMode(true);
 
 ### setSimpleMode(set) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 모듈을 단순화된(Simple) 형태로 표시할지 여부를 설정합니다. `setActive(true)`로 활성화된 상태에서만 적용됩니다.
 
 {% tabs %}
@@ -564,6 +614,8 @@ Module.getSolar().setSimpleMode(true);
 {% endtabs %}
 
 ### setEditStatus(status) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지붕 편집 상태(그리기 모드)를 설정합니다.
 
@@ -588,6 +640,8 @@ Module.getSolar().setEditStatus(2);
 
 ### setDrawRadiation(draw) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 일사량 렌더링(음영/그라데이션 표시) 여부를 설정합니다.
 
 {% tabs %}
@@ -609,6 +663,8 @@ Module.getSolar().setDrawRadiation(true);
 {% endtabs %}
 
 ### setSolarServer(url) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 분석에 사용할 서버 주소를 설정합니다.
 
@@ -632,6 +688,8 @@ Module.getSolar().setSolarServer("http://106.255.249.50:8081");
 
 ### setMaxRoofAngle(angle) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지붕으로 인식할 수 있는 최대 경사각을 설정합니다. 이 값보다 경사가 큰 면은 지붕으로 취급되지 않습니다.
 
 {% tabs %}
@@ -653,6 +711,8 @@ Module.getSolar().setMaxRoofAngle(45.0);
 {% endtabs %}
 
 ### setMaxSlopeAngle(angle) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 경사 지붕으로 인식할 수 있는 최대 경사각을 설정합니다.
 
@@ -676,6 +736,8 @@ Module.getSolar().setMaxSlopeAngle(30.0);
 
 ### initialize() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 매니저를 초기화합니다. 배치된 모듈, 선택 상태 등 내부 데이터를 초기 상태로 되돌립니다.
 
 {% tabs %}
@@ -688,6 +750,8 @@ Module.getSolar().initialize();
 
 ### initPreview() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 객체에 속한 모든 지붕/모듈세트의 미리보기 상태를 false로 초기화합니다.
 
 {% tabs %}
@@ -699,6 +763,8 @@ Module.getSolar().initPreview();
 {% endtabs %}
 
 ### getFormulaNPV(fileName) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 현재 활성 객체의 지붕별 NPV(순현재가치) 계산 결과를 텍스트로 정리하여 로컬 파일로 저장합니다.
 
@@ -723,6 +789,8 @@ Module.getSolar().getFormulaNPV("npv_result.txt");
 
 ### getFormulaTotalPower(fileName) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 전체 배치된 모듈 기준의 총 발전 용량 계산 결과를 텍스트로 정리하여 로컬 파일로 저장합니다.
 
 {% tabs %}
@@ -744,6 +812,8 @@ Module.getSolar().getFormulaTotalPower("total_power.txt");
 {% endtabs %}
 
 ### getFormulaAverageSolarRadiation(fileName) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지붕별 월간(12개월) 평균 전일사량 계산 결과를 텍스트로 정리하여 로컬 파일로 저장합니다.
 
@@ -768,6 +838,8 @@ Module.getSolar().getFormulaAverageSolarRadiation("avg_radiation.txt");
 
 ### getFormulaAverageBeamSolarRadiation(fileName) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지붕별 월간 평균 직달일사량 계산 결과를 텍스트로 정리하여 로컬 파일로 저장합니다.
 
 {% tabs %}
@@ -789,6 +861,8 @@ Module.getSolar().getFormulaAverageBeamSolarRadiation("avg_beam_radiation.txt");
 {% endtabs %}
 
 ### getFormulaAverageDiffuseSolarRadiation(fileName) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지붕별 월간 평균 산란일사량 계산 결과를 텍스트로 정리하여 로컬 파일로 저장합니다.
 
@@ -812,6 +886,8 @@ Module.getSolar().getFormulaAverageDiffuseSolarRadiation("avg_diffuse_radiation.
 
 ### getFormulaUnitAreaPowerMap(fileName) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 단위 면적당 연간 발전량 맵 데이터를 그대로 로컬 파일로 저장합니다.
 
 {% tabs %}
@@ -833,6 +909,8 @@ Module.getSolar().getFormulaUnitAreaPowerMap("power_map.txt");
 {% endtabs %}
 
 ### getFormulaTotalSolarRadiation(fileName) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
 
 > 전천 일사량 데이터를 그대로 로컬 파일로 저장합니다.
 
@@ -856,6 +934,8 @@ Module.getSolar().getFormulaTotalSolarRadiation("total_radiation.txt");
 
 ### getRadiationPNG() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 지붕들에 대해 일사량 분포를 나타내는 PNG 이미지를 생성합니다.
 
 {% tabs %}
@@ -867,6 +947,8 @@ Module.getSolar().getRadiationPNG();
 {% endtabs %}
 
 ### getRadiationBeamData() → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 현재 활성화된 지붕들에 대해 직달일사 데이터를 생성/추출합니다.
 
@@ -880,6 +962,8 @@ Module.getSolar().getRadiationBeamData();
 
 ### getRadiationDiffuseData() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 지붕들에 대해 산란일사 데이터를 생성/추출합니다.
 
 {% tabs %}
@@ -891,6 +975,8 @@ Module.getSolar().getRadiationDiffuseData();
 {% endtabs %}
 
 ### getPanelVisible(), setPanelVisible(visible) → boolean, void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 패널의 표시 여부를 조회하거나 설정합니다. `setPanelVisible(true)` 호출 시, 변경 사항이 있고 편집이 활성화된 상태라면 모듈을 즉시 재배치합니다.
 
@@ -914,6 +1000,8 @@ let visible = Module.getSolar().getPanelVisible();
 {% endtabs %}
 
 ### setPanelWidth(width, apply), getPanelWidth() → void, number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 패널의 가로 폭을 설정하거나 조회합니다. `apply`가 true이면 즉시 모듈을 재배치합니다.
 
@@ -939,6 +1027,8 @@ let width = Module.getSolar().getPanelWidth();
 
 ### setPanelLength(length, apply), getPanelLength() → void, number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 패널의 세로 길이를 설정하거나 조회합니다. `apply`가 true이면 즉시 모듈을 재배치합니다.
 
 {% tabs %}
@@ -962,6 +1052,8 @@ let length = Module.getSolar().getPanelLength();
 {% endtabs %}
 
 ### setModuleArrayEX(section, sectionCount, sectionSet, deployAngle) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > `setModuleArray()`와 동일하게 모듈 배열 구성을 설정하되, 배치 각도를 직접 지정할 수 있습니다.
 
@@ -988,6 +1080,8 @@ let result = Module.getSolar().setModuleArrayEX(5, 20, 2, 15.0);
 {% endtabs %}
 
 ### progressModuleArray(callback) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 비동기 모듈 배치([startModuleArrayAsync](#startmodulearrayasync-section-sectioncount-sectionset-string))의 진행률 콜백을 등록합니다.
 >
@@ -1017,6 +1111,8 @@ Module.GetSolarManager().progressModuleArray(function (percent) {
 
 ### completeModuleArray(callback) → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 비동기 모듈 배치([startModuleArrayAsync](#startmodulearrayasync-section-sectioncount-sectionset-string))의 완료 콜백을 등록합니다.
 >
 > 대문자로 시작하는 `CompleteModuleArray()`도 동일하게 동작합니다 (cpp에서 같은 구현부에 바인딩된 별칭).
@@ -1045,6 +1141,8 @@ Module.GetSolarManager().completeModuleArray(function (panelCount) {
 {% endtabs %}
 
 ### startModuleArrayAsync(section, sectionCount, sectionSet) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 선택된 옥상에 태양광 모듈을 비동기(Web Worker)로 배치합니다. `setModuleArray()`와 같은 배치 조건을 사용하지만, 레이캐스트가 집중된 배치 계산을 워커에서 처리하므로 패널이 많아도 화면이 멈추지 않습니다.
 >
@@ -1115,6 +1213,8 @@ if (result !== "success") {
 
 ### setModuleSwitch(set) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 모듈 배치의 온/오프 스위치 상태를 설정하고, 즉시 모듈을 재배치합니다.
 
 {% tabs %}
@@ -1136,6 +1236,8 @@ Module.getSolar().setModuleSwitch(true);
 {% endtabs %}
 
 ### setDeployBottomHeight(height) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 모듈 배치 영역의 하단 높이 기준값을 설정합니다.
 
@@ -1159,6 +1261,8 @@ Module.getSolar().setDeployBottomHeight(0.3);
 
 ### setDeployTopHeight(height) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 모듈 배치 영역의 상단 높이 기준값을 설정합니다.
 
 {% tabs %}
@@ -1181,6 +1285,8 @@ Module.getSolar().setDeployTopHeight(1.2);
 
 ### getDeployBottomHeight(height) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+
 > 모듈 배치 영역의 하단 높이 기준값을 반환합니다.
 
 {% tabs %}
@@ -1199,6 +1305,8 @@ let bottomHeight = Module.getSolar().getDeployBottomHeight();
 
 ### getDeployTopHeight(height) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+
 > 모듈 배치 영역의 상단 높이 기준값을 반환합니다.
 
 {% tabs %}
@@ -1216,6 +1324,8 @@ let topHeight = Module.getSolar().setDeployTopHeight();
 {% endtabs %}
 
 ### setMaxKWP(maxKWP) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 배치 가능한 최대 발전 용량(kWp)을 설정합니다.
 
@@ -1239,6 +1349,8 @@ Module.getSolar().setMaxKWP(100.0);
 
 ### getModuleAngle() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 지붕들 중 첫 번째로 활성 상태인 지붕의 모듈 설치 각도를 반환합니다. 활성 지붕이 없으면 전역 옵션값을 반환합니다.
 
 {% tabs %}
@@ -1256,6 +1368,8 @@ let angle = Module.getSolar().getModuleAngle();
 {% endtabs %}
 
 ### getAngle() → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 현재 활성화된 지붕들 중 첫 번째로 활성 상태인 지붕의 지형 기준각과 남향 기준각을 문자열로 반환합니다.
 
@@ -1276,6 +1390,8 @@ console.log(angleInfo);
 {% endtabs %}
 
 ### getSelectedRoofInfo(), setSelectedRoofInfo(info) → string, void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 현재 선택된 지붕의 정보를 문자열로 조회하거나, 문자열로부터 지붕 정보를 복원합니다.
 
@@ -1300,6 +1416,8 @@ Module.getSolar().setSelectedRoofInfo(info);
 
 ### clearSelectedRoof() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 선택된 옥상(지붕) 상태를 완전히 초기화합니다. 미리보기 모듈세트 해제, 선택된 지붕과 설치된 옥상 패널 삭제, 활성 객체 해제까지 수행합니다.
 >
 > `initialize()`와 달리 활성 객체까지 정리하므로, 호출 후 `getModuleCount()` 등이 이미 정리된 객체를 참조하지 않습니다. 대문자로 시작하는 `ClearSelectedRoof()`도 동일하게 동작합니다 (cpp에서 같은 구현부에 바인딩된 별칭).
@@ -1322,6 +1440,8 @@ Module.GetSolarManager().clearSelectedRoof();
 {% endtabs %}
 
 ### selectRoofByArea(points) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지정한 좌표 목록(경도, 위도)으로 둘러싸인 영역 내의 지붕을 선택합니다.
 
@@ -1351,6 +1471,8 @@ let result = Module.getSolar().selectRoofByArea(points);
 
 ### getSelectedRoofCenter() → [JSVector3D](../core/jsvector3d.md)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 선택된 지붕의 중심 좌표를 반환합니다.
 
 {% tabs %}
@@ -1371,6 +1493,8 @@ console.log(center.lon, center.lat, center.alt);
 
 ### getSelectedRoofArea() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 선택된 지붕의 면적을 반환합니다.
 
 {% tabs %}
@@ -1389,6 +1513,8 @@ let area = Module.getSolar().getSelectedRoofArea();
 {% endtabs %}
 
 ### getRoofCount() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 현재 활성화된 객체 내에서 활성 상태인 지붕의 개수를 반환합니다.
 
@@ -1409,6 +1535,8 @@ let count = Module.getSolar().getRoofCount();
 
 ### getRoofedStructureCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 패널이 설치(분석)된 건물(구조물)의 개수를 반환합니다.
 
 {% tabs %}
@@ -1427,6 +1555,8 @@ let count = Module.getSolar().getRoofedStructureCount();
 {% endtabs %}
 
 ### getRoofedStructure(structureIndex) → [JSSolarStructure](../etc/jssolarstructure.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지붕에 패널이 설치된 건물 정보를 인덱스로 조회합니다.
 
@@ -1454,6 +1584,8 @@ for (let i = 0; i < count; i++) {
 
 ### getModuleSection(), getModuleSectionCount(), getModuleSectionSet() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 설정된 모듈 배열 구성값(`setModuleArray()`로 설정한 값)을 각각 조회합니다.
 >
 > - `getModuleSection()`: 단일 배열당 섹션 수
@@ -1478,6 +1610,8 @@ let sectionSet = Module.getSolar().getModuleSectionSet();
 
 ### getRoofExtent(index) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 객체의 바운딩 박스 대각선 길이(extent)를 반환합니다.
 
 {% tabs %}
@@ -1500,6 +1634,8 @@ let extent = Module.getSolar().getRoofExtent(0);
 {% endtabs %}
 
 ### setColorResultPolygon(polyColor, holeColor) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 분석 결과 폴리곤과 홀(구멍) 영역의 색상을 설정합니다.
 
@@ -1526,6 +1662,8 @@ Module.getSolar().setColorResultPolygon(polyColor, holeColor);
 
 ### setColorSimpleObject(color) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 단순(Simple) 모드에서 표시되는 모듈 오브젝트의 색상을 설정합니다.
 
 {% tabs %}
@@ -1548,6 +1686,8 @@ Module.getSolar().setColorSimpleObject(color);
 {% endtabs %}
 
 ### setColorSimpleLine(color) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 단순(Simple) 모드에서 표시되는 모듈 외곽선의 색상을 설정합니다.
 
@@ -1572,6 +1712,8 @@ Module.getSolar().setColorSimpleLine(color);
 
 ### setDrawResultPolygon(draw) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 분석 결과 폴리곤을 화면에 그릴지 여부를 설정합니다.
 
 {% tabs %}
@@ -1594,6 +1736,8 @@ Module.getSolar().setDrawResultPolygon(true);
 
 ### getTotalPower() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 배치된 전체 태양광 모듈의 총 발전 용량을 반환합니다.
 
 {% tabs %}
@@ -1611,6 +1755,8 @@ let totalPower = Module.getSolar().getTotalPower();
 {% endtabs %}
 
 ### getTotalNPV() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 배치된 전체 태양광 모듈 기준의 총 NPV(순현재가치)를 반환합니다.
 
@@ -1630,6 +1776,8 @@ let totalNPV = Module.getSolar().getTotalNPV();
 
 ### getModulesPosition() → [JSVec3Array](../core/jsvec3array.md)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성화된 객체에 배치된 모든 태양광 모듈의 중심 좌표 목록을 반환합니다.
 
 {% tabs %}
@@ -1647,6 +1795,8 @@ let positions = Module.getSolar().getModulesPosition();
 {% endtabs %}
 
 ### setDeployType(deployType) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 모듈 배치 방식을 설정합니다.
 
@@ -1669,6 +1819,8 @@ Module.getSolar().setDeployType(1);
 {% endtabs %}
 
 ### inputModuleModel(model), inputModuleMarker(maker), inputModuleCellType(cellType) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 모듈(패널) 사양 중 모델명/제조사/셀 타입 문자열 정보를 설정합니다. 발전량 계산(XML) 입력값으로 사용됩니다.
 
@@ -1695,6 +1847,8 @@ Module.getSolar().inputModuleCellType("Mono-crystalline");
 {% endtabs %}
 
 ### inputModulePower(power), inputModuleNOCT(noct), inputModuleWeight(weight), inputModuleEfficiency(efficiency), inputModuleCoefficient(coefficient) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 태양광 모듈 사양 중 정격 출력, NOCT(공칭 태양전지 동작온도), 무게, 효율, 온도계수를 설정합니다. `inputModulePower()`는 값 설정 후 총 발전 용량을 즉시 재계산합니다.
 
@@ -1726,6 +1880,8 @@ Module.getSolar().inputModuleCoefficient(-0.35);
 
 ### inputModuleLength(length), inputModuleHeight(height), inputModuleDepth(depth) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 모듈의 규격(가로/세로/두께)을 설정합니다.
 
 {% tabs %}
@@ -1752,6 +1908,8 @@ Module.getSolar().inputModuleDepth(40);
 
 ### inputInverterEfficiency(efficiency), inputInverterPower(power) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 인버터의 효율과 정격 출력을 설정합니다.
 
 {% tabs %}
@@ -1776,6 +1934,8 @@ Module.getSolar().inputInverterPower(3000.0);
 
 ### inputGenerationOptionLoss(loss), inputGenerationOptionAngle(angle) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 발전량 계산 시 적용할 손실률과 기본 설치 각도를 설정합니다.
 
 {% tabs %}
@@ -1799,6 +1959,8 @@ Module.getSolar().inputGenerationOptionAngle(30.0);
 {% endtabs %}
 
 ### inputInitInvestA(value) ~ inputInitInvestL(value) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 초기 투자비 계산에 사용되는 항목 A~L(12개)의 값을 설정합니다. 각 항목이 실제로 의미하는 세부 항목(공사비, 설계비 등)은 이 파일에서는 정의되어 있지 않으며, XML 스펙/UI 쪽에서 정의됩니다.
 
@@ -1835,6 +1997,8 @@ Module.getSolar().inputInitInvestB(200000);
 
 ### inputOperationA(value) ~ inputOperationF(value) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 운영비 계산에 사용되는 항목 A~F(6개)의 값을 설정합니다.
 
 {% tabs %}
@@ -1864,6 +2028,8 @@ Module.getSolar().inputOperationB(10000);
 
 ### inputSalesA(value) ~ inputSalesD(value) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 판매 수익 계산에 사용되는 항목 A~D(4개)의 값을 설정합니다.
 
 {% tabs %}
@@ -1890,6 +2056,8 @@ Module.getSolar().inputSalesB(3.5);
 {% endtabs %}
 
 ### inputFinanceA(value), inputFinanceB(value), inputFinanceC(years), inputFinanceD(years) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 금융(대출) 관련 조건을 설정합니다. A/B는 비율(대출 비율, 대출 이자율), C/D는 기간(년) 값입니다.
 
@@ -1919,6 +2087,8 @@ Module.getSolar().inputFinanceD(10);     // 상환 기간(년)
 
 ### inputRentalA(value), inputRentalB(value), inputRentalC(value) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 임대 관련 계산 항목 A~C(3개)의 값을 설정합니다.
 
 {% tabs %}
@@ -1945,6 +2115,8 @@ Module.getSolar().inputRentalC(10);
 
 ### inputSupportA(value), inputSupportB(value) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 정부/지자체 지원금 관련 계산 항목 A, B(2개)의 값을 설정합니다.
 
 {% tabs %}
@@ -1969,6 +2141,8 @@ Module.getSolar().inputSupportB(2.0);
 
 ### redeploy() → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성 객체의 모든 활성 지붕에 대해 모듈을 일괄 재배치(추가/삭제)합니다. 전체 배치(`IsTotalDeploy()`)가 설정된 경우에만 실제로 추가/삭제가 수행됩니다.
 
 {% tabs %}
@@ -1989,6 +2163,8 @@ let [added, deleted] = result.split("#").map(Number);
 
 ### redeployAdd() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성 객체의 모든 활성 지붕에 대해 추가 가능한 모듈을 재배치(추가)합니다.
 
 {% tabs %}
@@ -2007,6 +2183,8 @@ let addedCount = Module.getSolar().redeployAdd();
 
 ### redeployDelete() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 활성 객체의 모든 활성 지붕에 대해 배치 조건에 맞지 않는 모듈을 재배치(삭제)합니다.
 
 {% tabs %}
@@ -2024,6 +2202,8 @@ let deletedCount = Module.getSolar().redeployDelete();
 {% endtabs %}
 
 ### setModulePreview(imageData, imageWidth, imageHeight, width, height, thickness, angle) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 벽면 설치용 모듈 미리보기 정보(텍스처, 규격)를 생성합니다. 기존 미리보기 정보는 해제 후 새로 생성됩니다.
 
@@ -2055,6 +2235,8 @@ let result = Module.getSolar().setModulePreview(image, 2, 2, 1.0, 1.6, 0.04, 30.
 
 ### updateModuleOption(width, height, thickness, angle) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 선택(select)된 벽면 설치형 태양광 패널 오브젝트들의 규격(폭/높이/두께/각도)을 갱신합니다. 마우스 상태가 벽면 패널 편집 모드(`MML_SELECT_EDIT_WALL_PANEL`)일 때만 동작합니다.
 
 {% tabs %}
@@ -2081,6 +2263,8 @@ let result = Module.getSolar().updateModuleOption(1.0, 1.6, 0.04, 30.0);
 
 ### updateModuleUp(value) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 선택된 벽면 설치형 패널을 법선(normal) 방향으로 `value`만큼 이동시킵니다.
 
 {% tabs %}
@@ -2104,6 +2288,8 @@ let result = Module.getSolar().updateModuleUp(0.1);
 
 ### updateModuleRight(value) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 현재 선택된 벽면 설치형 패널을 표면상의 오른쪽(가로) 방향으로 `value`만큼 이동시킵니다.
 
 {% tabs %}
@@ -2126,6 +2312,8 @@ let result = Module.getSolar().updateModuleRight(0.1);
 {% endtabs %}
 
 ### updateModuleOptionByKey(layerName, objectKey, width, height, thickness, angle) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 레이어 이름과 객체 키로 지정한 특정 벽면 설치형 패널 하나의 규격을 갱신합니다. (선택 상태와 무관하게 동작)
 
@@ -2155,6 +2343,8 @@ let result = Module.getSolar().updateModuleOptionByKey("wall_layer", "panel_001"
 
 ### updateModuleOptionByLayer(layerName, width, height, thickness, angle) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.24.1+</mark>
+
 > 지정한 레이어에 속한 모든 벽면 설치형 패널 오브젝트의 규격을 일괄 갱신합니다.
 
 {% tabs %}
@@ -2182,6 +2372,8 @@ let result = Module.getSolar().updateModuleOptionByLayer("wall_layer", 1.0, 1.6,
 
 ### updateModuleUpByKey(layerName, objectKey, value) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 레이어 이름과 객체 키로 지정한 특정 벽면 설치형 패널 하나를 법선 방향으로 `value`만큼 이동시킵니다.
 
 {% tabs %}
@@ -2207,6 +2399,8 @@ let result = Module.getSolar().updateModuleUpByKey("wall_layer", "panel_001", 0.
 
 ### updateModuleRightByKey(layerName, objectKey, value) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 레이어 이름과 객체 키로 지정한 특정 벽면 설치형 패널 하나를 표면상의 오른쪽(가로) 방향으로 `value`만큼 이동시킵니다.
 
 {% tabs %}
@@ -2231,6 +2425,8 @@ let result = Module.getSolar().updateModuleRightByKey("wall_layer", "panel_001",
 {% endtabs %}
 
 ### buildModuleOnTerrain(section, sectionCount, sectionSet, moduleAngle, deployAngle) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형(터레인) 위에 설정된 영역(`setAreaOnTerrain()`으로 지정)을 기준으로 태양광 모듈을 배치합니다.
 
@@ -2259,6 +2455,8 @@ let result = Module.getSolar().buildModuleOnTerrain(5, 20, 2, 30.0, 0.0);
 
 ### setModuleSizeOnTerrain(width, height) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 배치되는 태양광 모듈 하나의 가로/세로 크기를 설정하고, 즉시 재배치합니다.
 
 {% tabs %}
@@ -2283,6 +2481,8 @@ Module.getSolar().setModuleSizeOnTerrain(1.0, 1.6);
 
 ### setVisibleAreaOnTerrain(visible) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 설정된 태양광 설치 영역의 표시 여부를 설정합니다.
 
 {% tabs %}
@@ -2304,6 +2504,8 @@ Module.getSolar().setVisibleAreaOnTerrain(true);
 {% endtabs %}
 
 ### setAreaOnTerrain(points, buffer, fillColor, lineColor) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형 위에 태양광 설치 영역(다각형)을 추가합니다. 좌표별 지형 고도값을 자동으로 조회하여 반영합니다.
 
@@ -2339,6 +2541,8 @@ let result = Module.getSolar().setAreaOnTerrain(points, 0.0, fillColor, lineColo
 
 ### getAreaOnTerrain() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지형에 설정된 태양광 설치 영역의 면적을 반환합니다.
 
 {% tabs %}
@@ -2356,6 +2560,8 @@ let area = Module.getSolar().getAreaOnTerrain();
 {% endtabs %}
 
 ### getModulesPositionOnTerrain() → [JSVec3Array](../core/jsvec3array.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형에 배치된 모든 태양광 모듈의 중심 좌표 목록을 반환합니다.
 
@@ -2375,6 +2581,8 @@ let positions = Module.getSolar().getModulesPositionOnTerrain();
 
 ### getArrayGapH() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 태양광 모듈 배열 간의 세로 간격 값(`m_dGapArrayH`)을 반환합니다. (건물/지붕 설치 기준)
 
 {% tabs %}
@@ -2392,6 +2600,8 @@ let gap = Module.getSolar().getArrayGapH();
 {% endtabs %}
 
 ### addObject3DS(layerName, objectKey, uri, position, scaleX, scaleY, scaleZ, rotation, color) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지정한 3DS 파일을 로드하여 라이브러리 오브젝트로 배치합니다.
 
@@ -2427,6 +2637,8 @@ let result = Module.getSolar().addObject3DS("3ds_layer", "obj_001", "models/pane
 
 ### addObjectByCoordinates(layerName, objectKey, coordinates, color, height) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 지정한 좌표 목록(다각형)을 밑면으로 하는 높이를 가진 3D 건물 오브젝트를 생성합니다.
 
 {% tabs %}
@@ -2461,6 +2673,8 @@ let result = Module.getSolar().addObjectByCoordinates("building_layer", "bldg_00
 
 ### setModuleSideMargin(margin), getModuleSideMargin() → void, number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 모듈 간 좌우(측면) 여백을 설정하거나 조회합니다. (`setModuleMargin()`의 개별 필드 버전)
 
 {% tabs %}
@@ -2484,6 +2698,8 @@ let margin = Module.getSolar().getModuleSideMargin();
 
 ### setModuleTopDownMargin(margin), getModuleTopDownMargin() → void, number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 모듈 간 상하 여백을 설정하거나 조회합니다. (`setModuleMargin()`의 개별 필드 버전)
 
 {% tabs %}
@@ -2506,6 +2722,8 @@ let margin = Module.getSolar().getModuleTopDownMargin();
 {% endtabs %}
 
 ### addPlannelObject(layerName, lon, lat, alt, width, height, thickness, angle, direction) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.1+</mark>
 
 > 지정한 좌표에 태양광 패널 오브젝트 하나를 직접 생성하여 레이어에 추가합니다. (지붕/지형 분석 절차 없이 단일 패널을 직접 배치할 때 사용)
 
@@ -2566,6 +2784,8 @@ let result = Module.getSolar().addPlannelObject("BuildingLayer", 127.0, 37.5, 12
 
 ### capturePanelSunshineCasters() → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 현재 메모리에 로드되어 있는 주변 지물(그림자를 만드는 건물 등)의 삼각형을 일조분석용 저장소에 담습니다. 이미 저장된 지물은 최신 지오메트리로 갱신하고, 없는 지물은 추가합니다.
 >
 > 타일 레이어 건물은 카메라가 멀어지면 언로드되어 삼각형이 사라지므로, 건물이 로드되어 있는 동안 저장해 두어야 나중에 어디서 분석을 실행해도 같은 결과가 나옵니다. `startPanelSunshine()`을 호출할 때도 자동으로 한 번 캡처합니다.
@@ -2589,6 +2809,8 @@ console.log(info); // 예: "captured 128, stored 128"
 
 ### clearPanelSunshineCasters() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 일조분석용 주변 지물 저장소를 비웁니다.
 >
 > [clearPanelSunshine()](#clearpanelsunshine-void)은 저장소를 지우지 않으므로, 저장된 지물을 버리려면 이 함수를 호출해야 합니다.
@@ -2609,6 +2831,8 @@ Module.GetSolarManager().clearPanelSunshineCasters();
 
 ### getPanelSunshineCasterCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 일조분석용 저장소에 담긴 주변 지물의 개수를 반환합니다.
 
 {% tabs %}
@@ -2626,6 +2850,8 @@ var count = Module.GetSolarManager().getPanelSunshineCasterCount();
 {% endtabs %}
 
 ### setPanelSunshineStrict(mode) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 패널의 일조 판정 기준을 설정합니다. 기본값은 `301`(NORMAL)입니다.
 >
@@ -2654,6 +2880,8 @@ Module.GetSolarManager().setPanelSunshineStrict(301);
 
 ### setPanelSunshineSelfShadow(use) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 패널끼리 서로 만드는 그림자(앞줄 패널이 뒷줄 패널을 가리는 효과)를 분석에 포함할지 설정합니다. 기본값은 `true`입니다.
 
 {% tabs %}
@@ -2677,6 +2905,8 @@ Module.GetSolarManager().setPanelSunshineSelfShadow(true);
 {% endtabs %}
 
 ### setPanelSunshineColoring(use) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 분석이 끝났을 때 결과를 패널 색으로 표시할지 설정합니다. 기본값은 `true`입니다.
 >
@@ -2711,6 +2941,8 @@ Module.GetSolarManager().setPanelSunshineColoring(true);
 
 ### progressPanelSunshine(callback) → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 패널 일조분석의 진행률 콜백을 등록합니다.
 
 {% tabs %}
@@ -2736,6 +2968,8 @@ Module.GetSolarManager().progressPanelSunshine(function (percent) {
 {% endtabs %}
 
 ### completePanelSunshine(callback) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 패널 일조분석의 완료 콜백을 등록합니다.
 
@@ -2763,6 +2997,8 @@ Module.GetSolarManager().completePanelSunshine(function (panelCount) {
 {% endtabs %}
 
 ### startPanelSunshine(startTime, endTime, interval) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 설치된 패널의 일조분석을 비동기(Web Worker)로 시작합니다. 지정한 시간 구간을 `interval`분 간격으로 나누어 각 시각에 태양이 패널을 비추는지 판정합니다.
 >
@@ -2833,6 +3069,8 @@ if (ret !== "success") {
 {% endtabs %}
 
 ### getPanelSunshineResult() → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 패널 일조분석 결과를 JSON 문자열로 반환합니다. 분석 진행 중에도 호출할 수 있으며, 분석을 한 번도 하지 않았거나 `clearPanelSunshine()` 이후에는 패널 목록이 비어 있습니다.
 
@@ -2928,6 +3166,8 @@ result.panels.forEach(function (panel) {
 {% endtabs %}
 
 ### clearPanelSunshine() → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 패널 일조분석 결과를 지우고 패널 색을 원래(흰색)로 되돌립니다.
 >

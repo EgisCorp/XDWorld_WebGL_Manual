@@ -4,6 +4,8 @@ description: 지하 지층, GLB, 3D Tiles 등 어떤 데이터 위에도 붙일 
 
 # JSDepthGuide
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+
 > Module.createDepthGuide() API를 통해 생성합니다.
 >
 > 지하 데이터의 깊이를 읽을 수 있도록 수직벽 4면과 기준면(수평 격자) 1면으로 이루어진 눈금 상자를 세웁니다. 레이어에 등록하는 일반 객체이므로 폴리곤 지층, GLB, 3D Tiles 등 어떤 데이터 위에도 붙일 수 있습니다.

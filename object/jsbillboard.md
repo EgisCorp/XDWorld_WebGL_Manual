@@ -312,6 +312,8 @@ object.setVisible(true);
 
 ### setVerticalLine(options)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+
 > 빌보드 객체에 수직선(altitude 방향)을 표시합니다.
 >
 > 수직선은 시각적 참조용으로 사용되며, 고도 차이나 위치 강조 시 유용합니다.

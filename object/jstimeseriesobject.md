@@ -27,6 +27,8 @@ object.merge(/*parameter*/);
 
 ### create(parameter) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
+
 > 시계열 객체를 생성합니다.
 >
 > 여러 개의 시계열 오브젝트를 한번에 그리지 않고, 하나의 오브젝트만 생성할 때 사용합니다.
@@ -95,6 +97,8 @@ object.merge(/*parameter*/);
 
 ### insert(parameter) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
+
 > 새로운 시계열 데이터를 추가합니다.
 >
 > 이후 [merge()](jstimeseriesobject.md#merge-object)를 호출하여 입력한 데이터를 기존 객체에 추가하는 작업 필요합니다.
@@ -128,6 +132,8 @@ object.merge(/*parameter*/);
 {% endtabs %}
 
 ### merge() → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.8+</mark>
 
 > [insert()](jstimeseriesobject.md#insert-parameter-object)로 입력한 데이터를 기존 시계열 객체에 추가합니다.
 

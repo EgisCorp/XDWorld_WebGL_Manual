@@ -4,6 +4,8 @@ description: 지도 내 인스턴스 객체를 생성 및 설정하기 위한 AP
 
 # JSInstanceObject
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.35+</mark>
+
 > Module.createInstanceObject API를 생성합니다.
 
 ```javascript
@@ -34,6 +36,8 @@ var strKey = object.getId();
 {% endtabs %}
 
 ### getIntersectObjects(parameter) → error
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
 
 > 등록된 인스턴스 객체와 입력 변수값(parameter)에서 설정된 직선과 겹치는 항목을 반환합니다.
 
@@ -97,6 +101,8 @@ instanceObject.loadFile({
 
 ### create(parameter) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+
 > 인스턴스 객체를 생성합니다.
 >
 > `parameter.type`이 지정된 경우, `startPosition`/`info`에 정의된 값 목록을 기준으로 박스 형태의 인스턴스를 생성합니다.
@@ -134,6 +140,8 @@ let result = instanceObject.create({
 
 ### createObjectInArea(options) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.1+</mark>
+
 > 지정된 영역(폴리곤) 내부에 일정 간격으로 박스 형태의 인스턴스 객체를 격자 배치로 생성합니다.
 
 {% tabs %}
@@ -162,6 +170,8 @@ let count = instanceObject.createObjectInArea({
 {% endtabs %}
 
 ### applyViewObject(parameter) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
 
 > 입력한 인덱스 목록에 해당하는 인스턴스만 화면에 표시되도록 적용합니다.
 
@@ -192,6 +202,8 @@ instanceObject.applyViewObject({ array: [0, 2, 5] });
 
 ### clearViewObject() → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+
 > `applyViewObject`로 적용된 화면 표시 인스턴스 목록을 초기화(해제)합니다.
 
 {% tabs %}
@@ -217,6 +229,8 @@ instanceObject.clearViewObject();
 
 ### setInstanceColor(index, color)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.13.0+</mark>
+
 > 지정한 인덱스의 인스턴스 색상을 설정합니다.
 
 {% tabs %}
@@ -239,6 +253,8 @@ instanceObject.setInstanceColor(0, new Module.JSColor(255, 255, 0, 0));
 {% endtabs %}
 
 ### setZbuffer(set)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > 인스턴스 객체를 그릴 때 깊이 테스트(Z 버퍼)를 사용할지 설정합니다. 기본값은 false이며, 이 경우 깊이 테스트 없이 그려지므로 불투명 인스턴스(건물 박스 등)도 지형이나 다른 객체에 의한 가림을 무시하고 그려집니다. true로 설정하면 깊이 테스트를 거쳐 앞에 있는 객체에 가려집니다.
 >
@@ -266,6 +282,8 @@ instanceObject.setZbuffer(true);
 {% endtabs %}
 
 ### setInstanceIdList(idArray)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > 인스턴스별 ID(문자열) 목록을 설정합니다. 객체를 선택(피킹)했을 때 선택 이벤트의 `instanceId`로 전달되는 값이며, 인덱스(`instanceIndex`)는 그대로입니다.
 >
@@ -299,6 +317,8 @@ instanceObject.setInstanceIdList(["building_001", "building_002"]);
 ## Getter / Setter
 
 ### getAlpha(), setAlpha(alpha) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.54.0+</mark>
 
 > 인스턴스 객체 투명도를 반환합니다.
 

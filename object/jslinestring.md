@@ -239,6 +239,8 @@ line.setUnionMode(true);
 
 ### setLineType(type)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 선의 타입을 설정합니다.
 >
 > 실선, 점선 등과 같은 타입을 설정합니다.
@@ -291,6 +293,8 @@ line.setDepthbufferTest(false); // 비활성화
 {% endtabs %}
 
 ### setRenderToTexture(set) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 선 객체의 타입을 지형 결합(3DLINE) 또는 하늘선(SKY_LINE) 타입으로 전환합니다.
 
@@ -361,6 +365,8 @@ line.createGridArrowLine({
 {% endtabs %}
 
 ### getAxisMovePosition(pickPoint, mapPoint) → [JSVector3D](../core/jsvector3d.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.27.2+</mark>
 
 > 축(Axis) 편집 기즈모(정점 2개, 파트 1개로 구성된 라인)에서, 축 위의 피킹 좌표(pickPoint)와 현재 마우스 위치에 대응하는 지도 좌표(mapPoint)를 이용해 축 방향으로 제한된 이동 위치를 계산합니다.
 
@@ -531,6 +537,8 @@ var objectStyle = polyLine.getStyle();
 
 ### isInstancedRender(), setInstancedRender(set) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.28.3+</mark>
+
 > 선 객체의 인스턴싱(Instanced) 렌더링 사용 여부를 설정합니다.
 
 {% tabs %}
@@ -556,6 +564,8 @@ var isInstanced = line.isInstancedRender();
 {% endtabs %}
 
 ### setGroundPolylineLodDistances(distances) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
 
 > 라인의 거리 기반 LOD(단순화) 단계를 설정합니다. `setPolylineLodDistances(distances)`도 동일하게 동작합니다(cpp에서 같은 구현부에 바인딩된 별칭이며, `Ground`가 없는 이름을 신규로 노출한 것입니다). 이 항목의 이름은 하위호환을 위해 유지됩니다.
 >
@@ -601,6 +611,8 @@ line.setPolylineLodDistances([
 {% endtabs %}
 
 ### getGroundPolylineLodDistances() → array
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
 
 > [setGroundPolylineLodDistances(distances)](jslinestring.md#setgroundpolylineloddistances-distances-boolean)로 설정된 LOD 단계 목록을 반환합니다. `getPolylineLodDistances()`도 동일하게 동작합니다(cpp에서 같은 구현부에 바인딩된 별칭). 이 항목의 이름은 하위호환을 위해 유지됩니다.
 >

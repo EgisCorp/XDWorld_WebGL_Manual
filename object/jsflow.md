@@ -16,13 +16,15 @@ let flow = Module.getFlow();
 
 | Name         | Type   | Description                       |
 | ------------ | ------ | ------------------------------------ |
-| velocity     | number | 바람장 파티클 이동속도 스케일.     |
-| offsetHeight | number | 바람장 파티클 높이.                |
-| particleNum  | number | 화면에 표출되는 파티클 수.         |
+| velocity<sup>v1.50.0+</sup>     | number | 바람장 파티클 이동속도 스케일.     |
+| offsetHeight<sup>v1.50.0+</sup> | number | 바람장 파티클 높이.                |
+| particleNum<sup>v1.50.0+</sup>  | number | 화면에 표출되는 파티클 수.         |
 
 ## Function
 
 ### createFlow(options) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
 
 > 고유 ID를 가진 새로운 바람장(Flow) 객체를 비동기로 생성합니다.
 
@@ -49,6 +51,8 @@ let flow = Module.getFlow();
 
 ### deleteFlow(id) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+
 > 지정한 ID의 바람장 객체를 제거합니다.
 
 {% tabs %}
@@ -73,6 +77,8 @@ let flow = Module.getFlow();
 {% endtabs %}
 
 ### isExist(id) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
 
 > 지정한 ID의 바람장 객체가 존재하는지 확인합니다.
 
@@ -123,6 +129,8 @@ let flow = Module.getFlow();
 {% endtabs %}
 
 ### GetWaterDepthData(url, type, scale)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.52.1+</mark>
 
 > (레거시) 해수심도 데이터 파일을 요청하여 가시화 객체를 생성합니다.
 
@@ -243,6 +251,8 @@ flow.ClearFlowData();
 
 ### setJSON(options) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+
 > [JSFlow.FlowDataOption](jsflow.md#jsflow.flowdataoption) 형식의 통합 옵션으로 바람장을 생성합니다.
 >
 > `data.url`(바람장 파일) 또는 `data.grid`(격자 데이터 직접 입력) 중 하나를 사용해 데이터를 구성하며, `data.dem`으로 DEM 결합, `legend`로 색상 표현 방식을 설정할 수 있습니다.
@@ -270,6 +280,8 @@ flow.ClearFlowData();
 
 ### setUnionTerrain(unionTerrain) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.12.1+</mark>
+
 > 바람장 파티클의 지형 결합(지표면 높이 반영) 여부를 설정합니다.
 
 {% tabs %}
@@ -296,6 +308,8 @@ flow.ClearFlowData();
 ## Getter / Setter
 
 ### getVisible(id), setVisible(id, visible) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
 
 > 지정한 ID의 바람장 가시화 유무를 설정하거나 반환합니다.
 >

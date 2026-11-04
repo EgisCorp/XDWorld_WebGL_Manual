@@ -14,24 +14,26 @@ var map = Module.getTerrain();
 
 | Name              | Type   | Description        |
 | ----------------- | ------ | ------------------ |
-| demRate           | number | DEM 높이 표현 비율       |
+| demRate<sup>v1.37.43+</sup>           | number | DEM 높이 표현 비율       |
 | recoverHSV        | number | 색상 조정 설정 여부        |
 | recoverHue        | number | 색상 Hue 조정 값        |
 | recoverSaturation | number | 색상 Saturation 조정 값 |
 | recoverValue      | number | 색상 Value 조정 값      |
-| demServerURL      | string | (읽기 전용) DEM 서버 요청 URL |
-| demServerRoot     | string | (읽기 전용) DEM 서버 루트 경로 |
-| demLayerName      | string | (읽기 전용) DEM 서버 레이어 명칭 |
-| imageServerURL    | string | (읽기 전용) 지형 영상 서버 요청 URL |
-| imageServerRoot   | string | (읽기 전용) 지형 영상 서버 루트 경로 |
-| imageLayerName    | string | (읽기 전용) 지형 영상 서버 레이어 명칭 |
-| demBox            | object | (읽기 전용) 설정된 DEM Box 정보. `getDemBox()`와 동일한 형태. |
-| demLevelRange     | object | (읽기 전용) DEM 서비스 레벨 범위. `{ minLevel, maxLevel }` 형태이며 값이 -1이면 해당 방향은 제한 없음. 변경은 [setDemLevelRange(minLevel, maxLevel)](jsterrain.md#setdemlevelrange-minlevel-maxlevel-boolean)를 사용합니다. |
-| imageLevelRange   | object | (읽기 전용) 지형 영상 서비스 레벨 범위. `{ minLevel, maxLevel }` 형태이며 값이 -1이면 해당 방향은 제한 없음. 변경은 [setImageLevelRange(minLevel, maxLevel)](jsterrain.md#setimagelevelrange-minlevel-maxlevel-boolean)를 사용합니다. |
+| demServerURL<sup>v1.52.1+</sup>      | string | (읽기 전용) DEM 서버 요청 URL |
+| demServerRoot<sup>v1.52.1+</sup>     | string | (읽기 전용) DEM 서버 루트 경로 |
+| demLayerName<sup>v1.52.1+</sup>      | string | (읽기 전용) DEM 서버 레이어 명칭 |
+| imageServerURL<sup>v1.52.1+</sup>    | string | (읽기 전용) 지형 영상 서버 요청 URL |
+| imageServerRoot<sup>v1.52.1+</sup>   | string | (읽기 전용) 지형 영상 서버 루트 경로 |
+| imageLayerName<sup>v1.52.1+</sup>    | string | (읽기 전용) 지형 영상 서버 레이어 명칭 |
+| demBox<sup>v1.52.1+</sup>            | object | (읽기 전용) 설정된 DEM Box 정보. `getDemBox()`와 동일한 형태. |
+| demLevelRange<sup>v2.29.4+</sup>     | object | (읽기 전용) DEM 서비스 레벨 범위. `{ minLevel, maxLevel }` 형태이며 값이 -1이면 해당 방향은 제한 없음. 변경은 [setDemLevelRange(minLevel, maxLevel)](jsterrain.md#setdemlevelrange-minlevel-maxlevel-boolean)를 사용합니다. |
+| imageLevelRange<sup>v2.29.4+</sup>   | object | (읽기 전용) 지형 영상 서비스 레벨 범위. `{ minLevel, maxLevel }` 형태이며 값이 -1이면 해당 방향은 제한 없음. 변경은 [setImageLevelRange(minLevel, maxLevel)](jsterrain.md#setimagelevelrange-minlevel-maxlevel-boolean)를 사용합니다. |
 
 ## Function
 
 ### insertTerrainHoleArea(areaPositions) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지정한 경위도 영역에 지형 홀(구멍) 영역을 추가합니다.
 
@@ -61,6 +63,8 @@ var map = Module.getTerrain();
 
 ### setTerrainHoleAreaVisible(index, visible) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 등록된 지형 홀(구멍) 영역의 가시화 유무를 설정합니다.
 
 {% tabs %}
@@ -86,6 +90,8 @@ var map = Module.getTerrain();
 {% endtabs %}
 
 ### setMaxLevel(level)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 지형 요청 최대 레벨을 설정합니다.
 
@@ -132,6 +138,8 @@ var map = Module.getTerrain();
 {% endtabs %}
 
 ### setUseDemBox(use)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > DEM Box(특정 영역에 대한 별도 DEM 요청) 기능 사용 여부를 설정합니다.
 
@@ -250,6 +258,8 @@ var map = Module.getTerrain();
 
 ### setImageServerEnable(enable) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+
 > 위성(영상) 서버 사용 여부를 실행 중에 변경합니다.
 >
 > 값이 실제로 바뀌는 경우에만 지형을 레벨 0부터 다시 생성합니다(위성 텍스처 유무가 이미 메쉬에 반영되어 있어, 플래그만 바꿔서는 화면이 갱신되지 않기 때문입니다).
@@ -276,6 +286,8 @@ var map = Module.getTerrain();
 {% endtabs %}
 
 ### setDemLevelRange(minLevel, maxLevel) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > DEM(고도) 데이터를 서버에 요청할 서비스 레벨 범위를 설정합니다.
 >
@@ -319,6 +331,8 @@ Module.getTerrain().setDemLevelRange(-1, -1);
 
 ### setImageLevelRange(minLevel, maxLevel) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 지형 영상(위성) 타일을 서버에 요청할 서비스 레벨 범위를 설정합니다.
 >
 > 지정한 범위 밖의 레벨에서는 영상 타일을 요청하지 않고 부모 레벨의 텍스처를 확대하여 사용하며, 설정 값이 실제로 바뀌는 경우에만 지형을 레벨 0부터 다시 생성합니다. 현재 설정은 `imageLevelRange` 속성으로 조회할 수 있습니다.
@@ -359,6 +373,8 @@ Module.getTerrain().setImageLevelRange(-1, -1);
 
 ### setSkirtHeight(height)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.54.0+</mark>
+
 > 지형 타일 경계의 스커트(skirt, 이음새 가림용 수직 벽) 높이를 설정합니다.
 
 {% tabs %}
@@ -379,6 +395,8 @@ Module.getTerrain().setImageLevelRange(-1, -1);
 {% endtabs %}
 
 ### setImageryQuality(quality) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.12.3+</mark>
 
 > 지형 영상(이미지) 품질을 설정합니다.
 
@@ -405,6 +423,8 @@ Module.getTerrain().setImageLevelRange(-1, -1);
 
 ### setGridLine(options) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.21.0+</mark>
+
 > 경위도 그리드 라인 표시 옵션을 설정합니다.
 
 {% tabs %}
@@ -429,6 +449,8 @@ Module.getTerrain().setImageLevelRange(-1, -1);
 {% endtabs %}
 
 ### makeTerrainElevationCellData(option) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.29+</mark>
 
 > 입력된 정점 좌표 목록을 기반으로 변수값 격자 구조를 생성하고 정보를 반환합니다.
 
@@ -466,6 +488,8 @@ let result = Module.getTerrain().makeTerrainElevationCellData(parameter);
 {% endtabs %}
 
 ### getServerAltitude(options, callback) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.0+</mark>
 
 > 입력된 좌표 목록에 대해 서버로부터 고도값을 요청하고, 결과를 콜백 함수로 반환합니다.
 
@@ -513,6 +537,8 @@ Module.getTerrain().getServerAltitude(input, function (result) {
 
 ### setImageMask(option) → bool
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
+
 > 지정한 경위도 사각 범위 바깥의 지역을 임의의 색상으로 마스킹합니다.
 
 {% tabs %}
@@ -547,6 +573,8 @@ Module.getTerrain().setImageMask({
 {% endtabs %}
 
 ### setEarthImageBASE64(base64Data) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > 사용자가 지정한 이미지를 지구본(지구 전체) 표면 텍스처로 적용합니다.
 >
@@ -585,6 +613,8 @@ fetch("earth.jpg")
 
 ### resetEarthImage() → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+
 > [setEarthImageBASE64](jsterrain.md#setearthimagebase64-base64data-boolean) 또는 [setEarthVideoFrame](jsterrain.md#setearthvideoframe-ptr-width-height-boolean)으로 적용한 사용자 지구본 이미지를 해제하고, 원래의 이미지 레이어 표현으로 되돌립니다.
 >
 > 지형을 레벨 0부터 다시 생성합니다.
@@ -607,6 +637,8 @@ Module.getTerrain().resetEarthImage();
 {% endtabs %}
 
 ### setEarthVideoFrame(ptr, width, height) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > 비디오 등의 프레임 픽셀 데이터를 지구본 표면 텍스처로 적용합니다. 프레임마다 반복 호출하여 지구본에 동영상을 표출할 수 있습니다.
 >

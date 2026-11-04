@@ -14,7 +14,7 @@ var object = Module.createPoint("ID");
 
 | Name            | Type                                  | Description                                |
 | --------------- | ------------------------------------- | ----------------------------------------- |
-| image_scale     | 이미지 스케일                          | 1.0을 기본으로 이미지의 스케일을 조정        |
+| image_scale<sup>v1.43.0+</sup>     | 이미지 스케일                          | 1.0을 기본으로 이미지의 스케일을 조정        |
 
 ## Function
 
@@ -535,6 +535,8 @@ object.setIcon(icon);
 
 ### setImageCompressed(data, format, width, height) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.1+</mark>
+
 > POI 객체를 구성하는 이미지를 압축 텍스처 데이터로 설정합니다.
 >
 > 변환 없이 압축 블록을 그대로 GPU에 업로드하므로 RGBA4444(2B/px) 대비 메모리를 절반 이하로 줄일 수 있습니다. 압축 인코딩은 호출자(예: 워커)가 미리 수행해야 합니다.
@@ -593,6 +595,8 @@ if (!ok) {
 {% endtabs %}
 
 ### setImageAtlas(atlasId, x, y, width, height) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
 
 > 아틀라스 텍스처의 한 칸을 POI 객체의 이미지로 설정합니다.
 >
@@ -788,6 +792,8 @@ point.setLonLat(129.1270931, 35.1713096);
 
 ### setLineAlign(from, to) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
+
 > 두 지점(from, to)을 잇는 방향에 맞춰 POI 심볼(라벨)을 회전시킵니다. 도로명 표기처럼 라인을 따라 정렬된 라벨을 표시할 때 사용합니다.
 >
 > 회전되는 라벨은 텍스처 필터가 NEAREST가 아닌 LINEAR로 유지되어 회전 각도에서도 외곽선이 매끄럽게 보이며, 이 필터는 텍스처 업로드 시점에 한 번만 적용되므로 [setImage(data, width, height)](jspoint.md#setimage-data-width-height-boolean)보다 먼저 호출해야 합니다.
@@ -816,6 +822,8 @@ point.setLineAlign(new Module.JSVector3D(127.0, 37.5, 30.0),
 {% endtabs %}
 
 ### clearLineAlign()
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.1+</mark>
 
 > [setLineAlign(from, to)](jspoint.md#setlinealign-from-to-boolean)로 설정된 라인 정렬을 해제하고, 회전 각도를 0으로 되돌립니다.
 
@@ -969,6 +977,8 @@ point.setTextMargin(10, -10);
 {% endtabs %}
 
 ### setRange(option) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.5.1+</mark>
 
 > POI 객체의 가시 범위 및 텍스트 표시 범위를 설정합니다.
 >
@@ -1189,6 +1199,8 @@ point.setRenderOrder(2);
 
 ### color (property), setColor(color) → [JSColor](../core/jscolor.md)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.41+</mark>
+
 > POI 이미지에 적용할 색상(틴트)을 설정합니다.
 
 {% tabs %}
@@ -1209,6 +1221,8 @@ point.color = new Module.JSColor(255, 255, 0, 0);
 {% endtabs %}
 
 ### imageScale, image_scale (property), setImageScale(scale) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.43.0+</mark>
 
 > POI 이미지의 배율을 설정합니다. 기본값 1.0.
 
@@ -1234,6 +1248,8 @@ point.imageScale = 1.5;
 
 ### zIndex, z_index (property), setZIndex(index) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.46.0+</mark>
+
 > POI 객체의 Z-Index(렌더링 우선순위 값)를 설정합니다.
 
 {% tabs %}
@@ -1257,6 +1273,8 @@ point.zIndex = 1.0;
 {% endtabs %}
 
 ### autoHeight (property), setautoHeight(set) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
 
 > POI 객체의 높이 자동 조절(지형 고도 자동 반영) 기능 사용 여부를 설정합니다.
 

@@ -244,6 +244,8 @@ var strKey = object.getId();
 
 ### setSphere(parameter) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+
 > 중심 좌표(경도, 위도, 고도)를 기준으로 구 객체를 생성합니다.
 
 {% tabs %}
@@ -418,6 +420,8 @@ polygon.setSphere(param);
 
 ### setHeightOpen(height) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 밑면이 없는(옆면 + 윗면만) 3d 객체를 생성합니다.
 >
 > [setHeight](jspolygon.md#setheight-height-boolean)와 달리 밑면 페이스를 만들지 않으므로, OSM 건물처럼 지면 위에 수천 개를 올릴 때 페이스 수를 줄일 수 있습니다. 아래에서 올려다보면 비어 보이므로 지하 시점이 필요한 객체에는 `setHeight()`를 사용하세요.
@@ -454,6 +458,8 @@ polygon.setHeightOpen(30.0); // 밑면 없이 30m 압출
 {% endtabs %}
 
 ### setHeightByType(height, type) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.9.1+</mark>
 
 > 평면 객체 생성 시 높이값을 가진 3d 객체를 생성합니다.
 > 입력 변수값(type)은 윗면 정의 방법을 설정합니다.
@@ -734,6 +740,8 @@ polygon.setExtraPosition(0.5, -1.5, 10.0);
 
 ### move(lon, lat, alt) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
+
 > 객체의 위치를 특정 위치`(경도, 위도, 고도)`로 이동합니다.
 
 {% tabs %}
@@ -787,6 +795,8 @@ polygon.moveAltitude(70.0, false); // 상대 이동
 
 ### setRotation(x, y, z) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.5.1+</mark>
+
 > 객체를 회전시킵니다.
 > x, y, z 각 축을 기준으로 일정 각도 만큼 회전합니다.
 
@@ -813,6 +823,8 @@ polygon.setRotation(30.0, 45.0, 90.0); // x축 30도, y축 45도, z축 90도 회
 {% endtabs %}
 
 ### setScale(x, y, z) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
 
 > 객체의 크기를 조절합니다.
 > x, y, z 각 축을 기준으로 일정 비율 만큼 확대/축소 합니다.
@@ -841,6 +853,8 @@ polygon.setScale(0.5, 1.5, 2.0); // x축 0.5배, y축 1.5배, z축 2배 확대/�
 
 ### getAxisEndpoint(axis, length) → [JSVector3D](../core/jsvector3d.md)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
+
 > 객체의 기준이 되는 축의 끝점 좌표를 반환합니다.
 > 입력 변수(length)로 축의 길이를 설정합니다.
 
@@ -866,6 +880,8 @@ let xvec = polygon.getAxisEndpoint(0, 200); // 객체 중심 기준 (200, 0, 0) 
 {% endtabs %}
 
 ### getAltitude() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.49.2+</mark>
 
 > 객체 중심의 고도(m)를 반환합니다.
 
@@ -1018,6 +1034,8 @@ let alt = polygon.getAltitude();
 
 ### setFaceTextureWrapU(faceIndex, wrapType), setFaceTextureWrapV(faceIndex, wrapType) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+
 > 타일링 텍스쳐 매핑 방식을 설정합니다(u, v).
 >
 > uv(텍스쳐) 좌표 범위(0.0 ~ 1.0)를 벗어난 영역에 대한 패턴을 설정합니다.
@@ -1045,6 +1063,8 @@ let alt = polygon.getAltitude();
 {% endtabs %}
 
 ### createVerticalGrid(layername, lefttop, rightbottom, row, col) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.7.2+</mark>
 
 > 평면 그리드 객체를 생성합니다.
 
@@ -1078,6 +1098,8 @@ let alt = polygon.getAltitude();
 
 ### setAnimationByID(id) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.7.1+</mark>
+
 > GLTF 객체의 애니메이션을 ID 기준으로 설정합니다.  
 > 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
 
@@ -1106,6 +1128,8 @@ gltfObject.setAnimationByID(0);
 {% endtabs %}
 
 ### setAnimationsByID(id) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.27.1+</mark>
 
 > GLTF 객체의 다중 애니메이션을 ID 기준으로 설정합니다.
 > 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
@@ -1137,6 +1161,8 @@ gltfObject.setAnimationsByID([0, 1]);
 
 ### setAnimationSpeed(speed) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.27.1+</mark>
+
 > GLTF 객체의 애니메이션 재생 속도를 설정합니다.
 > 평면 객체 타입이 GLTF 형식일 경우에만 동작합니다.
 
@@ -1164,6 +1190,8 @@ gltfObject.setAnimationSpeed(1.5);
 {% endtabs %}
 
 ### createWithFaces(parameter) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.5.1+</mark>
 
 > Face 정보를 기반으로 평면 객체를 생성합니다.  
 > 다각형을 Face 단위로 정의하고, 위치, 색상, 텍스처 좌표 등 세부 속성을 지정하여 생성할 수 있습니다.
@@ -1233,6 +1261,8 @@ console.log(result);
 
 ### setHeightUV(uv, height) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.1+</mark>
+
 > 평면 객체의 높이를 설정하고, 정점에 해당하는 텍스처 좌표(UV)를 지정하여 텍스처를 입힐 수 있는 3D 객체를 생성합니다.  
 > 이 API는 기존에 `setPartCoordinates()` 또는 `setCoordinates()`로 정의된 객체에만 적용 가능합니다.
 
@@ -1272,6 +1302,8 @@ polygon.setHeightUV(uvList, 20);
 {% endtabs %}
 
 ### setOverlayObject(options) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.0+</mark>
 
 > 오버레이 객체를 지도에 생성합니다.  
 > 주어진 정점 정보와 스타일 옵션에 따라 평면 또는 선형 오버레이를 생성합니다.
@@ -1364,6 +1396,8 @@ polygon.create({
 
 ### createByJson(parameter) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > JSON 형태의 파라미터로 평면 객체를 생성합니다. (바인딩된 이름은 `createByJson`이며, `createbyJson`으로도 동일하게 호출 가능합니다.)
 
 {% tabs %}
@@ -1417,6 +1451,8 @@ console.log(result.result, result.return);
 
 ### setBatchCoordinates(coordinates, parts) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+
 > 여러 건물의 외곽 링을 파트로 한 번에 입력합니다. [setBatchHeights](jspolygon.md#setbatchheights-heights-boolean)와 함께 사용하여 다수의 건물을 하나의 객체(드로우콜 1회)로 병합할 때 사용합니다.
 >
 > [setPartCoordinates](jspolygon.md#setpartcoordinates-coordinates-parts-boolean)와 달리 평면 폴리곤을 만들지 않고 좌표만 저장하며, 링 방향(winding) 반전도 하지 않으므로 링별 방향은 호출자가 정규화해야 합니다.
@@ -1450,6 +1486,8 @@ polygon.setBatchHeights([12.0, 30.5, 8.0]);
 {% endtabs %}
 
 ### setBatchHeights(heights) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > [setBatchCoordinates](jspolygon.md#setbatchcoordinates-coordinates-parts-boolean)로 입력한 파트별로 서로 다른 높이를 적용하여 전체를 하나의 페이스(드로우콜 1회)로 압출합니다.
 >
@@ -1485,6 +1523,8 @@ polygon.setBatchHeights([12.0, 30.5, 8.0]);
 {% endtabs %}
 
 ### createIndexedMesh(options) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
 
 > 호출자가 이미 계산한 삼각분할 인덱스를 이용하여 2D 폴리곤을 3D 각기둥 메시로 생성합니다.
 >
@@ -1587,6 +1627,8 @@ style.setOutLineColor(new Module.JSColor(255, 0, 0, 0));
 
 ### setFaceReadyCallback(callback) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 폴리곤의 면(face) 생성이 끝났을 때 호출되는 콜백을 등록합니다. 큰 폴리곤은 삼각분할을 web worker에서 처리하므로 `setCoordinates()`, `setHeight()` 등을 호출한 직후에는 면이 아직 없을 수 있는데, 이 콜백으로 면이 만들어진 시점을 알 수 있습니다.
 >
 > 콜백은 면을 만드는 호출 하나가 끝난 뒤 엔진의 다음 프레임에 한 번 호출됩니다. `null`(또는 `undefined`)을 전달하면 등록한 콜백이 해제됩니다. 폴리곤 하나에 콜백은 하나만 등록되며, 다시 등록하면 이전 콜백을 대체합니다.
@@ -1683,6 +1725,8 @@ var isInside = polygon.isInsidePosition(new Module.JSVector2D(127.05, 37.55));
 
 ### removeAllTexture() → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.3+</mark>
+
 > 평면 객체에 설정된 모든 face 텍스처를 제거합니다.
 
 {% tabs %}
@@ -1702,6 +1746,8 @@ polygon.removeAllTexture();
 {% endtabs %}
 
 ### setPartCoordinatesHeightUV(coordinates, parts, uv, height) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
 
 > 정점 좌표, 파트, UV 좌표, 높이값을 이용해 텍스처가 적용된 각기둥(prism) 형태의 평면 객체를 생성합니다.
 
@@ -1932,6 +1978,8 @@ polygon.setRenderOffset(0.5);
 
 ### getNodeCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.31+</mark>
+
 > GLTF 객체를 구성하는 하위 노드(파트) 개수를 반환합니다.
 
 {% tabs %}
@@ -1951,6 +1999,8 @@ var count = gltfObject.getNodeCount();
 {% endtabs %}
 
 ### setNodeVisibleByIndexRange(indexMin, indexMax) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.31+</mark>
 
 > GLTF 객체의 하위 노드 중 인덱스 범위(indexMin ~ indexMax)에 해당하는 노드만 가시화하고, 나머지는 비가시화합니다.
 
@@ -1977,6 +2027,8 @@ gltfObject.setNodeVisibleByIndexRange(0, 3);
 {% endtabs %}
 
 ### setNodeVisibleByIndex(index, visible) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
 
 > GLTF 객체의 특정 인덱스 노드의 가시화 여부를 설정합니다.
 
@@ -2006,6 +2058,8 @@ gltfObject.setNodeVisibleByIndex(2, false);
 
 ### setNodeVisibleByKey(key, visible) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+
 > GLTF 객체의 특정 키(노드 이름)를 가진 노드의 가시화 및 선택(pickable) 가능 여부를 설정합니다.
 
 {% tabs %}
@@ -2032,6 +2086,8 @@ gltfObject.setNodeVisibleByKey("Node_01", false);
 
 ### getNodeKeyByIndex(index) → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
+
 > GLTF 객체의 특정 인덱스에 해당하는 노드의 고유 키(이름)를 반환합니다.
 
 {% tabs %}
@@ -2056,6 +2112,8 @@ var key = gltfObject.getNodeKeyByIndex(0);
 {% endtabs %}
 
 ### setTextureByte(ptr, memSize, width, height, filter) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.1+</mark>
 
 > 메모리 포인터로 전달된 픽셀 바이트 데이터를 텍스처로 직접 교체합니다.
 
@@ -2090,6 +2148,8 @@ var key = gltfObject.getNodeKeyByIndex(0);
 
 ### setTextureBASE64(base64Data, filter) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.22.0+</mark>
+
 > base64로 인코딩된 이미지 데이터를 디코딩하여 텍스처로 교체합니다.
 
 {% tabs %}
@@ -2119,6 +2179,8 @@ var key = gltfObject.getNodeKeyByIndex(0);
 
 ### setDome(position, radius, segment, color) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
+
 > 중심 좌표를 기준으로 3D 돔(반구) 객체를 생성합니다.
 
 {% tabs %}
@@ -2146,6 +2208,8 @@ polygon.setDome(new Module.JSVector3D(127.0, 37.5, 0), 20, 24, new Module.JSColo
 {% endtabs %}
 
 ### setCurvatureRect(parameter) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
 
 > 지구 곡률을 반영한 사각 평면(rect)을 생성합니다. 4개 모서리 좌표(corners) 또는 최소/최대 경위도(min/max) 두 가지 방식으로 입력할 수 있습니다.
 
@@ -2183,6 +2247,8 @@ polygon.setCurvatureRect({
 
 ### getSavedTextureCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.56.0+</mark>
+
 > 평면 객체에 등록(저장)되어 있는 텍스처 개수를 반환합니다.
 
 {% tabs %}
@@ -2202,6 +2268,8 @@ var count = polygon.getSavedTextureCount();
 {% endtabs %}
 
 ### setFaceTextureByIndex(faceIndex, textureIndex) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.56.0+</mark>
 
 > 등록된 텍스처 목록 중 인덱스(textureIndex)로 지정한 텍스처를 face(faceIndex)에 적용합니다.
 
@@ -2228,6 +2296,8 @@ var count = polygon.getSavedTextureCount();
 {% endtabs %}
 
 ### createTMCoordPlane(options) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.57.2+</mark>
 
 > TM(평면 직각) 좌표계 격자를 기준으로 평면 객체를 생성합니다.
 
@@ -2258,6 +2328,8 @@ polygon.createTMCoordPlane({
 
 ### setRoadObject(options) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.2+</mark>
+
 > 도로(Road) 타입 객체에 도로 형태(노면, 기둥, 가드레일, 포장, 텍스처 등)를 설정합니다.
 
 {% tabs %}
@@ -2282,6 +2354,8 @@ polygon.createTMCoordPlane({
 {% endtabs %}
 
 ### changeRoadObject(options) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
 
 > 이미 생성된 도로(Road) 타입 객체의 옵션을 변경하고 재생성합니다.
 
@@ -2308,6 +2382,8 @@ polygon.createTMCoordPlane({
 
 ### getRoadWidth() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+
 > 도로(Road) 객체의 노면 폭을 반환합니다.
 
 {% tabs %}
@@ -2327,6 +2403,8 @@ var width = roadObject.getRoadWidth();
 {% endtabs %}
 
 ### getRoadExtraLength() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
 
 > 도로(Road) 객체의 노면 여유 길이(extraLength)를 반환합니다.
 
@@ -2348,6 +2426,8 @@ var length = roadObject.getRoadExtraLength();
 
 ### getRoadPillarInterval() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+
 > 도로(Road) 객체 기둥(pillar)의 배치 간격을 반환합니다.
 
 {% tabs %}
@@ -2367,6 +2447,8 @@ var interval = roadObject.getRoadPillarInterval();
 {% endtabs %}
 
 ### getRoadPillarRadius() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
 
 > 도로(Road) 객체 기둥(pillar)의 반지름을 반환합니다.
 
@@ -2388,6 +2470,8 @@ var radius = roadObject.getRoadPillarRadius();
 
 ### getRoadPillarBottomWidth() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+
 > 도로(Road) 객체 기둥 하단부(bottom)의 폭을 반환합니다.
 
 {% tabs %}
@@ -2407,6 +2491,8 @@ var width = roadObject.getRoadPillarBottomWidth();
 {% endtabs %}
 
 ### getRoadPillarBottomDepth() → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
 
 > 도로(Road) 객체 기둥 하단부(bottom)의 깊이를 반환합니다.
 
@@ -2428,6 +2514,8 @@ var depth = roadObject.getRoadPillarBottomDepth();
 
 ### getRoadPillarBottomHeight() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+
 > 도로(Road) 객체 기둥 하단부(bottom)의 높이를 반환합니다.
 
 {% tabs %}
@@ -2448,6 +2536,8 @@ var height = roadObject.getRoadPillarBottomHeight();
 
 ### getRoadPavementWidth() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
+
 > 도로(Road) 객체 포장(pavement)의 폭을 반환합니다.
 
 {% tabs %}
@@ -2467,6 +2557,8 @@ var width = roadObject.getRoadPavementWidth();
 {% endtabs %}
 
 ### getFormatData(format) → Uint8Array
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
 
 > 도로(Road) 타입 객체의 지오메트리를 지정한 포맷의 바이너리 데이터로 변환하여 반환합니다.
 
@@ -2493,6 +2585,8 @@ var bytes = roadObject.getFormatData("3DS");
 
 ### create3DCubeData(options) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
+
 > 8개의 정점 좌표로 구성된 3D 육면체(큐브) 형태의 임시 인덱싱 모델을 생성합니다.
 
 {% tabs %}
@@ -2518,6 +2612,8 @@ var bytes = roadObject.getFormatData("3DS");
 {% endtabs %}
 
 ### setGeoJSON2D(feature) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
 
 > GeoJSON Feature(Polygon 또는 MultiPolygon) 데이터를 기반으로 2D 평면 객체를 생성합니다.
 
@@ -2627,6 +2723,8 @@ polygon.setGeoJSON2D({
 
 ### createVideo(info) → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
+
 > 평면 객체에 비디오(RTT 영상)를 재생하는 LED 보드 형태로 설정합니다.
 
 {% tabs %}
@@ -2658,6 +2756,8 @@ var result = polygon.createVideo({ url: "video.mp4", streaming: false });
 {% endtabs %}
 
 ### loadGLBWithOriginalVertex(option) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.27.2+</mark>
 
 > GLB 파일을 원본 정점(버텍스) 정보를 유지한 상태로 비동기 로드합니다.
 
@@ -2869,6 +2969,8 @@ API.JSPolygon.setUnionMode(false);
 
 ### getUnderground(), setUnderground(value) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.14.1.2+</mark>
+
 > 객체를 지하(underground) 상태로 표시할지 여부를 반환/설정합니다. (base 클래스 `JSObject`에서 상속되는 API이며, JSPolygon에도 동일하게 바인딩되어 있습니다.)
 
 {% tabs %}
@@ -2895,6 +2997,8 @@ var isUnderground = polygon.getUnderground();
 
 ### zBufferOff (property) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.53.2+</mark>
+
 > 객체의 Z-Buffer 비활성화 여부를 반환/설정하는 프로퍼티입니다. (`object.zBufferOff` 형태로 직접 접근)
 
 {% tabs %}
@@ -2919,6 +3023,8 @@ var isOff = polygon.zBufferOff;
 {% endtabs %}
 
 ### regular (property) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
 
 > 좌표 입력값을 구면 좌표계로 변환하지 않고 그대로(평면 좌표로) 사용할지 여부를 반환/설정하는 프로퍼티입니다.
 
@@ -2946,6 +3052,8 @@ polygon.regular = true;
 
 ### isplayer (property) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
+
 > 평면 객체를 비디오 렌더링(재생) 대상으로 사용할지 여부를 반환/설정하는 프로퍼티입니다.
 
 {% tabs %}
@@ -2969,6 +3077,8 @@ polygon.isplayer = true;
 {% endtabs %}
 
 ### element (property) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
 
 > 비디오 재생에 사용할 HTML 엘리먼트(예: `<video>`)를 반환/설정하는 프로퍼티입니다.
 
@@ -2994,6 +3104,8 @@ polygon.element = document.getElementById("video1");
 
 ### canvas (property) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
+
 > 비디오 프레임을 그리는 데 사용할 canvas 엘리먼트를 반환/설정하는 프로퍼티입니다.
 
 {% tabs %}
@@ -3017,6 +3129,8 @@ polygon.canvas = document.createElement("canvas");
 {% endtabs %}
 
 ### context (property) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
 
 > canvas의 2D 렌더링 컨텍스트(context)를 반환/설정하는 프로퍼티입니다.
 
@@ -3042,6 +3156,8 @@ polygon.context = polygon.canvas.getContext("2d");
 
 ### hls (property) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
+
 > HLS(HTTP Live Streaming) 비디오 재생에 사용하는 hls.js 인스턴스 등을 반환/설정하는 프로퍼티입니다.
 
 {% tabs %}
@@ -3065,6 +3181,8 @@ polygon.hls = new Hls();
 {% endtabs %}
 
 ### videoStreaming (property) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
 
 > 비디오가 스트리밍(HLS 등) 방식으로 재생되는지 여부를 반환/설정하는 프로퍼티입니다.
 
@@ -3090,6 +3208,8 @@ polygon.videoStreaming = true;
 
 ### axisX (property) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
+
 > 비디오/텍스처를 x축 기준으로 반전하여 표시할지 여부를 반환/설정하는 프로퍼티입니다.
 
 {% tabs %}
@@ -3113,6 +3233,8 @@ polygon.axisX = true;
 {% endtabs %}
 
 ### axisY (property) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.8.1+</mark>
 
 > 비디오/텍스처를 y축 기준으로 반전하여 표시할지 여부를 반환/설정하는 프로퍼티입니다.
 

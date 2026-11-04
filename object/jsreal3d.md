@@ -229,6 +229,8 @@ object.setStyle(polyStyle);
 
 ### cutObjectHeight(height) → void
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 시설물 객체를 지정한 높이 기준으로 잘라서 표시합니다(층별 단면 시각화 등에 사용).
 >
 > height 보다 높은 부분은 렌더링에서 잘려 보이지 않습니다.
@@ -254,6 +256,8 @@ object.cutObjectHeight(10);
 {% endtabs %}
 
 ### cutObjectHeightAlpha(alpha) → void
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > [cutObjectHeight()](jsreal3d.md#cutobjectheight-height-void)로 잘려진 단면 부분의 투명도(alpha)를 설정합니다.
 
@@ -418,6 +422,8 @@ object.dividFaceByTriangleCount(50);
 
 ### setData(ptr, len, version) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
+
 > Emscripten heap 메모리에 있는 바이너리 데이터(XDO 등)로부터 시설물 객체 데이터를 직접 구성합니다.
 
 {% tabs %}
@@ -448,6 +454,8 @@ object.setData(ptr, len, 1);
 {% endtabs %}
 
 ### setTextureData(faceId, ptr, len, width, height) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.60.1+</mark>
 
 > Emscripten heap 메모리에 있는 이미지 바이트 데이터로 지정한 면(face)의 텍스쳐를 설정합니다.
 
@@ -481,6 +489,8 @@ object.setTextureData(0, ptr, len, 512, 512);
 {% endtabs %}
 
 ### getFloorSliceEdge(height) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
 
 > 지정한 높이에서 시설물(건물)을 수평으로 자른 단면의 외곽선(edge) 좌표를 계산하여 반환합니다.
 
@@ -518,6 +528,8 @@ if (result) {
 {% endtabs %}
 
 ### getOutterVector(alt, heading, extendDist) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.24.1+</mark>
 
 > 객체 중심에서 지정한 고도/방위각(heading) 방향으로 진행했을 때, 시설물 외벽과 만나는 지점과 그 지점의 법선(normal), 그리고 법선 방향으로 일정 거리 연장한 지점을 계산하여 반환합니다.
 >

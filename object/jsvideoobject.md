@@ -4,6 +4,8 @@ description: 지도 내 비디오 객체를 생성 및 설정하기 위한 API �
 
 # JSVideoObject
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.17+</mark>
+
 > Module.createVideoObject() API를 생성합니다.
 
 ```javascript
@@ -14,30 +16,30 @@ var object = Module.createVideoObject("ID");
 
 | Name     			| Type                                	| Description                   |
 | ----------------- | ------------------------------------- | ----------------------------- |
-| isplayer 			| boolean                             	| 현재 비디오 재생중인지 여부. 			|
-| key      			| string                              	| 객체 키값.                   		|
+| isplayer<sup>v1.37.18+</sup> 			| boolean                             	| 현재 비디오 재생중인지 여부. 			|
+| key<sup>v1.45.0+</sup>      			| string                              	| 객체 키값.                   		|
 | tilt     			| number                              	| 바라보는 각도.               		|
 | far     			| number                              	| 최대 가시거리.              		|
 | pan      			| number                              	| 바라보는 방향.               		|
 | bank     			| number                              	| 비디오 기울기.               		|
 | fovX     			| number                              	| 화각 넓이.                   		|
 | fovY     			| number                              	| 화각 높이.                   		|
-| alpha    			| number                              	| 비디오 투명값.               		|
-| axisX    			| boolean                             	| 좌우 반전.                   		|
-| axisY    			| boolean                             	| 상하 반전.                   		|
+| alpha<sup>v1.37.18+</sup>    			| number                              	| 비디오 투명값.               		|
+| axisX<sup>v1.37.18+</sup>    			| boolean                             	| 좌우 반전.                   		|
+| axisY<sup>v1.37.18+</sup>    			| boolean                             	| 상하 반전.                   		|
 | position 			| [JSVector3D](../core/jsvector3d.md) 	| 객체 경도, 위도, 고도 위치.  			|
-| zoom     			| number                              	| 비디오 배율.                 		|
-| resolution 		| number                            	| 비디오 해상도.        				|
-| videoStreaming 	| boolean                        		| 비디오 스트리밍 여부.        			|
-| objectMapping 	| boolean                         		| 건물 매핑 여부.        			|
-| background 		| boolean                         		| 배경(오브젝트 렌더링 뒤) 표시 여부. true로 설정 시 objectMapping도 자동으로 true가 됨. |
-| frustum 			| boolean                         		| 카메라 절두체(Frustum) 가시화 여부.  |
-| frustumColor 		| [JSColor](../core/jscolor.md)     	| 카메라 절두체(Frustum) 색상.        |
-| meshPrecision 	| string(set) / number(get)         	| 비디오 매핑 메쉬 정밀도. set 시 "low"(200), "normal"(50), "high"(2) 중 하나(그 외 값은 0)로 설정, get 시 설정된 숫자값 반환. |
-| element 			| object                             	| 비디오 재생용 HTML 엘리먼트 참조(JS 객체). |
-| canvas 			| object                             	| 비디오 프레임을 그리는 canvas 엘리먼트 참조(JS 객체). |
-| context 			| object                             	| canvas의 2D 렌더링 컨텍스트 참조(JS 객체). |
-| hls 				| object                             	| HLS(HTTP Live Streaming) 재생에 사용하는 hls.js 인스턴스 참조(JS 객체). |
+| zoom<sup>v1.37.28+</sup>     			| number                              	| 비디오 배율.                 		|
+| resolution<sup>v2.6.2+</sup> 		| number                            	| 비디오 해상도.        				|
+| videoStreaming<sup>v2.4.0+</sup> 	| boolean                        		| 비디오 스트리밍 여부.        			|
+| objectMapping<sup>v2.4.0+</sup> 	| boolean                         		| 건물 매핑 여부.        			|
+| background<sup>v2.11.0+</sup> 		| boolean                         		| 배경(오브젝트 렌더링 뒤) 표시 여부. true로 설정 시 objectMapping도 자동으로 true가 됨. |
+| frustum<sup>v2.11.0+</sup> 			| boolean                         		| 카메라 절두체(Frustum) 가시화 여부.  |
+| frustumColor<sup>v2.22.0+</sup> 		| [JSColor](../core/jscolor.md)     	| 카메라 절두체(Frustum) 색상.        |
+| meshPrecision<sup>v2.12.1+</sup> 	| string(set) / number(get)         	| 비디오 매핑 메쉬 정밀도. set 시 "low"(200), "normal"(50), "high"(2) 중 하나(그 외 값은 0)로 설정, get 시 설정된 숫자값 반환. |
+| element<sup>v2.4.0+</sup> 			| object                             	| 비디오 재생용 HTML 엘리먼트 참조(JS 객체). |
+| canvas<sup>v2.4.0+</sup> 			| object                             	| 비디오 프레임을 그리는 canvas 엘리먼트 참조(JS 객체). |
+| context<sup>v2.4.0+</sup> 			| object                             	| canvas의 2D 렌더링 컨텍스트 참조(JS 객체). |
+| hls<sup>v2.10.2+</sup> 				| object                             	| HLS(HTTP Live Streaming) 재생에 사용하는 hls.js 인스턴스 참조(JS 객체). |
 
 ## Function
 
@@ -89,6 +91,8 @@ var object = Module.createVideoObject("ID");
 {% endtabs %}
 
 ### move(front, right)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.22.0+</mark>
 
 > 비디오 객체를 현재 방향 기준 전/후, 좌/우로 이동시킵니다.
 

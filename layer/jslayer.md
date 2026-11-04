@@ -28,7 +28,7 @@ let layer = layerList.createLayer("Layer Name");
 | tile\_load\_ratio          | number  | 서비스 레이어 가시화 거리 비율 설정.         |
 | view\_underground          | boolean | 지형 아래에 렌더링 되는 레이어 설정.         |
 | object\_ahead              | boolean | 지형 또는 시설물이 앞에 존재할 경우 비가시화 설정. |
-| boundaryLimit              | boolean | 오브젝트 요청 범위 제한 설정.             |
+| boundaryLimit<sup>v2.11.2+</sup>              | boolean | 오브젝트 요청 범위 제한 설정.             |
 
 ## Function
 
@@ -59,6 +59,8 @@ layer.addObject(object, 0);
 {% endtabs %}
 
 ### createGaussianSplat(objectKey) → [JSGaussianSplat](../object/jsgaussiansplat.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.2+</mark>
 
 > 3D Gaussian Splatting 객체([JSGaussianSplat](../object/jsgaussiansplat.md))를 생성하여 이 레이어에 등록합니다.
 >
@@ -191,6 +193,8 @@ layer.clearWMSCache();
 
 ### getObjectsInBoundary(boundary) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.21.0+</mark>
+
 > 폴리곤 범위 내에 속하는 오브젝트를 반환합니다.
 
 {% tabs %}
@@ -282,6 +286,8 @@ console.log(objects.id);
 
 ### getTileObjectCenterPosition(objkey) → [JSVector3D](../core/jsvector3d.md)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.57.2+</mark>
+
 > 타일 레이어 오브젝트의 중점을 반환합니다.
 >
 > 벡터 파이프 레이어에서만 사용할 수 있습니다.
@@ -309,6 +315,8 @@ console.log(objects.id);
 {% endtabs %}
 
 ### getObjectTileInfo(objkey) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > 객체 고유 명칭으로 해당 객체가 소속된 타일의 정보(레벨, 인덱스)를 반환합니다.
 >
@@ -688,6 +696,8 @@ var bVisible = layer.getType();
 {% endtabs %}
 
 ### containsKey(name) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.1+</mark>
 
 > 사용자 레이어에 포함된 객체 중 객체 고유 명칭 입력 변수 name인 객체의 존재 여부를 반환합니다.
 >
@@ -1583,6 +1593,8 @@ layer.setWMSVersion(“1.1.0”);
 
 ### addObjects(objects)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
+
 > 여러 객체를 사용자 레이어에 한 번에 추가합니다.
 >
 > 이미 동일한 고유 명칭의 객체가 존재하는 경우 해당 객체는 건너뜁니다.
@@ -1718,6 +1730,8 @@ layer.clearObjectColorList();
 
 ### import3DTiles(option) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.49.0+</mark>
+
 > 3D Tiles 포맷 데이터를 레이어에 로드합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
@@ -1762,6 +1776,8 @@ layer.import3DTiles({
 
 ### setDebugMode(debug) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 3D Tiles 레이어의 디버그 모드(바운딩 볼륨 등 시각화)를 설정합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
@@ -1787,6 +1803,8 @@ layer.import3DTiles({
 
 ### reloadTiles() → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 타일 기반 레이어의 로드된 타일을 모두 지우고 다시 로드합니다.
 >
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
@@ -1808,6 +1826,8 @@ layer.reloadTiles();
 {% endtabs %}
 
 ### setRenderReal3dEdgeLine(set) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > Real3D(건물) 레이어 심플 모드의 외곽 라인 렌더링 여부를 설정합니다.
 >
@@ -1836,6 +1856,8 @@ layer.reloadTiles();
 
 ### setReal3dEdgeLineColor(color) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > Real3D(건물) 레이어 심플 모드 외곽 라인 색상을 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
@@ -1860,6 +1882,8 @@ layer.reloadTiles();
 {% endtabs %}
 
 ### setReal3dEdgeLineWidth(width) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > Real3D(건물) 레이어 외곽 라인 두께를 설정합니다.
 >
@@ -1886,6 +1910,8 @@ layer.reloadTiles();
 
 ### setRenderReal3dWireFrame(set) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > Real3D(건물) 레이어의 와이어프레임 렌더링 여부를 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
@@ -1911,6 +1937,8 @@ layer.reloadTiles();
 
 ### setReal3dWireFrameColor(color) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > Real3D(건물) 레이어 와이어프레임 색상을 설정합니다.
 >
 > Real3D 레이어에서만 사용할 수 있습니다.
@@ -1935,6 +1963,8 @@ layer.reloadTiles();
 {% endtabs %}
 
 ### getReal3DFormatData(objectKey, format) → ArrayBuffer
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > Real3D(건물) 객체 데이터를 지정한 포맷(3DS 또는 XDO)의 바이너리 데이터로 반환합니다.
 >
@@ -1965,6 +1995,8 @@ layer.reloadTiles();
 
 ### getReal3dTexture(objectKey, textureLevel) → [JSIcon](../object/jsicon.md)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > Real3D(건물) 객체의 텍스처를 JSIcon 형태로 반환합니다.
 
 {% tabs %}
@@ -1992,6 +2024,8 @@ layer.reloadTiles();
 
 ### getReal3dTextureFileName(objectKey) → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > Real3D(건물) 객체의 텍스처 파일 이름을 반환합니다.
 
 {% tabs %}
@@ -2015,6 +2049,8 @@ layer.reloadTiles();
 {% endtabs %}
 
 ### getReal3dTextureData(objectKey, textureLevel) → ArrayBuffer
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > Real3D(건물) 객체 텍스처의 픽셀 데이터를 반환합니다.
 
@@ -2068,6 +2104,8 @@ layer.reloadTiles();
 
 ### getReal3dLightFlat(), setReal3dLightFlat(value) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.3+</mark>
+
 > Real3D(건물) 레이어 재질의 조명 반응 세기를 설정합니다.
 >
 > 0은 조명을 그대로 적용하고, 1은 조명을 전혀 적용하지 않습니다. 파사드 텍스처에는 이미 음영이 구워져 있어 조명을 그대로 곱하면 어두워지고, 조명을 완전히 끄면(`setLighting(false)`) 건물이 납작해 보이므로 그 사이 값을 고르기 위한 옵션입니다. 0.3 ~ 0.5에서 입체감은 유지하면서 파사드가 덜 어두워집니다.
@@ -2102,6 +2140,8 @@ let flat = layer.getReal3dLightFlat();
 {% endtabs %}
 
 ### setImpostorEnable(enable) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
 
 > 레이어의 Impostor LOD를 켜거나 끕니다.
 >
@@ -2139,6 +2179,8 @@ layer.setImpostorMinVertex(100);
 
 ### setImpostorSwitchPixel(pixel) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+
 > Impostor로 전환할 화면 픽셀 크기를 설정합니다.
 >
 > 건물의 화면 투영 크기(가로·세로 중 큰 변)가 이 값보다 작아지면 임포스터로 바뀝니다. 거리(m)가 아니라 화면 픽셀 기준이라 화각, 해상도, 건물 높이에 자동으로 맞춰집니다.
@@ -2170,6 +2212,8 @@ layer.setImpostorSwitchPixel(48);
 
 ### setImpostorMinVertex(count) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.3+</mark>
+
 > Impostor로 대체할 최소 정점 수를 설정합니다.
 >
 > 이 값보다 정점이 적은 단순한 형상(큐브 등)은 메시로 그려도 삼각형이 몇 개뿐이라 이득이 없고 아틀라스 자리만 차지해 복잡한 건물이 밀리므로 임포스터로 바꾸지 않습니다.
@@ -2196,6 +2240,8 @@ layer.setImpostorMinVertex(200);
 {% endtabs %}
 
 ### setDefineMeshColorByObjectKey(checkString, compareType, color, isSimpleMode) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 객체 고유 명칭 조건에 따라 Real3D 타일 객체의 메쉬 색상을 정의합니다.
 
@@ -2225,6 +2271,8 @@ layer.setImpostorMinVertex(200);
 
 ### setDefineMeshColorByObjectKeyList(objectKeyList, compareType, color, isSimpleMode) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 객체 고유 명칭 목록에 대해 Real3D 타일 객체의 메쉬 색상을 정의합니다.
 
 {% tabs %}
@@ -2253,6 +2301,8 @@ layer.setImpostorMinVertex(200);
 
 ### setDefineEdgeLineColorByObjectKey(checkString, compareType, color) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 객체 고유 명칭 조건에 따라 Real3D 타일 객체의 외곽 라인 색상을 정의합니다.
 
 {% tabs %}
@@ -2279,6 +2329,8 @@ layer.setImpostorMinVertex(200);
 {% endtabs %}
 
 ### setDefineVisibleByFileName(checkString, compareType, visible) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 파일 이름 조건에 따라 Real3D 타일 객체의 가시화 여부를 정의합니다.
 
@@ -2307,6 +2359,8 @@ layer.setImpostorMinVertex(200);
 
 ### clearDefineTileObjectStyle() → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > [setDefineMeshColorByObjectKey](jslayer.md#setdefinemeshcolorbyobjectkey-checkstring-comparetype-color-issimplemode-boolean), [setDefineEdgeLineColorByObjectKey](jslayer.md#setdefineedgelinecolorbyobjectkey-checkstring-comparetype-color-boolean), [setDefineVisibleByFileName](jslayer.md#setdefinevisiblebyfilename-checkstring-comparetype-visible-boolean) 로 정의된 스타일 조건을 모두 초기화합니다.
 
 {% tabs %}
@@ -2322,6 +2376,8 @@ layer.setImpostorMinVertex(200);
 {% endtabs %}
 
 ### setReal3dCutHeight(objectKey, height) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.35+</mark>
 
 > Real3D(건물) 객체의 수평 단면 절단 높이를 설정합니다.
 
@@ -2349,6 +2405,8 @@ layer.setImpostorMinVertex(200);
 
 ### setReal3dCutUse(objectKey, use) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.35+</mark>
+
 > Real3D(건물) 객체의 수평 단면 절단 효과 사용 여부를 설정합니다.
 
 {% tabs %}
@@ -2374,6 +2432,8 @@ layer.setImpostorMinVertex(200);
 {% endtabs %}
 
 ### cutReal3d(objectKey, option) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.41+</mark>
 
 > Real3D(건물) 객체의 횡단면(절단) 가시화를 설정합니다.
 
@@ -2414,6 +2474,8 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffect(startColor, endColor, interval, speed) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 벡터 파이프 레이어의 흐름 방향 효과 색상, 간격, 속도를 설정합니다.
 >
 > 벡터 파이프 레이어에서만 사용할 수 있습니다.
@@ -2442,6 +2504,8 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffectVisible(visible) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 벡터 파이프 레이어의 흐름 방향 효과 표시 여부를 설정합니다.
 >
 > 벡터 파이프 레이어에서만 사용할 수 있습니다.
@@ -2467,6 +2531,8 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeDirectionEffectAltitude(altitude) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 벡터 파이프 레이어의 흐름 방향 효과 표시 고도를 설정합니다.
 
 {% tabs %}
@@ -2486,6 +2552,8 @@ layer.cutReal3d("obj_key_1", {
 {% endtabs %}
 
 ### setVectorPipeDirectionEffectMinimumRadius(minimumRadius) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 벡터 파이프 레이어의 흐름 방향 효과가 표시되는 최소 반경을 설정합니다.
 
@@ -2511,6 +2579,8 @@ layer.cutReal3d("obj_key_1", {
 
 ### setVectorPipeMinimumRadius(minimumRadius) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 벡터 파이프 오브젝트가 렌더링되는 최소 반경을 설정합니다.
 
 {% tabs %}
@@ -2534,6 +2604,8 @@ layer.cutReal3d("obj_key_1", {
 {% endtabs %}
 
 ### setVectorPipeSimplyRange(simplyRange) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 벡터 파이프 오브젝트의 단순화(Simplify) 범위를 설정합니다.
 
@@ -2560,6 +2632,8 @@ layer.cutReal3d("obj_key_1", {
 {% endtabs %}
 
 ### getPipeIntersection(path) → array
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.1+</mark>
 
 > 지정한 경로(path)와 옥트리 레이어 내 벡터 파이프 오브젝트가 교차하는 지점들을 반환합니다.
 
@@ -2590,6 +2664,8 @@ let intersections = layer.getPipeIntersection(path);
 {% endtabs %}
 
 ### setOctreeLoadCallback(callback) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.7.1.34+</mark>
 
 > 옥트리 레이어 타일 로드 완료 시 호출될 콜백 함수를 설정합니다.
 >
@@ -2677,6 +2753,8 @@ layer.setGhostSymbolTilePosition({
 
 ### pick(screenX, screenY) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.38.0+</mark>
+
 > 화면 좌표를 기준으로 레이어 내 오브젝트를 피킹합니다.
 
 {% tabs %}
@@ -2707,6 +2785,8 @@ if (pickInfo) {
 
 ### rebuildObjectLayer() → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.49.0+</mark>
+
 > 옥트리 레이어의 오브젝트를 다시 배치(트리 재구성)합니다.
 >
 > 옥트리 구조 레이어에서만 사용할 수 있습니다.
@@ -2727,6 +2807,8 @@ layer.rebuildObjectLayer();
 
 ### setMouseHover(hover)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.1+</mark>
+
 > 레이어의 마우스 호버 모드 사용 여부를 설정합니다.
 
 {% tabs %}
@@ -2744,6 +2826,8 @@ layer.setMouseHover(true);
 {% endtabs %}
 
 ### setUserTileJsonParsing(set) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
 
 > 사용자 레이어 타일 로드 시 JSON 파싱 사용 여부를 설정합니다.
 >
@@ -2770,6 +2854,8 @@ layer.setMouseHover(true);
 
 ### setMaxLevelOverlap(overlap) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 하이브리드 레이어의 최대 레벨 초과 시 부모 타일 참조 여부를 설정합니다.
 >
 > 하이브리드 레이어에서만 사용할 수 있습니다.
@@ -2795,6 +2881,8 @@ layer.setMouseHover(true);
 {% endtabs %}
 
 ### getObjectInScreenRect(startX, startY, endX, endY) → array
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.2+</mark>
 
 > 화면 영역(사각형) 내에 보이는 레이어 객체 목록을 반환합니다.
 
@@ -2828,6 +2916,8 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 
 ### setPointCloudeSize(size)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.1+</mark>
+
 > 포인트 클라우드(3D Tiles 기반) 레이어의 포인트 크기를 설정합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
@@ -2849,6 +2939,8 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 {% endtabs %}
 
 ### setPointCloudInterpolateMode(mode) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.15.1+</mark>
 
 > 포인트 클라우드 레이어의 보간 모드를 설정합니다.
 >
@@ -2874,6 +2966,8 @@ let objects = layer.getObjectInScreenRect(100, 100, 500, 500);
 {% endtabs %}
 
 ### setLimitBoundary(option) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.11.2+</mark>
 
 > 타일 레이어의 요청 범위를 다각형 경계로 제한합니다.
 
@@ -2912,6 +3006,8 @@ layer.setLimitBoundary({
 
 ### getViewInTransparency() → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.12.3+</mark>
+
 > 레이어가 투명 상태에서도 보이도록 설정되었는지 여부를 반환합니다.
 
 {% tabs %}
@@ -2928,6 +3024,8 @@ layer.setLimitBoundary({
 {% endtabs %}
 
 ### getPickInfoWithinRadius(center, radius) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
 
 > 중심 좌표(center)로부터 일정 반경(radius) 이내에서 카메라 뷰와 상관없이 피킹된 객체 정보를 반환합니다.
 
@@ -2965,6 +3063,8 @@ if (pickInfo) {
 
 ### addTileInData(tileInfo) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+
 > 바람장(Wind Layer/Tile Flow) 레이어의 타일에 UV 흐름 데이터를 삽입합니다.
 >
 > 타일 흐름(Tile Flow) 레이어에서만 사용할 수 있습니다.
@@ -2997,6 +3097,8 @@ if (pickInfo) {
 
 ### windlayerStart()
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
+
 > 타일 흐름(Tile Flow) 레이어의 바람장 파티클 흐름 효과를 시작합니다.
 >
 > 타일 흐름 레이어에서만 사용할 수 있습니다.
@@ -3014,6 +3116,8 @@ layer.windlayerStart();
 {% endtabs %}
 
 ### setWindLayerProperty(option) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0.1+</mark>
 
 > 바람장(Wind Layer) 파티클 옵션을 설정합니다.
 >
@@ -3050,6 +3154,8 @@ layer.setWindLayerProperty({
 {% endtabs %}
 
 ### setBounderyBox(box)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.24.1+</mark>
 
 > 옥트리 레이어의 바운더리 박스를 설정합니다.
 >
@@ -3239,6 +3345,8 @@ layer.setBounderyBox({
 
 ### getMinLevel(), setMinLevel(level) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.19.0+</mark>
+
 > 서비스 레이어 최소 가시 레벨을 설정합니다.
 >
 > 서비스 레이어에서만 사용할 수 있습니다.
@@ -3337,6 +3445,8 @@ layer.setName(“WMSLayer2”);
 {% endtabs %}
 
 ### setObjectVisibleWithBoundary(minLon, maxLon, minLat, maxLat) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.11.2+</mark>
 
 > 경위도 범위 내의 오브젝트 가시화를 설정합니다.
 
@@ -3528,6 +3638,8 @@ layer.setName(“WMSLayer2”);
 
 ### setPointCloudRenderModeRGB(offsetR, offsetG, offsetB) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 포인트 클라우드 레이어의 RGB 색상 오프셋을 설정하고, 렌더링 모드를 RGB 모드로 설정합니다.
 
 {% tabs %}
@@ -3556,6 +3668,8 @@ layer.setPointCloudRenderModeRGB(255, 100, 100);
 
 ### setPointCloudRenderModeIntensity(min, max, useColor) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
+
 > 포인트 클라우드 레이어의 Intensity 기반 렌더링 모드를 설정합니다.
 
 {% tabs %}
@@ -3581,6 +3695,8 @@ layer.setPointCloudRenderModeIntensity(0.0, 255.0, true);
 {% endtabs %}
 
 ### setPointCloudRenderModeAltitude(min, max, useColor) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.2.3+</mark>
 
 > 포인트 클라우드 레이어의 고도 기반 렌더링 모드를 설정합니다.
 
@@ -3686,6 +3802,8 @@ if (pickInfo) {
 
 ### getPickInfo(lineFrom, lineTo) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.21.0+</mark>
+
 > 주어진 뷰 라인(lineFrom → lineTo)을 기준으로 해당 레이어 내 피킹된 객체 정보를 반환합니다.
 
 {% tabs %}
@@ -3731,6 +3849,8 @@ if (pickInfo) {
 {% endtabs %}
 
 ### extractTileFeature(parameter) → [JSPolygon](../object/jspolygon.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles(b3dm) 레이어에서 feature 하나의 기하만 떼어 독립 폴리곤 객체로 추출합니다.
 >
@@ -3796,6 +3916,8 @@ if (info && info.batchId !== null && info.batchId !== undefined) {
 
 ### getSelectedTileFeature() → [TileFeature](jslayer.md#tilefeature)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 엔진이 지금 이 3D Tiles 레이어에서 선택하고 있는 feature를 반환합니다. (읽기 전용)
 >
 > [getPickInfo](jslayer.md#getpickinfo-linefrom-lineto-object)로 따로 피킹하면 광선이 달라 클릭한 건물과 다른 건물이 나올 수 있으므로, "엔진이 실제로 고른 것"을 보여 줄 때 사용합니다.
@@ -3827,6 +3949,8 @@ if (feature) {
 {% endtabs %}
 
 ### getTileFeatureIdentityKey(), setTileFeatureIdentityKey(key) → string
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles 건물 정체성 키(배치 테이블 속성 이름)를 조회하거나 설정합니다.
 >
@@ -3863,6 +3987,8 @@ layer.setTileFeatureIdentityKey("");        // 끄기
 
 ### setTileLoadCallback(callback) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.0+</mark>
+
 > 타일 로딩 완료 시 호출될 콜백 함수를 설정합니다.\
 > 타일 기반 레이어(`ELST_PLANET_TILE`)에서만 사용할 수 있습니다.
 
@@ -3893,6 +4019,8 @@ layer.setTileLoadCallback(function() {
 {% endtabs %}
 
 ### addTileInObject(tileInfo, object) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
 
 > 지정한 타일 위치에 객체를 수동으로 삽입합니다.\
 > 지구본 타일 기반 레이어에서만 사용할 수 있습니다.
@@ -3925,6 +4053,8 @@ layer.addTileInObject(tileInfo, obj);
 {% endtabs %}
 
 ### setTileInObjectEnd(tileInfo) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.55.2+</mark>
 
 > 지정한 타일의 객체 수동 삽입 종료를 명시적으로 설정합니다.\
 > 객체 수동 삽입 이후 타일의 요청 플래그를 비활성화합니다.\
@@ -4041,6 +4171,8 @@ if (!success) {
 
 ### getTileLODMaxLevel(), setTileLODMaxLevel(level) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.59.1+</mark>
+
 > 드론 LOD(Tile LOD Model) 레이어에서 가시화할 최대 레벨을 설정합니다.
 >
 > 드론 LOD 레이어에서만 사용할 수 있습니다.
@@ -4069,6 +4201,8 @@ let maxLevel = layer.getTileLODMaxLevel();
 
 ### getMaxGeometricError(), setMaxGeometricError(value) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.27.2+</mark>
+
 > 3D Tiles 레이어의 최대 기하 오차(Maximum Screen Space Error)를 설정합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
@@ -4093,6 +4227,8 @@ let error = layer.getMaxGeometricError();
 {% endtabs %}
 
 ### getMinGeometricError(), setMinGeometricError(value) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 3D Tiles 레이어의 최소 기하 오차(geometricError)를 설정합니다.
 >
@@ -4131,6 +4267,8 @@ layer.setMinGeometricError(0);
 {% endtabs %}
 
 ### getRefineHysteresisRatio(), setRefineHysteresisRatio(ratio) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles 정제 히스테리시스 비율을 설정합니다.
 >
@@ -4171,6 +4309,8 @@ let ratio = layer.getRefineHysteresisRatio();
 
 ### getRefineHoldTime(), setRefineHoldTime(ms) → number, boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3D Tiles 정제 유지(팝아웃 방지) 창(ms)을 조회하거나 설정합니다.
 >
 > REPLACE 정제에서 이미 자식으로 정제해 그리던 노드는, 새로 보이게 된 자식이 아직 오지 않았다는 이유로 거친 부모로 되돌아가지 않습니다(빠진 자리는 조상 채움이 덮습니다). 이 값은 "마지막으로 자식이 전부 준비됐던 시점"부터의 실제 경과 시간입니다.
@@ -4209,6 +4349,8 @@ let ms = layer.getRefineHoldTime();
 {% endtabs %}
 
 ### getTileUnloadDistance(), setTileUnloadDistance(meter) → number, boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles 모델 데이터의 거리 기반 해제 거리를 조회하거나 설정합니다.
 >
@@ -4254,6 +4396,8 @@ let distance = layer.getTileUnloadDistance();
 
 ### getFillOnlyHorizonFactor(), setFillOnlyHorizonFactor(factor) → number, boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3D Tiles 지평선 규모를 넘는 타일의 "채움 전용" 처리 배수를 조회하거나 설정합니다.
 >
 > 카메라를 크게 돌리거나 내린 직후에는 자식이 아직 없어 부모(더 거친 타일)가 대신 그려집니다. 그 부모가 지구 규모면 메시 오차가 카메라 높이를 훨씬 넘어, 정밀 타일을 가로막는 가짜 벽과 카메라 앞을 가로지르는 띠(바다 텍스처의 파란 띠)로 보입니다.
@@ -4298,6 +4442,8 @@ console.log(layer.getFillOnlyHorizonFactor()); // 3
 
 ### getFillSkirtCut(), setFillSkirtCut(cut) → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3D Tiles 조상 채움 타일의 치마(skirt) 제거 여부를 조회하거나 설정합니다.
 >
 > 정밀 타일이 덮지 못한 자리를 거친 조상으로 메우는 채움 패스에서만, 구글 타일 가장자리의 치마(텍스처가 세로로 늘어난 면) 조각을 버려 계단 사이의 벽을 없앱니다. 정밀 타일은 건드리지 않아 타일 사이 이음매는 그대로입니다. 그림자가 켜져 있으면(그림자 전용 프로그램) 적용되지 않습니다.
@@ -4335,6 +4481,8 @@ console.log(layer.getFillSkirtCut()); // true
 
 ### resetFillDefaults() → boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > [setFillOnlyHorizonFactor](jslayer.md#getfillonlyhorizonfactor-setfillonlyhorizonfactor-factor-number-boolean)와 [setFillSkirtCut](jslayer.md#getfillskirtcut-setfillskirtcut-cut-boolean)로 명시한 값을 지우고 기본(자동)으로 되돌립니다.
 >
 > 자동 기본값은 구글 레이어 3.0 / true, 그 밖의 레이어 0 / false입니다.
@@ -4359,6 +4507,8 @@ layer.resetFillDefaults(); // 다시 자동(구글 레이어만 켜짐)
 {% endtabs %}
 
 ### setTileBoundary(minLon, minLat, maxLon, maxLat)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 3D Tiles 레이어를 경위도(degree) 사각 범위로 제한합니다.
 >
@@ -4395,6 +4545,8 @@ layer.setTileBoundary(126.97, 37.55, 126.99, 37.57);
 
 ### clearTileBoundary()
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > [setTileBoundary](jslayer.md#settileboundary-minlon-minlat-maxlon-maxlat)로 설정한 사각 범위 제한을 해제합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
@@ -4413,6 +4565,8 @@ layer.clearTileBoundary();
 {% endtabs %}
 
 ### setTileExcludeArea(option) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles 레이어에서 경위도 폴리곤 영역 안의 형상을 렌더/선택/그림자에서 제외합니다.
 >
@@ -4472,6 +4626,8 @@ let ok = layer.setTileExcludeArea({
 
 ### clearTileExcludeArea()
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > [setTileExcludeArea](jslayer.md#settileexcludearea-option-boolean)로 설정한 제외 영역을 모두 해제합니다.
 >
 > 3D Tiles 레이어에서만 사용할 수 있습니다.
@@ -4490,6 +4646,8 @@ layer.clearTileExcludeArea();
 {% endtabs %}
 
 ### getTileHeightOffset(), setTileHeightOffset(meter) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 3D Tiles 전체를 지구 중심 기준으로 지정한 높이(m)만큼 띄웁니다.
 >
@@ -4523,6 +4681,8 @@ let offset = layer.getTileHeightOffset();
 {% endtabs %}
 
 ### setTileAutoTerrainFit(enable)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles 레이어의 지형 자동 맞춤을 켜거나 끕니다.
 >
@@ -4559,6 +4719,8 @@ layer.setTileAutoTerrainFit(false);
 
 ### getTileTerrainFit() → [TileTerrainFit](jslayer.md#tileterrainfit)
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3D Tiles 레이어의 지형 자동 맞춤 상태, 보정값, 루트 바운딩 정보를 반환합니다.
 >
 > 측정 진행 확인과 카메라 프레이밍(루트 위치로 이동)에 사용합니다.
@@ -4588,6 +4750,8 @@ if (fit.rootLon !== undefined) {
 {% endtabs %}
 
 ### getSplatAlphaScale(), setSplatAlphaScale(scale) → number, boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
 
 > 3D Tiles 레이어에 포함된 가우시안 스플랫의 진하기(불투명도 배수)를 조회하거나 설정합니다.
 >
@@ -4625,6 +4789,8 @@ console.log(layer.getSplatAlphaScale()); // 2
 
 ### getSplatScale(), setSplatScale(scale) → number, boolean
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.31.1+</mark>
+
 > 3D Tiles 레이어에 포함된 가우시안 스플랫의 크기 배수를 조회하거나 설정합니다.
 >
 > 1.0이 자료 그대로이며 배수는 스플랫 공분산에 곱해집니다. 값은 [setSplatAlphaScale](jslayer.md#getsplatalphascale-setsplatalphascale-scale-number-boolean)과 같이 레이어가 들고 매 프레임 타일에 적용합니다.
@@ -4658,6 +4824,8 @@ console.log(layer.getSplatScale()); // 1.5
 {% endtabs %}
 
 ### setTileCopyrightCallback(callback) → boolean
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
 
 > 3D Tiles 레이어의 저작자 표시(attribution) 콜백을 설정합니다.
 >
@@ -4705,6 +4873,8 @@ layer.setTileCopyrightCallback(function(e) {
 
 ### getTileCopyright() → string
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.30.2+</mark>
+
 > 3D Tiles 레이어의 현재 화면 기준 저작자 표시 문자열을 반환합니다.
 >
 > [setTileCopyrightCallback](jslayer.md#settilecopyrightcallback-callback-boolean)을 놓쳤거나 초기 표시를 그릴 때 사용합니다.
@@ -4726,6 +4896,8 @@ let copyright = layer.getTileCopyright();
 {% endtabs %}
 
 ### get3DTilesDiagnostics() → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 3D Tiles 레이어의 진단 정보를 반환합니다. (진단용)
 >
@@ -4756,6 +4928,8 @@ if (d) {
 {% endtabs %}
 
 ### get3DTilesLoadLeadFrames(), set3DTilesLoadLeadFrames(frames) → number
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
 
 > 3D Tiles 로딩 순회가 그리기 순회보다 앞서 갈 수 있는 신선도 창(프레임 수)을 설정합니다.
 >
@@ -4788,6 +4962,8 @@ let frames = layer.get3DTilesLoadLeadFrames();
 
 ### get3DTilesLoadLookahead(), set3DTilesLoadLookahead(levels) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 3D Tiles 로딩 순회가 그리기 순회가 아직 도달하지 않은 구간을 몇 레벨까지 앞질러 받을지 설정합니다.
 >
 > 값이 작으면 정제가 "한 레벨 내려감 → 네트워크 왕복 → 한 레벨 더" 사슬에 묶여, 카메라를 크게 움직인 뒤 화면이 선명해지는 데 오래 걸립니다. 0이면 선행 없이 렌더러가 도달한 곳까지만 받습니다.
@@ -4819,6 +4995,8 @@ let levels = layer.get3DTilesLoadLookahead();
 
 ### get3DTilesTilesetFreeFrames(), set3DTilesTilesetFreeFrames(frames) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.29.4+</mark>
+
 > 그리기 순회가 이 프레임 수 이상 도달하지 않은 중첩 타일셋을 통째로 해제하기까지 대기하는 프레임 수를 설정합니다.
 >
 > 노드 트리가 무한정 커지는 것을 막기 위한 값으로, 해제된 타일셋은 다시 필요해지면 json을 재요청해 복원됩니다. 값이 작을수록 해제가 빨라 메모리는 줄지만 재요청이 늘어납니다.
@@ -4849,6 +5027,8 @@ let frames = layer.get3DTilesTilesetFreeFrames();
 {% endtabs %}
 
 ### getLayerStyle(), setLayerStyle(style) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.23.0+</mark>
 
 > 레이어의 POI 스타일(크기, 페이드 옵션)을 설정합니다.
 

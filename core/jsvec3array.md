@@ -236,6 +236,8 @@ var lastVector = vectorList.shift();
 
 ### removeDuplicateVectors(distance) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.50.0+</mark>
+
 > 중복된 점을 제거합니다.
 >
 > 입력 변수값(distance) 보다 거리가 짧은 점들은 중복되는 것으로 간주하여 제거합니다.
@@ -267,6 +269,8 @@ var removedCount = vectorList.removeDuplicateVectors(0.1);
 
 ### getBoundary() → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.3+</mark>
+
 > 입력된 좌표리스트의 Boundary를 반환합니다.
 
 {% tabs %}
@@ -288,6 +292,8 @@ var removedCount = vectorList.removeDuplicateVectors(0.1);
 {% endtabs %}
 
 ### toJSVec2Array() → [JSVec2Array](../core/jsvec2array.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.51.3+</mark>
 
 > 입력된 좌표리스트의 jsvec2array를 반환합니다.
 

@@ -365,6 +365,8 @@ colorGrid3D.Create();
 
 ### getCellBox(row, column) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.1+</mark>
+
 > 지정한 셀(row, column)의 8개 꼭지점 좌표(경도, 위도, 고도)를 반환합니다.
 
 {% tabs %}
@@ -396,6 +398,8 @@ var upLeftTop = box.upLeftTop;
 
 ### getCellHeight(row, column) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.1+</mark>
+
 > 지정한 셀(row, column)의 높이값을 반환합니다.
 
 {% tabs %}
@@ -426,6 +430,8 @@ var height = colorGrid3D.getCellHeight(0, 0);
 
 ### getCellWidthCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.1+</mark>
+
 > 3차원 격자 객체의 가로(Cell Width) 개수를 반환합니다.
 
 {% tabs %}
@@ -448,6 +454,8 @@ var widthCount = colorGrid3D.getCellWidthCount();
 
 ### getCellHeightCount() → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.1+</mark>
+
 > 3차원 격자 객체의 세로(Cell Height) 개수를 반환합니다.
 
 {% tabs %}
@@ -469,6 +477,8 @@ var heightCount = colorGrid3D.getCellHeightCount();
 {% endtabs %}
 
 ### getCellColor(row, column) → [JSColor](../core/jscolor.md)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.3.1+</mark>
 
 > 지정한 셀(row, column)의 색상값을 반환합니다.
 

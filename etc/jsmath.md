@@ -82,6 +82,8 @@ let parameters = {
 
 ### convertCatmullRom(options) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.27.2+</mark>
+
 > 좌표 목록으로 Catmull-Rom 곡선을 생성합니다. RDP 알고리즘 기반 좌표 간소화, 지형 결합 옵션을 지원합니다.
 
 {% tabs %}
@@ -111,6 +113,8 @@ let result = Module.getMath().convertCatmullRom(option);
 {% endtabs %}
 
 ### calculationSlopeAnalysis(options) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.29+</mark>
 
 > 3\*3(0 배열 좌상단 9 배열 우하단) 배열값을 통한 경사 분석 결과 반환.
 >
@@ -142,6 +146,8 @@ let result = Module.getMath().calculationSlopeAnalysis(slop);
 {% endtabs %}
 
 ### splitLine(options) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
 
 > 이 함수는 `Module.JSMath.splitLine(...)`로 호출해야 합니다.
 >
@@ -191,6 +197,8 @@ let result = Module.JSMath.splitLine(option);
 
 ### getDistance2D(point0, point1) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
+
 > 두 지점 간의 지형(고도) 결합 거리를 반환합니다 (입력 좌표 자체의 고도값은 사용하지 않고, 각 지점의 지형 고도를 조회하여 계산).
 
 {% tabs %}
@@ -213,6 +221,8 @@ let d = Module.getMath().getDistance2D(new Module.JSVector2D(127.0, 37.5), new M
 
 ### getDistance3D(point0, point1) → number
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.10.2+</mark>
+
 > 두 지점(경도, 위도, 고도) 간의 직선 거리를 반환합니다.
 
 {% tabs %}
@@ -234,6 +244,8 @@ let d = Module.getMath().getDistance3D(new Module.JSVector3D(127.0, 37.5, 10), n
 {% endtabs %}
 
 ### getCubeBuffer(options) → array
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.4.0+</mark>
 
 > 시작-끝 두 지점을 잇는 선을 기준으로, xRadius/yRadius 만큼 떨어진 8개의 정점 좌표(경도, 위도, 고도가 반복된 flat 배열)를 반환합니다.
 
@@ -262,6 +274,8 @@ let buffer = Module.getMath().getCubeBuffer(option);
 {% endtabs %}
 
 ### transformBeZierCurve(options) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.40+</mark>
 
 > 이 함수는 `Module.JSMath.transformBeZierCurve(...)`로 호출해야 합니다.
 >
@@ -293,6 +307,8 @@ let result = Module.JSMath.transformBeZierCurve(option);
 
 ### triangulatePointsToConvexHull(positions) → array
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.6.2+</mark>
+
 > 이 함수는 `Module.JSMath.triangulatePointsToConvexHull(...)`로 호출해야 합니다.
 >
 > 입력한 좌표 목록을 삼각분할하여 인덱스 목록을 반환합니다.
@@ -323,6 +339,8 @@ let indices = Module.JSMath.triangulatePointsToConvexHull(positions);
 
 ### triangulatePolygonWithInnerPoints(polygonPoints, innerPoints) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.6.2+</mark>
+
 > 이 함수는 `Module.JSMath.triangulatePolygonWithInnerPoints(...)`로 호출해야 합니다.
 >
 > 폴리곤 외곽 좌표와 내부 좌표를 함께 사용하여 삼각분할을 수행합니다 (Constrained Delaunay Triangulation).
@@ -350,6 +368,8 @@ let result = Module.JSMath.triangulatePolygonWithInnerPoints(polygon, inner);
 {% endtabs %}
 
 ### testParse(parameter)
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.41+</mark>
 
 > 이 함수는 `Module.JSMath.testParse(...)`로 호출해야 합니다.
 >
@@ -393,6 +413,8 @@ let result = Module.JSMath.triangulatePolygonWithInnerPoints(polygon, inner);
 
 ### GetIntervalPositionInRect(min, max, vertical, horizontal) → object
 
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.21+</mark>
+
 > 경위도 기준의 사각 영역 내에서 일정 간격마다 좌표를 균등 분포로 반환합니다.
 
 {% tabs %}
@@ -421,6 +443,8 @@ let result = Module.getMath().GetIntervalPositionInRect(min, max, 10, 10);
 {% endtabs %}
 
 ### isPointInPolygon(polygon, points) → Array
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.21+</mark>
 
 > 주어진 2D 포인트들이 폴리곤 내부에 포함되는지를 판별합니다.
 
@@ -455,6 +479,8 @@ let result = Module.getMath().isPointInPolygon(polygon, points);
 {% endtabs %}
 
 ### getClosestPositionOnPath(point, path) → object
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v1.37.33+</mark>
 
 > 한 점에서부터 path 까지의 거리 중 가장 가까운 위치의 정보를 반환합니다.
 
@@ -493,6 +519,8 @@ let closestPosition = Module.getMath().getClosestPositionOnPath(point, path);
 {% endtabs %}
 
 ### getScreenEdgeIndicator(position) → object | null
+
+<mark style="color:#6b7280;background-color:#f3f4f6;">v2.7.0+</mark>
 
 > 화면 밖에 있는 객체의 위치를 화면 경계 기준으로 보정하여 반환합니다.
 
