@@ -27,7 +27,7 @@ lights.add("lamp_0", new Module.JSVector3D(126.9246, 37.5213, 12.0), new Module.
   * [Sandbox_Light Ball](https://sandbox.egiscloud.com/code/main.do?id=effect_lightball)
   * [Sandbox_Spotlight](https://sandbox.egiscloud.com/code/main.do?id=effect_spotlight)
 
-## 설정
+## Function
 
 ### getEnable(), setEnable(set) → boolean
 
@@ -136,8 +136,6 @@ var range = lights.getRange();
 {% endtab %}
 {% endtabs %}
 
-## 가림 판정
-
 ### getOcclusion(), setOcclusion(set) → boolean
 
 > 지형과 건물에 의한 빛 가림 판정 사용 여부를 설정/반환합니다. 켜면 건물 뒤편처럼 광원이 직접 보이지 않는 곳에는 빛이 닿지 않습니다. 기본값은 false입니다.
@@ -163,13 +161,9 @@ var occlusion = lights.getOcclusion();
 {% endtab %}
 {% endtabs %}
 
-## 빛줄기
-
-> 방향성 광원(스포트라이트)에서 공기 중에 산란되는 빛줄기를 그리는 기능입니다. 빛줄기는 화면에 보이는 표면까지만 그려지며, [setCone(key, innerAngle, outerAngle)](jspointlightmanager.md#setcone-key-innerangle-outerangle-boolean)으로 원뿔 각도를 360보다 작게 지정한 광원에 적용됩니다.
-
 ### getVolumetric(), setVolumetric(set) → boolean
 
-> 빛줄기 표현 사용 여부를 설정/반환합니다. 기본값은 false입니다.
+> 방향성 광원(스포트라이트)에서 공기 중에 산란되는 빛줄기의 표현 여부를 설정/반환합니다. [setCone(key, innerAngle, outerAngle)](jspointlightmanager.md#setcone-key-innerangle-outerangle-boolean)으로 원뿔 각도를 360보다 작게 지정한 광원에 적용되며, 빛줄기는 화면에 보이는 표면까지만 그려집니다. 기본값은 false입니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -246,13 +240,9 @@ var length = lights.getVolumetricLength();
 {% endtab %}
 {% endtabs %}
 
-## 광원 목록
-
-> 광원은 `key` 문자열로 구분합니다. 같은 `key`를 가진 광원은 하나만 등록할 수 있습니다.
-
 ### add(key, position, color, intensity, radius) → boolean
 
-> 점광원을 추가합니다. 추가한 광원은 방향 없이 사방으로 퍼지는 점광원이며, 방향성이 필요하면 [setDirection(key, yaw, pitch)](jspointlightmanager.md#setdirection-key-yaw-pitch-boolean)과 [setCone(key, innerAngle, outerAngle)](jspointlightmanager.md#setcone-key-innerangle-outerangle-boolean)을 사용합니다.
+> 점광원을 추가합니다. 광원은 `key` 문자열로 구분하며, 같은 `key`를 가진 광원은 하나만 등록할 수 있습니다. 추가한 광원은 방향 없이 사방으로 퍼지는 점광원이며, 방향성이 필요하면 [setDirection(key, yaw, pitch)](jspointlightmanager.md#setdirection-key-yaw-pitch-boolean)과 [setCone(key, innerAngle, outerAngle)](jspointlightmanager.md#setcone-key-innerangle-outerangle-boolean)을 사용합니다.
 
 {% tabs %}
 {% tab title="Information" %}
@@ -423,10 +413,6 @@ lights.setRadius("lamp_0", 50.0);
 
 {% endtab %}
 {% endtabs %}
-
-## 방향성 광원
-
-> 광원에 방향과 원뿔 각도를 지정해 특정 방향으로만 비추는 스포트라이트로 사용합니다. 원뿔 각도를 지정하지 않으면(기본값) 방향과 관계없이 사방으로 비춥니다.
 
 ### setDirection(key, yaw, pitch) → boolean
 
