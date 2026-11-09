@@ -4575,6 +4575,30 @@ var bits = Module.XDEGetVectorTileColorBits();
 {% endtab %}
 {% endtabs %}
 
+### getPointLightManager() → [JSPointLightManager](../manager/jspointlightmanager.md)
+
+> 지형과 건물에 점광원(가로등, 조명 등)의 빛을 비추는 [JSPointLightManager](../manager/jspointlightmanager.md) 객체를 반환합니다.
+
+* 지원버전 : `2.32.1+`
+
+{% tabs %}
+{% tab title="Information" %}
+
+-   Return
+    -   [JSPointLightManager](../manager/jspointlightmanager.md): 점광원 관리 객체.
+
+{% endtab %}
+{% tab title="Template" %}
+
+```javascript
+var lights = Module.getPointLightManager();
+lights.setEnable(true);
+lights.add("lamp_0", new Module.JSVector3D(126.9246, 37.5213, 12.0), new Module.JSColor(255, 255, 235), 1.0, 30.0);
+```
+
+{% endtab %}
+{% endtabs %}
+
 ### getPostProcess() → [JSPostProcess](../option/jspostprocess.md)
 
 > 화면 포스트프로세싱(DoF, Bloom, Sharpen) 설정을 제어하는 [JSPostProcess](../option/jspostprocess.md) 객체를 반환합니다.

@@ -16,11 +16,11 @@ var position = new Module.JSVector3D();
 
 ## properties
 
-| Name      | Type   | Description              |
-| :-------- | :----- | :----------------------- |
-| Longitude | number | 좌표 경도 (degrees 단위) |
-| Latitude  | number | 좌표 위도 (degrees 단위) |
-| Altitude  | number | 좌표 고도 (meter 단위)   |
+| Name                | Type   | Description              |
+| :------------------ | :----- | :----------------------- |
+| longitude `2.2.3+`  | number | 좌표 경도 (degrees 단위) |
+| latitude `2.2.3+`   | number | 좌표 위도 (degrees 단위) |
+| altitude `2.2.3+`   | number | 좌표 고도 (meter 단위)   |
 
 ## Function
 

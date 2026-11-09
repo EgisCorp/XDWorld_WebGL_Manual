@@ -75,7 +75,7 @@ Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
 {% endtab %}
 {% endtabs %}
 
-### CreateInterpolationPath(option) → array
+### createInterpolationPath(option) → array
 
 > 보간된 선을 구성하는 좌표 목록을 반환합니다.
 
@@ -97,7 +97,36 @@ Module.getAnalysis.createShadow(2018, 5, 28, 15, 0);
 {% tab title="Template" %}
 
 ```javascript
+// 보간 선의 시작점 목록 (경도, 위도)
+var positions = [
+    new Module.JSVector2D(127.9200, 36.3200),
+    new Module.JSVector2D(127.9300, 36.3300)
+];
 
+// 보간 계산 입력점 (위치, 방향(degree), 세기)
+var input = [
+    { position: new Module.JSVector2D(127.9299, 36.3392), direction: 350.257, strength: 0.157 },
+    { position: new Module.JSVector2D(127.9400, 36.3394), direction: 76.484, strength: 0.046 }
+];
+
+var paths = Module.getAnalysis().createInterpolationPath({
+    positions: positions,
+    input: input,
+    rect: {
+        min: new Module.JSVector2D(127.9152, 36.3175),
+        max: new Module.JSVector2D(127.9659, 36.3528)
+    },
+    vertexcount: 50,
+    scale: 40000.0
+});
+
+// 선별 정점 좌표 사용
+for (var i = 0; i < paths.size(); i++) {
+    var line = paths.get(i);
+    for (var j = 0; j < line.count(); j++) {
+        var pos = line.get(j); // JSVector2D (x: 경도, y: 위도)
+    }
+}
 ```
 
 {% endtab %}

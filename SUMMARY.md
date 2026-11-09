@@ -69,6 +69,7 @@
   * [JSImageryProvider](layer/jsImageryProvider.md)
   * [JSTile](layer/jstile.md)
 * [Manager](manager/manager.md)
+  * [JSPointLightManager](manager/jspointlightmanager.md)
   * [JSPylonManager](manager/jspylonmanager.md)
   * [JSRoadManager](manager/jsroadmanager.md)
   * [JSSolarManager](manager/jssolarmanager.md)
